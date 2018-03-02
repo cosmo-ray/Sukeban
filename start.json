@@ -1,0 +1,86 @@
+{
+    "name" : "phq",
+    "starting widget" : "main",
+    "init-scripts" : [
+	"init_phq"
+    ],
+    "pre-load" : [
+	{
+            "file" : "inv.lua",
+            "type" : "lua"
+        },
+	{
+            "file" : "animation.lua",
+            "type" : "lua"
+        },
+	{
+            "file" : "bad-guy.lua",
+            "type" : "lua"
+        },
+	{
+            "file" : "phq.lua",
+            "type" : "lua"
+        }
+    ],
+    "start_txt" : {
+	"<type>" : "text-screen",
+	"text-align": "center",
+	"action" : "nextOnKeyDown",
+	"background" : "rgba: 255 255 255 255",
+	"text" : "
+TODO
+",
+	"next" : "phq:game"
+    },
+    "credit" : {
+	"<type>" : "text-screen",
+	"text-align": "center",
+	"action" : "nextOnKeyDown",
+	"background" : "rgba: 255 255 255 255",
+	"text" : "todo
+sprites from www.opengameart.org
+music from www.rengoku-teihen.com
+
+to copy past website, use a terminal and do:
+cat start.json | grep www
+yes that's a little geeky,
+but to compensate for peoples who dont know how to use a terminal
+here is a lot of hearts <3 <3 <3 <3 <3 <3
+We love you anyway",
+	"next" : "phq:main"
+    },
+    "main" : {
+        "<type>" : "menu",
+	"entries" : [
+	    {
+		"text" : "New Game",
+		"next" : "phq:start_txt",
+		"action" : "menuNext"
+	    },
+	    {
+		"text" : "Continue",
+		"action" : "phq:load_game"
+	    },
+	    {
+		"text" : "Full Screen",
+		"action" : "FullScreenOnOff"
+	    },
+	    {
+		"text" : "credit",
+		"next" : "phq:credit",
+		"action" : "menuNext"
+	    },
+	    {
+		"text" : "Quit",
+		"action" : "FinishGame"
+	    }
+	],
+	"next" : "phq:game",
+	"text-align" : "center",
+	"background" : "rgba: 255 255 255 255"
+    },
+    "game" : {
+        "<type>" : "phq",
+	"next" : "phq:main"
+    }
+}
