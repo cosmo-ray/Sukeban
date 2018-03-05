@@ -1189,3 +1189,120 @@ reallocation fail
 ./callgirl.mp3 doesn't exist
 [ERROR][core/sound/sdl.c: libsdl_load : 66]
 ./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
+[INFO]Initiate log file with 00007FFBFEA2EAA0
+[WARNING]Initiate log file with 00007FFBFEA2EAA0
+[ERROR]Initiate log file with 00007FFBFEA2EAA0
+[ERROR][core/script/tcc-script.c: tccGetFastCall : 162]
+reallocation fail
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./house_music.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./pft.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./callgirl.mp3 doesn't exist
+[ERROR][core/sound/sdl.c: libsdl_load : 66]
+./rekuiemu.mp3 doesn't exist
