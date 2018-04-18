@@ -5,19 +5,11 @@
 	"init_phq"
     ],
     "pre-load" : [
-	{
-            "file" : "inv.lua",
-            "type" : "lua"
-        },
-	{
-            "file" : "animation.lua",
-            "type" : "lua"
-        },
-	{
-            "file" : "bad-guy.lua",
-            "type" : "lua"
-        },
-	{
+		{
+            "file" : "../yirl/modules/tiled/",
+			"type" : "module"
+		},
+		{
             "file" : "phq.lua",
             "type" : "lua"
         }
