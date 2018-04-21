@@ -5,14 +5,9 @@
 	"init_phq"
     ],
     "pre-load" : [
-		{
-            "file" : "../yirl/modules/tiled/",
-			"type" : "module"
-		},
-		{
-            "file" : "phq.lua",
-            "type" : "lua"
-        }
+	{ "file" : "../yirl/modules/tiled/", "type" : "module" },
+	{ "file" : "../yirl/modules/Universal-LPC-spritesheet/", "type" : "module" },
+	{ "file" : "phq.lua", "type" : "lua" }
     ],
     "start_txt" : {
 	"<type>" : "text-screen",
@@ -23,6 +18,14 @@
 TODO
 ",
 	"next" : "phq:game"
+    },
+    "pj" : {
+	"name": "oscar",
+	"sex": "female",
+	"type": "light",
+	"clothes": ["feet/shoes/female/brown_shoes_female.png",
+	    "torso/robes_female_no_th-sh/white.png",
+	    "hair/female/shoulderr/blonde.png"]
     },
     "credit" : {
 	"<type>" : "text-screen",
