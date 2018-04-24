@@ -26,15 +26,21 @@ function phq_action(entity, eve, arg)
 	     yCallNextWidget(entity:cent());
 	     return YEVE_ACTION
 	  elseif eve:is_key_up() then
-	     entity.move.up_down = -1
+             entity.move.up_down = -1
+             entity.pj.y = 8
 	  elseif eve:is_key_down() then
-	     entity.move.up_down = 1	   
+             entity.move.up_down = 1
+             entity.pj.y = 10	   
 	  elseif eve:is_key_left() then
-	     entity.move.left_right = -1
+             entity.move.left_right = -1
+             entity.pj.y = 9
 	  elseif eve:is_key_right() then
-	     entity.move.left_right = 1
+             entity.move.left_right = 1
+             entity.pj.y = 11
 	  end
-       elseif eve:type() == YKEY_UP then
+          handlerNextStep(entity.pj)
+
+        elseif eve:type() == YKEY_UP then
 	  if eve:is_key_up() then
 	     entity.move.up_down = 0
 	  elseif eve:is_key_down() then
@@ -43,13 +49,24 @@ function phq_action(entity, eve, arg)
 	     entity.move.left_right = 0
 	  elseif eve:is_key_right() then
 	     entity.move.left_right = 0
-	  end
+          end
+          entity.pj.x = 0
        end
        eve = eve:next()
     end
+    lpcs.handelerRefresh(entity.pj)
     lpcs.handelerMove(entity.pj, Pos.new(3 * entity.move.left_right,
-					 3 * entity.move.up_down).ent)    
+                                         3 * entity.move.up_down).ent)
     return YEVE_ACTION
+end
+
+function handlerNextStep(handler)
+        local linelength = {7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 6, 6, 6, 6, 13, 13, 13, 13, 6}
+        if handler.x:to_int() < (linelength[handler.y:to_int()] - 1) then
+                handler.x = (handler.x:to_int() + 1)
+        else
+                handler.x = 0
+        end
 end
 
 function create_phq(entity)
@@ -73,7 +90,7 @@ function create_phq(entity)
     lpcs.createCaracterHandeler(phq.pj, mainCanvas.ent, ent, "pj")
     lpcs.handelerRefresh(ent.pj)
     lpcs.handelerMove(ent.pj, Pos.new(200, 200).ent)
-    lpcs.handelerSetOrigXY(ent.pj, 2, 2)
+    lpcs.handelerSetOrigXY(ent.pj, 0, 10)
     lpcs.handelerRefresh(ent.pj)
     return ret
 end
