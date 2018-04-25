@@ -29,7 +29,8 @@ function CheckColision(entity, obj, guy)
 end
 
 function phq_action(entity, eve, arg)
-    entity = Entity.wrapp(entity)
+   entity = Entity.wrapp(entity)
+   entity.tid = entity.tid + 1
     eve = Event.wrapp(eve)
     while eve:is_end() == false do
        if eve:type() == YKEY_DOWN then
@@ -49,7 +50,6 @@ function phq_action(entity, eve, arg)
              entity.move.left_right = 1
              entity.pj.y = 11
 	  end
-          handlerNextStep(entity.pj)
 
         elseif eve:type() == YKEY_UP then
 	  if eve:is_key_up() then
@@ -65,7 +65,11 @@ function phq_action(entity, eve, arg)
        end
        eve = eve:next()
     end
-    lpcs.handelerRefresh(entity.pj)
+    if (yuiAbs(entity.move.left_right:to_int()) == 1 or yuiAbs(entity.move.up_down:to_int()) == 1) and
+       yAnd(entity.tid:to_int(), 3) == 0 then 
+       handlerNextStep(entity.pj)
+       lpcs.handelerRefresh(entity.pj)
+    end
     local mvPos = Pos.new(3 * entity.move.left_right, 3 * entity.move.up_down)
     lpcs.handelerMove(entity.pj, mvPos.ent)
     if ywCanvasCheckCollisions(entity.mainScreen,
@@ -94,6 +98,7 @@ function create_phq(entity)
     ent.move = {}
     ent.move.up_down = 0
     ent.move.left_right = 0
+    ent.tid = 0
     tiled.setAssetPath("./");
     print(tiled);
     Entity.new_func("phq_action", ent, "action")
