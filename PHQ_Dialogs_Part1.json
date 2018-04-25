@@ -1,0 +1,158 @@
+[
+        {
+                "text": "Tell me, who's the mightiest of them all?",
+                "answer": [
+                        {
+                                "text": "Captain America",
+                                "action": "EndDialog"
+                        },
+                        {
+                                "text": "Captain Morgan?",
+                                "action": "GetDrink"
+                        },
+                        {
+                                "text": "Captain Obvious",
+                                "action": "StartFight"
+                        },
+                        {
+                                "text": "Captain Ricard",
+                                "actions": "EndDialog"
+                        }
+                ]
+        },
+        {
+                "text": "Enchantment?",
+                "answers": [
+                        {
+                                "text": "Enchantment!",
+                                "action": "GetDrink"
+                        },
+                        {
+                                "text": "Bug off, weirdo!",
+                                "actions": "EndDialog"
+                        },
+                        {
+                                "text": "Wanna feel the enchantment of my knuckles in your face?!",
+                                "actions": "StartFight"
+                        }
+                ]
+        },
+        {
+                "text": "Sarah Connor?",
+                "answers": [
+                        {
+                                "text": "Yup, that's me, Honey!",
+                                "action": "StartFight"
+                        },
+                        {
+                                "text": "I'll be back.",
+                                "actions": "EndDialog"
+                        },
+                        {
+                                "text": "Chill out, dickwad",
+                                "actions": "EndDialog"
+                        },
+                        {
+                                "text": "There's no fate but what we make for ourselves.",
+                                "actions": "GetDrink"
+                        }
+                ]
+        },
+        {
+                "text": "Hold on, young lad! You don't quite seem old enough to be drinking alcohol, are you?",
+                "answers": [
+                        {
+                                "text": "You're right, dude. Time to go the bed.",
+                                "action": "EndDialog"
+                        },
+                        {
+                                "text": "Before the sweet nectar we all stand humble and equal.",
+                                "action": "GetDrink"
+                        },
+                        {
+                                "text": "Ask your Mom!",
+                                "action": "StartFight"
+                        }
+                ]
+        },
+        {
+                "text": "This is my favorite bar in the neighborhood.",
+                "answers": [
+                        {
+                                "text": "I can't wait to probe Uranus.",
+                                "action": "StartFight"
+                        },
+                        {
+                                "text": "Yeah, the only one where they serve a decent Old Shep 1864.",
+                                "action": "GetDrink"
+                        },
+                        {
+                                "text": "I should go.",
+                                "action": "EndDialog"
+                        }
+                ]
+        },
+        {
+                "text": "Chi Fu Mi?",
+                "answer": [
+                        {
+                                "text": "Oh La La!",
+                                "action": "EndDialog"
+                        },
+                        {
+                                "text": "Sum Ting Wong!",
+                                "action": "StartFight"
+                        },
+                        {
+                                "text": "Gin Tu Mi!",
+                                "action": "GetDrink"
+                        },
+                        {
+                                "text": "Cha Ba Da!",
+                                "action": "EndDialog"
+                        }
+                ]
+        },
+        {
+                "text": "No niin, kiva päivä olla kännissä, eikö olekin?",
+                "answers": [
+                        {
+                                "text": "Prost!",
+                                "action": "EndDialog"
+                        },
+                        {
+                                "text": "Sköl!",
+                                "actions": "EndDialog"
+                        },
+                        {
+                                "text": "Na zdorovie!",
+                                "actions": "StartFight"
+                        },
+                        {
+                                "text": "Kippis!",
+                                "actions": "GetDrink"
+                        }
+                ]
+        },
+        {
+                "text": "Hey kiddo! Tell me, how many types of people are there in the world?",
+                "answers": [
+                        {
+                                "text": "42",
+                                "action": "GetDrink"
+                        },
+                        {
+                                "text": "10, good people and assholes.",
+                                "actions": "StartFight"
+                        },
+                        {
+                                "text": "I want to talk to my lawyer.",
+                                "actions": "EndDialog"
+                        },
+                        {
+                                "text": "7 billion",
+                                "actions": "EndDialog"
+                        }
+                ]
+        }
+]

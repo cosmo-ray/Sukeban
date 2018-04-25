@@ -1,7 +1,7 @@
 {
     "robert" : {
 	"sex": "male",
-	"type": "light"
+        "type": "light"
     },
     "typical finns guy" : {
 	"sex": "male",

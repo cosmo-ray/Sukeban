@@ -50,6 +50,34 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.move.left_right = 1
              entity.pj.y = 11
+          elseif eve:key() == Y_SPACE_KEY then
+             local pjPos = ylpcsHandePos(entity.pj)
+             local x_add = 0
+             local y_add = 0
+             pjPos = Pos.wrapp(pjPos)
+             if entity.pj.y:to_int() == 8 then
+                y_add = -25
+                x_add = lpcs.w_sprite / 2
+             elseif entity.pj.y:to_int() == 9 then
+                x_add = -25
+                y_add = lpcs.h_sprite / 2
+             elseif entity.pj.y:to_int() == 10 then
+                y_add = lpcs.h_sprite + 20
+                x_add = lpcs.w_sprite / 2
+             else
+                y_add = lpcs.h_sprite / 2
+                x_add = lpcs.w_sprite + 20
+             end
+             local r = Rect.new(pjPos:x() + x_add, pjPos:y() + y_add, 10, 10)
+             local col = ywCanvasNewCollisionsArrayWithRectangle(entity.mainScreen, r:cent())
+             col = Entity.wrapp(col)
+             print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
+             local i = 0
+             while i < yeLen(col) do
+                print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialoguen)
+                i = i + 1
+             end
+             yeDestroy(col)
 	  end
 
         elseif eve:type() == YKEY_UP then
@@ -129,7 +157,17 @@ function create_phq(entity)
     while i < yeLen(objects) do
        local obj = objects[i]
        ent.npcs[i] = {}
-       print("obj (", i, "):", obj, npcs[obj.name:to_string()])
+       local npc = lpcs.createCaracterHandeler(npcs[obj.name:to_string()], mainCanvas.ent, ent.npcs)
+       print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
+       local pos = Pos.new_copy(obj.rect)
+       pos:sub(20, 50)
+       lpcs.handelerMove(npc, pos.ent)
+       print("-------")
+       lpcs.handelerSetOrigXY(npc, 0, 10)
+       lpcs.handelerRefresh(npc)
+       npc = Entity.wrapp(npc)
+       npc.canvas.Collision = 1
+       npc.canvas.dialoguen = 1
        i = i + 1
     end
     return ret

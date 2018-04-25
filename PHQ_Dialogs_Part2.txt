@@ -1,0 +1,92 @@
+DIALOGUE 9 
+
+1.	What d’you want?
+a.	Nothing 
+[EndDialog]
+
+b.	Your beer
+[go to 2]
+
+2.	Why should I give it you? 
+a.	Because your Mom says so!
+[StartFight]
+
+b.	All your beers are belong to us!
+[EndDialog]
+
+c.	Compassion for a friendly fellow drunkard in dire need of a drop!
+[GetDrink]
+
+
+
+DIALOGUE 10 
+
+1.	Hi there! Do you have a moment to talk about our Lord and Savior, Cthulhu?
+a.	Whatever, altar wine tastes like donkey piss.
+[EndDialog]
+
+b.	Sure, the stars are right…
+[Go to 2] 
+
+c.	Don’t interrupt my drinking with your bigotry!
+[StartFight]
+
+2.	Speak the cryptic name of the trusted ally of Lord of Unspeakable Darkness!
+a.	Shub-Niggarath, the Black Goat of the Woods with a Thousand Young!
+[EndDialog]
+
+b.	Yog-Sothoth, Lurker of at the Threshold!
+[EndDialog]
+
+c.	Kosken-Korva, the Great and Powerful Twister of Minds!
+[GetDrink]
+
+
+
+
+
+
+DIALOGUE 11
+1.	What is your name? 
+a.	Dr Pepper
+[EndDialog]
+
+b.	Bud Weiser
+[EndDialog]
+
+c.	Jack Daniels
+[Go to 2]
+
+2.	What is your quest?
+a.	To find one drink to rule you all!
+[StartFight]
+
+b.	Profit!
+[EndDialog]
+
+
+c.	The seek of the Holy Grail!
+[Go to 3]
+
+3.	What is your favorite color? 
+a.	A lovely shade of amber brown
+[Go to 4]
+
+b.	A beautiful gatorade green
+[EndDialog]
+
+c.	A rosy pink like your Mom’s stink
+[StartFight]
+
+4.	What is the air speed velocity of an unladen swallow?
+a.	African or European swallow? 
+[GetDrink]
+=> Super victoire ? Il te donne son verre + t’en paye un ? 
+
+b.	No idea, but slower for sure than ly boot up your ass!
+[StartFight]
+
+c.	Dude, da faq?
+[EndDialog]
+
+
