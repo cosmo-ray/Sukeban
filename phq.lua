@@ -4,6 +4,7 @@ local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local checkColisisonF = Entity.new_func("CheckColision")
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
+local dialogues = Entity.wrapp(ygGet("phq.dialogues"))
 
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
@@ -74,7 +75,18 @@ function phq_action(entity, eve, arg)
              print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
              local i = 0
              while i < yeLen(col) do
-                print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialoguen)
+                local dialogue = col[i].dialogue
+                print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialogue)
+                if dialogue then
+                        local dialogueWid = yeCreateArray()
+                        
+                        dialogueWid = Entity.wrapp(dialogueWid)
+                        dialogueWid["<type>"] = "dialogue-canvas"
+                        dialogueWid.dialogue = dialogues[dialogue:to_int()]
+                        print("I can speak", dialogueWid)
+                        ywPushNewWidget(entity, dialogueWid, 1)
+                        return YEVE_ACTION
+                end
                 i = i + 1
              end
              yeDestroy(col)
@@ -158,7 +170,7 @@ function create_phq(entity)
        local obj = objects[i]
        ent.npcs[i] = {}
        local npc = lpcs.createCaracterHandeler(npcs[obj.name:to_string()], mainCanvas.ent, ent.npcs)
-       print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
+       --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
        local pos = Pos.new_copy(obj.rect)
        pos:sub(20, 50)
        lpcs.handelerMove(npc, pos.ent)
@@ -167,8 +179,11 @@ function create_phq(entity)
        lpcs.handelerRefresh(npc)
        npc = Entity.wrapp(npc)
        npc.canvas.Collision = 1
-       npc.canvas.dialoguen = 1
+       print(npc.char.dialogue)
+       npc.canvas.dialogue = npc.char.dialogue
+       print(npc.canvas.dialogue)
        i = i + 1
     end
+    --print(dialogues)
     return ret
 end

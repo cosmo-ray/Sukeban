@@ -1,15 +1,18 @@
 {
     "robert" : {
 	"sex": "male",
-        "type": "light"
+        "type": "light",
+        "dialogue": 3
     },
     "typical finns guy" : {
 	"sex": "male",
-	"type": "light"
+        "type": "light",
+        "dialogue": 6
     },
     "merlin": {
 	"sex": "male",
-	"type": "light"
+        "type": "light",
+        "dialogue": 1
     }
 
 }
