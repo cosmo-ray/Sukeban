@@ -1,0 +1,15 @@
+{
+    "robert" : {
+	"sex": "male",
+	"type": "light"
+    },
+    "typical finns guy" : {
+	"sex": "male",
+	"type": "light"
+    },
+    "merlin": {
+	"sex": "male",
+	"type": "light"
+    }
+
+}

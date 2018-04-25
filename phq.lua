@@ -3,6 +3,7 @@ local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local checkColisisonF = Entity.new_func("CheckColision")
+local npcs = Entity.wrapp(ygGet("phq.npcs"))
 
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
@@ -115,5 +116,21 @@ function create_phq(entity)
     lpcs.handelerMove(ent.pj, Pos.new(200, 200).ent)
     lpcs.handelerSetOrigXY(ent.pj, 0, 10)
     lpcs.handelerRefresh(ent.pj)
+    print(npcs, yeLen(npcs), yeGet(npcs, "robert"))
+    local i = 0
+    while i < yeLen(npcs) do
+       print(i, yeLen(npcs))
+       print(yeGet(npcs, i), yeGetKeyAt(npcs, i))
+       i = i + 1
+    end
+    local objects = ent.mainScreen.objects
+    i = 0
+    ent.npcs = {}
+    while i < yeLen(objects) do
+       local obj = objects[i]
+       ent.npcs[i] = {}
+       print("obj (", i, "):", obj, npcs[obj.name:to_string()])
+       i = i + 1
+    end
     return ret
 end
