@@ -2,6 +2,7 @@ local tiled = Entity.wrapp(ygGet("tiled"))
 local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
+local checkColisisonF = Entity.new_func("CheckColision")
 
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
@@ -15,6 +16,16 @@ end
 
 function load_game(entity)
    print("loading")
+end
+
+function CheckColision(entity, obj, guy)
+   if ywCanvasObjectsCheckColisions(guy, obj) then
+      if yeGetIntAt(obj, "Collision") == 1 and
+	 ywCanvasObjectsCheckColisions(obj, guy) then
+	 return Y_TRUE
+      end
+   end
+   return Y_FALSE
 end
 
 function phq_action(entity, eve, arg)
@@ -55,8 +66,15 @@ function phq_action(entity, eve, arg)
        eve = eve:next()
     end
     lpcs.handelerRefresh(entity.pj)
-    lpcs.handelerMove(entity.pj, Pos.new(3 * entity.move.left_right,
-                                         3 * entity.move.up_down).ent)
+    local mvPos = Pos.new(3 * entity.move.left_right, 3 * entity.move.up_down)
+    lpcs.handelerMove(entity.pj, mvPos.ent)
+    if ywCanvasCheckCollisions(entity.mainScreen,
+                                 entity.pj.canvas,
+                                 checkColisisonF) == 1
+    then
+       mvPos:opposite()
+       lpcs.handelerMove(entity.pj, mvPos.ent)
+    end
     return YEVE_ACTION
 end
 
