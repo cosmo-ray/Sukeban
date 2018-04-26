@@ -5,19 +5,19 @@
             "answers": [
                 {
                     "text": "Captain America",
-                    "action": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "Captain Morgan?",
-                    "action": "GetDrink"
+                    "action": "phq.GetDrink"
                 },
                 {
                     "text": "Captain Obvious",
-                    "action": "StartFight"
+                    "action": "phq.StartFight"
                 },
                 {
                     "text": "Captain Ricard",
-                    "actions": "EndDialog"
+                    "action": "phq.EndDialog"
                 }
             ]
         }
@@ -28,15 +28,15 @@
             "answers": [
                 {
                     "text": "Enchantment!",
-                    "action": "GetDrink"
+                    "action": "phq.GetDrink"
                 },
                 {
                     "text": "Bug off, weirdo!",
-                    "actions": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "Wanna feel the enchantment of my knuckles in your face?!",
-                    "actions": "StartFight"
+                    "action": "phq.StartFight"
                 }
             ]
         }
@@ -47,19 +47,19 @@
             "answers": [
                 {
                     "text": "Yup, that's me, Honey!",
-                    "action": "StartFight"
+                    "action": "phq.StartFight"
                 },
                 {
                     "text": "I'll be back.",
-                    "actions": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "Chill out, dickwad",
-                    "actions": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "There's no fate but what we make for ourselves.",
-                    "actions": "GetDrink"
+                    "action": "phq.GetDrink"
                 }
             ]
         }
@@ -70,15 +70,15 @@
             "answers": [
                 {
                     "text": "You're right, dude. Time to go the bed.",
-                    "action": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "Before the sweet nectar we all stand humble and equal.",
-                    "action": "GetDrink"
+                    "action": "phq.GetDrink"
                 },
                 {
                     "text": "Ask your Mom!",
-                    "action": "StartFight"
+                    "action": "phq.StartFight"
                 }
             ]
         }
@@ -89,15 +89,15 @@
             "answers": [
                 {
                     "text": "I can't wait to probe Uranus.",
-                    "action": "StartFight"
+                    "action": "phq.StartFight"
                 },
                 {
                     "text": "Yeah, the only one where they serve a decent Old Shep 1864.",
-                    "action": "GetDrink"
+                    "action": "phq.GetDrink"
                 },
                 {
                     "text": "I should go.",
-                    "action": "EndDialog"
+                    "action": "phq.EndDialog"
                 }
             ]
         }
@@ -108,19 +108,19 @@
             "answers": [
                 {
                     "text": "Oh La La!",
-                    "action": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "Fus Ro Da!",
-                    "action": "StartFight"
+                    "action": "phq.StartFight"
                 },
                 {
                     "text": "Gin Tu Mi!",
-                    "action": "GetDrink"
+                    "action": "phq.GetDrink"
                 },
                 {
                     "text": "Cha Ba Da!",
-                    "action": "EndDialog"
+                    "action": "phq.EndDialog"
                 }
             ]
         }
@@ -131,19 +131,38 @@
             "answers": [
                 {
                     "text": "Prost!",
-                    "action": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "Sköl!",
-                    "actions": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "Na zdorovie!",
-                    "actions": "StartFight"
+                    "action": "phq.StartFight"
                 },
                 {
                     "text": "Kippis!",
-                    "actions": "GetDrink"
+                    "action": "phq.GetDrink"
+                }
+            ]
+        }
+    ],
+    [
+	{
+            "text": "Do you know what norvegian have, swedish don't have?",
+            "answers": [
+                {
+                    "text": "no, can I have you're tralala my ding ding dong ?",
+                    "action": "phq.GetDrink"
+                },
+                {
+                    "text": "nej, har du en snus ?",
+                    "action": "phq.EndDialog"
+                },
+                {
+                    "text": "not good neibhour for sure, Good meatball ?",
+                    "action": "phq.StartFight"
                 }
             ]
         }
@@ -154,19 +173,19 @@
             "answers": [
                 {
                     "text": "42",
-                    "action": "GetDrink"
+                    "action": "phq.GetDrink"
                 },
                 {
                     "text": "10, good people and assholes.",
-                    "action": "StartFight"
+                    "action": "phq.StartFight"
                 },
                 {
                     "text": "I want to talk to my lawyer.",
-                    "action": "EndDialog"
+                    "action": "phq.EndDialog"
                 },
                 {
                     "text": "7 billion",
-                    "action": "EndDialog"
+                    "action": "phq.EndDialog"
                 }
             ]
         }
@@ -177,7 +196,7 @@
 	    "answers": [
 		{
 		    "text" : "Nothing",
-		    "action": "EndDialog"
+		    "action": "phq.EndDialog"
 		},
 		{
 		    "text" : "Your beer",
@@ -190,15 +209,15 @@
 	    "answers": [
 		{
 		    "text" : "Because your Mom says so!",
-		    "action": "StartFight"
+		    "action": "phq.StartFight"
 		},
 		{
 		    "text" : "All your beers are belong to us!",
-		    "action": "EndDialog"
+		    "action": "phq.EndDialog"
 		},
 		{
 		    "text" : "Compassion for a friendly fellow drunkard in dire need of a drop!",
-		    "action": "GetDrink"
+		    "action": "phq.GetDrink"
 		}
 	    ]
 	}
@@ -209,7 +228,7 @@
 	    "answers": [
 		{
 		    "text": "Whatever, altar wine tastes like donkey piss.",
-		    "action": "EndDialog"
+		    "action": "phq.EndDialog"
 		},
 		{
 		    "text": "Sure, the stars are right...",
@@ -217,7 +236,7 @@
 		},
 		{
 		    "text": "Don't interrupt my drinking with your bigotry!",
-		    "action": "StartFight"
+		    "action": "phq.StartFight"
 		}		
 	    ]
 	},
@@ -226,15 +245,15 @@
 	    "answers": [
 		{
 		    "text": "Shub-Niggarath, the Black Goat of the Woods with a Thousand Young!",
-		    "action": "EndDialog"
+		    "action": "phq.EndDialog"
 		},
 		{
 		    "text": "Yog-Sothoth, Lurker of at the Threshold!",
-		    "action": "EndDialog"
+		    "action": "phq.EndDialog"
 		},
 		{
 		    "text": "Kosken-Korva, the Great and Powerful Twister of Minds!",
-		    "action": "GetDrink"
+		    "action": "phq.GetDrink"
 		}
 	    ]
 	}
@@ -245,15 +264,15 @@
 	    "answers":[
 		{
 		    "text": "Dr Pepper",
-		    "action":"EndDialog"
+		    "action":"phq.EndDialog"
 		},
 		{
 		    "text": "Bud Weiser",
-		    "action":"EndDialog"
+		    "action":"phq.EndDialog"
 		},
 		{
 		    "text": "Jack Daniels",
-		    "action":"Go to 2"
+		    "action":  ["Dialogue:goto", 1]
 		}
 	    ]
 	},
@@ -262,15 +281,15 @@
 	    "answers": [
 		{
 		    "text": "To find one drink to rule you all!",
-		    "action":"StartFight"
+		    "action":"phq.StartFight"
 		},
 		{
 		    "text": "Profit!",
-		    "action" :"EndDialog"
+		    "action" :"phq.EndDialog"
 		},
 		{
 		    "text": "The seek of the Holy Grail!",
-		    "action": "Go to 3"
+		    "action":  ["Dialogue:goto", 2]
 		}
 	    ]
 	},
@@ -279,15 +298,15 @@
 	    "answers": [
 		{
 		    "text": "A lovely shade of amber brown",
-		    "action": "Go to 4"
+		    "action":  ["Dialogue:goto", 3]
 		},
 		{
 		    "text": "A beautiful gatorade green",
-		    "action": "EndDialog"
+		    "action": "phq.EndDialog"
 		},
 		{
 		    "text": "A rosy pink like your Mom's stink",
-		    "action": "StartFight"
+		    "action": "phq.StartFight"
 		}
 	    ]
 	},
@@ -296,15 +315,34 @@
 	    "answers": [
 		{
 		    "text": "African or European swallow?",
-		    "action": "GetDrink++"
+		    "action": "phq.GetDrink++"
 		},
 		{
 		    "text": "No idea, but slower for sure than ly boot up your ass!",
-		    "action":"StartFight"
+		    "action":"phq.StartFight"
 		},
 		{
 		    "text": "Dude, da faq?",
-		    "action": "EndDialog"
+		    "action": "phq.EndDialog"
+		}
+	    ]
+	}
+    ],
+    [
+	{
+	    "text" : "Did you now Lynn Minmay has release a new album",
+	    "answers": [
+		{
+		    "text": "Did you know Eve Tokimatsuri has metal tentacule rape Lynn",
+		    "action": "phq.StartFight"
+		},
+		{
+		    "text": "Erkk, i don't speak Wota, weirdo",
+		    "action": "phq.EndDialog"
+		},
+		{
+		    "text": "Yeap, I hear she made a duo with basara",
+		    "action": "phq.GetDrink"
 		}
 	    ]
 	}

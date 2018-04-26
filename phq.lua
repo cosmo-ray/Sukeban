@@ -6,10 +6,33 @@ local checkColisisonF = Entity.new_func("CheckColision")
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local dialogues = Entity.wrapp(ygGet("phq.dialogues"))
 
+function EndDialog(wid, eve, arg)
+   print(wid, yDialogueGetMain(wid))
+   wid = Entity.wrapp(yDialogueGetMain(wid))
+   local main = Entity.wrapp(ywCntWidgetFather(wid))
+   wid.main = nil
+   ywCntPopLastEntry(main)
+   main.current = 0
+   print("this is the end")
+   return YEVE_ACTION
+end
+
+function StartFight(wid, eve, arg)
+   print("this is the kaboum")
+end
+
+function GetDrink(wid, eve, arg)
+   print("this is the drink")
+end
+
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
 
-   Entity.wrapp(mod).load_game = Entity.new_func("load_game")
+   mod = Entity.wrapp(mod)
+   mod.EndDialog = Entity.new_func("EndDialog")
+   mod.StartFight = Entity.new_func("StartFight")
+   mod.GetDrink = Entity.new_func("GetDrink")
+   mod.load_game = Entity.new_func("load_game")
 end
 
 function saveAndQuit(entity)
@@ -33,8 +56,12 @@ end
 function phq_action(entity, eve, arg)
    entity = Entity.wrapp(entity)
    entity.tid = entity.tid + 1
-    eve = Event.wrapp(eve)
-    while eve:is_end() == false do
+   eve = Event.wrapp(eve)
+
+   if yeGetInt(entity.current) == 1 then
+      return NOTHANDLE
+   end
+   while eve:is_end() == false do
        if eve:type() == YKEY_DOWN then
 	  if eve:key() == Y_ESC_KEY then
 	     yCallNextWidget(entity:cent());
@@ -78,14 +105,12 @@ function phq_action(entity, eve, arg)
                 local dialogue = col[i].dialogue
                 print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialogue)
                 if dialogue then
-                        local dialogueWid = yeCreateArray()
+		   local dialogueWid = Entity.new_array()
                         
-                        dialogueWid = Entity.wrapp(dialogueWid)
-                        dialogueWid["<type>"] = "dialogue-canvas"
-                        dialogueWid.dialogue = dialogues[dialogue:to_int()]
-                        print("I can speak", dialogueWid)
-                        ywPushNewWidget(entity, dialogueWid, 1)
-                        return YEVE_ACTION
+		   dialogueWid["<type>"] = "dialogue-canvas"
+		   dialogueWid.dialogue = dialogues[dialogue:to_int()]
+		   ywPushNewWidget(entity, dialogueWid)
+		   return YEVE_ACTION
                 end
                 i = i + 1
              end
