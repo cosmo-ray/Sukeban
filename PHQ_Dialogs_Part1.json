@@ -69,7 +69,7 @@
             "text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
             "answers": [
                 {
-                    "text": "You're right, dude. Time to go the bed.",
+                    "text": "You're right, dude. Time to go to bed.",
                     "action": "phq.EndDialog"
                 },
                 {
