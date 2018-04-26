@@ -1,70 +1,73 @@
 {
-    "Robert" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Typical finnish guy" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 6
-    },
-    "Merlin": {
-	"sex": "male",
-        "type": "light",
-        "clothes": ["feet/shoes/female/brown_shoes_female.png",
-                "torso/robes_female_no_th-sh/black.png",
-                "hair/female/shoulderr/pink.png"],
-        "dialogue": 1
-    },
-    "Playful guy" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Typical swedish boy" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Serious guy" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Strangely familiar guy" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Wasted guy" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Short guy" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Way too sober guy" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "John" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Jane" : {
-	"sex": "female",
-        "type": "light",
-        "dialogue": 3
-    },
-    "Creepy guy in the corner" : {
-	"sex": "male",
-        "type": "light",
-        "dialogue": 3
-    },
+        "Wasted guy": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 0
+        },
+        "Merlin": {
+                "sex": "male",
+                "type": "light",
+                "clothes": [
+                        "feet/shoes/female/brown_shoes_female.png",
+                        "torso/robes_female_no_th-sh/black.png",
+                        "hair/female/shoulderr/pink.png"
+                ],
+                "dialogue": 1
+        },
+        "Strangely familiar guy": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 2
+        },
+        "Robert": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 3
+        },
+        "Serious guy": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 4
+        },
+        "Playful guy": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 5
+        },
+        "Typical finnish guy": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 6
+        },
+        "John": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 7
+        },
+        "Way too sober guy": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 8
+        },
+        "Creepy guy in the corner": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 9
+        },
+        
+        "Typical swedish boy": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 10
+        },
+        "Jane": {
+                "sex": "female",
+                "type": "light",
+                "dialogue": 11
+        },
+        "Short guy": {
+                "sex": "male",
+                "type": "light",
+                "dialogue": 12
+        },
 }
