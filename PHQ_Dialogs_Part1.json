@@ -1,27 +1,27 @@
 [
-        [
-	    {
-                "text": "Tell me, who's the mightiest of them all?",
-                "answers": [
-                        {
-                                "text": "Captain America",
-                                "action": "EndDialog"
-                        },
-                        {
-                                "text": "Captain Morgan?",
-                                "action": "GetDrink"
-                        },
-                        {
-                                "text": "Captain Obvious",
-                                "action": "StartFight"
-                        },
-                        {
-                                "text": "Captain Ricard",
-                                "actions": "EndDialog"
-                        }
-                ]
-            }
-	],
+    [
+	{
+            "text": "Tell me, who's the mightiest of them all?",
+            "answers": [
+                {
+                    "text": "Captain America",
+                    "action": "EndDialog"
+                },
+                {
+                    "text": "Captain Morgan?",
+                    "action": "GetDrink"
+                },
+                {
+                    "text": "Captain Obvious",
+                    "action": "StartFight"
+                },
+                {
+                    "text": "Captain Ricard",
+                    "actions": "EndDialog"
+                }
+            ]
+        }
+    ],
     [
 	{
             "text": "Enchantment?",
@@ -32,7 +32,7 @@
                 },
                 {
                     "text": "Bug off, weirdo!",
-                                "actions": "EndDialog"
+                    "actions": "EndDialog"
                 },
                 {
                     "text": "Wanna feel the enchantment of my knuckles in your face?!",
@@ -66,7 +66,7 @@
     ],
     [
 	{
-            "text": "Hold on, young lad! You don't quite seem old enough to be drinking alcohol, are you?",
+            "text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
             "answers": [
                 {
                     "text": "You're right, dude. Time to go the bed.",
@@ -80,7 +80,7 @@
                     "text": "Ask your Mom!",
                     "action": "StartFight"
                 }
-                ]
+            ]
         }
     ],
     [
@@ -111,7 +111,7 @@
                     "action": "EndDialog"
                 },
                 {
-                    "text": "Sum Ting Wong!",
+                    "text": "Fus Ro Da!",
                     "action": "StartFight"
                 },
                 {
@@ -158,17 +158,155 @@
                 },
                 {
                     "text": "10, good people and assholes.",
-                    "actions": "StartFight"
+                    "action": "StartFight"
                 },
                 {
                     "text": "I want to talk to my lawyer.",
-                    "actions": "EndDialog"
+                    "action": "EndDialog"
                 },
                 {
                     "text": "7 billion",
-                    "actions": "EndDialog"
+                    "action": "EndDialog"
                 }
             ]
         }
+    ],
+    [
+	{
+	    "text": "What d'you want?",
+	    "answers": [
+		{
+		    "text" : "Nothing",
+		    "action": "EndDialog"
+		},
+		{
+		    "text" : "Your beer",
+		    "action": ["Dialogue:goto", 1]
+		}
+	    ]
+	},
+	{
+	    "text": "Why should I give it you?",
+	    "answers": [
+		{
+		    "text" : "Because your Mom says so!",
+		    "action": "StartFight"
+		},
+		{
+		    "text" : "All your beers are belong to us!",
+		    "action": "EndDialog"
+		},
+		{
+		    "text" : "Compassion for a friendly fellow drunkard in dire need of a drop!",
+		    "action": "GetDrink"
+		}
+	    ]
+	}
+    ],
+    [
+	{
+	    "text": "Hi there! Do you have a moment to talk about our Lord and Savior, Cthulhu?",
+	    "answers": [
+		{
+		    "text": "Whatever, altar wine tastes like donkey piss.",
+		    "action": "EndDialog"
+		},
+		{
+		    "text": "Sure, the stars are right...",
+		    "action": ["Dialogue:goto", 1]
+		},
+		{
+		    "text": "Don't interrupt my drinking with your bigotry!",
+		    "action": "StartFight"
+		}		
+	    ]
+	},
+	{
+	    "text": "Speak the cryptic name of the trusted ally of Lord of Unspeakable Darkness!",
+	    "answers": [
+		{
+		    "text": "Shub-Niggarath, the Black Goat of the Woods with a Thousand Young!",
+		    "action": "EndDialog"
+		},
+		{
+		    "text": "Yog-Sothoth, Lurker of at the Threshold!",
+		    "action": "EndDialog"
+		},
+		{
+		    "text": "Kosken-Korva, the Great and Powerful Twister of Minds!",
+		    "action": "GetDrink"
+		}
+	    ]
+	}
+    ],
+    [
+	{
+	    "text": "What is your name?",
+	    "answers":[
+		{
+		    "text": "Dr Pepper",
+		    "action":"EndDialog"
+		},
+		{
+		    "text": "Bud Weiser",
+		    "action":"EndDialog"
+		},
+		{
+		    "text": "Jack Daniels",
+		    "action":"Go to 2"
+		}
+	    ]
+	},
+	{
+	    "text": "What is your quest?",
+	    "answers": [
+		{
+		    "text": "To find one drink to rule you all!",
+		    "action":"StartFight"
+		},
+		{
+		    "text": "Profit!",
+		    "action" :"EndDialog"
+		},
+		{
+		    "text": "The seek of the Holy Grail!",
+		    "action": "Go to 3"
+		}
+	    ]
+	},
+	{
+	    "text": "What is your favorite color?",
+	    "answers": [
+		{
+		    "text": "A lovely shade of amber brown",
+		    "action": "Go to 4"
+		},
+		{
+		    "text": "A beautiful gatorade green",
+		    "action": "EndDialog"
+		},
+		{
+		    "text": "A rosy pink like your Mom's stink",
+		    "action": "StartFight"
+		}
+	    ]
+	},
+	{
+	    "text" : "What is the air speed velocity of an unladen swallow?",
+	    "answers": [
+		{
+		    "text": "African or European swallow?",
+		    "action": "GetDrink++"
+		},
+		{
+		    "text": "No idea, but slower for sure than ly boot up your ass!",
+		    "action":"StartFight"
+		},
+		{
+		    "text": "Dude, da faq?",
+		    "action": "EndDialog"
+		}
+	    ]
+	}
     ]
 ]
