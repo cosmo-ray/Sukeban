@@ -12,6 +12,9 @@
     "merlin": {
 	"sex": "male",
         "type": "light",
+        "clothes": ["feet/shoes/female/brown_shoes_female.png",
+                "torso/robes_female_no_th-sh/black.png",
+                "hair/female/shoulderr/pink.png"],
         "dialogue": 1
     }
 

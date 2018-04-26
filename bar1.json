@@ -93,8 +93,14 @@
                 {
                  "height":0,
                  "id":1,
-                 "name":"robert",
+                 "name":"Robert",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -105,8 +111,14 @@
                 {
                  "height":0,
                  "id":2,
-                 "name":"typical finns guy",
+                 "name":"Typical finnish guy",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -117,14 +129,200 @@
                 {
                  "height":0,
                  "id":3,
-                 "name":"merlin",
+                 "name":"Merlin",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"left"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
                  "x":686,
                  "y":308
+                }, 
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"Typical swedish boy",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":248,
+                 "y":188
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"Creepy guy in the corner",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":689,
+                 "y":147
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"John",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":592,
+                 "y":210
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"Jane",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"left"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":654,
+                 "y":209
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"Serious guy",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"left"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":175,
+                 "y":403
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"Short guy",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"left"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":463,
+                 "y":401
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"Wasted guy",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":400,
+                 "y":349
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"Way too sober guy",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":368,
+                 "y":469
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"Strangely familiar guy",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":304,
+                 "y":437
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"Playful guy",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":369,
+                 "y":348
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -132,7 +330,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":4,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.03.04",
