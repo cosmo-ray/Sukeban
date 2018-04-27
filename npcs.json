@@ -8,16 +8,18 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_01.png",
                 "dialogue": 0
         },
         "Merlin": {
                 "sex": "male",
                 "type": "light",
                 "clothes": [
-                        "feet/shoes/female/brown_shoes_female.png",
+		        "feet/shoes/male/brown_shoes_male.png",
                         "torso/robes_female_no_th-sh/black.png",
                         "hair/female/shoulderr/pink.png"
                 ],
+		"image": "./Portrait_02.png",
                 "dialogue": 1
         },
         "Strangely familiar guy": {
@@ -29,6 +31,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_03.png",
                 "dialogue": 2
         },
         "Robert": {
@@ -40,6 +43,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_04.png",
                 "dialogue": 3
         },
         "Serious guy": {
@@ -51,6 +55,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_05.png",
                 "dialogue": 4
         },
         "Playful guy": {
@@ -62,6 +67,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_06.png",
                 "dialogue": 5
         },
         "Typical finnish guy": {
@@ -72,6 +78,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_07.png",
                 "dialogue": 6
         },
         "John": {
@@ -83,6 +90,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_08.png",
                 "dialogue": 7
         },
         "Way too sober guy": {
@@ -94,6 +102,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_09.png",
                 "dialogue": 8
         },
         "Creepy guy in the corner": {
@@ -105,6 +114,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_10.png",
                 "dialogue": 9
         },
         
@@ -117,6 +127,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_11.png",
                 "dialogue": 10
         },
         "Jane": {
@@ -128,6 +139,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_12.png",
                 "dialogue": 11
         },
         "Short guy": {
@@ -139,6 +151,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
+		"image": "./Portrait_13.png",
                 "dialogue": 12
         },
 }

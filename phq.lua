@@ -109,6 +109,7 @@ function phq_action(entity, eve, arg)
                         
 		   dialogueWid["<type>"] = "dialogue-canvas"
 		   dialogueWid.dialogue = dialogues[dialogue:to_int()]
+		   dialogueWid.image = col[i].image
 		   ywPushNewWidget(entity, dialogueWid)
 		   return YEVE_ACTION
                 end
@@ -158,7 +159,7 @@ function handlerNextStep(handler)
 end
 
 function create_phq(entity)
-    local container = Container.init_entity(entity, "stack")
+    local container = Container.init_entity(entity, "stacking")
     local ent = container.ent
 
     ent.move = {}
@@ -206,6 +207,7 @@ function create_phq(entity)
        npc.canvas.Collision = 1
        print(npc.char.dialogue)
        npc.canvas.dialogue = npc.char.dialogue
+       npc.canvas.image = npc.char.image
        print(npc.canvas.dialogue)
        i = i + 1
     end
