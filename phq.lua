@@ -126,9 +126,13 @@ function phq_action(entity, eve, arg)
                 print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialogue)
                 if dialogue then
 		   local dialogueWid = Entity.new_array()
+		   local npc = entity.npcs[col[i].current:to_int()].char
+
 		   dialogueWid["<type>"] = "dialogue-canvas"
 		   dialogueWid.dialogue = dialogues[dialogue:to_int()]
-		   dialogueWid.image = col[i].image
+		   dialogueWid.image = npc.image
+		   dialogueWid.name = npc.name
+		   print(dialogueWid.name)
 		   ywPushNewWidget(entity, dialogueWid)
 		   return YEVE_ACTION
                 end
@@ -207,7 +211,6 @@ function create_phq(entity)
     ent.npcs = {}
     while i < yeLen(objects) do
        local obj = objects[i]
-       ent.npcs[i] = {}
        local npc = lpcs.createCaracterHandeler(npcs[obj.name:to_string()],
 					       mainCanvas.ent, ent.npcs)
        --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
@@ -228,8 +231,9 @@ function create_phq(entity)
        npc = Entity.wrapp(npc)
        npc.canvas.Collision = 1
        print(npc.char.dialogue)
+       npc.char.name = obj.name:to_string()
        npc.canvas.dialogue = npc.char.dialogue
-       npc.canvas.image = npc.char.image
+       npc.canvas.current = i
        print(npc.canvas.dialogue)
        i = i + 1
     end
