@@ -41,6 +41,13 @@ end
 
 function GetDrink(wid, eve, arg)
    print("this is the drink")
+   local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
+   local canvas = Canvas.wrapp(ent.mainScreen)
+   phq.pj.drunk = phq.pj.drunk + 9
+
+   canvas:remove(ent.drunk_bar1)
+   ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
+				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
    EndDialog(wid, eve, arg)
    return YEVE_ACTION
 end
@@ -200,6 +207,23 @@ function create_phq(entity)
     ent.entries[0] = mainCanvas.ent
     local ret = container:new_wid()
     tiled.fileToCanvas("./bar1.json", mainCanvas.ent:cent())
+    phq.pj.drunk = 0
+    ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
+				       Entity.new_string("Puke bar: "),
+				       "rgba: 255 255 255 255")
+    ent.drunk_bar0 = mainCanvas:new_rect(100, 10, "rgba: 30 30 30 255",
+					 Pos.new(200, 15).ent).ent
+    ent.drunk_bar1 = mainCanvas:new_rect(100, 10, "rgba: 0 255 30 255",
+					 Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
+
+    ent.life_txt = ywCanvasNewTextExt(mainCanvas.ent, 360, 10,
+				      Entity.new_string("life: "),
+				      "rgba: 255 255 255 255")
+    ent.life_nb = ywCanvasNewTextExt(mainCanvas.ent, 410, 10,
+				     Entity.new_string(phq.pj.life:to_int()),
+				     "rgba: 255 255 255 255")
+
+
     lpcs.createCaracterHandeler(phq.pj, mainCanvas.ent, ent, "pj")
     lpcs.handelerRefresh(ent.pj)
     lpcs.handelerMove(ent.pj, Pos.new(200, 200).ent)
