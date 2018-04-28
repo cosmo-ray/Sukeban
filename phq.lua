@@ -61,6 +61,29 @@ function GetDrink(wid, eve, arg)
    canvas:remove(ent.drunk_bar1)
    ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
 				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
+   phq.pj.life = phq.pj.life + 1
+   canvas:remove(ent.life_nb)
+   ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
+				    Entity.new_string(phq.pj.life:to_int()),
+				    "rgba: 255 255 255 255")
+   EndDialog(wid, eve, arg)
+   return YEVE_ACTION
+end
+
+function GetDrink2(wid, eve, arg)
+   print("this is the drink")
+   local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
+   local canvas = Canvas.wrapp(ent.mainScreen)
+   phq.pj.drunk = phq.pj.drunk + 18
+
+   canvas:remove(ent.drunk_bar1)
+   ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
+				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
+   phq.pj.life = phq.pj.life + 2
+   canvas:remove(ent.life_nb)
+   ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
+				    Entity.new_string(phq.pj.life:to_int()),
+				    "rgba: 255 255 255 255")
    EndDialog(wid, eve, arg)
    return YEVE_ACTION
 end
@@ -72,6 +95,7 @@ function init_phq(mod)
    mod.EndDialog = Entity.new_func("EndDialog")
    mod.StartFight = Entity.new_func("StartFight")
    mod.GetDrink = Entity.new_func("GetDrink")
+   mod["GetDrink++"] = Entity.new_func("GetDrink2")
    mod.load_game = Entity.new_func("load_game")
 end
 
