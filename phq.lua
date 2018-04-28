@@ -21,6 +21,9 @@ function CombatEnd(wid, main, winner)
 
    local canvas = Canvas.wrapp(main.mainScreen)
 
+   if yLovePtrToNumber(winner) == 3 then
+      yCallNextWidget(main:cent())
+   end
    canvas:remove(main.life_nb )
    main.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
 				     Entity.new_string(phq.pj.life:to_int()),
