@@ -208,13 +208,22 @@ function create_phq(entity)
     while i < yeLen(objects) do
        local obj = objects[i]
        ent.npcs[i] = {}
-       local npc = lpcs.createCaracterHandeler(npcs[obj.name:to_string()], mainCanvas.ent, ent.npcs)
+       local npc = lpcs.createCaracterHandeler(npcs[obj.name:to_string()],
+					       mainCanvas.ent, ent.npcs)
        --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
        local pos = Pos.new_copy(obj.rect)
        pos:sub(20, 50)
        lpcs.handelerMove(npc, pos.ent)
-       print("-------")
-       lpcs.handelerSetOrigXY(npc, 0, 10)
+       print("-------", obj.Rotation)
+       if yeGetString(obj.Rotation) == "left" then
+	  lpcs.handelerSetOrigXY(npc, 0, 9)
+       elseif yeGetString(obj.Rotation) == "right" then
+	  lpcs.handelerSetOrigXY(npc, 0, 11)
+       elseif yeGetString(obj.Rotation) == "down" then
+	  lpcs.handelerSetOrigXY(npc, 0, 10)
+       else
+	  lpcs.handelerSetOrigXY(npc, 0, 12)
+       end
        lpcs.handelerRefresh(npc)
        npc = Entity.wrapp(npc)
        npc.canvas.Collision = 1
