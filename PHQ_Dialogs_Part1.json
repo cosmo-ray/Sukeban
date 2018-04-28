@@ -337,7 +337,7 @@
 		    "action": "phq.StartFight"
 		},
 		{
-		    "text": "Erkk, i don't speak Wota, weirdo",
+		    "text": "No, don't know, take the GURIKO and go away",
 		    "action": "phq.EndDialog"
 		},
 		{
