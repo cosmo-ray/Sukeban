@@ -18,6 +18,14 @@ end
 function CombatEnd(wid, main, winner)
    local main = Entity.wrapp(main)
    local wid = Entity.wrapp(wid)
+
+   local canvas = Canvas.wrapp(main.mainScreen)
+
+   canvas:remove(main.life_nb )
+   main.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
+				     Entity.new_string(phq.pj.life:to_int()),
+				     "rgba: 255 255 255 255")
+
    wid.main = nil
    ywCntPopLastEntry(main)
    main.current = 0
@@ -26,14 +34,19 @@ end
 
 function StartFight(wid, eve, arg)
    print("this is the kaboum")
-   local main = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
+   owid = wid
+   wid = yDialogueGetMain(wid)
+   local main = Entity.wrapp(ywCntWidgetFather(wid))
    local fWid = Entity.new_array()
+   wid = Entity.wrapp(wid)
 
-   EndDialog(wid, eve, arg)
    fWid["<type>"] = "jrpg-fight"
    fWid.endCallback = Entity.new_func("CombatEnd")
    fWid.endCallbackArg = main
+   fWid.player = phq.pj
+   fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
    print(fWid.endCallbackArg:cent())
+   EndDialog(owid, eve, arg)
    ywPushNewWidget(main, fWid)
    print("2:", fWid.endCallbackArg:cent())
    return YEVE_ACTION
@@ -139,6 +152,7 @@ function phq_action(entity, eve, arg)
 		   dialogueWid.dialogue = dialogues[dialogue:to_int()]
 		   dialogueWid.image = npc.image
 		   dialogueWid.name = npc.name
+		   dialogueWid.npc_nb = col[i].current
 		   print(dialogueWid.name)
 		   ywPushNewWidget(entity, dialogueWid)
 		   return YEVE_ACTION
