@@ -7,22 +7,42 @@ local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local dialogues = Entity.wrapp(ygGet("phq.dialogues"))
 
 function EndDialog(wid, eve, arg)
-   print(wid, yDialogueGetMain(wid))
    wid = Entity.wrapp(yDialogueGetMain(wid))
    local main = Entity.wrapp(ywCntWidgetFather(wid))
    wid.main = nil
    ywCntPopLastEntry(main)
    main.current = 0
-   print("this is the end")
    return YEVE_ACTION
+end
+
+function CombatEnd(wid, main, winner)
+   local main = Entity.wrapp(main)
+   local wid = Entity.wrapp(wid)
+   wid.main = nil
+   ywCntPopLastEntry(main)
+   main.current = 0
+   --print("end:", main, winner)
 end
 
 function StartFight(wid, eve, arg)
    print("this is the kaboum")
+   local main = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
+   local fWid = Entity.new_array()
+
+   EndDialog(wid, eve, arg)
+   fWid["<type>"] = "jrpg-fight"
+   fWid.endCallback = Entity.new_func("CombatEnd")
+   fWid.endCallbackArg = main
+   print(fWid.endCallbackArg:cent())
+   ywPushNewWidget(main, fWid)
+   print("2:", fWid.endCallbackArg:cent())
+   return YEVE_ACTION
 end
 
 function GetDrink(wid, eve, arg)
    print("this is the drink")
+   EndDialog(wid, eve, arg)
+   return YEVE_ACTION
 end
 
 function init_phq(mod)
@@ -36,11 +56,11 @@ function init_phq(mod)
 end
 
 function saveAndQuit(entity)
-   print("save and quit")
+   print("can't save let's quit")
 end
 
 function load_game(entity)
-   print("loading")
+   print("do the same move at the last part, and you're game will be load :)")
 end
 
 function CheckColision(entity, obj, guy)
@@ -71,7 +91,7 @@ function phq_action(entity, eve, arg)
              entity.pj.y = 8
 	  elseif eve:is_key_down() then
              entity.move.up_down = 1
-             entity.pj.y = 10	   
+             entity.pj.y = 10
 	  elseif eve:is_key_left() then
              entity.move.left_right = -1
              entity.pj.y = 9
@@ -106,7 +126,6 @@ function phq_action(entity, eve, arg)
                 print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialogue)
                 if dialogue then
 		   local dialogueWid = Entity.new_array()
-                        
 		   dialogueWid["<type>"] = "dialogue-canvas"
 		   dialogueWid.dialogue = dialogues[dialogue:to_int()]
 		   dialogueWid.image = col[i].image
@@ -122,7 +141,7 @@ function phq_action(entity, eve, arg)
 	  if eve:is_key_up() then
 	     entity.move.up_down = 0
 	  elseif eve:is_key_down() then
-	     entity.move.up_down = 0	   
+	     entity.move.up_down = 0
 	  elseif eve:is_key_left() then
 	     entity.move.left_right = 0
 	  elseif eve:is_key_right() then
@@ -133,7 +152,7 @@ function phq_action(entity, eve, arg)
        eve = eve:next()
     end
     if (yuiAbs(entity.move.left_right:to_int()) == 1 or yuiAbs(entity.move.up_down:to_int()) == 1) and
-       yAnd(entity.tid:to_int(), 3) == 0 then 
+       yAnd(entity.tid:to_int(), 3) == 0 then
        handlerNextStep(entity.pj)
        lpcs.handelerRefresh(entity.pj)
     end
@@ -183,14 +202,8 @@ function create_phq(entity)
     lpcs.handelerSetOrigXY(ent.pj, 0, 10)
     lpcs.handelerRefresh(ent.pj)
     print(npcs, yeLen(npcs), yeGet(npcs, "robert"))
-    local i = 0
-    while i < yeLen(npcs) do
-       print(i, yeLen(npcs))
-       print(yeGet(npcs, i), yeGetKeyAt(npcs, i))
-       i = i + 1
-    end
     local objects = ent.mainScreen.objects
-    i = 0
+    local i = 0
     ent.npcs = {}
     while i < yeLen(objects) do
        local obj = objects[i]
@@ -211,6 +224,5 @@ function create_phq(entity)
        print(npc.canvas.dialogue)
        i = i + 1
     end
-    --print(dialogues)
     return ret
 end

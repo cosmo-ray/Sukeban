@@ -9,6 +9,7 @@
         { "file" : "../yirl/modules/Universal-LPC-spritesheet/", "type" : "module" },
         { "file" : "../yirl/modules/dialogue-box/", "type" : "module" },
         { "file" : "../yirl/modules/dialogue/", "type" : "module" },
+        { "file" : "../yirl/modules/jrpg-fight/", "type" : "module" },
         { "file" : "npcs.json", "type" : "json", "as" : "npcs"},
         { "file" : "PHQ_Dialogs_Part1.json", "type" : "json", "as" : "dialogues"},
 	{ "file" : "phq.lua", "type" : "lua" }

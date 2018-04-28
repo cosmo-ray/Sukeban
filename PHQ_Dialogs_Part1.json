@@ -237,7 +237,7 @@
 		{
 		    "text": "Don't interrupt my drinking with your bigotry!",
 		    "action": "phq.StartFight"
-		}		
+		}
 	    ]
 	},
 	{
@@ -330,10 +330,10 @@
     ],
     [
 	{
-	    "text" : "Did you now Lynn Minmay has release a new album",
+	    "text" : "Did you now Lynn Minmay has release a new album ?",
 	    "answers": [
 		{
-		    "text": "Did you know Eve Tokimatsuri has metal tentacule rape Lynn",
+		    "text": "Did you know Eve Tokimatsuri has metal tentacule rape Lynn ?",
 		    "action": "phq.StartFight"
 		},
 		{
