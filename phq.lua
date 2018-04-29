@@ -32,16 +32,17 @@ function CombatEnd(wid, main, winner)
    wid.main = nil
    ywCntPopLastEntry(main)
    main.current = 0
+   ySoundStop(main.soundcallgirl:to_int())
    --print("end:", main, winner)
 end
 
 function StartFight(wid, eve, arg)
-   print("this is the kaboum")
    owid = wid
    wid = yDialogueGetMain(wid)
    local main = Entity.wrapp(ywCntWidgetFather(wid))
    local fWid = Entity.new_array()
    wid = Entity.wrapp(wid)
+   ySoundPlayLoop(main.soundcallgirl:to_int())
 
    fWid["<type>"] = "jrpg-fight"
    fWid.endCallback = Entity.new_func("CombatEnd")
@@ -64,11 +65,15 @@ function GetDrink(wid, eve, arg)
    canvas:remove(ent.drunk_bar1)
    ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
 				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
-   phq.pj.life = phq.pj.life + 1
+   phq.pj.life = 10
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
 				    Entity.new_string(phq.pj.life:to_int()),
-				    "rgba: 255 255 255 255")
+                                    "rgba: 255 255 255 255")
+   if phq.pj.drunk > 99 then
+       ent.next = "phq:end_txt"
+       yCallNextWidget(ent:cent())
+   end
    EndDialog(wid, eve, arg)
    return YEVE_ACTION
 end
@@ -82,11 +87,15 @@ function GetDrink2(wid, eve, arg)
    canvas:remove(ent.drunk_bar1)
    ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
 				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
-   phq.pj.life = phq.pj.life + 2
+   phq.pj.life = 15
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
 				    Entity.new_string(phq.pj.life:to_int()),
 				    "rgba: 255 255 255 255")
+   if phq.pj.drunk > 99 then
+       ent.next = "phq:end_txt"
+       yCallNextWidget(ent:cent())
+   end
    EndDialog(wid, eve, arg)
    return YEVE_ACTION
 end
@@ -145,7 +154,7 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.move.left_right = 1
              entity.pj.y = 11
-          elseif eve:key() == Y_SPACE_KEY then
+          elseif eve:key() == Y_SPACE_KEY or eve:key() ==Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
              local y_add = 0
@@ -249,6 +258,7 @@ function create_phq(entity)
     local ret = container:new_wid()
     tiled.fileToCanvas("./bar1.json", mainCanvas.ent:cent())
     phq.pj.drunk = 0
+    ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
     ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
 				       Entity.new_string("Puke bar: "),
 				       "rgba: 255 255 255 255")
