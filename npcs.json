@@ -99,7 +99,7 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_08.png",
-                "dialogue": 7
+                "dialogue": 9
         },
         "Way too sober guy": {
                 "sex": "male",
@@ -120,36 +120,35 @@
                 "life": 10,
                 "clothes": [
                         "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
+                        "torso/chain/tabard/jacket_male.png",
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_10.png",
-                "dialogue": 9
+                "dialogue": 10
         },
         
         "Typical swedish boy": {
-                "sex": "male",
+                "sex": "female",
                 "type": "light",
                 "life": 10,
                 "clothes": [
                         "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
+                        "torso/shirts/sleeveless/female/white_sleeveless.png",
                         "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
+                        "hair/female/long/blonde.png"
                 ],
-		"image": "./Portrait_11.png",
-                "dialogue": 10
+		"image": "./Portrait_13.png",
+                "dialogue": 7
         },
         "Jane": {
                 "sex": "female",
                 "type": "light",
                 "life": 10,
                 "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
+                        "feet/ghillies_female_no_th-sh.png",
+                        "torso/dress_female/dress_w_sash_female.png",
+                        "hair/female/ponytail/brunette2.png"
                 ],
 		"image": "./Portrait_12.png",
                 "dialogue": 11
@@ -164,7 +163,7 @@
                         "legs/pants/male/teal_pants_male.png",
                         "hair/male/plain/raven.png"
                 ],
-		"image": "./Portrait_13.png",
+		"image": "./Portrait_11.png",
                 "dialogue": 12
         },
 }
