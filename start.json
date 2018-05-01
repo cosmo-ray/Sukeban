@@ -5,11 +5,11 @@
 	"init_phq"
     ],
     "pre-load" : [
-	{ "file" : "../yirl/modules/tiled/", "type" : "module" },
-        { "file" : "../yirl/modules/Universal-LPC-spritesheet/", "type" : "module" },
-        { "file" : "../yirl/modules/dialogue-box/", "type" : "module" },
-        { "file" : "../yirl/modules/dialogue/", "type" : "module" },
-        { "file" : "../yirl/modules/jrpg-fight/", "type" : "module" },
+	{ "path" : "YIRL_MODULES_PATH/tiled/", "type" : "module" },
+        { "path" : "YIRL_MODULES_PATH/Universal-LPC-spritesheet/", "type" : "module" },
+        { "path" : "YIRL_MODULES_PATH/dialogue-box/", "type" : "module" },
+        { "path" : "YIRL_MODULES_PATH/dialogue/", "type" : "module" },
+        { "path" : "YIRL_MODULES_PATH/jrpg-fight/", "type" : "module" },
         { "file" : "npcs.json", "type" : "json", "as" : "npcs"},
         { "file" : "PHQ_Dialogs_Part1.json", "type" : "json", "as" : "dialogues"},
 	{ "file" : "phq.lua", "type" : "lua" }
