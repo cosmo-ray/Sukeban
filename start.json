@@ -1,6 +1,8 @@
 {
     "name" : "phq",
     "starting widget" : "main",
+    "window size" : [800, 600],
+    "window name" : "Pre Hangover Quest",
     "init-scripts" : [
 	"init_phq"
     ],
