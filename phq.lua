@@ -18,7 +18,6 @@ end
 function CombatEnd(wid, main, winner)
    local main = Entity.wrapp(main)
    local wid = Entity.wrapp(wid)
-
    local canvas = Canvas.wrapp(main.mainScreen)
 
    if yLovePtrToNumber(winner) == 3 then
@@ -158,6 +157,7 @@ function phq_action(entity, eve, arg)
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
              local y_add = 0
+
              pjPos = Pos.wrapp(pjPos)
              if entity.pj.y:to_int() == 8 then
                 y_add = -25
@@ -189,8 +189,8 @@ function phq_action(entity, eve, arg)
 		   dialogueWid.image = npc.image
 		   dialogueWid.name = npc.name
 		   dialogueWid.npc_nb = col[i].current
-		   print(dialogueWid.name)
 		   ywPushNewWidget(entity, dialogueWid)
+		   yeDestroy(col)
 		   return YEVE_ACTION
                 end
                 i = i + 1
@@ -212,8 +212,7 @@ function phq_action(entity, eve, arg)
        end
        eve = eve:next()
     end
-    if (yuiAbs(entity.move.left_right:to_int()) == 1 or yuiAbs(entity.move.up_down:to_int()) == 1) and
-       yAnd(entity.tid:to_int(), 3) == 0 then
+    if (yuiAbs(entity.move.left_right:to_int()) == 1 or yuiAbs(entity.move.up_down:to_int()) == 1) then
        handlerNextStep(entity.pj)
        lpcs.handelerRefresh(entity.pj)
     end
@@ -238,6 +237,10 @@ function handlerNextStep(handler)
         end
 end
 
+function destroy_phq(entity)
+   tiled.deinit()
+end
+
 function create_phq(entity)
     local container = Container.init_entity(entity, "stacking")
     local ent = container.ent
@@ -247,15 +250,15 @@ function create_phq(entity)
     ent.move.left_right = 0
     ent.tid = 0
     tiled.setAssetPath("./");
-    print(tiled);
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
     mainCanvas.ent.objs = {}
-    ent["turn-length"] = 10000
+    ent["turn-length"] = 30000
     ent.entries = {}
     ent.background = "rgba: 127 127 127 255"
     ent.entries[0] = mainCanvas.ent
     local ret = container:new_wid()
+    ent.destroy = Entity.new_func("destroy_phq")
     tiled.fileToCanvas("./bar1.json", mainCanvas.ent:cent())
     phq.pj.drunk = 0
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
