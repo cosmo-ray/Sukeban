@@ -277,6 +277,7 @@ function create_phq(entity)
 				     Entity.new_string(phq.pj.life:to_int()),
 				     "rgba: 255 255 255 255")
 
+    ent.pj = nil
 
     lpcs.createCaracterHandeler(phq.pj, mainCanvas.ent, ent, "pj")
     lpcs.handelerRefresh(ent.pj)
