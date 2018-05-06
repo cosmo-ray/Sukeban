@@ -118,14 +118,25 @@ function load_game(entity)
    print("do the same move at the last part, and you're game will be load :)")
 end
 
-function CheckColision(entity, obj, guy)
-   if ywCanvasObjectsCheckColisions(guy, obj) then
-      if yeGetIntAt(obj, "Collision") == 1 and
-	 ywCanvasObjectsCheckColisions(obj, guy) then
-	 return Y_TRUE
+function CheckColision(canvasWid, pj)
+   local pjPos = ylpcsHandePos(pj)
+   local colRect = ywRectCreate(ywPosX(pjPos) + 7, ywPosY(pjPos) + 30,
+			       20, 20)
+   local col = ywCanvasNewCollisionsArrayWithRectangle(canvasWid, colRect)
+
+   yeDestroy(colRect)
+   col = Entity.wrapp(col)
+   local i = 0
+   while i < yeLen(col) do
+      local obj = col[i]
+      if yeGetIntAt(obj, "Collision") == 1 then
+	 yeDestroy(col)
+	 return true
       end
+      i = i + 1
    end
-   return Y_FALSE
+   yeDestroy(col)
+   return false
 end
 
 function phq_action(entity, eve, arg)
@@ -220,9 +231,7 @@ function phq_action(entity, eve, arg)
     end
     local mvPos = Pos.new(3 * entity.move.left_right, 3 * entity.move.up_down)
     lpcs.handelerMove(entity.pj, mvPos.ent)
-    if ywCanvasCheckCollisions(entity.mainScreen,
-                                 entity.pj.canvas,
-                                 checkColisisonF) == 1
+    if CheckColision(entity.mainScreen, entity.pj)
     then
        mvPos:opposite()
        lpcs.handelerMove(entity.pj, mvPos.ent)
