@@ -10,7 +10,6 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_01.png",
-                "dialogue": 0
         },
         "Merlin": {
                 "sex": "male",
@@ -22,7 +21,6 @@
                         "hair/female/shoulderr/pink.png"
                 ],
 		"image": "./Portrait_02.png",
-                "dialogue": 1
         },
         "Strangely familiar guy": {
                 "sex": "male",
@@ -35,7 +33,6 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_03.png",
-                "dialogue": 2
         },
         "Robert": {
                 "sex": "male",
@@ -48,7 +45,6 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_04.png",
-                "dialogue": 3
         },
         "Serious guy": {
                 "sex": "male",
@@ -61,7 +57,6 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_05.png",
-                "dialogue": 4
         },
         "Playful guy": {
                 "sex": "male",
@@ -74,7 +69,6 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_06.png",
-                "dialogue": 5
         },
         "Typical finnish guy": {
                 "sex": "male",
@@ -86,7 +80,6 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_07.png",
-                "dialogue": 6
         },
         "John": {
                 "sex": "male",
@@ -112,7 +105,6 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_09.png",
-                "dialogue": 8
         },
         "Creepy guy in the corner": {
                 "sex": "male",
@@ -125,7 +117,6 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_10.png",
-                "dialogue": 10
         },
         
         "Typical swedish boy": {
@@ -139,21 +130,18 @@
                         "hair/female/long/blonde.png"
                 ],
 		"image": "./Portrait_13.png",
-                "dialogue": 7
         },
         "Jane": {
                 "sex": "female",
                 "type": "light",
-                "life": 10,
                 "clothes": [
                         "feet/ghillies_female_no_th-sh.png",
                         "torso/dress_female/dress_w_sash_female.png",
                         "hair/female/ponytail/brunette2.png"
                 ],
 		"image": "./Portrait_12.png",
-                "dialogue": 11
         },
-        "Short guy": {
+    "Short guy": {
                 "sex": "male",
                 "type": "light",
                 "life": 10,
@@ -164,6 +152,5 @@
                         "hair/male/plain/raven.png"
                 ],
 		"image": "./Portrait_11.png",
-                "dialogue": 12
         },
 }

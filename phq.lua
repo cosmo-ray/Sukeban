@@ -185,7 +185,7 @@ function phq_action(entity, eve, arg)
 		   local npc = entity.npcs[col[i].current:to_int()].char
 
 		   dialogueWid["<type>"] = "dialogue-canvas"
-		   dialogueWid.dialogue = dialogues[dialogue:to_int()]
+		   dialogueWid.dialogue = dialogues[dialogue:to_string()]
 		   dialogueWid.image = npc.image
 		   dialogueWid.name = npc.name
 		   dialogueWid.npc_nb = col[i].current
@@ -311,7 +311,7 @@ function create_phq(entity)
        npc.canvas.Collision = 1
        print(npc.char.dialogue)
        npc.char.name = obj.name:to_string()
-       npc.canvas.dialogue = npc.char.dialogue
+       npc.canvas.dialogue = obj.name:to_string()
        npc.canvas.current = i
        print(npc.canvas.dialogue)
        i = i + 1

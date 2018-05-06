@@ -1,5 +1,5 @@
-[
-    [
+{
+    "Wasted guy": [
 	{
             "text": "Tell me, who's the mightiest of them all?",
             "answers": [
@@ -22,7 +22,7 @@
             ]
         }
     ],
-    [
+    "Merlin": [
 	{
             "text": "Enchantment?",
             "answers": [
@@ -41,7 +41,7 @@
             ]
         }
     ],
-    [
+    "Strangely familiar guy": [
 	{
             "text": "Sarah Connor?",
             "answers": [
@@ -64,7 +64,7 @@
             ]
         }
     ],
-    [
+    "Robert": [
 	{
             "text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
             "answers": [
@@ -83,7 +83,7 @@
             ]
         }
     ],
-    [
+    "Serious guy": [
 	{
             "text": "This is my favorite bar in the neighborhood.",
             "answers": [
@@ -102,7 +102,7 @@
             ]
         }
     ],
-    [
+    "Playful guy": [
 	{
             "text": "Chi Fu Mi?",
             "answers": [
@@ -125,7 +125,7 @@
             ]
         }
     ],
-    [
+    "Typical finnish guy": [
 	{
             "text": "No niin, kiva päivä olla kännissä, eikö olekin?",
             "answers": [
@@ -148,7 +148,7 @@
             ]
         }
     ],
-    [
+    "Typical swedish boy": [
 	{
             "text": "Do you know what norvegian have, swedish don't have?",
             "answers": [
@@ -167,7 +167,7 @@
             ]
         }
     ],
-    [
+    "Way too sober guy": [
 	{
             "text": "Hey kiddo! Tell me, how many types of people are there in the world?",
             "answers": [
@@ -190,7 +190,7 @@
             ]
         }
     ],
-    [
+    "Short guy": [
 	{
 	    "text": "What d'you want?",
 	    "answers": [
@@ -222,7 +222,7 @@
 	    ]
 	}
     ],
-    [
+    "Creepy guy in the corner":  [
 	{
 	    "text": "Hi there! Do you have a moment to talk about our Lord and Savior, Cthulhu?",
 	    "answers": [
@@ -258,7 +258,7 @@
 	    ]
 	}
     ],
-    [
+    "Jane": [
 	{
 	    "text": "What is your name?",
 	    "answers":[
@@ -328,7 +328,7 @@
 	    ]
 	}
     ],
-    [
+    "Short guy" : [
 	{
 	    "text" : "Did you now Lynn Minmay has release a new album ?",
 	    "answers": [
@@ -347,4 +347,4 @@
 	    ]
 	}
     ]
-]
+}
