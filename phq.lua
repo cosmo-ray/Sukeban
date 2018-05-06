@@ -226,7 +226,7 @@ function phq_action(entity, eve, arg)
    if yAnd(entity.tid:to_int(), 3) == 0 and
       (yuiAbs(entity.move.left_right:to_int()) == 1 or
        yuiAbs(entity.move.up_down:to_int()) == 1)  then
-       handlerNextStep(entity.pj)
+       ylpcsHandlerNextStep(entity.pj)
        lpcs.handelerRefresh(entity.pj)
     end
     local mvPos = Pos.new(3 * entity.move.left_right, 3 * entity.move.up_down)
@@ -237,15 +237,6 @@ function phq_action(entity, eve, arg)
        lpcs.handelerMove(entity.pj, mvPos.ent)
     end
     return YEVE_ACTION
-end
-
-function handlerNextStep(handler)
-        local linelength = {7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 6, 6, 6, 6, 13, 13, 13, 13, 6}
-        if handler.x:to_int() < (linelength[handler.y:to_int()] - 1) then
-                handler.x = (handler.x:to_int() + 1)
-        else
-                handler.x = 0
-        end
 end
 
 function destroy_phq(entity)
