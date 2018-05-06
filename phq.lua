@@ -212,7 +212,9 @@ function phq_action(entity, eve, arg)
        end
        eve = eve:next()
     end
-    if (yuiAbs(entity.move.left_right:to_int()) == 1 or yuiAbs(entity.move.up_down:to_int()) == 1) then
+   if yAnd(entity.tid:to_int(), 3) == 0 and
+      (yuiAbs(entity.move.left_right:to_int()) == 1 or
+       yuiAbs(entity.move.up_down:to_int()) == 1)  then
        handlerNextStep(entity.pj)
        lpcs.handelerRefresh(entity.pj)
     end
@@ -253,7 +255,7 @@ function create_phq(entity)
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
     mainCanvas.ent.objs = {}
-    ent["turn-length"] = 30000
+    ent["turn-length"] = 10000
     ent.entries = {}
     ent.background = "rgba: 127 127 127 255"
     ent.entries[0] = mainCanvas.ent
@@ -296,7 +298,6 @@ function create_phq(entity)
        local pos = Pos.new_copy(obj.rect)
        pos:sub(20, 50)
        lpcs.handelerMove(npc, pos.ent)
-       print("-------", obj.Rotation)
        if yeGetString(obj.Rotation) == "left" then
 	  lpcs.handelerSetOrigXY(npc, 0, 9)
        elseif yeGetString(obj.Rotation) == "right" then
