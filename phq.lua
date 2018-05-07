@@ -227,14 +227,14 @@ function phq_action(entity, eve, arg)
       (yuiAbs(entity.move.left_right:to_int()) == 1 or
        yuiAbs(entity.move.up_down:to_int()) == 1)  then
        ylpcsHandlerNextStep(entity.pj)
-       lpcs.handelerRefresh(entity.pj)
+       lpcs.handlerRefresh(entity.pj)
     end
     local mvPos = Pos.new(3 * entity.move.left_right, 3 * entity.move.up_down)
-    lpcs.handelerMove(entity.pj, mvPos.ent)
+    lpcs.handlerMove(entity.pj, mvPos.ent)
     if CheckColision(entity.mainScreen, entity.pj)
     then
        mvPos:opposite()
-       lpcs.handelerMove(entity.pj, mvPos.ent)
+       lpcs.handlerMove(entity.pj, mvPos.ent)
     end
     return YEVE_ACTION
 end
@@ -281,33 +281,33 @@ function create_phq(entity)
 
     ent.pj = nil
 
-    lpcs.createCaracterHandeler(phq.pj, mainCanvas.ent, ent, "pj")
-    lpcs.handelerRefresh(ent.pj)
-    lpcs.handelerMove(ent.pj, Pos.new(200, 200).ent)
-    lpcs.handelerSetOrigXY(ent.pj, 0, 10)
-    lpcs.handelerRefresh(ent.pj)
+    lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
+    lpcs.handlerRefresh(ent.pj)
+    lpcs.handlerMove(ent.pj, Pos.new(200, 200).ent)
+    lpcs.handlerSetOrigXY(ent.pj, 0, 10)
+    lpcs.handlerRefresh(ent.pj)
     print(npcs, yeLen(npcs), yeGet(npcs, "robert"))
     local objects = ent.mainScreen.objects
     local i = 0
     ent.npcs = {}
     while i < yeLen(objects) do
        local obj = objects[i]
-       local npc = lpcs.createCaracterHandeler(npcs[obj.name:to_string()],
+       local npc = lpcs.createCaracterHandler(npcs[obj.name:to_string()],
 					       mainCanvas.ent, ent.npcs)
        --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
        local pos = Pos.new_copy(obj.rect)
        pos:sub(20, 50)
-       lpcs.handelerMove(npc, pos.ent)
+       lpcs.handlerMove(npc, pos.ent)
        if yeGetString(obj.Rotation) == "left" then
-	  lpcs.handelerSetOrigXY(npc, 0, 9)
+	  lpcs.handlerSetOrigXY(npc, 0, 9)
        elseif yeGetString(obj.Rotation) == "right" then
-	  lpcs.handelerSetOrigXY(npc, 0, 11)
+	  lpcs.handlerSetOrigXY(npc, 0, 11)
        elseif yeGetString(obj.Rotation) == "down" then
-	  lpcs.handelerSetOrigXY(npc, 0, 10)
+	  lpcs.handlerSetOrigXY(npc, 0, 10)
        else
-	  lpcs.handelerSetOrigXY(npc, 0, 12)
+	  lpcs.handlerSetOrigXY(npc, 0, 12)
        end
-       lpcs.handelerRefresh(npc)
+       lpcs.handlerRefresh(npc)
        npc = Entity.wrapp(npc)
        npc.canvas.Collision = 1
        print(npc.char.dialogue)
