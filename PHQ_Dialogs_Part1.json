@@ -1,27 +1,37 @@
 {
-    "Wasted guy": [
-	{
-            "text": "Tell me, who's the mightiest of them all?",
-            "answers": [
-                {
-                    "text": "Captain America",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "Captain Morgan?",
-                    "action": "phq.GetDrink"
-                },
-                {
-                    "text": "Captain Obvious",
-                    "action": "phq.StartFight"
-                },
-                {
-                    "text": "Captain Ricard",
-                    "action": "phq.EndDialog"
-                }
-            ]
-        }
-    ],
+    "Wasted guy": {
+	"dialogue" : [
+	    {
+		"text": "Tell me, who's the mightiest of them all?",
+		"answers": [
+                    {
+			"text": "Captain America",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "Captain Morgan?",
+			"actions": ["Dialogue:block", "phq.GetDrink"]
+                    },
+                    {
+			"text": "Captain Obvious",
+			"action": "phq.StartFight"
+                    },
+                    {
+			"text": "Captain Ricard",
+			"action": "phq.EndDialog"
+                    }
+		]
+            }
+	],
+	"block" : {
+	    "text" : "I don't wan't to talk to you",
+	    "answers": [
+		{
+		    "action": "phq.EndDialog"
+		}
+	    ]
+	}
+    },
     "Merlin": [
 	{
             "text": "Enchantment?",
@@ -155,7 +165,14 @@
 		"answers": [
                     {
 			"text": "no, can I have you're tralala my ding ding dong ?",
-			"actions": [ [ "Dialogue:block", "you still wanna drink? I'm not justin b**** bitch !", "phq.EndDialog"], "phq.GetDrink" ]
+			"actions": [
+			    [
+				"Dialogue:block",
+				"you still wanna drink? I'm not justin b**** bitch !",
+				"phq.EndDialog"
+			    ],
+			    "phq.GetDrink"
+			]
                     },
                     {
 			"text": "nej, har du en snus ?",
@@ -163,7 +180,10 @@
                     },
                     {
 			"text": "not good neibhour for sure, Good meatball ?",
-			"action": "phq.StartFight"
+			"actions": [
+			    ["Dialogue:block", "you hurt me...", "phq.EndDialog"],
+			    "phq.StartFight"
+			]
                     }
 		]
             }
