@@ -1,156 +1,156 @@
 {
-        "Wasted guy": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_01.png",
-        },
-        "Merlin": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-		        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/robes_female_no_th-sh/black.png",
-                        "hair/female/shoulderr/pink.png"
-                ],
-		"image": "./Portrait_02.png",
-        },
-        "Strangely familiar guy": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_03.png",
-        },
-        "Robert": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_04.png",
-        },
-        "Serious guy": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_05.png",
-        },
-        "Playful guy": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_06.png",
-        },
-        "Typical finnish guy": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_07.png",
-        },
-        "John": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_08.png",
-                "dialogue": 9
-        },
-        "Way too sober guy": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_09.png",
-        },
-        "Creepy guy in the corner": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/chain/tabard/jacket_male.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_10.png",
-        },
-        
-        "Typical swedish boy": {
-                "sex": "female",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/sleeveless/female/white_sleeveless.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/female/long/blonde.png"
-                ],
-		"image": "./Portrait_13.png",
-        },
-        "Jane": {
-                "sex": "female",
-                "type": "light",
-                "clothes": [
-                        "feet/ghillies_female_no_th-sh.png",
-                        "torso/dress_female/dress_w_sash_female.png",
-                        "hair/female/ponytail/brunette2.png"
-                ],
-		"image": "./Portrait_12.png",
-        },
+    "Wasted guy": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_01.png",
+    },
+    "Merlin": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+	    "feet/shoes/male/brown_shoes_male.png",
+            "torso/robes_female_no_th-sh/black.png",
+            "hair/female/shoulderr/pink.png"
+        ],
+	"image": "./Portrait_02.png",
+    },
+    "Strangely familiar guy": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_03.png",
+    },
+    "Robert": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_04.png",
+    },
+    "Serious guy": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_05.png",
+    },
+    "Playful guy": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_06.png",
+    },
+    "Typical finnish guy": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_07.png",
+    },
+    "John": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_08.png",
+        "dialogue": 9
+    },
+    "Way too sober guy": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_09.png",
+    },
+    "Creepy guy in the corner": {
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/chain/tabard/jacket_male.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_10.png",
+    },
+    
+    "Typical swedish boy": {
+        "sex": "female",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/sleeveless/female/white_sleeveless.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/female/long/blonde.png"
+        ],
+	"image": "./Portrait_13.png",
+    },
+    "Jane": {
+        "sex": "female",
+        "type": "light",
+        "clothes": [
+            "feet/ghillies_female_no_th-sh.png",
+            "torso/dress_female/dress_w_sash_female.png",
+            "hair/female/ponytail/brunette2.png"
+        ],
+	"image": "./Portrait_12.png",
+    },
     "Short guy": {
-                "sex": "male",
-                "type": "light",
-                "life": 10,
-                "clothes": [
-                        "feet/shoes/male/brown_shoes_male.png",
-                        "torso/shirts/longsleeve/male/white_longsleeve.png",
-                        "legs/pants/male/teal_pants_male.png",
-                        "hair/male/plain/raven.png"
-                ],
-		"image": "./Portrait_11.png",
-        },
+        "sex": "male",
+        "type": "light",
+        "life": 10,
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+	"image": "./Portrait_11.png",
+    },
 }

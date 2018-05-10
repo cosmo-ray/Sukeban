@@ -53,113 +53,123 @@
             }
 	],
     },
-    "Strangely familiar guy": [
-	{
-            "text": "Sarah Connor?",
-            "answers": [
-                {
-                    "text": "Yup, that's me, Honey!",
-                    "action": "phq.StartFight"
-                },
-                {
-                    "text": "I'll be back.",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "Chill out, dickwad",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "There's no fate but what we make for ourselves.",
-                    "action": "phq.GetDrink"
-                }
-            ]
-        }
-    ],
-    "Robert": [
-	{
-            "text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
-            "answers": [
-                {
-                    "text": "You're right, dude. Time to go to bed.",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "Before the sweet nectar we all stand humble and equal.",
-                    "action": "phq.GetDrink"
-                },
-                {
-                    "text": "Ask your Mom!",
-                    "action": "phq.StartFight"
-                }
-            ]
-        }
-    ],
-    "Serious guy": [
-	{
-            "text": "This is my favorite bar in the neighborhood.",
-            "answers": [
-                {
-                    "text": "I can't wait to probe Uranus.",
-                    "action": "phq.StartFight"
-                },
-                {
-                    "text": "Yeah, the only one where they serve a decent Old Shep 1864.",
-                    "action": "phq.GetDrink"
-                },
-                {
-                    "text": "I should go.",
-                    "action": "phq.EndDialog"
-                }
-            ]
-        }
-    ],
-    "Playful guy": [
-	{
-            "text": "Chi Fu Mi?",
-            "answers": [
-                {
-                    "text": "Oh La La!",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "Fus Ro Da!",
-                    "action": "phq.StartFight"
-                },
-                {
-                    "text": "Gin Tu Mi!",
-                    "action": "phq.GetDrink"
-                },
-                {
-                    "text": "Cha Ba Da!",
-                    "action": "phq.EndDialog"
-                }
-            ]
-        }
-    ],
-    "Typical finnish guy": [
-	{
-            "text": "No niin, kiva päivä olla kännissä, eikö olekin?",
-            "answers": [
-                {
-                    "text": "Prost!",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "Sköl!",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "Na zdorovie!",
-                    "action": "phq.StartFight"
-                },
-                {
-                    "text": "Kippis!",
-                    "action": "phq.GetDrink"
-                }
-            ]
-        }
-    ],
+    "Strangely familiar guy": {
+	"dialogue": [
+	    {
+		"text": "Sarah Connor?",
+		"answers": [
+                    {
+			"text": "Yup, that's me, Honey!",
+			"action": "phq.StartFight"
+                    },
+                    {
+			"text": "I'll be back.",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "Chill out, dickwad",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "There's no fate but what we make for ourselves.",
+			"action": "phq.GetDrink"
+                    }
+		]
+            }
+	]
+    },
+    "Robert": {
+	"dialogue": [
+	    {
+		"text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
+		"answers": [
+                    {
+			"text": "You're right, dude. Time to go to bed.",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "Before the sweet nectar we all stand humble and equal.",
+			"action": "phq.GetDrink"
+                    },
+                    {
+			"text": "Ask your Mom!",
+			"action": "phq.StartFight"
+                    }
+		]
+            }
+	],
+    },
+    "Serious guy": {
+	"dialogue": [
+	    {
+		"text": "This is my favorite bar in the neighborhood.",
+		"answers": [
+                    {
+			"text": "I can't wait to probe Uranus.",
+			"action": "phq.StartFight"
+                    },
+                    {
+			"text": "Yeah, the only one where they serve a decent Old Shep 1864.",
+			"action": "phq.GetDrink"
+                    },
+                    {
+			"text": "I should go.",
+			"action": "phq.EndDialog"
+                    }
+		]
+            }
+	]
+    },
+    "Playful guy": {
+	"dialogue": [
+	    {
+		"text": "Chi Fu Mi?",
+		"answers": [
+                    {
+			"text": "Oh La La!",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "Fus Ro Da!",
+			"action": "phq.StartFight"
+                    },
+                    {
+			"text": "Gin Tu Mi!",
+			"action": "phq.GetDrink"
+                    },
+                    {
+			"text": "Cha Ba Da!",
+			"action": "phq.EndDialog"
+                    }
+		]
+            }
+	]
+    },
+    "Typical finnish guy": {
+	"dialogue": [
+	    {
+		"text": "No niin, kiva päivä olla kännissä, eikö olekin?",
+		"answers": [
+                    {
+			"text": "Prost!",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "Sköl!",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "Na zdorovie!",
+			"action": "phq.StartFight"
+                    },
+                    {
+			"text": "Kippis!",
+			"action": "phq.GetDrink"
+                    }
+		]
+            }
+	]
+    },
     "Typical swedish boy": {
 	"dialogue" : [
 	    {
@@ -191,184 +201,194 @@
             }
 	],
     },
-    "Way too sober guy": [
-	{
-            "text": "Hey kiddo! Tell me, how many types of people are there in the world?",
-            "answers": [
-                {
-                    "text": "42",
-                    "action": "phq.GetDrink"
-                },
-                {
-                    "text": "10, good people and assholes.",
-                    "action": "phq.StartFight"
-                },
-                {
-                    "text": "I want to talk to my lawyer.",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "7 billion",
-                    "action": "phq.EndDialog"
-                }
-            ]
-        }
-    ],
-    "Short guy": [
-	{
-	    "text": "What d'you want?",
-	    "answers": [
-		{
-		    "text" : "Nothing",
-		    "action": "phq.EndDialog"
-		},
-		{
-		    "text" : "Your beer",
-		    "action": ["Dialogue:goto", 1]
-		}
-	    ]
-	},
-	{
-	    "text": "Why should I give it you?",
-	    "answers": [
-		{
-		    "text" : "Because your Mom says so!",
-		    "action": "phq.StartFight"
-		},
-		{
-		    "text" : "All your beers are belong to us!",
-		    "action": "phq.EndDialog"
-		},
-		{
-		    "text" : "Compassion for a friendly fellow drunkard in dire need of a drop!",
-		    "action": "phq.GetDrink"
-		}
-	    ]
-	}
-    ],
-    "Creepy guy in the corner":  [
-	{
-	    "text": "Hi there! Do you have a moment to talk about our Lord and Savior, Cthulhu?",
-	    "answers": [
-		{
-		    "text": "Whatever, altar wine tastes like donkey piss.",
-		    "action": "phq.EndDialog"
-		},
-		{
-		    "text": "Sure, the stars are right...",
-		    "action": ["Dialogue:goto", 1]
-		},
-		{
-		    "text": "Don't interrupt my drinking with your bigotry!",
-		    "action": "phq.StartFight"
-		}
-	    ]
-	},
-	{
-	    "text": "Speak the cryptic name of the trusted ally of Lord of Unspeakable Darkness!",
-	    "answers": [
-		{
-		    "text": "Shub-Niggarath, the Black Goat of the Woods with a Thousand Young!",
-		    "action": "phq.EndDialog"
-		},
-		{
-		    "text": "Yog-Sothoth, Lurker of at the Threshold!",
-		    "action": "phq.EndDialog"
-		},
-		{
-		    "text": "Kosken-Korva, the Great and Powerful Twister of Minds!",
-		    "action": "phq.GetDrink"
-		}
-	    ]
-	}
-    ],
-    "Jane": [
-	{
-	    "text": "What is your name?",
-	    "answers":[
-		{
-		    "text": "Dr Pepper",
-		    "action":"phq.EndDialog"
-		},
-		{
-		    "text": "Bud Weiser",
-		    "action":"phq.EndDialog"
-		},
-		{
-		    "text": "Jack Daniels",
-		    "action":  ["Dialogue:goto", 1]
-		}
-	    ]
-	},
-	{
-	    "text": "What is your quest?",
-	    "answers": [
-		{
-		    "text": "To find one drink to rule you all!",
-		    "action":"phq.StartFight"
-		},
-		{
-		    "text": "Profit!",
-		    "action" :"phq.EndDialog"
-		},
-		{
-		    "text": "The seek of the Holy Grail!",
-		    "action":  ["Dialogue:goto", 2]
-		}
-	    ]
-	},
-	{
-	    "text": "What is your favorite color?",
-	    "answers": [
-		{
-		    "text": "A lovely shade of amber brown",
-		    "action":  ["Dialogue:goto", 3]
-		},
-		{
-		    "text": "A beautiful gatorade green",
-		    "action": "phq.EndDialog"
-		},
-		{
-		    "text": "A rosy pink like your Mom's stink",
-		    "action": "phq.StartFight"
-		}
-	    ]
-	},
-	{
-	    "text" : "What is the air speed velocity of an unladen swallow?",
-	    "answers": [
-		{
-		    "text": "African or European swallow?",
-		    "action": "phq.GetDrink++"
-		},
-		{
-		    "text": "No idea, but slower for sure than ly boot up your ass!",
-		    "action":"phq.StartFight"
-		},
-		{
-		    "text": "Dude, da faq?",
-		    "action": "phq.EndDialog"
-		}
-	    ]
-	}
-    ],
-    "Short guy" : [
-	{
-	    "text" : "Did you now Lynn Minmay has release a new album ?",
-	    "answers": [
-		{
-		    "text": "Did you know Eve Tokimatsuri has metal tentacule rape Lynn ?",
-		    "action": "phq.StartFight"
-		},
-		{
-		    "text": "No, don't know, take the GURIKO and go away",
-		    "action": "phq.EndDialog"
-		},
-		{
-		    "text": "Yeap, I hear she made a duo with basara",
-		    "action": "phq.GetDrink"
-		}
-	    ]
-	}
-    ]
+    "Way too sober guy": {
+	"dialogue" : [
+	    {
+		"text": "Hey kiddo! Tell me, how many types of people are there in the world?",
+		"answers": [
+                    {
+			"text": "42",
+			"action": "phq.GetDrink"
+                    },
+                    {
+			"text": "10, good people and assholes.",
+			"action": "phq.StartFight"
+                    },
+                    {
+			"text": "I want to talk to my lawyer.",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "7 billion",
+			"action": "phq.EndDialog"
+                    }
+		]
+            }
+	]
+    },
+    "John": {
+	"dialogue" : [	
+	    {
+		"text": "What d'you want?",
+		"answers": [
+		    {
+			"text" : "Nothing",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text" : "Your beer",
+			"action": ["Dialogue:goto", 1]
+		    }
+		]
+	    },
+	    {
+		"text": "Why should I give it you?",
+		"answers": [
+		    {
+			"text" : "Because your Mom says so!",
+			"action": "phq.StartFight"
+		    },
+		    {
+			"text" : "All your beers are belong to us!",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text" : "Compassion for a friendly fellow drunkard in dire need of a drop!",
+			"action": "phq.GetDrink"
+		    }
+		]
+	    }
+	]
+    },
+    "Creepy guy in the corner":  {
+	"dialogue" : [
+	    {
+		"text": "Hi there! Do you have a moment to talk about our Lord and Savior, Cthulhu?",
+		"answers": [
+		    {
+			"text": "Whatever, altar wine tastes like donkey piss.",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text": "Sure, the stars are right...",
+			"action": ["Dialogue:goto", 1]
+		    },
+		    {
+			"text": "Don't interrupt my drinking with your bigotry!",
+			"action": "phq.StartFight"
+		    }
+		]
+	    },
+	    {
+		"text": "Speak the cryptic name of the trusted ally of Lord of Unspeakable Darkness!",
+		"answers": [
+		    {
+			"text": "Shub-Niggarath, the Black Goat of the Woods with a Thousand Young!",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text": "Yog-Sothoth, Lurker of at the Threshold!",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text": "Kosken-Korva, the Great and Powerful Twister of Minds!",
+			"action": "phq.GetDrink"
+		    }
+		]
+	    }
+	]
+    },
+    "Jane": {
+	"dialogue" : [
+	    {
+		"text": "What is your name?",
+		"answers":[
+		    {
+			"text": "Dr Pepper",
+			"action":"phq.EndDialog"
+		    },
+		    {
+			"text": "Bud Weiser",
+			"action":"phq.EndDialog"
+		    },
+		    {
+			"text": "Jack Daniels",
+			"action":  ["Dialogue:goto", 1]
+		    }
+		]
+	    },
+	    {
+		"text": "What is your quest?",
+		"answers": [
+		    {
+			"text": "To find one drink to rule you all!",
+			"action":"phq.StartFight"
+		    },
+		    {
+			"text": "Profit!",
+			"action" :"phq.EndDialog"
+		    },
+		    {
+			"text": "The seek of the Holy Grail!",
+			"action":  ["Dialogue:goto", 2]
+		    }
+		]
+	    },
+	    {
+		"text": "What is your favorite color?",
+		"answers": [
+		    {
+			"text": "A lovely shade of amber brown",
+			"action":  ["Dialogue:goto", 3]
+		    },
+		    {
+			"text": "A beautiful gatorade green",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text": "A rosy pink like your Mom's stink",
+			"action": "phq.StartFight"
+		    }
+		]
+	    },
+	    {
+		"text" : "What is the air speed velocity of an unladen swallow?",
+		"answers": [
+		    {
+			"text": "African or European swallow?",
+			"action": "phq.GetDrink++"
+		    },
+		    {
+			"text": "No idea, but slower for sure than ly boot up your ass!",
+			"action":"phq.StartFight"
+		    },
+		    {
+			"text": "Dude, da faq?",
+			"action": "phq.EndDialog"
+		    }
+		]
+	    }
+	]
+    },
+    "Short guy" : {
+	"dialogue" : [
+	    {
+		"text" : "Did you now Lynn Minmay has release a new album ?",
+		"answers": [
+		    {
+			"text": "Did you know Eve Tokimatsuri has metal tentacule rape Lynn ?",
+			"action": "phq.StartFight"
+		    },
+		    {
+			"text": "No, don't know, take the GURIKO and go away",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text": "Yeap, I hear she made a duo with basara",
+			"action": "phq.GetDrink"
+		    }
+		]
+	    }
+	]
+    }
 }
