@@ -32,25 +32,27 @@
 	    ]
 	}
     },
-    "Merlin": [
-	{
-            "text": "Enchantment?",
-            "answers": [
-                {
-                    "text": "Enchantment!",
-                    "action": "phq.GetDrink"
-                },
-                {
-                    "text": "Bug off, weirdo!",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "Wanna feel the enchantment of my knuckles in your face?!",
-                    "action": "phq.StartFight"
-                }
-            ]
-        }
-    ],
+    "Merlin": {
+	"dialogue" : [
+	    {
+		"text": "Enchantment?",
+		"answers": [
+                    {
+			"text": "Enchantment!",
+			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+                    },
+                    {
+			"text": "Bug off, weirdo!",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "Wanna feel the enchantment of my knuckles in your face?!",
+			"action": "phq.StartFight"
+                    }
+		]
+            }
+	],
+    },
     "Strangely familiar guy": [
 	{
             "text": "Sarah Connor?",
@@ -168,8 +170,8 @@
 			"actions": [
 			    [
 				"Dialogue:block",
-				"you still wanna drink? I'm not justin b**** bitch !",
-				"phq.EndDialog"
+				"phq.EndDialog",
+				"you still wanna drink? I'm not justin b**** bitch !"
 			    ],
 			    "phq.GetDrink"
 			]
@@ -181,7 +183,7 @@
                     {
 			"text": "not good neibhour for sure, Good meatball ?",
 			"actions": [
-			    ["Dialogue:block", "you hurt me...", "phq.EndDialog"],
+			    ["Dialogue:block", "phq.EndDialog", "you hurt me..."],
 			    "phq.StartFight"
 			]
                     }
