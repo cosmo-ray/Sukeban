@@ -10,6 +10,12 @@ function EndDialog(wid, eve, arg)
    wid = Entity.wrapp(yDialogueGetMain(wid))
    local main = Entity.wrapp(ywCntWidgetFather(wid))
    wid.main = nil
+   if wid.src then
+      wid.src.isBlock = wid.isBlock
+      wid.src.block = wid.block
+      print("wid.src.block:", wid.src.block)
+      wid.src = nil
+   end
    ywCntPopLastEntry(main)
    main.current = 0
    return YEVE_ACTION
@@ -194,9 +200,16 @@ function phq_action(entity, eve, arg)
                 if dialogue then
 		   local dialogueWid = Entity.new_array()
 		   local npc = entity.npcs[col[i].current:to_int()].char
+		   local dialogue = dialogues[dialogue:to_string()]
 
+		   print(dialogue)
+		   if dialogue.dialogue then
+		      yeCopy(dialogue, dialogueWid)
+		      dialogueWid.src = dialogue
+		   else
+		      dialogueWid.dialogue = dialogue
+		   end
 		   dialogueWid["<type>"] = "dialogue-canvas"
-		   dialogueWid.dialogue = dialogues[dialogue:to_string()]
 		   dialogueWid.image = npc.image
 		   dialogueWid.name = npc.name
 		   dialogueWid.npc_nb = col[i].current

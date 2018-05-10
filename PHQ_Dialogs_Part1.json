@@ -148,25 +148,27 @@
             ]
         }
     ],
-    "Typical swedish boy": [
-	{
-            "text": "Do you know what norvegian have, swedish don't have?",
-            "answers": [
-                {
-                    "text": "no, can I have you're tralala my ding ding dong ?",
-                    "action": "phq.GetDrink"
-                },
-                {
-                    "text": "nej, har du en snus ?",
-                    "action": "phq.EndDialog"
-                },
-                {
-                    "text": "not good neibhour for sure, Good meatball ?",
-                    "action": "phq.StartFight"
-                }
-            ]
-        }
-    ],
+    "Typical swedish boy": {
+	"dialogue" : [
+	    {
+		"text": "Do you know what norvegian have, swedish don't have?",
+		"answers": [
+                    {
+			"text": "no, can I have you're tralala my ding ding dong ?",
+			"actions": [ [ "Dialogue:block", "you still wanna drink? I'm not justin b**** bitch !", "phq.EndDialog"], "phq.GetDrink" ]
+                    },
+                    {
+			"text": "nej, har du en snus ?",
+			"action": "phq.EndDialog"
+                    },
+                    {
+			"text": "not good neibhour for sure, Good meatball ?",
+			"action": "phq.StartFight"
+                    }
+		]
+            }
+	],
+    },
     "Way too sober guy": [
 	{
             "text": "Hey kiddo! Tell me, how many types of people are there in the world?",
