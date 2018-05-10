@@ -377,15 +377,29 @@
 		"answers": [
 		    {
 			"text": "Did you know Eve Tokimatsuri has metal tentacule rape Lynn ?",
-			"action": "phq.StartFight"
+			"actions": [
+			    [
+				"Dialogue:block",
+				"phq.EndDialog",
+				"You fan of eve, why does it always end with destruction",
+			    ],
+			    "phq.StartFight"
+			]
 		    },
 		    {
-			"text": "No, don't know, take the GURIKO and go away",
+			"text": "No, don't know, take this GURIKO and go away",
 			"action": "phq.EndDialog"
 		    },
 		    {
 			"text": "Yeap, I hear she made a duo with basara",
-			"action": "phq.GetDrink"
+			"actions": [
+			    [				
+				"Dialogue:block",
+				"phq.EndDialog",
+				"You want a 2nd beer, but that's like Mocross 2, it's doesn't existe",
+			    ],
+			    "phq.GetDrink"
+			]
 		    }
 		]
 	    }
