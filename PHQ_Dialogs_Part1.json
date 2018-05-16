@@ -312,7 +312,7 @@
 			"action":"phq.EndDialog"
 		    },
 		    {
-			"text": "Jack Daniels",
+			"text": "{phq.pj.name}",
 			"action":  ["Dialogue:goto", 1]
 		    }
 		]
