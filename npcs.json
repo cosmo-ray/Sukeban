@@ -2,7 +2,7 @@
     "Wasted guy": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -14,7 +14,7 @@
     "Merlin": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
 	    "feet/shoes/male/brown_shoes_male.png",
             "torso/robes_female_no_th-sh/black.png",
@@ -25,7 +25,7 @@
     "Strangely familiar guy": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -37,7 +37,7 @@
     "Robert": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -49,7 +49,7 @@
     "Serious guy": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -61,7 +61,7 @@
     "Playful guy": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -73,7 +73,7 @@
     "Typical finnish guy": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "legs/pants/male/teal_pants_male.png",
@@ -84,7 +84,7 @@
     "John": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -97,7 +97,7 @@
     "Way too sober guy": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -109,7 +109,7 @@
     "Creepy guy in the corner": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/chain/tabard/jacket_male.png",
@@ -122,7 +122,7 @@
     "Typical swedish boy": {
         "sex": "female",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/sleeveless/female/white_sleeveless.png",
@@ -144,7 +144,7 @@
     "Short guy": {
         "sex": "male",
         "type": "light",
-        "life": 10,
+        "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",

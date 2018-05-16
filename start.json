@@ -100,7 +100,7 @@
 	"name": "oscar",
 	"sex": "female",
 	"type": "light",
-	"life" : 10,
+	"max_life" : 10,
 	"clothes": ["feet/shoes/female/brown_shoes_female.png",
 	    "torso/robes_female_no_th-sh/white.png",
 	    "hair/female/shoulderr/blonde.png"]

@@ -54,6 +54,7 @@ function StartFight(wid, eve, arg)
    fWid.endCallbackArg = main
    fWid.player = phq.pj
    fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
+   fWid.enemy.life = fWid.enemy.max_life
    print(fWid.endCallbackArg:cent())
    EndDialog(owid, eve, arg)
    ywPushNewWidget(main, fWid)
@@ -276,6 +277,7 @@ function create_phq(entity)
     ent.destroy = Entity.new_func("destroy_phq")
     tiled.fileToCanvas("./bar1.json", mainCanvas.ent:cent())
     phq.pj.drunk = 0
+    phq.pj.life = phq.pj.max_life
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
     ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
 				       Entity.new_string("Puke bar: "),
