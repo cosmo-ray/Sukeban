@@ -4,7 +4,7 @@ local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local checkColisisonF = Entity.new_func("CheckColision")
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
-local dialogues = Entity.wrapp(ygGet("phq.dialogues"))
+local dialogues = nil
 
 function EndDialog(wid, eve, arg)
    wid = Entity.wrapp(yDialogueGetMain(wid))
@@ -71,7 +71,10 @@ function GetDrink(wid, eve, arg)
    canvas:remove(ent.drunk_bar1)
    ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
 				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
-   phq.pj.life = 10
+   phq.pj.life = phq.pj.life + 2
+   if phq.pj.life > phq.pj.max_life then
+      phq.pj.life = phq.pj.max_life
+   end
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
 				    Entity.new_string(phq.pj.life:to_int()),
@@ -93,7 +96,7 @@ function GetDrink2(wid, eve, arg)
    canvas:remove(ent.drunk_bar1)
    ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
 				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
-   phq.pj.life = 15
+   phq.pj.life = phq.pj.life + 5
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
 				    Entity.new_string(phq.pj.life:to_int()),
@@ -255,6 +258,8 @@ end
 
 function destroy_phq(entity)
    tiled.deinit()
+   yeDestroy(dialogues)
+   dialogues = nil
 end
 
 function create_phq(entity)
@@ -265,6 +270,7 @@ function create_phq(entity)
     ent.move.up_down = 0
     ent.move.left_right = 0
     ent.tid = 0
+    dialogues = Entity.wrapp(ygFileToEnt(YJSON, ent.dialogues:to_string()))
     tiled.setAssetPath("./");
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
