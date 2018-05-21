@@ -1,0 +1,144 @@
+{
+    "start_txt" : {
+	"<type>" : "text-screen",
+	"text-align": "center",
+	"action" : "nextOnKeyDown",
+	"background" : "rgba: 255 255 255 255",
+	"text" : "
+        You arrived in this bar with one vision, one purpose:
+        to get completely shitfaced and puke everywhere (you may have issues)
+        
+        There are only two problems: one you're 1 month too young to get alcohol
+        and two you're broke since you gave all your money to the bouncer so he would let you in.
+        
+        You will have to use your charisma and talk your way to booze but be wary
+        for bad words can get you bad consequences
+        
+        Good luck and good drinks!
+",
+	"next" : "phq:menus.game"
+    },
+    "bagare" : {
+	"<type>" : "text-screen",
+	"text-align": "center",
+	"action" : "nextOnKeyDown",
+	"background" : "rgba: 255 255 255 255",
+	"text" : "
+        How to fight
+
+        When you piss someone else you will enter in battle mode
+
+        Here you must defeat you enemy by lowering
+        his HP to 0 while keeping above 0
+
+        To do so you must use your two(2) attacks with maestria:
+
+        Attack: Use it to attack your opponent
+
+        Strong Attack: Use it to attack your opponent with
+        more strength than a regular attack
+
+        During your attack or the opposing one, a bar will
+        appear on top of the screen
+
+        This bar is divided in two or three parts of different
+        colors: red, blue and dark blue
+
+        When the cursor is in the red part, don't do anything
+        or face the consequences
+
+        When the cursor is in the blue part press space bar
+        or enter key to make a combo or defend
+
+        When the cursor is in the dark blue part hold the
+        space bar or enter key for MASSIVE damage
+
+        If you need some life back, find booze!
+
+        Good luck
+",
+	"next" : "phq:menus.main"
+    },
+    "end_txt" : {
+	"<type>" : "text-screen",
+	"text-align": "center",
+	"action" : "nextOnKeyDown",
+	"background" : "rgba: 255 255 255 255",
+	"text" : "
+        TODO ending
+
+        You did it! You really did it you absolute madman!
+        
+        You filled up with all the crappy booze people gave you and you just regurgitated it all around!
+        
+        It's beautiful, it's everywhere! People in the bar are all sticky with it!
+        
+        It is indeed a great day!
+
+        PS: don't try a new game it's buggy
+",
+	"next" : "phq:menus.main"
+    },
+    "pj" : {
+	"name": "oscar",
+	"sex": "female",
+	"type": "light",
+	"max_life" : 10,
+	"clothes": ["feet/shoes/female/brown_shoes_female.png",
+		    "torso/robes_female_no_th-sh/white.png",
+		    "hair/female/shoulderr/blonde.png"]
+    },
+    "credit" : {
+	"<type>" : "text-screen",
+	"text-align": "center",
+	"action" : "nextOnKeyDown",
+	"background" : "rgba: 255 255 255 255",
+	"text" : "todo
+sprites from www.opengameart.org
+music from www.rengoku-teihen.com
+
+to copy past website, use a terminal and do:
+cat start.json | grep www
+yes that's a little geeky,
+but to compensate for peoples who dont know how to use a terminal
+here is a lot of hearts <3 <3 <3 <3 <3 <3
+We love you anyway",
+	"next" : "phq:menus.main"
+    },
+    "main" : {
+        "<type>" : "menu",
+	"entries" : [
+	    {
+		"text" : "New Game",
+		"next" : "phq:menus.start_txt",
+		"action" : "menuNext"
+	    },
+            {
+                "text" : "How to play",
+                "next" : "phq:menus.bagare",
+		"action" : "menuNext"
+	    },
+	    {
+		"text" : "Full Screen",
+		"action" : "FullScreenOnOff"
+	    },
+	    {
+		"text" : "credit",
+		"next" : "phq:menus.credit",
+		"action" : "menuNext"
+	    },
+	    {
+		"text" : "Quit",
+		"action" : "FinishGame"
+	    }
+	],
+	"next" : "phq:menus.game",
+	"text-align" : "center",
+	"background" : "rgba: 255 255 255 255"
+    },
+    "game" : {
+        "<type>" : "phq",
+	"dialogues" : "PHQ_Dialogs_Part1.json",
+	"next" : "phq:menus.main"
+    }
+}
