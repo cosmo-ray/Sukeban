@@ -181,7 +181,8 @@
 			    [
 				"Dialogue:block",
 				"phq.EndDialog",
-				"you still wanna drink? I'm not justin b**** bitch !"
+                                "you still wanna drink? I'm not justin b**** bitch !",
+                                "okayyyyyyyyyyy"
 			    ],
 			    "phq.GetDrink"
 			]
@@ -309,7 +310,8 @@
 		    },
 		    {
 			"text": "Bud Weiser",
-			"action":"phq.EndDialog"
+                        "action":"phq.EndDialog",
+                        "condition":  ["<", "phq.pj.life", 5]
 		    },
 		    {
 			"text": "{phq.pj.name}",
