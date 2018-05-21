@@ -63,11 +63,11 @@ function StartFight(wid, eve, arg)
 end
 
 function GetDrink(wid, eve, arg)
-   print("this is the drink")
    local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
    local canvas = Canvas.wrapp(ent.mainScreen)
    phq.pj.drunk = phq.pj.drunk + 9
 
+   print(phq.pj.drunk, ent.drunk_bar1:cent())
    canvas:remove(ent.drunk_bar1)
    ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
 				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
@@ -257,7 +257,10 @@ function phq_action(entity, eve, arg)
 end
 
 function destroy_phq(entity)
+   local ent = Entity.wrapp(entity)
+   
    tiled.deinit()
+   ent.mainScreen = nil
    yeDestroy(dialogues)
    dialogues = nil
 end
