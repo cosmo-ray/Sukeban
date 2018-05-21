@@ -388,10 +388,7 @@
 			    "phq.StartFight"
 			]
 		    },
-		    {
-			"text": "No, don't know, take this GURIKO and go away",
-			"action": "phq.EndDialog"
-		    },
+		    { "text": "No, don't know, take this GURIKO and go away" },
 		    {
 			"text": "Yeap, I hear she made a duo with basara",
 			"actions": [
@@ -404,6 +401,14 @@
 			]
 		    }
 		]
+	    }, 
+	    {
+		"text" : "Yeah, I guess, why are you giving GURIKO away",
+		"answers": [ { "text" : "I was watching this old show with GURIKO advertisements in the Generic" } ]
+	    },
+	    {
+		"text" : "GURIKO GURIKO GURIKO !!!",
+		"answers": [ { "text": "You get it :)", "action": "phq.EndDialog" } ]
 	    }
 	]
     }
