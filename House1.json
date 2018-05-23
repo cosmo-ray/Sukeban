@@ -76,7 +76,7 @@
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"House0"
+                         "value":"house0"
                         }, 
                         {
                          "name":"side",

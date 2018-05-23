@@ -3,6 +3,7 @@ local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
+local scenes = Entity.wrapp(ygGet("phq.scenes"))
 local dialogues = nil
 
 local NO_COLISION = 0
@@ -143,6 +144,15 @@ function CheckColision(main, canvasWid, pj)
       if ywRectCollision(main.exits[i].rect, colRect) then
 	 print("COLISION EXIT !!!")
 	 print(main.exits[i].nextScene)
+	 local nextSceneTxt = main.exits[i].nextScene:to_string()
+	 local nextScene = scenes[nextSceneTxt]
+	 print(nextScene)
+	 if nextScene == nil then
+	    print("hum")
+	    nextScene = ygGet(nextSceneTxt)
+	 end
+	 load_scene(main, nextScene)
+	 return CHANGE_SCENE_COLISION
       end
       i = i + 1
    end
@@ -186,7 +196,7 @@ function phq_action(entity, eve, arg)
              entity.move.left_right = 1
              entity.pj.y = 11
 	  elseif eve:key() == Y_G_KEY then
-	     load_scene(entity, Entity.wrapp(ygGet("phq:scenes.house0")))
+	     load_scene(entity, ygGet("phq:scenes.house0"))
           elseif eve:key() == Y_SPACE_KEY or eve:key() ==Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
@@ -280,12 +290,13 @@ end
 
 function load_scene(ent, scene)
    local mainCanvas = Canvas.wrapp(ent.mainScreen)
+   scene = Entity.wrapp(scene)
 
    -- clean old stuff :(
    mainCanvas.ent.objs = {}
    ent.mainScreen.objects = {}
    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent())
-   dialogues = Entity.wrapp(ygFileToEnt(YJSON, scene.dialogues:to_string()))
+   dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
 
    -- Pj info:
    ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,

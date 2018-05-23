@@ -1,10 +1,13 @@
 {
     "bar" : {
 	"dialogues" : "PHQ_Dialogs_Part1.json",
-	"tiled": "./bar1.json",
+	"tiled": "./bar1.json"
     },
     "house0" : {
 	"dialogues" : "house_dialogue.json",
-	"tiled": "./House0.json",
+	"tiled": "./House0.json"
+    },
+    "house1" : {
+	"tiled": "./House1.json"
     }
 }

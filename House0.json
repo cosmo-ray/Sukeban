@@ -110,7 +110,7 @@
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"House1"
+                         "value":"house1"
                         }, 
                         {
                          "name":"side",
@@ -133,7 +133,7 @@
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"Street"
+                         "value":"bar"
                         }, 
                         {
                          "name":"side",
