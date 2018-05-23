@@ -78,6 +78,7 @@
                  "id":1,
                  "name":"Stairs",
                  "point":true,
+<<<<<<< HEAD
                  "properties":
                     {
                      "nextScene":"House0",
@@ -88,6 +89,19 @@
                      "nextScene":"string",
                      "side":"string"
                     },
+=======
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"house0"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"right"
+                        }],
+>>>>>>> a09535c7da119b7abbf5b936feeeb0dbc65c80d9
                  "rotation":0,
                  "type":"",
                  "visible":true,

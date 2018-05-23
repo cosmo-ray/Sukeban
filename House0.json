@@ -116,6 +116,7 @@
                  "id":2,
                  "name":"Stairs",
                  "point":true,
+<<<<<<< HEAD
                  "properties":
                     {
                      "nextScene":"House1",
@@ -126,6 +127,19 @@
                      "nextScene":"string",
                      "side":"string"
                     },
+=======
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"house1"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+>>>>>>> a09535c7da119b7abbf5b936feeeb0dbc65c80d9
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -138,6 +152,7 @@
                  "id":3,
                  "name":"Door",
                  "point":true,
+<<<<<<< HEAD
                  "properties":
                     {
                      "nextScene":"Street",
@@ -148,6 +163,19 @@
                      "nextScene":"string",
                      "side":"string"
                     },
+=======
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"bar"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+>>>>>>> a09535c7da119b7abbf5b936feeeb0dbc65c80d9
                  "rotation":0,
                  "type":"",
                  "visible":true,

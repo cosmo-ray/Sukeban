@@ -2,9 +2,13 @@ local tiled = Entity.wrapp(ygGet("tiled"))
 local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
-local checkColisisonF = Entity.new_func("CheckColision")
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
+local scenes = Entity.wrapp(ygGet("phq.scenes"))
 local dialogues = nil
+
+local NO_COLISION = 0
+local NORMAL_COLISION = 1
+local CHANGE_SCENE_COLISION = 2
 
 function EndDialog(wid, eve, arg)
    wid = Entity.wrapp(yDialogueGetMain(wid))
@@ -128,25 +132,42 @@ function load_game(entity)
    print("do the same move at the last part, and you're game will be load :)")
 end
 
-function CheckColision(canvasWid, pj)
+function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
-   local colRect = ywRectCreate(ywPosX(pjPos) + 7, ywPosY(pjPos) + 30,
+   local colRect = ywRectCreate(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30,
 			       20, 20)
    local col = ywCanvasNewCollisionsArrayWithRectangle(canvasWid, colRect)
 
-   yeDestroy(colRect)
    col = Entity.wrapp(col)
    local i = 0
+   while i < yeLen(main.exits) do
+      if ywRectCollision(main.exits[i].rect, colRect) then
+	 print("COLISION EXIT !!!")
+	 print(main.exits[i].nextScene)
+	 local nextSceneTxt = main.exits[i].nextScene:to_string()
+	 local nextScene = scenes[nextSceneTxt]
+	 print(nextScene)
+	 if nextScene == nil then
+	    print("hum")
+	    nextScene = ygGet(nextSceneTxt)
+	 end
+	 load_scene(main, nextScene)
+	 return CHANGE_SCENE_COLISION
+      end
+      i = i + 1
+   end
+   yeDestroy(colRect)
+   i = 0
    while i < yeLen(col) do
       local obj = col[i]
       if yeGetIntAt(obj, "Collision") == 1 then
 	 yeDestroy(col)
-	 return true
+	 return NORMAL_COLISION
       end
       i = i + 1
    end
    yeDestroy(col)
-   return false
+   return NO_COLISION
 end
 
 function phq_action(entity, eve, arg)
@@ -174,6 +195,8 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.move.left_right = 1
              entity.pj.y = 11
+	  elseif eve:key() == Y_G_KEY then
+	     load_scene(entity, ygGet("phq:scenes.house0"))
           elseif eve:key() == Y_SPACE_KEY or eve:key() ==Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
@@ -248,8 +271,8 @@ function phq_action(entity, eve, arg)
     end
     local mvPos = Pos.new(3 * entity.move.left_right, 3 * entity.move.up_down)
     lpcs.handlerMove(entity.pj, mvPos.ent)
-    if CheckColision(entity.mainScreen, entity.pj)
-    then
+    local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
+    if col_rel == NORMAL_COLISION then
        mvPos:opposite()
        lpcs.handlerMove(entity.pj, mvPos.ent)
     end
@@ -265,81 +288,98 @@ function destroy_phq(entity)
    dialogues = nil
 end
 
+function load_scene(ent, scene)
+   local mainCanvas = Canvas.wrapp(ent.mainScreen)
+   scene = Entity.wrapp(scene)
+
+   -- clean old stuff :(
+   mainCanvas.ent.objs = {}
+   ent.mainScreen.objects = {}
+   tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent())
+   dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
+
+   -- Pj info:
+   ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
+				      Entity.new_string("Puke bar: "),
+				      "rgba: 255 255 255 255")
+   ent.drunk_bar0 = mainCanvas:new_rect(100, 10, "rgba: 30 30 30 255",
+					Pos.new(200, 15).ent).ent
+   ent.drunk_bar1 = mainCanvas:new_rect(100, 10, "rgba: 0 255 30 255",
+					Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
+
+   ent.life_txt = ywCanvasNewTextExt(mainCanvas.ent, 360, 10,
+				     Entity.new_string("life: "),
+				     "rgba: 255 255 255 255")
+   ent.life_nb = ywCanvasNewTextExt(mainCanvas.ent, 410, 10,
+				    Entity.new_string(phq.pj.life:to_int()),
+				    "rgba: 255 255 255 255")
+   ylpcsHandlerSetPos(ent.pj, Pos.new(300, 200).ent)
+   lpcs.handlerSetOrigXY(ent.pj, 0, 10)
+   lpcs.handlerRefresh(ent.pj)
+    local objects = ent.mainScreen.objects
+    local i = 0
+    local j = 0
+    ent.npcs = {}
+    ent.exits = {}
+    local e_npcs = ent.npcs
+    while i < yeLen(objects) do
+       local obj = objects[i]
+       local layer_name = obj.layer_name
+       if layer_name:to_string() == "NPC" then
+	  local npc = lpcs.createCaracterHandler(npcs[obj.name:to_string()],
+					       mainCanvas.ent, e_npcs)
+	  --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
+	  local pos = Pos.new_copy(obj.rect)
+	  pos:sub(20, 50)
+	  lpcs.handlerMove(npc, pos.ent)
+	  if yeGetString(obj.Rotation) == "left" then
+	     lpcs.handlerSetOrigXY(npc, 0, 9)
+	  elseif yeGetString(obj.Rotation) == "right" then
+	     lpcs.handlerSetOrigXY(npc, 0, 11)
+	  elseif yeGetString(obj.Rotation) == "down" then
+	     lpcs.handlerSetOrigXY(npc, 0, 10)
+	  else
+	     lpcs.handlerSetOrigXY(npc, 0, 12)
+	  end
+	  lpcs.handlerRefresh(npc)
+	  npc = Entity.wrapp(npc)
+	  npc.canvas.Collision = 1
+	  print(npc.char.dialogue)
+	  npc.char.name = obj.name:to_string()
+	  npc.canvas.dialogue = obj.name:to_string()
+	  npc.canvas.current = i
+	  print(npc.canvas.dialogue)
+       elseif layer_name:to_string() == "Entries" then
+	  ent.exits[j] = obj
+	  j = j + 1
+       end
+       i = i + 1
+    end
+end
+   
 function create_phq(entity)
     local container = Container.init_entity(entity, "stacking")
     local ent = container.ent
+    local scene = Entity.wrapp(ygGet(ent.scene:to_string()))
 
     ent.move = {}
     ent.move.up_down = 0
     ent.move.left_right = 0
     ent.tid = 0
-    dialogues = Entity.wrapp(ygFileToEnt(YJSON, ent.dialogues:to_string()))
     tiled.setAssetPath("./");
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
-    mainCanvas.ent.objs = {}
     ent["turn-length"] = 10000
     ent.entries = {}
     ent.background = "rgba: 127 127 127 255"
     ent.entries[0] = mainCanvas.ent
     local ret = container:new_wid()
     ent.destroy = Entity.new_func("destroy_phq")
-    tiled.fileToCanvas("./bar1.json", mainCanvas.ent:cent())
     phq.pj.drunk = 0
     phq.pj.life = phq.pj.max_life
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
-    ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
-				       Entity.new_string("Puke bar: "),
-				       "rgba: 255 255 255 255")
-    ent.drunk_bar0 = mainCanvas:new_rect(100, 10, "rgba: 30 30 30 255",
-					 Pos.new(200, 15).ent).ent
-    ent.drunk_bar1 = mainCanvas:new_rect(100, 10, "rgba: 0 255 30 255",
-					 Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
-
-    ent.life_txt = ywCanvasNewTextExt(mainCanvas.ent, 360, 10,
-				      Entity.new_string("life: "),
-				      "rgba: 255 255 255 255")
-    ent.life_nb = ywCanvasNewTextExt(mainCanvas.ent, 410, 10,
-				     Entity.new_string(phq.pj.life:to_int()),
-				     "rgba: 255 255 255 255")
-
     ent.pj = nil
-
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
-    lpcs.handlerRefresh(ent.pj)
-    lpcs.handlerMove(ent.pj, Pos.new(200, 200).ent)
-    lpcs.handlerSetOrigXY(ent.pj, 0, 10)
-    lpcs.handlerRefresh(ent.pj)
-    print(npcs, yeLen(npcs), yeGet(npcs, "robert"))
-    local objects = ent.mainScreen.objects
-    local i = 0
-    ent.npcs = {}
-    while i < yeLen(objects) do
-       local obj = objects[i]
-       local npc = lpcs.createCaracterHandler(npcs[obj.name:to_string()],
-					       mainCanvas.ent, ent.npcs)
-       --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
-       local pos = Pos.new_copy(obj.rect)
-       pos:sub(20, 50)
-       lpcs.handlerMove(npc, pos.ent)
-       if yeGetString(obj.Rotation) == "left" then
-	  lpcs.handlerSetOrigXY(npc, 0, 9)
-       elseif yeGetString(obj.Rotation) == "right" then
-	  lpcs.handlerSetOrigXY(npc, 0, 11)
-       elseif yeGetString(obj.Rotation) == "down" then
-	  lpcs.handlerSetOrigXY(npc, 0, 10)
-       else
-	  lpcs.handlerSetOrigXY(npc, 0, 12)
-       end
-       lpcs.handlerRefresh(npc)
-       npc = Entity.wrapp(npc)
-       npc.canvas.Collision = 1
-       print(npc.char.dialogue)
-       npc.char.name = obj.name:to_string()
-       npc.canvas.dialogue = obj.name:to_string()
-       npc.canvas.current = i
-       print(npc.canvas.dialogue)
-       i = i + 1
-    end
+    load_scene(ent, scene)
     return ret
 end

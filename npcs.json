@@ -153,4 +153,14 @@
         ],
 	"image": "./Portrait_11.png",
     },
+    "Mom": {
+        "sex": "female",
+        "type": "light",
+        "clothes": [
+            "feet/ghillies_female_no_th-sh.png",
+            "torso/dress_female/dress_w_sash_female.png",
+            "hair/female/ponytail/brunette2.png"
+        ],
+	"image": "./Portrait_12.png",
+    }
 }
