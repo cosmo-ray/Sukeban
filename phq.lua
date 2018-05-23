@@ -174,6 +174,8 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.move.left_right = 1
              entity.pj.y = 11
+	  elseif eve:key() == Y_G_KEY then
+	     load_scene(entity, Entity.wrapp(ygGet("phq:scenes.house0")))
           elseif eve:key() == Y_SPACE_KEY or eve:key() ==Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
@@ -265,53 +267,33 @@ function destroy_phq(entity)
    dialogues = nil
 end
 
-function create_phq(entity)
-    local container = Container.init_entity(entity, "stacking")
-    local ent = container.ent
-    local scene = Entity.wrapp(ygGet(ent.scene:to_string()))
+function load_scene(ent, scene)
+   local mainCanvas = Canvas.wrapp(ent.mainScreen)
 
-    ent.move = {}
-    ent.move.up_down = 0
-    ent.move.left_right = 0
-    ent.tid = 0
-    dialogues = Entity.wrapp(ygFileToEnt(YJSON, scene.dialogues:to_string()))
-    tiled.setAssetPath("./");
-    Entity.new_func("phq_action", ent, "action")
-    local mainCanvas = Canvas.new_entity(entity, "mainScreen")
-    mainCanvas.ent.objs = {}
-    ent["turn-length"] = 10000
-    ent.entries = {}
-    ent.background = "rgba: 127 127 127 255"
-    ent.entries[0] = mainCanvas.ent
-    local ret = container:new_wid()
-    ent.destroy = Entity.new_func("destroy_phq")
-    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent())
-    phq.pj.drunk = 0
-    phq.pj.life = phq.pj.max_life
-    ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
-    ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
-				       Entity.new_string("Puke bar: "),
-				       "rgba: 255 255 255 255")
-    ent.drunk_bar0 = mainCanvas:new_rect(100, 10, "rgba: 30 30 30 255",
-					 Pos.new(200, 15).ent).ent
-    ent.drunk_bar1 = mainCanvas:new_rect(100, 10, "rgba: 0 255 30 255",
-					 Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
+   -- clean old stuff :(
+   mainCanvas.ent.objs = {}
+   ent.mainScreen.objects = {}
+   tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent())
+   dialogues = Entity.wrapp(ygFileToEnt(YJSON, scene.dialogues:to_string()))
 
-    ent.life_txt = ywCanvasNewTextExt(mainCanvas.ent, 360, 10,
-				      Entity.new_string("life: "),
+   -- Pj info:
+   ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
+				      Entity.new_string("Puke bar: "),
 				      "rgba: 255 255 255 255")
-    ent.life_nb = ywCanvasNewTextExt(mainCanvas.ent, 410, 10,
-				     Entity.new_string(phq.pj.life:to_int()),
+   ent.drunk_bar0 = mainCanvas:new_rect(100, 10, "rgba: 30 30 30 255",
+					Pos.new(200, 15).ent).ent
+   ent.drunk_bar1 = mainCanvas:new_rect(100, 10, "rgba: 0 255 30 255",
+					Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
+
+   ent.life_txt = ywCanvasNewTextExt(mainCanvas.ent, 360, 10,
+				     Entity.new_string("life: "),
 				     "rgba: 255 255 255 255")
-
-    ent.pj = nil
-
-    lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
-    lpcs.handlerRefresh(ent.pj)
-    lpcs.handlerMove(ent.pj, Pos.new(300, 200).ent)
-    lpcs.handlerSetOrigXY(ent.pj, 0, 10)
-    lpcs.handlerRefresh(ent.pj)
-    print(npcs, yeLen(npcs), yeGet(npcs, "robert"))
+   ent.life_nb = ywCanvasNewTextExt(mainCanvas.ent, 410, 10,
+				    Entity.new_string(phq.pj.life:to_int()),
+				    "rgba: 255 255 255 255")
+   ylpcsHandlerSetPos(ent.pj, Pos.new(300, 200).ent)
+   lpcs.handlerSetOrigXY(ent.pj, 0, 10)
+   lpcs.handlerRefresh(ent.pj)
     local objects = ent.mainScreen.objects
     local i = 0
     ent.npcs = {}
@@ -342,5 +324,31 @@ function create_phq(entity)
        print(npc.canvas.dialogue)
        i = i + 1
     end
+end
+   
+function create_phq(entity)
+    local container = Container.init_entity(entity, "stacking")
+    local ent = container.ent
+    local scene = Entity.wrapp(ygGet(ent.scene:to_string()))
+
+    ent.move = {}
+    ent.move.up_down = 0
+    ent.move.left_right = 0
+    ent.tid = 0
+    tiled.setAssetPath("./");
+    Entity.new_func("phq_action", ent, "action")
+    local mainCanvas = Canvas.new_entity(entity, "mainScreen")
+    ent["turn-length"] = 10000
+    ent.entries = {}
+    ent.background = "rgba: 127 127 127 255"
+    ent.entries[0] = mainCanvas.ent
+    local ret = container:new_wid()
+    ent.destroy = Entity.new_func("destroy_phq")
+    phq.pj.drunk = 0
+    phq.pj.life = phq.pj.max_life
+    ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
+    ent.pj = nil
+    lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
+    load_scene(ent, scene)
     return ret
 end
