@@ -414,7 +414,7 @@
 	    }, 
 	    {
 		"text" : "Thanks...\nI guess\nwhy are you giving GURIKO away ?",
-		"answers": [ "I was watching this old show with GURIKO advertisements in the Generic" ]
+		"answer": "I was watching this old show with GURIKO advertisements in the Generic"
 	    },
 	    {
 		"text" : "GURIKO GURIKO GURIKO !!!",
