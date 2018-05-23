@@ -142,8 +142,6 @@ function CheckColision(main, canvasWid, pj)
    local i = 0
    while i < yeLen(main.exits) do
       if ywRectCollision(main.exits[i].rect, colRect) then
-	 print("COLISION EXIT !!!")
-	 print(main.exits[i].nextScene)
 	 local nextSceneTxt = main.exits[i].nextScene:to_string()
 	 local nextScene = scenes[nextSceneTxt]
 	 print(nextScene)
@@ -316,6 +314,7 @@ function load_scene(ent, scene)
    lpcs.handlerRefresh(ent.pj)
     local objects = ent.mainScreen.objects
     local i = 0
+    local npc_idx = 0
     local j = 0
     ent.npcs = {}
     ent.exits = {}
@@ -345,8 +344,9 @@ function load_scene(ent, scene)
 	  print(npc.char.dialogue)
 	  npc.char.name = obj.name:to_string()
 	  npc.canvas.dialogue = obj.name:to_string()
-	  npc.canvas.current = i
+	  npc.canvas.current = npc_idx
 	  print(npc.canvas.dialogue)
+	  npc_idx = npc_idx + 1
        elseif layer_name:to_string() == "Entries" then
 	  ent.exits[j] = obj
 	  j = j + 1
