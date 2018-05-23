@@ -12,6 +12,7 @@
         { "path" : "YIRL_MODULES_PATH/dialogue-box/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/dialogue/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/jrpg-fight/", "type" : "module" },
+        { "file" : "scenes.json", "type" : "json", "as" : "scenes"},
         { "file" : "npcs.json", "type" : "json", "as" : "npcs"},
         { "file" : "menus.json", "type" : "json", "as" : "menus"},
 	{ "file" : "phq.lua", "type" : "lua" }

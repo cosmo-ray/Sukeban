@@ -268,12 +268,13 @@ end
 function create_phq(entity)
     local container = Container.init_entity(entity, "stacking")
     local ent = container.ent
+    local scene = Entity.wrapp(ygGet(ent.scene:to_string()))
 
     ent.move = {}
     ent.move.up_down = 0
     ent.move.left_right = 0
     ent.tid = 0
-    dialogues = Entity.wrapp(ygFileToEnt(YJSON, ent.dialogues:to_string()))
+    dialogues = Entity.wrapp(ygFileToEnt(YJSON, scene.dialogues:to_string()))
     tiled.setAssetPath("./");
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
@@ -284,7 +285,7 @@ function create_phq(entity)
     ent.entries[0] = mainCanvas.ent
     local ret = container:new_wid()
     ent.destroy = Entity.new_func("destroy_phq")
-    tiled.fileToCanvas("./bar1.json", mainCanvas.ent:cent())
+    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent())
     phq.pj.drunk = 0
     phq.pj.life = phq.pj.max_life
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
@@ -307,7 +308,7 @@ function create_phq(entity)
 
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
     lpcs.handlerRefresh(ent.pj)
-    lpcs.handlerMove(ent.pj, Pos.new(200, 200).ent)
+    lpcs.handlerMove(ent.pj, Pos.new(300, 200).ent)
     lpcs.handlerSetOrigXY(ent.pj, 0, 10)
     lpcs.handlerRefresh(ent.pj)
     print(npcs, yeLen(npcs), yeGet(npcs, "robert"))
