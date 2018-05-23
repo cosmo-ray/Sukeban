@@ -111,6 +111,11 @@
                          "name":"nextScene",
                          "type":"string",
                          "value":"House1"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
                         }],
                  "rotation":0,
                  "type":"",
@@ -129,6 +134,11 @@
                          "name":"nextScene",
                          "type":"string",
                          "value":"Street"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
                         }],
                  "rotation":0,
                  "type":"",

@@ -77,6 +77,11 @@
                          "name":"nextScene",
                          "type":"string",
                          "value":"House0"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"right"
                         }],
                  "rotation":0,
                  "type":"",
