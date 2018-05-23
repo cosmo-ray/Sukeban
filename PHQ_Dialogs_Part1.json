@@ -87,16 +87,26 @@
 			"text": "You're right, dude. Time to go to bed.",
 			"action": "phq.EndDialog"
                     },
-                    {
-			"text": "Before the sweet nectar we all stand humble and equal.",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
-                    },
+		    "Before the sweet nectar we all stand humble and equal.",
                     {
 			"text": "Ask your Mom!",
 			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
                     }
 		]
-            }
+            },
+	    {
+		"text": "we might be equal but, there's rules here, have you read the rules ?\nlike the one in the panel behind the bar",
+		"answers": [
+		    {
+			"text": "I've read alchimie law, I know it's first rule\nLaw of Equivalent Exchange, so take my money and give me beer",
+			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+		    },
+		    {
+			"text": "Rules ???? I CRUSH YOU! ME CRUSH YOU TO GOO!",
+			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+		    }
+		]
+	    }
 	],
     },
     "Serious guy": {
@@ -388,7 +398,7 @@
 			    "phq.StartFight"
 			]
 		    },
-		    { "text": "No, don't know, take this GURIKO and go away" },
+		    "No, don't know, take this GURIKO and go away",
 		    {
 			"text": "Yeap, I hear she made a duo with basara",
 			"actions": [
@@ -404,7 +414,7 @@
 	    }, 
 	    {
 		"text" : "Thanks...\nI guess\nwhy are you giving GURIKO away ?",
-		"answers": [ { "text" : "I was watching this old show with GURIKO advertisements in the Generic" } ]
+		"answers": [ "I was watching this old show with GURIKO advertisements in the Generic" ]
 	    },
 	    {
 		"text" : "GURIKO GURIKO GURIKO !!!",
