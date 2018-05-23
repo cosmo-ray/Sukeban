@@ -195,8 +195,6 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.move.left_right = 1
              entity.pj.y = 11
-	  elseif eve:key() == Y_G_KEY then
-	     load_scene(entity, ygGet("phq:scenes.house0"))
           elseif eve:key() == Y_SPACE_KEY or eve:key() ==Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
