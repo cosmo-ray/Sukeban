@@ -2,9 +2,12 @@ local tiled = Entity.wrapp(ygGet("tiled"))
 local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
-local checkColisisonF = Entity.new_func("CheckColision")
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local dialogues = nil
+
+local NO_COLISION = 0
+local NORMAL_COLISION = 1
+local CHANGE_SCENE_COLISION = 2
 
 function EndDialog(wid, eve, arg)
    wid = Entity.wrapp(yDialogueGetMain(wid))
@@ -128,25 +131,33 @@ function load_game(entity)
    print("do the same move at the last part, and you're game will be load :)")
 end
 
-function CheckColision(canvasWid, pj)
+function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
-   local colRect = ywRectCreate(ywPosX(pjPos) + 7, ywPosY(pjPos) + 30,
+   local colRect = ywRectCreate(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30,
 			       20, 20)
    local col = ywCanvasNewCollisionsArrayWithRectangle(canvasWid, colRect)
 
-   yeDestroy(colRect)
    col = Entity.wrapp(col)
    local i = 0
+   while i < yeLen(main.exits) do
+      if ywRectCollision(main.exits[i].rect, colRect) then
+	 print("COLISION EXIT !!!")
+	 print(main.exits[i].nextScene)
+      end
+      i = i + 1
+   end
+   yeDestroy(colRect)
+   i = 0
    while i < yeLen(col) do
       local obj = col[i]
       if yeGetIntAt(obj, "Collision") == 1 then
 	 yeDestroy(col)
-	 return true
+	 return NORMAL_COLISION
       end
       i = i + 1
    end
    yeDestroy(col)
-   return false
+   return NO_COLISION
 end
 
 function phq_action(entity, eve, arg)
@@ -250,8 +261,8 @@ function phq_action(entity, eve, arg)
     end
     local mvPos = Pos.new(3 * entity.move.left_right, 3 * entity.move.up_down)
     lpcs.handlerMove(entity.pj, mvPos.ent)
-    if CheckColision(entity.mainScreen, entity.pj)
-    then
+    local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
+    if col_rel == NORMAL_COLISION then
        mvPos:opposite()
        lpcs.handlerMove(entity.pj, mvPos.ent)
     end
@@ -296,32 +307,41 @@ function load_scene(ent, scene)
    lpcs.handlerRefresh(ent.pj)
     local objects = ent.mainScreen.objects
     local i = 0
+    local j = 0
     ent.npcs = {}
+    ent.exits = {}
+    local e_npcs = ent.npcs
     while i < yeLen(objects) do
        local obj = objects[i]
-       local npc = lpcs.createCaracterHandler(npcs[obj.name:to_string()],
-					       mainCanvas.ent, ent.npcs)
-       --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
-       local pos = Pos.new_copy(obj.rect)
-       pos:sub(20, 50)
-       lpcs.handlerMove(npc, pos.ent)
-       if yeGetString(obj.Rotation) == "left" then
-	  lpcs.handlerSetOrigXY(npc, 0, 9)
-       elseif yeGetString(obj.Rotation) == "right" then
-	  lpcs.handlerSetOrigXY(npc, 0, 11)
-       elseif yeGetString(obj.Rotation) == "down" then
-	  lpcs.handlerSetOrigXY(npc, 0, 10)
-       else
-	  lpcs.handlerSetOrigXY(npc, 0, 12)
+       local layer_name = obj.layer_name
+       if layer_name:to_string() == "NPC" then
+	  local npc = lpcs.createCaracterHandler(npcs[obj.name:to_string()],
+					       mainCanvas.ent, e_npcs)
+	  --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
+	  local pos = Pos.new_copy(obj.rect)
+	  pos:sub(20, 50)
+	  lpcs.handlerMove(npc, pos.ent)
+	  if yeGetString(obj.Rotation) == "left" then
+	     lpcs.handlerSetOrigXY(npc, 0, 9)
+	  elseif yeGetString(obj.Rotation) == "right" then
+	     lpcs.handlerSetOrigXY(npc, 0, 11)
+	  elseif yeGetString(obj.Rotation) == "down" then
+	     lpcs.handlerSetOrigXY(npc, 0, 10)
+	  else
+	     lpcs.handlerSetOrigXY(npc, 0, 12)
+	  end
+	  lpcs.handlerRefresh(npc)
+	  npc = Entity.wrapp(npc)
+	  npc.canvas.Collision = 1
+	  print(npc.char.dialogue)
+	  npc.char.name = obj.name:to_string()
+	  npc.canvas.dialogue = obj.name:to_string()
+	  npc.canvas.current = i
+	  print(npc.canvas.dialogue)
+       elseif layer_name:to_string() == "Entries" then
+	  ent.exits[j] = obj
+	  j = j + 1
        end
-       lpcs.handlerRefresh(npc)
-       npc = Entity.wrapp(npc)
-       npc.canvas.Collision = 1
-       print(npc.char.dialogue)
-       npc.char.name = obj.name:to_string()
-       npc.canvas.dialogue = obj.name:to_string()
-       npc.canvas.current = i
-       print(npc.canvas.dialogue)
        i = i + 1
     end
 end
