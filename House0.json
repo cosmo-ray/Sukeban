@@ -6,12 +6,14 @@
          "height":18,
          "name":"Ground",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":0
-                }],
+         "properties":
+            {
+             "Collision":0
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -23,12 +25,14 @@
          "height":18,
          "name":"Walls",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":1
-                }],
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -40,12 +44,14 @@
          "height":18,
          "name":"Furniture Col",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":1
-                }],
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -57,12 +63,14 @@
          "height":18,
          "name":"Furniture Non Col",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":0
-                }],
+         "properties":
+            {
+             "Collision":0
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -78,12 +86,14 @@
                  "id":1,
                  "name":"Mom",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"up"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"up"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -106,17 +116,16 @@
                  "id":2,
                  "name":"Stairs",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"nextScene",
-                         "type":"string",
-                         "value":"House1"
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"down"
-                        }],
+                 "properties":
+                    {
+                     "nextScene":"House1",
+                     "side":"down"
+                    },
+                 "propertytypes":
+                    {
+                     "nextScene":"string",
+                     "side":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -129,17 +138,16 @@
                  "id":3,
                  "name":"Door",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"nextScene",
-                         "type":"string",
-                         "value":"Street"
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"up"
-                        }],
+                 "properties":
+                    {
+                     "nextScene":"Street",
+                     "side":"up"
+                    },
+                 "propertytypes":
+                    {
+                     "nextScene":"string",
+                     "side":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -155,14 +163,16 @@
         }],
  "nextobjectid":4,
  "orientation":"orthogonal",
- "properties":[
-        {
-         "name":"Collision",
-         "type":"int",
-         "value":1
-        }],
+ "properties":
+    {
+     "Collision":1
+    },
+ "propertytypes":
+    {
+     "Collision":"int"
+    },
  "renderorder":"right-down",
- "tiledversion":"2018.03.04",
+ "tiledversion":"1.1.5",
  "tileheight":32,
  "tilesets":[
         {
@@ -175,6 +185,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1,
  "width":24
 }

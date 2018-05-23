@@ -6,12 +6,14 @@
          "height":18,
          "name":"Ground",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":0
-                }],
+         "properties":
+            {
+             "Collision":0
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -23,12 +25,14 @@
          "height":18,
          "name":"Walls",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":1
-                }],
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -40,12 +44,14 @@
          "height":18,
          "name":"Furniture Col",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":1
-                }],
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -57,12 +63,14 @@
          "height":18,
          "name":"Furniture Non Col",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":0
-                }],
+         "properties":
+            {
+             "Collision":0
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -74,12 +82,14 @@
          "height":18,
          "name":"Furniture up",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":1
-                }],
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -95,12 +105,14 @@
                  "id":1,
                  "name":"Robert",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"right"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -113,12 +125,14 @@
                  "id":2,
                  "name":"Typical finnish guy",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"right"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -131,12 +145,14 @@
                  "id":3,
                  "name":"Merlin",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"left"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -149,12 +165,14 @@
                  "id":7,
                  "name":"Typical swedish boy",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"right"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -167,12 +185,14 @@
                  "id":9,
                  "name":"Creepy guy in the corner",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"down"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -185,12 +205,14 @@
                  "id":10,
                  "name":"John",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"right"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -203,12 +225,14 @@
                  "id":11,
                  "name":"Jane",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"left"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -221,12 +245,14 @@
                  "id":12,
                  "name":"Serious guy",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"left"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -239,12 +265,14 @@
                  "id":13,
                  "name":"Short guy",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"left"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -257,12 +285,14 @@
                  "id":15,
                  "name":"Wasted guy",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"down"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -275,12 +305,14 @@
                  "id":16,
                  "name":"Way too sober guy",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"up"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"up"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -293,12 +325,14 @@
                  "id":17,
                  "name":"Strangely familiar guy",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"right"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -311,12 +345,14 @@
                  "id":18,
                  "name":"Playful guy",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
+                 "properties":
+                    {
+                     "Rotation":"down"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -333,7 +369,7 @@
  "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"2018.03.04",
+ "tiledversion":"1.1.5",
  "tileheight":32,
  "tilesets":[
         {
@@ -346,6 +382,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1,
  "width":24
 }

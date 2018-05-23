@@ -6,12 +6,14 @@
          "height":18,
          "name":"Ground",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":0
-                }],
+         "properties":
+            {
+             "Collision":0
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -23,12 +25,14 @@
          "height":18,
          "name":"Walls",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":1
-                }],
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -40,12 +44,14 @@
          "height":18,
          "name":"Furniture Col",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"Collision",
-                 "type":"int",
-                 "value":1
-                }],
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":24,
@@ -72,17 +78,16 @@
                  "id":1,
                  "name":"Stairs",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"nextScene",
-                         "type":"string",
-                         "value":"House0"
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"right"
-                        }],
+                 "properties":
+                    {
+                     "nextScene":"House0",
+                     "side":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "nextScene":"string",
+                     "side":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -98,14 +103,16 @@
         }],
  "nextobjectid":2,
  "orientation":"orthogonal",
- "properties":[
-        {
-         "name":"Collision",
-         "type":"int",
-         "value":1
-        }],
+ "properties":
+    {
+     "Collision":1
+    },
+ "propertytypes":
+    {
+     "Collision":"int"
+    },
  "renderorder":"right-down",
- "tiledversion":"2018.03.04",
+ "tiledversion":"1.1.5",
  "tileheight":32,
  "tilesets":[
         {
@@ -118,6 +125,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1,
  "width":24
 }
