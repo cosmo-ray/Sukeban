@@ -89,7 +89,7 @@
                      "side":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"EntryPoint",
                  "visible":true,
                  "width":0,
                  "x":368,

@@ -95,7 +95,7 @@
                      "Rotation":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"NPC",
                  "visible":true,
                  "width":0,
                  "x":370,
@@ -127,7 +127,7 @@
                      "side":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"EntryPoint",
                  "visible":true,
                  "width":0,
                  "x":271,
@@ -149,7 +149,7 @@
                      "side":"string"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"EntryPoint",
                  "visible":true,
                  "width":0,
                  "x":367,
