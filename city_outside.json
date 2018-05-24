@@ -1,0 +1,12 @@
+{ "columns":24,
+ "image":"city_outside.png",
+ "imageheight":576,
+ "imagewidth":768,
+ "margin":0,
+ "name":"city_outside",
+ "spacing":0,
+ "tilecount":432,
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset"
+}

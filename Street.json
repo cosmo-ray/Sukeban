@@ -1,0 +1,12 @@
+{ "columns":25,
+ "image":"Street.png",
+ "imageheight":608,
+ "imagewidth":800,
+ "margin":0,
+ "name":"Street",
+ "spacing":0,
+ "tilecount":475,
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset"
+}
