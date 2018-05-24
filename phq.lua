@@ -17,7 +17,6 @@ function EndDialog(wid, eve, arg)
    if wid.src then
       wid.src.isBlock = wid.isBlock
       wid.src.block = wid.block
-      print("wid.src.block:", wid.src.block)
       wid.src = nil
    end
    ywCntPopLastEntry(main)
@@ -141,15 +140,15 @@ function CheckColision(main, canvasWid, pj)
    col = Entity.wrapp(col)
    local i = 0
    while i < yeLen(main.exits) do
-      if ywRectCollision(main.exits[i].rect, colRect) then
+      local rect = main.exits[i].rect
+      if ywRectCollision(rect, colRect) then
 	 local nextSceneTxt = main.exits[i].nextScene:to_string()
 	 local nextScene = scenes[nextSceneTxt]
 	 print(nextScene)
 	 if nextScene == nil then
-	    print("hum")
 	    nextScene = ygGet(nextSceneTxt)
 	 end
-	 load_scene(main, nextScene)
+	 load_scene(main, nextScene, yeGetInt(main.exits[i].entry))
 	 return CHANGE_SCENE_COLISION
       end
       i = i + 1
@@ -284,8 +283,10 @@ function destroy_phq(entity)
    dialogues = nil
 end
 
-function load_scene(ent, scene)
+function load_scene(ent, scene, entryIdx)
    local mainCanvas = Canvas.wrapp(ent.mainScreen)
+   local x = 0
+   local y = 0
    scene = Entity.wrapp(scene)
 
    -- clean old stuff :(
@@ -309,9 +310,6 @@ function load_scene(ent, scene)
    ent.life_nb = ywCanvasNewTextExt(mainCanvas.ent, 410, 10,
 				    Entity.new_string(phq.pj.life:to_int()),
 				    "rgba: 255 255 255 255")
-   ylpcsHandlerSetPos(ent.pj, Pos.new(300, 200).ent)
-   lpcs.handlerSetOrigXY(ent.pj, 0, 10)
-   lpcs.handlerRefresh(ent.pj)
     local objects = ent.mainScreen.objects
     local i = 0
     local npc_idx = 0
@@ -319,6 +317,7 @@ function load_scene(ent, scene)
     ent.npcs = {}
     ent.exits = {}
     local e_npcs = ent.npcs
+    local e_exits = ent.exits
     while i < yeLen(objects) do
        local obj = objects[i]
        local layer_name = obj.layer_name
@@ -348,11 +347,36 @@ function load_scene(ent, scene)
 	  print(npc.canvas.dialogue)
 	  npc_idx = npc_idx + 1
        elseif layer_name:to_string() == "Entries" then
-	  ent.exits[j] = obj
+	  e_exits[j] = obj
 	  j = j + 1
        end
        i = i + 1
     end
+
+    print("entryIdx !!!!", entryIdx)
+    if entryIdx < 0 then
+       x = 300
+       y = 200
+    else
+       local rect = e_exits[entryIdx].rect
+       local side = e_exits[entryIdx].side:to_string()
+       x = ywRectX(rect)
+       y = ywRectY(rect)
+       print(x, y)
+       print(rect, side)
+       if side == "up" then
+	  y = y - 75
+       elseif side == "down" then
+	  y = y + ywRectH(rect) + 15
+       elseif side == "left" then
+	  x = x - 45
+       else
+	  x = x + ywRectW(rect) + 45
+       end
+    end
+    ylpcsHandlerSetPos(ent.pj, Pos.new(x, y).ent)
+    lpcs.handlerSetOrigXY(ent.pj, 0, 10)
+    lpcs.handlerRefresh(ent.pj)
 end
    
 function create_phq(entity)
@@ -378,6 +402,6 @@ function create_phq(entity)
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
     ent.pj = nil
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
-    load_scene(ent, scene)
+    load_scene(ent, scene, 0)
     return ret
 end
