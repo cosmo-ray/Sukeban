@@ -140,11 +140,13 @@
                  "point":true,
                  "properties":
                     {
-                     "nextScene":"bar",
+                     "entry":1,
+                     "nextScene":"street1",
                      "side":"up"
                     },
                  "propertytypes":
                     {
+                     "entry":"int",
                      "nextScene":"string",
                      "side":"string"
                     },

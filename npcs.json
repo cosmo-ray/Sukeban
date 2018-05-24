@@ -162,5 +162,15 @@
             "hair/female/ponytail/brunette2.png"
         ],
 	"image": "./Portrait_12.png",
+    },
+    "Bouncer": {
+	"sex": "male",
+        "type": "light",
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ]
     }
 }

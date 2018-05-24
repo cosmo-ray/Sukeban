@@ -3,6 +3,9 @@
 	"dialogues" : "PHQ_Dialogs_Part1.json",
 	"tiled": "./bar1.json"
     },
+    "street1" : {
+	"tiled": "./Street1.json"
+    },
     "house0" : {
 	"dialogues" : "house_dialogue.json",
 	"tiled": "./House0.json"

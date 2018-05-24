@@ -5,10 +5,30 @@ local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local scenes = Entity.wrapp(ygGet("phq.scenes"))
 local dialogues = nil
+local window_width = 800
+local window_height = 600
 
 local NO_COLISION = 0
 local NORMAL_COLISION = 1
 local CHANGE_SCENE_COLISION = 2
+
+local function reposScreenInfo(ent, x0, y0)
+   ywCanvasObjSetPos(ent.drunk_txt, x0 + 10, y0 + 10)
+   ywCanvasObjSetPos(ent.drunk_bar0, x0 + 100, y0 + 10)
+   ywCanvasObjSetPos(ent.drunk_bar1, x0 + 100, y0 + 10)
+   ywCanvasObjSetPos(ent.life_txt, x0 + 360, y0 + 10)
+   ywCanvasObjSetPos(ent.life_nb, x0 + 410, y0 + 10)
+end
+
+local function reposeCam(main)
+   local canvas = main.mainScreen
+   local pjPos = Pos.wrapp(ylpcsHandePos(main.pj))
+   local x0 = pjPos:x() - window_width / 2
+   local y0 = pjPos:y() - window_height / 2
+
+   ywPosSet(canvas.cam, x0, y0)
+   reposScreenInfo(main, x0, y0)
+end
 
 function EndDialog(wid, eve, arg)
    wid = Entity.wrapp(yDialogueGetMain(wid))
@@ -219,7 +239,7 @@ function phq_action(entity, eve, arg)
              while i < yeLen(col) do
                 local dialogue = col[i].dialogue
                 print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialogue)
-                if dialogue then
+                if dialogue and dialogues[dialogue:to_string()] then
 		   local dialogueWid = Entity.new_array()
 		   local npc = entity.npcs[col[i].current:to_int()].char
 		   local dialogue = dialogues[dialogue:to_string()]
@@ -271,6 +291,7 @@ function phq_action(entity, eve, arg)
        mvPos:opposite()
        lpcs.handlerMove(entity.pj, mvPos.ent)
     end
+    reposeCam(entity)
     return YEVE_ACTION
 end
 
@@ -291,11 +312,76 @@ function load_scene(ent, scene, entryIdx)
 
    -- clean old stuff :(
    mainCanvas.ent.objs = {}
-   ent.mainScreen.objects = {}
+   mainCanvas.ent.objects = {}
    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent())
    dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
-
+   mainCanvas.ent.cam = Pos.new(0, 0).ent
    -- Pj info:
+   local objects = ent.mainScreen.objects
+   local i = 0
+   local npc_idx = 0
+   local j = 0
+   ent.npcs = {}
+   ent.exits = {}
+   local e_npcs = ent.npcs
+   local e_exits = ent.exits
+   while i < yeLen(objects) do
+      local obj = objects[i]
+      local layer_name = obj.layer_name
+      if layer_name:to_string() == "NPC" then
+	 local npc = lpcs.createCaracterHandler(npcs[obj.name:to_string()],
+						mainCanvas.ent, e_npcs)
+	 --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
+	 local pos = Pos.new_copy(obj.rect)
+	 pos:sub(20, 50)
+	 lpcs.handlerMove(npc, pos.ent)
+	 if yeGetString(obj.Rotation) == "left" then
+	    lpcs.handlerSetOrigXY(npc, 0, 9)
+	 elseif yeGetString(obj.Rotation) == "right" then
+	    lpcs.handlerSetOrigXY(npc, 0, 11)
+	 elseif yeGetString(obj.Rotation) == "down" then
+	    lpcs.handlerSetOrigXY(npc, 0, 10)
+	 else
+	    lpcs.handlerSetOrigXY(npc, 0, 12)
+	 end
+	 lpcs.handlerRefresh(npc)
+	 npc = Entity.wrapp(npc)
+	 npc.canvas.Collision = 1
+	 npc.char.name = obj.name:to_string()
+	 npc.canvas.dialogue = obj.name:to_string()
+	 npc.canvas.current = npc_idx
+	 npc_idx = npc_idx + 1
+      elseif layer_name:to_string() == "Entries" then
+	 e_exits[j] = obj
+	 j = j + 1
+      end
+      i = i + 1
+   end
+
+   print("entryIdx !!!!", entryIdx)
+   if entryIdx < 0 then
+      x = 300
+      y = 200
+   else
+      local rect = e_exits[entryIdx].rect
+      local side = e_exits[entryIdx].side:to_string()
+      x = ywRectX(rect)
+      y = ywRectY(rect)
+      print(x, y)
+      print(rect, side)
+      if side == "up" then
+	 y = y - 75
+      elseif side == "down" then
+	 y = y + ywRectH(rect) + 15
+      elseif side == "left" then
+	 x = x - 45
+      else
+	 x = x + ywRectW(rect) + 45
+      end
+   end
+   ylpcsHandlerSetPos(ent.pj, Pos.new(x, y).ent)
+   lpcs.handlerSetOrigXY(ent.pj, 0, 10)
+   lpcs.handlerRefresh(ent.pj)
    ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
 				      Entity.new_string("Puke bar: "),
 				      "rgba: 255 255 255 255")
@@ -310,73 +396,7 @@ function load_scene(ent, scene, entryIdx)
    ent.life_nb = ywCanvasNewTextExt(mainCanvas.ent, 410, 10,
 				    Entity.new_string(phq.pj.life:to_int()),
 				    "rgba: 255 255 255 255")
-    local objects = ent.mainScreen.objects
-    local i = 0
-    local npc_idx = 0
-    local j = 0
-    ent.npcs = {}
-    ent.exits = {}
-    local e_npcs = ent.npcs
-    local e_exits = ent.exits
-    while i < yeLen(objects) do
-       local obj = objects[i]
-       local layer_name = obj.layer_name
-       if layer_name:to_string() == "NPC" then
-	  local npc = lpcs.createCaracterHandler(npcs[obj.name:to_string()],
-					       mainCanvas.ent, e_npcs)
-	  --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
-	  local pos = Pos.new_copy(obj.rect)
-	  pos:sub(20, 50)
-	  lpcs.handlerMove(npc, pos.ent)
-	  if yeGetString(obj.Rotation) == "left" then
-	     lpcs.handlerSetOrigXY(npc, 0, 9)
-	  elseif yeGetString(obj.Rotation) == "right" then
-	     lpcs.handlerSetOrigXY(npc, 0, 11)
-	  elseif yeGetString(obj.Rotation) == "down" then
-	     lpcs.handlerSetOrigXY(npc, 0, 10)
-	  else
-	     lpcs.handlerSetOrigXY(npc, 0, 12)
-	  end
-	  lpcs.handlerRefresh(npc)
-	  npc = Entity.wrapp(npc)
-	  npc.canvas.Collision = 1
-	  print(npc.char.dialogue)
-	  npc.char.name = obj.name:to_string()
-	  npc.canvas.dialogue = obj.name:to_string()
-	  npc.canvas.current = npc_idx
-	  print(npc.canvas.dialogue)
-	  npc_idx = npc_idx + 1
-       elseif layer_name:to_string() == "Entries" then
-	  e_exits[j] = obj
-	  j = j + 1
-       end
-       i = i + 1
-    end
-
-    print("entryIdx !!!!", entryIdx)
-    if entryIdx < 0 then
-       x = 300
-       y = 200
-    else
-       local rect = e_exits[entryIdx].rect
-       local side = e_exits[entryIdx].side:to_string()
-       x = ywRectX(rect)
-       y = ywRectY(rect)
-       print(x, y)
-       print(rect, side)
-       if side == "up" then
-	  y = y - 75
-       elseif side == "down" then
-	  y = y + ywRectH(rect) + 15
-       elseif side == "left" then
-	  x = x - 45
-       else
-	  x = x + ywRectW(rect) + 45
-       end
-    end
-    ylpcsHandlerSetPos(ent.pj, Pos.new(x, y).ent)
-    lpcs.handlerSetOrigXY(ent.pj, 0, 10)
-    lpcs.handlerRefresh(ent.pj)
+   reposeCam(ent)
 end
    
 function create_phq(entity)

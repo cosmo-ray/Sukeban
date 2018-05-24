@@ -106,8 +106,8 @@
                  "name":"To Street",
                  "properties":
                     {
-                     "entry":1,
-                     "nextScene":"house0",
+                     "entry":0,
+                     "nextScene":"street1",
                      "side":"up"
                     },
                  "propertytypes":
