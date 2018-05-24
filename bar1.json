@@ -106,11 +106,13 @@
                  "name":"To Street",
                  "properties":
                     {
+                     "entry":1,
                      "nextScene":"house0",
                      "side":"up"
                     },
                  "propertytypes":
                     {
+                     "entry":"int",
                      "nextScene":"string",
                      "side":"string"
                     },
