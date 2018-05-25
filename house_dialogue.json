@@ -1,0 +1,15 @@
+{
+    "Mom": {
+	"dialogue" : [
+	    {
+		"text": "Can't you see I'm busy, bug off",
+		"answers": [
+                    {
+			"text": "Ok mom",
+			"action": "phq.EndDialog"
+                    }
+		]
+            }
+	]
+    }
+}
