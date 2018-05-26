@@ -1,0 +1,14 @@
+{
+    "columns":8,
+    "image":"Pipes-RustyWalls.png",
+    "imageheight":352,
+    "imagewidth":256,
+    "margin":0,
+    "name":"Pipes-RustyWalls",
+    "spacing":0,
+    "tilecount":88,
+    "type":"tileset",
+    "tileheight":32,
+    "version":1.2,
+    "tilewidth":32
+}

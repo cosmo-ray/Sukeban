@@ -411,9 +411,10 @@
 			]
 		    }
 		]
-	    }, 
+	    },
+	    { "text" : "Thanks..." }, {"text": "I guess"},
 	    {
-		"text" : "Thanks...\nI guess\nwhy are you giving GURIKO away ?",
+		"text" : "Why are you giving GURIKO away ?",
 		"answer": "I was watching this old show with GURIKO advertisements in the Generic"
 	    },
 	    {
