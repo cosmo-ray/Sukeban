@@ -169,11 +169,28 @@ function CheckColision(main, canvasWid, pj)
 	    nextScene = ygGet(nextSceneTxt)
 	 end
 	 load_scene(main, nextScene, yeGetInt(main.exits[i].entry))
+	 yeDestroy(col)
+	 yeDestroy(colRect)
 	 return CHANGE_SCENE_COLISION
       end
       i = i + 1
    end
    yeDestroy(colRect)
+
+   if ywPosX(pjPos) < 0 then
+      yeDestroy(col)
+      return NORMAL_COLISION
+   elseif ywPosY(pjPos) < 0 then
+      yeDestroy(col)
+      return NORMAL_COLISION
+   elseif ywPosX(pjPos) + lpcs.w_sprite > canvasWid["tiled-wpix"]:to_int() then
+      yeDestroy(col)
+      return NORMAL_COLISION
+   elseif ywPosY(pjPos) + lpcs.h_sprite > canvasWid["tiled-hpix"]:to_int() then
+      yeDestroy(col)
+      return NORMAL_COLISION
+   end
+ 
    i = 0
    while i < yeLen(col) do
       local obj = col[i]
