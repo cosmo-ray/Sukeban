@@ -139,6 +139,25 @@
                  "width":0,
                  "x":111,
                  "y":381
+                }, 
+                {
+                 "height":4,
+                 "id":4,
+                 "name":"Street0 entry",
+                 "properties":
+                    {
+                     "side":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"EntryPoint",
+                 "visible":true,
+                 "width":1,
+                 "x":1,
+                 "y":428
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -146,7 +165,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":4,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",

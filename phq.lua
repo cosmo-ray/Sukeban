@@ -151,6 +151,26 @@ function load_game(entity)
    print("do the same move at the last part, and you're game will be load :)")
 end
 
+function CheckColisionTryChangeScene(main, cur_scene, direction)
+   if cur_scene.out and cur_scene.out[direction] then
+      local dir_info = cur_scene.out[direction]
+      local nextSceneTxt = nil
+      if dir_info.to then
+	 nextSceneTxt = dir_info.to:to_string()
+      else
+	 nextSceneTxt = dir_info:to_string()
+      end
+      local nextScene = scenes[nextSceneTxt]
+
+      if nextScene == nil then
+	 nextScene = ygGet(nextSceneTxt)
+      end
+      load_scene(main, nextScene, yeGetIntAt(dir_info, "entry"))
+      return true
+   end
+   return false
+end
+
 function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
    local colRect = ywRectCreate(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30,
@@ -177,18 +197,35 @@ function CheckColision(main, canvasWid, pj)
    end
    yeDestroy(colRect)
 
+   local cur_scene = main.cur_scene
    if ywPosX(pjPos) < 0 then
       yeDestroy(col)
-      return NORMAL_COLISION
+      if CheckColisionTryChangeScene(main, cur_scene, "left") then
+	 return CHANGE_SCENE_COLISION
+      else
+	 return NORMAL_COLISION
+      end
    elseif ywPosY(pjPos) < 0 then
       yeDestroy(col)
-      return NORMAL_COLISION
+      if CheckColisionTryChangeScene(main, cur_scene, "up") then
+	 return CHANGE_SCENE_COLISION
+      else
+	 return NORMAL_COLISION
+      end
    elseif ywPosX(pjPos) + lpcs.w_sprite > canvasWid["tiled-wpix"]:to_int() then
       yeDestroy(col)
-      return NORMAL_COLISION
+      if CheckColisionTryChangeScene(main, cur_scene, "right") then
+	 return CHANGE_SCENE_COLISION
+      else
+	 return NORMAL_COLISION
+      end
    elseif ywPosY(pjPos) + lpcs.h_sprite > canvasWid["tiled-hpix"]:to_int() then
       yeDestroy(col)
-      return NORMAL_COLISION
+      if CheckColisionTryChangeScene(main, cur_scene, "down") then
+	 return CHANGE_SCENE_COLISION
+      else
+	 return NORMAL_COLISION
+      end
    end
  
    i = 0
@@ -340,6 +377,7 @@ function load_scene(ent, scene, entryIdx)
    local j = 0
    ent.npcs = {}
    ent.exits = {}
+   ent.cur_scene = scene
    local e_npcs = ent.npcs
    local e_exits = ent.exits
    while i < yeLen(objects) do

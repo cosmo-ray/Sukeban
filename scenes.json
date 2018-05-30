@@ -3,7 +3,19 @@
 	"dialogues" : "PHQ_Dialogs_Part1.json",
 	"tiled": "./bar1.json"
     },
+    "street0": {
+	"out": {
+	    "right" : {
+		"to": "street1",
+		"entry" : 2
+	    },
+	},
+	"tiled": "./Street0.json"
+    },
     "street1" : {
+	"out": {
+	    "left" : "street0"
+	},
 	"tiled": "./Street1.json"
     },
     "house0" : {
