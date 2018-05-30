@@ -13,9 +13,6 @@ local NORMAL_COLISION = 1
 local CHANGE_SCENE_COLISION = 2
 
 local function reposScreenInfo(ent, x0, y0)
-   ywCanvasObjSetPos(ent.drunk_txt, x0 + 10, y0 + 10)
-   ywCanvasObjSetPos(ent.drunk_bar0, x0 + 100, y0 + 10)
-   ywCanvasObjSetPos(ent.drunk_bar1, x0 + 100, y0 + 10)
    ywCanvasObjSetPos(ent.life_txt, x0 + 360, y0 + 10)
    ywCanvasObjSetPos(ent.life_nb, x0 + 410, y0 + 10)
 end
@@ -109,10 +106,6 @@ function GetDrink(wid, eve, arg)
    local canvas = Canvas.wrapp(ent.mainScreen)
    phq.pj.drunk = phq.pj.drunk + 9
 
-   print(phq.pj.drunk, ent.drunk_bar1:cent())
-   canvas:remove(ent.drunk_bar1)
-   ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
-				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
    phq.pj.life = phq.pj.life + 2
    if phq.pj.life > phq.pj.max_life then
       phq.pj.life = phq.pj.max_life
@@ -135,9 +128,6 @@ function GetDrink2(wid, eve, arg)
    local canvas = Canvas.wrapp(ent.mainScreen)
    phq.pj.drunk = phq.pj.drunk + 18
 
-   canvas:remove(ent.drunk_bar1)
-   ent.drunk_bar1 = canvas:new_rect(100, 10, "rgba: 0 255 30 255",
-				    Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
    phq.pj.life = phq.pj.life + 5
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
@@ -268,7 +258,9 @@ function pushStatus(mn)
 
    txt_screen["<type>"] = "text-screen"
    txt_screen["text-align"] = "center"
-   txt_screen.text = "all stats are here :))"
+   txt_screen.text = "Status:\n" ..
+      "life: " .. phq.pj.life:to_int() .. "\n" ..
+      "alcohol level: " .. phq.pj.drunk:to_int()
    txt_screen.background = "rgba: 155 155 255 190"
    txt_screen.action = Entity.new_func("backToGameOnEnter")
    ywPushNewWidget(main, txt_screen)
@@ -487,13 +479,6 @@ function load_scene(ent, scene, entryIdx)
    ylpcsHandlerSetPos(ent.pj, Pos.new(x, y).ent)
    lpcs.handlerSetOrigXY(ent.pj, 0, 10)
    lpcs.handlerRefresh(ent.pj)
-   ent.drunk_txt = ywCanvasNewTextExt(mainCanvas.ent, 10, 10,
-				      Entity.new_string("Puke bar: "),
-				      "rgba: 255 255 255 255")
-   ent.drunk_bar0 = mainCanvas:new_rect(100, 10, "rgba: 30 30 30 255",
-					Pos.new(200, 15).ent).ent
-   ent.drunk_bar1 = mainCanvas:new_rect(100, 10, "rgba: 0 255 30 255",
-					Pos.new(200 * phq.pj.drunk / 100 + 1, 15).ent).ent
 
    ent.life_txt = ywCanvasNewTextExt(mainCanvas.ent, 360, 10,
 				     Entity.new_string("life: "),
