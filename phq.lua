@@ -30,6 +30,13 @@ local function reposeCam(main)
    reposScreenInfo(main, x0, y0)
 end
 
+function backToGame(wid)
+   local main = Entity.wrapp(ywCntWidgetFather(wid))   
+   ywCntPopLastEntry(main)
+   main.current = 0
+   return YEVE_ACTION
+end
+
 function EndDialog(wid, eve, arg)
    wid = Entity.wrapp(yDialogueGetMain(wid))
    local main = Entity.wrapp(ywCntWidgetFather(wid))
@@ -244,7 +251,7 @@ end
 function pushMainMenu(main)
    local mn = Menu.new_entity()
 
-   mn:push("back to game")
+   mn:push("back to game", Entity.new_func("backToGame"))
    mn:push("save game")
    mn:push("main menu", "callNext")
    mn.ent.background = "rgba: 255 255 255 190"
