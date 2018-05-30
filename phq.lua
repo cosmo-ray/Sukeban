@@ -115,7 +115,7 @@ function GetDrink(wid, eve, arg)
 				    Entity.new_string(phq.pj.life:to_int()),
                                     "rgba: 255 255 255 255")
    if phq.pj.drunk > 99 then
-       ent.next = "phq:end_txt"
+       ent.next = "phq:menus.end_txt"
        yCallNextWidget(ent:cent())
    end
    EndDialog(wid, eve, arg)
@@ -134,7 +134,7 @@ function GetDrink2(wid, eve, arg)
 				    Entity.new_string(phq.pj.life:to_int()),
 				    "rgba: 255 255 255 255")
    if phq.pj.drunk > 99 then
-       ent.next = "phq:end_txt"
+       ent.next = "phq:menus.end_txt"
        yCallNextWidget(ent:cent())
    end
    EndDialog(wid, eve, arg)
