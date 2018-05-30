@@ -241,6 +241,18 @@ function CheckColision(main, canvasWid, pj)
    return NO_COLISION
 end
 
+function pushMainMenu(main)
+   local mn = Menu.new_entity()
+
+   mn:push("back to game")
+   mn:push("save game")
+   mn:push("main menu", "callNext")
+   mn.ent.background = "rgba: 255 255 255 190"
+   mn.ent["text-align"] = "center"
+   mn.ent.next = main.next
+   ywPushNewWidget(main, mn.ent)
+end
+
 function phq_action(entity, eve, arg)
    entity = Entity.wrapp(entity)
    entity.tid = entity.tid + 1
@@ -252,7 +264,7 @@ function phq_action(entity, eve, arg)
    while eve:is_end() == false do
        if eve:type() == YKEY_DOWN then
 	  if eve:key() == Y_ESC_KEY then
-	     yCallNextWidget(entity:cent());
+	     pushMainMenu(entity)
 	     return YEVE_ACTION
 	  elseif eve:is_key_up() then
              entity.move.up_down = -1
@@ -356,6 +368,8 @@ function destroy_phq(entity)
    ent.mainScreen = nil
    yeDestroy(dialogues)
    dialogues = nil
+   ent.current = 0
+   ent.entries = nil
 end
 
 function load_scene(ent, scene, entryIdx)
