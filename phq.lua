@@ -30,6 +30,18 @@ local function reposeCam(main)
    reposScreenInfo(main, x0, y0)
 end
 
+function backToGameOnEnter(wid, eve)
+   eve = Event.wrapp(eve)
+
+   while eve:is_end() == false do
+      if eve:type() == YKEY_DOWN and eve:key() == Y_ENTER_KEY then
+	 backToGame(wid)
+      end
+      eve = eve:next()
+   end
+   return YEVE_NOTHANDLE
+end
+
 function backToGame(wid)
    local main = Entity.wrapp(ywCntWidgetFather(wid))   
    ywCntPopLastEntry(main)
@@ -248,10 +260,27 @@ function CheckColision(main, canvasWid, pj)
    return NO_COLISION
 end
 
+function pushStatus(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+
+   ywCntPopLastEntry(main)
+   local txt_screen = Entity.new_array()
+
+   txt_screen["<type>"] = "text-screen"
+   txt_screen["text-align"] = "center"
+   txt_screen.text = "all stats are here :))"
+   txt_screen.background = "rgba: 155 155 255 190"
+   txt_screen.action = Entity.new_func("backToGameOnEnter")
+   ywPushNewWidget(main, txt_screen)
+   return YEVE_ACTION
+end
+
 function pushMainMenu(main)
    local mn = Menu.new_entity()
 
    mn:push("back to game", Entity.new_func("backToGame"))
+   mn:push("status", Entity.new_func("pushStatus"))
+   mn:push("inventory")
    mn:push("save game")
    mn:push("main menu", "callNext")
    mn.ent.background = "rgba: 255 255 255 190"
@@ -285,7 +314,7 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.move.left_right = 1
              entity.pj.y = 11
-          elseif eve:key() == Y_SPACE_KEY or eve:key() ==Y_ENTER_KEY then
+          elseif eve:key() == Y_SPACE_KEY or eve:key() == Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
              local y_add = 0
