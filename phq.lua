@@ -273,12 +273,27 @@ function pushMainMenu(main)
    mn:push("back to game", Entity.new_func("backToGame"))
    mn:push("status", Entity.new_func("pushStatus"))
    mn:push("inventory")
-   mn:push("save game")
+   mn:push("save game", Entity.new_func("saveGameCallback"))
    mn:push("main menu", "callNext")
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent["text-align"] = "center"
    mn.ent.next = main.next
    ywPushNewWidget(main, mn.ent)
+end
+
+function saveGame(main, saveDir)
+   print(saveDir)
+   local destDir = "./saved/" .. saveDir
+
+   yuiMkdir("./saved")
+   yuiMkdir(destDir)
+   ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
+   ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
+   print("saving game")
+end
+
+function saveGameCallback(main)
+   saveGame(Entity.wrapp(main), "cur")
 end
 
 function phq_action(entity, eve, arg)
