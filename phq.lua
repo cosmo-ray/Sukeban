@@ -150,14 +150,16 @@ function init_phq(mod)
    mod.GetDrink = Entity.new_func("GetDrink")
    mod["GetDrink++"] = Entity.new_func("GetDrink2")
    mod.load_game = Entity.new_func("load_game")
-end
-
-function saveAndQuit(entity)
-   print("can't save let's quit")
+   mod.continue = Entity.new_func("continue")
 end
 
 function load_game(entity)
    print("do the same move at the last part, and you're game will be load :)")
+end
+
+function continue(entity)
+   print("Continue !!!")
+   return load_game()
 end
 
 function CheckColisionTryChangeScene(main, cur_scene, direction)

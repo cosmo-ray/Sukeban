@@ -114,6 +114,10 @@ We love you anyway",
 		"next" : "phq:menus.start_txt",
 		"action" : "menuNext"
 	    },
+	    {
+		"text" : "Continue",
+		"action" : "phq:continue"
+	    },
             {
                 "text" : "How to play",
                 "next" : "phq:menus.bagare",
