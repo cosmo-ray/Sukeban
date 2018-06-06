@@ -143,7 +143,7 @@ We love you anyway",
     },
     "game" : {
         "<type>" : "phq",
-	"scene": "phq:scenes.house1",
+	"scene": "phq:scenes.bar",
 	"next" : "phq:menus.main"
     }
 }

@@ -141,6 +141,10 @@ function GetDrink2(wid, eve, arg)
    return YEVE_ACTION
 end
 
+function printMessage(main, obj, msg)
+   print(Entity.wrapp(msg))
+end
+
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
 
@@ -151,6 +155,7 @@ function init_phq(mod)
    mod["GetDrink++"] = Entity.new_func("GetDrink2")
    mod.load_game = Entity.new_func("load_game")
    mod.continue = Entity.new_func("continue")
+   mod.printMessage = Entity.new_func("printMessage")
 end
 
 function load_game(entity)
@@ -343,13 +348,30 @@ function phq_action(entity, eve, arg)
                 x_add = lpcs.w_sprite + 20
              end
              local r = Rect.new(pjPos:x() + x_add, pjPos:y() + y_add, 10, 10)
-             local col = ywCanvasNewCollisionsArrayWithRectangle(entity.mainScreen, r:cent())
-             col = Entity.wrapp(col)
-             print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
+	     local e_actionables = entity.actionables
              local i = 0
+
+	     while  i < yeLen(e_actionables) do
+		print(r.ent, e_actionables[i].rect,
+		      ywRectCollision(e_actionables[i].rect, r:cent()))
+		if ywRectCollision(r.ent, e_actionables[i].rect) then
+		   yesCall(ygGet(e_actionables[i].Action:to_string()),
+			   entity:cent(), e_actionables[i]:cent(),
+			   e_actionables[i].Arg0,
+			   e_actionables[i].Arg1,
+			   e_actionables[i].Arg2,
+			   e_actionables[i].Arg3)
+		end
+		i = i + 1
+	     end
+
+	     local col = ywCanvasNewCollisionsArrayWithRectangle(entity.mainScreen, r:cent())
+             col = Entity.wrapp(col)
+             --print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
+	     i = 0
              while i < yeLen(col) do
                 local dialogue = col[i].dialogue
-                print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialogue)
+                --print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialogue)
                 if dialogue and dialogues[dialogue:to_string()] then
 		   local dialogueWid = Entity.new_array()
 		   local npc = entity.npcs[col[i].current:to_int()].char
@@ -434,11 +456,14 @@ function load_scene(ent, scene, entryIdx)
    local i = 0
    local npc_idx = 0
    local j = 0
+   local k = 0
    ent.npcs = {}
    ent.exits = {}
+   ent.actionables = {}
    ent.cur_scene = scene
    local e_npcs = ent.npcs
    local e_exits = ent.exits
+   local e_actionables = ent.actionables
    while i < yeLen(objects) do
       local obj = objects[i]
       local layer_name = obj.layer_name
@@ -468,11 +493,13 @@ function load_scene(ent, scene, entryIdx)
       elseif layer_name:to_string() == "Entries" then
 	 e_exits[j] = obj
 	 j = j + 1
+      elseif layer_name:to_string() == "Actionable" then
+	 e_actionables[k] = obj
+	 k = k + 1
       end
       i = i + 1
    end
 
-   print("entryIdx !!!!", entryIdx)
    if entryIdx < 0 then
       x = 300
       y = 200

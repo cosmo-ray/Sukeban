@@ -131,6 +131,39 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"Actionable",
+         "objects":[
+                {
+                 "height":32,
+                 "id":24,
+                 "name":"Phone",
+                 "properties":
+                    {
+                     "Action":"phq.printMessage",
+                     "ActionNbArgs":1,
+                     "Arg0":"Seems Broken"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "ActionNbArgs":"int",
+                     "Arg0":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31,
+                 "x":382,
+                 "y":91
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"NPC",
          "objects":[
                 {
@@ -399,7 +432,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":23,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",
