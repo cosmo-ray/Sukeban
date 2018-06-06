@@ -163,7 +163,7 @@ function newGame(entity)
    local game = ygGet("phq:menus.game")
    game = Entity.wrapp(game)
    game.saved_data = 0
-   ent.saved_dir = nil
+   game.saved_dir = nil
    yesCall((ygGet("menuNext")), entity);
 end
 
