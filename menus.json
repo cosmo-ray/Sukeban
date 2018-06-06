@@ -111,6 +111,7 @@ We love you anyway",
 	"entries" : [
 	    {
 		"text" : "New Game",
+		"action" : "phq:newGame",
 		"next" : "phq:menus.start_txt",
 		"action" : "menuNext"
 	    },

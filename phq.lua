@@ -155,15 +155,26 @@ function init_phq(mod)
    mod["GetDrink++"] = Entity.new_func("GetDrink2")
    mod.load_game = Entity.new_func("load_game")
    mod.continue = Entity.new_func("continue")
+   mod.newGame = Entity.new_func("newGame")
    mod.printMessage = Entity.new_func("printMessage")
+end
+
+function newGame(entity)
+   local game = ygGet("phq:menus.game")
+   game = Entity.wrapp(game)
+   game.saved_data = 0
+   ent.saved_dir = nil
+   yesCall((ygGet("menuNext")), entity);
 end
 
 function load_game(entity, save_dir)
    print("do the same move at the last part, and you're game will be load :)")
    local game = ygGet("phq:menus.game")
    game = Entity.wrapp(game)
+   game.saved_dir = save_dir
    game.saved_data = 1
    local pj = ygFileToEnt(YJSON, save_dir.."/pj.json")
+   print("saved data:", yeGetInt(game.saved_data))
    print(pj)
    phq.pj = pj
    yeDestroy(pj)
@@ -185,12 +196,7 @@ function CheckColisionTryChangeScene(main, cur_scene, direction)
       else
 	 nextSceneTxt = dir_info:to_string()
       end
-      local nextScene = scenes[nextSceneTxt]
-
-      if nextScene == nil then
-	 nextScene = ygGet(nextSceneTxt)
-      end
-      load_scene(main, nextScene, yeGetIntAt(dir_info, "entry"))
+      load_scene(main, nextSceneTxt, yeGetIntAt(dir_info, "entry"))
       return true
    end
    return false
@@ -208,12 +214,7 @@ function CheckColision(main, canvasWid, pj)
       local rect = main.exits[i].rect
       if ywRectCollision(rect, colRect) then
 	 local nextSceneTxt = main.exits[i].nextScene:to_string()
-	 local nextScene = scenes[nextSceneTxt]
-	 print(nextScene)
-	 if nextScene == nil then
-	    nextScene = ygGet(nextSceneTxt)
-	 end
-	 load_scene(main, nextScene, yeGetInt(main.exits[i].entry))
+	 load_scene(main, nextSceneTxt, yeGetInt(main.exits[i].entry))
 	 yeDestroy(col)
 	 yeDestroy(colRect)
 	 return CHANGE_SCENE_COLISION
@@ -446,14 +447,23 @@ function destroy_phq(entity)
    dialogues = nil
    ent.current = 0
    ent.entries = nil
-   ent.saved_data = 0
+   print("destroy !!")
 end
 
-function load_scene(ent, scene, entryIdx)
+function load_scene(ent, sceneTxt, entryIdx)
    local mainCanvas = Canvas.wrapp(ent.mainScreen)
    local x = 0
    local y = 0
+
+   print(sceneTxt)
+   ent.cur_scene = sceneTxt
+   local scene = scenes[sceneTxt]
+   if scene == nil then
+      scene = ygGet(sceneTxt)
+   end
+
    scene = Entity.wrapp(scene)
+   print(scene:cent())
 
    -- clean old stuff :(
    mainCanvas.ent.objs = {}
@@ -544,16 +554,16 @@ end
 function create_phq(entity)
     local container = Container.init_entity(entity, "stacking")
     local ent = container.ent
-    local scene = Entity.wrapp(ygGet(ent.scene:to_string()))
 
     ent.move = {}
     ent.move.up_down = 0
     ent.move.left_right = 0
     ent.tid = 0
     tiled.setAssetPath("./");
+    print("saved data:", yeGetInt(ent.saved_data))
 
     print(ent.saved_data)
-    if ent.saved_data:to_int() ~= 1 then
+    if yeGetInt(ent.saved_data) ~= 1 then
        phq.pj.drunk = 0
        phq.pj.life = phq.pj.max_life
    end
@@ -568,6 +578,6 @@ function create_phq(entity)
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
     ent.pj = nil
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
-    load_scene(ent, scene, 0)
+    load_scene(ent, ent.scene:to_string(), 0)
     return ret
 end
