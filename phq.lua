@@ -158,13 +158,22 @@ function init_phq(mod)
    mod.printMessage = Entity.new_func("printMessage")
 end
 
-function load_game(entity)
+function load_game(entity, save_dir)
    print("do the same move at the last part, and you're game will be load :)")
+   local game = ygGet("phq:menus.game")
+   game = Entity.wrapp(game)
+   game.saved_data = 1
+   local pj = ygFileToEnt(YJSON, save_dir.."/pj.json")
+   print(pj)
+   phq.pj = pj
+   yeDestroy(pj)
+   local tmp = ygFileToEnt(YJSON, save_dir.."/npcs.json")
+   yCallNextWidget(entity);
 end
 
 function continue(entity)
    print("Continue !!!")
-   return load_game()
+   return load_game(entity, "./saved/cur")
 end
 
 function CheckColisionTryChangeScene(main, cur_scene, direction)
@@ -437,6 +446,7 @@ function destroy_phq(entity)
    dialogues = nil
    ent.current = 0
    ent.entries = nil
+   ent.saved_data = 0
 end
 
 function load_scene(ent, scene, entryIdx)
@@ -508,8 +518,6 @@ function load_scene(ent, scene, entryIdx)
       local side = e_exits[entryIdx].side:to_string()
       x = ywRectX(rect)
       y = ywRectY(rect)
-      print(x, y)
-      print(rect, side)
       if side == "up" then
 	 y = y - 75
       elseif side == "down" then
@@ -543,6 +551,12 @@ function create_phq(entity)
     ent.move.left_right = 0
     ent.tid = 0
     tiled.setAssetPath("./");
+
+    print(ent.saved_data)
+    if ent.saved_data:to_int() ~= 1 then
+       phq.pj.drunk = 0
+       phq.pj.life = phq.pj.max_life
+   end
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
     ent["turn-length"] = 10000
@@ -551,8 +565,6 @@ function create_phq(entity)
     ent.entries[0] = mainCanvas.ent
     local ret = container:new_wid()
     ent.destroy = Entity.new_func("destroy_phq")
-    phq.pj.drunk = 0
-    phq.pj.life = phq.pj.max_life
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
     ent.pj = nil
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
