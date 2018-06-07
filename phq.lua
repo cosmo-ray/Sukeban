@@ -162,7 +162,7 @@ end
 function newGame(entity)
    local game = ygGet("phq:menus.game")
    game = Entity.wrapp(game)
-   game.saved_data = 0
+   game.saved_data = nil
    game.saved_dir = nil
    yesCall((ygGet("menuNext")), entity);
 end
@@ -172,7 +172,8 @@ function load_game(entity, save_dir)
    local game = ygGet("phq:menus.game")
    game = Entity.wrapp(game)
    game.saved_dir = save_dir
-   game.saved_data = 1
+   game.saved_data = ygFileToEnt(YJSON, save_dir.."/misc.json")
+   yeDestroy(game.saved_data)
    local pj = ygFileToEnt(YJSON, save_dir.."/pj.json")
    print("saved data:", yeGetInt(game.saved_data))
    print(pj)
@@ -185,6 +186,25 @@ end
 function continue(entity)
    print("Continue !!!")
    return load_game(entity, "./saved/cur")
+end
+
+function saveGame(main, saveDir)
+   print(saveDir)
+   local destDir = "./saved/" .. saveDir
+   local misc = Entity.new_array()
+
+   yuiMkdir("./saved")
+   yuiMkdir(destDir)
+   misc.cur_scene_str = main.cur_scene_str
+   print(misc, main.cur_scene_str)
+   ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
+   ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
+   ygEntToFile(YJSON, destDir .. "/misc.json", misc)
+   print("saving game")
+end
+
+function saveGameCallback(wid)
+   saveGame(Entity.wrapp(ywCntWidgetFather(wid)), "cur")
 end
 
 function CheckColisionTryChangeScene(main, cur_scene, direction)
@@ -296,21 +316,6 @@ function pushMainMenu(main)
    mn.ent["text-align"] = "center"
    mn.ent.next = main.next
    ywPushNewWidget(main, mn.ent)
-end
-
-function saveGame(main, saveDir)
-   print(saveDir)
-   local destDir = "./saved/" .. saveDir
-
-   yuiMkdir("./saved")
-   yuiMkdir(destDir)
-   ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
-   ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
-   print("saving game")
-end
-
-function saveGameCallback(main)
-   saveGame(Entity.wrapp(main), "cur")
 end
 
 function phq_action(entity, eve, arg)
@@ -455,8 +460,8 @@ function load_scene(ent, sceneTxt, entryIdx)
    local x = 0
    local y = 0
 
-   print(sceneTxt)
-   ent.cur_scene = sceneTxt
+   ent.cur_scene_str = sceneTxt
+   print("scene txt:", sceneTxt, ent.cur_scene_str)
    local scene = scenes[sceneTxt]
    if scene == nil then
       scene = ygGet(sceneTxt)
@@ -554,18 +559,22 @@ end
 function create_phq(entity)
     local container = Container.init_entity(entity, "stacking")
     local ent = container.ent
+    local scenePath = nil
 
     ent.move = {}
     ent.move.up_down = 0
     ent.move.left_right = 0
     ent.tid = 0
     tiled.setAssetPath("./");
-    print("saved data:", yeGetInt(ent.saved_data))
 
     print(ent.saved_data)
-    if yeGetInt(ent.saved_data) ~= 1 then
+    if ent.saved_data then
+       print(ent.saved_data)
+       scenePath = ent.saved_data.cur_scene_str
+    else
        phq.pj.drunk = 0
        phq.pj.life = phq.pj.max_life
+       scenePath = ent.scene
    end
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
@@ -578,6 +587,6 @@ function create_phq(entity)
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
     ent.pj = nil
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
-    load_scene(ent, ent.scene:to_string(), 0)
+    load_scene(ent, scenePath:to_string(), 0)
     return ret
 end
