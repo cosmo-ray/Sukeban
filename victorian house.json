@@ -1,0 +1,12 @@
+{ "columns":9,
+ "image":"victorian house.png",
+ "imageheight":416,
+ "imagewidth":288,
+ "margin":0,
+ "name":"victorian house",
+ "spacing":0,
+ "tilecount":117,
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset"
+}
