@@ -14,6 +14,7 @@
         { "path" : "YIRL_MODULES_PATH/jrpg-fight/", "type" : "module" },
         { "file" : "scenes.json", "type" : "json", "as" : "scenes"},
         { "file" : "npcs.json", "type" : "json", "as" : "npcs"},
+        { "file" : "combots.json", "type" : "json", "as" : "combots"},
         { "file" : "menus.json", "type" : "json", "as" : "menus"},
 	{ "file" : "phq.lua", "type" : "lua" }
     ],
@@ -21,6 +22,7 @@
 	"name": "oscar",
 	"sex": "female",
 	"type": "light",
+	"attack" : "unarmed1",
 	"max_life" : 10,
 	"clothes": ["feet/shoes/female/brown_shoes_female.png",
 		    "torso/robes_female_no_th-sh/white.png",

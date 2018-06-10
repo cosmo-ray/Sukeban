@@ -40,7 +40,7 @@ function backToGameOnEnter(wid, eve)
 end
 
 function backToGame(wid)
-   local main = Entity.wrapp(ywCntWidgetFather(wid))   
+   local main = Entity.wrapp(ywCntWidgetFather(wid))
    ywCntPopLastEntry(main)
    main.current = 0
    return YEVE_ACTION
@@ -273,7 +273,7 @@ function CheckColision(main, canvasWid, pj)
 	 return NORMAL_COLISION
       end
    end
- 
+
    i = 0
    while i < yeLen(col) do
       local obj = col[i]
@@ -445,7 +445,7 @@ end
 
 function destroy_phq(entity)
    local ent = Entity.wrapp(entity)
-   
+
    tiled.deinit()
    ent.mainScreen = nil
    yeDestroy(dialogues)
@@ -555,7 +555,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 				    "rgba: 255 255 255 255")
    reposeCam(ent)
 end
-   
+
 function create_phq(entity)
     local container = Container.init_entity(entity, "stacking")
     local ent = container.ent
@@ -568,6 +568,7 @@ function create_phq(entity)
     tiled.setAssetPath("./");
 
     print(ent.saved_data)
+    yJrpgFightSetCombots("phq.combots")
     if ent.saved_data then
        print(ent.saved_data)
        scenePath = ent.saved_data.cur_scene_str
