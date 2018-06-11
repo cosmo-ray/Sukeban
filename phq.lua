@@ -41,6 +41,11 @@ end
 
 function backToGame(wid)
    local main = Entity.wrapp(ywCntWidgetFather(wid))
+
+   wid = Entity.wrapp(wid)
+   if wid.oldTimer then
+      main["turn-length"] = wid.oldTimer
+   end
    ywCntPopLastEntry(main)
    main.current = 0
    return YEVE_ACTION
@@ -287,6 +292,23 @@ function CheckColision(main, canvasWid, pj)
    return NO_COLISION
 end
 
+function playSnake(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+
+   ywCntPopLastEntry(main)
+   local snake = Entity.new_array()
+
+   snake["<type>"] = "snake"
+   snake.die = Entity.new_func("backToGame")
+   snake.hitWall = "snake:snakeWarp"
+   snake.resources = "snake:resources"
+   snake.background = "rgba: 255 255 255 255"
+   snake.oldTimer = main["turn-length"]
+   main["turn-length"] = 200000
+   ywPushNewWidget(main, snake)
+   return YEVE_ACTION
+end
+
 function pushStatus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
 
@@ -311,6 +333,7 @@ function pushMainMenu(main)
    mn:push("status", Entity.new_func("pushStatus"))
    mn:push("inventory")
    mn:push("save game", Entity.new_func("saveGameCallback"))
+   mn:push("play snake", Entity.new_func("playSnake"))
    mn:push("main menu", "callNext")
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent["text-align"] = "center"
