@@ -300,6 +300,7 @@ function playSnake(mn)
 
    snake["<type>"] = "snake"
    snake.die = Entity.new_func("backToGame")
+   snake.quit = Entity.new_func("backToGame")
    snake.hitWall = "snake:snakeWarp"
    snake.resources = "snake:resources"
    snake.background = "rgba: 255 255 255 255"
