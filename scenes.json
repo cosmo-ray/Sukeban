@@ -23,6 +23,7 @@
 	"tiled": "./House0.json"
     },
     "house1" : {
+	"dialogues" : "house_dialogue.json",
 	"tiled": "./House1.json"
     }
 }

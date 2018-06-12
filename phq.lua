@@ -150,6 +150,39 @@ function printMessage(main, obj, msg)
    print(Entity.wrapp(msg))
 end
 
+function startDialogue(main, obj, dialogue)
+   dialogue = Entity.wrapp(dialogue)
+   print("Start Dialogue !!!!", obj, dialogue)
+   if dialogue and dialogues[dialogue:to_string()] then
+      local entity = Entity.wrapp(main)
+      local obj = Entity.wrapp(obj)
+      local dialogueWid = Entity.new_array()
+      local npc = nil
+      if obj.current then
+	 npc = entity.npcs[obj.current:to_int()].char
+	 dialogueWid.npc_nb = obj.current
+      else
+	 npc = obj
+	 dialogueWid.npc_nb = -1
+      end
+      local dialogue = dialogues[dialogue:to_string()]
+
+      print(dialogue)
+      if dialogue.dialogue then
+	 yeCopy(dialogue, dialogueWid)
+	 dialogueWid.src = dialogue
+      else
+	 dialogueWid.dialogue = dialogue
+      end
+      dialogueWid["<type>"] = "dialogue-canvas"
+      dialogueWid.image = npc.image
+      dialogueWid.name = npc.name
+      ywPushNewWidget(entity, dialogueWid)
+      return YEVE_ACTION
+   end
+   return YEVE_NOTHANDLE
+end
+
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
 
@@ -162,6 +195,8 @@ function init_phq(mod)
    mod.continue = Entity.new_func("continue")
    mod.newGame = Entity.new_func("newGame")
    mod.printMessage = Entity.new_func("printMessage")
+   mod.startDialogue = Entity.new_func("startDialogue")
+   mod.playSnake = Entity.new_func("playSnake")
 end
 
 function newGame(entity)
@@ -292,8 +327,14 @@ function CheckColision(main, canvasWid, pj)
    return NO_COLISION
 end
 
-function playSnake(mn)
-   local main = Entity.wrapp(ywCntWidgetFather(mn))
+function playSnake(wid)
+   local wid = Entity.wrapp(wid)
+   local main = nil
+
+   if wid.isDialogue then
+      wid = Entity.wrapp(yDialogueGetMain(wid))
+   end
+   main = Entity.wrapp(ywCntWidgetFather(wid))
 
    ywCntPopLastEntry(main)
    local snake = Entity.new_array()
@@ -394,12 +435,12 @@ function phq_action(entity, eve, arg)
 		print(r.ent, e_actionables[i].rect,
 		      ywRectCollision(e_actionables[i].rect, r:cent()))
 		if ywRectCollision(r.ent, e_actionables[i].rect) then
-		   yesCall(ygGet(e_actionables[i].Action:to_string()),
-			   entity:cent(), e_actionables[i]:cent(),
-			   e_actionables[i].Arg0,
-			   e_actionables[i].Arg1,
-			   e_actionables[i].Arg2,
-			   e_actionables[i].Arg3)
+		   return yesCall(ygGet(e_actionables[i].Action:to_string()),
+				  entity:cent(), e_actionables[i]:cent(),
+				  e_actionables[i].Arg0,
+				  e_actionables[i].Arg1,
+				  e_actionables[i].Arg2,
+				  e_actionables[i].Arg3)
 		end
 		i = i + 1
 	     end
@@ -410,27 +451,10 @@ function phq_action(entity, eve, arg)
 	     i = 0
              while i < yeLen(col) do
                 local dialogue = col[i].dialogue
-                --print( CanvasObj.wrapp(col[i]):pos():tostring(), col[i].Collision, col[i].dialogue)
-                if dialogue and dialogues[dialogue:to_string()] then
-		   local dialogueWid = Entity.new_array()
-		   local npc = entity.npcs[col[i].current:to_int()].char
-		   local dialogue = dialogues[dialogue:to_string()]
-
-		   print(dialogue)
-		   if dialogue.dialogue then
-		      yeCopy(dialogue, dialogueWid)
-		      dialogueWid.src = dialogue
-		   else
-		      dialogueWid.dialogue = dialogue
-		   end
-		   dialogueWid["<type>"] = "dialogue-canvas"
-		   dialogueWid.image = npc.image
-		   dialogueWid.name = npc.name
-		   dialogueWid.npc_nb = col[i].current
-		   ywPushNewWidget(entity, dialogueWid)
+		if startDialogue(entity, col[i], dialogue) == YEVE_ACTION then
 		   yeDestroy(col)
 		   return YEVE_ACTION
-                end
+		end
                 i = i + 1
              end
              yeDestroy(col)

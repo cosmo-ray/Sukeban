@@ -11,5 +11,33 @@
 		]
             }
 	]
+    },
+    "Computer": {
+	"dialogue" : [
+	    { "text": "Loading" }, { "text": "..." },
+	    {
+		"text": "Operations:",
+		"answers": [
+		    {
+			"text": "Play Snake",
+			"action": "phq.playSnake"
+		    },
+		    "Play Dnoom",
+		    {
+			"text": "Shut Down",
+			"action": "phq.EndDialog"
+		    }
+		]
+	    },
+	    {
+		"text": "Computer say no !",
+		"answers": [
+                    {
+			"text": "Shut Down",
+			"action": "phq.EndDialog"
+                    }
+		]
+            }
+	]
     }
 }
