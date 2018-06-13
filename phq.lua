@@ -1,4 +1,5 @@
 local tiled = Entity.wrapp(ygGet("tiled"))
+local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
@@ -15,6 +16,7 @@ local CHANGE_SCENE_COLISION = 2
 local function reposScreenInfo(ent, x0, y0)
    ywCanvasObjSetPos(ent.life_txt, x0 + 360, y0 + 10)
    ywCanvasObjSetPos(ent.life_nb, x0 + 410, y0 + 10)
+   dialogue_box.set_pos(ent.box, 40 + x0, 40 + y0)
 end
 
 local function reposeCam(main)
@@ -149,6 +151,10 @@ function GetDrink2(wid, eve, arg)
 end
 
 function printMessage(main, obj, msg)
+   main = Entity.wrapp(main)
+   dialogue_box.new_text(main.mainScreen, 0, 0,
+			 yeGetString(msg), main, "box")
+   main.box_t = 0
    print(Entity.wrapp(msg))
 end
 
@@ -375,6 +381,16 @@ function phq_action(entity, eve, arg)
 
    if yeGetInt(entity.current) == 2 then
       return NOTHANDLE
+   end
+   if entity.box_t then
+      print(entity.box_t)
+      if entity.box_t > 100 then
+	 dialogue_box.rm(entity.mainScreen, entity.box)
+	 entity.box = nil
+	 entity.box_t = nil
+      else
+	 entity.box_t = entity.box_t + 1
+      end
    end
    while eve:is_end() == false do
        if eve:type() == YKEY_DOWN then
