@@ -370,14 +370,30 @@ function pushStatus(mn)
    return YEVE_ACTION
 end
 
+function invList(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+   local inv = phq.pj.inventory
+   ywCntPopLastEntry(main)
+   mn = Menu.new_entity()
+   mn:push("back to game", Entity.new_func("backToGame"))
+   local i = 0
+   while i < yeLen(inv) do
+      mn:push(yeGetKeyAt(inv, i) .. ": " .. yeGetInt(inv[i]))
+      i = i + 1
+   end
+
+   mn.ent.background = "rgba: 255 255 255 190"
+   mn.ent.next = main.next
+   ywPushNewWidget(main, mn.ent)   
+end
+
 function pushMainMenu(main)
    local mn = Menu.new_entity()
 
    mn:push("back to game", Entity.new_func("backToGame"))
    mn:push("status", Entity.new_func("pushStatus"))
-   mn:push("inventory")
+   mn:push("inventory", Entity.new_func("invList"))
    mn:push("save game", Entity.new_func("saveGameCallback"))
-   mn:push("play snake", Entity.new_func("playSnake"))
    mn:push("main menu", "callNext")
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent["text-align"] = "center"

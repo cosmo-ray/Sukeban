@@ -25,6 +25,10 @@
 	"type": "light",
 	"attack" : "unarmed1",
 	"max_life" : 10,
+	"inventory" : {
+	    "money": 27,
+	    "Guriko": 4
+	},
 	"clothes": ["feet/shoes/female/brown_shoes_female.png",
 		    "torso/robes_female_no_th-sh/white.png",
 		    "hair/female/shoulderr/blonde.png"]
