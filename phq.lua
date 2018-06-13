@@ -152,7 +152,7 @@ end
 
 function printMessage(main, obj, msg)
    main = Entity.wrapp(main)
-   dialogue_box.new_text(main.mainScreen, 0, 0,
+   dialogue_box.new_text(main.upCanvas, 0, 0,
 			 yeGetString(msg), main, "box")
    main.box_t = 0
    print(Entity.wrapp(msg))
@@ -385,7 +385,7 @@ function phq_action(entity, eve, arg)
    if entity.box_t then
       print(entity.box_t)
       if entity.box_t > 100 then
-	 dialogue_box.rm(entity.mainScreen, entity.box)
+	 dialogue_box.rm(entity.upCanvas, entity.box)
 	 entity.box = nil
 	 entity.box_t = nil
       else
