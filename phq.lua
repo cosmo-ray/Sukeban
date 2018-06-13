@@ -221,7 +221,7 @@ function load_game(entity, save_dir)
    print(pj)
    phq.pj = pj
    yeDestroy(pj)
-   local tmp = ygFileToEnt(YJSON, save_dir.."/npcs.json")
+   --local tmp = ygFileToEnt(YJSON, save_dir.."/npcs.json")
    yCallNextWidget(entity);
 end
 
@@ -351,40 +351,6 @@ function playSnake(wid)
    main["turn-length"] = 200000
    ywPushNewWidget(main, snake)
    return YEVE_ACTION
-end
-
-function pushStatus(mn)
-   local main = Entity.wrapp(ywCntWidgetFather(mn))
-
-   ywCntPopLastEntry(main)
-   local txt_screen = Entity.new_array()
-
-   txt_screen["<type>"] = "text-screen"
-   txt_screen["text-align"] = "center"
-   txt_screen.text = "Status:\n" ..
-      "life: " .. phq.pj.life:to_int() .. "\n" ..
-      "alcohol level: " .. phq.pj.drunk:to_int()
-   txt_screen.background = "rgba: 155 155 255 190"
-   txt_screen.action = Entity.new_func("backToGameOnEnter")
-   ywPushNewWidget(main, txt_screen)
-   return YEVE_ACTION
-end
-
-function invList(mn)
-   local main = Entity.wrapp(ywCntWidgetFather(mn))
-   local inv = phq.pj.inventory
-   ywCntPopLastEntry(main)
-   mn = Menu.new_entity()
-   mn:push("back to game", Entity.new_func("backToGame"))
-   local i = 0
-   while i < yeLen(inv) do
-      mn:push(yeGetKeyAt(inv, i) .. ": " .. yeGetInt(inv[i]))
-      i = i + 1
-   end
-
-   mn.ent.background = "rgba: 255 255 255 190"
-   mn.ent.next = main.next
-   ywPushNewWidget(main, mn.ent)   
 end
 
 function pushMainMenu(main)
