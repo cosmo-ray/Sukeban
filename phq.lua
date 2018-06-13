@@ -19,11 +19,13 @@ end
 
 local function reposeCam(main)
    local canvas = main.mainScreen
+   local upCanvas = main.upCanvas
    local pjPos = Pos.wrapp(ylpcsHandePos(main.pj))
    local x0 = pjPos:x() - window_width / 2
    local y0 = pjPos:y() - window_height / 2
 
    ywPosSet(canvas.cam, x0, y0)
+   ywPosSet(upCanvas.cam, x0, y0)
    reposScreenInfo(main, x0, y0)
 end
 
@@ -388,7 +390,7 @@ function phq_action(entity, eve, arg)
    entity.tid = entity.tid + 1
    eve = Event.wrapp(eve)
 
-   if yeGetInt(entity.current) == 1 then
+   if yeGetInt(entity.current) == 2 then
       return NOTHANDLE
    end
    while eve:is_end() == false do
@@ -496,6 +498,7 @@ function destroy_phq(entity)
 
    tiled.deinit()
    ent.mainScreen = nil
+   ent.upCanvas = nil
    yeDestroy(dialogues)
    dialogues = nil
    ent.current = 0
@@ -505,6 +508,7 @@ end
 
 function load_scene(ent, sceneTxt, entryIdx)
    local mainCanvas = Canvas.wrapp(ent.mainScreen)
+   local upCanvas = Canvas.wrapp(ent.upCanvas)
    local x = 0
    local y = 0
 
@@ -519,9 +523,11 @@ function load_scene(ent, sceneTxt, entryIdx)
    print(scene:cent())
 
    -- clean old stuff :(
+   upCanvas.ent.objs = {}
+   upCanvas.ent.cam = Pos.new(0, 0).ent
    mainCanvas.ent.objs = {}
    mainCanvas.ent.objects = {}
-   tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent())
+   tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(), upCanvas.ent:cent())
    dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
    mainCanvas.ent.cam = Pos.new(0, 0).ent
    -- Pj info:
@@ -627,10 +633,12 @@ function create_phq(entity)
    end
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
+    local upCanvas = Canvas.new_entity(entity, "upCanvas")
     ent["turn-length"] = 10000
     ent.entries = {}
     ent.background = "rgba: 127 127 127 255"
     ent.entries[0] = mainCanvas.ent
+    ent.entries[1] = upCanvas.ent
     local ret = container:new_wid()
     ent.destroy = Entity.new_func("destroy_phq")
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
