@@ -18,6 +18,9 @@
 	},
 	"tiled": "./Street1.json"
     },
+    "street2" : {
+	"tiled": "./Street2.json"
+    },
     "house0" : {
 	"dialogues" : "house_dialogue.json",
 	"tiled": "./House0.json"
