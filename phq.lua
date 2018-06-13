@@ -160,12 +160,12 @@ function startDialogue(main, obj, dialogue)
       local obj = Entity.wrapp(obj)
       local dialogueWid = Entity.new_array()
       local npc = nil
+      local npc_nb = -1
       if obj.current then
 	 npc = entity.npcs[obj.current:to_int()].char
-	 dialogueWid.npc_nb = obj.current
+	 npc_nb = obj.current
       else
 	 npc = obj
-	 dialogueWid.npc_nb = -1
       end
       local dialogue = dialogues[dialogue:to_string()]
 
@@ -176,6 +176,7 @@ function startDialogue(main, obj, dialogue)
       else
 	 dialogueWid.dialogue = dialogue
       end
+      dialogueWid.npc_nb = npc_nb
       dialogueWid["<type>"] = "dialogue-canvas"
       dialogueWid.image = npc.image
       dialogueWid.name = npc.name
