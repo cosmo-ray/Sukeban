@@ -349,6 +349,7 @@ function playSnake(wid)
    local snake = Entity.new_array()
 
    snake["<type>"] = "snake"
+   snake.dreadful_die = 1
    snake.die = Entity.new_func("backToGame")
    snake.quit = Entity.new_func("backToGame")
    snake.hitWall = "snake:snakeWarp"
