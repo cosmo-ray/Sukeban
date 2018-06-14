@@ -632,7 +632,7 @@ function create_phq(entity)
     else
        phq.pj.drunk = 0
        phq.pj.life = phq.pj.max_life
-       scenePath = Entity.new_string("phq:scenes.street2")
+       scenePath = Entity.new_string("phq:scenes.house1")
    end
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
