@@ -17,6 +17,7 @@
         { "file" : "npcs.json", "type" : "json", "as" : "npcs"},
         { "file" : "combots.json", "type" : "json", "as" : "combots"},
         { "file" : "menus.json", "type" : "json", "as" : "menus"},
+        { "file" : "environement.json", "type" : "json", "as" : "env"},
 	{ "file" : "global_menu.lua", "type" : "lua" },
 	{ "file" : "phq.lua", "type" : "lua" }
     ],

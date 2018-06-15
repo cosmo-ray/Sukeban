@@ -13,6 +13,9 @@ local NO_COLISION = 0
 local NORMAL_COLISION = 1
 local CHANGE_SCENE_COLISION = 2
 
+DAY_STR = {"monday", "tuesday", "wensday", "thuesday",
+	   "friday", "saturday", "sunday"}
+
 local function reposScreenInfo(ent, x0, y0)
    ywCanvasObjSetPos(ent.life_txt, x0 + 360, y0 + 10)
    ywCanvasObjSetPos(ent.life_nb, x0 + 410, y0 + 10)
