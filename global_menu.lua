@@ -14,7 +14,8 @@ function pushStatus(mn)
    txt_screen["<type>"] = "text-screen"
    txt_screen["text-align"] = "center"
    txt_screen.text = "Day: " ..
-      DAY_STR[phq.env.day:to_int() + 1] .. "\n" ..
+      DAY_STR[phq.env.day:to_int() + 1] .. ", "..
+      "week: " .. phq.env.week:to_string() .. "\n" ..
       "Status:\n" ..
       "life: " .. phq.pj.life:to_int() .. "\n" ..
       "alcohol level: " .. phq.pj.drunk:to_int()
