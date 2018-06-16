@@ -1,0 +1,13 @@
+{ "columns":1,
+ "image":"ugly-arcade-machine.png",
+ "imageheight":64,
+ "imagewidth":32,
+ "margin":0,
+ "name":"open_tileset",
+ "spacing":0,
+ "tilecount":2,
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.2
+}
