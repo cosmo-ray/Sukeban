@@ -437,8 +437,6 @@ function phq_action(entity, eve, arg)
              local i = 0
 
 	     while  i < yeLen(e_actionables) do
-		print(r.ent, e_actionables[i].rect,
-		      ywRectCollision(e_actionables[i].rect, r:cent()))
 		if ywRectCollision(r.ent, e_actionables[i].rect) then
 		   return yesCall(ygGet(e_actionables[i].Action:to_string()),
 				  entity:cent(), e_actionables[i]:cent(),
