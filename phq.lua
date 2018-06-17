@@ -155,10 +155,13 @@ end
 
 function printMessage(main, obj, msg)
    main = Entity.wrapp(main)
+   if main.box then
+      dialogue_box.rm(main.upCanvas, main.box)
+      main.box = nil
+   end
    dialogue_box.new_text(main.upCanvas, 0, 0,
 			 yeGetString(msg), main, "box")
    main.box_t = 0
-   print(Entity.wrapp(msg))
 end
 
 function startDialogue(main, obj, dialogue)
