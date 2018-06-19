@@ -10,7 +10,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
-	"image": "./Portrait_01.png",
+	"image": "./Portrait_01.png"
     },
     "Merlin": {
         "sex": "male",
@@ -140,6 +140,7 @@
             "hair/female/long/blonde.png"
         ],
 	"image": "./Portrait_13.png",
+	"calendar": { "wensday": "bar" }
     },
     "Jane": {
         "sex": "female",
@@ -164,6 +165,7 @@
             "hair/male/plain/raven.png"
         ],
 	"image": "./Portrait_11.png",
+	"calendar": { "monday": "bar" }
     },
     "Mom": {
         "sex": "female",
@@ -174,7 +176,6 @@
             "torso/dress_female/dress_w_sash_female.png",
             "hair/female/ponytail/brunette2.png"
         ],
-	"image": "./Portrait_12.png",
     },
     "Bouncer": {
 	"sex": "male",

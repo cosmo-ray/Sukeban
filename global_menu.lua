@@ -38,5 +38,5 @@ function invList(mn)
    end
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent.next = main.next
-   ywPushNewWidget(main, mn.ent)   
+   ywPushNewWidget(main, mn.ent)
 end

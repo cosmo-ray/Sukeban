@@ -198,6 +198,16 @@ function startDialogue(main, obj, dialogue)
    return YEVE_NOTHANDLE
 end
 
+function checkNpcPresence(npc, scene)
+   if npc == nil then
+      return false
+   end
+   if npc.calendar then
+      return yeGetString(npc.calendar[DAY_STR[phq.env.day:to_int() + 1]]) == scene
+   end
+   return true
+end
+
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
 
@@ -507,7 +517,6 @@ function destroy_phq(entity)
    dialogues = nil
    ent.current = 0
    ent.entries = nil
-   print("destroy !!")
 end
 
 function load_scene(ent, sceneTxt, entryIdx)
@@ -519,9 +528,6 @@ function load_scene(ent, sceneTxt, entryIdx)
    ent.cur_scene_str = sceneTxt
    print("scene txt:", sceneTxt, ent.cur_scene_str)
    local scene = scenes[sceneTxt]
-   if scene == nil then
-      scene = ygGet(sceneTxt)
-   end
 
    scene = Entity.wrapp(scene)
    print(scene:cent())
@@ -550,9 +556,12 @@ function load_scene(ent, sceneTxt, entryIdx)
    while i < yeLen(objects) do
       local obj = objects[i]
       local layer_name = obj.layer_name
-      if layer_name:to_string() == "NPC" then
-	 local npc = lpcs.createCaracterHandler(npcs[obj.name:to_string()],
-						mainCanvas.ent, e_npcs)
+      local npc = npcs[yeGetString(yeGet(obj, "name"))]
+
+      if layer_name:to_string() == "NPC" and
+      checkNpcPresence(npc, sceneTxt) then
+
+	 npc = lpcs.createCaracterHandler(npc, mainCanvas.ent, e_npcs)
 	 --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
 	 local pos = Pos.new_copy(obj.rect)
 	 pos:sub(20, 50)
@@ -633,7 +642,7 @@ function create_phq(entity)
     else
        phq.pj.drunk = 0
        phq.pj.life = phq.pj.max_life
-       scenePath = Entity.new_string("phq:scenes.house1")
+       scenePath = Entity.new_string("house1")
    end
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
