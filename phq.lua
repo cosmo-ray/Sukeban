@@ -8,6 +8,7 @@ local scenes = Entity.wrapp(ygGet("phq.scenes"))
 local dialogues = nil
 local window_width = 800
 local window_height = 600
+local sleep_time = 0
 
 local NO_COLISION = 0
 local NORMAL_COLISION = 1
@@ -15,6 +16,35 @@ local CHANGE_SCENE_COLISION = 2
 
 DAY_STR = {"monday", "tuesday", "wensday", "thuesday",
 	   "friday", "saturday", "sunday"}
+
+local function doSleep(ent, upCanvas)
+   ywCanvasRemoveObj(upCanvas.ent, ent.sleep_r)
+
+   if sleep_time > 200 then
+      ent.sleep = nil
+      sleep_time = 0
+      return true
+   end
+
+   local pjPos = Pos.wrapp(ylpcsHandePos(ent.pj))
+   local x0 = pjPos:x() - window_width / 2
+   local y0 = pjPos:y() - window_height / 2
+
+   if sleep_time < 100 then
+      local str = "rgba: 0 0 0 ".. math.floor(255 * sleep_time / 100)
+      ent.sleep_r = upCanvas:new_rect(x0, y0, str,
+				      Pos.new(window_width,
+					      window_height).ent).ent
+   else
+      local st = sleep_time - 100
+      local str = "rgba: 0 0 0 ".. math.floor(255 - 255 * st / 100)
+      ent.sleep_r = upCanvas:new_rect(x0, y0, str,
+				      Pos.new(window_width,
+					      window_height).ent).ent
+   end
+   sleep_time = sleep_time + 1
+   return false
+end
 
 local function reposScreenInfo(ent, x0, y0)
    ywCanvasObjSetPos(ent.night_r, x0, y0)
@@ -154,6 +184,12 @@ function GetDrink2(wid, eve, arg)
    return YEVE_ACTION
 end
 
+function sleep(main, obj, msg)
+   print("SLEEP")
+   main = Entity.wrapp(main)
+   main.sleep = 1
+end
+
 function printMessage(main, obj, msg)
    main = Entity.wrapp(main)
    if main.box then
@@ -221,6 +257,7 @@ function init_phq(mod)
    mod.continue = Entity.new_func("continue")
    mod.newGame = Entity.new_func("newGame")
    mod.printMessage = Entity.new_func("printMessage")
+   mod.sleep = Entity.new_func("sleep")
    mod.startDialogue = Entity.new_func("startDialogue")
    mod.playSnake = Entity.new_func("playSnake")
 end
@@ -408,6 +445,10 @@ function phq_action(entity, eve, arg)
 	 entity.box_t = nil
       else
 	 entity.box_t = entity.box_t + 1
+      end
+   elseif entity.sleep then
+      if doSleep(entity, Canvas.wrapp(entity.upCanvas)) == false then
+	 return YEVE_ACTION
       end
    end
    while eve:is_end() == false do
