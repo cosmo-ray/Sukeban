@@ -17,6 +17,7 @@ DAY_STR = {"monday", "tuesday", "wensday", "thuesday",
 	   "friday", "saturday", "sunday"}
 
 local function reposScreenInfo(ent, x0, y0)
+   ywCanvasObjSetPos(ent.night_r, x0, y0)
    ywCanvasObjSetPos(ent.life_txt, x0 + 360, y0 + 10)
    ywCanvasObjSetPos(ent.life_nb, x0 + 410, y0 + 10)
    dialogue_box.set_pos(ent.box, 40 + x0, 40 + y0)
@@ -614,10 +615,16 @@ function load_scene(ent, sceneTxt, entryIdx)
    lpcs.handlerSetOrigXY(ent.pj, 0, 10)
    lpcs.handlerRefresh(ent.pj)
 
-   ent.life_txt = ywCanvasNewTextExt(mainCanvas.ent, 360, 10,
+   if scene.exterior and phq.env.time:to_string() == "night" then
+      ent.night_r = upCanvas:new_rect(0, 0, "rgba: 0 0 26 127",
+				      Pos.new(window_width,
+					      window_height).ent).ent
+   end
+
+   ent.life_txt = ywCanvasNewTextExt(upCanvas.ent, 360, 10,
 				     Entity.new_string("life: "),
 				     "rgba: 255 255 255 255")
-   ent.life_nb = ywCanvasNewTextExt(mainCanvas.ent, 410, 10,
+   ent.life_nb = ywCanvasNewTextExt(upCanvas.ent, 410, 10,
 				    Entity.new_string(phq.pj.life:to_int()),
 				    "rgba: 255 255 255 255")
    reposeCam(ent)
