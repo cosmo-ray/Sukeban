@@ -4,6 +4,7 @@
 	"tiled": "./bar1.json"
     },
     "street0": {
+	"exterior": 1,
 	"out": {
 	    "right" : {
 		"to": "street1",
@@ -13,6 +14,7 @@
 	"tiled": "./Street0.json"
     },
     "street1" : {
+	"exterior": 1,
 	"out": {
 	    "left" : "street0"
 	},
