@@ -76,11 +76,15 @@
                  "name":"ToStreet1",
                  "properties":
                     {
-                     "nextScene":"street1"
+                     "entry":3,
+                     "nextScene":"street1",
+                     "side":"up"
                     },
                  "propertytypes":
                     {
-                     "nextScene":"string"
+                     "entry":"int",
+                     "nextScene":"string",
+                     "side":"string"
                     },
                  "rotation":0,
                  "type":"EntryPoint",

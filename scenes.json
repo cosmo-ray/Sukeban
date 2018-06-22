@@ -21,6 +21,7 @@
 	"tiled": "./Street1.json"
     },
     "street2" : {
+	"exterior": 1,
 	"tiled": "./Street2.json"
     },
     "house0" : {

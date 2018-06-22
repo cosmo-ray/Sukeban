@@ -639,7 +639,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       y = 200
    else
       local rect = e_exits[entryIdx].rect
-      local side = e_exits[entryIdx].side:to_string()
+      local side = yeGetString(e_exits[entryIdx].side)
       x = ywRectX(rect)
       y = ywRectY(rect)
       if side == "up" then
