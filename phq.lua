@@ -186,6 +186,16 @@ end
 
 function sleep(main, obj, msg)
    print("SLEEP")
+   if phq.env.time:to_string() == "night" then
+      phq.env.time = "day"
+      phq.env.day = phq.env.day + 1
+      if phq.env.day > 6 then
+	 phq.env.day = 0
+	 phq.env.week = phq.env.week + 1
+      end
+   else
+      phq.env.time = "night"
+   end
    main = Entity.wrapp(main)
    main.sleep = 1
 end
@@ -278,10 +288,13 @@ function load_game(entity, save_dir)
    game.saved_data = ygFileToEnt(YJSON, save_dir.."/misc.json")
    yeDestroy(game.saved_data)
    local pj = ygFileToEnt(YJSON, save_dir.."/pj.json")
-   print("saved data:", yeGetInt(game.saved_data))
    print(pj)
    phq.pj = pj
    yeDestroy(pj)
+   local env = ygFileToEnt(YJSON, save_dir.."/env.json")
+   print(env)
+   phq.env = env
+   yeDestroy(env)
    --local tmp = ygFileToEnt(YJSON, save_dir.."/npcs.json")
    yCallNextWidget(entity);
 end
@@ -303,6 +316,7 @@ function saveGame(main, saveDir)
    ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
    ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
    ygEntToFile(YJSON, destDir .. "/misc.json", misc)
+   ygEntToFile(YJSON, destDir .. "/env.json", phq.env)
    print("saving game")
 end
 
