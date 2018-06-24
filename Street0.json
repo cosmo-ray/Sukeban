@@ -91,7 +91,7 @@
                  "point":true,
                  "properties":
                     {
-                     "nextScene":"House2",
+                     "nextScene":"house2",
                      "side":"down"
                     },
                  "propertytypes":
