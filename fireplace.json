@@ -1,0 +1,12 @@
+{ "columns":4,
+ "image":"./fireplace.png",
+ "imageheight":128,
+ "imagewidth":128,
+ "margin":0,
+ "name":"fireplace",
+ "spacing":0,
+ "tilecount":16,
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset"
+}
