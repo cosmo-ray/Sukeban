@@ -52,6 +52,35 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"Actionable",
+         "objects":[
+                {
+                 "height":72.6651323360184,
+                 "id":5,
+                 "name":"Bed",
+                 "properties":
+                    {
+                     "Action":"phq.sleep"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":51,
+                 "x":228.383774453395,
+                 "y":58.2445339470656
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"Entries",
          "objects":[
                 {
@@ -84,7 +113,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",
