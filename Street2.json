@@ -17,6 +17,14 @@
          "height":30,
          "name":"Walls",
          "opacity":1,
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":45,
