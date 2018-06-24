@@ -1,0 +1,14 @@
+{
+    "columns":8,
+    "tilecount":64,
+    "image":"Objects.png",
+    "imageheight":256,
+    "imagewidth":256,
+    "margin":0,
+    "name":"Objects",
+    "spacing":0,
+    "type":"tileset",
+    "tileheight":32,
+    "version":1.2,
+    "tilewidth":32
+}
