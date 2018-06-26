@@ -613,6 +613,8 @@ function load_scene(ent, sceneTxt, entryIdx)
    mainCanvas.ent.objs = {}
    mainCanvas.ent.objects = {}
    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(), upCanvas.ent:cent())
+   yeDestroy(dialogues)
+   dialogues = nil
    dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
    mainCanvas.ent.cam = Pos.new(0, 0).ent
    -- Pj info:
