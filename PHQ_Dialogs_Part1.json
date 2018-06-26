@@ -6,7 +6,8 @@
 		"answers": [
 		    {
 			"text": "Play",
-			"action": "phq.playAstShoot"
+			"action": [ "phq.pay", 1, "phq.playAstShoot",
+				    "not enouth money" ]
 		    },
 		    {
 			"text": "Leave",

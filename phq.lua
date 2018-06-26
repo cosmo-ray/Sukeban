@@ -144,6 +144,19 @@ function StartFight(wid, eve, arg)
    return YEVE_ACTION
 end
 
+function pay(wid, eve, arg, cost, okAction, noDialogue)
+   cost = yeGetInt(cost)
+   noDialogue = yeGetString(noDialogue)
+   if phq.pj.inventory.money > cost then
+      print("pay")
+      print(phq.pj.inventory.money)
+      local money = phq.pj.inventory.money
+      yeSetInt(money, money:to_int() - cost)
+      return ywidAction(okAction, wid, eve, arg)
+   end
+   print("no money :(")
+end
+
 function GetDrink(wid, eve, arg)
    local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
    local canvas = Canvas.wrapp(ent.mainScreen)
@@ -271,6 +284,7 @@ function init_phq(mod)
    mod.startDialogue = Entity.new_func("startDialogue")
    mod.playSnake = Entity.new_func("playSnake")
    mod.playAstShoot = Entity.new_func("playAstShoot")
+   mod.pay = Entity.new_func("pay")
 end
 
 function newGame(entity)
