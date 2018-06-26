@@ -126,6 +126,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
+	"calendar": { "sunday": "bar" },
 	"image": "./Portrait_10.png",
     },
     "Typical swedish boy": {
@@ -152,6 +153,7 @@
             "hair/female/ponytail/brunette2.png"
         ],
 	"image": "./Portrait_12.png",
+	"calendar": { "monday": "bar", "tuesday": "bar", "thursday": "bar" }
     },
     "Short guy": {
         "sex": "male",

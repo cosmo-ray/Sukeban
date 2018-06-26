@@ -14,7 +14,7 @@ local NO_COLISION = 0
 local NORMAL_COLISION = 1
 local CHANGE_SCENE_COLISION = 2
 
-DAY_STR = {"monday", "tuesday", "wensday", "thuesday",
+DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
 
 local function doSleep(ent, upCanvas)
