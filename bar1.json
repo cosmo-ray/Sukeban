@@ -155,6 +155,27 @@
                  "width":31,
                  "x":382,
                  "y":91
+                }, 
+                {
+                 "height":58,
+                 "id":27,
+                 "name":"Arcade",
+                 "properties":
+                    {
+                     "Action":"phq.startDialogue",
+                     "Arg0":"Arcade"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "Arg0":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":26,
+                 "x":483,
+                 "y":103
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -432,7 +453,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":27,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",

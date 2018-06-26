@@ -22,10 +22,6 @@
 			"text": "Play Snake",
 			"action": "phq.playSnake"
 		    },
-		    {
-			"text": "Play Asteroide SHooter",
-			"action": "phq.playAstShoot"
-		    },
 		    "Play Dnoom",
 		    {
 			"text": "Shut Down",

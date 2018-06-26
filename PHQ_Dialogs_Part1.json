@@ -1,4 +1,21 @@
 {
+    "Arcade": {
+	"dialogue" : [
+	    {
+		"text": "Party 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": "phq.playAstShoot"
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.EndDialog"
+		    }
+		]
+	    },
+	]
+    },
     "Wasted guy": {
 	"dialogue" : [
 	    {
