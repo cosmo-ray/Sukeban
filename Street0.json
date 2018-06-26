@@ -85,6 +85,25 @@
          "name":"Entries",
          "objects":[
                 {
+                 "height":7,
+                 "id":1,
+                 "name":"Street1 entry",
+                 "properties":
+                    {
+                     "side":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"EntryPoint",
+                 "visible":true,
+                 "width":4,
+                 "x":634,
+                 "y":452
+                },
+                {
                  "height":0,
                  "id":5,
                  "name":"House2 entry",
@@ -105,25 +124,6 @@
                  "width":0,
                  "x":335,
                  "y":402
-                }, 
-                {
-                 "height":7,
-                 "id":1,
-                 "name":"Street1 entry",
-                 "properties":
-                    {
-                     "side":"left"
-                    },
-                 "propertytypes":
-                    {
-                     "side":"string"
-                    },
-                 "rotation":0,
-                 "type":"EntryPoint",
-                 "visible":true,
-                 "width":4,
-                 "x":634,
-                 "y":452
                 }],
          "opacity":1,
          "type":"objectgroup",
