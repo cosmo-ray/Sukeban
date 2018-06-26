@@ -270,6 +270,7 @@ function init_phq(mod)
    mod.sleep = Entity.new_func("sleep")
    mod.startDialogue = Entity.new_func("startDialogue")
    mod.playSnake = Entity.new_func("playSnake")
+   mod.playAstShoot = Entity.new_func("playAstShoot")
 end
 
 function newGame(entity)
@@ -429,6 +430,25 @@ function playSnake(wid)
    return YEVE_ACTION
 end
 
+function playAstShoot(wid)
+   local wid = Entity.wrapp(wid)
+   local main = nil
+
+   if wid.isDialogue then
+      wid = Entity.wrapp(yDialogueGetMain(wid))
+   end
+   main = Entity.wrapp(ywCntWidgetFather(wid))
+
+   ywCntPopLastEntry(main)
+   local ast_shoot = Entity.new_array()
+
+   ast_shoot["<type>"] = "asteroide-shooter"
+   ast_shoot.die = Entity.new_func("backToGame")
+   ast_shoot.quit = Entity.new_func("backToGame")
+   ywPushNewWidget(main, ast_shoot)
+   return YEVE_ACTION
+end
+
 function pushMainMenu(main)
    local mn = Menu.new_entity()
 
@@ -572,7 +592,6 @@ function destroy_phq(entity)
    yeDestroy(dialogues)
    dialogues = nil
    ent.current = 0
-   ent.entries = nil
 end
 
 function load_scene(ent, sceneTxt, entryIdx)
