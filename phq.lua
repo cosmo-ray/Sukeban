@@ -145,11 +145,28 @@ function StartFight(wid, eve, arg)
    return YEVE_ACTION
 end
 
+function takeObject(main, actionable_obj, what, nb)
+   local obj = phq.pj.inventory[yeGetString(what)]
+   actionable_obj = Entity.wrapp(actionable_obj)
+
+   if actionable_obj.is_used then
+      return YEVE_ACTION
+   end
+   if obj then
+      yeSetInt(obj, yeGetInt(obj) + yeGetInt(nb))
+   else
+      phq.pj.inventory[yeGetString(what)] = yeGetInt(nb)
+   end
+   actionable_obj.is_used = true
+   return printMessage(main, obj, Entity.new_string("get " ..
+						    math.floor(yeGetInt(nb)) ..
+						    " " ..
+						    yeGetString(what)))
+end
+
 function pay(wid, eve, arg, cost, okAction, noDialogue)
    cost = yeGetInt(cost)
    if phq.pj.inventory.money > cost then
-      print("pay")
-      print(phq.pj.inventory.money)
       local money = phq.pj.inventory.money
       yeSetInt(money, money:to_int() - cost)
       return ywidAction(okAction, wid, eve, arg)
@@ -197,7 +214,7 @@ function GetDrink2(wid, eve, arg)
    return YEVE_ACTION
 end
 
-function sleep(main, obj, msg)
+function sleep(main, obj)
    print("SLEEP")
    if phq.env.time:to_string() == "night" then
       phq.env.time = "day"
@@ -285,6 +302,7 @@ function init_phq(mod)
    mod.playSnake = Entity.new_func("playSnake")
    mod.playAstShoot = Entity.new_func("playAstShoot")
    mod.pay = Entity.new_func("pay")
+   mod.takeObject = Entity.new_func("takeObject")
 end
 
 function newGame(entity)

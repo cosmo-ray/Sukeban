@@ -34,7 +34,9 @@ function invList(mn)
    mn:push("back to game", Entity.new_func("backToGame"))
    local i = 0
    while i < yeLen(inv) do
-      mn:push(yeGetKeyAt(inv, i) .. ": " .. yeGetInt(inv[i]))
+      if inv[i] then
+	 mn:push(yeGetKeyAt(inv, i) .. ": " .. yeGetInt(inv[i]))
+      end
       i = i + 1
    end
    mn.ent.background = "rgba: 255 255 255 190"
