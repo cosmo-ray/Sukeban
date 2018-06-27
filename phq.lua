@@ -10,6 +10,7 @@ local dialogues = nil
 local window_width = 800
 local window_height = 600
 local sleep_time = 0
+local pj_pos = nil
 
 local NO_COLISION = 0
 local NORMAL_COLISION = 1
@@ -325,6 +326,7 @@ function load_game(entity, save_dir)
    phq.pj = pj
    yeDestroy(pj)
    local env = ygFileToEnt(YJSON, save_dir.."/env.json")
+   pj_pos = ygFileToEnt(YJSON, save_dir.."/pj-pos.json")
    print(env)
    phq.env = env
    yeDestroy(env)
@@ -346,6 +348,7 @@ function saveGame(main, saveDir)
    yuiMkdir(destDir)
    misc.cur_scene_str = main.cur_scene_str
    print(misc, main.cur_scene_str)
+   ygEntToFile(YJSON, destDir .. "/pj-pos.json", ylpcsHandePos(main.pj))
    ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
    ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
    ygEntToFile(YJSON, destDir .. "/misc.json", misc)
@@ -721,7 +724,13 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 x = x + ywRectW(rect) + 45
       end
    end
-   ylpcsHandlerSetPos(ent.pj, Pos.new(x, y).ent)
+   if pj_pos then
+      ylpcsHandlerSetPos(ent.pj, pj_pos)
+      yeDestroy(pj_pos)
+      pj_pos = nil
+   else
+      ylpcsHandlerSetPos(ent.pj, Pos.new(x, y).ent)
+   end
    lpcs.handlerSetOrigXY(ent.pj, 0, 10)
    lpcs.handlerRefresh(ent.pj)
 
