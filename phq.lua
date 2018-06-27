@@ -1,5 +1,6 @@
 local tiled = Entity.wrapp(ygGet("tiled"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
+local dialogue = Entity.wrapp(ygGet("Dialogue"))
 local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
@@ -146,7 +147,6 @@ end
 
 function pay(wid, eve, arg, cost, okAction, noDialogue)
    cost = yeGetInt(cost)
-   noDialogue = yeGetString(noDialogue)
    if phq.pj.inventory.money > cost then
       print("pay")
       print(phq.pj.inventory.money)
@@ -154,7 +154,7 @@ function pay(wid, eve, arg, cost, okAction, noDialogue)
       yeSetInt(money, money:to_int() - cost)
       return ywidAction(okAction, wid, eve, arg)
    end
-   print("no money :(")
+   return dialogue["change-text"](wid, eve, arg, noDialogue)
 end
 
 function GetDrink(wid, eve, arg)
