@@ -459,6 +459,8 @@ function playAstShoot(wid)
    ast_shoot["<type>"] = "asteroide-shooter"
    ast_shoot.die = Entity.new_func("backToGame")
    ast_shoot.quit = Entity.new_func("backToGame")
+   ast_shoot.oldTimer = main["turn-length"]
+   main["turn-length"] = 40000
    ywPushNewWidget(main, ast_shoot)
    return YEVE_ACTION
 end
