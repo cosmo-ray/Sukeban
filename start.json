@@ -20,6 +20,7 @@
         { "file" : "menus.json", "type" : "json", "as" : "menus"},
         { "file" : "environement.json", "type" : "json", "as" : "env"},
 	{ "file" : "global_menu.lua", "type" : "lua" },
+	{ "file" : "new-game.lua", "type" : "lua" },
 	{ "file" : "phq.lua", "type" : "lua" }
     ],
     "pj" : {

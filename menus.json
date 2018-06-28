@@ -5,18 +5,19 @@
 	"action" : "nextOnKeyDown",
 	"background" : "rgba: 255 255 255 255",
 	"text" : "
+	TODO: this text is oudated, complet rewrite is needed
         You arrived in this bar with one vision, one purpose:
         to get completely shitfaced and puke everywhere (you may have issues)
-        
+
         There are only two problems: one you're 1 month too young to get alcohol
         and two you're broke since you gave all your money to the bouncer so he would let you in.
-        
+
         You will have to use your charisma and talk your way to booze but be wary
         for bad words can get you bad consequences
-        
+
         Good luck and good drinks!
 ",
-	"next" : "phq:menus.game"
+	"next" : "phq:menus.new-game"
     },
     "bagare" : {
 	"<type>" : "text-screen",
@@ -68,11 +69,11 @@
         TODO ending
 
         You did it! You really did it you absolute madman!
-        
+
         You filled up with all the crappy booze people gave you and you just regurgitated it all around!
-        
+
         It's beautiful, it's everywhere! People in the bar are all sticky with it!
-        
+
         It is indeed a great day!
 
         PS: don't try a new game it's buggy
@@ -111,7 +112,6 @@ We love you anyway",
 	"entries" : [
 	    {
 		"text" : "New Game",
-		"action" : "phq:newGame",
 		"next" : "phq:menus.start_txt",
 		"action" : "menuNext"
 	    },
@@ -141,6 +141,10 @@ We love you anyway",
 	"next" : "phq:menus.game",
 	"text-align" : "center",
 	"background" : "rgba: 255 255 255 255"
+    },
+    "new-game" : {
+        "<type>" : "phq-new-game",
+	"next" : "phq:menus.main"
     },
     "game" : {
         "<type>" : "phq",

@@ -116,12 +116,8 @@
 		"text": "we might be equal but, there's rules here, have you read the rules ?\nlike the one in the panel behind the bar",
 		"answers": [
 		    {
-			"text": "I've read alchimie law, I know it's first rule\nLaw of Equivalent Exchange, so take my money and give me beer",
+			"text": "Here's a simple rule:\ntake my money and give me beer",
 			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
-		    },
-		    {
-			"text": "Rules ???? I CRUSH YOU! ME CRUSH YOU TO GOO!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
 		    }
 		]
 	    }

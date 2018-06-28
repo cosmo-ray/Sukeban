@@ -288,6 +288,7 @@ end
 
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
+   Widget.new_subtype("phq-new-game", "create_new_game")
 
    mod = Entity.wrapp(mod)
    mod.EndDialog = Entity.new_func("EndDialog")
@@ -304,14 +305,6 @@ function init_phq(mod)
    mod.playAstShoot = Entity.new_func("playAstShoot")
    mod.pay = Entity.new_func("pay")
    mod.takeObject = Entity.new_func("takeObject")
-end
-
-function newGame(entity)
-   local game = ygGet("phq:menus.game")
-   game = Entity.wrapp(game)
-   game.saved_data = nil
-   game.saved_dir = nil
-   yesCall((ygGet("menuNext")), entity);
 end
 
 function load_game(entity, save_dir)
@@ -766,10 +759,8 @@ function create_phq(entity)
        print(ent.saved_data)
        scenePath = ent.saved_data.cur_scene_str
     else
-       phq.pj.drunk = 0
-       phq.pj.life = phq.pj.max_life
        scenePath = Entity.new_string("house1")
-   end
+    end
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
     local upCanvas = Canvas.new_entity(entity, "upCanvas")
