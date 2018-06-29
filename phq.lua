@@ -193,7 +193,8 @@ function GetDrink(wid, eve, arg)
        yCallNextWidget(ent:cent())
    end
    EndDialog(wid, eve, arg)
-   return YEVE_ACTION
+   return printMessage(ent, obj, Entity.new_string("get beer, or whine, or rum\n"..
+						      "some kind of alcohol anyway"))
 end
 
 function GetDrink2(wid, eve, arg)
@@ -203,6 +204,9 @@ function GetDrink2(wid, eve, arg)
    phq.pj.drunk = phq.pj.drunk + 18
 
    phq.pj.life = phq.pj.life + 5
+   if phq.pj.life > phq.pj.max_life then
+      phq.pj.life = phq.pj.max_life
+   end
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),
@@ -212,7 +216,8 @@ function GetDrink2(wid, eve, arg)
        yCallNextWidget(ent:cent())
    end
    EndDialog(wid, eve, arg)
-   return YEVE_ACTION
+   return printMessage(ent, obj, Entity.new_string("get vodka...\n"..
+						      "cut with tekila"))
 end
 
 function sleep(main, obj)

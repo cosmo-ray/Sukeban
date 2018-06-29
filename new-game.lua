@@ -24,7 +24,6 @@ function newGameMoveOn(menu, current, cur_entry)
 end
 
 function create_new_game(entity)
-   print("NEW GAME !!!!!!")
    local container = Container.init_entity(entity, "vertical")
    entity = Entity.wrapp(entity)
    entity.background = "rgba: 127 127 127 255"
