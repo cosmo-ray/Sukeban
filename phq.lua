@@ -115,7 +115,7 @@ function CombatEnd(wid, main, winner)
    end
    canvas:remove(main.life_nb )
    main.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
-				     Entity.new_string(phq.pj.life:to_int()),
+				     Entity.new_string(math.floor(phq.pj.life:to_int())),
 				     "rgba: 255 255 255 255")
 
    wid.main = nil
@@ -186,7 +186,7 @@ function GetDrink(wid, eve, arg)
    end
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
-				    Entity.new_string(phq.pj.life:to_int()),
+				    Entity.new_string(math.floor(phq.pj.life:to_int())),
                                     "rgba: 255 255 255 255")
    if phq.pj.drunk > 99 then
        ent.next = "phq:menus.end_txt"
@@ -205,7 +205,7 @@ function GetDrink2(wid, eve, arg)
    phq.pj.life = phq.pj.life + 5
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
-				    Entity.new_string(phq.pj.life:to_int()),
+				    Entity.new_string(math.floor(phq.pj.life:to_int())),
 				    "rgba: 255 255 255 255")
    if phq.pj.drunk > 99 then
        ent.next = "phq:menus.end_txt"
@@ -699,7 +699,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       i = i + 1
    end
 
-   if entryIdx < 0 then
+   if entryIdx < 0 or e_exits[entryIdx] == nil then
       x = 300
       y = 200
    else
@@ -737,7 +737,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 				     Entity.new_string("life: "),
 				     "rgba: 255 255 255 255")
    ent.life_nb = ywCanvasNewTextExt(upCanvas.ent, 410, 10,
-				    Entity.new_string(phq.pj.life:to_int()),
+				    Entity.new_string(math.floor(phq.pj.life:to_int())),
 				    "rgba: 255 255 255 255")
    reposeCam(ent)
 end
