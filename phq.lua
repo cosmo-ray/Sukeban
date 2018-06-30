@@ -175,15 +175,22 @@ function pay(wid, eve, arg, cost, okAction, noDialogue)
    return dialogue["change-text"](wid, eve, arg, noDialogue)
 end
 
+function incrementStat(wid, caracter, stat, nb, max)
+   local s = caracter[stat]
+
+   print("incr")
+   yeSetInt(s, s + nb)
+   if s > max then
+      yeSetInt(s, max)
+   end
+end
+
 function GetDrink(wid, eve, arg)
    local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
    local canvas = Canvas.wrapp(ent.mainScreen)
-   phq.pj.drunk = phq.pj.drunk + 9
+   incrementStat(wid, phq.pj, "drunk", 9, 100)
+   incrementStat(wid, phq.pj, "life", 2, phq.pj.max_life:to_int())
 
-   phq.pj.life = phq.pj.life + 2
-   if phq.pj.life > phq.pj.max_life then
-      phq.pj.life = phq.pj.max_life
-   end
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),
@@ -201,12 +208,9 @@ function GetDrink2(wid, eve, arg)
    print("this is the drink")
    local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
    local canvas = Canvas.wrapp(ent.mainScreen)
-   phq.pj.drunk = phq.pj.drunk + 18
+   incrementStat(wid, phq.pj, "drunk", 18, 100)
+   incrementStat(wid, phq.pj, "life", 5, phq.pj.max_life:to_int())
 
-   phq.pj.life = phq.pj.life + 5
-   if phq.pj.life > phq.pj.max_life then
-      phq.pj.life = phq.pj.max_life
-   end
    canvas:remove(ent.life_nb)
    ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),

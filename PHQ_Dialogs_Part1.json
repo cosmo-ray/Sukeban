@@ -327,7 +327,7 @@
 	"dialogue" : [
 	    {
 		"text": "What is your name?",
-		"answers":[
+		"answers": [
 		    {
 			"text": "Dr Pepper",
 			"action":"phq.EndDialog"
