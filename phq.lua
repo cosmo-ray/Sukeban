@@ -178,7 +178,6 @@ end
 function incrementStat(wid, caracter, stat, nb, max)
    local s = caracter[stat]
 
-   print("incr")
    yeSetInt(s, s + nb)
    if s > max then
       yeSetInt(s, max)
@@ -241,13 +240,16 @@ function sleep(main, obj)
 end
 
 function printMessage(main, obj, msg)
+   local txt = yeGetString(msg)
    main = Entity.wrapp(main)
    if main.box then
+      txt = yeGetString(dialogue_box.get_text(main.box)) ..
+	 "\n-------------------------------\n" .. txt
       dialogue_box.rm(main.upCanvas, main.box)
       main.box = nil
    end
    dialogue_box.new_text(main.upCanvas, 0, 0,
-			 yeGetString(msg), main, "box")
+			 txt, main, "box")
    main.box_t = 0
 end
 
@@ -511,7 +513,6 @@ function phq_action(entity, eve, arg)
       return NOTHANDLE
    end
    if entity.box_t then
-      print(entity.box_t)
       if entity.box_t > 100 then
 	 dialogue_box.rm(entity.upCanvas, entity.box)
 	 entity.box = nil
