@@ -15,6 +15,8 @@ local pj_pos = nil
 local NO_COLISION = 0
 local NORMAL_COLISION = 1
 local CHANGE_SCENE_COLISION = 2
+local PHQ_SUP = 0
+local PHQ_INF = 1
 
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
@@ -207,7 +209,6 @@ function GetDrink(wid, eve, arg)
 end
 
 function GetDrink2(wid, eve, arg)
-   print("this is the drink")
    local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
    local canvas = Canvas.wrapp(ent.mainScreen)
    increaseStat(ent, phq.pj, "drunk", 18, 100)
@@ -511,9 +512,29 @@ function phq_action(entity, eve, arg)
    entity = Entity.wrapp(entity)
    entity.tid = entity.tid + 1
    eve = Event.wrapp(eve)
+   local st_hooks = entity.st_hooks
+   local st_hooks_len = yeLen(entity.st_hooks)
 
    if yeGetInt(entity.current) == 2 then
       return NOTHANDLE
+   end
+
+   local i = 0
+   while i < st_hooks_len do
+      local st_hook = st_hooks[i]
+      local stat_name = yeGetKeyAt(st_hooks, i)
+      local stat = phq.pj[stat_name]
+
+      if stat then
+	 local cmp_t = st_hook.comp_type
+	 if (cmp_t:to_int() == 0 and stat > st_hook.val) or
+	 (cmp_t:to_int() == 1 and stat < st_hook.val) then
+	    print(yeGetKeyAt(st_hooks, i),
+		  st_hook.val, st_hook.comp_type)
+	    st_hook.hook(ent)
+	 end
+      end
+      i = i + 1
    end
    if entity.box_t then
       if entity.box_t > 100 then
@@ -755,6 +776,16 @@ function load_scene(ent, sceneTxt, entryIdx)
    reposeCam(ent)
 end
 
+function add_stat_hook(entity, stat, hook, val, comp_type)
+   if entity.st_hooks == nil then
+      entity.st_hooks = {}
+   end
+   entity.st_hooks[stat] = {}
+   entity.st_hooks[stat].hook = ygGet(hook)
+   entity.st_hooks[stat].val = val
+   entity.st_hooks[stat].comp_type = comp_type
+end
+
 function create_phq(entity)
     local container = Container.init_entity(entity, "stacking")
     local ent = container.ent
@@ -766,6 +797,8 @@ function create_phq(entity)
     ent.tid = 0
     tiled.setAssetPath("./");
 
+    add_stat_hook(ent, "drunk", "FinishGame", 20, PHQ_SUP)
+    add_stat_hook(ent, "life", "FinishGame", 0, PHQ_INF)
     print(ent.saved_data)
     yJrpgFightSetCombots("phq.combots")
     if ent.saved_data then
