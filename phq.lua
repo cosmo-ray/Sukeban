@@ -6,6 +6,7 @@ local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local scenes = Entity.wrapp(ygGet("phq.scenes"))
+saved_scenes = nil
 local dialogues = nil
 local window_width = 800
 local window_height = 600
@@ -335,6 +336,9 @@ function load_game(entity, save_dir)
    yeDestroy(pj)
    local env = ygFileToEnt(YJSON, save_dir.."/env.json")
    pj_pos = ygFileToEnt(YJSON, save_dir.."/pj-pos.json")
+   saved_scenes = Entity._wrapp_(ygFileToEnt(YJSON,
+					       save_dir.."/saved-scenes.json"),
+				   true)
    print(env)
    phq.env = env
    yeDestroy(env)
@@ -355,12 +359,14 @@ function saveGame(main, saveDir)
    yuiMkdir("./saved")
    yuiMkdir(destDir)
    misc.cur_scene_str = main.cur_scene_str
+   saved_scenes[main.cur_scene_str:to_string()] = main.mainScreen.objects
    print(misc, main.cur_scene_str)
    ygEntToFile(YJSON, destDir .. "/pj-pos.json", ylpcsHandePos(main.pj))
    ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
    ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
    ygEntToFile(YJSON, destDir .. "/misc.json", misc)
    ygEntToFile(YJSON, destDir .. "/env.json", phq.env)
+   ygEntToFile(YJSON, destDir .. "/saved-scenes.json", saved_scenes)
    print("saving game")
 end
 
@@ -664,6 +670,11 @@ function load_scene(ent, sceneTxt, entryIdx)
    local x = 0
    local y = 0
 
+   if ent.cur_scene_str then
+      print("save cur !")
+      saved_scenes[ent.cur_scene_str:to_string()] = ent.mainScreen.objects
+   end
+   
    ent.cur_scene_str = sceneTxt
    print("scene txt:", sceneTxt, ent.cur_scene_str)
    local scene = scenes[sceneTxt]
@@ -680,6 +691,9 @@ function load_scene(ent, sceneTxt, entryIdx)
    yeDestroy(dialogues)
    dialogues = nil
    dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
+   if saved_scenes[ent.cur_scene_str:to_string()] then
+      ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()]
+   end
    mainCanvas.ent.cam = Pos.new(0, 0).ent
    -- Pj info:
    local objects = ent.mainScreen.objects
@@ -700,7 +714,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       local npc = npcs[yeGetString(yeGet(obj, "name"))]
 
       if layer_name:to_string() == "NPC" and
-      checkNpcPresence(npc, sceneTxt) then
+	 checkNpcPresence(npc, sceneTxt) then
 
 	 npc = lpcs.createCaracterHandler(npc, mainCanvas.ent, e_npcs)
 	 --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
@@ -777,9 +791,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 end
 
 function add_stat_hook(entity, stat, hook, val, comp_type)
-   if entity.st_hooks == nil then
-      entity.st_hooks = {}
-   end
+   print("ADDD !!")
    entity.st_hooks[stat] = {}
    entity.st_hooks[stat].hook = ygGet(hook)
    entity.st_hooks[stat].val = val
@@ -797,9 +809,9 @@ function create_phq(entity)
     ent.tid = 0
     tiled.setAssetPath("./");
 
+    ent.st_hooks = {}
     add_stat_hook(ent, "drunk", "FinishGame", 20, PHQ_SUP)
     add_stat_hook(ent, "life", "FinishGame", 0, PHQ_INF)
-    print(ent.saved_data)
     yJrpgFightSetCombots("phq.combots")
     if ent.saved_data then
        print(ent.saved_data)

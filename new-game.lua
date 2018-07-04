@@ -13,6 +13,7 @@ function newGameAction(menu, eve, arg)
    game.saved_dir = nil
    phq.pj.drunk = 0
    phq.pj.life = phq.pj.max_life
+   saved_scenes = Entity.new_array()
    yesCall((ygGet("callNext")), menu);
 end
 
