@@ -142,10 +142,8 @@ function StartFight(wid, eve, arg)
    fWid.player = phq.pj
    fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
    fWid.enemy.life = fWid.enemy.max_life
-   print(fWid.endCallbackArg:cent())
    EndDialog(owid, eve, arg)
    ywPushNewWidget(main, fWid)
-   print("2:", fWid.endCallbackArg:cent())
    return YEVE_ACTION
 end
 
@@ -229,7 +227,6 @@ function GetDrink2(wid, eve, arg)
 end
 
 function sleep(main, obj)
-   print("SLEEP")
    if phq.env.time:to_string() == "night" then
       phq.env.time = "day"
       phq.env.day = phq.env.day + 1
@@ -260,7 +257,6 @@ end
 
 function startDialogue(main, obj, dialogue)
    dialogue = Entity.wrapp(dialogue)
-   print("Start Dialogue !!!!", obj, dialogue)
    if dialogue and dialogues[dialogue:to_string()] then
       local entity = Entity.wrapp(main)
       local obj = Entity.wrapp(obj)
@@ -275,7 +271,6 @@ function startDialogue(main, obj, dialogue)
       end
       local dialogue = dialogues[dialogue:to_string()]
 
-      print(dialogue)
       if dialogue.dialogue then
 	 yeCopy(dialogue, dialogueWid)
 	 dialogueWid.src = dialogue
@@ -324,7 +319,6 @@ function init_phq(mod)
 end
 
 function load_game(entity, save_dir)
-   print("do the same move at the last part, and you're game will be load :)")
    local game = ygGet("phq:menus.game")
    game = Entity.wrapp(game)
    game.saved_dir = save_dir
@@ -339,7 +333,6 @@ function load_game(entity, save_dir)
    saved_scenes = Entity._wrapp_(ygFileToEnt(YJSON,
 					       save_dir.."/saved-scenes.json"),
 				   true)
-   print(env)
    phq.env = env
    yeDestroy(env)
    --local tmp = ygFileToEnt(YJSON, save_dir.."/npcs.json")
@@ -359,7 +352,9 @@ function saveGame(main, saveDir)
    yuiMkdir("./saved")
    yuiMkdir(destDir)
    misc.cur_scene_str = main.cur_scene_str
-   saved_scenes[main.cur_scene_str:to_string()] = main.mainScreen.objects
+   saved_scenes[main.cur_scene_str:to_string()] = {}
+   saved_scenes[main.cur_scene_str:to_string()].o = main.mainScreen.objects
+   saved_scenes[main.cur_scene_str:to_string()].d = dialogues
    print(misc, main.cur_scene_str)
    ygEntToFile(YJSON, destDir .. "/pj-pos.json", ylpcsHandePos(main.pj))
    ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
@@ -671,8 +666,9 @@ function load_scene(ent, sceneTxt, entryIdx)
    local y = 0
 
    if ent.cur_scene_str then
-      print("save cur !")
-      saved_scenes[ent.cur_scene_str:to_string()] = ent.mainScreen.objects
+      saved_scenes[ent.cur_scene_str:to_string()] = {}
+      saved_scenes[ent.cur_scene_str:to_string()].o = ent.mainScreen.objects
+      saved_scenes[ent.cur_scene_str:to_string()].d = dialogues
    end
    
    ent.cur_scene_str = sceneTxt
@@ -690,9 +686,16 @@ function load_scene(ent, sceneTxt, entryIdx)
    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(), upCanvas.ent:cent())
    yeDestroy(dialogues)
    dialogues = nil
-   dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
+   Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
    if saved_scenes[ent.cur_scene_str:to_string()] then
-      ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()]
+      print("LOAD !!!")
+      ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()].o
+      dialogues = saved_scenes[ent.cur_scene_str:to_string()].d
+      if dialogues then
+	 yeIncrRef(dialogues)
+      end
+   else
+      dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
    end
    mainCanvas.ent.cam = Pos.new(0, 0).ent
    -- Pj info:
@@ -807,6 +810,7 @@ function create_phq(entity)
     ent.move.up_down = 0
     ent.move.left_right = 0
     ent.tid = 0
+    ent.cur_scene_str = nil
     tiled.setAssetPath("./");
 
     ent.st_hooks = {}
