@@ -10,6 +10,27 @@ function pushStatus(mn)
 
    ywCntPopLastEntry(main)
    local txt_screen = Entity.new_array()
+   local knowledge_str = "----- Knowledge -----\n"
+   local knowledge = phq.pj.knowledge
+   local stats_str = "----- Stats -----\n"
+   local stats = phq.pj.stats
+
+   local i = 0
+   while i < yeLen(knowledge) do
+      if knowledge[i] then
+	 knowledge_str = knowledge_str ..
+	    yeGetKeyAt(knowledge, i) .. ": " .. yeGetInt(knowledge[i]) .. "\n"
+      end
+      i = i + 1
+   end
+   local i = 0
+   while i < yeLen(stats) do
+      if stats[i] then
+	 stats_str = stats_str ..
+	    yeGetKeyAt(stats, i) .. ": " .. yeGetInt(stats[i]) .. "\n"
+      end
+      i = i + 1
+   end
 
    txt_screen["<type>"] = "text-screen"
    txt_screen["text-align"] = "center"
@@ -19,7 +40,8 @@ function pushStatus(mn)
       "week: " .. phq.env.week:to_string() .. "\n" ..
       "Status:\n" ..
       "life: " .. phq.pj.life:to_int() .. "\n" ..
-      "alcohol level: " .. phq.pj.drunk:to_int()
+      "alcohol level: " .. phq.pj.drunk:to_int() .. "\n" ..
+      knowledge_str .. stats_str
    txt_screen.background = "rgba: 155 155 255 190"
    txt_screen.action = Entity.new_func("backToGameOnEnter")
    ywPushNewWidget(main, txt_screen)

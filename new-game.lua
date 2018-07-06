@@ -6,15 +6,41 @@ local bruteDescription = "And then I kick him in his head, until he's dead Mahah
 local wormsCoinoisseurDescription = "I hate surface dweller !"
 local descArray = {geekDescription, idoleDescription,
 		   bruteDescription, wormsCoinoisseurDescription}
+local GEEK_ARCHETYPE = 0
+local IDOLE_ARCHETYPE = 1
+local BRUTE_ARCHETYPE = 2
+local WORMS_COINOISSEUR_ARCHETYPE = 3
 
 function newGameAction(menu, eve, arg)
    local game = Entity.wrapp(ygGet("phq:menus.game"))
    game.saved_data = nil
    game.saved_dir = nil
+   local archetype = ywMenuGetCurrent(menu)
+   phq.pj.stats = {}
+   phq.pj.knowledge = {}
    phq.pj.drunk = 0
-   phq.pj.archetype = ywMenuGetCurrent(menu)
+   phq.pj.stats.charisme = 0
+   phq.pj.stats.strength = 0
+   phq.pj.stats.smart = 0
+   phq.pj.archetype = archetype
    phq.pj.life = phq.pj.max_life
    saved_scenes = Entity.new_array()
+   if archetype == GEEK_ARCHETYPE then
+      phq.pj.knowledge.computer = 5
+      phq.pj.knowledge.animu = 5
+      phq.pj.stats.smart = 3
+   elseif archetype == IDOLE_ARCHETYPE then
+      phq.pj.knowledge.fashion = 5
+      phq.pj.stats.charisme = 3
+      phq.pj.stats.strength = 1
+   elseif archetype == BRUTE_ARCHETYPE then
+      phq.pj.knowledge.slang = 5
+      phq.pj.stats.charisme = 1
+      phq.pj.stats.strength = 3
+   elseif archetype == WORMS_COINOISSEUR_ARCHETYPE then
+      phq.pj.knowledge.worms = 5
+      phq.pj.stats.smart = 1
+   end
    yesCall((ygGet("callNext")), menu);
 end
 
