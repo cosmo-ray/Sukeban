@@ -2,7 +2,7 @@ local phq = Entity.wrapp(ygGet("phq"))
 
 local geekDescription = "I do undersatdn this 'mouse magic'\nthat make me do binding"
 local idoleDescription = "Erk, You need a new tailor"
-local bruteDescription = "I CRUSH YOU! ME CRUSH YOU TO GOO!"
+local bruteDescription = "And then I kick him in his head, until he's dead Mahahahahaha!"
 local wormsCoinoisseurDescription = "I hate surface dweller !"
 local descArray = {geekDescription, idoleDescription,
 		   bruteDescription, wormsCoinoisseurDescription}
@@ -12,6 +12,7 @@ function newGameAction(menu, eve, arg)
    game.saved_data = nil
    game.saved_dir = nil
    phq.pj.drunk = 0
+   phq.pj.archetype = ywMenuGetCurrent(menu)
    phq.pj.life = phq.pj.max_life
    saved_scenes = Entity.new_array()
    yesCall((ygGet("callNext")), menu);
