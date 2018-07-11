@@ -19,6 +19,7 @@
         { "file" : "combots.json", "type" : "json", "as" : "combots"},
         { "file" : "menus.json", "type" : "json", "as" : "menus"},
         { "file" : "environement.json", "type" : "json", "as" : "env"},
+        { "file" : "objects.json", "type" : "json", "as" : "objects"},
 	{ "file" : "global_menu.lua", "type" : "lua" },
 	{ "file" : "new-game.lua", "type" : "lua" },
 	{ "file" : "phq.lua", "type" : "lua" }
@@ -33,8 +34,10 @@
 	    "money": 27,
 	    "Guriko": 4
 	},
-	"clothes": ["feet/shoes/female/brown_shoes_female.png",
-		    "torso/robes_female_no_th-sh/white.png",
-		    "hair/female/shoulderr/blonde.png"]
+	"equipement" : {
+	    "torso": "robe_white",
+	    "feet": "brown_shoes"
+	},
+	"hair": ["shoulderr", "blonde"]
     }
 }

@@ -22,6 +22,35 @@ local PHQ_INF = 1
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
 
+local function dressUp(caracter)
+   if caracter.equipement == nil then
+      return
+   end
+   local e = caracter.equipement
+   local objs = phq.objects
+   caracter.clothes = nil
+   local clothes = Entity.new_array(caracter, "clothes")
+
+   if e.feet then
+      local cur_o = objs[yeGetString(e.feet)]
+      if (cur_o.path) then
+	 yeCreateString(cur_o.path:to_string(), clothes)
+      end
+   end
+   if e.torso then
+      local cur_o = objs[yeGetString(e.torso)]
+      if (cur_o.path) then
+	 yeCreateString(cur_o.path:to_string(), clothes)
+      end
+   end
+   if caracter.hair then
+      yeCreateString("hair/" .. caracter.sex:to_string() .. "/" .. 
+		     caracter.hair[0]:to_string() .. "/" ..
+		     caracter.hair[1]:to_string() .. ".png",
+		     clothes)
+   end
+end
+
 local function doSleep(ent, upCanvas)
    ywCanvasRemoveObj(upCanvas.ent, ent.sleep_r)
 
@@ -36,6 +65,7 @@ local function doSleep(ent, upCanvas)
    local y0 = pjPos:y() - window_height / 2
 
    if sleep_time < 100 then
+
       local str = "rgba: 0 0 0 ".. math.floor(255 * sleep_time / 100)
       ent.sleep_r = upCanvas:new_rect(x0, y0, str,
 				      Pos.new(window_width,
@@ -719,6 +749,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       if layer_name:to_string() == "NPC" and
 	 checkNpcPresence(npc, sceneTxt) then
 
+	 dressUp(npc)
 	 npc = lpcs.createCaracterHandler(npc, mainCanvas.ent, e_npcs)
 	 --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
 	 local pos = Pos.new_copy(obj.rect)
@@ -835,6 +866,7 @@ function create_phq(entity)
     ent.destroy = Entity.new_func("destroy_phq")
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
     ent.pj = nil
+    dressUp(phq.pj)
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
     load_scene(ent, scenePath:to_string(), 0)
     return ret
