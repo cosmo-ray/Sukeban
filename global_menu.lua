@@ -48,6 +48,23 @@ function pushStatus(mn)
    return YEVE_ACTION
 end
 
+function gmUseItem(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+   local cur = Entity.wrapp(ywMenuGetCurrentEntry(mn))
+   local objs_list = phq.objects
+   local o = objs_list[cur.obName:to_string()]
+   print(objs_list:cent())
+   if o.func then
+      if yeType(o.func) == YFUNCTION then
+	 o.func(main, o)
+      else
+	 yesCall(ygGet(o.func:to_string()), main:cent(), o:cent())
+      end
+   end
+   print("use item !!", cur.obName,
+	 objs_list[cur.obName:to_string()])
+end
+
 function invList(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
    local inv = phq.pj.inventory
@@ -57,7 +74,12 @@ function invList(mn)
    local i = 0
    while i < yeLen(inv) do
       if inv[i] then
-	 mn:push(yeGetKeyAt(inv, i) .. ": " .. yeGetInt(inv[i]))
+	 local cur = mn:push(yeGetKeyAt(inv, i) .. ": " ..
+			     math.floor(yeGetInt(inv[i])),
+			     Entity.new_func("gmUseItem"))
+	 cur.obName = yeGetKeyAt(inv, i)
+	 cur.inv_o = inv[i]
+	 cur.inv = inv
       end
       i = i + 1
    end

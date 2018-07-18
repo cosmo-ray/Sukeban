@@ -141,13 +141,13 @@ end
 function CombatEnd(wid, main, winner)
    local main = Entity.wrapp(main)
    local wid = Entity.wrapp(wid)
-   local canvas = Canvas.wrapp(main.mainScreen)
+   local upcanvas = Canvas.wrapp(main.upCanvas)
 
    if yLovePtrToNumber(winner) == 3 then
       yCallNextWidget(main:cent())
    end
    canvas:remove(main.life_nb )
-   main.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
+   main.life_nb = ywCanvasNewTextExt(upcanvas.ent, 410, 10,
 				     Entity.new_string(math.floor(phq.pj.life:to_int())),
 				     "rgba: 255 255 255 255")
 
@@ -222,14 +222,14 @@ function increaseStat(wid, caracter, stat, nb, max)
 					    yeGetInt(s)))
 end
 
-function DrinkBeer(wid, eve, arg)
-   local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
-   local canvas = Canvas.wrapp(ent.mainScreen)
+function DrinkBeer(ent, obj)
+   ent = Entity.wrapp(ent)
+   local upcanvas = Canvas.wrapp(ent.upCanvas)
    increaseStat(ent, phq.pj, "drunk", 9, 100)
    increaseStat(ent, phq.pj, "life", 2, phq.pj.max_life:to_int())
 
-   canvas:remove(ent.life_nb)
-   ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
+   upcanvas:remove(ent.life_nb)
+   ent.life_nb = ywCanvasNewTextExt(upcanvas.ent, 410, 10,
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),
                                     "rgba: 255 255 255 255")
    if phq.pj.drunk > 99 then
@@ -343,6 +343,7 @@ function init_phq(mod)
    mod = Entity.wrapp(mod)
    mod.EndDialog = Entity.new_func("EndDialog")
    mod.StartFight = Entity.new_func("StartFight")
+   mod.DrinkBeer = Entity.new_func("DrinkBeer")
    mod.GetDrink = Entity.new_func("GetDrink")
    mod["GetDrink++"] = Entity.new_func("GetDrink2")
    mod.load_game = Entity.new_func("load_game")
@@ -827,6 +828,7 @@ function load_scene(ent, sceneTxt, entryIdx)
    ent.life_txt = ywCanvasNewTextExt(upCanvas.ent, 360, 10,
 				     Entity.new_string("life: "),
 				     "rgba: 255 255 255 255")
+   upCanvas:remove(ent.life_nb )
    ent.life_nb = ywCanvasNewTextExt(upCanvas.ent, 410, 10,
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),
 				    "rgba: 255 255 255 255")

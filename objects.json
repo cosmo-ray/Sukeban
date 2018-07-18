@@ -8,5 +8,16 @@
 	"type": "equipement",
 	"path": "feet/shoes/female/brown_shoes_female.png",
 	"where": "feet"
+    },
+    "Guriko" : {
+	"type": "usable",
+	"stats+": {
+	    "life": 1,
+	    "drunk": -1,
+	}
+    },
+    "beer" : {
+	"type": "usable",
+	"func": "phq.DrinkBeer"
     }
 }
