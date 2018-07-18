@@ -5,6 +5,7 @@
     },
     "street0": {
 	"exterior": 1,
+	"dialogues" : "st0_dialogues.json",
 	"out": {
 	    "right" : {
 		"to": "street1",

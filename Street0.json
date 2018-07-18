@@ -102,7 +102,7 @@
                  "width":4,
                  "x":634,
                  "y":452
-                },
+                }, 
                 {
                  "height":0,
                  "id":5,
@@ -130,8 +130,38 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"NPC",
+         "objects":[
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"Joe",
+                 "point":true,
+                 "properties":
+                    {
+                     "Rotation":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
+                 "rotation":0,
+                 "type":"NPC",
+                 "visible":true,
+                 "width":0,
+                 "x":206,
+                 "y":354
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":6,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",
