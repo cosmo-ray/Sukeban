@@ -177,23 +177,27 @@ function StartFight(wid, eve, arg)
    return YEVE_ACTION
 end
 
+function addObject(main, character, objStr, nb)
+   local obj = character.inventory[objStr]
+   if obj then
+      yeSetInt(obj, yeGetInt(obj) + nb)
+   else
+      character.inventory[objStr] = nb
+   end
+   return printMessage(main, obj, Entity.new_string("get " ..
+						    math.floor(nb) ..
+						    " " ..
+						    objStr))
+end
+
 function takeObject(main, actionable_obj, what, nb)
-   local obj = phq.pj.inventory[yeGetString(what)]
    actionable_obj = Entity.wrapp(actionable_obj)
 
    if actionable_obj.is_used then
       return YEVE_ACTION
    end
-   if obj then
-      yeSetInt(obj, yeGetInt(obj) + yeGetInt(nb))
-   else
-      phq.pj.inventory[yeGetString(what)] = yeGetInt(nb)
-   end
+   addObject(main, phq.pj, yeGetString(what), yeGetInt(nb))
    actionable_obj.is_used = true
-   return printMessage(main, obj, Entity.new_string("get " ..
-						    math.floor(yeGetInt(nb)) ..
-						    " " ..
-						    yeGetString(what)))
 end
 
 function pay(wid, eve, arg, cost, okAction, noDialogue)
@@ -218,7 +222,7 @@ function increaseStat(wid, caracter, stat, nb, max)
 					    yeGetInt(s)))
 end
 
-function GetDrink(wid, eve, arg)
+function DrinkBeer(wid, eve, arg)
    local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
    local canvas = Canvas.wrapp(ent.mainScreen)
    increaseStat(ent, phq.pj, "drunk", 9, 100)
@@ -232,9 +236,14 @@ function GetDrink(wid, eve, arg)
        ent.next = "phq:menus.end_txt"
        yCallNextWidget(ent:cent())
    end
-   EndDialog(wid, eve, arg)
-   return printMessage(ent, obj, Entity.new_string("get beer, or whine, or rum\n"..
-						      "some kind of alcohol anyway"))
+   return printMessage(ent, obj, Entity.new_string("Glou Glou !"))
+end
+
+function GetDrink(wid, eve, arg)
+   local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
+
+   addObject(ent, phq.pj, "beer", 1)
+   return EndDialog(wid, eve, arg)
 end
 
 function GetDrink2(wid, eve, arg)
