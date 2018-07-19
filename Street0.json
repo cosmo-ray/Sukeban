@@ -133,6 +133,39 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"Actionable",
+         "objects":[
+                {
+                 "height":41,
+                 "id":8,
+                 "name":"JoinTheUnion",
+                 "properties":
+                    {
+                     "Action":"phq.printMessage",
+                     "ActionNbArgs":1,
+                     "Arg0":"Don't let your BOSS controll you\nJoin the WUT Worker Union\nThey are the minority, WE ARE THE NATION !"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "ActionNbArgs":"int",
+                     "Arg0":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":25,
+                 "x":165,
+                 "y":351
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"NPC",
          "objects":[
                 {
@@ -161,7 +194,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":8,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",
