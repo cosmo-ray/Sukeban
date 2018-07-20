@@ -100,6 +100,27 @@
                  "width":266,
                  "x":587,
                  "y":934
+                }, 
+                {
+                 "height":267,
+                 "id":3,
+                 "name":"ToStreet3",
+                 "properties":
+                    {
+                     "nextScene":"street3",
+                     "side":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"EntryPoint",
+                 "visible":true,
+                 "width":9,
+                 "x":1419,
+                 "y":681
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -107,7 +128,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":3,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",
