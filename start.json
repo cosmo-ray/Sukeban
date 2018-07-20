@@ -2,7 +2,7 @@
     "name" : "phq",
     "starting widget" : "menus.main",
     "window size" : [800, 600],
-    "window name" : "Pre Hangover Quest",
+    "window name" : "Sukeban !",
     "init-scripts" : [
 	"init_phq"
     ],
