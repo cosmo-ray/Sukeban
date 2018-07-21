@@ -853,7 +853,7 @@ function create_phq(entity)
     ent.move.left_right = 0
     ent.tid = 0
     ent.cur_scene_str = nil
-    tiled.setAssetPath("./");
+    tiled.setAssetPath("./tileset");
 
     ent.st_hooks = {}
     add_stat_hook(ent, "drunk", "FinishGame", 20, PHQ_SUP)

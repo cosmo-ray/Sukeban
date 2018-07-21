@@ -226,7 +226,7 @@
         }, 
         {
          "firstgid":3847,
-         "source":"tileset/Objects.json"
+         "source":"Objects.json"
         }],
  "tilewidth":32,
  "type":"map",

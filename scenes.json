@@ -1,7 +1,7 @@
 {
     "bar" : {
 	"dialogues" : "PHQ_Dialogs_Part1.json",
-	"tiled": "./bar1.json"
+	"tiled": "./tileset/bar1.json"
     },
     "street0": {
 	"exterior": 1,
@@ -12,32 +12,32 @@
 		"entry" : 2
 	    },
 	},
-	"tiled": "./Street0.json"
+	"tiled": "./tileset/Street0.json"
     },
     "street1" : {
 	"exterior": 1,
 	"out": {
 	    "left" : "street0"
 	},
-	"tiled": "./Street1.json"
+	"tiled": "./tileset/Street1.json"
     },
     "street2" : {
 	"exterior": 1,
-	"tiled": "./Street2.json"
+	"tiled": "./tileset/Street2.json"
     },
     "street3" : {
 	"exterior": 1,
-	"tiled": "./Street3.json"
+	"tiled": "./tileset/Street3.json"
     },
     "house0" : {
 	"dialogues" : "house_dialogue.json",
-	"tiled": "./House0.json"
+	"tiled": "./tileset/House0.json"
     },
     "house1" : {
 	"dialogues" : "house_dialogue.json",
-	"tiled": "./House1.json"
+	"tiled": "./tileset/House1.json"
     },
     "house2" : {
-	"tiled": "./House2.json"
+	"tiled": "./tileset/House2.json"
     }
 }

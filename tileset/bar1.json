@@ -462,7 +462,7 @@
         {
          "firstgid":1,
          "source":"Interior_tileset.json"
-        }, 
+        },
         {
          "firstgid":1025,
          "source":"open_tileset.json"

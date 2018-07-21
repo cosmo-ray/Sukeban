@@ -1,7 +1,7 @@
 {
     "columns":8,
     "tilecount":64,
-    "image":"tileset/Objects.png",
+    "image":"Objects.png",
     "imageheight":256,
     "imagewidth":256,
     "margin":0,

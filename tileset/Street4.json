@@ -31,7 +31,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/city_outside.json"
+         "source":"city_outside.json"
         }, 
         {
          "firstgid":433,
