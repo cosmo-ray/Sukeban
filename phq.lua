@@ -424,6 +424,11 @@ function CheckColisionTryChangeScene(main, cur_scene, direction)
    return false
 end
 
+local function CheckColisionExit(col, ret)
+   yeDestroy(col)
+   return ret
+end
+
 function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
    local colRect = ywRectCreate(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30,
@@ -437,9 +442,8 @@ function CheckColision(main, canvasWid, pj)
       if ywRectCollision(rect, colRect) then
 	 local nextSceneTxt = main.exits[i].nextScene:to_string()
 	 load_scene(main, nextSceneTxt, yeGetInt(main.exits[i].entry))
-	 yeDestroy(col)
 	 yeDestroy(colRect)
-	 return CHANGE_SCENE_COLISION
+	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
       end
       i = i + 1
    end
@@ -447,32 +451,28 @@ function CheckColision(main, canvasWid, pj)
 
    local cur_scene = main.cur_scene
    if ywPosX(pjPos) < 0 then
-      yeDestroy(col)
       if CheckColisionTryChangeScene(main, cur_scene, "left") then
-	 return CHANGE_SCENE_COLISION
+	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
       else
-	 return NORMAL_COLISION
+	 return CheckColisionExit(col, NORMAL_COLISION)
       end
-   elseif ywPosY(pjPos) < 0 then
-      yeDestroy(col)
+   elseif ywPosY(pjPos) + 30 < 0 then
       if CheckColisionTryChangeScene(main, cur_scene, "up") then
-	 return CHANGE_SCENE_COLISION
+	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
       else
-	 return NORMAL_COLISION
+	 return CheckColisionExit(col, NORMAL_COLISION)
       end
    elseif ywPosX(pjPos) + lpcs.w_sprite > canvasWid["tiled-wpix"]:to_int() then
-      yeDestroy(col)
       if CheckColisionTryChangeScene(main, cur_scene, "right") then
-	 return CHANGE_SCENE_COLISION
+	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
       else
-	 return NORMAL_COLISION
+	 return CheckColisionExit(col, NORMAL_COLISION)
       end
    elseif ywPosY(pjPos) + lpcs.h_sprite > canvasWid["tiled-hpix"]:to_int() then
-      yeDestroy(col)
       if CheckColisionTryChangeScene(main, cur_scene, "down") then
-	 return CHANGE_SCENE_COLISION
+	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
       else
-	 return NORMAL_COLISION
+	 return CheckColisionExit(col, NORMAL_COLISION)
       end
    end
 
@@ -480,13 +480,11 @@ function CheckColision(main, canvasWid, pj)
    while i < yeLen(col) do
       local obj = col[i]
       if yeGetIntAt(obj, "Collision") == 1 then
-	 yeDestroy(col)
-	 return NORMAL_COLISION
+	 return CheckColisionExit(col, NORMAL_COLISION)
       end
       i = i + 1
    end
-   yeDestroy(col)
-   return NO_COLISION
+   return CheckColisionExit(col, NO_COLISION)
 end
 
 function playSnake(wid)
