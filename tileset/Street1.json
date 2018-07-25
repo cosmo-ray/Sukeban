@@ -179,6 +179,29 @@
                  "width":223,
                  "x":609,
                  "y":5
+                }, 
+                {
+                 "height":331,
+                 "id":13,
+                 "name":"toStr4",
+                 "properties":
+                    {
+                     "entry":0,
+                     "nextScene":"street4",
+                     "side":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "entry":"int",
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":27,
+                 "x":1405,
+                 "y":390
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -186,7 +209,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":12,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",
