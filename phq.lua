@@ -409,6 +409,20 @@ function saveGameCallback(wid)
    saveGame(Entity.wrapp(ywCntWidgetFather(wid)), "cur")
 end
 
+function checkTiledCondition(actionable)
+   local conditionOp = actionable.Condition
+
+   if conditionOp == nil then
+      return true
+   end
+   local condition = Entity.new_array()
+   yeCreateString(yeGetString(conditionOp), condition);
+   yePushBack(condition, yeGet(actionable, "ConditionArg0"));
+   yePushBack(condition, yeGet(actionable, "ConditionArg1"));
+   local ret = yeCheckCondition(condition);
+   return ret
+end
+
 function CheckColisionTryChangeScene(main, cur_scene, direction)
    if cur_scene.out and cur_scene.out[direction] then
       local dir_info = cur_scene.out[direction]
@@ -629,7 +643,8 @@ function phq_action(entity, eve, arg)
              local i = 0
 
 	     while  i < yeLen(e_actionables) do
-		if ywRectCollision(r.ent, e_actionables[i].rect) then
+		if ywRectCollision(r.ent, e_actionables[i].rect) and
+		   checkTiledCondition(e_actionables[i]) then
 		   return yesCall(ygGet(e_actionables[i].Action:to_string()),
 				  entity:cent(), e_actionables[i]:cent(),
 				  e_actionables[i].Arg0,

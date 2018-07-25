@@ -128,12 +128,18 @@
                  "properties":
                     {
                      "Action":"phq.startDialogue",
-                     "Arg0":"Computer"
+                     "Arg0":"Computer",
+                     "Condition":"=",
+                     "ConditionArg0":"phq.pj.archetype",
+                     "ConditionArg1":0
                     },
                  "propertytypes":
                     {
                      "Action":"string",
-                     "Arg0":"string"
+                     "Arg0":"string",
+                     "Condition":"string",
+                     "ConditionArg0":"string",
+                     "ConditionArg1":"int"
                     },
                  "rotation":0,
                  "type":"",
