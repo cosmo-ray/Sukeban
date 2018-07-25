@@ -126,7 +126,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
-	"calendar": { "sunday": "bar" },
+	"calendar": { "everyday": { "night" : "bar" } },
 	"image": "./Portrait_10.png",
     },
     "Typical swedish boy": {
@@ -194,6 +194,7 @@
 	"sex": "male",
         "type": "light",
 	"attack" : "unarmed1",
+	"calendar": { "everyday": { "night" : "street0" } },
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",

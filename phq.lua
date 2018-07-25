@@ -326,12 +326,23 @@ function startDialogue(main, obj, dialogue)
    return YEVE_NOTHANDLE
 end
 
-function checkNpcPresence(npc, scene)
+function checkNpcPresence(obj, npc, scene)
    if npc == nil then
       return false
    end
+   print("checkNpcPresence", npc.calendar)
    if npc.calendar then
-      return yeGetString(npc.calendar[DAY_STR[phq.env.day:to_int() + 1]]) == scene
+      local day_calenday = npc.calendar[DAY_STR[phq.env.day:to_int() + 1]]
+      print(day_calenday, yeType(day_calenday))
+      if day_calenday == nil then
+	 day_calenday = npc.calendar.everyday
+      end
+      if yeType(day_calenday) == YSTRING then
+	 return yeGetString(day_calenday) == scene
+      elseif day_calenday ~= nil then
+	 return yeGetString(day_calenday[phq.env.time:to_string()]) == scene
+      end
+      return false
    end
    return true
 end
@@ -770,7 +781,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       local npc = npcs[yeGetString(yeGet(obj, "name"))]
 
       if layer_name:to_string() == "NPC" and
-	 checkNpcPresence(npc, sceneTxt) then
+	 checkNpcPresence(obj, npc, sceneTxt) then
 
 	 dressUp(npc)
 	 npc = lpcs.createCaracterHandler(npc, mainCanvas.ent, e_npcs)
