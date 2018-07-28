@@ -1,0 +1,15 @@
+{
+    "Joe": {
+	"dialogue" : [
+	    {
+		"text": "Hello, I don't have a lot of money, Would you like to buy a Daikon of mine",
+		"answers": [
+                    {
+			"text": "Sory, I'm not the kind of girl who buy stangers daikon",
+			"action": "phq.EndDialog"
+                    }
+		]
+            }
+	]
+    }
+}
