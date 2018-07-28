@@ -1,4 +1,5 @@
 local tiled = Entity.wrapp(ygGet("tiled"))
+local jrpg_fight = Entity.wrapp(ygGet("jrpg-fight"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 local dialogue = Entity.wrapp(ygGet("Dialogue"))
 local lpcs = Entity.wrapp(ygGet("lpcs"))
@@ -170,6 +171,18 @@ function StartFight(wid, eve, arg)
    fWid.endCallback = Entity.new_func("CombatEnd")
    fWid.endCallbackArg = main
    fWid.player = phq.pj
+   local usabel_items = Entity.new_array(phq.pj, "usable_items")
+   local i = 0
+   local inv = phq.pj.inventory
+   while i < yeLen(inv) do
+      local obj = phq.objects[yeGetKeyAt(inv, i)]
+      if obj and obj.type:to_string() == "usable" then
+	 usabel_items[yeGetKeyAt(inv, i)] = inv[i]
+      end
+      print(yeGetKeyAt(inv, i), inv[i])
+      i  = i + 1
+   end
+   print("phq.pj.usable_items", phq.pj.usable_items)
    fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
    fWid.enemy.life = fWid.enemy.max_life
    EndDialog(owid, eve, arg)
@@ -734,7 +747,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       saved_scenes[ent.cur_scene_str:to_string()].o = ent.mainScreen.objects
       saved_scenes[ent.cur_scene_str:to_string()].d = dialogues
    end
-   
+
    ent.cur_scene_str = sceneTxt
    print("scene txt:", sceneTxt, ent.cur_scene_str)
    local scene = scenes[sceneTxt]
@@ -878,6 +891,8 @@ function create_phq(entity)
     ent.tid = 0
     ent.cur_scene_str = nil
     tiled.setAssetPath("./tileset");
+    jrpg_fight.objects = phq.objects
+    print("jrpg_fight.objects", jrpg_fight.objects)
 
     ent.st_hooks = {}
     add_stat_hook(ent, "drunk", "FinishGame", 20, PHQ_SUP)

@@ -19,5 +19,12 @@
     "beer" : {
 	"type": "usable",
 	"func": "phq.DrinkBeer"
+    },
+    "distiled_wheat_shoot": {
+	"type": "usable",
+	"stats+" : {
+	    "life": 5,
+	    "drunk": 10
+	}
     }
 }
