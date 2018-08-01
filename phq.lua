@@ -452,9 +452,9 @@ function CheckColisionTryChangeScene(main, cur_scene, direction)
       local dir_info = cur_scene.out[direction]
       local nextSceneTxt = nil
       if dir_info.to then
-	 nextSceneTxt = dir_info.to:to_string()
+	 nextSceneTxt = yeGetString(yeToLower(dir_info.to))
       else
-	 nextSceneTxt = dir_info:to_string()
+	 nextSceneTxt = yeGetString(yeToLower(dir_info))
       end
       load_scene(main, nextSceneTxt, yeGetIntAt(dir_info, "entry"))
       return true
@@ -478,7 +478,7 @@ function CheckColision(main, canvasWid, pj)
    while i < yeLen(main.exits) do
       local rect = main.exits[i].rect
       if ywRectCollision(rect, colRect) then
-	 local nextSceneTxt = main.exits[i].nextScene:to_string()
+	 local nextSceneTxt = yeGetString(yeToLower(main.exits[i].nextScene))
 	 load_scene(main, nextSceneTxt, yeGetInt(main.exits[i].entry))
 	 yeDestroy(colRect)
 	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
@@ -918,6 +918,6 @@ function create_phq(entity)
     ent.pj = nil
     dressUp(phq.pj)
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
-    load_scene(ent, scenePath:to_string(), 0)
+    load_scene(ent, yeGetString(yeToLower(scenePath)), 0)
     return ret
 end

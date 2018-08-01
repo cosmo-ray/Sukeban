@@ -8,7 +8,7 @@
 	"dialogues" : "st0_dialogues.json",
 	"out": {
 	    "right" : {
-		"to": "street1",
+		"to": "STREET1",
 		"entry" : 2
 	    },
 	},
