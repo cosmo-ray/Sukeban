@@ -14,6 +14,9 @@ local window_height = 600
 local sleep_time = 0
 local pj_pos = nil
 
+local PIX_PER_FRAME = 3
+local TURN_LENGTH = 10000
+
 local NO_COLISION = 0
 local NORMAL_COLISION = 1
 local CHANGE_SCENE_COLISION = 2
@@ -714,7 +717,8 @@ function phq_action(entity, eve, arg)
        ylpcsHandlerNextStep(entity.pj)
        lpcs.handlerRefresh(entity.pj)
     end
-    local mvPos = Pos.new(3 * entity.move.left_right, 3 * entity.move.up_down)
+   local mvPos = Pos.new(PIX_PER_FRAME * entity.move.left_right,
+			 PIX_PER_FRAME * entity.move.up_down)
     lpcs.handlerMove(entity.pj, mvPos.ent)
     local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
     if col_rel == NORMAL_COLISION then
@@ -907,7 +911,7 @@ function create_phq(entity)
     Entity.new_func("phq_action", ent, "action")
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
     local upCanvas = Canvas.new_entity(entity, "upCanvas")
-    ent["turn-length"] = 10000
+    ent["turn-length"] = TURN_LENGTH
     ent.entries = {}
     ent.background = "rgba: 127 127 127 255"
     ent.entries[0] = mainCanvas.ent
