@@ -14,8 +14,8 @@ local window_height = 600
 local sleep_time = 0
 local pj_pos = nil
 
-local PIX_PER_FRAME = 3
-local TURN_LENGTH = 10000
+local PIX_PER_FRAME = 6
+local TURN_LENGTH = 20000
 
 local NO_COLISION = 0
 local NORMAL_COLISION = 1
@@ -711,7 +711,7 @@ function phq_action(entity, eve, arg)
        end
        eve = eve:next()
     end
-   if yAnd(entity.tid:to_int(), 3) == 0 and
+   if yAnd(entity.tid:to_int(), 1) == 0 and
       (yuiAbs(entity.move.left_right:to_int()) == 1 or
        yuiAbs(entity.move.up_down:to_int()) == 1)  then
        ylpcsHandlerNextStep(entity.pj)
