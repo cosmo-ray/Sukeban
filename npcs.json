@@ -147,6 +147,7 @@
         "sex": "female",
         "type": "light",
 	"attack" : "unarmed0",
+        "max_life": 10,
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
             "torso/dress_female/dress_w_sash_female.png",

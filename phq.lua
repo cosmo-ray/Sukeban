@@ -147,7 +147,7 @@ function CombatEnd(wid, main, winner)
    if yLovePtrToNumber(winner) == 3 then
       yCallNextWidget(main:cent())
    end
-   canvas:remove(main.life_nb )
+   upcanvas:remove(main.life_nb )
    main.life_nb = ywCanvasNewTextExt(upcanvas.ent, 410, 10,
 				     Entity.new_string(math.floor(phq.pj.life:to_int())),
 				     "rgba: 255 255 255 255")
