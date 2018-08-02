@@ -60,11 +60,21 @@
                  "name":"Bed",
                  "properties":
                     {
-                     "Action":"phq.sleep"
+                     "Action":"phq.actionOrPrint",
+                     "Check0":"phq.pj.drunk",
+                     "Check1":90,
+                     "CheckOperation":">",
+                     "Message":"No F****** way I Sleep in this",
+                     "SucessAction":"phq.sleep"
                     },
                  "propertytypes":
                     {
-                     "Action":"string"
+                     "Action":"string",
+                     "Check0":"string",
+                     "Check1":"int",
+                     "CheckOperation":"string",
+                     "Message":"string",
+                     "SucessAction":"string"
                     },
                  "rotation":0,
                  "type":"",

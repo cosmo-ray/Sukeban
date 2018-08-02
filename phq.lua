@@ -292,6 +292,8 @@ function sleep(main, obj)
    else
       phq.env.time = "night"
    end
+   phq.pj.life = phq.pj.max_life
+   phq.pj.drunk = 0
    main = Entity.wrapp(main)
    main.sleep = 1
 end
@@ -378,11 +380,31 @@ function init_phq(mod)
    mod.newGame = Entity.new_func("newGame")
    mod.printMessage = Entity.new_func("printMessage")
    mod.sleep = Entity.new_func("sleep")
+   mod.actionOrPrint = Entity.new_func("actionOrPrint")
    mod.startDialogue = Entity.new_func("startDialogue")
    mod.playSnake = Entity.new_func("playSnake")
    mod.playAstShoot = Entity.new_func("playAstShoot")
    mod.pay = Entity.new_func("pay")
    mod.takeObject = Entity.new_func("takeObject")
+end
+
+function actionOrPrint(main, obj)
+   obj = Entity.wrapp(obj)
+
+   local condition = Entity.new_array()
+   yeCreateString(yeGetString(obj.CheckOperation), condition);
+   yePushBack(condition, obj.Check0);
+   yePushBack(condition, obj.Check1);
+   local ret = yeCheckCondition(condition)
+   print(obj.Arg0, obj.CheckOperation, obj.Check0,
+	 obj.Check1, obj.SucessAction, obj.Message,
+	 obj.ActionArg0, ret, yeGetInt(ygGet(obj.Check0:to_string())))
+   if ret then
+      return yesCall(ygGet(obj.SucessAction:to_string()),
+		     main, obj, obj.ActionArg0,
+		     obj.ActionArg1, obj.ActionArg2)
+   end
+   return printMessage(main, obj, obj.Message)
 end
 
 function load_game(entity, save_dir)
@@ -671,13 +693,13 @@ function phq_action(entity, eve, arg)
 
 	     while  i < yeLen(e_actionables) do
 		if ywRectCollision(r.ent, e_actionables[i].rect) and
-		   checkTiledCondition(e_actionables[i]) then
+		checkTiledCondition(e_actionables[i]) then
+		   local args = { e_actionables[i].Arg0, e_actionables[i].Arg1,
+				  e_actionables[i].Arg2, e_actionables[i].Arg3 }
+
 		   return yesCall(ygGet(e_actionables[i].Action:to_string()),
-				  entity:cent(), e_actionables[i]:cent(),
-				  e_actionables[i].Arg0,
-				  e_actionables[i].Arg1,
-				  e_actionables[i].Arg2,
-				  e_actionables[i].Arg3)
+				  entity:cent(), e_actionables[i]:cent(), args[1],
+				  args[2], args[3], args[4])
 		end
 		i = i + 1
 	     end
@@ -899,7 +921,7 @@ function create_phq(entity)
     print("jrpg_fight.objects", jrpg_fight.objects)
 
     ent.st_hooks = {}
-    add_stat_hook(ent, "drunk", "FinishGame", 20, PHQ_SUP)
+    add_stat_hook(ent, "drunk", "FinishGame", 99, PHQ_SUP)
     add_stat_hook(ent, "life", "FinishGame", 0, PHQ_INF)
     yJrpgFightSetCombots("phq.combots")
     if ent.saved_data then
