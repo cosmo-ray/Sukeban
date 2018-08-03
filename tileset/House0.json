@@ -88,11 +88,13 @@
                  "point":true,
                  "properties":
                     {
-                     "Rotation":"up"
+                     "Rotation":"up",
+                     "Time":"Day"
                     },
                  "propertytypes":
                     {
-                     "Rotation":"string"
+                     "Rotation":"string",
+                     "Time":"string"
                     },
                  "rotation":0,
                  "type":"NPC",
@@ -100,6 +102,28 @@
                  "width":0,
                  "x":370,
                  "y":400
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"Mom",
+                 "point":true,
+                 "properties":
+                    {
+                     "Rotation":"up",
+                     "Time":"Night"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string",
+                     "Time":"string"
+                    },
+                 "rotation":0,
+                 "type":"NPC",
+                 "visible":true,
+                 "width":0,
+                 "x":639,
+                 "y":97
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -163,7 +187,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":4,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "properties":
     {

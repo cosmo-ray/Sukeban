@@ -348,6 +348,16 @@ function checkNpcPresence(obj, npc, scene)
    if npc == nil then
       return false
    end
+   local cur_time = phq.env.time:to_string()
+   local obj_time = obj.Time
+
+   if obj_time then
+      print(yeStrCaseCmp(obj_time, cur_time), yeGetString(obj_time), cur_time)
+      if yeStrCaseCmp(obj_time, cur_time) ~= 0 then
+	 return false
+      end
+   end
+
    print("checkNpcPresence", npc.calendar)
    if npc.calendar then
       local day_calenday = npc.calendar[DAY_STR[phq.env.day:to_int() + 1]]
@@ -358,7 +368,7 @@ function checkNpcPresence(obj, npc, scene)
       if yeType(day_calenday) == YSTRING then
 	 return yeGetString(day_calenday) == scene
       elseif day_calenday ~= nil then
-	 return yeGetString(day_calenday[phq.env.time:to_string()]) == scene
+	 return yeGetString(day_calenday[cur_time]) == scene
       end
       return false
    end
