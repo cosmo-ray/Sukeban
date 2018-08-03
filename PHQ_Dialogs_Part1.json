@@ -416,7 +416,7 @@
 		    {
 			"text": "Yeap, I hear she made a duo with basara",
 			"actions": [
-			    [				
+			    [
 				"Dialogue:block",
 				"phq.EndDialog",
 				"You want a 2nd beer, but that's like Mocross 2, it's doesn't existe",

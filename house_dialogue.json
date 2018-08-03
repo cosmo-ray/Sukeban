@@ -2,6 +2,7 @@
     "Mom": {
 	"dialogue" : [
 	    {
+		"condition":  ["S=", "phq.env.time", "day"],
 		"text": "Can't you see I'm busy, bug off",
 		"answers": [
                     {
@@ -9,7 +10,14 @@
 			"action": "phq.EndDialog"
                     }
 		]
-            }
+            },
+	    {
+		"text": "ZZZZzzzzZZZzzz",
+		"answer": {
+		    "text": "leave",
+		    "action": "phq.EndDialog"
+		}
+	    }
 	]
     },
     "Computer": {

@@ -424,7 +424,6 @@ function load_game(entity, save_dir)
    game.saved_data = ygFileToEnt(YJSON, save_dir.."/misc.json")
    yeDestroy(game.saved_data)
    local pj = ygFileToEnt(YJSON, save_dir.."/pj.json")
-   print(pj)
    phq.pj = pj
    yeDestroy(pj)
    local env = ygFileToEnt(YJSON, save_dir.."/env.json")
