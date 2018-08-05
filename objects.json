@@ -22,6 +22,7 @@
     },
     "distiled_wheat_shoot": {
 	"type": "usable",
+	"name": "Distiled Wheat Shoot",
 	"stats+" : {
 	    "life": 5,
 	    "drunk": 10

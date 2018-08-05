@@ -74,7 +74,13 @@ function invList(mn)
    local i = 0
    while i < yeLen(inv) do
       if inv[i] then
-	 local cur = mn:push(yeGetKeyAt(inv, i) .. ": " ..
+	 local name = yeGetKeyAt(inv, i)
+	 local ob_desc = phq.objects[name]
+
+	 if ob_desc and ob_desc.name then
+	    name = ob_desc.name:to_string()
+	 end
+	 local cur = mn:push(name .. ": " ..
 			     math.floor(yeGetInt(inv[i])),
 			     Entity.new_func("gmUseItem"))
 	 cur.obName = yeGetKeyAt(inv, i)
