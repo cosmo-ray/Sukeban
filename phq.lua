@@ -559,7 +559,7 @@ function CheckColision(main, canvasWid, pj)
    return CheckColisionExit(col, NO_COLISION)
 end
 
-function playSnake(wid)
+function playSnake(wid, eve, arg, version)
    local wid = Entity.wrapp(wid)
    local main = nil
 
@@ -568,6 +568,7 @@ function playSnake(wid)
    end
    main = Entity.wrapp(ywCntWidgetFather(wid))
 
+   version = yeGetInt(version)
    ywCntPopLastEntry(main)
    local snake = Entity.new_array()
 
@@ -576,7 +577,12 @@ function playSnake(wid)
    snake.die = Entity.new_func("backToGame")
    snake.quit = Entity.new_func("backToGame")
    snake.hitWall = "snake:snakeWarp"
-   snake.resources = "snake:resources"
+   if version > 0 then
+      snake.resources = File.jsonToEnt("snake/resources.json")
+      print("res: ", snake.resources)
+   else
+      snake.resources = "snake:resources"
+   end
    snake.background = "rgba: 255 255 255 255"
    snake.oldTimer = main["turn-length"]
    main["turn-length"] = 200000

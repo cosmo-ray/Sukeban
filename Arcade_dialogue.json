@@ -6,7 +6,8 @@
 		"answers": [
 		    {
 			"text": "Play",
-			"action": [ "phq.pay", 1, "phq.playSnake",
+			"action": [ "phq.pay", 1,
+				    [ "phq.playSnake", 1 ],
 				    "not enouth money" ]
 		    },
 		    {
