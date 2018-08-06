@@ -128,6 +128,13 @@ function backToGame(wid)
    return YEVE_ACTION
 end
 
+function backToGame2(wid)
+   local main = Entity.wrapp(ywCntWidgetFather(wid))
+
+   ywCntPopLastEntry(main)
+   backToGame(wid)
+end
+
 function EndDialog(wid, eve, arg)
    wid = Entity.wrapp(yDialogueGetMain(wid))
    local main = Entity.wrapp(ywCntWidgetFather(wid))
@@ -574,19 +581,29 @@ function playSnake(wid, eve, arg, version)
 
    snake["<type>"] = "snake"
    snake.dreadful_die = 1
-   snake.die = Entity.new_func("backToGame")
-   snake.quit = Entity.new_func("backToGame")
    snake.hitWall = "snake:snakeWarp"
    if version > 0 then
+      snake.die = Entity.new_func("backToGame2")
+      snake.quit = Entity.new_func("backToGame2")
       snake.resources = File.jsonToEnt("snake/resources.json")
-      print("res: ", snake.resources)
+      snake.eat = ygGet("snake.showScore")
    else
+      snake.die = Entity.new_func("backToGame")
+      snake.quit = Entity.new_func("backToGame")
       snake.resources = "snake:resources"
    end
    snake.background = "rgba: 255 255 255 255"
    snake.oldTimer = main["turn-length"]
    main["turn-length"] = 200000
    ywPushNewWidget(main, snake)
+   if version > 0 then
+      local tx = Entity.new_array(snake, "score_wid")
+
+      tx["<type>"] = "text-screen"
+      tx.text = "score: 0"
+      ywPushNewWidget(main, tx)
+   end
+   main.current = 2
    return YEVE_ACTION
 end
 
@@ -632,7 +649,7 @@ function phq_action(entity, eve, arg)
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
 
-   if yeGetInt(entity.current) == 2 then
+   if yeGetInt(entity.current) > 1 then
       return NOTHANDLE
    end
 
