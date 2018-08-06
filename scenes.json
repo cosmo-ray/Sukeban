@@ -1,4 +1,8 @@
 {
+    "arcade" : {
+	"dialogue" : "Arcade_dialogue.json",
+	"tiled": "./tileset/Arcade.json"
+    },
     "bar" : {
 	"dialogues" : "PHQ_Dialogs_Part1.json",
 	"tiled": "./tileset/bar1.json"

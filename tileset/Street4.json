@@ -122,6 +122,27 @@
                  "width":30,
                  "x":512,
                  "y":262
+                }, 
+                {
+                 "height":63,
+                 "id":4,
+                 "name":"Arcade",
+                 "properties":
+                    {
+                     "nextScene":"arcade",
+                     "side":"down"
+                    },
+                 "propertytypes":
+                    {
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":60,
+                 "x":834,
+                 "y":529
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -129,7 +150,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":4,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",

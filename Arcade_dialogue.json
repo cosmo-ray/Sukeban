@@ -1,0 +1,20 @@
+{
+    "Snake 2 Turbo": {
+	"dialogue" : [
+	    {
+		"text": "Party 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1, "phq.playSnake",
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.EndDialog"
+		    }
+		]
+	    },
+	]
+    }
+}
