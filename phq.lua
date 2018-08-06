@@ -798,7 +798,6 @@ function load_scene(ent, sceneTxt, entryIdx)
    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(), upCanvas.ent:cent())
    yeDestroy(dialogues)
    dialogues = nil
-   Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
    if saved_scenes[ent.cur_scene_str:to_string()] then
       print("LOAD !!!")
       ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()].o
@@ -809,6 +808,7 @@ function load_scene(ent, sceneTxt, entryIdx)
    else
       dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
    end
+   print("load: ", dialogues, "\nfilename: ", yeGetString(scene.dialogues))
    mainCanvas.ent.cam = Pos.new(0, 0).ent
    -- Pj info:
    local objects = ent.mainScreen.objects

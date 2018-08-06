@@ -13,6 +13,79 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "name":"Actionable",
+         "objects":[
+                {
+                 "height":60,
+                 "id":2,
+                 "name":"Arcade2",
+                 "properties":
+                    {
+                     "Action":"phq.startDialogue",
+                     "Arg0":"Snake 2 Turbo"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "Arg0":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30,
+                 "x":159,
+                 "y":35
+                }, 
+                {
+                 "height":60,
+                 "id":3,
+                 "name":"Arcade1",
+                 "properties":
+                    {
+                     "Action":"phq.startDialogue",
+                     "Arg0":"Snake 2 Turbo"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "Arg0":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":27,
+                 "x":99,
+                 "y":34
+                }, 
+                {
+                 "height":57,
+                 "id":5,
+                 "name":"Arcade0",
+                 "properties":
+                    {
+                     "Action":"phq.startDialogue",
+                     "Arg0":"Snake 2 Turbo"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "Arg0":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":29,
+                 "x":34,
+                 "y":40
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[2612, 2614, 2614, 2614, 2614, 2614, 2614, 2614, 2614, 2611, 2583, 92, 92, 92, 93, 93, 93, 93, 93, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2583, 0, 0, 0, 0, 0, 0, 0, 0, 2581, 2580, 2550, 2550, 2550, 2550, 0, 2550, 2550, 2550, 2579],
          "height":15,
          "name":"Wall",
@@ -94,7 +167,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",

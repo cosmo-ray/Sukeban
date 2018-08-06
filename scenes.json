@@ -1,6 +1,6 @@
 {
     "arcade" : {
-	"dialogue" : "Arcade_dialogue.json",
+	"dialogues" : "Arcade_dialogue.json",
 	"tiled": "./tileset/Arcade.json"
     },
     "bar" : {
