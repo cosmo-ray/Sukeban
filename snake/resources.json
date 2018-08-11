@@ -1,0 +1,23 @@
+[
+    {
+	"name" : "floar",
+	"map-tild" : "snake/bg.png",
+    },
+    {
+	"name" : "head",
+	"map-tild" : "snake/head.png"
+    },
+    {
+	"name" : "peanut",
+	"map-tild" : "snake/candy.png"
+    },
+    {
+	"name" : "eatead",
+	"map-tild" : "snake/body.png"
+    },
+    {
+	"name" : "body",
+	"map-tild" : "snake/body.png"
+    }
+
+]
