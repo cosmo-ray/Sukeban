@@ -1,8 +1,26 @@
 {
+    "Asteroid Shooter": {
+	"dialogue" : [
+	    {
+		"text": "Asteroid Shooter\nParty 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1, "phq.playAstShoot",
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.EndDialog"
+		    }
+		]
+	    },
+	]
+    },
     "Snake 2 Turbo": {
 	"dialogue" : [
 	    {
-		"text": "Party 1$:",
+		"text": "Snake 2 Turbo\nParty 1$:",
 		"answers": [
 		    {
 			"text": "Play",
