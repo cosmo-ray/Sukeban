@@ -401,6 +401,7 @@ function init_phq(mod)
    mod.startDialogue = Entity.new_func("startDialogue")
    mod.playSnake = Entity.new_func("playSnake")
    mod.playAstShoot = Entity.new_func("playAstShoot")
+   mod.playVapp = Entity.new_func("playVapp")
    mod.pay = Entity.new_func("pay")
    mod.takeObject = Entity.new_func("takeObject")
 end
@@ -625,6 +626,28 @@ function playAstShoot(wid)
    ast_shoot.oldTimer = main["turn-length"]
    main["turn-length"] = 40000
    ywPushNewWidget(main, ast_shoot)
+   return YEVE_ACTION
+end
+
+function playVapp(wid)
+   local wid = Entity.wrapp(wid)
+   local main = nil
+
+   if wid.isDialogue then
+      wid = Entity.wrapp(yDialogueGetMain(wid))
+   end
+   main = Entity.wrapp(ywCntWidgetFather(wid))
+
+   ywCntPopLastEntry(main)
+   local vapp = Entity.new_array()
+
+   vapp["<type>"] = "vapz"
+   vapp.resources = "vapp:resources.map"
+   vapp.die = Entity.new_func("backToGame")
+   vapp.quit = Entity.new_func("backToGame")
+   vapp.oldTimer = main["turn-length"]
+   main["turn-length"] = 150000
+   ywPushNewWidget(main, vapp)
    return YEVE_ACTION
 end
 

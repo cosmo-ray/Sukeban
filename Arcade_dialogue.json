@@ -35,5 +35,24 @@
 		]
 	    },
 	]
+    },
+    "vapp": {
+	"dialogue" : [
+	    {
+		"text": "Vikings against Pineapple Piza\nParty 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1,
+				    [ "phq.playVapp", 1 ],
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.EndDialog"
+		    }
+		]
+	    },
+	]
     }
 }

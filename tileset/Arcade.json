@@ -23,7 +23,7 @@
                  "properties":
                     {
                      "Action":"phq.startDialogue",
-                     "Arg0":"Snake 2 Turbo"
+                     "Arg0":"vapp"
                     },
                  "propertytypes":
                     {
