@@ -48,7 +48,7 @@ local function dressUp(caracter)
       end
    end
    if caracter.hair then
-      yeCreateString("hair/" .. caracter.sex:to_string() .. "/" .. 
+      yeCreateString("hair/" .. caracter.sex:to_string() .. "/" ..
 		     caracter.hair[0]:to_string() .. "/" ..
 		     caracter.hair[1]:to_string() .. ".png",
 		     clothes)
