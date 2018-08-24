@@ -187,6 +187,26 @@
                  "width":0,
                  "x":206,
                  "y":354
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"homeless",
+                 "point":true,
+                 "properties":
+                    {
+                     "Rotation":"down"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
+                 "rotation":0,
+                 "type":"NPC",
+                 "visible":true,
+                 "width":0,
+                 "x":417,
+                 "y":441
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -194,7 +214,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.5",

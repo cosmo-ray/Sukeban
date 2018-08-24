@@ -202,5 +202,14 @@
             "legs/skirt/male/robe_skirt_male.png",
             "hair/male/long/blonde.png"
         ]
+    },
+    "homeless": {
+	"sex": "male",
+	"type": "light",
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "legs/skirt/male/robe_skirt_male.png",
+            "hair/male/long/black.png"
+        ]
     }
 }

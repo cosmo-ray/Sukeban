@@ -11,5 +11,23 @@
 		]
             }
 	]
+    },
+    "homeless": {
+	"dialogue" : [
+	    {
+		"text": "please, would you be nice to give a piece to someone in need",
+		"answers": [
+                    {
+			"text": "Sory, no money",
+			"action": "phq.EndDialog"
+                    },
+		    {
+			"text": "go out of my face dirty tramp",
+			"action": ["phq.PjLeave", 1]
+                    }
+
+		]
+            }
+	]
     }
 }

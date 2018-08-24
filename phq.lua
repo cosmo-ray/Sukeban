@@ -404,6 +404,11 @@ function init_phq(mod)
    mod.playVapp = Entity.new_func("playVapp")
    mod.pay = Entity.new_func("pay")
    mod.takeObject = Entity.new_func("takeObject")
+   mod.PjLeave = Entity.new_func("PjLeave")
+end
+
+function PjLeave(wid, eve, arg, entryPoint)
+   print(wid, eve, arg, yeGetInt(entryPoint))
 end
 
 function actionOrPrint(main, obj)
