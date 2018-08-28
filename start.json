@@ -23,6 +23,8 @@
         { "file" : "objects.json", "type" : "json", "as" : "objects"},
 	{ "file" : "global_menu.lua", "type" : "lua" },
 	{ "file" : "new-game.lua", "type" : "lua" },
+	{ "file" : "actions.lua", "type" : "lua" },
+	{ "file" : "ai.lua", "type" : "lua" },
 	{ "file" : "phq.lua", "type" : "lua" }
     ],
     "pj" : {
