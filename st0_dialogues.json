@@ -18,16 +18,27 @@
 		"text": "please, would you be nice to give a piece to someone in need",
 		"answers": [
                     {
-			"text": "Sory, no money",
+			"text": "Sorry, no money",
 			"action": "phq.EndDialog"
                     },
 		    {
-			"text": "go out of my face dirty tramp",
-			"action": ["phq.PjLeave", 0]
+			"text": "go out of my face dirty tramp"
                     }
-
 		]
-            }
+            },
+	    {
+		"text": "mokay, why be so mean ?",
+		"answers": [
+		    {
+			"text": "*Punch Him\nI tell you to leave",
+			"action": ["phq.PjLeave", 0]
+		    },
+		    {
+			"text": "say nothing",
+			"action": "phq.EndDialog"
+		    }
+		]
+	    }
 	]
     }
 }

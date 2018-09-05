@@ -1,5 +1,9 @@
+local sleep_time = 0
+local phq = Entity.wrapp(ygGet("phq"))
 local dialogue = Entity.wrapp(ygGet("Dialogue"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
+local window_width = 800
+local window_height = 600
 
 function walkDoStep(wid, character)
    if yAnd(wid.tid:to_int(), 1) == 0 and
@@ -362,7 +366,7 @@ function playVapp(wid)
    return YEVE_ACTION
 end
 
-local function doSleep(ent, upCanvas)
+function doSleep(ent, upCanvas)
    ywCanvasRemoveObj(upCanvas.ent, ent.sleep_r)
 
    if sleep_time > 200 then

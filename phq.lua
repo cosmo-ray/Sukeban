@@ -10,7 +10,6 @@ saved_scenes = nil
 dialogues = nil
 local window_width = 800
 local window_height = 600
-local sleep_time = 0
 local pj_pos = nil
 
 local PIX_PER_FRAME = 6
