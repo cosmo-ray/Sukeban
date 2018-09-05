@@ -23,7 +23,7 @@
                     },
 		    {
 			"text": "go out of my face dirty tramp",
-			"action": ["phq.PjLeave", 1]
+			"action": ["phq.PjLeave", 0]
                     }
 
 		]

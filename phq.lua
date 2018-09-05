@@ -22,6 +22,11 @@ local CHANGE_SCENE_COLISION = 2
 local PHQ_SUP = 0
 local PHQ_INF = 1
 
+local LPCS_LEFT = 9
+local LPCS_DOWN = 10
+local LPCS_RIGHT = 11
+local LPCS_UP = 8
+
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
 
@@ -335,30 +340,30 @@ function phq_action(entity, eve, arg)
 	     pushMainMenu(entity)
 	     return YEVE_ACTION
 	  elseif eve:is_key_up() then
-             entity.move.up_down = -1
-             entity.pj.y = 8
+             entity.pj.move.up_down = -1
+             entity.pj.y = LPCS_UP
 	  elseif eve:is_key_down() then
-             entity.move.up_down = 1
-             entity.pj.y = 10
+             entity.pj.move.up_down = 1
+             entity.pj.y = LPCS_DOWN
 	  elseif eve:is_key_left() then
-             entity.move.left_right = -1
-             entity.pj.y = 9
+             entity.pj.move.left_right = -1
+             entity.pj.y = LPCS_LEFT
 	  elseif eve:is_key_right() then
-             entity.move.left_right = 1
-             entity.pj.y = 11
+             entity.pj.move.left_right = 1
+             entity.pj.y = LPCS_RIGHT
           elseif eve:key() == Y_SPACE_KEY or eve:key() == Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
              local y_add = 0
 
              pjPos = Pos.wrapp(pjPos)
-             if entity.pj.y:to_int() == 8 then
+             if entity.pj.y:to_int() == LPCS_UP then
                 y_add = -25
                 x_add = lpcs.w_sprite / 2
-             elseif entity.pj.y:to_int() == 9 then
+             elseif entity.pj.y:to_int() == LPCS_LEFT then
                 x_add = -25
                 y_add = lpcs.h_sprite / 2
-             elseif entity.pj.y:to_int() == 10 then
+             elseif entity.pj.y:to_int() == LPCS_DOWN then
                 y_add = lpcs.h_sprite + 20
                 x_add = lpcs.w_sprite / 2
              else
@@ -399,31 +404,28 @@ function phq_action(entity, eve, arg)
 
         elseif eve:type() == YKEY_UP then
 	  if eve:is_key_up() then
-	     entity.move.up_down = 0
+	     entity.pj.move.up_down = 0
 	  elseif eve:is_key_down() then
-	     entity.move.up_down = 0
+	     entity.pj.move.up_down = 0
 	  elseif eve:is_key_left() then
-	     entity.move.left_right = 0
+	     entity.pj.move.left_right = 0
 	  elseif eve:is_key_right() then
-	     entity.move.left_right = 0
+	     entity.pj.move.left_right = 0
           end
           entity.pj.x = 0
        end
        eve = eve:next()
    end
-   if yAnd(entity.tid:to_int(), 1) == 0 and
-      (yuiAbs(entity.move.left_right:to_int()) == 1 or
-       yuiAbs(entity.move.up_down:to_int()) == 1)  then
-       ylpcsHandlerNextStep(entity.pj)
-       lpcs.handlerRefresh(entity.pj)
-    end
-   local mvPos = Pos.new(PIX_PER_FRAME * entity.move.left_right,
-			 PIX_PER_FRAME * entity.move.up_down)
-    lpcs.handlerMove(entity.pj, mvPos.ent)
+
+   walkDoStep(entity, entity.pj)
+
+   local mvPos = Pos.new(PIX_PER_FRAME * entity.pj.move.left_right,
+			 PIX_PER_FRAME * entity.pj.move.up_down)
+    ylpcsHandlerMove(entity.pj, mvPos.ent)
     local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
     if col_rel == NORMAL_COLISION then
        mvPos:opposite()
-       lpcs.handlerMove(entity.pj, mvPos.ent)
+       ylpcsHandlerMove(entity.pj, mvPos.ent)
     end
     reposeCam(entity)
     return YEVE_ACTION
@@ -452,6 +454,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       saved_scenes[ent.cur_scene_str:to_string()].d = dialogues
    end
 
+   ent.npc_act = {}
    ent.cur_scene_str = sceneTxt
    print("scene txt:", sceneTxt, ent.cur_scene_str)
    local scene = scenes[sceneTxt]
@@ -507,13 +510,13 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 pos:sub(20, 50)
 	 lpcs.handlerMove(npc, pos.ent)
 	 if yeGetString(obj.Rotation) == "left" then
-	    lpcs.handlerSetOrigXY(npc, 0, 9)
+	    lpcs.handlerSetOrigXY(npc, 0, LPCS_LEFT)
 	 elseif yeGetString(obj.Rotation) == "right" then
-	    lpcs.handlerSetOrigXY(npc, 0, 11)
+	    lpcs.handlerSetOrigXY(npc, 0, LPCS_RIGHT)
 	 elseif yeGetString(obj.Rotation) == "down" then
-	    lpcs.handlerSetOrigXY(npc, 0, 10)
+	    lpcs.handlerSetOrigXY(npc, 0, LPCS_DOWN)
 	 else
-	    lpcs.handlerSetOrigXY(npc, 0, 12)
+	    lpcs.handlerSetOrigXY(npc, 0, LPCS_UP)
 	 end
 	 lpcs.handlerRefresh(npc)
 	 npc = Entity.wrapp(npc)
@@ -589,12 +592,8 @@ function create_phq(entity)
     local ent = container.ent
     local scenePath = nil
 
-    ent.move = {}
-    ent.move.up_down = 0
-    ent.move.left_right = 0
     ent.tid = 0
     ent.cur_scene_str = nil
-    ent.npc_act = {}
     tiled.setAssetPath("./tileset");
     jrpg_fight.objects = phq.objects
     print("jrpg_fight.objects", jrpg_fight.objects)
@@ -624,5 +623,8 @@ function create_phq(entity)
     dressUp(phq.pj)
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
     load_scene(ent, yeGetString(yeToLower(scenePath)), 0)
+    ent.pj.move = {}
+    ent.pj.move.up_down = 0
+    ent.pj.move.left_right = 0
     return ret
 end

@@ -1,6 +1,15 @@
 local dialogue = Entity.wrapp(ygGet("Dialogue"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 
+function walkDoStep(wid, character)
+   if yAnd(wid.tid:to_int(), 1) == 0 and
+      (yuiAbs(yeGetInt(character.move.left_right)) == 1 or
+       yuiAbs(yeGetInt(character.move.up_down)) == 1)  then
+	 ylpcsHandlerNextStep(character)
+	 ylpcsHandlerRefresh(character)
+   end
+end
+
 function backToGameOnEnter(wid, eve)
    eve = Event.wrapp(eve)
 
