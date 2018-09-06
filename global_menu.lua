@@ -14,6 +14,8 @@ function pushStatus(mn)
    local knowledge = phq.pj.knowledge
    local stats_str = "----- Stats -----\n"
    local stats = phq.pj.stats
+   local stats_str = "----- Trait -----\n"
+   local stats = phq.pj.trait
 
    local i = 0
    while i < yeLen(knowledge) do
@@ -28,6 +30,14 @@ function pushStatus(mn)
       if stats[i] then
 	 stats_str = stats_str ..
 	    yeGetKeyAt(stats, i) .. ": " .. yeGetInt(stats[i]) .. "\n"
+      end
+      i = i + 1
+   end
+   local i = 0
+   while i < yeLen(trait) do
+      if trait[i] then
+	 trait_str = trait_str ..
+	    yeGetKeyAt(trait, i) .. ": " .. yeGetInt(trait[i]) .. "\n"
       end
       i = i + 1
    end

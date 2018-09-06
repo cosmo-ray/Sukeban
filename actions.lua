@@ -145,17 +145,36 @@ function pay(wid, eve, arg, cost, okAction, noDialogue)
    return dialogue["change-text"](wid, eve, arg, noDialogue)
 end
 
-function increaseStat(wid, caracter, stat, nb, max)
-   local s = caracter[stat]
+function increaseStat(wid, stats_container, stat, nb, max_min)
+   local s = stats_container[stat]
+   local opStr = "increase"
 
-   yeSetInt(s, s + nb)
-   if s > max then
-      yeSetInt(s, max)
+   yeSetInt(s, s:to_int() + nb)
+   if nb < 0 then
+      opStr = "decrease"
+      if max_min and s < max_min then
+	 yeSetInt(s, max_min)
+      end
+   else
+      if max_min and s > max_min then
+	 yeSetInt(s, max_min)
+      end
    end
-   return printMessage(wid, caracter,
-		       Entity.new_string(stat .. " increase to " ..
-					    yeGetInt(s)))
+   return printMessage(wid, stats_container,
+		       Entity.new_string(stat .. " " .. opStr .. " to " ..
+					    math.floor(yeGetInt(s))))
 end
+
+function increase(wid, eve, arg, whatType, what, val)
+   wid = ywCntWidgetFather(yDialogueGetMain(wid))
+   local stat_container = phq.pj[yeGetString(whatType)]
+   local what = yeGetString(what)
+   if stat_container[what] == nil then
+      stat_container[what] = 0
+   end
+   return increaseStat(wid, stat_container, what, yeGetInt(val))
+end
+
 
 function DrinkBeer(ent, obj)
    ent = Entity.wrapp(ent)

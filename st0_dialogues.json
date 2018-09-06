@@ -31,7 +31,12 @@
 		"answers": [
 		    {
 			"text": "*Punch Him\nI tell you to leave",
-			"action": ["phq.PjLeave", 0]
+			"actions": [
+			    [ "Dialogue:block", "phq.EndDialog" ],
+			    [ "phq.increase", "trait", "violance", 1],
+			    [ "phq.increase", "trait", "sensitivity", -1],
+			    [ "phq.PjLeave", 0 ]
+			]
 		    },
 		    {
 			"text": "say nothing",

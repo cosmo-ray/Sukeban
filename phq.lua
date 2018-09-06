@@ -132,6 +132,7 @@ function init_phq(mod)
    mod.pay = Entity.new_func("pay")
    mod.takeObject = Entity.new_func("takeObject")
    mod.PjLeave = Entity.new_func("PjLeave")
+   mod.increase = Entity.new_func("increase")
 end
 
 function load_game(entity, save_dir)

@@ -19,6 +19,7 @@ function newGameAction(menu, eve, arg)
    phq.env = File.jsonToEnt("environement.json")
    phq.pj.stats = {}
    phq.pj.knowledge = {}
+   phq.pj.trait = {}
    phq.pj.drunk = 0
    phq.pj.stats.charisme = 0
    phq.pj.stats.strength = 0
