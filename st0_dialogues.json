@@ -75,6 +75,7 @@
 		"answers": [
 		    {
 			"text": "*Punch Him\nI tell you to leave",
+			"condition":  [">", "phq.pj.trait.violance", 0],
 			"actions": [
 			    [ "Dialogue:block", "phq.EndDialog" ],
 			    [ "phq.increase", "trait", "violance", 1],

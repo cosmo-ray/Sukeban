@@ -38,6 +38,7 @@ function newGameAction(menu, eve, arg)
       phq.pj.stats.strength = 1
    elseif archetype == BRUTE_ARCHETYPE then
       phq.pj.knowledge.slang = 5
+      phq.pj.trait.violance = 1
       phq.pj.stats.charisme = 1
       phq.pj.stats.strength = 3
    elseif archetype == WORMS_COINOISSEUR_ARCHETYPE then
