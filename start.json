@@ -21,6 +21,7 @@
         { "file" : "menus.json", "type" : "json", "as" : "menus"},
         { "file" : "environement.json", "type" : "json", "as" : "env"},
         { "file" : "objects.json", "type" : "json", "as" : "objects"},
+        { "file" : "stores.json", "type" : "json", "as" : "stores"},
 	{ "file" : "global_menu.lua", "type" : "lua" },
 	{ "file" : "new-game.lua", "type" : "lua" },
 	{ "file" : "actions.lua", "type" : "lua" },

@@ -4,6 +4,7 @@ local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local scenes = Entity.wrapp(ygGet("phq.scenes"))
+local stores = Entity.wrapp(ygGet("phq.stores"))
 
 function pushStatus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
@@ -102,4 +103,35 @@ function invList(mn)
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent.next = main.next
    ywPushNewWidget(main, mn.ent)
+   return YEVE_ACTION
+end
+
+function openStore(main, obj, storeName)
+   storeName = yeGetString(storeName)
+   print("open ", stores[storeName])
+
+   local main = Entity.wrapp(main)
+   local store = stores[storeName]
+   mn = Menu.new_entity()
+   mn:push("Exit Store", Entity.new_func("backToGame"))
+   local i = 0
+   while i < yeLen(store) do
+      if store[i] then
+	 local name = yeGetKeyAt(store, i)
+	 local ob_desc = phq.objects[name]
+
+	 if ob_desc and ob_desc.name then
+	    name = ob_desc.name:to_string()
+	 end
+	 local cur = mn:push(name .. ": " ..
+			     math.floor(yeGetInt(store[i])) .. "$",
+			     Entity.new_func("gmUseItem"))
+	 cur.obName = yeGetKeyAt(store, i)
+      end
+      i = i + 1
+   end
+   mn.ent.background = "rgba: 255 255 255 190"
+   mn.ent.next = main.next
+   ywPushNewWidget(main, mn.ent)
+   return YEVE_ACTION
 end

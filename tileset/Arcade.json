@@ -78,6 +78,27 @@
                  "width":29,
                  "x":34,
                  "y":40
+                }, 
+                {
+                 "height":57,
+                 "id":6,
+                 "name":"VendingMachine",
+                 "properties":
+                    {
+                     "Action":"phq.openStore",
+                     "Arg0":"VendingMachineArcade"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "Arg0":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":37,
+                 "x":237,
+                 "y":36
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -167,10 +188,10 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.6",
  "tileheight":32,
  "tilesets":[
         {
