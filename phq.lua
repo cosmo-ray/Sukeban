@@ -150,6 +150,8 @@ function load_game(entity, save_dir)
 					       save_dir.."/saved-scenes.json"),
 				   true)
    phq.env = env
+   local events = File.jsonToEnt(save_dir.."/evenements.json")
+   phq.events = events
    yeDestroy(env)
    --local tmp = ygFileToEnt(YJSON, save_dir.."/npcs.json")
    yCallNextWidget(entity);
@@ -175,6 +177,8 @@ function saveGame(main, saveDir)
    ygEntToFile(YJSON, destDir .. "/pj-pos.json", ylpcsHandePos(main.pj))
    ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
    ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
+   print(phq.events)
+   ygEntToFile(YJSON, destDir .. "/evenements.json", phq.events)
    ygEntToFile(YJSON, destDir .. "/misc.json", misc)
    ygEntToFile(YJSON, destDir .. "/env.json", phq.env)
    ygEntToFile(YJSON, destDir .. "/saved-scenes.json", saved_scenes)

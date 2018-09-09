@@ -194,6 +194,7 @@
     "Joe": {
 	"sex": "male",
         "type": "light",
+	"max_life": 10,
 	"attack" : "unarmed1",
 	"calendar": { "everyday": { "night" : "street0" } },
         "clothes": [

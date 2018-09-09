@@ -2,6 +2,22 @@
     "Joe": {
 	"dialogue" : [
 	    {
+		"text": "Let me guess\nI need to leave before you call the cops...",
+		"condition":  [">", "phq.events.has_bullie_daicon_guy", 0],
+		"answers": [
+		    {
+			"text": "yayyyy !\nbye bye ugly men",
+			"action": [ "phq.PjLeave", 0 ]
+		    },
+		    {
+			"text": "nope you need to give me your money before I kill you!\n",
+			"condition":  ["<", "phq.pj.trait.sensitivity", -1],
+			"actions": [ [ "Dialogue:block", "phq.EndDialog"],
+				     "phq.StartFight" ]
+		    }
+		]
+	    },
+	    {
 		"text": "Hello, I don't have a lot of money, Would you like to buy a Daikon of mine",
 		"answers": [
                     {
@@ -21,7 +37,7 @@
 		    {
 			"text": "I don't like you, I Dont't like your face\nyou are nothing but garbage in the street\nthe pineapple on the pizza leave before I call the cops",
 			"actions": [
-			    [ "Dialogue:block", "phq.EndDialog" ],
+			    [ "setInt", "phq.events.has_bullie_daicon_guy", 1],
 			    [ "phq.increase", "trait", "sensitivity", -1],
 			    [ "phq.PjLeave", 0 ]
 			]
