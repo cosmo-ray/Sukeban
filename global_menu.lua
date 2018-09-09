@@ -106,6 +106,22 @@ function invList(mn)
    return YEVE_ACTION
 end
 
+function gmBuyItem(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+   local cur = Entity.wrapp(ywMenuGetCurrentEntry(mn))
+   local o_name = cur.obName:to_string()
+   local who = phq.pj
+   local cost = cur.cost:to_int()
+   local money = who.inventory.money
+
+   if money >= cost then
+      yeSetInt(money, money:to_int() - cost)
+      addObject(main, who, o_name, 1)
+   else
+      printMessage(main, obj, Entity.new_string("Not enouth money"))
+   end
+end
+
 function openStore(main, obj, storeName)
    storeName = yeGetString(storeName)
    print("open ", stores[storeName])
@@ -123,10 +139,12 @@ function openStore(main, obj, storeName)
 	 if ob_desc and ob_desc.name then
 	    name = ob_desc.name:to_string()
 	 end
+	 local cost = yeGetInt(store[i])
 	 local cur = mn:push(name .. ": " ..
-			     math.floor(yeGetInt(store[i])) .. "$",
-			     Entity.new_func("gmUseItem"))
+			     math.floor(cost) .. "$",
+			     Entity.new_func("gmBuyItem"))
 	 cur.obName = yeGetKeyAt(store, i)
+	 cur.cost = cost
       end
       i = i + 1
    end

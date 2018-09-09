@@ -137,7 +137,7 @@ end
 
 function pay(wid, eve, arg, cost, okAction, noDialogue)
    cost = yeGetInt(cost)
-   if phq.pj.inventory.money > cost then
+   if phq.pj.inventory.money >= cost then
       local money = phq.pj.inventory.money
       yeSetInt(money, money:to_int() - cost)
       return ywidAction(okAction, wid, eve, arg)
