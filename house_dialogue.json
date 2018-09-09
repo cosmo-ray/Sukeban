@@ -23,12 +23,24 @@
     "Computer": {
 	"dialogue" : [
 	    { "text": "Loading" }, { "text": "..." },
+	    { "text": "Welcom to Sunix" }, { "text": "loading /bin/init" },
+	    { "text": "Init Video\n" },
+	    { "text": "Init Video\nInit Network"},
+	    { "text": "Init Video\nInit Network\nInit Shell"},
 	    {
 		"text": "Operations:",
 		"answers": [
 		    {
 			"text": "Play Snake",
 			"action": "phq.playSnake"
+		    },
+		    {
+			"text": "Watch ASCII Pr0m",
+			"actions": [
+			    [ "phq.increase", "trait", "perv", 1],
+			    "phq.EndDialog"
+			]
+
 		    },
 		    "Play Dnoom",
 		    {

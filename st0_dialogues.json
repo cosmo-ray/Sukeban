@@ -21,6 +21,16 @@
 		"text": "Hello, I don't have a lot of money, Would you like to buy a Daikon of mine",
 		"answers": [
                     {
+			"text": "Why not, all girl need a Daicon, show me your please",
+			"action": [ "phq.openStore", "DaiconGuy" ],
+			"condition":  [">", "phq.pj.trait.perv", 5]
+
+                    },
+                    {
+			"text": "Yea sure, why not",
+			"action": [ "phq.openStore", "DaiconGuy" ]
+                    },
+                    {
 			"text": "Sory, I'm not the kind of girl who buy stangers daikon",
 			"action": "phq.EndDialog"
                     },

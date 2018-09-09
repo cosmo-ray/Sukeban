@@ -5,5 +5,10 @@
 	"Matcha Guriko": 3,
 	"Naka Cola": 3,
 	"Water": 2
+    },
+    "DaiconGuy": {
+	"Big Daicon": 3,
+	"Normal Size Daicon": 2,
+	"Small Daicon": 1
     }
 }
