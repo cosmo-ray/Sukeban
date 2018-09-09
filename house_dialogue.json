@@ -20,13 +20,25 @@
 	    }
 	]
     },
+    "TV": {
+	"dialogue" : [
+	    {
+		"text": "warere wo nerau kuroi kage\nseikai no heiwa we mamoru kage\n(... an episode of some Super Hero...)",
+		"answer": {
+		    "text": "leave",
+		    "action": "phq.EndDialog"
+		}
+	    }
+	]
+    },
     "Computer": {
 	"dialogue" : [
 	    { "text": "Loading" }, { "text": "..." },
 	    { "text": "Welcom to Sunix" }, { "text": "loading /bin/init" },
 	    { "text": "Init Video\n" },
 	    { "text": "Init Video\nInit Network"},
-	    { "text": "Init Video\nInit Network\nInit Shell"},
+	    { "text": "Init Video\nInit Network\nInit Sound"},
+	    { "text": "Init Video\nInit Network\nInit Sound\nInit Shell"},
 	    {
 		"text": "Operations:\n(Dev note: create a real shell for futur version)\n(Dev Note 2: add a faxe Win stuff OS for impure user that use impure OS)\n(Dev Note 3: but we don't like thers guy who don't even use emacs right ?)",
 		"answers": [
