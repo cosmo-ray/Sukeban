@@ -24,10 +24,20 @@
 	"dialogue" : [
 	    {
 		"text": "warere wo nerau kuroi kage\nseikai no heiwa we mamoru kage\n(... an episode of some Super Hero...)",
-		"answer": {
-		    "text": "leave",
-		    "action": "phq.EndDialog"
-		}
+		"answers": [
+		    {
+			"text": "leave",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text": "watch",
+			"condition":  [">", "phq.pj.knowledge.animu", 4],
+			"actions": [
+			    [ "phq.increase", "knowledge", "animu", 1],
+			    "phq.EndDialog"
+			]
+		    }
+		]
 	    }
 	]
     },
