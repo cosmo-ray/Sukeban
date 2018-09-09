@@ -7,9 +7,27 @@
                     {
 			"text": "Sory, I'm not the kind of girl who buy stangers daikon",
 			"action": "phq.EndDialog"
-                    }
+                    },
+		    "Can you even be here ?"
 		]
-            }
+            },
+	    {
+		"text": "What ? dude I don't have a lot of money\nwhat's the problem with some guy trying to sell some daicon",
+		"answers": [
+		    {
+			"text": "none, I've just toying with you",
+			"action": "phq.EndDialog"
+		    },
+		    {
+			"text": "I don't like you, I Dont't like your face\nyou are nothing but garbage in the street\nthe pineapple on the pizza leave before I call the cops",
+			"actions": [
+			    [ "Dialogue:block", "phq.EndDialog" ],
+			    [ "phq.increase", "trait", "sensitivity", -1],
+			    [ "phq.PjLeave", 0 ]
+			]
+		    }
+		]
+	    }
 	]
     },
     "homeless": {

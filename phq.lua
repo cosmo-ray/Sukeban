@@ -521,6 +521,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 lpcs.handlerRefresh(npc)
 	 npc = Entity.wrapp(npc)
 	 npc.canvas.Collision = 1
+	 npc.canvas.is_npc = 1
 	 npc.char.name = obj.name:to_string()
 	 npc.canvas.dialogue = obj.name:to_string()
 	 npc.canvas.current = npc_idx
