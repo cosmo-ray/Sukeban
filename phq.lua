@@ -134,6 +134,7 @@ function init_phq(mod)
    mod.takeObject = Entity.new_func("takeObject")
    mod.PjLeave = Entity.new_func("PjLeave")
    mod.increase = Entity.new_func("increase")
+   mod.recive = Entity.new_func("recive")
 end
 
 function load_game(entity, save_dir)

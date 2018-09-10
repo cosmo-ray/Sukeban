@@ -30,6 +30,27 @@
 			"text": "Yea sure, why not",
 			"action": [ "phq.openStore", "DaiconGuy" ]
                     },
+		    {
+			"text": "humm, can I have a free sample to try quality pretty please ?",
+			"action" : [
+			    "Dialogue:change-text",
+			    {
+				"texts" : [
+				    {
+					"text": "I'm sorry, I'd like to but I can give a free sample to every new vlient",
+					"condition": ["<", "phq.pj.stats.charisme", 4]
+				    },
+				    {
+					"text" : "well, why not, I don't see pretty face every day",
+					"actions" : [
+					    ["phq.recive", "Small Daicon"],
+					    "Dialogue:hide"
+					]
+				    }
+				]
+			    }
+			]
+                    },
                     {
 			"text": "Sory, I'm not the kind of girl who buy stangers daikon",
 			"action": "phq.EndDialog"
@@ -41,7 +62,7 @@
 		"text": "What ? dude I don't have a lot of money\nwhat's the problem with some guy trying to sell some daicon",
 		"answers": [
 		    {
-			"text": "none, I've just toying with you",
+			"text": "none, I've just teasing you",
 			"action": "phq.EndDialog"
 		    },
 		    {

@@ -125,6 +125,12 @@ function addObject(main, character, objStr, nb)
 						    objStr))
 end
 
+function recive(wid, eve, arg, objStr)
+   wid = ywCntWidgetFather(yDialogueGetMain(wid))
+
+   addObject(wid, phq.pj, yeGetString(objStr), 1)
+end
+
 function takeObject(main, actionable_obj, what, nb)
    actionable_obj = Entity.wrapp(actionable_obj)
 

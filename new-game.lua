@@ -34,7 +34,7 @@ function newGameAction(menu, eve, arg)
       phq.pj.stats.smart = 3
    elseif archetype == IDOLE_ARCHETYPE then
       phq.pj.knowledge.fashion = 5
-      phq.pj.stats.charisme = 3
+      phq.pj.stats.charisme = 5
       phq.pj.stats.strength = 1
    elseif archetype == BRUTE_ARCHETYPE then
       phq.pj.knowledge.slang = 5
