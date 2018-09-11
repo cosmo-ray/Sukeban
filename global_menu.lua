@@ -101,7 +101,6 @@ function invList(mn)
       i = i + 1
    end
    mn.ent.background = "rgba: 255 255 255 190"
-   mn.ent.next = main.next
    ywPushNewWidget(main, mn.ent)
    return YEVE_ACTION
 end
@@ -156,7 +155,6 @@ function openStore(main, obj_or_eve, storeName_or_arg, storeName)
       i = i + 1
    end
    mn.ent.background = "rgba: 255 255 255 190"
-   mn.ent.next = main.next
    ywPushNewWidget(main, mn.ent)
    return YEVE_ACTION
 end
