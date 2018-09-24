@@ -280,7 +280,6 @@ function CheckColision(main, canvasWid, pj)
    return CheckColisionExit(col, NO_COLISION)
 end
 
-
 function pushMainMenu(main)
    local mn = Menu.new_entity()
 
@@ -354,6 +353,9 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.pj.move.left_right = 1
              entity.pj.y = LPCS_RIGHT
+	  elseif eve:key() == Y_M_KEY then
+	     pushMetroMenu(entity)
+	     return YEVE_ACTION
           elseif eve:key() == Y_SPACE_KEY or eve:key() == Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
