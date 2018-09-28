@@ -101,14 +101,12 @@ function pushMetroMenu(main)
 			       Rect.new(0, 0, 25, 20).ent).ent
 
    can:new_rect(20, 550, "rgba: 0 0 0 124", Size.new(20, 20).ent)
-   can:new_text(50, 550, Entity.new_string(": current position"))
+   can:new_text(50, 550, ": current position")
    can:new_img(20, 520, arrow_path, Rect.new(0, 0, 25, 20).ent)
-   can:new_text(50, 520, Entity.new_string(": destination"))
-   can:new_text(150, 30, Entity.new_string(
-		   "Welcom to [City Name Not Yet Decided] Metro Plan"))
+   can:new_text(50, 520, ": destination")
+   can:new_text(150, 30, "Welcom to [City Name Not Yet Decided] Metro Plan")
 
-   can:new_text(500, 500, Entity.new_string("left/right: change station\n\n"..
-					       "up/down: change line"))
+   can:new_text(500, 500, "left/right: change station\n\nup/down: change line")
    can.ent.action = Entity.new_func("metroAction")
    can.ent.line = line
    can.ent.station_info = station_info
