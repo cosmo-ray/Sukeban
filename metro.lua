@@ -3,12 +3,6 @@ local metro_file = File.jsonToEnt(modPath .. "/metro.json")
 local phq = Entity.wrapp(ygGet("phq"))
 local arrow_path = Entity.wrapp(ygGet("DialogueBox.$path")):to_string() .. "/arrow_sheet.png"
 
-function unpushMetroMenu(metro)
-   print("unpush !")
-   ywCntPopLastEntry(ywCntWidgetFather(metro))
-   return YEVE_ACTION
-end
-
 local function gotoStation(metroMap, station_idx, line_idx)
    if line_idx then
       metroMap.station_info[0] = line_idx
@@ -74,9 +68,15 @@ function metroAction(metroMap, eve)
 	       end
 	       i = i + 1
 	    end
+	 elseif eve:key() == Y_ENTER_KEY then
+	    local station_name = metroMap.station[2]
+	    if station_name then
+	       local action = metro_file.actions[station_name:to_string()]
+	       return ywidAction(action, metroMap, eve)
+	    end
 	 elseif eve:key() == Y_ESC_KEY or
 	 eve:key() == Y_M_KEY then
-	    return unpushMetroMenu(metroMap)
+	    return backToGame(metroMap)
 	 end
       end
       eve = eve:next()
@@ -86,7 +86,8 @@ end
 function pushMetroMenu(main)
    local lines = metro_file.lines
    local intersections = metro_file.intersections
-   local station_info = phq.env.station
+   local station_info = Entity.new_array()
+   yeCopy(phq.env.station, station_info)
    local line = lines[station_info[0]:to_int()]
    local station = line[station_info[1]:to_int()]
    local can = Canvas.new_entity()

@@ -27,8 +27,10 @@ function backToGameOnEnter(wid, eve)
 end
 
 function backToGame(wid)
+   print(wid)
    local main = Entity.wrapp(ywCntWidgetFather(wid))
 
+   print(main:cent())
    wid = Entity.wrapp(wid)
    if wid.oldTimer then
       main["turn-length"] = wid.oldTimer
