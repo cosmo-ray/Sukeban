@@ -67,23 +67,24 @@ function CombatEnd(wid, main, winner)
    local wid = Entity.wrapp(wid)
    local upcanvas = Canvas.wrapp(main.upCanvas)
 
+   ySoundStop(main.soundcallgirl:to_int())
    if yLovePtrToNumber(winner) == 3 then
       yCallNextWidget(main:cent())
+      return
    end
-   upcanvas:remove(main.life_nb )
+   upcanvas:remove(main.life_nb)
    main.life_nb = ywCanvasNewTextExt(upcanvas.ent, 410, 10,
 				     Entity.new_string(math.floor(phq.pj.life:to_int())),
 				     "rgba: 255 255 255 255")
 
    wid.main = nil
-   ywCntPopLastEntry(main)
-   main.current = 0
-   ySoundStop(main.soundcallgirl:to_int())
+   backToGame(wid)
+   return puushNewVictoryScreen(main)
    --print("end:", main, winner)
 end
 
 
-function StartFight(wid, eve, arg)
+function StartFight(wid, eve)
    owid = wid
    wid = yDialogueGetMain(wid)
    local main = Entity.wrapp(ywCntWidgetFather(wid))

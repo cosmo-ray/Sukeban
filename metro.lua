@@ -81,6 +81,7 @@ function metroAction(metroMap, eve)
       end
       eve = eve:next()
    end
+   return YEVE_NOTHANDLE
 end
 
 function pushMetroMenu(main)

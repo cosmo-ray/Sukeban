@@ -178,7 +178,7 @@ function saveGame(main, saveDir)
    saved_scenes[main.cur_scene_str:to_string()].o = main.mainScreen.objects
    saved_scenes[main.cur_scene_str:to_string()].d = dialogues
    ygEntToFile(YJSON, destDir .. "/pj-pos.json", ylpcsHandePos(main.pj))
-   ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
+   --ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
    ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
    ygEntToFile(YJSON, destDir .. "/evenements.json", phq.events)
    ygEntToFile(YJSON, destDir .. "/misc.json", misc)
