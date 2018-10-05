@@ -109,6 +109,7 @@ function StartFight(wid, eve)
    end
    print("phq.pj.usable_items", phq.pj.usable_items)
    fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
+   print(fWid.enemy.max_life, fWid.enemy.name)
    fWid.enemy.life = fWid.enemy.max_life
    EndDialog(owid, eve, arg)
    ywPushNewWidget(main, fWid)
@@ -207,25 +208,6 @@ function GetDrink(wid, eve, arg)
 
    addObject(ent, phq.pj, "beer", 1)
    return EndDialog(wid, eve, arg)
-end
-
-function GetDrink2(wid, eve, arg)
-   local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
-   local canvas = Canvas.wrapp(ent.mainScreen)
-   increaseStat(ent, phq.pj, "drunk", 18, 100)
-   increaseStat(ent, phq.pj, "life", 5, phq.pj.max_life:to_int())
-
-   canvas:remove(ent.life_nb)
-   ent.life_nb = ywCanvasNewTextExt(canvas.ent, 410, 10,
-				    Entity.new_string(math.floor(phq.pj.life:to_int())),
-				    "rgba: 255 255 255 255")
-   if phq.pj.drunk > 99 then
-       ent.next = "phq:menus.end_txt"
-       yCallNextWidget(ent:cent())
-   end
-   EndDialog(wid, eve, arg)
-   return printMessage(ent, obj, Entity.new_string("get vodka...\n"..
-						      "cut with tekila"))
 end
 
 function sleep(main, obj)

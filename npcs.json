@@ -160,7 +160,7 @@
         "sex": "male",
         "type": "light",
 	"attack" : "unarmed0",
-        "max_life": 10,
+        "max_life": 1,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -207,6 +207,7 @@
     "homeless": {
 	"sex": "male",
 	"type": "light",
+	"max_life": 2,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "legs/skirt/male/robe_skirt_male.png",

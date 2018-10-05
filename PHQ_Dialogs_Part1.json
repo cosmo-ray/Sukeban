@@ -10,7 +10,9 @@
                     },
                     {
 			"text": "Captain Morgan?",
-			"actions": [ "Dialogue:block", "phq.GetDrink" ]
+			"actions": [ "Dialogue:block",
+				     ["phq.recive", "beer"],
+				     "phq.EndDialog"]
                     },
                     {
 			"text": "Captain Obvious",
@@ -364,7 +366,11 @@
 		"answers": [
 		    {
 			"text": "African or European swallow?",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink++" ]
+			"actions": [
+			    ["Dialogue:block", "phq.EndDialog"],
+			    ["phq.recive", "distiled_wheat_shoot"],
+			    "phq.EndDialog"
+			]
 		    },
 		    {
 			"text": "No idea, but slower for sure than ly boot up your ass!",
