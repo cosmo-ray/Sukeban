@@ -62,10 +62,12 @@ function EndDialog(wid, eve, arg)
    return YEVE_ACTION
 end
 
-function CombatEnd(wid, main, winner)
+function CombatEnd(wid, main, winner_id)
    local main = Entity.wrapp(main)
    local wid = Entity.wrapp(wid)
    local upcanvas = Canvas.wrapp(main.upCanvas)
+   local winner = Entity.wrapp(yJrpgGetWinner(wid, winner_id))
+   local looser = Entity.wrapp(yJrpgGetLooser(wid, winner_id))
 
    ySoundStop(main.soundcallgirl:to_int())
    if yLovePtrToNumber(winner) == 3 then
@@ -79,7 +81,7 @@ function CombatEnd(wid, main, winner)
 
    wid.main = nil
    backToGame(wid)
-   return puushNewVictoryScreen(main)
+   return puushNewVictoryScreen(main, winner, looser)
    --print("end:", main, winner)
 end
 

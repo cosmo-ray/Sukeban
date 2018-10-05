@@ -91,8 +91,9 @@
     "John": {
         "sex": "male",
         "type": "light",
-        "max_life": 10,
+        "max_life": 1,
 	"attack" : "unarmed0",
+	"loot": { "beer" : 1, "money": 10 },
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -118,7 +119,7 @@
     "Creepy guy in the corner": {
         "sex": "male",
         "type": "light",
-        "max_life": 10,
+        "max_life": 1,
 	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
@@ -126,6 +127,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
+	"loot": ["beer", "auto"],
 	"calendar": { "everyday": { "night" : "bar" } },
 	"image": "./Portrait_10.png",
     },
@@ -147,12 +149,13 @@
         "sex": "female",
         "type": "light",
 	"attack" : "unarmed0",
-        "max_life": 10,
+        "max_life": 1,
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
             "torso/dress_female/dress_w_sash_female.png",
             "hair/female/ponytail/brunette2.png"
         ],
+	"loot": ["beer", "half_used_cigaret"],
 	"image": "./Portrait_12.png",
 	"calendar": { "monday": "bar", "tuesday": "bar", "thursday": "bar" }
     },
@@ -167,6 +170,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
+	"loot": "beer",
 	"image": "./Portrait_11.png",
 	"calendar": { "monday": "bar" }
     },
