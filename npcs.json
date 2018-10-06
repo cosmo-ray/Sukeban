@@ -208,7 +208,7 @@
             "hair/male/long/blonde.png"
         ]
     },
-    "homeless": {
+    "Raoul": {
 	"sex": "male",
 	"type": "light",
 	"max_life": 2,

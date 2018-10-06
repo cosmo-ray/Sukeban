@@ -32,7 +32,7 @@ function puushNewVictoryScreen(main, winner, looser)
       if yeType(loot) == YSTRING then
 	 if loot:to_string() == "auto" then
 	    txt = autoLoot(main, winner, txt)
-	 else
+	 elseif loot:to_string() ~= "none" then
 	    txt = txt .. "1: " .. loot:to_string() .. "\n"
 	    addObject(main, winner, loot:to_string(), 1)
 	 end
@@ -55,6 +55,8 @@ function puushNewVictoryScreen(main, winner, looser)
 	    i = i + 1
 	 end
       end
+   else
+      txt = autoLoot(main, winner, txt)
    end
    victoryScreen["<type>"] = "text-screen"
    victoryScreen["text-align"] = "center"
