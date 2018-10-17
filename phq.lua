@@ -134,6 +134,7 @@ function init_phq(mod)
    mod.pay = Entity.new_func("pay")
    mod.takeObject = Entity.new_func("takeObject")
    mod.PjLeave = Entity.new_func("PjLeave")
+   mod.vnScene = Entity.new_func("vnScene")
    mod.increase = Entity.new_func("increase")
    mod.recive = Entity.new_func("recive")
 end
