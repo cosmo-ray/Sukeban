@@ -201,7 +201,7 @@ function GetDrink(wid, eve, arg)
    local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
 
    addObject(ent, phq.pj, "beer", 1)
-   return EndDialog(wid, eve, arg)
+   return backToGame(wid, eve, arg)
 end
 
 function sleep(main, obj)

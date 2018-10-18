@@ -70,5 +70,5 @@ function PjLeave(owid, eve, arg, entryPoint)
 		      action[ACTION_MV_TBL])
    print(action.mv_table)
    action.controller = Entity.new_func("PjLeaveController")
-   EndDialog(owid, eve, arg)
+   backToGame(owid, eve, arg)
 end

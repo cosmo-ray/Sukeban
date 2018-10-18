@@ -12,7 +12,7 @@
 		    {
 			"text": "nope you need to give me your money before I kill you!\n",
 			"condition":  ["<", "phq.pj.trait.sensitivity", -1],
-			"actions": [ [ "Dialogue:block", "phq.EndDialog"],
+			"actions": [ [ "Dialogue:block", "phq.backToGame"],
 				     "phq.StartFight" ]
 		    }
 		]
@@ -53,7 +53,7 @@
                     },
                     {
 			"text": "Sory, I'm not the kind of girl who buy stangers daikon",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
 		    "Can you even be here ?"
 		]
@@ -63,7 +63,7 @@
 		"answers": [
 		    {
 			"text": "none, I've just teasing you",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text": "I don't like you, I Dont't like your face\nyou are nothing but garbage in the street\nthe pineapple on the pizza leave before I call the cops",
@@ -84,7 +84,7 @@
 		"answers": [
                     {
 			"text": "Sorry, no money",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
 		    {
 			"text": "go out of my face dirty tramp"
@@ -98,7 +98,7 @@
 			"text": "*Punch Him\nI tell you to leave",
 			"condition":  [">", "phq.pj.trait.violance", 0],
 			"actions": [
-			    [ "Dialogue:block", "phq.EndDialog" ],
+			    [ "Dialogue:block", "phq.backToGame" ],
 			    [ "phq.increase", "trait", "violance", 1],
 			    [ "phq.increase", "trait", "sensitivity", -1],
 			    [ "phq.PjLeave", 0 ]
@@ -106,7 +106,7 @@
 		    },
 		    {
 			"text": "say nothing",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    }
 		]
 	    }

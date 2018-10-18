@@ -7,7 +7,7 @@
 		"answers": [
                     {
 			"text": "Ok mom",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     }
 		]
             },
@@ -15,7 +15,7 @@
 		"text": "ZZZZzzzzZZZzzz",
 		"answer": {
 		    "text": "leave",
-		    "action": "phq.EndDialog"
+		    "action": "phq.backToGame"
 		}
 	    }
 	]
@@ -27,14 +27,14 @@
 		"answers": [
 		    {
 			"text": "leave",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text": "watch",
 			"condition":  [">", "phq.pj.knowledge.animu", 4],
 			"actions": [
 			    [ "phq.increase", "knowledge", "animu", 1],
-			    "phq.EndDialog"
+			    "phq.backToGame"
 			]
 		    }
 		]
@@ -60,14 +60,14 @@
 			"text": "Watch ASCII Pr0m\n(Dev note: yes I know in futur version I'll add a faxe ascii browser, and I'll hide this feature\nI might add the ASCII pr0m too)",
 			"actions": [
 			    [ "phq.increase", "trait", "perv", 1],
-			    "phq.EndDialog"
+			    "phq.backToGame"
 			]
 
 		    },
 		    "Play Dnoom",
 		    {
 			"text": "Shut Down",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    }
 		]
 	    },
@@ -76,7 +76,7 @@
 		"answers": [
                     {
 			"text": "Shut Down",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     }
 		]
             }

@@ -6,13 +6,13 @@
 		"answers": [
                     {
 			"text": "Captain America",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "Captain Morgan?",
 			"actions": [ "Dialogue:block",
 				     ["phq.recive", "beer"],
-				     "phq.EndDialog"]
+				     "phq.backToGame"]
                     },
                     {
 			"text": "Captain Obvious",
@@ -20,7 +20,7 @@
                     },
                     {
 			"text": "Captain Ricard",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     }
 		]
             }
@@ -29,7 +29,7 @@
 	    "text" : "I don't wan't to talk to you",
 	    "answers": [
 		{
-		    "action": "phq.EndDialog"
+		    "action": "phq.backToGame"
 		}
 	    ]
 	}
@@ -41,15 +41,15 @@
 		"answers": [
                     {
 			"text": "Enchantment!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
                     },
                     {
 			"text": "Bug off, weirdo!",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "Wanna feel the enchantment of my knuckles in your face?!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
                     }
 		]
             }
@@ -62,19 +62,19 @@
 		"answers": [
                     {
 			"text": "Yup, that's me, Honey!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
                     },
                     {
 			"text": "I'll be back.",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "Chill out, dickwad",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "There's no fate but what we make for ourselves.",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
                     }
 		]
             }
@@ -87,12 +87,12 @@
 		"answers": [
                     {
 			"text": "You're right, dude. Time to go to bed.",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
 		    "Before the sweet nectar we all stand humble and equal.",
                     {
 			"text": "Ask your Mom!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
                     }
 		]
             },
@@ -101,7 +101,7 @@
 		"answers": [
 		    {
 			"text": "Here's a simple rule:\ntake my money and give me beer",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
 		    }
 		]
 	    }
@@ -114,15 +114,15 @@
 		"answers": [
                     {
 			"text": "I can't wait to probe Uranus.",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
                     },
                     {
 			"text": "Yeah, the only one where they serve a decent Old Shep 1864.",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
                     },
                     {
 			"text": "I should go.",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     }
 		]
             }
@@ -135,19 +135,19 @@
 		"answers": [
                     {
 			"text": "Oh La La!",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "Fus Ro Da!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
                     },
                     {
 			"text": "Gin Tu Mi!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
                     },
                     {
 			"text": "Cha Ba Da!",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     }
 		]
             }
@@ -160,19 +160,19 @@
 		"answers": [
                     {
 			"text": "Prost!",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "Sköl!",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "Na zdorovie!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
                     },
                     {
 			"text": "Kippis!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
                     }
 		]
             }
@@ -188,7 +188,7 @@
 			"actions": [
 			    [
 				"Dialogue:block",
-				"phq.EndDialog",
+				"phq.backToGame",
                                 "you still wanna drink? I'm not justin b**** bitch !",
                                 "okayyyyyyyyyyy"
 			    ],
@@ -197,12 +197,12 @@
                     },
                     {
 			"text": "nej, har du en snus ?",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "not good neibhour for sure, Good meatball ?",
 			"actions": [
-			    ["Dialogue:block", "phq.EndDialog", "you hurt me..."],
+			    ["Dialogue:block", "phq.backToGame", "you hurt me..."],
 			    "phq.StartFight"
 			]
                     }
@@ -217,19 +217,19 @@
 		"answers": [
                     {
 			"text": "42",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
                     },
                     {
 			"text": "10, good people and assholes.",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
                     },
                     {
 			"text": "I want to talk to my lawyer.",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     },
                     {
 			"text": "7 billion",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
                     }
 		]
             }
@@ -242,7 +242,7 @@
 		"answers": [
 		    {
 			"text" : "Nothing",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text" : "Your beer",
@@ -255,15 +255,15 @@
 		"answers": [
 		    {
 			"text" : "Because your Mom says so!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
 		    },
 		    {
 			"text" : "All your beers are belong to us!",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text" : "Compassion for a friendly fellow drunkard in dire need of a drop!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
 		    }
 		]
 	    }
@@ -276,7 +276,7 @@
 		"answers": [
 		    {
 			"text": "Whatever, altar wine tastes like donkey piss.",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text": "Sure, the stars are right...",
@@ -284,7 +284,7 @@
 		    },
 		    {
 			"text": "Don't interrupt my drinking with your bigotry!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
 		    }
 		]
 	    },
@@ -293,15 +293,15 @@
 		"answers": [
 		    {
 			"text": "Shub-Niggarath, the Black Goat of the Woods with a Thousand Young!",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text": "Yog-Sothoth, Lurker of at the Threshold!",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text": "Kosken-Korva, the Great and Powerful Twister of Minds!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.GetDrink" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
 		    }
 		]
 	    }
@@ -314,11 +314,11 @@
 		"answers": [
 		    {
 			"text": "Dr Pepper",
-			"action":"phq.EndDialog"
+			"action":"phq.backToGame"
 		    },
 		    {
 			"text": "Bud Weiser",
-                        "action":"phq.EndDialog",
+                        "action":"phq.backToGame",
                         "condition":  ["<", "phq.pj.life", 5]
 		    },
 		    {
@@ -332,11 +332,11 @@
 		"answers": [
 		    {
 			"text": "To find one drink to rule you all!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
 		    },
 		    {
 			"text": "Profit!",
-			"action" :"phq.EndDialog"
+			"action" :"phq.backToGame"
 		    },
 		    {
 			"text": "The seek of the Holy Grail!",
@@ -353,11 +353,11 @@
 		    },
 		    {
 			"text": "A beautiful gatorade green",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text": "A rosy pink like your Mom's stink",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
 		    }
 		]
 	    },
@@ -367,18 +367,18 @@
 		    {
 			"text": "African or European swallow?",
 			"actions": [
-			    ["Dialogue:block", "phq.EndDialog"],
+			    ["Dialogue:block", "phq.backToGame"],
 			    ["phq.recive", "distiled_wheat_shoot"],
-			    "phq.EndDialog"
+			    "phq.backToGame"
 			]
 		    },
 		    {
 			"text": "No idea, but slower for sure than ly boot up your ass!",
-			"actions": [ [ "Dialogue:block", "phq.EndDialog" ], "phq.StartFight" ]
+			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
 		    },
 		    {
 			"text": "Dude, da faq?",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    }
 		]
 	    }
@@ -394,7 +394,7 @@
 			"actions": [
 			    [
 				"Dialogue:block",
-				"phq.EndDialog",
+				"phq.backToGame",
 				"You fan of eve, why does it always end with destruction",
 			    ],
 			    "phq.StartFight"
@@ -406,7 +406,7 @@
 			"actions": [
 			    [
 				"Dialogue:block",
-				"phq.EndDialog",
+				"phq.backToGame",
 				"You want a 2nd beer, but that's like Mocross 2, it's doesn't existe",
 			    ],
 			    "phq.GetDrink"
@@ -421,7 +421,7 @@
 	    },
 	    {
 		"text" : "GURIKO GURIKO GURIKO !!!",
-		"answers": [ { "text": "You get it :)", "action": "phq.EndDialog" } ]
+		"answers": [ { "text": "You get it :)", "action": "phq.backToGame" } ]
 	    }
 	]
     }

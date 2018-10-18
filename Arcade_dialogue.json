@@ -11,7 +11,7 @@
 		    },
 		    {
 			"text": "Leave",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    }
 		]
 	    },
@@ -30,7 +30,7 @@
 		    },
 		    {
 			"text": "Leave",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    }
 		]
 	    },
@@ -49,7 +49,7 @@
 		    },
 		    {
 			"text": "Leave",
-			"action": "phq.EndDialog"
+			"action": "phq.backToGame"
 		    }
 		]
 	    },

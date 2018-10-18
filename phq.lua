@@ -114,7 +114,7 @@ function init_phq(mod)
    Widget.new_subtype("phq-new-game", "create_new_game")
 
    mod = Entity.wrapp(mod)
-   mod.EndDialog = Entity.new_func("EndDialog")
+   mod.backToGame = Entity.new_func("backToGame")
    mod.backToGame = Entity.new_func("backToGame")
    mod.StartFight = Entity.new_func("StartFight")
    mod.DrinkBeer = Entity.new_func("DrinkBeer")
