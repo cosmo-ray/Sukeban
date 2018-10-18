@@ -54,21 +54,6 @@ function backToGame2(wid)
    backToGame(wid)
 end
 
-
-function EndDialog(wid, eve, arg)
-   wid = Entity.wrapp(yDialogueGetMain(wid))
-   local main = Entity.wrapp(ywCntWidgetFather(wid))
-   wid.main = nil
-   if wid.src then
-      wid.src.isBlock = wid.isBlock
-      wid.src.block = wid.block
-      wid.src = nil
-   end
-   ywCntPopLastEntry(main)
-   main.current = 0
-   return YEVE_ACTION
-end
-
 function CombatEnd(wid, main, winner_id)
    local main = Entity.wrapp(main)
    local wid = Entity.wrapp(wid)
@@ -120,7 +105,7 @@ function StartFight(wid, eve)
    fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
    print(fWid.enemy.max_life, fWid.enemy.name)
    fWid.enemy.life = fWid.enemy.max_life
-   EndDialog(owid, eve, arg)
+   backToGame(owid, eve, arg)
    ywPushNewWidget(main, fWid)
    return YEVE_ACTION
 end
