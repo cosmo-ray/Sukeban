@@ -115,7 +115,6 @@ function init_phq(mod)
 
    mod = Entity.wrapp(mod)
    mod.backToGame = Entity.new_func("backToGame")
-   mod.backToGame = Entity.new_func("backToGame")
    mod.StartFight = Entity.new_func("StartFight")
    mod.DrinkBeer = Entity.new_func("DrinkBeer")
    mod.openStore = Entity.new_func("openStore")
