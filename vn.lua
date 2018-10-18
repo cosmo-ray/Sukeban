@@ -11,6 +11,7 @@ function vnScene(wid, eve, arg, sceneName)
    dialogueWid.dialogue = scene
    dialogueWid["text-speed"] = 30000
    dialogueWid.background = "rgba: 255 255 255 255"
+   dialogueWid.endAction = Entity.new_func("backToGame")
    ywPushNewWidget(main, dialogueWid)
    return YEVE_ACTION
 end

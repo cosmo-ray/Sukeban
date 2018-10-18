@@ -27,11 +27,18 @@ function backToGameOnEnter(wid, eve)
 end
 
 function backToGame(wid)
-   print(wid)
+   wid = Entity.wrapp(wid)
+   if wid.isDialogue then
+      wid = Entity.wrapp(yDialogueGetMain(wid))
+      wid.main = nil
+      if wid.src then
+	 wid.src.isBlock = wid.isBlock
+	 wid.src.block = wid.block
+	 wid.src = nil
+      end
+   end
    local main = Entity.wrapp(ywCntWidgetFather(wid))
 
-   print(main:cent())
-   wid = Entity.wrapp(wid)
    if wid.oldTimer then
       main["turn-length"] = wid.oldTimer
    end
