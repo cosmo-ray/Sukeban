@@ -7,7 +7,8 @@ local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local scenes = Entity.wrapp(ygGet("phq.scenes"))
 saved_scenes = nil
-dialogues = nil
+dialogues = Entity.new_array()
+o_dialogues = nil
 local window_width = 800
 local window_height = 600
 local pj_pos = nil
@@ -160,8 +161,15 @@ function load_game(entity, save_dir)
 end
 
 function continue(entity)
-   print("Continue !!!")
    return load_game(entity, "./saved/cur")
+end
+
+function saveCurDialogue(main)
+   saved_scenes[main.cur_scene_str:to_string()] = {}
+   saved_scenes[main.cur_scene_str:to_string()].o = main.mainScreen.objects
+   local p = yePatchCreate(o_dialogues, dialogues)
+   saved_scenes[main.cur_scene_str:to_string()].d = Entity.wrapp(p)
+   yeDestroy(p)
 end
 
 function saveGame(main, saveDir)
@@ -172,9 +180,7 @@ function saveGame(main, saveDir)
    yuiMkdir("./saved")
    yuiMkdir(destDir)
    misc.cur_scene_str = main.cur_scene_str
-   saved_scenes[main.cur_scene_str:to_string()] = {}
-   saved_scenes[main.cur_scene_str:to_string()].o = main.mainScreen.objects
-   saved_scenes[main.cur_scene_str:to_string()].d = dialogues
+   saveCurDialogue(main)
    ygEntToFile(YJSON, destDir .. "/pj-pos.json", ylpcsHandePos(main.pj))
    --ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
    ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
@@ -442,8 +448,6 @@ function destroy_phq(entity)
    tiled.deinit()
    ent.mainScreen = nil
    ent.upCanvas = nil
-   yeDestroy(dialogues)
-   dialogues = nil
    ent.current = 0
 end
 
@@ -454,14 +458,11 @@ function load_scene(ent, sceneTxt, entryIdx)
    local y = 0
 
    if ent.cur_scene_str then
-      saved_scenes[ent.cur_scene_str:to_string()] = {}
-      saved_scenes[ent.cur_scene_str:to_string()].o = ent.mainScreen.objects
-      saved_scenes[ent.cur_scene_str:to_string()].d = dialogues
+      saveCurDialogue(ent)
    end
 
    ent.npc_act = {}
    ent.cur_scene_str = sceneTxt
-   print("scene txt:", sceneTxt, ent.cur_scene_str)
    local scene = scenes[sceneTxt]
 
    scene = Entity.wrapp(scene)
@@ -472,20 +473,16 @@ function load_scene(ent, sceneTxt, entryIdx)
    upCanvas.ent.cam = Pos.new(0, 0).ent
    mainCanvas.ent.objs = {}
    mainCanvas.ent.objects = {}
-   tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(), upCanvas.ent:cent())
-   yeDestroy(dialogues)
-   dialogues = nil
+   tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(),
+		      upCanvas.ent:cent())
+   o_dialogues = File.jsonToEnt(yeGetString(scene.dialogues))
+   yeCopy(o_dialogues, dialogues)
    if saved_scenes[ent.cur_scene_str:to_string()] then
-      print("LOAD !!!")
       ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()].o
-      dialogues = saved_scenes[ent.cur_scene_str:to_string()].d
-      if dialogues then
-	 yeIncrRef(dialogues)
-      end
-   else
-      dialogues = Entity.wrapp(ygFileToEnt(YJSON, yeGetString(scene.dialogues)))
+      local patch = saved_scenes[ent.cur_scene_str:to_string()].d
+      yePatchAply(dialogues, patch)
+      tmpp = yePatchCreate(o_dialogues, dialogues)
    end
-   print("load: ", dialogues, "\nfilename: ", yeGetString(scene.dialogues))
    mainCanvas.ent.cam = Pos.new(0, 0).ent
    -- Pj info:
    local objects = ent.mainScreen.objects
