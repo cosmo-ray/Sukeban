@@ -15,6 +15,7 @@
         { "path" : "YIRL_MODULES_PATH/dialogue-box/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/dialogue/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/jrpg-fight/", "type" : "module" },
+        { "path" : "YIRL_MODULES_PATH/hightscore/", "type" : "module" },
         { "file" : "scenes.json", "type" : "json", "as" : "scenes"},
         { "file" : "vn-scenes.json", "type" : "json", "as" : "vn-scenes"},
         { "file" : "npcs.json", "type" : "json", "as" : "npcs"},

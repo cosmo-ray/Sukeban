@@ -42,16 +42,14 @@ function backToGame(wid)
    if wid.oldTimer then
       main["turn-length"] = wid.oldTimer
    end
+   local nb_layers = yeGetInt(wid.nb_layers)
+   while nb_layers > 1 do
+      ywCntPopLastEntry(main)	 
+      nb_layers = nb_layers - 1
+   end
    ywCntPopLastEntry(main)
    main.current = 0
    return YEVE_ACTION
-end
-
-function backToGame2(wid)
-   local main = Entity.wrapp(ywCntWidgetFather(wid))
-
-   ywCntPopLastEntry(main)
-   backToGame(wid)
 end
 
 function CombatEnd(wid, main, winner_id)
@@ -302,14 +300,13 @@ function playSnake(wid, eve, arg, version)
    snake["<type>"] = "snake"
    snake.dreadful_die = 1
    snake.hitWall = "snake:snakeWarp"
+   snake.die = Entity.new_func("backToGame")
+   snake.quit = Entity.new_func("backToGame")
    if version > 0 then
-      snake.die = Entity.new_func("backToGame2")
-      snake.quit = Entity.new_func("backToGame2")
+      snake.nb_layers = 2
       snake.resources = File.jsonToEnt("snake/resources.json")
       snake.eat = ygGet("snake.showScore")
    else
-      snake.die = Entity.new_func("backToGame")
-      snake.quit = Entity.new_func("backToGame")
       snake.resources = "snake:resources"
    end
    snake.background = "rgba: 255 255 255 255"
