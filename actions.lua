@@ -71,7 +71,7 @@ function CombatEnd(wid, main, winner_id)
 
    wid.main = nil
    backToGame(wid)
-   return puushNewVictoryScreen(main, winner, looser)
+   return pushNewVictoryScreen(main, winner, looser)
    --print("end:", main, winner)
 end
 
@@ -284,6 +284,28 @@ function actionOrPrint(main, obj)
    return printMessage(main, obj, obj.Message)
 end
 
+function showHightScore(wid)
+   wid = Entity.wrapp(wid)
+   local score = yeGetInt(ygGet(wid.score_path:to_string()))
+   local hs = ygGet(wid.hightscore_path:to_string())
+   local hgw = Entity.new_array()
+   local str = Entity.new_string("")
+   local main = Entity.wrapp(ywCntWidgetFather(wid))
+
+   yHightScorePush(hs, phq.pj.name:to_string(), score)
+   yHightScoreString(hs, str)
+   print(wid.hightscore_path, wid.score_path, hs, score)
+   print(str)
+   backToGame(wid)
+   hgw["<type>"] = "text-screen"
+   hgw["text-align"] = "center"
+   hgw.text = str
+   hgw.background = "rgba: 155 155 255 190"
+   hgw.action = Entity.new_func("backToGameOnEnter")
+   ywPushNewWidget(main, hgw)
+   return YEVE_ACTION
+end
+
 function playSnake(wid, eve, arg, version)
    local wid = Entity.wrapp(wid)
    local main = nil
@@ -300,8 +322,10 @@ function playSnake(wid, eve, arg, version)
    snake["<type>"] = "snake"
    snake.dreadful_die = 1
    snake.hitWall = "snake:snakeWarp"
-   snake.die = Entity.new_func("backToGame")
-   snake.quit = Entity.new_func("backToGame")
+   snake.hightscore_path = "phq.hightscores.snake"
+   snake.score_path = "snake.score"
+   snake.die = Entity.new_func("showHightScore")
+   snake.quit = Entity.new_func("showHightScore")
    if version > 0 then
       snake.nb_layers = 2
       snake.resources = File.jsonToEnt("snake/resources.json")

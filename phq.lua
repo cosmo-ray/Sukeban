@@ -466,7 +466,6 @@ function load_scene(ent, sceneTxt, entryIdx)
    local scene = scenes[sceneTxt]
 
    scene = Entity.wrapp(scene)
-   print(scene:cent())
 
    -- clean old stuff :(
    upCanvas.ent.objs = {}
@@ -480,11 +479,14 @@ function load_scene(ent, sceneTxt, entryIdx)
    if saved_scenes[ent.cur_scene_str:to_string()] then
       ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()].o
       local patch = saved_scenes[ent.cur_scene_str:to_string()].d
-      yePatchAply(dialogues, patch)
+      if (yeType(patch) == YARRAY) then
+	 yePatchAply(dialogues, patch)
+      end
       tmpp = yePatchCreate(o_dialogues, dialogues)
    end
    mainCanvas.ent.cam = Pos.new(0, 0).ent
    -- Pj info:
+
    local objects = ent.mainScreen.objects
    local i = 0
    local npc_idx = 0
@@ -537,6 +539,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       end
       i = i + 1
    end
+   print("4")
 
    if entryIdx < 0 or e_exits[entryIdx] == nil then
       x = 300
@@ -556,6 +559,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 x = x + ywRectW(rect) + 45
       end
    end
+   print("5")
    if pj_pos then
       ylpcsHandlerSetPos(ent.pj, pj_pos)
       yeDestroy(pj_pos)
@@ -571,6 +575,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 				      Pos.new(window_width,
 					      window_height).ent).ent
    end
+   print("6")
 
    ent.life_txt = ywCanvasNewTextExt(upCanvas.ent, 360, 10,
 				     Entity.new_string("life: "),
@@ -580,6 +585,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),
 				    "rgba: 255 255 255 255")
    reposeCam(ent)
+   print("7")
 end
 
 function add_stat_hook(entity, stat, hook, val, comp_type)

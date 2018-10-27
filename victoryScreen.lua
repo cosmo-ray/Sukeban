@@ -22,7 +22,7 @@ function autoLoot(main, pj, txt)
    return txt .. math.floor(nb) .. ": " .. "money" .. "\n"
 end
 
-function puushNewVictoryScreen(main, winner, looser)
+function pushNewVictoryScreen(main, winner, looser)
    local victoryScreen = Entity.new_array()
    local txt = "tatatata ta ta ta tata\nloot:\n"
    local loot = looser.loot
