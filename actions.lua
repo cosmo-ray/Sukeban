@@ -328,9 +328,9 @@ function playSnake(wid, eve, arg, version)
    snake["<type>"] = "snake"
    snake.dreadful_die = 1
    snake.hitWall = "snake:snakeWarp"
-   snake.hightscore_path = "phq.hightscores.snake"
-   snake.score_path = "snake.score"
    if version > 0 then
+      snake.hightscore_path = "phq.hightscores.snake"
+      snake.score_path = "snake.score"
       snake.die = Entity.new_func("showHightScore")
       snake.quit = Entity.new_func("showHightScore")
       snake.nb_layers = 2
@@ -369,7 +369,8 @@ function playAstShoot(wid)
    local ast_shoot = Entity.new_array()
 
    ast_shoot["<type>"] = "asteroide-shooter"
-   ast_shoot.die = Entity.new_func("backToGame")
+   ast_shoot.hightscore_path = "phq.hightscores.ast-shoot"
+   ast_shoot.die = Entity.new_func("showHightScore")
    ast_shoot.quit = Entity.new_func("backToGame")
    ast_shoot.oldTimer = main["turn-length"]
    main["turn-length"] = 40000
