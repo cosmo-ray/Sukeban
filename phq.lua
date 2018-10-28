@@ -153,6 +153,7 @@ function load_game(entity, save_dir)
 					       save_dir.."/saved-scenes.json"),
 				   true)
    phq.env = env
+   phq.hightscores = File.jsonToEnt(save_dir.."/Arcade_score.json")
    local events = File.jsonToEnt(save_dir.."/evenements.json")
    phq.events = events
    yeDestroy(env)
@@ -188,6 +189,7 @@ function saveGame(main, saveDir)
    ygEntToFile(YJSON, destDir .. "/misc.json", misc)
    ygEntToFile(YJSON, destDir .. "/env.json", phq.env)
    ygEntToFile(YJSON, destDir .. "/saved-scenes.json", saved_scenes)
+   ygEntToFile(YJSON, destDir .. "/Arcade_score.json", phq.hightscores)
 end
 
 function saveGameCallback(wid)
@@ -539,7 +541,6 @@ function load_scene(ent, sceneTxt, entryIdx)
       end
       i = i + 1
    end
-   print("4")
 
    if entryIdx < 0 or e_exits[entryIdx] == nil then
       x = 300
@@ -559,7 +560,6 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 x = x + ywRectW(rect) + 45
       end
    end
-   print("5")
    if pj_pos then
       ylpcsHandlerSetPos(ent.pj, pj_pos)
       yeDestroy(pj_pos)
@@ -575,7 +575,6 @@ function load_scene(ent, sceneTxt, entryIdx)
 				      Pos.new(window_width,
 					      window_height).ent).ent
    end
-   print("6")
 
    ent.life_txt = ywCanvasNewTextExt(upCanvas.ent, 360, 10,
 				     Entity.new_string("life: "),
@@ -585,11 +584,9 @@ function load_scene(ent, sceneTxt, entryIdx)
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),
 				    "rgba: 255 255 255 255")
    reposeCam(ent)
-   print("7")
 end
 
 function add_stat_hook(entity, stat, hook, val, comp_type)
-   print("ADDD !!")
    entity.st_hooks[stat] = {}
    entity.st_hooks[stat].hook = ygGet(hook)
    entity.st_hooks[stat].val = val

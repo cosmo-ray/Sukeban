@@ -44,7 +44,7 @@ function backToGame(wid)
    end
    local nb_layers = yeGetInt(wid.nb_layers)
    while nb_layers > 1 do
-      ywCntPopLastEntry(main)	 
+      ywCntPopLastEntry(main)
       nb_layers = nb_layers - 1
    end
    ywCntPopLastEntry(main)
@@ -96,12 +96,9 @@ function StartFight(wid, eve)
       if obj and obj.type:to_string() == "usable" then
 	 usabel_items[yeGetKeyAt(inv, i)] = inv[i]
       end
-      print(yeGetKeyAt(inv, i), inv[i])
       i  = i + 1
    end
-   print("phq.pj.usable_items", phq.pj.usable_items)
    fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
-   print(fWid.enemy.max_life, fWid.enemy.name)
    fWid.enemy.life = fWid.enemy.max_life
    backToGame(owid, eve, arg)
    ywPushNewWidget(main, fWid)
@@ -288,20 +285,20 @@ function showHightScore(wid, score)
    wid = Entity.wrapp(wid)
    if score == nil then
       score = yeGetInt(ygGet(wid.score_path:to_string()))
-      print("no score")
    else
-      print("a score")
       score = yLovePtrToNumber(score)
    end
    local hs = ygGet(wid.hightscore_path:to_string())
    local hgw = Entity.new_array()
    local str = Entity.new_string("")
    local main = Entity.wrapp(ywCntWidgetFather(wid))
+   local name = phq.pj.name:to_string()
+   local c_score = yeGet(hs, name)
 
-   yHightScorePush(hs, phq.pj.name:to_string(), score)
+   if c_score and yeGetInt(c_score) < score then
+      yHightScorePush(hs, name, score)
+   end
    yHightScoreString(hs, str)
-   print(wid.hightscore_path, wid.score_path, hs, score)
-   print(str)
    backToGame(wid)
    hgw["<type>"] = "text-screen"
    hgw["text-align"] = "center"
