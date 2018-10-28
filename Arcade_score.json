@@ -3,5 +3,11 @@
 	"garashi": 300,
 	"konizka": 100,
 	"nameless one": 50
+    },
+    "vapp": {
+	"garashi": 100,
+	"konizka": 30,
+	"nameless one": 10
     }
+
 }

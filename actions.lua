@@ -284,9 +284,15 @@ function actionOrPrint(main, obj)
    return printMessage(main, obj, obj.Message)
 end
 
-function showHightScore(wid)
+function showHightScore(wid, score)
    wid = Entity.wrapp(wid)
-   local score = yeGetInt(ygGet(wid.score_path:to_string()))
+   if score == nil then
+      score = yeGetInt(ygGet(wid.score_path:to_string()))
+      print("no score")
+   else
+      print("a score")
+      score = yLovePtrToNumber(score)
+   end
    local hs = ygGet(wid.hightscore_path:to_string())
    local hgw = Entity.new_array()
    local str = Entity.new_string("")
@@ -324,13 +330,15 @@ function playSnake(wid, eve, arg, version)
    snake.hitWall = "snake:snakeWarp"
    snake.hightscore_path = "phq.hightscores.snake"
    snake.score_path = "snake.score"
-   snake.die = Entity.new_func("showHightScore")
-   snake.quit = Entity.new_func("showHightScore")
    if version > 0 then
+      snake.die = Entity.new_func("showHightScore")
+      snake.quit = Entity.new_func("showHightScore")
       snake.nb_layers = 2
       snake.resources = File.jsonToEnt("snake/resources.json")
       snake.eat = ygGet("snake.showScore")
    else
+      snake.die = Entity.new_func("backToGame")
+      snake.quit = Entity.new_func("backToGame")
       snake.resources = "snake:resources"
    end
    snake.background = "rgba: 255 255 255 255"
@@ -383,8 +391,9 @@ function playVapp(wid)
 
    vapp["<type>"] = "vapz"
    vapp.resources = "vapp:resources.map"
-   vapp.die = Entity.new_func("backToGame")
+   vapp.die = Entity.new_func("showHightScore")
    vapp.quit = Entity.new_func("backToGame")
+   vapp.hightscore_path = "phq.hightscores.vapp"
    vapp.oldTimer = main["turn-length"]
    main["turn-length"] = 150000
    ywPushNewWidget(main, vapp)
