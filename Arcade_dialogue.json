@@ -54,5 +54,14 @@
 		]
 	    },
 	]
+    },
+    "Standart Nerd": {
+	"dialogue": [
+	    "hej welcom to Arcade, a place where you can play arcade",
+	    {
+		"text": "have fun",
+		"answer": { "text": "Leave", "action": "phq.backToGame" }
+	    }
+	]
     }
 }

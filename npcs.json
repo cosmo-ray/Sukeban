@@ -184,6 +184,16 @@
             "hair/female/ponytail/brunette2.png"
         ],
     },
+    "Standart Nerd": {
+	"sex": "male",
+	"type": "dark",
+	"clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ]
+    },
     "Bouncer": {
 	"sex": "male",
         "type": "light",

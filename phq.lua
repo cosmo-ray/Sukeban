@@ -157,7 +157,6 @@ function load_game(entity, save_dir)
    local events = File.jsonToEnt(save_dir.."/evenements.json")
    phq.events = events
    yeDestroy(env)
-   --local tmp = ygFileToEnt(YJSON, save_dir.."/npcs.json")
    yCallNextWidget(entity);
 end
 
@@ -183,7 +182,6 @@ function saveGame(main, saveDir)
    misc.cur_scene_str = main.cur_scene_str
    saveCurDialogue(main)
    ygEntToFile(YJSON, destDir .. "/pj-pos.json", ylpcsHandePos(main.pj))
-   --ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
    ygEntToFile(YJSON, destDir .. "/pj.json", phq.pj)
    ygEntToFile(YJSON, destDir .. "/evenements.json", phq.events)
    ygEntToFile(YJSON, destDir .. "/misc.json", misc)
