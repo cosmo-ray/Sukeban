@@ -155,6 +155,10 @@ function load_game(entity, save_dir)
 				   true)
    phq.env = env
    phq.hightscores = File.jsonToEnt(save_dir.."/Arcade_score.json")
+   local actioned = File.jsonToEnt(save_dir.."/actioned.json")
+   if yeType(actioned) == YARRAY then
+      phq.actioned = actioned
+   end
    local events = File.jsonToEnt(save_dir.."/evenements.json")
    phq.events = events
    yeDestroy(env)
@@ -189,6 +193,7 @@ function saveGame(main, saveDir)
    ygEntToFile(YJSON, destDir .. "/env.json", phq.env)
    ygEntToFile(YJSON, destDir .. "/saved-scenes.json", saved_scenes)
    ygEntToFile(YJSON, destDir .. "/Arcade_score.json", phq.hightscores)
+   ygEntToFile(YJSON, destDir .. "/actioned.json", phq.actioned)
 end
 
 function saveGameCallback(wid)
@@ -468,7 +473,6 @@ function load_scene(ent, sceneTxt, entryIdx)
       saveCurDialogue(ent)
    end
 
-   ent.actioned_obj = {}
    ent.npc_act = {}
    ent.cur_scene_str = sceneTxt
    local scene = scenes[sceneTxt]
