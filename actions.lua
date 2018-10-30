@@ -285,22 +285,24 @@ function checkHightScore(lvl)
    local i = 0
    local lvl_check = 3
    local hs = phq.hightscores
+
    if (yeGetInt(ygGet("phq.quests.hightscores.lvl"))) > 1 then
       return 0
    end
+
    if (yeGetInt(ygGet("phq.quests.hightscores.lvl"))) > 0 then
       if (yeGetInt(lvl) == 0) then
 	 return 0
       end
       lvl_check = 1
    end
+
    while i < lvl_check do
       local j = 0
       while j < yeLen(hs) do
 	 chs = yeGet(hs, j)
 	 if phq.pj.name:to_string() == yeGetKeyAt(hs[j], i) then
 	    phq.quests.hightscores = {}
-	    print("lvl check", lvl_check)
 	    if lvl_check < 3 then
 	       phq.quests.hightscores.lvl = 2
 	    else
