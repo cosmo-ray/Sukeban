@@ -37,7 +37,7 @@
 			    {
 				"texts" : [
 				    {
-					"text": "I'm sorry, I'd like to but I can give a free sample to every new vlient",
+					"text": "I'm sorry, I'd like to but I can give a free sample to every new client",
 					"condition": ["<", "phq.pj.stats.charisme", 4]
 				    },
 				    {

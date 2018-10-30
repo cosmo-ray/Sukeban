@@ -118,10 +118,13 @@ function addObject(main, character, objStr, nb)
 						    objStr))
 end
 
-function recive(wid, eve, arg, objStr)
+function recive(wid, eve, arg, objStr, nb)
    wid = ywCntWidgetFather(yDialogueGetMain(wid))
-
-   addObject(wid, phq.pj, yeGetString(objStr), 1)
+   nb = yeGetInt(nb)
+   if nb == 0 then
+      nb = 1
+   end
+   addObject(wid, phq.pj, yeGetString(objStr), nb)
 end
 
 function takeObject(main, actionable_obj, what, nb)
@@ -270,15 +273,35 @@ function actionOrPrint(main, obj)
    yePushBack(condition, obj.Check0);
    yePushBack(condition, obj.Check1);
    local ret = yeCheckCondition(condition)
-   print(obj.Arg0, obj.CheckOperation, obj.Check0,
-	 obj.Check1, obj.SucessAction, obj.Message,
-	 obj.ActionArg0, ret, yeGetInt(ygGet(obj.Check0:to_string())))
    if ret then
       return yesCall(ygGet(obj.SucessAction:to_string()),
 		     main, obj, obj.ActionArg0,
 		     obj.ActionArg1, obj.ActionArg2)
    end
    return printMessage(main, obj, obj.Message)
+end
+
+function checkHightScore(action)
+   local i = 0
+   local hs = phq.hightscores
+   if (yeGetInt(ygGet("phq.quests.hightscores.lvl"))) > 0 then
+      return 0
+   end
+   while i < 3 do
+      local j = 0
+      while j < yeLen(hs) do
+	 chs = yeGet(hs, j)
+	 if phq.pj.name:to_string() == yeGetKeyAt(hs[j], i) then
+	    phq.quests.hightscores = {}
+	    phq.quests.hightscores.lvl = 1
+	    --["setInt", "phq.quests.hightscore.lvl", 1],
+	    return 1
+	 end
+	 j = j + 1
+      end
+      i = i + 1
+   end
+   return 0
 end
 
 function showHightScore(wid, score)

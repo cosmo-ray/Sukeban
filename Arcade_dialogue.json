@@ -57,6 +57,22 @@
     },
     "Standart Nerd": {
 	"dialogue": [
+	    {
+		"condition":  ["call", "phq.checkHightScore", 0],
+		"text": "wow, your not that bad it appear\nyou have 10$ as reward",
+		"answer": {
+		    "text": "thanks",
+		    "actions": [
+			["phq.recive", "money", 10],
+			"Dialogue:gotoNext"
+		    ]
+		}
+	    },
+	    {
+		"text": "if you can be fisrt at any game you'll get an even bigger reward :)",
+		"condition":  [">", "phq.quests.hightscores.lvl", 0],
+		"answer": { "text": "Ok", "action": "phq.backToGame" }
+	    },
 	    "hej welcom to Arcade, a place where you can play arcade",
 	    {
 		"text": "have fun",

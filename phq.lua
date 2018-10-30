@@ -116,6 +116,8 @@ function init_phq(mod)
 
    mod = Entity.wrapp(mod)
    mod.actioned = {}
+   mod.quests = {}
+   mod.checkHightScore = Entity.new_func("checkHightScore")
    mod.backToGame = Entity.new_func("backToGame")
    mod.StartFight = Entity.new_func("StartFight")
    mod.DrinkBeer = Entity.new_func("DrinkBeer")
@@ -159,6 +161,10 @@ function load_game(entity, save_dir)
    if yeType(actioned) == YARRAY then
       phq.actioned = actioned
    end
+   local quests = File.jsonToEnt(save_dir.."/quests.json")
+   if yeType(quests) == YARRAY then
+      phq.quests = quests
+   end
    local events = File.jsonToEnt(save_dir.."/evenements.json")
    phq.events = events
    yeDestroy(env)
@@ -194,6 +200,7 @@ function saveGame(main, saveDir)
    ygEntToFile(YJSON, destDir .. "/saved-scenes.json", saved_scenes)
    ygEntToFile(YJSON, destDir .. "/Arcade_score.json", phq.hightscores)
    ygEntToFile(YJSON, destDir .. "/actioned.json", phq.actioned)
+   ygEntToFile(YJSON, destDir .. "/quests.json", phq.quests)
 end
 
 function saveGameCallback(wid)
