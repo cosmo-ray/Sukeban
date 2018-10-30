@@ -69,6 +69,22 @@
 		}
 	    },
 	    {
+		"condition":  ["call", "phq.checkHightScore", 1],
+		"text": "you beat garashi, didn't though it was posible",
+		"answer": {
+		    "text": "thanks",
+		    "actions": [
+			["phq.recive", "money", 100],
+			"Dialogue:gotoNext"
+		    ]
+		}
+	    },
+	    {
+		"text": "your good, no one can say otherwise :)",
+		"condition":  [">", "phq.quests.hightscores.lvl", 1],
+		"answer": { "text": "hehe", "action": "phq.backToGame" }
+	    },
+	    {
 		"text": "if you can be fisrt at any game you'll get an even bigger reward :)",
 		"condition":  [">", "phq.quests.hightscores.lvl", 0],
 		"answer": { "text": "Ok", "action": "phq.backToGame" }
