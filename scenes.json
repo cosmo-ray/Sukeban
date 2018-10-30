@@ -31,10 +31,19 @@
     },
     "street3" : {
 	"exterior": 1,
+	"out": {
+	    "down" : {
+		"to": "street4",
+		"entry" : 4
+	    }
+	},
 	"tiled": "./tileset/Street3.json"
     },
     "street4" : {
 	"exterior": 1,
+	"out": {
+	    "up" : "street3"
+	},
 	"tiled": "./tileset/Street4.json"
     },
     "house0" : {
