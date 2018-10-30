@@ -60,7 +60,20 @@
 	    "hej welcom to Arcade, a place where you can play arcade",
 	    {
 		"text": "have fun",
-		"answer": { "text": "Leave", "action": "phq.backToGame" }
+		"answers": [
+		    { "text": "Leave", "action": "phq.backToGame" },
+		    {
+			"text": "What's about this price for hightscore ?",
+			"condition":  [">", "phq.actioned.arcade.Price", 0]
+		    }
+		]
+	    },
+	    {
+		"text": "nothing you can ever reach",
+		"answers": [
+		    { "text": "We'll see", "action": "phq.backToGame" },
+		    { "text": "Ok bye", "action": "phq.backToGame" }
+		]
 	    }
 	]
     }

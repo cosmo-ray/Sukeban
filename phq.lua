@@ -115,6 +115,7 @@ function init_phq(mod)
    Widget.new_subtype("phq-new-game", "create_new_game")
 
    mod = Entity.wrapp(mod)
+   mod.actioned = {}
    mod.backToGame = Entity.new_func("backToGame")
    mod.StartFight = Entity.new_func("StartFight")
    mod.DrinkBeer = Entity.new_func("DrinkBeer")
@@ -390,7 +391,13 @@ function phq_action(entity, eve, arg)
 		checkTiledCondition(e_actionables[i]) then
 		   local args = { e_actionables[i].Arg0, e_actionables[i].Arg1,
 				  e_actionables[i].Arg2, e_actionables[i].Arg3 }
+		   local actioned = phq.actioned[entity.cur_scene_str:to_string()]
+		   local act_cnt = actioned[e_actionables[i].name:to_string()]
 
+		   act_cnt = yeGetInt(act_cnt) + 1
+		   actioned[e_actionables[i].name:to_string()] = act_cnt
+		   print(phq.actioned, yeGetInt(ygGet("phq.actioned.arcade.Price")))
+		   -- save here the number of time this object have been actioned
 		   return yesCall(ygGet(e_actionables[i].Action:to_string()),
 				  entity:cent(), e_actionables[i]:cent(), args[1],
 				  args[2], args[3], args[4])
@@ -461,9 +468,13 @@ function load_scene(ent, sceneTxt, entryIdx)
       saveCurDialogue(ent)
    end
 
+   ent.actioned_obj = {}
    ent.npc_act = {}
    ent.cur_scene_str = sceneTxt
    local scene = scenes[sceneTxt]
+   if phq.actioned[ent.cur_scene_str:to_string()] == nil then
+      phq.actioned[ent.cur_scene_str:to_string()] = {}
+   end
 
    scene = Entity.wrapp(scene)
 
