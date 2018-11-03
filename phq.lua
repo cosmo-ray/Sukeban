@@ -78,7 +78,6 @@ local function reposeCam(main)
    reposScreenInfo(main, x0, y0)
 end
 
-
 function checkNpcPresence(obj, npc, scene)
    if npc == nil then
       return false
@@ -372,6 +371,9 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.pj.move.left_right = 1
              entity.pj.y = LPCS_RIGHT
+	  elseif eve:key() == Y_I_KEY then
+	     openGlobMenu(entity, GM_INV_IDX)
+	     return YEVE_ACTION
 	  elseif eve:key() == Y_M_KEY then
 	     pushMetroMenu(entity)
 	     return YEVE_ACTION

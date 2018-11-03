@@ -37,6 +37,9 @@ function backToGame(wid)
 	 wid.src = nil
       end
    end
+   if yeGetInt(wid.in_subcontained) == 1 then
+      wid = Entity.wrapp(ywCntWidgetFather(wid))
+   end
    local main = Entity.wrapp(ywCntWidgetFather(wid))
 
    if wid.oldTimer then

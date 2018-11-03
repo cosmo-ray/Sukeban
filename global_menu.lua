@@ -6,6 +6,61 @@ local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local scenes = Entity.wrapp(ygGet("phq.scenes"))
 local stores = Entity.wrapp(ygGet("phq.stores"))
 
+GM_BACK_IDX = 0
+GM_INV_IDX = 1
+GM_STATS_IDX = 2
+GM_MAP_IDX = 3
+
+function globMnMoveOn(menu, current)
+   local main = Entity.wrapp(ywCntWidgetFather(menu))
+
+   current = yLovePtrToNumber(current)
+   if current == GM_INV_IDX then
+      print("inventory time")
+      invList(menu)
+   elseif current == GM_STATS_IDX then
+      pushStatus(menu)
+   elseif current == GM_MAP_IDX then
+      ywCntPopLastEntry(main)
+      pushMetroMenu(main)
+   elseif current == GM_BACK_IDX then
+      local ts = Entity.new_array()
+      ts["<type>"] = "text-screen"
+      ts.text = "Back To Game"
+      ywCntPopLastEntry(main)
+      ywPushNewWidget(main, ts)
+   end
+   main.current = 0
+   return YEVE_NOACTION;
+end
+
+function openGlobMenu(main, on_idx)
+   local mn = Container.new_entity("horizontal")
+   --mn.ent.action = Entity.new_func("backToGameOnEnter")
+   mn.ent.background = "rgba: 155 155 255 190"
+
+   local panel = Menu.new_entity()
+   panel.ent["mn-type"] = "panel"
+   panel:push("Back", "phq.backToGame")
+   panel:push("Inventory")
+   panel:push("Status")
+   panel:push("Map")
+   panel.ent.in_subcontained = 1
+   panel.ent.size = 5
+   panel.ent.moveOn = Entity.new_func("globMnMoveOn")
+
+   local ts = Entity.new_array()
+   ts["<type>"] = "text-screen"
+   ts.text = ""
+   mn.ent.entries[0] = panel.ent
+   mn.ent.entries[1] = ts
+
+   ywPushNewWidget(main, mn.ent)
+   ywCntConstructChilds(main)
+   ywMenuMove(panel.ent, on_idx)
+   return YEVE_ACTION
+end
+
 function pushStatus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
 
