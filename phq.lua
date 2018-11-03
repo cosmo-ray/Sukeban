@@ -203,6 +203,10 @@ function saveGame(main, saveDir)
 end
 
 function saveGameCallback(wid)
+   wid = Entity.wrapp(wid)
+   if yeGetInt(wid.in_subcontained) == 1 then
+      wid = ywCntWidgetFather(wid)
+   end
    saveGame(Entity.wrapp(ywCntWidgetFather(wid)), "cur")
 end
 
@@ -301,14 +305,11 @@ end
 function pushMainMenu(main)
    local mn = Menu.new_entity()
 
-   mn:push("back to game", Entity.new_func("backToGame"))
-   mn:push("status", Entity.new_func("pushStatus"))
-   mn:push("inventory", Entity.new_func("invList"))
    mn:push("save game", Entity.new_func("saveGameCallback"))
    mn:push("main menu", "callNext")
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent["text-align"] = "center"
-   mn.ent.next = main.next
+   mn.ent.next = Entity.wrapp(ywCntWidgetFather(main)).next
    ywPushNewWidget(main, mn.ent)
 end
 
@@ -357,8 +358,7 @@ function phq_action(entity, eve, arg)
    while eve:is_end() == false do
        if eve:type() == YKEY_DOWN then
 	  if eve:key() == Y_ESC_KEY then
-	     pushMainMenu(entity)
-	     return YEVE_ACTION
+	     return openGlobMenu(entity, GM_MISC_IDX)
 	  elseif eve:is_key_up() then
              entity.pj.move.up_down = -1
              entity.pj.y = LPCS_UP
@@ -371,13 +371,13 @@ function phq_action(entity, eve, arg)
 	  elseif eve:is_key_right() then
              entity.pj.move.left_right = 1
              entity.pj.y = LPCS_RIGHT
+	  elseif eve:key() == Y_C_KEY then
+	     return openGlobMenu(entity, GM_STATS_IDX)
 	  elseif eve:key() == Y_I_KEY then
-	     openGlobMenu(entity, GM_INV_IDX)
-	     return YEVE_ACTION
+	     return openGlobMenu(entity, GM_INV_IDX)
 	  elseif eve:key() == Y_M_KEY then
-	     pushMetroMenu(entity)
-	     return YEVE_ACTION
-          elseif eve:key() == Y_SPACE_KEY or eve:key() == Y_ENTER_KEY then
+	     return openGlobMenu(entity, GM_MAP_IDX)
+	  elseif eve:key() == Y_SPACE_KEY or eve:key() == Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
              local y_add = 0

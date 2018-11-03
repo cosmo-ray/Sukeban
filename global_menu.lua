@@ -10,16 +10,19 @@ GM_BACK_IDX = 0
 GM_INV_IDX = 1
 GM_STATS_IDX = 2
 GM_MAP_IDX = 3
+GM_MISC_IDX = 4
 
 function globMnMoveOn(menu, current)
    local main = Entity.wrapp(ywCntWidgetFather(menu))
 
    current = yLovePtrToNumber(current)
    if current == GM_INV_IDX then
-      print("inventory time")
       invList(menu)
    elseif current == GM_STATS_IDX then
       pushStatus(menu)
+   elseif current == GM_MISC_IDX then
+      ywCntPopLastEntry(main)
+      pushMainMenu(main)
    elseif current == GM_MAP_IDX then
       ywCntPopLastEntry(main)
       pushMetroMenu(main)
@@ -30,6 +33,21 @@ function globMnMoveOn(menu, current)
       ywCntPopLastEntry(main)
       ywPushNewWidget(main, ts)
    end
+   main.entries[1].in_subcontained = 1
+   main.current = 0
+   return YEVE_NOACTION;
+end
+
+function gmLooseFocus(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+
+   main.current = 1
+   return YEVE_NOACTION;
+end
+
+function gmGetBackFocus(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+
    main.current = 0
    return YEVE_NOACTION;
 end
@@ -40,11 +58,13 @@ function openGlobMenu(main, on_idx)
    mn.ent.background = "rgba: 155 155 255 190"
 
    local panel = Menu.new_entity()
+   local lf = Entity.new_func("gmLooseFocus")
    panel.ent["mn-type"] = "panel"
    panel:push("Back", "phq.backToGame")
-   panel:push("Inventory")
+   panel:push("Inventory", lf)
    panel:push("Status")
-   panel:push("Map")
+   panel:push("Map", lf)
+   panel:push("MICS (and boo)", lf)
    panel.ent.in_subcontained = 1
    panel.ent.size = 5
    panel.ent.moveOn = Entity.new_func("globMnMoveOn")
@@ -120,7 +140,7 @@ function gmUseItem(mn)
    local objs_list = phq.objects
    local o = objs_list[cur.obName:to_string()]
    print(objs_list:cent())
-   if o.func then
+   if o and o.func then
       if yeType(o.func) == YFUNCTION then
 	 o.func(main, o)
       else
@@ -136,7 +156,6 @@ function invList(mn)
    local inv = phq.pj.inventory
    ywCntPopLastEntry(main)
    mn = Menu.new_entity()
-   mn:push("back to game", Entity.new_func("backToGame"))
    local i = 0
    while i < yeLen(inv) do
       if inv[i] then

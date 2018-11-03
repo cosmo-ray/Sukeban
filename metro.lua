@@ -76,7 +76,7 @@ function metroAction(metroMap, eve)
 	    end
 	 elseif eve:key() == Y_ESC_KEY or
 	 eve:key() == Y_M_KEY then
-	    return backToGame(metroMap)
+	    return gmGetBackFocus(metroMap)
 	 end
       end
       eve = eve:next()
@@ -114,5 +114,6 @@ function pushMetroMenu(main)
    can.ent.station_info = station_info
    can.ent.station = station
    ywPushNewWidget(main, can.ent)
+   return can.ent
 end
 

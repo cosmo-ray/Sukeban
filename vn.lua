@@ -2,6 +2,10 @@ local vn_scenes = ygGet("phq.vn-scenes")
 
 function vnScene(wid, eve, arg, sceneName)
    print("vn scene: ", wid, eve, sceneName, yeGetString(sceneName))
+   wid = Entity.wrapp(wid)
+   if yeGetInt(wid.in_subcontained) == 1 then
+      wid = Entity.wrapp(ywCntWidgetFather(wid))
+   end
    local main = Entity.wrapp(ywCntWidgetFather(wid))
    local scene = Entity.wrapp(yeGet(vn_scenes, yeGetString(sceneName)))
    print(vn_scenes, scene)
