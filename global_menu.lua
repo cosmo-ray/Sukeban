@@ -90,8 +90,8 @@ function pushStatus(mn)
    local knowledge = phq.pj.knowledge
    local stats_str = "----- Stats -----\n"
    local stats = phq.pj.stats
-   local stats_str = "----- Trait -----\n"
-   local stats = phq.pj.trait
+   local trait_str = "----- Trait -----\n"
+   local trait = phq.pj.trait
 
    local i = 0
    while i < yeLen(knowledge) do
@@ -126,6 +126,7 @@ function pushStatus(mn)
       "week: " .. phq.env.week:to_string() .. "\n" ..
       "Status:\n" ..
       "life: " .. phq.pj.life:to_int() .. "\n" ..
+      "xp: " .. phq.pj.xp.to_int() .. "\n" ..
       "alcohol level: " .. phq.pj.drunk:to_int() .. "\n" ..
       knowledge_str .. stats_str
    txt_screen.background = "rgba: 155 155 255 190"

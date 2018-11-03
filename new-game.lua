@@ -21,6 +21,7 @@ function newGameAction(menu, eve, arg)
    phq.pj.knowledge = {}
    phq.pj.trait = {}
    phq.pj.drunk = 0
+   phq.pj.xp = 0
    phq.pj.stats.charisme = 0
    phq.pj.stats.strength = 0
    phq.pj.stats.smart = 0
