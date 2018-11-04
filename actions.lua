@@ -172,6 +172,11 @@ end
 
 function increase(wid, eve, arg, whatType, what, val)
    wid = ywCntWidgetFather(yDialogueGetMain(wid))
+   if (yeType(what)) then
+      val = what
+      what = whatType
+      return increaseStat(wid, phq.pj, yeGetString(what), yeGetInt(val))
+   end
    local stat_container = phq.pj[yeGetString(whatType)]
    local what = yeGetString(what)
    if stat_container[what] == nil then

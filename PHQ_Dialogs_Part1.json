@@ -236,7 +236,7 @@
 	]
     },
     "John": {
-	"dialogue" : [	
+	"dialogue" : [
 	    {
 		"text": "What d'you want?",
 		"answers": [

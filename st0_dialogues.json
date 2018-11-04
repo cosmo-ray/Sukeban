@@ -43,6 +43,7 @@
 				    {
 					"text" : "well, why not, I don't see pretty face every day",
 					"actions" : [
+					    ["phq.increase", "xp", 10],
 					    ["phq.recive", "Small Daicon"],
 					    "Dialogue:hide"
 					]
