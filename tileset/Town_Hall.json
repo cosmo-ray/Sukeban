@@ -47,6 +47,27 @@
                  "width":94,
                  "x":287,
                  "y":451
+                }, 
+                {
+                 "height":51,
+                 "id":2,
+                 "name":"ToLSide",
+                 "properties":
+                    {
+                     "nextScene":"townhall_s00",
+                     "side":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":33,
+                 "x":-2,
+                 "y":260
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -65,7 +86,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

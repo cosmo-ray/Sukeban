@@ -24,6 +24,39 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "name":"Entries",
+         "objects":[
+                {
+                 "height":62,
+                 "id":2,
+                 "name":"ToMH",
+                 "properties":
+                    {
+                     "entry":1,
+                     "nextScene":"townHall",
+                     "side":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "entry":"int",
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":34,
+                 "x":286,
+                 "y":128
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[0, 779, 780, 779, 780, 779, 780, 779, 780, 0, 0, 811, 812, 811, 812, 811, 812, 811, 812, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1655, 1657, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1613, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1613, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":10,
          "name":"Object",
@@ -45,7 +78,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
