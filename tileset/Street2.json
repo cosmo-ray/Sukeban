@@ -63,11 +63,13 @@
                  "point":true,
                  "properties":
                     {
+                     "entry":0,
                      "nextScene":"townHall",
                      "side":"down"
                     },
                  "propertytypes":
                     {
+                     "entry":"int",
                      "nextScene":"string",
                      "side":"string"
                     },

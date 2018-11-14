@@ -496,6 +496,9 @@ function load_scene(ent, sceneTxt, entryIdx)
    upCanvas.ent.cam = Pos.new(0, 0).ent
    mainCanvas.ent.objs = {}
    mainCanvas.ent.objects = {}
+   if (scene == nil) then
+      print("Can not load scene: sceneTxt")
+   end
    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(),
 		      upCanvas.ent:cent())
    o_dialogues = File.jsonToEnt(yeGetString(scene.dialogues))

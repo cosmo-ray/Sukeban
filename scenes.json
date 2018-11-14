@@ -56,5 +56,8 @@
     },
     "house2" : {
 	"tiled": "./tileset/House2.json"
+    },
+    "townhall" : {
+	"tiled": "./tileset/Town_Hall.json"
     }
 }
