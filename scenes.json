@@ -46,6 +46,9 @@
 	},
 	"tiled": "./tileset/Street4.json"
     },
+    "wut" : {
+	"tiled": "./tileset/WUT.json"
+    },
     "house0" : {
 	"dialogues" : "house_dialogue.json",
 	"tiled": "./tileset/House0.json"

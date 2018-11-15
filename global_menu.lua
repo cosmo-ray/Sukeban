@@ -59,6 +59,7 @@ function openGlobMenu(main, on_idx)
    local mn = Container.new_entity("horizontal")
    --mn.ent.action = Entity.new_func("backToGameOnEnter")
    mn.ent.background = "rgba: 155 155 255 190"
+   mn.ent.auto_foreground = "rgba: 0 0 120 50"
 
    local panel = Menu.new_entity()
    local lf = Entity.new_func("gmLooseFocus")
@@ -215,6 +216,7 @@ function invList(mn)
       i = i + 1
    end
    mn.ent.background = "rgba: 255 255 255 190"
+   mn.ent.onEsc = Entity.new_func("gmGetBackFocus")
    ywPushNewWidget(main, mn.ent)
    return YEVE_ACTION
 end
