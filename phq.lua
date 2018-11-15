@@ -312,6 +312,7 @@ function pushMainMenu(main)
    mn:push("main menu", "callNext")
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent["text-align"] = "center"
+   mn.ent.onEsc = Entity.new_func("gmGetBackFocus")
    mn.ent.next = Entity.wrapp(ywCntWidgetFather(main)).next
    ywPushNewWidget(main, mn.ent)
 end
