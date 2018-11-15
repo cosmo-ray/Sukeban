@@ -1,17 +1,17 @@
 {
     "snake": {
-	"garashi": 300,
-	"konizka": 100,
-	"nameless one": 50
+	"garashi": 120,
+	"konizka": 70,
+	"nameless one": 40
     },
     "vapp": {
-	"garashi": 100,
-	"konizka": 30,
+	"garashi": 35,
+	"konizka": 20,
 	"nameless one": 10
     },
     "ast-shoot": {
-	"garashi": 100,
-	"konizka": 30,
-	"nameless one": 10
+	"garashi": 70,
+	"konizka": 50,
+	"nameless one": 30
     }
 }
