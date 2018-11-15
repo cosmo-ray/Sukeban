@@ -172,7 +172,7 @@ end
 
 function increase(wid, eve, whatType, what, val)
    wid = ywCntWidgetFather(yDialogueGetMain(wid))
-   if (yeType(what)) then
+   if yeType(what) == YINT then
       val = what
       what = whatType
       return increaseStat(wid, phq.pj, yeGetString(what), yeGetInt(val))

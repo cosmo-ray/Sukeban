@@ -633,15 +633,17 @@ function add_stat_hook(entity, stat, hook, val, comp_type)
    entity.st_hooks[stat].comp_type = comp_type
 end
 
-function quest_update(original, copy, quest_name)
+function quest_update(original, copy, arg)
+   local main = yeGet(arg, 0)
+   local quest_name = yeGet(arg, 1)
    quest_name = yeGetString(quest_name)
    local quest = quests_info[quest_name]
    local stalk_sart = yeGetIntAt(quest, "stalk_sart")
-   local descs = quest.descriptions
+   local rewards = quest.rewards
 
    print("changed:", Entity.wrapp(original), Entity.wrapp(copy), quest_name)
-   print(descs[yeGetInt(original)])
-   print("need xp mapbe ???")
+   print("reward:", rewards[yeGetInt(original)])
+   increaseStat(main, phq.pj, "xp", yeGetInt(rewards[yeGetInt(original)]))
 end
 
 function create_phq(entity)
@@ -694,7 +696,10 @@ function create_phq(entity)
        if yLovePtrToNumber(stalked) == 0 then
 	  ygReCreateInt(stalk, stalk_sart)
        end
-       ygStalk(stalk, Entity.new_func("quest_update"), Entity.new_string(name))
+       local arg = Entity.new_array()
+       yePushBack(arg, ent)
+       yeCreateString(name, arg)
+       ygStalk(stalk, Entity.new_func("quest_update"), arg)
        i = i + 1
     end
 
