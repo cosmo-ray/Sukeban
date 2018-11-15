@@ -9,6 +9,9 @@ local scenes = Entity.wrapp(ygGet("phq.scenes"))
 saved_scenes = nil
 dialogues = Entity.new_array()
 o_dialogues = nil
+
+quests_info = File.jsonToEnt("quests/main.json")
+
 local window_width = 800
 local window_height = 600
 local pj_pos = nil
@@ -313,7 +316,7 @@ function pushMainMenu(main)
    ywPushNewWidget(main, mn.ent)
 end
 
-function phq_action(entity, eve, arg)
+function phq_action(entity, eve)
    entity = Entity.wrapp(entity)
    entity.tid = entity.tid + 1
    eve = Event.wrapp(eve)
@@ -377,6 +380,8 @@ function phq_action(entity, eve, arg)
 	     return openGlobMenu(entity, GM_INV_IDX)
 	  elseif eve:key() == Y_M_KEY then
 	     return openGlobMenu(entity, GM_MAP_IDX)
+	  elseif eve:key() == Y_J_KEY then
+	     return openGlobMenu(entity, GM_QUEST_IDX)
 	  elseif eve:key() == Y_SPACE_KEY or eve:key() == Y_ENTER_KEY then
              local pjPos = ylpcsHandePos(entity.pj)
              local x_add = 0
@@ -410,9 +415,10 @@ function phq_action(entity, eve, arg)
 
 		   act_cnt = yeGetInt(act_cnt) + 1
 		   actioned[e_actionables[i].name:to_string()] = act_cnt
-		   print(phq.actioned, yeGetInt(ygGet("phq.actioned.arcade.Price")))
+		   print("ACTION: ", phq.actioned, e_actionables[i].usable_once,
+			 e_actionables[i].Arg0)
 		   -- save here the number of time this object have been actioned
-		   return yesCall(ygGet(e_actionables[i].Action:to_string()),
+		   yesCall(ygGet(e_actionables[i].Action:to_string()),
 				  entity:cent(), e_actionables[i]:cent(), args[1],
 				  args[2], args[3], args[4])
 		end
@@ -470,6 +476,14 @@ function destroy_phq(entity)
    ent.mainScreen = nil
    ent.upCanvas = nil
    ent.current = 0
+   local i = 0
+   while i < yeLen(quests_info) do
+      local quest = quests_info[i]
+      local stalk = yeGetStringAt(quest, "stalk")
+
+      ygUnstalk(stalk)
+      i = i + 1
+   end
 end
 
 function load_scene(ent, sceneTxt, entryIdx)
@@ -585,6 +599,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 x = x + ywRectW(rect) + 45
       end
    end
+
    if pj_pos then
       ylpcsHandlerSetPos(ent.pj, pj_pos)
       yeDestroy(pj_pos)
@@ -616,6 +631,17 @@ function add_stat_hook(entity, stat, hook, val, comp_type)
    entity.st_hooks[stat].hook = ygGet(hook)
    entity.st_hooks[stat].val = val
    entity.st_hooks[stat].comp_type = comp_type
+end
+
+function quest_update(original, copy, quest_name)
+   quest_name = yeGetString(quest_name)
+   local quest = quests_info[quest_name]
+   local stalk_sart = yeGetIntAt(quest, "stalk_sart")
+   local descs = quest.descriptions
+
+   print("changed:", Entity.wrapp(original), Entity.wrapp(copy), quest_name)
+   print(descs[yeGetInt(original)])
+   print("need xp mapbe ???")
 end
 
 function create_phq(entity)
@@ -657,5 +683,20 @@ function create_phq(entity)
     ent.pj.move = {}
     ent.pj.move.up_down = 0
     ent.pj.move.left_right = 0
+    local i = 0
+    while i < yeLen(quests_info) do
+       local name = yeGetKeyAt(quests_info, i)
+       local quest = quests_info[i]
+       local stalk = yeGetStringAt(quest, "stalk")
+       local stalked = ygGet(stalk)
+       local stalk_sart = yeGetIntAt(quest, "stalk_sart")
+
+       if yLovePtrToNumber(stalked) == 0 then
+	  ygReCreateInt(stalk, stalk_sart)
+       end
+       ygStalk(stalk, Entity.new_func("quest_update"), Entity.new_string(name))
+       i = i + 1
+    end
+
     return ret
 end

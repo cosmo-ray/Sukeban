@@ -103,7 +103,7 @@ function StartFight(wid, eve)
    end
    fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
    fWid.enemy.life = fWid.enemy.max_life
-   backToGame(owid, eve, arg)
+   backToGame(owid, eve)
    ywPushNewWidget(main, fWid)
    return YEVE_ACTION
 end
@@ -121,7 +121,7 @@ function addObject(main, character, objStr, nb)
 						    objStr))
 end
 
-function recive(wid, eve, arg, objStr, nb)
+function recive(wid, eve, objStr, nb)
    wid = ywCntWidgetFather(yDialogueGetMain(wid))
    nb = yeGetInt(nb)
    if nb == 0 then
@@ -140,14 +140,14 @@ function takeObject(main, actionable_obj, what, nb)
    actionable_obj.is_used = true
 end
 
-function pay(wid, eve, arg, cost, okAction, noDialogue)
+function pay(wid, eve, cost, okAction, noDialogue)
    cost = yeGetInt(cost)
    if phq.pj.inventory.money >= cost then
       local money = phq.pj.inventory.money
       yeSetInt(money, money:to_int() - cost)
-      return ywidAction(okAction, wid, eve, arg)
+      return ywidAction(okAction, wid, eve)
    end
-   return dialogue["change-text"](wid, eve, arg, noDialogue)
+   return dialogue["change-text"](wid, eve, noDialogue)
 end
 
 function increaseStat(wid, stats_container, stat, nb, max_min)
@@ -170,7 +170,7 @@ function increaseStat(wid, stats_container, stat, nb, max_min)
 					    math.floor(yeGetInt(s))))
 end
 
-function increase(wid, eve, arg, whatType, what, val)
+function increase(wid, eve, whatType, what, val)
    wid = ywCntWidgetFather(yDialogueGetMain(wid))
    if (yeType(what)) then
       val = what
@@ -203,11 +203,11 @@ function DrinkBeer(ent, obj)
    return printMessage(ent, obj, Entity.new_string("Glou Glou !"))
 end
 
-function GetDrink(wid, eve, arg)
+function GetDrink(wid, eve)
    local ent = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(wid)))
 
    addObject(ent, phq.pj, "beer", 1)
-   return backToGame(wid, eve, arg)
+   return backToGame(wid, eve)
 end
 
 function sleep(main, obj)
@@ -354,7 +354,7 @@ function showHightScore(wid, score)
    return YEVE_ACTION
 end
 
-function playSnake(wid, eve, arg, version)
+function playSnake(wid, eve, version)
    local wid = Entity.wrapp(wid)
    local main = nil
 

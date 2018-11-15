@@ -9,8 +9,9 @@ local stores = Entity.wrapp(ygGet("phq.stores"))
 GM_BACK_IDX = 0
 GM_INV_IDX = 1
 GM_STATS_IDX = 2
-GM_MAP_IDX = 3
-GM_MISC_IDX = 4
+GM_QUEST_IDX = 3
+GM_MAP_IDX = 4
+GM_MISC_IDX = 5
 
 function globMnMoveOn(menu, current)
    local main = Entity.wrapp(ywCntWidgetFather(menu))
@@ -20,6 +21,8 @@ function globMnMoveOn(menu, current)
       invList(menu)
    elseif current == GM_STATS_IDX then
       pushStatus(menu)
+   elseif current == GM_QUEST_IDX then
+      pushQuests(menu)
    elseif current == GM_MISC_IDX then
       ywCntPopLastEntry(main)
       pushMainMenu(main)
@@ -63,6 +66,7 @@ function openGlobMenu(main, on_idx)
    panel:push("Back", "phq.backToGame")
    panel:push("Inventory", lf)
    panel:push("Status")
+   panel:push("Quests")
    panel:push("Map", lf)
    panel:push("MICS (and boo)", lf)
    panel.ent.in_subcontained = 1
@@ -79,6 +83,42 @@ function openGlobMenu(main, on_idx)
    ywCntConstructChilds(main)
    ywMenuMove(panel.ent, on_idx)
    return YEVE_ACTION
+end
+
+function pushQuests(panel)
+   local main = ywCntWidgetFather(panel)
+   local txt = "----- quests -----\n"
+
+   ywCntPopLastEntry(main)
+   local txt_screen = Entity.new_array()
+
+   -- quests_info
+   local i = 0
+   while i < yeLen(quests_info) do
+      local quest_name = yeGetString(quest_name)
+      local quest = quests_info[i]
+      local stalk_sart = yeGetIntAt(quest, "stalk_sart")
+      local stalk_path = yeGetStringAt(quest, "stalk")
+      local cur = yeGetInt(ygGet(stalk_path))
+
+      if (cur > stalk_sart) then
+	 local descs = quest.descriptions
+	 txt = txt .. "[ " ..  yeGetKeyAt(quests_info, i) .. " ]\n"
+	 if cur >= yeLen(descs) then
+	    txt = txt .. "completed !\n"
+	 else
+	    txt = txt .. yeGetStringAt(descs, cur) .. "\n"
+	 end
+      end
+      i = i + 1
+   end
+
+   -- widget boring stuff
+   txt_screen["<type>"] = "text-screen"
+   txt_screen["text-align"] = "center"
+   txt_screen.text = txt
+   txt_screen.background = "rgba: 155 155 255 190"
+   ywPushNewWidget(main, txt_screen)
 end
 
 function pushStatus(mn)
@@ -130,7 +170,6 @@ function pushStatus(mn)
       "alcohol level: " .. phq.pj.drunk:to_int() .. "\n" ..
       knowledge_str .. stats_str
    txt_screen.background = "rgba: 155 155 255 190"
-   txt_screen.action = Entity.new_func("backToGameOnEnter")
    ywPushNewWidget(main, txt_screen)
    return YEVE_ACTION
 end

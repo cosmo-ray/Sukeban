@@ -107,13 +107,11 @@
                  "properties":
                     {
                      "Action":"phq.printMessage",
-                     "ActionNbArgs":1,
                      "Arg0":"Be in the top 3 hightscore and win a price !"
                     },
                  "propertytypes":
                     {
                      "Action":"string",
-                     "ActionNbArgs":"int",
                      "Arg0":"string"
                     },
                  "rotation":0,
@@ -122,6 +120,31 @@
                  "width":20,
                  "x":132,
                  "y":339
+                }, 
+                {
+                 "height":13.3689839572193,
+                 "id":10,
+                 "name":"Price_Start_Quest",
+                 "properties":
+                    {
+                     "Action":"setInt",
+                     "Arg0":"phq.quests.hightscores.lvl",
+                     "Arg1":0,
+                     "usable_once":true
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "Arg0":"string",
+                     "Arg1":"int",
+                     "usable_once":"bool"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":21.7245989304813,
+                 "x":131.183155080214,
+                 "y":337.566844919786
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -241,7 +264,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
