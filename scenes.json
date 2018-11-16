@@ -61,9 +61,10 @@
 	"tiled": "./tileset/House2.json"
     },
     "townhall" : { "tiled": "./tileset/Town_Hall.json" },
+    "townhall_l1" : { "tiled": "./tileset/Town_Hall_lvl1.json" },
     "townhall_s00" : { "tiled": "./tileset/Town_Hall_side00.json" },
     "townhall_s01" : { "tiled": "./tileset/Town_Hall_side01.json" },
-    "townhall_s01" : { "tiled": "./tileset/Town_Hall_side02.json" },
+    "townhall_s02" : { "tiled": "./tileset/Town_Hall_side02.json" },
     "townhall_s10" : { "tiled": "./tileset/Town_Hall_side10.json" },
     "townhall_s11" : { "tiled": "./tileset/Town_Hall_side11.json" },
     "townhall_s11" : { "tiled": "./tileset/Town_Hall_side12.json" }

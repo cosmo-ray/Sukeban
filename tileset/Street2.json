@@ -123,6 +123,52 @@
                  "width":9,
                  "x":1419,
                  "y":681
+                }, 
+                {
+                 "height":35,
+                 "id":4,
+                 "name":"THs00",
+                 "properties":
+                    {
+                     "entry":1,
+                     "nextScene":"townhall_s00",
+                     "side":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "entry":"int",
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":33,
+                 "x":223,
+                 "y":509
+                }, 
+                {
+                 "height":29,
+                 "id":8,
+                 "name":"THS01",
+                 "properties":
+                    {
+                     "entry":1,
+                     "nextScene":"townhall_s01",
+                     "side":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "entry":"int",
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30,
+                 "x":1186,
+                 "y":514
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -130,7 +176,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":4,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

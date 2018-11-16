@@ -33,8 +33,64 @@
          "width":20,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "name":"Entries",
+         "objects":[
+                {
+                 "height":38,
+                 "id":1,
+                 "name":"toLvl00",
+                 "properties":
+                    {
+                     "entry":3,
+                     "nextScene":"townHall",
+                     "side":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "entry":"int",
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":226,
+                 "y":102
+                }, 
+                {
+                 "height":38,
+                 "id":2,
+                 "name":"toLvl00",
+                 "properties":
+                    {
+                     "entry":4,
+                     "nextScene":"townHall",
+                     "side":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "entry":"int",
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35,
+                 "x":411.5,
+                 "y":99
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
