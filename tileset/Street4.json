@@ -163,6 +163,27 @@
                  "width":0,
                  "x":61,
                  "y":54
+                }, 
+                {
+                 "height":37,
+                 "id":6,
+                 "name":"police",
+                 "properties":
+                    {
+                     "nextScene":"police",
+                     "side":"down"
+                    },
+                 "propertytypes":
+                    {
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":51,
+                 "x":198,
+                 "y":545
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -170,7 +191,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

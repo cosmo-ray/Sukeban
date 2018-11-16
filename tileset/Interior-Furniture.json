@@ -1,0 +1,12 @@
+{ "columns":16,
+ "image":"Interior-Furniture.png",
+ "imageheight":512,
+ "imagewidth":512,
+ "margin":0,
+ "name":"Interior-Furniture",
+ "spacing":0,
+ "tilecount":256,
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset"
+}
