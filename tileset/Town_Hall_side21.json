@@ -13,10 +13,51 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "name":"Entries",
+         "objects":[
+                {
+                 "height":57.3333,
+                 "id":1,
+                 "name":"ToTH",
+                 "properties":
+                    {
+                     "entry":3,
+                     "nextScene":"townHall_l2",
+                     "side":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "entry":"int",
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":0,
+                 "y":130.000016666667
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[902, 904, 904, 904, 904, 904, 904, 904, 904, 901, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 0, 0, 0, 0, 0, 0, 0, 0, 0, 871, 0, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 870, 840, 840, 840, 840, 840, 840, 840, 840, 869],
          "height":10,
          "name":"Wall",
          "opacity":1,
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":10,
@@ -28,6 +69,14 @@
          "height":10,
          "name":"Object",
          "opacity":1,
+         "properties":
+            {
+             "Collision":1
+            },
+         "propertytypes":
+            {
+             "Collision":"int"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":10,
@@ -45,7 +94,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
