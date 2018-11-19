@@ -51,6 +51,9 @@ end
 function gmGetBackFocus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
 
+   if main.isChildContainer then
+      main = Entity.wrapp(ywCntWidgetFather(main))
+   end
    main.current = 0
    return YEVE_NOACTION;
 end
@@ -66,7 +69,7 @@ function openGlobMenu(main, on_idx)
    panel.ent["mn-type"] = "panel"
    panel:push("Back", "phq.backToGame")
    panel:push("Inventory", lf)
-   panel:push("Status")
+   panel:push("Status", lf)
    panel:push("Quests")
    panel:push("Map", lf)
    panel:push("MICS (and boo)", lf)
@@ -122,10 +125,7 @@ function pushQuests(panel)
    ywPushNewWidget(main, txt_screen)
 end
 
-function pushStatus(mn)
-   local main = Entity.wrapp(ywCntWidgetFather(mn))
-
-   ywCntPopLastEntry(main)
+function pushSTatusTextScreen(container)
    local txt_screen = Entity.new_array()
    local knowledge_str = "----- Knowledge -----\n"
    local knowledge = phq.pj.knowledge
@@ -171,7 +171,26 @@ function pushStatus(mn)
       "alcohol level: " .. phq.pj.drunk:to_int() .. "\n" ..
       knowledge_str .. stats_str
    txt_screen.background = "rgba: 155 155 255 190"
-   ywPushNewWidget(main, txt_screen)
+   ywPushNewWidget(container, txt_screen)
+end
+
+function pushStatus(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+   local stat_menu = Container.new_entity("vertical")
+
+   ywCntPopLastEntry(main)
+   ywPushNewWidget(main, stat_menu.ent)
+   stat_menu.ent.isChildContainer = true
+
+   local menu = Menu.new_entity()
+   menu:push("Spend XP")
+   menu.ent.size = 20
+   menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
+   stat_menu.ent.entries[0] = menu.ent
+
+   ywCntConstructChilds(main)
+   pushSTatusTextScreen(stat_menu.ent)
+   stat_menu.ent.current = 0
    return YEVE_ACTION
 end
 

@@ -634,19 +634,6 @@ function add_stat_hook(entity, stat, hook, val, comp_type)
    entity.st_hooks[stat].comp_type = comp_type
 end
 
-function quest_update(original, copy, arg)
-   local main = yeGet(arg, 0)
-   local quest_name = yeGet(arg, 1)
-   quest_name = yeGetString(quest_name)
-   local quest = quests_info[quest_name]
-   local stalk_sart = yeGetIntAt(quest, "stalk_sart")
-   local rewards = quest.rewards
-
-   print("changed:", Entity.wrapp(original), Entity.wrapp(copy), quest_name)
-   print("reward:", rewards[yeGetInt(original)])
-   increaseStat(main, phq.pj, "xp", yeGetInt(rewards[yeGetInt(original)]))
-end
-
 function create_phq(entity)
     local container = Container.init_entity(entity, "stacking")
     local ent = container.ent

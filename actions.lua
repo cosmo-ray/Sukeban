@@ -5,6 +5,22 @@ local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 local window_width = 800
 local window_height = 600
 
+function quest_update(original, copy, arg)
+   local main = yeGet(arg, 0)
+   local quest_name = yeGet(arg, 1)
+   quest_name = yeGetString(quest_name)
+   local quest = quests_info[quest_name]
+   local stalk_sart = yeGetIntAt(quest, "stalk_sart")
+   local rewards = quest.rewards
+   local reward = yeGetInt(rewards[yeGetInt(original)])
+
+   print("changed:", Entity.wrapp(original), Entity.wrapp(copy), quest_name)
+   print("reward:", rewards[yeGetInt(original)])
+   if reward ~= 0 then
+      increaseStat(main, phq.pj, "xp", reward)
+   end
+end
+
 function walkDoStep(wid, character)
    if yAnd(wid.tid:to_int(), 1) == 0 and
       (yuiAbs(yeGetInt(character.move.left_right)) == 1 or
