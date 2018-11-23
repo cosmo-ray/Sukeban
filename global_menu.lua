@@ -174,6 +174,73 @@ function pushSTatusTextScreen(container)
    ywPushNewWidget(container, txt_screen)
 end
 
+function popSpendXpWid(mn)
+   local main = ywCntWidgetFather(ywCntWidgetFather(mn))
+
+   ywCntPopLastEntry(main)
+   return YEVE_ACTION
+end
+
+function spendXpBack(mn)
+   local main = ywCntWidgetFather(mn)
+
+   ywCntPopLastEntry(main)
+   return YEVE_ACTION
+end
+
+function spendXpLvlUpStat(mn)
+   local stats = phq.pj.stats
+   local st_idx = yeGetIntAt(ywMenuGetCurrentEntry(mn), "arg")
+
+   print("spendXpLvlUpStat", ywMenuGetCurrentEntry(mn))
+   print(Entity.wrapp(ywMenuGetCurrentEntry(mn)).arg,
+	 yeGetKeyAt(stats, st_idx), yeGetIntAt(stats, st_idx))
+end
+
+function spendXpOnStats(mn)
+   local main = ywCntWidgetFather(mn)
+
+   local statsMenu = Menu.new_entity()
+   local stats = phq.pj.stats
+
+   statsMenu.ent["pre-text"] = "current xp: " .. yeGetInt(phq.pj.xp)
+   statsMenu:push("<----", Entity.new_func("spendXpBack"))
+   local i = 0
+   while i < yeLen(stats) do
+      if stats[i] then
+	 local st_val = yeGetInt(stats[i])
+	 local stats_str = yeGetKeyAt(stats, i) .. "(" ..
+	    math.floor(st_val) .. "): " ..
+	    math.floor((st_val + 1) * 3) .. " xp"
+	 statsMenu:push(stats_str, Entity.new_func("spendXpLvlUpStat"), i)
+      end
+      i = i + 1
+   end
+
+   ywPushNewWidget(main, statsMenu.ent)
+   return YEVE_ACTION
+end
+
+function pushSpendXpWid(mn)
+   -- 1: get status vertical container
+   -- 2: get global menu horizontal container
+   -- 3: get main stacking container
+   local main = ywCntWidgetFather(ywCntWidgetFather(ywCntWidgetFather(mn)))
+   print("hej hej peoples ", main, " here")
+   main = Entity.wrapp(main)
+   local lvlUp = Container.new_entity("vertical")
+   lvlUp.ent.background = "rgba: 255 255 255 255"
+
+   local menu = Menu.new_entity()
+   menu:push("finish", Entity.new_func("popSpendXpWid"))
+   menu:push("improve stats", Entity.new_func("spendXpOnStats"))
+   menu:push("learn skills")
+   lvlUp.ent.entries[0] = menu.ent
+   menu.ent.size = 20
+   ywPushNewWidget(main, lvlUp.ent)
+   return YEVE_ACTION
+end
+
 function pushStatus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
    local stat_menu = Container.new_entity("vertical")
@@ -183,7 +250,7 @@ function pushStatus(mn)
    stat_menu.ent.isChildContainer = true
 
    local menu = Menu.new_entity()
-   menu:push("Spend XP")
+   menu:push("Spend XP", Entity.new_func("pushSpendXpWid"))
    menu.ent.size = 20
    menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
    stat_menu.ent.entries[0] = menu.ent

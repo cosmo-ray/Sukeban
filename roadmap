@@ -5,13 +5,14 @@ octobre:
 	- Create town hall interior [~done]
 
 Novembre:
-	- School subsription quest
 	- Empty School interior
 	- Global Menu [~done]
 	- experiance, competences tree ?
-	- Quest system
+	- Quest system [~done]
 
 Decembre:
+	- Fix widgets leak (useless needDestroy)
+	- School subsription quest
 	- Start working on school content
 	- Map Action Points
 	- combats skill tree
