@@ -58,6 +58,10 @@ function pushNewVictoryScreen(main, winner, looser)
    else
       txt = autoLoot(main, winner, txt)
    end
+
+   local xp_win = yuiRand() % 5 + 1
+   winner.xp = winner.xp + xp_win
+   txt = txt .. "xp: " .. math.floor(xp_win) .. "\n"
    victoryScreen["<type>"] = "text-screen"
    victoryScreen["text-align"] = "center"
    victoryScreen.text = txt
