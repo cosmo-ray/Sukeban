@@ -323,14 +323,12 @@ function gmBuyItem(mn)
    end
 end
 
-function openStore(main, obj_or_eve, storeName_or_arg, storeName)
+function openStore(main, obj_or_eve, storeName)
    main = Entity.wrapp(main)
    print(main.isDialogue)
    if main.isDialogue then
       main = Entity.wrapp(ywCntWidgetFather(yDialogueGetMain(main)))
       ywCntPopLastEntry(main)
-   else
-      storeName = storeName_or_arg
    end
    storeName = yeGetString(storeName)
    print("open ", stores[storeName])
