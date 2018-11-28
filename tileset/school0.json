@@ -96,6 +96,14 @@
         }],
  "nextobjectid":2,
  "orientation":"orthogonal",
+ "properties":
+    {
+     "Collision":1
+    },
+ "propertytypes":
+    {
+     "Collision":"int"
+    },
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
  "tileheight":32,
