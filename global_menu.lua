@@ -137,16 +137,16 @@ function pushSTatusTextScreen(container)
    local i = 0
    while i < yeLen(knowledge) do
       if knowledge[i] then
-	 knowledge_str = knowledge_str ..
-	    yeGetKeyAt(knowledge, i) .. ": " .. yeGetInt(knowledge[i]) .. "\n"
+	 knowledge_str = knowledge_str .. yeGetKeyAt(knowledge, i) ..
+	    ": {phq.pj.knowledge." .. math.floor(i) .. "}\n"
       end
       i = i + 1
    end
    local i = 0
    while i < yeLen(stats) do
       if stats[i] then
-	 stats_str = stats_str ..
-	    yeGetKeyAt(stats, i) .. ": " .. yeGetInt(stats[i]) .. "\n"
+	 stats_str = stats_str .. yeGetKeyAt(stats, i) ..
+	    ": {phq.pj.stats." .. math.floor(i) .. "}\n"
       end
       i = i + 1
    end
@@ -161,17 +161,24 @@ function pushSTatusTextScreen(container)
 
    txt_screen["<type>"] = "text-screen"
    txt_screen["text-align"] = "center"
+   txt_screen.fmt = "yirl"
    txt_screen.text = "Day: " ..
-      DAY_STR[phq.env.day:to_int() + 1] .. ", " ..
-      phq.env.time:to_string() .. ", " ..
-      "week: " .. phq.env.week:to_string() .. "\n" ..
+      DAY_STR[phq.env.day:to_int() + 1] .. ", {phq.env.time}\n" ..
+      "week: {phq.env.week}\n" ..
       "Status:\n" ..
-      "life: " .. phq.pj.life:to_int() .. "\n" ..
-      "xp: " .. phq.pj.xp:to_int() .. "\n" ..
-      "alcohol level: " .. phq.pj.drunk:to_int() .. "\n" ..
+      "life: {phq.pj.life}\n" ..
+      "xp: {phq.pj.xp} \n" ..
+      alcohol_lvl_str() ..
       knowledge_str .. stats_str
    txt_screen.background = "rgba: 155 155 255 190"
    ywPushNewWidget(container, txt_screen)
+end
+
+function alcohol_lvl_str()
+   if (phq.pj.drunk:to_int() > 1) then
+      return "alcohol level: {phq.pj.drunk}\n"
+   end
+   return ""
 end
 
 function popSpendXpWid(mn)
@@ -188,22 +195,38 @@ function spendXpBack(mn)
    return YEVE_ACTION
 end
 
+function computeStatCost(st_val)
+   return (st_val + 1) * 3
+end
+
 function spendXpLvlUpStat(mn)
    local stats = phq.pj.stats
    local st_idx = yeGetIntAt(ywMenuGetCurrentEntry(mn), "arg")
+   local st_val_ent = yeGet(stats, st_idx)
+   local st_val = yeGetInt(st_val_ent)
+   local cost = computeStatCost(st_val)
 
    print("spendXpLvlUpStat", ywMenuGetCurrentEntry(mn))
    print(Entity.wrapp(ywMenuGetCurrentEntry(mn)).arg,
-	 yeGetKeyAt(stats, st_idx), yeGetIntAt(stats, st_idx))
+	 st_val, cost, cost < phq.pj.xp)
+   if cost < phq.pj.xp then
+      phq.pj.xp = phq.pj.xp - cost
+      yeSetInt(st_val_ent, st_val + 1)
+   else
+      print("someday, you will improve ",
+	    yeGetKeyAt(stats, st_idx),
+	    " but this day is not today !")
+   end
+   spendXpGenMenu(Menu.wrapp(mn))
+   return YEVE_ACTION
 end
 
-function spendXpOnStats(mn)
-   local main = ywCntWidgetFather(mn)
 
-   local statsMenu = Menu.new_entity()
+function spendXpGenMenu(statsMenu)
    local stats = phq.pj.stats
 
    statsMenu.ent["pre-text"] = "current xp: " .. yeGetInt(phq.pj.xp)
+   statsMenu.ent.entries = {}
    statsMenu:push("<----", Entity.new_func("spendXpBack"))
    local i = 0
    while i < yeLen(stats) do
@@ -211,12 +234,18 @@ function spendXpOnStats(mn)
 	 local st_val = yeGetInt(stats[i])
 	 local stats_str = yeGetKeyAt(stats, i) .. "(" ..
 	    math.floor(st_val) .. "): " ..
-	    math.floor((st_val + 1) * 3) .. " xp"
+	    math.floor(computeStatCost(st_val)) .. " xp"
 	 statsMenu:push(stats_str, Entity.new_func("spendXpLvlUpStat"), i)
       end
       i = i + 1
    end
+end
 
+function spendXpOnStats(mn)
+   local main = ywCntWidgetFather(mn)
+   local statsMenu = Menu.new_entity()
+
+   spendXpGenMenu(statsMenu)
    ywPushNewWidget(main, statsMenu.ent)
    return YEVE_ACTION
 end
@@ -331,7 +360,7 @@ function openStore(main, obj_or_eve, storeName)
       ywCntPopLastEntry(main)
    end
    storeName = yeGetString(storeName)
-   print("open ", stores[storeName])
+   print("open ", storeName, stores[storeName])
 
    local store = stores[storeName]
    mn = Menu.new_entity()

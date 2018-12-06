@@ -293,9 +293,9 @@ function actionOrPrint(main, obj)
    obj = Entity.wrapp(obj)
 
    local condition = Entity.new_array()
-   yeCreateString(yeGetString(obj.CheckOperation), condition);
-   yePushBack(condition, obj.Check0);
-   yePushBack(condition, obj.Check1);
+   yeCreateString(yeGetString(obj.CheckOperation), condition)
+   yePushBack(condition, obj.Check0)
+   yePushBack(condition, obj.Check1)
    local ret = yeCheckCondition(condition)
    if ret then
       return yesCall(ygGet(obj.SucessAction:to_string()),
