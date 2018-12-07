@@ -118,7 +118,6 @@ function init_phq(mod)
 
    mod = Entity.wrapp(mod)
    mod.actioned = {}
-   mod.quests = {}
    mod.checkHightScore = Entity.new_func("checkHightScore")
    mod.backToGame = Entity.new_func("backToGame")
    mod.StartFight = Entity.new_func("StartFight")
@@ -690,6 +689,8 @@ function create_phq(entity)
        ygStalk(stalk, Entity.new_func("quest_update"), arg)
        i = i + 1
     end
-
+    if ent.saved_data == nil then
+       phq.quests.school_sub = 0
+    end
     return ret
 end

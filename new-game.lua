@@ -16,6 +16,7 @@ function newGameAction(menu, eve, arg)
    game.saved_data = nil
    game.saved_dir = nil
    local archetype = ywMenuGetCurrent(menu)
+   phq.quests = {}
    phq.env = File.jsonToEnt("environement.json")
    phq.pj.stats = {}
    phq.pj.knowledge = {}
