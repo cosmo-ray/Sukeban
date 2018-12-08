@@ -513,8 +513,10 @@ function load_scene(ent, sceneTxt, entryIdx)
    if (scene == nil) then
       print("Can not load scene: sceneTxt")
    end
+   ywCanvasDisableWeight()
    tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(),
 		      upCanvas.ent:cent())
+   ywCanvasEnableWeight()
    o_dialogues = File.jsonToEnt(yeGetString(scene.dialogues))
    yeCopy(o_dialogues, dialogues)
    if saved_scenes[ent.cur_scene_str:to_string()] then
