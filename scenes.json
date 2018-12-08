@@ -61,7 +61,8 @@
     "house2" : {
 	"tiled": "./tileset/House2.json"
     },
-    "townhall" : { "tiled": "./tileset/Town_Hall.json" },
+    "townhall" : { "tiled": "./tileset/Town_Hall.json" ,
+		   "dialogues" : "TH_dialogue.json"},
     "townhall_l1" : { "tiled": "./tileset/Town_Hall_lvl1.json" },
     "townhall_l2" : { "tiled": "./tileset/Town_Hall_lvl2.json" },
     "townhall_s00" : { "tiled": "./tileset/Town_Hall_side00.json" },
