@@ -10,6 +10,74 @@
             "hair/female/ponytail/brunette2.png"
         ]
     },
+    "Tera": {
+	"sex": "female",
+	"type": "light",
+        "max_life": 10,
+	"attack" : "unarmed0",
+        "clothes": [
+            "feet/ghillies_female_no_th-sh.png",
+            "torso/dress_female/dress_w_sash_female.png",
+            "hair/female/ponytail/brunette2.png"
+        ]
+    },
+    "Tetra": {
+	"sex": "female",
+	"type": "light",
+        "max_life": 10,
+	"attack" : "unarmed0",
+        "clothes": [
+            "feet/ghillies_female_no_th-sh.png",
+            "torso/dress_female/dress_w_sash_female.png",
+            "hair/female/ponytail/brunette2.png"
+        ]
+    },
+    "Neta": {
+	"sex": "female",
+	"type": "light",
+        "max_life": 10,
+	"attack" : "unarmed0",
+        "clothes": [
+            "feet/ghillies_female_no_th-sh.png",
+            "torso/dress_female/dress_w_sash_female.png",
+            "hair/female/ponytail/brunette2.png"
+        ]
+    },
+    "Ceta": {
+	"sex": "female",
+	"type": "light",
+        "max_life": 10,
+	"attack" : "unarmed0",
+        "clothes": [
+            "feet/ghillies_female_no_th-sh.png",
+            "torso/dress_female/dress_w_sash_female.png",
+            "hair/female/ponytail/brunette2.png"
+        ]
+    },
+    "Pata": {
+        "sex": "male",
+        "type": "light",
+        "max_life": 10,
+	"attack" : "unarmed0",
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+    },
+    "Petra": {
+        "sex": "male",
+        "type": "light",
+        "max_life": 10,
+	"attack" : "unarmed0",
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ],
+    },
     "Wasted guy": {
         "sex": "male",
         "type": "light",

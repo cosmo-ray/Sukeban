@@ -13,6 +13,28 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "name":"NPC",
+         "objects":[
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"Petra",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":67,
+                 "y":248
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[902, 904, 904, 904, 904, 904, 904, 904, 904, 901, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 873, 0, 0, 0, 0, 0, 0, 0, 0, 871, 870, 840, 840, 840, 840, 840, 840, 840, 840, 869],
          "height":10,
          "name":"Wall",
@@ -117,7 +139,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":5,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

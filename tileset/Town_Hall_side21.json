@@ -14,6 +14,28 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"NPC",
+         "objects":[
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"Pata",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":69,
+                 "y":254
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"Entries",
          "objects":[
                 {
@@ -94,7 +116,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":3,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
