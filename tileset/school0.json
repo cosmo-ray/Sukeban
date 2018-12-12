@@ -87,6 +87,27 @@
                  "width":61,
                  "x":513,
                  "y":664
+                }, 
+                {
+                 "height":36,
+                 "id":2,
+                 "name":"class00",
+                 "properties":
+                    {
+                     "nextScene":"school_class_00",
+                     "side":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "nextScene":"string",
+                     "side":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":28,
+                 "x":214,
+                 "y":125
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -94,7 +115,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "properties":
     {
