@@ -26,9 +26,49 @@
 		    {
 			"text": "(leave)",
 			"action": "phq.backToGame"
+		    },
+		    {
+			"condition":  ["=", "phq.quests.school_sub", 0],
+			"text": "hello is it the subscription office ?"
 		    }
 		]
+	    },
+	    "no, it's the unsubscription office"
+	]
+    },
+    "Petra" : {
+	"dialogue" : [
+	    {
+		"text": "hello, what can I do for you",
+		"answers": [
+		    {
+			"text": "Nothing I'm just passing by",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"condition":  ["=", "phq.quests.school_sub", 0],
+			"text": "hello is it the subscription office ?"
+		    }
+		]
+	    },
+	    {
+		"text": "it is the subscirption office\nyou need to sunscribe to something ?",
+		"answer": {
+		    "text": "yes I'm new here, I need to subscribe to school"
+		}
+	    },
+	    {
+		"text": "of course here's the documents, you need a signature by your parent",
+		"answer": {
+		    "text": "humm, now I go ask my mother and bring them back, see you",
+		    "actions": [
+			[ "setInt", "phq.quests.school_sub", 1],
+			["phq.recive", "subscription papper"],
+			"phq.backToGame"
+		    ]
+		}
 	    }
+
 	]
     }
 }
