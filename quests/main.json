@@ -1,0 +1,34 @@
+{
+    "school subscription": {
+	"stalk": "phq.quests.school_sub",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "Subscribe to Neighbor school, at the Hall Town",
+	    "Ask your mother to sign the subscription paper",
+	    "find beer for your mother",
+	    "go to Hall Town to Finish Subscription",
+	    "Go to police commissariat for a paper certifying that you live here",
+	    "Go ask your mother again",
+	    "Negotiate with the police",
+	    "Find Gambat the rat, for policeman son(you might find his son in front of the school)",
+	    "confront the bullies who steal the rat to Rambat",
+	    "give the rat back",
+	    "go to the police again",
+	    "go to city town again"
+	],
+	"rewards": [
+	    0, 0, 5, 10, 0, 0, 0, 0, 0, 15, 0, 0, 25,
+	]
+    },
+    "hightscores": {
+	"stalk": "phq.quests.hightscores.lvl",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "be in the top 3 of any arcades games",
+	    "beat garashi at any game at the Arcade"
+	],
+	"rewards": [
+	    0, 10, 100,
+	]
+    }
+}
