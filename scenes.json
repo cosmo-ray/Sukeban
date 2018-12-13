@@ -72,5 +72,7 @@
     "townhall_s11" : { "tiled": "./tileset/Town_Hall_side11.json" },
     "townhall_s21" : { "tiled": "./tileset/Town_Hall_side21.json" },
     "school0" : {"tiled": "./tileset/school0.json"},
-    "school_class_00" : {"tiled": "./tileset/school_class_00.json"}
+    "school_class_00" : {"tiled": "./tileset/school_class_00.json"},
+    "school_class_01" : {"tiled": "./tileset/school_class_01.json"},
+    "school_class_02" : {"tiled": "./tileset/school_class_02.json"}
 }
