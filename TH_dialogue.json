@@ -1,0 +1,28 @@
+{
+    "Greta" : {
+	"dialogue" : [
+	    {
+		"text": "welcom to the town hall",
+		"answers": [
+		    {
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
+	]
+    },
+    "Tera" : {
+	"dialogue" : [
+	    {
+		"text": "Welcom to Tera, Welcom to Tera's office",
+		"answers": [
+		    {
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
+	]
+    }
+}
