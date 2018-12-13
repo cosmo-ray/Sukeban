@@ -283,6 +283,7 @@ function startDialogue(main, obj, dialogue)
       dialogueWid["<type>"] = "dialogue-canvas"
       dialogueWid.image = npc.image
       dialogueWid.name = npc.name
+      dialogueWid.endAction = "phq.backToGame"
       ywPushNewWidget(entity, dialogueWid)
       return YEVE_ACTION
    end

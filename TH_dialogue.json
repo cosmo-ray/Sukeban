@@ -7,9 +7,15 @@
 		    {
 			"text": "(leave)",
 			"action": "phq.backToGame"
+		    },
+		    {
+			"condition":  ["=", "phq.quests.school_sub", 0],
+			"text": "hello I'm here to subscribe to the neibourg school"
 		    }
-		]
-	    }
+
+		],
+	    },
+	    "for school subscrition, you need to go to the subscription office, not here"
 	]
     },
     "Tera" : {
