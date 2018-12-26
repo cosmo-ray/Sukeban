@@ -76,5 +76,8 @@
     "school0" : {"tiled": "./tileset/school0.json"},
     "school_class_00" : {"tiled": "./tileset/school_class_00.json"},
     "school_class_01" : {"tiled": "./tileset/school_class_01.json"},
-    "school_class_02" : {"tiled": "./tileset/school_class_02.json"}
+    "school_class_02" : {"tiled": "./tileset/school_class_02.json"},
+    "school_class_03" : {"tiled": "./tileset/school_class_03.json"},
+    "school_class_04" : {"tiled": "./tileset/school_class_04.json"},
+    "school_class_05" : {"tiled": "./tileset/school_class_05.json"},
 }
