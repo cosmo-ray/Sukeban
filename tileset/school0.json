@@ -224,6 +224,28 @@
                  "width":0,
                  "x":853,
                  "y":493
+                }, 
+                {
+                 "height":29,
+                 "id":11,
+                 "name":"teacher room",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"teacher_room"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":768,
+                 "y":526
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -231,8 +253,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":6,
- "nextobjectid":10,
+ "nextlayerid":7,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "properties":[
         {

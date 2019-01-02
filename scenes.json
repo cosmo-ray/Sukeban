@@ -80,4 +80,5 @@
     "school_class_03" : {"tiled": "./tileset/school_class_03.json"},
     "school_class_04" : {"tiled": "./tileset/school_class_04.json"},
     "school_class_05" : {"tiled": "./tileset/school_class_05.json"},
+    "teacher_room" : {"tiled": "./tileset/teacher_room.json"},
 }

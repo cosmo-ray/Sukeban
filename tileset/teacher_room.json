@@ -29,7 +29,34 @@
          "draworder":"topdown",
          "id":4,
          "name":"Entries",
-         "objects":[],
+         "objects":[
+                {
+                 "height":27,
+                 "id":1,
+                 "name":"leave",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":6
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school0"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":54,
+                 "x":164,
+                 "y":4
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -72,7 +99,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":1,
+ "nextobjectid":2,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",
