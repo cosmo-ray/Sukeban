@@ -150,7 +150,7 @@
                         {
                          "name":"side",
                          "type":"string",
-                         "value":"right"
+                         "value":"up_right"
                         }],
                  "rotation":0,
                  "type":"",
@@ -216,7 +216,7 @@
                         {
                          "name":"side",
                          "type":"string",
-                         "value":"left"
+                         "value":"up_left"
                         }],
                  "rotation":0,
                  "type":"",

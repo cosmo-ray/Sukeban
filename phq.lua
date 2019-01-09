@@ -591,13 +591,18 @@ function load_scene(ent, sceneTxt, entryIdx)
       local side = yeGetString(e_exits[entryIdx].side)
       x = ywRectX(rect)
       y = ywRectY(rect)
-      if side == "up" then
+      if side == "up" or side == "up_left" or
+	 side == "up_right" then
 	 y = y - 75
-      elseif side == "down" then
+      elseif side == "down" or side == "down_right"
+      or side == "down_left" then
 	 y = y + ywRectH(rect) + 15
-      elseif side == "left" then
+      end
+      if side == "left" or side == "up_left" or
+	    side == "down_left" then
 	 x = x - 45
-      else
+      elseif side == "right" or side == "down_right"
+	 or side == "up_right" then
 	 x = x + ywRectW(rect) + 45
       end
    end
