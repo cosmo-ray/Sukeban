@@ -246,6 +246,28 @@
                  "width":32,
                  "x":768,
                  "y":526
+                }, 
+                {
+                 "height":32,
+                 "id":12,
+                 "name":"Sick room",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"sick_room"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":29,
+                 "x":322,
+                 "y":527
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -254,7 +276,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "properties":[
         {
