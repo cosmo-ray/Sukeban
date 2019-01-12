@@ -76,6 +76,7 @@ function openGlobMenu(main, on_idx)
    panel.ent.in_subcontained = 1
    panel.ent.size = 5
    panel.ent.moveOn = Entity.new_func("globMnMoveOn")
+   panel.ent.onEsc = Entity.new_func("backToGame")
 
    local ts = Entity.new_array()
    ts["<type>"] = "text-screen"
