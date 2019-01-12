@@ -82,18 +82,19 @@
 	    {
 		"text": "your good, no one can say otherwise :)",
 		"condition":  [">", "phq.quests.hightscores.lvl", 1],
-		"answer": { "text": "hehe", "action": "phq.backToGame" }
+		"answer": { "text": "hehe", "action": ["Dialogue:goto", 5] }
 	    },
 	    {
 		"text": "if you can be fisrt at any game you'll get an even bigger reward :)",
 		"condition":  [">", "phq.quests.hightscores.lvl", 0],
-		"answer": { "text": "Ok", "action": "phq.backToGame" }
+		"answer": { "text": "Ok", "action": ["Dialogue:goto", 5] }
 	    },
-	    "hej welcom to Arcade, a place where you can play arcade",
+	    "welcom to Arcade, a place where you can play arcade games, or buy them",
 	    {
 		"text": "have fun",
 		"answers": [
 		    { "text": "Leave", "action": "phq.backToGame" },
+		    { "text": "So can I buy game ?", "action":  [ "phq.openStore", "GameStore" ] },
 		    {
 			"text": "What's about this price for hightscore ?",
 			"condition":  [">", "phq.actioned.arcade.Price", 0]

@@ -53,7 +53,16 @@
 		"text": "Operations:\n(Dev note: create a real shell for futur version)\n(Dev Note 2: add a faxe Win stuff OS for impure user that use impure OS)\n(Dev Note 3: but we don't like thers guy who don't even use emacs right ?)",
 		"answers": [
 		    {
+			"text": "Install Snake",
+			"condition":  "phq.pj.inventory.snake_game",
+			"actions": [
+			    [ "phq.remove", "snake_game" ],
+			    [ "setInt", "phq.events.snake_installed", 1 ]
+			]
+		    },
+		    {
 			"text": "Play Snake",
+			"condition": "phq.events.snake_installed",
 			"action": "phq.playSnake"
 		    },
 		    {
@@ -63,6 +72,12 @@
 			    "phq.backToGame"
 			]
 
+		    },
+		    {
+			"text": "Sing",
+			"action": ["Dialogue:change-text",
+				   "it's a function to call\nwhen you know the reason why, Dear process we run for what is right (tu tu tutu)\na noble electricity usage, when ld-sunix call you pay the price\nfor the computer I would give my life!\nFOR GLORIOUSE SUNIX I WOULD GIVE ME LIFE..."
+				  ]
 		    },
 		    "Play Dnoom",
 		    {

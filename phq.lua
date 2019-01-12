@@ -140,6 +140,7 @@ function init_phq(mod)
    mod.vnScene = Entity.new_func("vnScene")
    mod.increase = Entity.new_func("increase")
    mod.recive = Entity.new_func("recive")
+   mod.remove = Entity.new_func("remove")
 end
 
 function load_game(entity, save_dir)
@@ -656,7 +657,6 @@ function create_phq(entity)
     add_stat_hook(ent, "life", "FinishGame", 0, PHQ_INF)
     yJrpgFightSetCombots("phq.combots")
     if ent.saved_data then
-       print(ent.saved_data)
        scenePath = ent.saved_data.cur_scene_str
     else
        scenePath = Entity.new_string("house1")

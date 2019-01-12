@@ -126,12 +126,25 @@ end
 
 function addObject(main, character, objStr, nb)
    local obj = character.inventory[objStr]
+   local msg = "get "
+
    if obj then
-      yeSetInt(obj, yeGetInt(obj) + nb)
-   else
+      local nb = yeGetInt(obj) + nb
+      if nb == 0 then
+	 character.inventory[objStr] = nil
+      else
+	 yeSetInt(obj, nb)
+      end
+   elseif nb > 0 then
       character.inventory[objStr] = nb
+   else
+      return YEVE_NOACTION
    end
-   return printMessage(main, obj, Entity.new_string("get " ..
+   if (nb < 0) then
+      msg = "lose "
+      nb = nb * -1
+   end
+   return printMessage(main, obj, Entity.new_string(msg ..
 						    math.floor(nb) ..
 						    " " ..
 						    objStr))
@@ -142,6 +155,17 @@ function recive(wid, eve, objStr, nb)
    nb = yeGetInt(nb)
    if nb == 0 then
       nb = 1
+   end
+   addObject(wid, phq.pj, yeGetString(objStr), nb)
+end
+
+function remove(wid, eve, objStr, nb)
+   wid = ywCntWidgetFather(yDialogueGetMain(wid))
+   nb = yeGetInt(nb)
+   if nb == 0 then
+      nb = -1
+   else
+      nb = -nb
    end
    addObject(wid, phq.pj, yeGetString(objStr), nb)
 end

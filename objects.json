@@ -27,5 +27,8 @@
 	    "life": 5,
 	    "drunk": 10
 	}
+    },
+    "snake_game": {
+	"name": "Snake The Game(for 1EBG Computer)",
     }
 }

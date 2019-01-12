@@ -10,5 +10,9 @@
 	"Big Daicon": 3,
 	"Normal Size Daicon": 2,
 	"Small Daicon": 1
+    },
+    "GameStore": {
+	"snake_game": 30,
     }
+
 }
