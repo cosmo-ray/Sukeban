@@ -82,4 +82,6 @@
     "school_class_05" : {"tiled": "./tileset/school_class_05.json"},
     "teacher_room" : {"tiled": "./tileset/teacher_room.json"},
     "sick_room" : {"tiled": "./tileset/sick_room.json"},
+    "wc_girl" : {"tiled": "./tileset/wc_girl.json"},
+    "wc_boy" : {"tiled": "./tileset/wc_boy.json"},
 }

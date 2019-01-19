@@ -19,6 +19,12 @@
          "id":3,
          "name":"Wall",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"Collision",
+                 "type":"int",
+                 "value":1
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":11,
