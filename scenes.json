@@ -1,15 +1,15 @@
 {
     "arcade" : {
-	"dialogues" : "Arcade_dialogue.json",
+	"dialogues" : "dialogue/Arcade_dialogue.json",
 	"tiled": "./tileset/Arcade.json"
     },
     "bar" : {
-	"dialogues" : "PHQ_Dialogs_Part1.json",
+	"dialogues" : "dialogue/PHQ_Dialogs_Part1.json",
 	"tiled": "./tileset/bar1.json"
     },
     "street0": {
 	"exterior": 1,
-	"dialogues" : "st0_dialogues.json",
+	"dialogues" : "dialogue/st0_dialogues.json",
 	"out": {
 	    "right" : {
 		"to": "STREET1",
@@ -51,11 +51,11 @@
     },
     "police" : { "tiled" : "./tileset/Police.json" },
     "house0" : {
-	"dialogues" : "house_dialogue.json",
+	"dialogues" : "dialogue/house_dialogue.json",
 	"tiled": "./tileset/House0.json"
     },
     "house1" : {
-	"dialogues" : "house_dialogue.json",
+	"dialogues" : "dialogue/house_dialogue.json",
 	"tiled": "./tileset/House1.json"
     },
     "house2" : {
