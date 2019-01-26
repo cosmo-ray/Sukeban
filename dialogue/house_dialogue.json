@@ -2,20 +2,41 @@
     "Mom": {
 	"dialogue" : [
 	    {
-		"condition":  ["S=", "phq.env.time", "day"],
+		"condition":  ["S=", "phq.env.time", "night"],
+		"text": "ZZZZzzzzZZZzzz",
+		"answer": {
+		    "text": "leave",
+		    "action": "phq.backToGame"
+		}
+	    },
+	    {
 		"text": "Can't you see I'm busy, bug off",
 		"answers": [
                     {
 			"text": "Ok mom",
 			"action": "phq.backToGame"
-                    }
+                    },
+		    {
+			"text": "so mom,there is this paper you need to sign for my scool subscription, can you do it please",
+			"condition":  ["=", "phq.quests.school_sub", 1]
+		    }
 		]
             },
 	    {
-		"text": "ZZZZzzzzZZZzzz",
+		"text": ["what, le me see that\n(read)\n(read)\n(read)",
+			 "what is this shit",
+			 "I need to sigh to prove your my daughter",
+			 "your, not even mine",
+			 "igrat adopted child",
+			 "and now see how much complication you are",
+			 "know what you want my signature right ?",
+			 "prove my you worth it and go buy me booze"],
 		"answer": {
-		    "text": "leave",
-		    "action": "phq.backToGame"
+		    "text": "Thanks ma, your so nice",
+		    "actions": [
+			[ "setInt", "phq.quests.school_sub", 2 ],
+			"phq.backToGame"
+		    ]
 		}
 	    }
 	]
