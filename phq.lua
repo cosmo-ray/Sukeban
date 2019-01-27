@@ -249,55 +249,53 @@ end
 
 function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
-   local colRect = ywRectCreate(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30,
-			       20, 20)
-   local col = ywCanvasNewCollisionsArrayWithRectangle(canvasWid, colRect)
-
-   col = Entity.wrapp(col)
+   local colRect = Rect.new(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30, 20, 20).ent
    local i = 0
    while i < yeLen(main.exits) do
       local rect = main.exits[i].rect
       if ywRectCollision(rect, colRect) then
 	 local nextSceneTxt = yeGetString(yeToLower(main.exits[i].nextScene))
 	 load_scene(main, nextSceneTxt, yeGetInt(main.exits[i].entry))
-	 yeDestroy(colRect)
-	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
+	 return CHANGE_SCENE_COLISION
       end
       i = i + 1
    end
-   yeDestroy(colRect)
 
    local cur_scene = main.cur_scene
    if ywPosX(pjPos) < 0 then
       if CheckColisionTryChangeScene(main, cur_scene, "left") then
-	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
+	 return CHANGE_SCENE_COLISION
       else
-	 return CheckColisionExit(col, NORMAL_COLISION)
+	 return NORMAL_COLISION
       end
    elseif ywPosY(pjPos) + 30 < 0 then
       if CheckColisionTryChangeScene(main, cur_scene, "up") then
-	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
+	 return CHANGE_SCENE_COLISION
       else
-	 return CheckColisionExit(col, NORMAL_COLISION)
+	 return NORMAL_COLISION
       end
    elseif ywPosX(pjPos) + lpcs.w_sprite > canvasWid["tiled-wpix"]:to_int() then
       if CheckColisionTryChangeScene(main, cur_scene, "right") then
-	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
+	 return CHANGE_SCENE_COLISION
       else
-	 return CheckColisionExit(col, NORMAL_COLISION)
+	 return NORMAL_COLISION
       end
    elseif ywPosY(pjPos) + lpcs.h_sprite > canvasWid["tiled-hpix"]:to_int() then
       if CheckColisionTryChangeScene(main, cur_scene, "down") then
-	 return CheckColisionExit(col, CHANGE_SCENE_COLISION)
+	 return CHANGE_SCENE_COLISION
       else
-	 return CheckColisionExit(col, NORMAL_COLISION)
+	 return NORMAL_COLISION
       end
    end
 
+   local col = ywCanvasNewCollisionsArrayWithRectangle(canvasWid, colRect)
+
+   col = Entity.wrapp(col)
    i = 0
    while i < yeLen(col) do
       local obj = col[i]
-      if yeGetIntAt(obj, "Collision") == 1 then
+      if yeGetIntAt(obj, "Collision") == 1 and
+      ywCanvasCheckColisionsRectObj(colRect, obj) then
 	 return CheckColisionExit(col, NORMAL_COLISION)
       end
       i = i + 1
