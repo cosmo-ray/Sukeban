@@ -155,6 +155,29 @@
                  "width":31,
                  "x":382,
                  "y":91
+                }, 
+                {
+                 "height":30,
+                 "id":29,
+                 "name":"underground",
+                 "properties":
+                    {
+                     "Action":"phq.vnScene",
+                     "ActionNbArgs":1,
+                     "Arg0":"bar_underground"
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "ActionNbArgs":"int",
+                     "Arg0":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31,
+                 "x":96.5,
+                 "y":100
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -432,7 +455,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":28,
+ "nextobjectid":30,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

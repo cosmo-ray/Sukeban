@@ -12,6 +12,8 @@ o_dialogues = nil
 
 quests_info = File.jsonToEnt("quests/main.json")
 
+main_widget = nil
+
 local window_width = 800
 local window_height = 600
 local pj_pos = nil
@@ -645,6 +647,7 @@ function create_phq(entity)
     local ent = container.ent
     local scenePath = nil
 
+    main_widget = entity
     ent.tid = 0
     ent.cur_scene_str = nil
     tiled.setAssetPath("./tileset");

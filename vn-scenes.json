@@ -1,6 +1,6 @@
 {
     "la Jetee" : [
-	"your here in the narrow street of the port
+	"you're here in the narrow street of the port
 you can sees docked ships charging and discharging they container
 tier sailor walking searching for a place to spend time
 while your here spending your time watching them, an image that remember
@@ -20,5 +20,19 @@ but you can wake up from reality",
  	"someday ... I'll finish this scene, add events, and make it a one time even
 Introduce some characters too :)
 "
+    ],
+    "bar_underground": [
+	[
+	    "you're in the bar not call 'velvet' underground",
+	    "It's night, or at last light are turn off,",
+	    "but it's irrelevant to you glorious quest",
+	    "you are looking for wine in that cellar, without windows",
+	    "and while thinking the narrative are really lacking imagination",
+	    "because come on, looking for wine, in a cellar, how unoriginal is that",
+	    "you realize that the next cliche things that could happen,",
+	    "would be, a rats, or ghost attack",
+	    "so suddenly ... (music) ... rats happen","\n\n\n\n",
+	    "but no time for whine, it's time to get wine"
+	]
     ]
 }

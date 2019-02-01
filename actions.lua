@@ -44,6 +44,10 @@ end
 
 function backToGame(wid)
    wid = Entity.wrapp(wid)
+   if wid:cent() == main_widget then
+      return
+   end
+
    if wid.isDialogue then
       wid = Entity.wrapp(yDialogueGetMain(wid))
       wid.main = nil
