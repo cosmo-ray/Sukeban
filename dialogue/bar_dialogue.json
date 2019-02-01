@@ -1,0 +1,81 @@
+{
+    "Jean": {
+	"dialogue" : [
+	    {
+		"text": ["Here's a young lady, that I see",
+			 "do you have time, to listen tp the stroy of some old dunkar",
+			 "are you still I hight school ?"
+			],
+		"answers": [
+		    {
+			"text": "Yeah... bout'that my father told me to speak not to stranger, especially the one smelling alcohol",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "well it;s not like I have somthing else to do..."
+		    },
+		    {
+			"text": "I am, listen I need to leave"
+		    }
+		]
+	    },
+	    {
+		"text": "and so she leave, as did her mother do at her time, what an eternel loop of this existance",
+		"answers": [
+		    {
+			"text": "ok buy",
+			"action": "phq.backToGame"
+		    },
+		    "what you know my mother ?"
+		]
+	    },
+	    ["if I know your mother ?",
+	     " well no, but I know what it is to be young",
+	     "I know how you think you are diferent from us, old lad"],
+	    {
+		"text": "I was young too, you know what was my dream at your age ?",
+		"answer": "be a dentist ?"
+	    },
+	    ["be realisator, I've learn letter, I've watch a shit ton of movie",
+	     "especially SF, Brobi the Brobo, apes 21, underground cops",
+	     "well turn out watch movie don't make you a realisator"],
+	    {
+		"text": "I've learn to film, how sound work, do you know to what it lead me ?",
+		"answer": "be a dentist ?"
+	    },
+	    {
+		"text": "vendor in a camera shop !",
+		"answers": [
+		    "so you've stop been a dentist ?",
+		    "well at last you still see camera"
+		]
+	    },
+	    [
+		"got a wife, 2 child what an happy familly",
+		"I've dream to film alien fighting in space",
+		"I've film babies walking at home",
+		"and I'm happy you know, won't change the world",
+		"I've change my mind, it's not like been a cineast is posible for",
+		"someone like me, at leat my life has a purpose",
+		"I've create life..."
+	    ],
+	    [
+		"but god, I miss this time when all was posible",
+		"I could imagine be in space, make my movie, been a scientist",
+		"sure I was full of doubte, but my avenir was full of posibility",
+		"girl, you think you're young, but listen",
+		"your futur is at it's best now, the more you grown up",
+		"the less you'll dream about tomorow",
+		"the present absorbe you in an infernal spiral, and all of your dream"
+	    ],
+	    [
+		"are postbone to a tomarow that never come, and you go to work",
+		"and you go to vacation, bring your child to school",
+		"but someday you'll will continue your prject",
+		"and when you finally get time, all your imagination have fade away",
+		"so here's my advice girl:",
+		"enjoy your present, because it is awesome !"
+	    ]
+	]
+    }
+}
