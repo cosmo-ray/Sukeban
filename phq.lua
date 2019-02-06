@@ -670,7 +670,13 @@ function create_phq(entity)
     ent.entries[1] = upCanvas.ent
     local ret = container:new_wid()
     ent.destroy = Entity.new_func("destroy_phq")
+    
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
+    ent.soundhouse = ySoundLoad("./house_music.mp3")
+    ent.soundtatata = ySoundLoad("./rekuiemu.mp3")
+
+    ySoundPlayLoop(ent.soundtatata)
+
     ent.pj = nil
     dressUp(phq.pj)
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
