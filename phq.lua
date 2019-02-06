@@ -308,6 +308,7 @@ function pushMainMenu(main)
 
    mn:push("save game", Entity.new_func("saveGameCallback"))
    mn:push("main menu", "callNext")
+   mn:push("Back To Game", "phq.backToGame")
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent["text-align"] = "center"
    mn.ent.onEsc = Entity.new_func("gmGetBackFocus")

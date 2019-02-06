@@ -6,12 +6,11 @@ local npcs = Entity.wrapp(ygGet("phq.npcs"))
 local scenes = Entity.wrapp(ygGet("phq.scenes"))
 local stores = Entity.wrapp(ygGet("phq.stores"))
 
-GM_BACK_IDX = 0
-GM_INV_IDX = 1
-GM_STATS_IDX = 2
-GM_QUEST_IDX = 3
-GM_MAP_IDX = 4
-GM_MISC_IDX = 5
+GM_INV_IDX = 0
+GM_STATS_IDX = 1
+GM_QUEST_IDX = 2
+GM_MAP_IDX = 3
+GM_MISC_IDX = 4
 
 function globMnMoveOn(menu, current)
    local main = Entity.wrapp(ywCntWidgetFather(menu))
@@ -29,12 +28,6 @@ function globMnMoveOn(menu, current)
    elseif current == GM_MAP_IDX then
       ywCntPopLastEntry(main)
       pushMetroMenu(main)
-   elseif current == GM_BACK_IDX then
-      local ts = Entity.new_array()
-      ts["<type>"] = "text-screen"
-      ts.text = "Back To Game"
-      ywCntPopLastEntry(main)
-      ywPushNewWidget(main, ts)
    end
    main.entries[1].in_subcontained = 1
    main.current = 0
@@ -67,7 +60,6 @@ function openGlobMenu(main, on_idx)
    local panel = Menu.new_entity()
    local lf = Entity.new_func("gmLooseFocus")
    panel.ent["mn-type"] = "panel"
-   panel:push("Back", "phq.backToGame")
    panel:push("Inventory", lf)
    panel:push("Status", lf)
    panel:push("Quests")
