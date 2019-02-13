@@ -26,6 +26,44 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "id":6,
+         "name":"Entries",
+         "objects":[
+                {
+                 "height":24,
+                 "id":1,
+                 "name":"Hall",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":10
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school0"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":41,
+                 "x":6,
+                 "y":4
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[0, 0, 2763, 2763, 0, 0, 0, 2795, 2795, 0, 0, 0, 2827, 2827, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 110, 110, 110, 0],
          "height":7,
          "id":3,
@@ -61,8 +99,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":5,
- "nextobjectid":1,
+ "nextlayerid":7,
+ "nextobjectid":2,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",

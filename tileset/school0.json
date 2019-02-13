@@ -289,7 +289,7 @@
                  "visible":true,
                  "width":26,
                  "x":642,
-                 "y":536
+                 "y":530
                 }, 
                 {
                  "height":30,
@@ -310,8 +310,30 @@
                  "type":"",
                  "visible":true,
                  "width":30,
-                 "x":448,
-                 "y":536
+                 "x":451,
+                 "y":528
+                }, 
+                {
+                 "height":49,
+                 "id":15,
+                 "name":"up",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school1"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":74,
+                 "x":445,
+                 "y":76
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -320,7 +342,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":15,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "properties":[
         {
