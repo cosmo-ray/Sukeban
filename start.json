@@ -16,6 +16,7 @@
         { "path" : "YIRL_MODULES_PATH/dialogue/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/jrpg-fight/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/hightscore/", "type" : "module" },
+        { "file" : "modules/tetris", "type" : "module" },
         { "file" : "Arcade_score.json", "type" : "json", "as" : "hightscores"},
         { "file" : "scenes.json", "type" : "json", "as" : "scenes"},
         { "file" : "vn-scenes.json", "type" : "json", "as" : "vn-scenes"},
