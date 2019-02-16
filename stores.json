@@ -13,6 +13,7 @@
     },
     "GameStore": {
 	"snake_game": 30,
+	"tetris_game": 25,
     }
 
 }

@@ -465,6 +465,26 @@ function playAstShoot(wid)
    return YEVE_ACTION
 end
 
+function playTetris(wid)
+   local wid = Entity.wrapp(wid)
+   local main = nil
+
+   print("play T !!!!")
+   if wid.isDialogue then
+      wid = Entity.wrapp(yDialogueGetMain(wid))
+   end
+   main = Entity.wrapp(ywCntWidgetFather(wid))
+
+   ywCntPopLastEntry(main)
+   local t = Entity.new_array()
+
+   t["<type>"] = "tetris-ascii"
+   t.die = Entity.new_func("backToGame")
+   t.quit = Entity.new_func("backToGame")
+   ywPushNewWidget(main, t)
+   return YEVE_ACTION
+end
+
 function playVapp(wid)
    local wid = Entity.wrapp(wid)
    local main = nil

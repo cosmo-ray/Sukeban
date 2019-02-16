@@ -29,6 +29,9 @@
 	}
     },
     "snake_game": {
-	"name": "Snake The Game(for 1EBG Computer)",
+	"name": "Snake The Game(sunix/1EBG)",
+    },
+    "tetris_game": {
+	"name": "Tetris(sunix/1EBG)",
     }
 }

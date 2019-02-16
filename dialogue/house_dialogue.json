@@ -77,14 +77,25 @@
 			"text": "Install Snake",
 			"condition":  "phq.pj.inventory.snake_game",
 			"actions": [
-			    [ "phq.remove", "snake_game" ],
 			    [ "setInt", "phq.events.snake_installed", 1 ]
+			]
+		    },
+		    {
+			"text": "Install Tetris",
+			"condition":  "phq.pj.inventory.tetris_game",
+			"actions": [
+			    [ "setInt", "phq.events.tetris_installed", 1 ]
 			]
 		    },
 		    {
 			"text": "Play Snake",
 			"condition": "phq.events.snake_installed",
 			"action": "phq.playSnake"
+		    },
+		    {
+			"text": "Play Tetris",
+			"condition": "phq.events.tetris_installed",
+			"action": "phq.playTetris"
 		    },
 		    {
 			"text": "Watch ASCII Pr0m\n(Dev note: yes I know in futur version I'll add a faxe ascii browser, and I'll hide this feature\nI might add the ASCII pr0m too)",
