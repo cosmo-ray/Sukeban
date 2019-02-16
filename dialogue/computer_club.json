@@ -1,0 +1,53 @@
+{
+    "The nerd": {
+	"dialogue" : [
+	    {
+		"text": "hej to our glorious she member",
+		"condition": "phq.events.computer_club_mb",
+		"answers": [
+		    {
+			"text": "do you need to remember me of my gender every time I talk to you ?",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "hej to our good sexually frustrated he, leader ?",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "I've read sunix was at first call sunics, ay idea why they change cs to x ?"
+			"condition": [">", "phq.pj.knowledge.computer", 25],
+			"action": ["Dialogue:goto", 6]
+		    }
+		]
+	    },
+	    {
+		"text": ["oh my",
+			 "why is this ugly 3D person talking to me, leave..."],
+		"answers": [
+		    {
+			"text": "nice",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "yeah well... seriously\nyou know, I kinda wanna be part of this club guys, you know I like bits too",
+			"condition": [">", "phq.pj.knowledge.computer", 4]
+		    }
+		],
+	    },
+	    "the nerd in front of you seems very surprise\n",
+	    "oh, ok, here's the upscription form"
+	    "*you spend some time writing you subscription form",
+	    {
+		"text": "well, your a member, our first female member, that's great",
+		"answer": {
+		    "text": "tatat ta ta tatata",
+		    "actions": [[ "setInt", "phq.events.computer_club_mb", 1 ],
+				"phq.backToGame"]
+		}
+	    },
+	    {
+		"text": "sunics, with a CS, what a joke, go sprear your stupide rumor somewhere else...\nwe have real work to do, for real men"
+	    }
+	]
+    }
+}
