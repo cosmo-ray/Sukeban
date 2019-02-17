@@ -40,7 +40,7 @@
 	    {
 		"text": "well, your a member, our first female member, that's great",
 		"answer": {
-		    "text": "tatat ta ta tatata",
+		    "text": "(tatat ta ta tatata)",
 		    "actions": [[ "setInt", "phq.events.computer_club_mb", 1 ],
 				"phq.backToGame"]
 		}
