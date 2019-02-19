@@ -1,7 +1,7 @@
 {
     "lines": [
 	[
-	    [274, 302, "Nontoise"], [306, 325], [346, 332], [377, 353],
+	    [274, 302, "Nontoise"], [306, 325, "test_zone"], [346, 332], [377, 353],
 	    [437, 352], [474, 365], [520, 352, "Dock"]],
 	[
 	    [545, 443], [500, 440], [435, 432], [388, 406],
@@ -35,7 +35,7 @@
 
     ],
     "actions" : {
-	"Nontoise": "phq:backToGame",
+	"Nontoise": ["phq:changeScene", "street1"],
 	"Dock": ["phq:vnScene", "la Jetee"]
     }
 }

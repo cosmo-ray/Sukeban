@@ -61,6 +61,7 @@
     "house2" : {
 	"tiled": "./tileset/House2.json"
     },
+
     "townhall" : { "tiled": "./tileset/Town_Hall.json" ,
 		   "dialogues" : "dialogue/TH_dialogue.json"},
     "townhall_l1" : { "tiled": "./tileset/Town_Hall_lvl1.json" },
@@ -73,6 +74,7 @@
     "townhall_s10" : { "tiled": "./tileset/Town_Hall_side10.json" },
     "townhall_s11" : { "tiled": "./tileset/Town_Hall_side11.json" },
     "townhall_s21" : { "tiled": "./tileset/Town_Hall_side21.json" },
+
     "school0" : {"tiled": "./tileset/school0.json"},
     "school1" : {"tiled": "./tileset/school1.json"},
     "school_class_00" : {"tiled": "./tileset/school_class_00.json"},
@@ -90,4 +92,6 @@
     "sick_room" : {"tiled": "./tileset/sick_room.json"},
     "wc_girl" : {"tiled": "./tileset/wc_girl.json"},
     "wc_boy" : {"tiled": "./tileset/wc_boy.json"},
+
+    "test_zone" : {"tiled": "./tileset/test_zone.json"}
 }

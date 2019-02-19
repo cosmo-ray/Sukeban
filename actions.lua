@@ -42,6 +42,22 @@ function backToGameOnEnter(wid, eve)
    return YEVE_NOTHANDLE
 end
 
+local function getMainWid(wid)
+   wid = Entity.wrapp(wid)
+   if wid:cent() == main_widget then
+      return wid
+   end
+
+   if wid.isDialogue then
+      wid = Entity.wrapp(yDialogueGetMain(wid))
+   end
+   if yeGetInt(wid.in_subcontained) == 1 then
+      wid = Entity.wrapp(ywCntWidgetFather(wid))
+   end
+   local main = Entity.wrapp(ywCntWidgetFather(wid))
+   return main
+end
+
 function backToGame(wid)
    wid = Entity.wrapp(wid)
    if wid:cent() == main_widget then
@@ -440,6 +456,13 @@ function playSnake(wid, eve, version)
       ywPushNewWidget(main, tx)
    end
    main.current = 2
+   return YEVE_ACTION
+end
+
+function changeScene(wid, eve, scene, entry)
+   local main = getMainWid(wid)
+   load_scene(main, yeGetString(scene), yeGetInt(entry))
+   backToGame(wid)
    return YEVE_ACTION
 end
 

@@ -144,6 +144,7 @@ function init_phq(mod)
    mod.increase = Entity.new_func("increase")
    mod.recive = Entity.new_func("recive")
    mod.remove = Entity.new_func("remove")
+   mod.changeScene = Entity.new_func("changeScene")
 end
 
 function load_game(entity, save_dir)
@@ -674,7 +675,7 @@ function create_phq(entity)
     ent.entries[1] = upCanvas.ent
     local ret = container:new_wid()
     ent.destroy = Entity.new_func("destroy_phq")
-    
+
     ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
     ent.soundhouse = ySoundLoad("./house_music.mp3")
     ent.soundtatata = ySoundLoad("./rekuiemu.mp3")
