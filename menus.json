@@ -1,21 +1,33 @@
 {
     "start_txt" : {
-	"<type>" : "text-screen",
-	"text-align": "center",
-	"action" : "nextOnKeyDown",
-	"background" : "rgba: 255 255 255 255",
-	"text" : "
-	TODO: this text is oudated, complet rewrite is needed
-        You arrived in this bar with one vision, one purpose:
-        to get completely shitfaced and puke everywhere (you may have issues)
+        "<type>" : "text-screen",
+        "text-align": "center",
+        "action" : "nextOnKeyDown",
+        "background" : "rgba: 255 255 255 255",
+        "text" : "
 
-        There are only two problems: one you're 1 month too young to get alcohol
-        and two you're broke since you gave all your money to the bouncer so he would let you in.
+you read the news today oh girl !
+about a shop been close thanks to crisis
+and all the news are rather boring.
 
-        You will have to use your charisma and talk your way to booze but be wary
-        for bad words can get you bad consequences
+But you need to subscribe to your new school
+You just move in this new house with you mom
 
-        Good luck and good drinks!
+Wake up get of you bed,
+get you stuff, brush you hair,
+ah ah ah ah ah ah ah ah ah
+
+TODO: the text below s outdated and should be remove
+You arrived in this bar with one vision, one purpose:
+to get completely shitfaced and puke everywhere (you may have issues)
+
+There are only two problems: one you're 1 month too young to get alcohol
+and two you're broke since you gave all your money to the bouncer so he would let you in.
+
+You will have to use your charisma and talk your way to booze but be wary
+for bad words can get you bad consequences
+
+Good luck and good drinks!
 ",
 	"next" : "phq:menus.new-game"
     },

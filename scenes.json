@@ -93,5 +93,8 @@
     "wc_girl" : {"tiled": "./tileset/wc_girl.json"},
     "wc_boy" : {"tiled": "./tileset/wc_boy.json"},
 
-    "test_zone" : {"tiled": "./tileset/test_zone.json"}
+    "test_zone" : {
+	"dialogues" : "dialogue/test_d.json",
+	"tiled": "./tileset/test_zone.json"
+    }
 }

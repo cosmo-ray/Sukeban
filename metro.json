@@ -36,6 +36,7 @@
     ],
     "actions" : {
 	"Nontoise": ["phq:changeScene", "street1"],
+	"test_zone": ["phq:changeScene", "test_zone"],
 	"Dock": ["phq:vnScene", "la Jetee"]
     }
 }

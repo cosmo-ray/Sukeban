@@ -4,7 +4,7 @@ local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
-local npcs = Entity.wrapp(ygGet("phq.npcs"))
+npcs = Entity.wrapp(ygGet("phq.npcs"))
 local scenes = Entity.wrapp(ygGet("phq.scenes"))
 saved_scenes = nil
 dialogues = Entity.new_array()
@@ -490,12 +490,35 @@ function destroy_phq(entity)
    end
 end
 
+-- push all caracters to dial, but read c_dial
+local function dialogue_include(dial, c_dial)
+   local includes = c_dial._include
+   local i = 0
+
+   while i < yeLen(includes) do
+      local inc = includes[i]
+      inc = File.jsonToEnt(inc:to_string())
+      dialogue_include(dial, inc)
+      local j = 0
+      while j < yeLen(inc) do
+	 yePushBack(dial, yeGet(inc, j), yeGetKeyAt(inc, j));
+	 j = j + 1
+      end
+      i = i + 1
+   end
+   c_dial._include = nil
+end
+
 function load_scene(ent, sceneTxt, entryIdx)
    local mainCanvas = Canvas.wrapp(ent.mainScreen)
    local upCanvas = Canvas.wrapp(ent.upCanvas)
    local x = 0
    local y = 0
 
+   if sceneTxt == nil then
+      print("can load a nil scene!\n")
+      return
+   end
    if ent.cur_scene_str then
       saveCurDialogue(ent)
    end
@@ -522,6 +545,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 		      upCanvas.ent:cent())
    ywCanvasEnableWeight()
    o_dialogues = File.jsonToEnt(yeGetString(scene.dialogues))
+   dialogue_include(o_dialogues, o_dialogues)
    yeCopy(o_dialogues, dialogues)
    if saved_scenes[ent.cur_scene_str:to_string()] then
       ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()].o

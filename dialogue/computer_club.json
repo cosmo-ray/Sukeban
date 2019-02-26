@@ -14,7 +14,7 @@
 			"action": "phq.backToGame"
 		    },
 		    {
-			"text": "I've read sunix was at first call sunics, ay idea why they change cs to x ?"
+			"text": "I've read sunix was at first call sunics, ay idea why they change cs to x ?",
 			"condition": [">", "phq.pj.knowledge.computer", 25],
 			"action": ["Dialogue:goto", 6]
 		    }
@@ -29,13 +29,13 @@
 			"action": "phq.backToGame"
 		    },
 		    {
-			"text": "yeah well... seriously\nyou know, I kinda wanna be part of this club guys, you know I like bits too",
+			"text": "yeah well... seriously\nyou know, I kinda wanna be part of this club guys\nyou know I like bits too",
 			"condition": [">", "phq.pj.knowledge.computer", 4]
 		    }
 		],
 	    },
 	    "the nerd in front of you seems very surprise\n",
-	    "oh, ok, here's the upscription form"
+	    "oh, ok, here's the upscription form",
 	    "*you spend some time writing you subscription form",
 	    {
 		"text": "well, your a member, our first female member, that's great",

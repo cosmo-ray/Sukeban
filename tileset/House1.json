@@ -189,6 +189,29 @@
                  "width":29,
                  "x":674,
                  "y":49
+                }, 
+                {
+                 "height":20,
+                 "id":8,
+                 "name":"TakeNews",
+                 "properties":
+                    {
+                     "Action":"phq.takeObject",
+                     "Arg0":"rather boring news",
+                     "Arg1":1
+                    },
+                 "propertytypes":
+                    {
+                     "Action":"string",
+                     "Arg0":"string",
+                     "Arg1":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":29,
+                 "x":577,
+                 "y":73
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -228,7 +251,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":8,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "properties":
     {
@@ -239,7 +262,7 @@
      "Collision":"int"
     },
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.6",
  "tileheight":32,
  "tilesets":[
         {

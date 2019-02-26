@@ -1,0 +1,6 @@
+{
+    "_include": [
+	"./dialogue/computer_club.json",
+	"./dialogue/bar_dialogue.json"
+    ]
+}
