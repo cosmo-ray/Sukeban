@@ -162,7 +162,7 @@ function StartFight(wid, eve, enemy_type, afa)
    end
 
    if yIsNil(npc.max_life) then
-      npc.max_life = 5
+      npc.max_life = 1
    end
 
    fWid.enemy = npc

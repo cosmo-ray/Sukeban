@@ -52,6 +52,17 @@ Introduce some characters too :)
 		"text": "(fight)",
 		"action": [ "phq.StartFight", "rat", "CombatDialogueNext"]
 	    }
+	},
+	{
+	    "text" : [
+		"and so,the enemy was defeated",
+		"a Victory like you never had before !"
+	    ],
+	    "answer" : {
+		"text": "(leave the basement)",
+		"action": "phq.backToGame"
+	    }
+
 	}
     ]
 }
