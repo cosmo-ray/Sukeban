@@ -22,17 +22,36 @@ Introduce some characters too :)
 "
     ],
     "bar_underground": [
-	[
-	    "you're in the bar not call 'velvet' underground",
-	    "It's night, or at last light are turn off,",
-	    "but it's irrelevant to you glorious quest",
-	    "you are looking for wine in that cellar, without windows",
-	    "and while thinking the narrative are really lacking imagination",
-	    "because come on, looking for wine, in a cellar, how unoriginal is that",
-	    "you realize that the next cliche things that could happen,",
-	    "would be, a rats, or ghost attack",
-	    "so suddenly ... (music) ... rats happen","\n\n\n\n",
-	    "but no time for whine, it's time to get wine"
-	]
+	{
+	    "text" : [
+		"you're in the bar not call 'velvet' underground",
+		"It's night, or at last light are turn off,",
+		"but it's irrelevant to you glorious quest",
+		"you are looking for wine in that cellar, without windows",
+		"and while thinking the narrative are really lacking imagination",
+		"because come on, looking for wine, in a cellar, how unoriginal is that",
+		"you realize that the next cliche things that could happen,",
+		"would be, a rats, or ghost attack",
+		"so suddenly ... (music) ... rats happen","\n\n\n\n",
+		"but no time for whine, it's time to get wine"
+	    ],
+	    "answer" : {
+		"text": "(fight)",
+		"action": [ "phq.StartFight", "rat", "CombatDialogueNext"]
+	    }
+	},
+	{
+	    "text" : [
+		"oh mighty warrior",
+		"your fight was epic, and the enemy was numbs",
+		"And victory was yours !",
+		"so was your though, but as you was here triumphant",
+		"your real enemy reveal himself"
+	    ],
+	    "answer" : {
+		"text": "(fight)",
+		"action": [ "phq.StartFight", "rat", "CombatDialogueNext"]
+	    }
+	}
     ]
 }

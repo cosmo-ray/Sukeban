@@ -4,6 +4,7 @@ local dialogue = Entity.wrapp(ygGet("Dialogue"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 local window_width = 800
 local window_height = 600
+after_fight_action = nil
 
 function quest_update(original, copy, arg)
    local main = yeGet(arg, 0)
@@ -109,20 +110,42 @@ function CombatEnd(wid, main, winner_id)
 				     "rgba: 255 255 255 255")
 
    wid.main = nil
-   backToGame(wid)
+   if yeGetString(after_fight_action) == "CombatDialogueNext" then
+      print("CombatDialogueNext!")
+      ywCntPopLastEntry(main)
+   else
+      backToGame(wid)
+   end
    return pushNewVictoryScreen(main, winner, looser)
    --print("end:", main, winner)
 end
 
 
-function StartFight(wid, eve)
-   owid = wid
-   wid = yDialogueGetMain(wid)
-   local main = Entity.wrapp(ywCntWidgetFather(wid))
+function StartFight(wid, eve, enemy_type, afa)
+   local main = getMainWid(wid)
    local fWid = Entity.new_array()
-   wid = Entity.wrapp(wid)
+   local npc = nil
    ySoundPlayLoop(main.soundcallgirl:to_int())
 
+   print("args: ", enemy_type, eve)
+   if (yIsNil(enemy_type)) then
+      print("!!!\n\nIS NIL !!!!!!\n\n\n\n!!!!\n")
+      local wid = yDialogueGetMain(wid)
+      wid = Entity.wrapp(wid)
+      npc = main.npcs[wid.npc_nb:to_int()].char
+   else
+      print("get npc: ", enemy_type, yeGetString(enemy_type))
+      npc = npcs[yeGetString(enemy_type)]
+      if yIsNil(npc.name) then
+	 npc.name = enemy_type
+      end
+
+      print(npcs[yeGetString(enemy_type)])
+   end
+
+   if yIsNil(afa) == false then
+      after_fight_action = afa
+   end
    fWid["<type>"] = "jrpg-fight"
    fWid.endCallback = Entity.new_func("CombatEnd")
    fWid.endCallbackArg = main
@@ -137,9 +160,18 @@ function StartFight(wid, eve)
       end
       i  = i + 1
    end
-   fWid.enemy = main.npcs[wid.npc_nb:to_int()].char
+
+   if yIsNil(npc.max_life) then
+      npc.max_life = 5
+   end
+
+   fWid.enemy = npc
    fWid.enemy.life = fWid.enemy.max_life
-   backToGame(owid, eve)
+   if yeGetString(after_fight_action) == "CombatDialogueNext" then
+      dialogue.gotoNext(wid, eve)
+   else
+      backToGame(wid, eve)
+   end
    ywPushNewWidget(main, fWid)
    return YEVE_ACTION
 end

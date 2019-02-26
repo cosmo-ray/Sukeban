@@ -7,7 +7,11 @@ function victoryScreenAction(vs, eve)
       if eve:type() == YKEY_DOWN then
 	 if eve:key() == Y_ENTER_KEY then
 	    print("enter")
-	    backToGame(vs)
+	    if yeGetString(after_fight_action) == "CombatDialogueNext" then
+	       ywCntPopLastEntry(main_widget)
+	    else
+	       backToGame(vs)
+	    end
 	    return YEVE_ACTION
 	 end
       end
