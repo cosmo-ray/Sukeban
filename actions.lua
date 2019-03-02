@@ -100,7 +100,9 @@ function CombatEnd(wid, main, winner_id)
    local looser = Entity.wrapp(yJrpgGetLooser(wid, winner_id))
 
    ySoundStop(main.soundcallgirl:to_int())
-   if yLovePtrToNumber(winner) == 3 then
+   wid.main = nil
+   if yLovePtrToNumber(winner_id) == 3 then
+      backToGame(wid)
       yCallNextWidget(main:cent())
       return
    end
@@ -109,9 +111,7 @@ function CombatEnd(wid, main, winner_id)
 				     Entity.new_string(math.floor(phq.pj.life:to_int())),
 				     "rgba: 255 255 255 255")
 
-   wid.main = nil
    if yeGetString(after_fight_action) == "CombatDialogueNext" then
-      print("CombatDialogueNext!")
       ywCntPopLastEntry(main)
    else
       backToGame(wid)
