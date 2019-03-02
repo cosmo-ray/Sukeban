@@ -320,11 +320,12 @@
 	"sex": "male",
 	"type": "light",
 	"is_generic": true,
-        "clothes": [
-            "feet/shoes/male/brown_shoes_male.png",
-            "legs/skirt/male/robe_skirt_male.png",
-            "hair/male/long/black.png"
-        ]
+	"sprite": {
+	    "path": "imgs/rat.png",
+	    "size": 32,
+	    "y": 32,
+	    "length": 3
+	}
     },
     "The nerd": {
 	"sex": "male",
