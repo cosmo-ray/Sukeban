@@ -85,6 +85,15 @@
 	    {
 		"text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
 		"answers": [
+		    {
+			"text": [
+			    "hola old men",
+			    "you seems to be fast to juge me as a client",
+			    "I am here seeking for a job"
+			],
+			"condition": ["<", "phq.quests.no_rats", 1],
+			"action": ["Dialogue:goto", 2]
+		    },
                     {
 			"text": "You're right, dude. Time to go to bed.",
 			"action": "phq.backToGame"
@@ -92,18 +101,42 @@
 		    "Before the sweet nectar we all stand humble and equal.",
                     {
 			"text": "Ask your Mom!",
-			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.StartFight" ]
+			"actions": [
+			    [ "Dialogue:block", "phq.backToGame" ],
+			    "phq.StartFight"
+			]
                     }
 		]
             },
 	    {
-		"text": "we might be equal but, there's rules here, have you read the rules ?\nlike the one in the panel behind the bar",
+		"text": ["we might be equal but, there's rules here, have you read the rules ?",
+			 "like the one in the panel behind the bar",
+			"(not yet implemented)"],
 		"answers": [
 		    {
 			"text": "Here's a simple rule:\ntake my money and give me beer",
-			"actions": [ [ "Dialogue:block", "phq.backToGame" ], "phq.GetDrink" ]
+			"actions": [
+			    [ "Dialogue:block", "phq.backToGame" ],
+			    "phq.GetDrink"
+			]
 		    }
 		]
+	    },
+	    {
+		"text": [
+		    "a job you say, Well you're not the kind of person I would hire to work here",
+		    "and by that. I don't meant I can't aford you, I mean you're just too ugly",
+		    "yes you might have start the game as an 'idol'",
+		    "but the dev, layzy bastard they are didn't take the time",
+		    "to implement a road in this dialogue for 'cute' character",
+		    "If y'a want buck go kill the rats in my basement"
+		],
+		"answer": {
+		    "text": "(start a quest, yayyyyy)",
+		    "actions": [
+			["recreateInt", "phq.quests.no_rats", 1],
+			"phq.backToGame"]
+		},
 	    }
 	],
     },

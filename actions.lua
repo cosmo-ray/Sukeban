@@ -13,10 +13,11 @@ function quest_update(original, copy, arg)
    local quest = quests_info[quest_name]
    local stalk_sart = yeGetIntAt(quest, "stalk_sart")
    local rewards = quest.rewards
-   local reward = yeGetInt(rewards[yeGetInt(original)])
+   local r_idx = yeGetInt(original)
+   local reward = yeGetIntAt(rewards, r_idx)
 
    print("changed:", Entity.wrapp(original), Entity.wrapp(copy), quest_name)
-   print("reward:", rewards[yeGetInt(original)])
+   print("reward:", reward)
    if reward ~= 0 then
       increaseStat(main, phq.pj, "xp", reward)
    end
@@ -99,7 +100,7 @@ function CombatEnd(wid, main, winner_id)
    local winner = Entity.wrapp(yJrpgGetWinner(wid, winner_id))
    local looser = Entity.wrapp(yJrpgGetLooser(wid, winner_id))
 
-   ySoundStop(main.soundcallgirl:to_int())
+   ySoundStop(main.soundcallgirl)
    wid.main = nil
    if yLovePtrToNumber(winner_id) == 3 then
       backToGame(wid)
@@ -121,26 +122,49 @@ function CombatEnd(wid, main, winner_id)
 end
 
 
+function npcDefaultInit(npc, enemy_type)
+   if npc.is_generic then
+      npc = Entity.new_copy(npc)
+   end
+   if yIsNil(npc.name) then
+      npc.name = enemy_type
+   end
+   if yIsNil(npc.max_life) then
+      npc.max_life = 1
+   end
+   npc.life = npc.max_life
+   return npc
+end
+
 function StartFight(wid, eve, enemy_type, afa)
    local main = getMainWid(wid)
    local fWid = Entity.new_array()
    local npc = nil
-   ySoundPlayLoop(main.soundcallgirl:to_int())
+   --ySoundPlayLoop(main.soundcallgirl:to_int())
 
    print("args: ", enemy_type, eve)
    if (yIsNil(enemy_type)) then
-      print("!!!\n\nIS NIL !!!!!!\n\n\n\n!!!!\n")
       local wid = yDialogueGetMain(wid)
       wid = Entity.wrapp(wid)
       npc = main.npcs[wid.npc_nb:to_int()].char
+      npc = npcDefaultInit(npc, "???")
    else
-      print("get npc: ", enemy_type, yeGetString(enemy_type))
-      npc = npcs[yeGetString(enemy_type)]
-      if yIsNil(npc.name) then
-	 npc.name = enemy_type
+      if yeType(enemy_type) == YARRAY then
+	 local i = 0
+	 npc = Entity.new_array()
+	 while i < yeLen(enemy_type) do
+	    local enemy_type = yeGet(enemy_type, i)
+	    print("npc ", i , ": ", yeGetString(enemy_type))
+	    npc[i] = npcs[yeGetString(enemy_type)]
+	    npc[i] = npcDefaultInit(npc[i], enemy_type)
+	    print("npc: ", npc[i])
+	    i = i + 1
+	 end
+      else
+	 npc = npcs[yeGetString(enemy_type)]
+	 npc = npcDefaultInit(npc, enemy_type)
       end
 
-      print(npcs[yeGetString(enemy_type)])
    end
 
    if yIsNil(afa) == false then
@@ -161,12 +185,7 @@ function StartFight(wid, eve, enemy_type, afa)
       i  = i + 1
    end
 
-   if yIsNil(npc.max_life) then
-      npc.max_life = 1
-   end
-
    fWid.enemy = npc
-   fWid.enemy.life = fWid.enemy.max_life
    if yeGetString(after_fight_action) == "CombatDialogueNext" then
       dialogue.gotoNext(wid, eve)
    else

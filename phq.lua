@@ -704,7 +704,7 @@ function create_phq(entity)
     ent.soundhouse = ySoundLoad("./house_music.mp3")
     ent.soundtatata = ySoundLoad("./rekuiemu.mp3")
 
-    ySoundPlayLoop(ent.soundtatata)
+    --ySoundPlayLoop(ent.soundtatata)
 
     ent.pj = nil
     dressUp(phq.pj)

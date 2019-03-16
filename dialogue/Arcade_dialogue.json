@@ -2,7 +2,7 @@
     "Asteroid Shooter": {
 	"dialogue" : [
 	    {
-		"text": "Asteroid Shooter\nParty 1$:",
+		"text": "Asteroid Shooter\play 1$:",
 		"answers": [
 		    {
 			"text": "Play",
@@ -20,7 +20,7 @@
     "Snake 2 Turbo": {
 	"dialogue" : [
 	    {
-		"text": "Snake 2 Turbo\nParty 1$:",
+		"text": "Snake 2 Turbo\play 1$:",
 		"answers": [
 		    {
 			"text": "Play",
@@ -39,7 +39,7 @@
     "vapp": {
 	"dialogue" : [
 	    {
-		"text": "Vikings against Pineapple Piza\nParty 1$:",
+		"text": "Vikings against Pineapple Piza\play 1$:",
 		"answers": [
 		    {
 			"text": "Play",

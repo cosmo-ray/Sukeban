@@ -30,5 +30,13 @@
 	"rewards": [
 	    0, 10, 100,
 	]
+    },
+    "No Rats": {
+	"stalk": "phq.quests.no_rats",
+	"stalk_sart": 0,
+	"descriptions": [
+	    "kill rats in bar basement",
+	    "go speak to bartender"
+	]
     }
 }
