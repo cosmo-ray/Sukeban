@@ -33,7 +33,7 @@
     },
     "No Rats": {
 	"stalk": "phq.quests.no_rats",
-	"stalk_sart": 0,
+	"stalk_sart": -1,
 	"descriptions": [
 	    "kill rats in bar basement",
 	    "go speak to bartender"

@@ -35,7 +35,7 @@ Introduce some characters too :)
 		"so suddenly ... (music) ... rats happen","\n\n\n\n",
 		"but no time for whine, it's time to get wine"
 	    ],
-	    "condition": ["=", "phq.quests.no_rats", 1],
+	    "condition": ["=", "phq.quests.no_rats", 0],
 	    "answer" : {
 		"text": "(fight)",
 		"action": [ "phq.StartFight",
@@ -51,7 +51,7 @@ Introduce some characters too :)
 		"so was your though, but as you was here triumphant",
 		"your real enemy reveal himself"
 	    ],
-	    "condition": ["=", "phq.quests.no_rats", 1],
+	    "condition": ["=", "phq.quests.no_rats", 0],
 	    "answer" : {
 		"text": "(fight)",
 		"action": [ "phq.StartFight", "rat", "CombatDialogueNext"]
@@ -62,10 +62,10 @@ Introduce some characters too :)
 		"and so,the enemy was defeated",
 		"a Victory like you never had before !"
 	    ],
-	    "condition": ["=", "phq.quests.no_rats", 1],
+	    "condition": ["=", "phq.quests.no_rats", 0],
 	    "answer" : {
 		"text": "(leave the basement)",
-		"actions": [[ "setInt", "phq.quests.no_rats", 2],
+		"actions": [[ "setInt", "phq.quests.no_rats", 1],
 			    "phq.backToGame"]
 	    }
 

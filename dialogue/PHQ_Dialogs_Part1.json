@@ -83,7 +83,16 @@
     "Robert": {
 	"dialogue": [
 	    {
-		"text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
+		"texts": [
+		    {
+			"text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
+			"action": ["setInt", "phq.events.meet_barman", 1],
+			"condition": ["!=", "phq.events.meet_barman", 1]
+		    },
+		    {
+			"text": "hola !\nwhat can i do for ya ?",
+		    }
+		],
 		"answers": [
 		    {
 			"text": [
@@ -91,8 +100,13 @@
 			    "you seems to be fast to juge me as a client",
 			    "I am here seeking for a job"
 			],
-			"condition": ["<", "phq.quests.no_rats", 1],
+			"condition": ["=", "phq.quests.no_rats", -1],
 			"action": ["Dialogue:goto", 2]
+		    },
+		    {
+			"text": "Aye, I kill all y'ur rats",
+			"condition": ["=", "phq.quests.no_rats", 1],
+			"action": ["Dialogue:goto", 3]
 		    },
                     {
 			"text": "You're right, dude. Time to go to bed.",
@@ -129,14 +143,27 @@
 		    "yes you might have start the game as an 'idol'",
 		    "but the dev, layzy bastard they are didn't take the time",
 		    "to implement a road in this dialogue for 'cute' character",
-		    "If y'a want buck go kill the rats in my basement"
+		    "If y'a want buck, go fetch me booze in my celar",
+		    "don't like go there, it's dark"
 		],
 		"answer": {
 		    "text": "(start a quest, yayyyyy)",
 		    "actions": [
-			["recreateInt", "phq.quests.no_rats", 1],
+			["recreateInt", "phq.quests.no_rats", 0],
 			"phq.backToGame"]
 		},
+	    },
+	    {
+		"text": "nice, here's your 10 bucks",
+		"answer": {
+		    "text": "(reward !)",
+		    "actions": [
+			["phq.recive", "money", 10],
+			["phq.increase", "xp", 10],
+			["setInt", "phq.quests.no_rats", 2],
+			"phq.backToGame"
+		    ]
+		}
 	    }
 	],
     },
