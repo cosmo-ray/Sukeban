@@ -13,7 +13,7 @@
 	],
 	[
 	    [401, 129], [422, 152], [445, 198], [450, 231],
-	    [421, 270], [465, 310], [437, 355], [423, 396],
+	    [421, 270], [465, 310, "international_bar"], [437, 355], [423, 396],
 	    [390, 406], [381, 456]
 	],
 	[
@@ -37,6 +37,7 @@
     "actions" : {
 	"Nontoise": ["phq:changeScene", "street1"],
 	"test_zone": ["phq:changeScene", "test_zone"],
+	"international_bar": ["phq:changeScene", "international_bar"],
 	"Dock": ["phq:vnScene", "la Jetee"]
     }
 }

@@ -7,6 +7,10 @@
 	"dialogues" : "dialogue/PHQ_Dialogs_Part1.json",
 	"tiled": "./tileset/bar1.json"
     },
+    "international_bar" : {
+	"dialogues" : "dialogue/PHQ_Dialogs_Part1.json",
+	"tiled": "./tileset/international_bar.json"
+    },
     "street0": {
 	"exterior": 1,
 	"dialogues" : "dialogue/st0_dialogues.json",
