@@ -123,7 +123,7 @@
 		]
             },
 	    {
-		"text": ["we might be equal but, there's rules here, have you read the rules ?",
+		"text": ["we might be equal but, there's rules here",
 			 "like the one in the panel behind the bar",
 			"(not yet implemented)"],
 		"answers": [
@@ -144,7 +144,7 @@
 		    "but the dev, lazy bastard they are didn't take the time",
 		    "to implement a road in this dialogue for 'cute' character",
 		    "If y'a want buck, go fetch me booze in my cellar",
-		    "the good on, the bottle with 'ciel' write on it",
+		    "the good one, the bottle with 'ciel' write on it",
 		    "don't like go there, it's dark, it stink, a job for you"
 		],
 		"answer": {
