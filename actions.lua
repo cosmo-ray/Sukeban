@@ -332,6 +332,7 @@ function sleep(main, obj)
    else
       phq.env.time = "night"
    end
+   phq.env.time_point = 1
    phq.pj.life = phq.pj.max_life
    phq.pj.drunk = 0
    main = Entity.wrapp(main)

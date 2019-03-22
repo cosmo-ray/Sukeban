@@ -90,7 +90,14 @@ function metroAction(metroMap, eve)
 	    local station_name = metroMap.station[ST_NAME_IDX]
 	    if station_name then
 	       local action = metro_file.actions[station_name:to_string()]
-	       return ywidAction(action, metroMap, eve)
+	       if station_name:to_string() == "Nontoise" then
+		  return ywidAction(action, metroMap, eve)
+	       elseif (phq.env.time_point > 0) then
+		  phq.env.time_point = phq.env.time_point - 1
+		  return ywidAction(action, metroMap, eve)
+	       else
+		  print("NOT ENOUTH TIME POINT")
+	       end
 	    end
 	 elseif eve:key() == Y_ESC_KEY or
 	 eve:key() == Y_M_KEY then

@@ -3,5 +3,6 @@
     "week": 0,
     "city": "[City Name Not Yet Decided]",
     "time": "night",
+    "time_point": 1,
     "station": [0, 0]
 }
