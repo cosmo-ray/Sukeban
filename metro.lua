@@ -2,6 +2,7 @@ local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 local metro_file = File.jsonToEnt(modPath .. "/metro.json")
 local phq = Entity.wrapp(ygGet("phq"))
 local arrow_path = Entity.wrapp(ygGet("DialogueBox.$path")):to_string() .. "/arrow_sheet.png"
+local line_actual0 = "currently on line: "
 
 local function gotoStation(metroMap, station_idx, line_idx)
    if line_idx then
@@ -9,7 +10,11 @@ local function gotoStation(metroMap, station_idx, line_idx)
       print(metroMap.line)
       metroMap.line = metro_file.lines[line_idx]
       print(metroMap.line, line_idx, metro_file.lines[1])
+   else
+      line_idx = metroMap.station_info[0]:to_int()
    end
+   ywCanvasStringSet(metroMap.line_txt_info,
+		     Entity.new_string(line_actual0 .. math.floor(line_idx)))
    metroMap.station_info[1] = station_idx
    local station = metroMap.line[station_idx]
    metroMap.station = station
@@ -107,6 +112,7 @@ function pushMetroMenu(main)
    can:new_img(20, 520, arrow_path, Rect.new(0, 0, 25, 20).ent)
    can:new_text(50, 520, ": destination")
    can:new_text(150, 30, "Welcom to [City Name Not Yet Decided] Metro Plan")
+   can.ent.line_txt_info = can:new_text(250, 60, line_actual0).ent
 
    can:new_text(500, 500, "left/right: change station\n\nup/down: change line")
    can.ent.action = Entity.new_func("metroAction")
