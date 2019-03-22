@@ -3,6 +3,16 @@ local metro_file = File.jsonToEnt(modPath .. "/metro.json")
 local phq = Entity.wrapp(ygGet("phq"))
 local arrow_path = Entity.wrapp(ygGet("DialogueBox.$path")):to_string() .. "/arrow_sheet.png"
 local line_actual0 = "currently on line: "
+local ST_NAME_IDX = 2
+
+local function printable_st_name(station)
+   local st_name = yeGet(station, ST_NAME_IDX)
+
+   if yeType(st_name) == YSTRING then
+      return "station: " .. yeGetString(st_name)
+   end
+   return "some random station from this random town"
+end
 
 local function gotoStation(metroMap, station_idx, line_idx)
    if line_idx then
@@ -13,13 +23,15 @@ local function gotoStation(metroMap, station_idx, line_idx)
    else
       line_idx = metroMap.station_info[0]:to_int()
    end
-   ywCanvasStringSet(metroMap.line_txt_info,
-		     Entity.new_string(line_actual0 .. math.floor(line_idx)))
    metroMap.station_info[1] = station_idx
    local station = metroMap.line[station_idx]
    metroMap.station = station
    ywCanvasObjSetPos(metroMap.arrow, station[0] - 35,
 		     station[1] - 10)
+   ywCanvasStringSet(metroMap.line_txt_info,
+		     Entity.new_string(line_actual0 .. math.floor(line_idx)))
+   ywCanvasStringSet(metroMap.st_txt_info,
+		     Entity.new_string(printable_st_name(metroMap.station)))
    yeCopy(metroMap.station_info, phq.env.station)
    return YEVE_ACTION
 end
@@ -75,7 +87,7 @@ function metroAction(metroMap, eve)
 	       i = i + 1
 	    end
 	 elseif eve:key() == Y_ENTER_KEY then
-	    local station_name = metroMap.station[2]
+	    local station_name = metroMap.station[ST_NAME_IDX]
 	    if station_name then
 	       local action = metro_file.actions[station_name:to_string()]
 	       return ywidAction(action, metroMap, eve)
@@ -93,9 +105,9 @@ end
 function pushMetroMenu(main)
    local lines = metro_file.lines
    local intersections = metro_file.intersections
-   local station_info = Entity.new_array()
-   yeCopy(phq.env.station, station_info)
-   local line = lines[station_info[0]:to_int()]
+   local station_info = Entity.new_copy(phq.env.station)
+   local l_idx = station_info[0]:to_int()
+   local line = lines[l_idx]
    local station = line[station_info[1]:to_int()]
    local can = Canvas.new_entity()
 
@@ -113,7 +125,9 @@ function pushMetroMenu(main)
    can:new_img(20, 520, arrow_path, Rect.new(0, 0, 25, 20).ent)
    can:new_text(50, 520, ": destination")
    can:new_text(150, 30, "Welcom to [City Name Not Yet Decided] Metro Plan")
-   can.ent.line_txt_info = can:new_text(250, 60, line_actual0).ent
+   can.ent.line_txt_info = can:new_text(250, 60,
+					line_actual0 .. math.floor(l_idx)).ent
+   can.ent.st_txt_info = can:new_text(250, 80, printable_st_name(station)).ent
 
    can:new_text(500, 500, "left/right: change station\n\nup/down: change line")
    can.ent.action = Entity.new_func("metroAction")
