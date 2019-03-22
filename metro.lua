@@ -20,6 +20,7 @@ local function gotoStation(metroMap, station_idx, line_idx)
    metroMap.station = station
    ywCanvasObjSetPos(metroMap.arrow, station[0] - 35,
 		     station[1] - 10)
+   yeCopy(metroMap.station_info, phq.env.station)
    return YEVE_ACTION
 end
 
