@@ -124,7 +124,7 @@ function pushMetroMenu(main)
    can:new_text(50, 550, ": current position")
    can:new_img(20, 520, arrow_path, Rect.new(0, 0, 25, 20).ent)
    can:new_text(50, 520, ": destination")
-   can:new_text(150, 30, "Welcom to [City Name Not Yet Decided] Metro Plan")
+   can:new_text(150, 30, "Welcom to " .. phq.env.city:to_string() .. " Metro Plan")
    can.ent.line_txt_info = can:new_text(250, 60,
 					line_actual0 .. math.floor(l_idx)).ent
    can.ent.st_txt_info = can:new_text(250, 80, printable_st_name(station)).ent
