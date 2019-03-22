@@ -2,13 +2,14 @@
     "Jean": {
 	"dialogue" : [
 	    {
-		"text": ["Here's a young lady, that I see",
-			 "do you have time, to listen to the story of some old dunkard",
-			 "are you still in high school ?"
-			],
+		"text": [
+		    "Here's a young lady, that I see",
+		    "do you have time, to listen to the story of some old dunkard",
+		    "are you still in high school ?"
+		],
 		"answers": [
 		    {
-			"text": "Yeah... \n'bout that my father told me to speak not to stranger\especially the one smelling alcohol",
+			"text": "Yeah... \n'bout that my father told me to speak not to stranger\nespecially the one smelling alcohol",
 			"action": "phq.backToGame"
 		    },
 		    {
@@ -46,12 +47,10 @@
 	    ],
 	    {
 		"text": "I've learn to film, how sound work, do you know to what it lead me ?",
-		{
-		    "answers": [
-			"be a dentist ?",
-			"you know It's not Brobi the Brobo,\nbut 'not Allowed planet'"
-		    ],
-		}
+		"answers": [
+		    "be a dentist ?",
+		    "you know It's not Brobi the Brobo,\nbut 'not Allowed planet'"
+		]
 	    },
 	    {
 		"text": "vendor in a camera shop !",
