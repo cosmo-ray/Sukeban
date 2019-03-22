@@ -1,4 +1,7 @@
 {
+    "_include": [
+	"./dialogue/bar_dialogue.json"
+    ],
     "Wasted guy": {
 	"dialogue" : [
 	    {

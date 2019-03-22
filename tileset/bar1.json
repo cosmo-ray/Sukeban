@@ -208,6 +208,26 @@
                  "width":0,
                  "x":110,
                  "y":271
+                }, 
+                {
+                 "height":0,
+                 "id":30,
+                 "name":"Jean",
+                 "point":true,
+                 "properties":
+                    {
+                     "Rotation":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":179.207920792079,
+                 "y":402.970297029703
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -215,7 +235,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":30,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",
