@@ -158,6 +158,7 @@ function pushSTatusTextScreen(container)
    txt_screen.text = "Day: " ..
       DAY_STR[phq.env.day:to_int() + 1] .. ", {phq.env.time}\n" ..
       "week: {phq.env.week}\n" ..
+      "time point: {phq.env.time_point}\n" ..
       "Status:\n" ..
       "life: {phq.pj.life}\n" ..
       "xp: {phq.pj.xp} \n" ..
