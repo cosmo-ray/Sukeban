@@ -52,8 +52,13 @@
 		    },
 		    {
 			"text": "watch",
-			"condition":  [">", "phq.pj.knowledge.animu", 4],
+			"condition": [
+			    "and",
+			    [ ">", "phq.pj.knowledge.animu", 4 ],
+			    "phq.env.time_point"
+			],
 			"actions": [
+			    "phq.use_time_point",
 			    [ "phq.increase", "knowledge", "animu", 1],
 			    "phq.backToGame"
 			]
@@ -99,8 +104,10 @@
 		    },
 		    {
 			"text": "Watch ASCII Pr0m\n(Dev note: yes I know in futur version I'll add a faxe ascii browser, and I'll hide this feature\nI might add the ASCII pr0m too)",
+			"condition": "phq.env.time_point",
 			"actions": [
-			    [ "phq.increase", "trait", "perv", 1],
+			    "phq.use_time_point",
+			    ["phq.increase", "trait", "perv", 1],
 			    "phq.backToGame"
 			]
 

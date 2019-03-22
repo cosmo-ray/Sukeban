@@ -144,6 +144,7 @@ function init_phq(mod)
    mod.increase = Entity.new_func("increase")
    mod.recive = Entity.new_func("recive")
    mod.remove = Entity.new_func("remove")
+   mod.use_time_point = Entity.new_func("use_time_point")
    mod.changeScene = Entity.new_func("changeScene")
 end
 

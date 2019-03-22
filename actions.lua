@@ -6,6 +6,10 @@ local window_width = 800
 local window_height = 600
 after_fight_action = nil
 
+function use_time_point()
+   phq.env.time_point = phq.env.time_point - 1
+end
+
 function quest_update(original, copy, arg)
    local main = yeGet(arg, 0)
    local quest_name = yeGet(arg, 1)
