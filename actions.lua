@@ -6,8 +6,26 @@ local window_width = 800
 local window_height = 600
 after_fight_action = nil
 
-function use_time_point()
-   phq.env.time_point = phq.env.time_point - 1
+local use_time_point_action = Entity.new_string("phq.use_time_point")
+
+function use_time_point(box)
+   if phq.env.time_point:to_int() == 0 then
+      printMessage(main_boxget, nil, Entity.new_string("Not enough time point"))
+      return Y_FALSE
+   end
+
+   box = Entity.wrapp(box)
+   if box and box.is_dialogue_condition then
+      local answer = Entity.wrapp(yDialogueCurAnswer(box))
+      local actions = answer.actions
+
+      if yeDoesInclude(actions, use_time_point_action) == false then
+	 yeInsertAt(actions, use_time_point_action, 0)
+      end
+   else
+      phq.env.time_point = phq.env.time_point - 1
+   end
+   return Y_TRUE
 end
 
 function quest_update(original, copy, arg)

@@ -104,9 +104,8 @@
 		    },
 		    {
 			"text": "Watch ASCII Pr0m\n(Dev note: yes I know in futur version I'll add a faxe ascii browser, and I'll hide this feature\nI might add the ASCII pr0m too)",
-			"condition": "phq.env.time_point",
+			"condition": ["call", "phq.use_time_point", "__box"],
 			"actions": [
-			    "phq.use_time_point",
 			    ["phq.increase", "trait", "perv", 1],
 			    "phq.backToGame"
 			]

@@ -92,8 +92,7 @@ function metroAction(metroMap, eve)
 	       local action = metro_file.actions[station_name:to_string()]
 	       if station_name:to_string() == "Nontoise" then
 		  return ywidAction(action, metroMap, eve)
-	       elseif (phq.env.time_point > 0) then
-		  phq.env.time_point = phq.env.time_point - 1
+	       elseif (use_time_point()) then
 		  return ywidAction(action, metroMap, eve)
 	       else
 		  print("NOT ENOUTH TIME POINT")
