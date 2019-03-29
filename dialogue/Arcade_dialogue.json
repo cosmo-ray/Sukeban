@@ -2,7 +2,7 @@
     "Asteroid Shooter": {
 	"dialogue" : [
 	    {
-		"text": "Asteroid Shooter\play 1$:",
+		"text": "Asteroid Shooter\nplay 1$:",
 		"answers": [
 		    {
 			"text": "Play",
@@ -14,13 +14,13 @@
 			"action": "phq.backToGame"
 		    }
 		]
-	    },
+	    }
 	]
     },
     "Snake 2 Turbo": {
 	"dialogue" : [
 	    {
-		"text": "Snake 2 Turbo\play 1$:",
+		"text": "Snake 2 Turbo\nplay 1$:",
 		"answers": [
 		    {
 			"text": "Play",
@@ -33,13 +33,13 @@
 			"action": "phq.backToGame"
 		    }
 		]
-	    },
+	    }
 	]
     },
     "vapp": {
 	"dialogue" : [
 	    {
-		"text": "Vikings against Pineapple Piza\play 1$:",
+		"text": "Vikings against Pineapple Piza\nplay 1$:",
 		"answers": [
 		    {
 			"text": "Play",
@@ -52,7 +52,7 @@
 			"action": "phq.backToGame"
 		    }
 		]
-	    },
+	    }
 	]
     },
     "Standart Nerd": {
