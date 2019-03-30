@@ -259,6 +259,8 @@ local function CheckColisionExit(col, ret)
    return ret
 end
 
+local this_door_is_lock_msg = 0
+
 function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
    local colRect = Rect.new(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30, 20, 20).ent
@@ -268,10 +270,17 @@ function CheckColision(main, canvasWid, pj)
 
    while i < yeLen(exites) do
       local rect = exites[i].rect
-      if checkObjTime(exites[i], cur_time) and ywRectCollision(rect, colRect) then
-	 local nextSceneTxt = yeGetString(yeToLower(exites[i].nextScene))
-	 load_scene(main, nextSceneTxt, yeGetInt(exites[i].entry))
-	 return CHANGE_SCENE_COLISION
+      if ywRectCollision(rect, colRect) then
+	 if checkObjTime(exites[i], cur_time) then
+	    local nextSceneTxt = yeGetString(yeToLower(exites[i].nextScene))
+	    load_scene(main, nextSceneTxt, yeGetInt(exites[i].entry))
+	    return CHANGE_SCENE_COLISION
+	 elseif this_door_is_lock_msg == 0 then
+	    this_door_is_lock_msg = 20
+	    printMessage(main, nil, Entity.new_string("This door seems lock"))
+	 else
+	    this_door_is_lock_msg = this_door_is_lock_msg - 1
+	 end
       end
       i = i + 1
    end
