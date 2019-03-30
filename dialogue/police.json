@@ -1,0 +1,43 @@
+{
+    "Bill": {
+	"dialogue": [
+	    "Don't speak to me I'm just the assistant"
+	]
+    },
+    "Jeanne Machette": {
+	"dialogue": [
+	    {
+		"text": "you speak to me blanca?",
+		"answers": [
+		    {
+			"text": "eh, nope\n",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": [
+			    "hummm",
+			    "yes I need a certifica from here in order",
+			    "to subscribe to my new school"
+			],
+			"condition":  ["=", "phq.quests.school_sub", 4]
+		    }
+		]
+	    },
+	    {
+		"text": [
+		    "hummm, okay gringo",
+		    "do you have a bill that prove where you live ?",
+		    "and maybe a paper from your parents",
+		    "we don't want homeless Joe in our school"
+		],
+		"answer": {
+		    "text": "humm...",
+		    "actions": [
+			["setInt", "phq.quests.school_sub", 5],
+			"phq.backToGame"
+		    ]
+		}
+	    }
+	]
+    }
+}
