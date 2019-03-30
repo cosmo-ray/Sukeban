@@ -99,12 +99,14 @@
                  "point":true,
                  "properties":
                     {
+                     "Time":"night",
                      "entry":0,
                      "nextScene":"bar",
                      "side":"down"
                     },
                  "propertytypes":
                     {
+                     "Time":"string",
                      "entry":"int",
                      "nextScene":"string",
                      "side":"string"
@@ -212,7 +214,7 @@
  "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.1.6",
  "tileheight":32,
  "tilesets":[
         {

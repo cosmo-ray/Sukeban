@@ -83,18 +83,25 @@ local function reposeCam(main)
    reposScreenInfo(main, x0, y0)
 end
 
+function checkObjTime(obj, cur_time)
+   local obj_time = obj.Time
+
+   if obj_time then
+      if yeStrCaseCmp(obj_time, cur_time) ~= 0 then
+	 return false
+      end
+   end
+   return true
+end
+
 function checkNpcPresence(obj, npc, scene)
    if npc == nil then
       return false
    end
    local cur_time = phq.env.time:to_string()
-   local obj_time = obj.Time
 
-   if obj_time then
-      print(yeStrCaseCmp(obj_time, cur_time), yeGetString(obj_time), cur_time)
-      if yeStrCaseCmp(obj_time, cur_time) ~= 0 then
-	 return false
-      end
+   if checkObjTime(obj, cur_time) == false then
+      return false
    end
 
    print("checkNpcPresence", npc.calendar)
@@ -255,12 +262,15 @@ end
 function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
    local colRect = Rect.new(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30, 20, 20).ent
+   local exites = main.exits
+   local cur_time = phq.env.time:to_string()
    local i = 0
-   while i < yeLen(main.exits) do
-      local rect = main.exits[i].rect
-      if ywRectCollision(rect, colRect) then
-	 local nextSceneTxt = yeGetString(yeToLower(main.exits[i].nextScene))
-	 load_scene(main, nextSceneTxt, yeGetInt(main.exits[i].entry))
+
+   while i < yeLen(exites) do
+      local rect = exites[i].rect
+      if checkObjTime(exites[i], cur_time) and ywRectCollision(rect, colRect) then
+	 local nextSceneTxt = yeGetString(yeToLower(exites[i].nextScene))
+	 load_scene(main, nextSceneTxt, yeGetInt(exites[i].entry))
 	 return CHANGE_SCENE_COLISION
       end
       i = i + 1
@@ -605,7 +615,8 @@ function load_scene(ent, sceneTxt, entryIdx)
       elseif layer_name:to_string() == "Entries" then
 	 e_exits[j] = obj
 	 j = j + 1
-      elseif layer_name:to_string() == "Actionable" then
+      elseif layer_name:to_string() == "Actionable" and
+      checkObjTime(obj, phq.env.time:to_string()) then
 	 e_actionables[k] = obj
 	 k = k + 1
       end
