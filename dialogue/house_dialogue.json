@@ -24,6 +24,14 @@
 			    [ "setInt", "phq.quests.school_sub", 3 ],
 			    "phq.backToGame"]
                     },
+                    {
+			"text": [
+			    "so I need a certifica that prove I live here\n",
+			    "and another signature"
+			],
+			"condition":  ["=", "phq.quests.school_sub", 5],
+			"action": [ "Dialogue:goto", 3 ]
+                    },
 		    {
 			"text": "so mom\nthere is this paper you need to sign for my scool subscription\ncan you do it please",
 			"condition":  ["=", "phq.quests.school_sub", 1]
@@ -43,6 +51,21 @@
 		    "text": "Thanks ma, your so nice",
 		    "actions": [
 			[ "setInt", "phq.quests.school_sub", 2 ],
+			"phq.backToGame"
+		    ]
+		}
+	    },
+	    {
+		"text": [
+		    "no, I've done my part of signing and shit",
+		    "deal with it yourself, why should I care",
+		    "next time try do to your shit correctly and bring my all",
+		    "shit to sign once... usless brat"
+		],
+		"answer": {
+		    "text": "suporting mother is the thing that warm my heart",
+		    "actions": [
+			[ "setInt", "phq.quests.school_sub", 6 ],
 			"phq.backToGame"
 		    ]
 		}
