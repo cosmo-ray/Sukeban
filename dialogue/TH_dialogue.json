@@ -48,6 +48,11 @@
 		    {
 			"condition":  ["=", "phq.quests.school_sub", 0],
 			"text": "hello is it the subscription office ?"
+		    },
+		    {
+			"condition":  ["=", "phq.quests.school_sub", 3],
+			"text": "hej, I've bring back my papper signed by my mom",
+			"action": ["Dialogue:goto", 3]
 		    }
 		]
 	    },
@@ -67,6 +72,28 @@
 			"phq.backToGame"
 		    ]
 		}
+	    },
+	    {
+		"text": "thanks, can I have the police certification now",
+		"answer": {
+		    "text": [
+			"the police certification ? what police certification ?",
+			"you ask for a paper sign by ny mom not for some police stuff"
+		    ]
+		},
+	    },
+	    {
+		"text": ["well you need a paper from your parent",
+			 "and a paper from the police don't know that",
+			 "anyway go to the police comiseria they have the habit",
+			 "in the meantime I'll keep the document you've bring"],
+		"answer": {
+		    "text": "thanks, I guess",
+		    "actions": [
+			[ "setInt", "phq.quests.school_sub", 4 ],
+			"phq.backToGame"
+		    ]
+		},
 	    }
 
 	]
