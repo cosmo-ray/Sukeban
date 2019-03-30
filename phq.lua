@@ -277,7 +277,7 @@ function CheckColision(main, canvasWid, pj)
 	    return CHANGE_SCENE_COLISION
 	 elseif this_door_is_lock_msg == 0 then
 	    this_door_is_lock_msg = 20
-	    printMessage(main, nil, Entity.new_string("This door seems lock"))
+	    printMessage(main, nil, "This door seems lock")
 	 else
 	    this_door_is_lock_msg = this_door_is_lock_msg - 1
 	 end
