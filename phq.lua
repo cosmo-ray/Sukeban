@@ -510,23 +510,27 @@ function destroy_phq(entity)
    end
 end
 
--- push all caracters to dial, but read c_dial
-local function dialogue_include(dial, c_dial)
-   local includes = c_dial._include
+local function _include(target, file)
+   local includes = file._include
    local i = 0
 
    while i < yeLen(includes) do
       local inc = includes[i]
       inc = File.jsonToEnt(inc:to_string())
-      dialogue_include(dial, inc)
+      _include(target, inc)
       local j = 0
       while j < yeLen(inc) do
-	 yePushBack(dial, yeGet(inc, j), yeGetKeyAt(inc, j));
+	 yePushBack(target, yeGet(inc, j), yeGetKeyAt(inc, j));
 	 j = j + 1
       end
       i = i + 1
    end
-   c_dial._include = nil
+   file._include = nil
+end
+
+-- push all caracters to dial, but read c_dial
+local function dialogue_include(dial, c_dial)
+   _include(dial, c_dial)
 end
 
 function load_scene(ent, sceneTxt, entryIdx)
@@ -699,7 +703,9 @@ function create_phq(entity)
     ent.cur_scene_str = nil
     tiled.setAssetPath("./tileset");
     jrpg_fight.objects = phq.objects
-    print("jrpg_fight.objects", jrpg_fight.objects)
+
+    _include(npcs, npcs)
+    print("BILL: ", npcs.Bill)
 
     ent.st_hooks = {}
     add_stat_hook(ent, "drunk", "FinishGame", 99, PHQ_SUP)

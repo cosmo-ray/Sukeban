@@ -63,6 +63,40 @@
         }, 
         {
          "draworder":"topdown",
+         "name":"NPC",
+         "objects":[
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"Jeanne Machette",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":147.631190444236,
+                 "y":163.73641121997
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"Bill",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":225.473090860287,
+                 "y":151.657495638169
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "name":"Entries",
          "objects":[
                 {
@@ -105,7 +139,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":2,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

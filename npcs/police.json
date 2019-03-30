@@ -1,0 +1,24 @@
+{
+    "Jeanne Machette": {
+	"sex": "female",
+	"type": "light",
+        "max_life": 10,
+	"attack" : "unarmed0",
+        "clothes": [
+            "feet/ghillies_female_no_th-sh.png",
+            "torso/dress_female/dress_w_sash_female.png",
+            "hair/female/ponytail/brunette2.png"
+        ]
+    },
+    "Bill": {
+	"sex": "male",
+	"type": "light",
+        "max_life": 10,
+	"attack" : "unarmed0",
+        "clothes": [
+            "feet/ghillies_female_no_th-sh.png",
+            "torso/dress_female/dress_w_sash_female.png",
+            "hair/female/ponytail/brunette2.png"
+        ]
+    }
+}

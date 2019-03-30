@@ -1,4 +1,5 @@
 {
+    "_include": [ "./npcs/police.json" ],
     "Greta": {
 	"sex": "female",
 	"type": "light",
