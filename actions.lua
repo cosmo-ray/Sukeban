@@ -362,10 +362,7 @@ function sleep(main, obj)
 end
 
 function printMessage(main, obj, msg)
-   local txt = msg
-   if isLuaString(msg) == false then
-      txt = yeGetString(txt)
-   end
+   local txt = yLuaString(msg)
    main = Entity.wrapp(main)
    if main.box then
       txt = yeGetString(dialogue_box.get_text(main.box)) ..
