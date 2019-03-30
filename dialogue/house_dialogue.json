@@ -16,8 +16,16 @@
 			"text": "Ok mom",
 			"action": "phq.backToGame"
                     },
+                    {
+			"text": "here's your beer, can you sign now",
+			"condition":  ["and", ["=", "phq.quests.school_sub", 2],
+				       "phq.pj.inventory.beer"],
+			"actions": [
+			    [ "setInt", "phq.quests.school_sub", 3 ],
+			    "phq.backToGame"]
+                    },
 		    {
-			"text": "so mom,there is this paper you need to sign for my scool subscription, can you do it please",
+			"text": "so mom\nthere is this paper you need to sign for my scool subscription\ncan you do it please",
 			"condition":  ["=", "phq.quests.school_sub", 1]
 		    }
 		]

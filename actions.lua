@@ -10,7 +10,7 @@ local use_time_point_action = Entity.new_string("phq.use_time_point")
 
 function use_time_point(box)
    if phq.env.time_point:to_int() == 0 then
-      printMessage(main_boxget, nil, Entity.new_string("Not enough time point"))
+      printMessage(main_boxget, nil, "Not enough time point")
       return Y_FALSE
    end
 
