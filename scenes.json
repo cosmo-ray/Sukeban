@@ -53,7 +53,10 @@
     "wut" : {
 	"tiled": "./tileset/WUT.json"
     },
-    "police" : { "tiled" : "./tileset/Police.json" },
+    "police" : {
+	"tiled" : "./tileset/Police.json" ,
+	"dialogues" : "dialogue/police.json"
+    },
     "house0" : {
 	"dialogues" : "dialogue/house_dialogue.json",
 	"tiled": "./tileset/House0.json"

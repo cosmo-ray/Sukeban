@@ -1,7 +1,7 @@
 {
     "Jeanne Machette": {
 	"sex": "female",
-	"type": "light",
+	"type": "tanned2",
         "max_life": 10,
 	"attack" : "unarmed0",
         "clothes": [
