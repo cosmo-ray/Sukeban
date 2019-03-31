@@ -41,6 +41,7 @@
 		"entry" : 4
 	    }
 	},
+	"dialogues" : "dialogue/bob.json",
 	"tiled": "./tileset/Street3.json"
     },
     "street4" : {

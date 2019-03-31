@@ -47,7 +47,19 @@
          "draworder":"topdown",
          "id":4,
          "name":"NPC",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"Bob",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":784,
+                 "y":900
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
