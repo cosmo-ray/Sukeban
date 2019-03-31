@@ -1,17 +1,58 @@
 {
     "Bill": {
 	"dialogue": [
-	    "Don't speak to me I'm just the assistant"
+	    {
+		"text": "Don't speak to me I'm just the assistant",
+		"answers": [
+		    {
+			"text": "okay. mister assistant",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": ["Hello, I need a 'domicile certification'",
+				 "but I have nothing to prove where I live",
+				 "can you help me please, I need to go to school"],
+			"condition":  ["=", "phq.quests.school_sub", 6]
+		    }
+		]
+	    },
+	    {
+		"text": "well, officially I can't help you",
+		"answer": "officially, is there a unofficial way you can help me pelase"
+	    },
+	    "well, let me think",
+	    "ok, You might be hable to help me",
+	    {
+		"text": [
+		    "my son, Bob, have lost his rat, gambat",
+		    "he really like him, and would be really happy to get him back",
+		    "I know I'm police but officer machette, don't let me spend time on that",
+		    "if you can help him, I can help you"
+		],
+		"answer": {
+		    "text": "thanks !, I'll do whatever I can, wish me good luck !",
+		    "actions": [ [ "setInt", "phq.quests.school_sub", 7 ],
+				 "phq.backToGame"]
+		}
+	    }
 	]
     },
     "Jeanne Machette": {
-	"dialogue": [
-	    {
+	"dialogue": {
+	    "main": {
 		"text": "you speak to me blanca?",
 		"answers": [
 		    {
 			"text": "eh, nope\n",
 			"action": "phq.backToGame"
+		    },
+		    {
+			"text": [
+			    "So I can't have the pove",
+			    "is there another way to have a certification ?"
+			],
+			"condition":  ["=", "phq.quests.school_sub", 6],
+			"action": ["Dialogue:goto", "no_sub_today"]
 		    },
 		    {
 			"text": [
@@ -23,7 +64,7 @@
 		    }
 		]
 	    },
-	    {
+	    "shool_sub": {
 		"text": [
 		    "hummm, okay gringo",
 		    "do you have a bill that prove where you live ?",
@@ -37,7 +78,8 @@
 			"phq.backToGame"
 		    ]
 		}
-	    }
-	]
+	    },
+	    "no_sub_today": "then you can't subscribe to a school, girl"
+	}
     }
 }
