@@ -18,7 +18,7 @@ local window_width = 800
 local window_height = 600
 local pj_pos = nil
 
-local PIX_PER_FRAME = 6
+local PIX_MV_PER_MS = 3
 local TURN_LENGTH = Y_REQUEST_ANIMATION_FRAME
 
 local NO_COLISION = 0
@@ -341,13 +341,14 @@ function pushMainMenu(main)
 end
 
 function phq_action(entity, eve)
+   local turn_timer = ywidTurnTimer() / 10000
    entity = Entity.wrapp(entity)
    entity.tid = entity.tid + 1
    eve = Event.wrapp(eve)
-   print("new turn: ", ywidTurnTimer())
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
 
+   print("new turn: ", turn_timer, ywidTurnTimer())
    if yeGetInt(entity.current) > 1 then
       return NOTHANDLE
    end
@@ -482,8 +483,12 @@ function phq_action(entity, eve)
 
    walkDoStep(entity, entity.pj)
 
-   local mvPos = Pos.new(PIX_PER_FRAME * entity.pj.move.left_right,
-			 PIX_PER_FRAME * entity.pj.move.up_down)
+   local pix_mv = turn_timer * PIX_MV_PER_MS
+   -- well do this properly I need to sleep, bu I don't know how to do this in lua
+   if (pix_mv < 0) then pix_mv = 1 end
+
+   local mvPos = Pos.new(pix_mv * entity.pj.move.left_right,
+			 pix_mv * entity.pj.move.up_down)
     ylpcsHandlerMove(entity.pj, mvPos.ent)
     local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
     if col_rel == NORMAL_COLISION then
