@@ -19,7 +19,7 @@ local window_height = 600
 local pj_pos = nil
 
 local PIX_PER_FRAME = 6
-local TURN_LENGTH = 20000
+local TURN_LENGTH = Y_REQUEST_ANIMATION_FRAME
 
 local NO_COLISION = 0
 local NORMAL_COLISION = 1
@@ -344,6 +344,7 @@ function phq_action(entity, eve)
    entity = Entity.wrapp(entity)
    entity.tid = entity.tid + 1
    eve = Event.wrapp(eve)
+   print("new turn: ", ywidTurnTimer())
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
 
