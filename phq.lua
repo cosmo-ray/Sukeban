@@ -35,6 +35,8 @@ local LPCS_UP = 8
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
 
+
+local newly_loaded = true
 local upKeys = Event.CreateGrp(Y_UP_KEY, Y_W_KEY)
 local downKeys = Event.CreateGrp(Y_DOWN_KEY, Y_S_KEY)
 local leftKeys = Event.CreateGrp(Y_LEFT_KEY, Y_A_KEY)
@@ -358,6 +360,10 @@ function phq_action(entity, eve)
       return NOTHANDLE
    end
 
+   if newly_loaded then
+      turn_timer = 1
+      newly_loaded = false
+   end
    local i = 0
    while i < st_hooks_len do
       local st_hook = st_hooks[i]
@@ -491,13 +497,16 @@ function phq_action(entity, eve)
    walkDoStep(entity, entity.pj)
 
    local pix_mv = turn_timer * PIX_MV_PER_MS
-   -- well do this properly I need to sleep, bu I don't know how to do this in lua
-   if (pix_mv < 0) then pix_mv = 1 end
+   -- 2000 is absolutly random, and has not been test
+   -- I would need a computer a lot more powerful to test this case
+   -- and compute the proper uslepp value
+   if (pix_mv < 0) then yuiUsleep(2000); pix_mv = 1 end
 
    local mvPos = Pos.new(pix_mv * entity.pj.move.left_right,
 			 pix_mv * entity.pj.move.up_down)
     ylpcsHandlerMove(entity.pj, mvPos.ent)
     local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
+    --local col_rel = NO_COLISION
     if col_rel == NORMAL_COLISION then
        mvPos:opposite()
        ylpcsHandlerMove(entity.pj, mvPos.ent)
@@ -552,6 +561,7 @@ function load_scene(ent, sceneTxt, entryIdx)
    local x = 0
    local y = 0
 
+   newly_loaded = true
    if sceneTxt == nil then
       print("can load a nil scene!\n")
       return
