@@ -35,6 +35,12 @@ local LPCS_UP = 8
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
 
+local upKeys = Event.CreateGrp(Y_UP_KEY, Y_W_KEY)
+local downKeys = Event.CreateGrp(Y_DOWN_KEY, Y_S_KEY)
+local leftKeys = Event.CreateGrp(Y_LEFT_KEY, Y_A_KEY)
+local rightKeys = Event.CreateGrp(Y_RIGHT_KEY, Y_D_KEY)
+local actionKeys = Event.CreateGrp(Y_SPACE_KEY, Y_ENTER_KEY)
+
 local function dressUp(caracter)
    if caracter.equipement == nil then
       return
@@ -344,7 +350,6 @@ function phq_action(entity, eve)
    local turn_timer = ywidTurnTimer() / 10000
    entity = Entity.wrapp(entity)
    entity.tid = entity.tid + 1
-   eve = Event.wrapp(eve)
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
 
@@ -384,101 +389,103 @@ function phq_action(entity, eve)
       end
    end
    NpcTurn(entity)
-   while eve:is_end() == false do
-       if eve:type() == YKEY_DOWN then
-	  if eve:key() == Y_ESC_KEY then
-	     return openGlobMenu(entity, GM_MISC_IDX)
-	  elseif eve:is_key_up() then
-             entity.pj.move.up_down = -1
-             entity.pj.y = LPCS_UP
-	  elseif eve:is_key_down() then
-             entity.pj.move.up_down = 1
-             entity.pj.y = LPCS_DOWN
-	  elseif eve:is_key_left() then
-             entity.pj.move.left_right = -1
-             entity.pj.y = LPCS_LEFT
-	  elseif eve:is_key_right() then
-             entity.pj.move.left_right = 1
-             entity.pj.y = LPCS_RIGHT
-	  elseif eve:key() == Y_C_KEY then
-	     return openGlobMenu(entity, GM_STATS_IDX)
-	  elseif eve:key() == Y_I_KEY then
-	     return openGlobMenu(entity, GM_INV_IDX)
-	  elseif eve:key() == Y_M_KEY then
-	     return openGlobMenu(entity, GM_MAP_IDX)
-	  elseif eve:key() == Y_J_KEY then
-	     return openGlobMenu(entity, GM_QUEST_IDX)
-	  elseif eve:key() == Y_SPACE_KEY or eve:key() == Y_ENTER_KEY then
-             local pjPos = ylpcsHandePos(entity.pj)
-             local x_add = 0
-             local y_add = 0
+   if yevIsKeyDown(eve, Y_ESC_KEY) then
+      return openGlobMenu(entity, GM_MISC_IDX)
+   end
 
-             pjPos = Pos.wrapp(pjPos)
-             if entity.pj.y:to_int() == LPCS_UP then
-                y_add = -25
-                x_add = lpcs.w_sprite / 2
-             elseif entity.pj.y:to_int() == LPCS_LEFT then
-                x_add = -25
-                y_add = lpcs.h_sprite / 2
-             elseif entity.pj.y:to_int() == LPCS_DOWN then
-                y_add = lpcs.h_sprite + 20
-                x_add = lpcs.w_sprite / 2
-             else
-                y_add = lpcs.h_sprite / 2
-                x_add = lpcs.w_sprite + 20
-             end
-             local r = Rect.new(pjPos:x() + x_add, pjPos:y() + y_add, 10, 10)
-	     local e_actionables = entity.actionables
-             local i = 0
+   if yevIsGrpDown(eve, upKeys) then
+      entity.pj.move.up_down = -1
+      entity.pj.y = LPCS_UP
+   elseif yevIsGrpDown(eve, downKeys) then
+      entity.pj.move.up_down = 1
+      entity.pj.y = LPCS_DOWN
+   end
 
-	     while  i < yeLen(e_actionables) do
-		if ywRectCollision(r.ent, e_actionables[i].rect) and
-		checkTiledCondition(e_actionables[i]) then
-		   local args = { e_actionables[i].Arg0, e_actionables[i].Arg1,
-				  e_actionables[i].Arg2, e_actionables[i].Arg3 }
-		   local actioned = phq.actioned[entity.cur_scene_str:to_string()]
-		   local act_cnt = actioned[e_actionables[i].name:to_string()]
+   if yevIsGrpDown(eve, leftKeys) then
+      entity.pj.move.left_right = -1
+      entity.pj.y = LPCS_LEFT
+   elseif yevIsGrpDown(eve, rightKeys) then
+      entity.pj.move.left_right = 1
+      entity.pj.y = LPCS_RIGHT
+   end
 
-		   act_cnt = yeGetInt(act_cnt) + 1
-		   actioned[e_actionables[i].name:to_string()] = act_cnt
-		   print("ACTION: ", phq.actioned, e_actionables[i].usable_once,
-			 e_actionables[i].Arg0)
-		   -- save here the number of time this object have been actioned
-		   yesCall(ygGet(e_actionables[i].Action:to_string()),
-				  entity:cent(), e_actionables[i]:cent(), args[1],
-				  args[2], args[3], args[4])
-		end
-		i = i + 1
-	     end
+   if yevIsKeyDown(eve, Y_C_KEY) then
+      return openGlobMenu(entity, GM_STATS_IDX)
+   elseif yevIsKeyDown(eve, Y_I_KEY) then
+      return openGlobMenu(entity, GM_INV_IDX)
+   elseif yevIsKeyDown(eve, Y_M_KEY) then
+      return openGlobMenu(entity, GM_MAP_IDX)
+   elseif yevIsKeyDown(eve, Y_J_KEY) then
+      return openGlobMenu(entity, GM_QUEST_IDX)
+   end
 
-	     local col = ywCanvasNewCollisionsArrayWithRectangle(entity.mainScreen, r:cent())
-             col = Entity.wrapp(col)
-             --print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
-	     i = 0
-             while i < yeLen(col) do
-                local dialogue = col[i].dialogue
-		if startDialogue(entity, col[i], dialogue) == YEVE_ACTION then
-		   yeDestroy(col)
-		   return YEVE_ACTION
-		end
-                i = i + 1
-             end
-             yeDestroy(col)
-	  end
+   if yevIsGrpDown(eve, actionKeys) then
+      local pjPos = ylpcsHandePos(entity.pj)
+      local x_add = 0
+      local y_add = 0
 
-        elseif eve:type() == YKEY_UP then
-	  if eve:is_key_up() then
-	     entity.pj.move.up_down = 0
-	  elseif eve:is_key_down() then
-	     entity.pj.move.up_down = 0
-	  elseif eve:is_key_left() then
-	     entity.pj.move.left_right = 0
-	  elseif eve:is_key_right() then
-	     entity.pj.move.left_right = 0
-          end
-          entity.pj.x = 0
-       end
-       eve = eve:next()
+      pjPos = Pos.wrapp(pjPos)
+      if entity.pj.y:to_int() == LPCS_UP then
+	 y_add = -25
+	 x_add = lpcs.w_sprite / 2
+      elseif entity.pj.y:to_int() == LPCS_LEFT then
+	 x_add = -25
+	 y_add = lpcs.h_sprite / 2
+      elseif entity.pj.y:to_int() == LPCS_DOWN then
+	 y_add = lpcs.h_sprite + 20
+	 x_add = lpcs.w_sprite / 2
+      else
+	 y_add = lpcs.h_sprite / 2
+	 x_add = lpcs.w_sprite + 20
+      end
+      local r = Rect.new(pjPos:x() + x_add, pjPos:y() + y_add, 10, 10)
+      local e_actionables = entity.actionables
+      local i = 0
+
+      while  i < yeLen(e_actionables) do
+	 if ywRectCollision(r.ent, e_actionables[i].rect) and
+	 checkTiledCondition(e_actionables[i]) then
+	    local args = { e_actionables[i].Arg0, e_actionables[i].Arg1,
+			   e_actionables[i].Arg2, e_actionables[i].Arg3 }
+	    local actioned = phq.actioned[entity.cur_scene_str:to_string()]
+	    local act_cnt = actioned[e_actionables[i].name:to_string()]
+
+	    act_cnt = yeGetInt(act_cnt) + 1
+	    actioned[e_actionables[i].name:to_string()] = act_cnt
+	    print("ACTION: ", phq.actioned, e_actionables[i].usable_once,
+		  e_actionables[i].Arg0)
+	    -- save here the number of time this object have been actioned
+	    yesCall(ygGet(e_actionables[i].Action:to_string()),
+		    entity:cent(), e_actionables[i]:cent(), args[1],
+		    args[2], args[3], args[4])
+	 end
+	 i = i + 1
+      end
+
+      local col = ywCanvasNewCollisionsArrayWithRectangle(entity.mainScreen, r:cent())
+      col = Entity.wrapp(col)
+      --print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
+      i = 0
+      while i < yeLen(col) do
+	 local dialogue = col[i].dialogue
+	 if startDialogue(entity, col[i], dialogue) == YEVE_ACTION then
+	    yeDestroy(col)
+	    return YEVE_ACTION
+	 end
+	 i = i + 1
+      end
+      yeDestroy(col)
+   end
+
+   if yevIsGrpUp(eve, upKeys) then
+      entity.pj.move.up_down = 0
+   elseif yevIsGrpUp(eve, downKeys) then
+      entity.pj.move.up_down = 0
+   end
+   if yevIsGrpUp(eve, leftKeys) then
+      entity.pj.move.left_right = 0
+   elseif yevIsGrpUp(eve, rightKeys) then
+      entity.pj.move.left_right = 0
    end
 
    walkDoStep(entity, entity.pj)
