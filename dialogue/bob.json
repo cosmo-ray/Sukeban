@@ -1,7 +1,43 @@
 {
     "Bob": {
 	"dialogue" : {
-	    "hi": "hej"
+	    "hi" : {
+		"text": "hej",
+		"answers": [
+		    {
+			"condition":  ["=", "phq.quests.school_sub", 7],
+			"text": "hej are you bob ",
+			"action": ["Dialogue:goto", "gamba0"]
+		    },
+		    {
+			"text": "hej",
+			"action": "phq.backToGame"
+		    }
+		]
+	    },
+	    "gamba0": {
+		"text": "yes, we know each other ?",
+		"answer": {
+		    "text": [
+			"no but your father ask me to help you find gamba for you",
+			"any idea where I can find him ?"
+		    ],
+		    "action": ["Dialogue:goto", "gamba1"]
+		}
+	    },
+	    "gamba1": {
+		"text": [ "well, I'm not sure ehre he his, but I know which bully toke him",
+			  "It's grom and his sbirt, ther're generally slacking of",
+			  "in the campfire near the WUT",
+			  "follow me, I can show you"],
+		"answer": {
+		    "text": "nice let's go find him",
+		    "actions": [
+			[ "setInt", "phq.quests.school_sub", 8 ],
+			"phq.backToGame"
+		    ]
+		}
+	    }
 	}
     }
 }
