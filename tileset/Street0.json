@@ -251,6 +251,42 @@
                  "width":0,
                  "x":417,
                  "y":441
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"Charle",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":177,
+                 "y":41
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"Thrug 1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":208,
+                 "y":75
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"Thrug 0",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":143,
+                 "y":72
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -258,7 +294,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":15,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

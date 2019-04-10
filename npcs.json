@@ -1,6 +1,7 @@
 {
     "_include": [ "./npcs/police.json",
-		  "./npcs/students.json"],
+		  "./npcs/students.json",
+		  "./npcs/random.json"],
     "Greta": {
 	"sex": "female",
 	"type": "light",

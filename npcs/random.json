@@ -1,5 +1,5 @@
 {
-    "Bob": {
+    "Thrug 0": {
         "sex": "male",
         "type": "light",
         "max_life": 10,
@@ -10,8 +10,9 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
+	"image": "./Portrait_04.png",
     },
-    "Charle": {
+    "Thrug 1": {
         "sex": "male",
         "type": "light",
         "max_life": 10,
@@ -22,5 +23,6 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
+	"image": "./Portrait_04.png",
     }
 }
