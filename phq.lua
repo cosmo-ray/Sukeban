@@ -359,6 +359,7 @@ function phq_action(entity, eve)
       return NOTHANDLE
    end
 
+   print("Last Turn Length: ", turn_timer, ywidTurnTimer())
    if newly_loaded then
       turn_timer = 1
       newly_loaded = false
@@ -498,7 +499,7 @@ function phq_action(entity, eve)
    -- 2000 is absolutly random, and has not been test
    -- I would need a computer a lot more powerful to test this case
    -- and compute the proper uslepp value
-   print(entity.pj.mv_pix, " - ", pix_mv)
+   --print(entity.pj.mv_pix, " - ", pix_mv)
    if (pix_mv < 1) then print("TOO SLOW !!!!!", pix_mv) yuiUsleep(2000); pix_mv = 1 end
 
    entity.pj.mv_pix = entity.pj.mv_pix + math.abs(pix_mv)
@@ -509,7 +510,7 @@ function phq_action(entity, eve)
     local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
     --local col_rel = NO_COLISION
 
-    print("MV: ", ywPosToString(mvPos:cent()))
+    --print("MV: ", ywPosToString(mvPos:cent()))
     if col_rel == NORMAL_COLISION then
        mvPos:opposite()
        ylpcsHandlerMove(entity.pj, mvPos.ent)
