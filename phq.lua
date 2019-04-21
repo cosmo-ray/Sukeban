@@ -355,7 +355,6 @@ function phq_action(entity, eve)
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
 
-   print("new turn: ", turn_timer, ywidTurnTimer())
    if yeGetInt(entity.current) > 1 then
       return NOTHANDLE
    end
@@ -494,22 +493,30 @@ function phq_action(entity, eve)
       entity.pj.move.left_right = 0
    end
 
-   walkDoStep(entity, entity.pj)
 
    local pix_mv = turn_timer * PIX_MV_PER_MS
    -- 2000 is absolutly random, and has not been test
    -- I would need a computer a lot more powerful to test this case
    -- and compute the proper uslepp value
-   if (pix_mv < 0) then yuiUsleep(2000); pix_mv = 1 end
+   print(entity.pj.mv_pix, " - ", pix_mv)
+   if (pix_mv < 1) then print("TOO SLOW !!!!!", pix_mv) yuiUsleep(2000); pix_mv = 1 end
+
+   entity.pj.mv_pix = entity.pj.mv_pix + math.abs(pix_mv)
 
    local mvPos = Pos.new(pix_mv * entity.pj.move.left_right,
 			 pix_mv * entity.pj.move.up_down)
     ylpcsHandlerMove(entity.pj, mvPos.ent)
     local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
     --local col_rel = NO_COLISION
+
+    print("MV: ", ywPosToString(mvPos:cent()))
     if col_rel == NORMAL_COLISION then
        mvPos:opposite()
        ylpcsHandlerMove(entity.pj, mvPos.ent)
+    end
+    if (entity.pj.mv_pix > 6) then
+       entity.pj.mv_pix = 0
+       walkDoStep(entity, entity.pj)
     end
     reposeCam(entity)
     return YEVE_ACTION
@@ -760,6 +767,7 @@ function create_phq(entity)
     dressUp(phq.pj)
     lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
     load_scene(ent, yeGetString(yeToLower(scenePath)), 0)
+    ent.pj.mv_pix = Entity.new_float(0)
     ent.pj.move = {}
     ent.pj.move.up_down = 0
     ent.pj.move.left_right = 0
