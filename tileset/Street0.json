@@ -257,6 +257,14 @@
                  "id":15,
                  "name":"Charle",
                  "point":true,
+                 "properties":
+                    {
+                     "Rotation":"down"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -269,6 +277,14 @@
                  "id":16,
                  "name":"Thrug 1",
                  "point":true,
+                 "properties":
+                    {
+                     "Rotation":"left"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -281,6 +297,14 @@
                  "id":17,
                  "name":"Thrug 0",
                  "point":true,
+                 "properties":
+                    {
+                     "Rotation":"right"
+                    },
+                 "propertytypes":
+                    {
+                     "Rotation":"string"
+                    },
                  "rotation":0,
                  "type":"",
                  "visible":true,
