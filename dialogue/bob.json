@@ -26,10 +26,9 @@
 		}
 	    },
 	    "gamba1": {
-		"text": [ "well, I'm not sure ehre he his, but I know which bully toke him",
-			  "It's grom and his sbirt, ther're generally slacking of",
-			  "in the campfire near the WUT",
-			  "follow me, I can show you"],
+		"text": [ "well, I'm not sure where he is, but I know which bully toke him",
+			  "It's Charle and his sbirt, ther're generally slacking of",
+			  "in the campfire near the WUT"],
 		"answer": {
 		    "text": "nice let's go find him",
 		    "actions": [

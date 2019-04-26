@@ -163,7 +163,6 @@ function StartFight(wid, eve, enemy_type, afa)
    local npc = nil
    --ySoundPlayLoop(main.soundcallgirl:to_int())
 
-   print("args: ", enemy_type, eve)
    if (yIsNil(enemy_type)) then
       local wid = yDialogueGetMain(wid)
       wid = Entity.wrapp(wid)

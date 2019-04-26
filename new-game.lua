@@ -23,7 +23,7 @@ function newGameAction(menu, eve, arg)
    phq.pj.trait = {}
    phq.pj.drunk = 0
    phq.pj.xp = 0
-   phq.pj.stats.charisme = 0
+   phq.pj.stats.charm = 0
    phq.pj.stats.strength = 0
    phq.pj.stats.smart = 0
    phq.pj.archetype = archetype
@@ -36,12 +36,11 @@ function newGameAction(menu, eve, arg)
       phq.pj.stats.smart = 3
    elseif archetype == IDOLE_ARCHETYPE then
       phq.pj.knowledge.fashion = 5
-      phq.pj.stats.charisme = 5
+      phq.pj.stats.charm = 5
       phq.pj.stats.strength = 1
    elseif archetype == BRUTE_ARCHETYPE then
       phq.pj.knowledge.slang = 5
       phq.pj.trait.violance = 1
-      phq.pj.stats.charisme = 1
       phq.pj.stats.strength = 3
    elseif archetype == WORMS_COINOISSEUR_ARCHETYPE then
       phq.pj.knowledge.worms = 5

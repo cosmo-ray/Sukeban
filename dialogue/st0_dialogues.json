@@ -1,4 +1,25 @@
 {
+    "_include": [
+	"./dialogue/Charle.json"
+    ],
+    "Thrug 0" : {
+	"dialogue" : [
+	    {
+		"text": "hej mademoisel, give me your adress please",
+		"condition": [">", "phq.pj.stats.charm", 4],
+		"answer": {
+		    "action": [ "phq.backToGame" ],
+		    "text": "nope"
+		}
+	    },
+	    "you watchin me ?"
+	]
+    },
+    "Thrug 1" : {
+	"dialogue" : [
+	    "go away loser"
+	]
+    },
     "Joe": {
 	"dialogue" : [
 	    {
@@ -38,7 +59,7 @@
 				"texts" : [
 				    {
 					"text": "I'm sorry, I'd like to but I can give a free sample to every new client",
-					"condition": ["<", "phq.pj.stats.charisme", 4]
+					"condition": ["<", "phq.pj.stats.charm", 4]
 				    },
 				    {
 					"text" : "well, why not, I don't see pretty face every day",
