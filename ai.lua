@@ -54,7 +54,7 @@ function PjLeaveController(wid, action)
    ylpcsHandlerSetPos(npc, mvPos)
 end
 
-function PjLeave(owid, eve, arg, entryPoint)
+function PjLeave(owid, eve, entryPoint)
    wid = Entity.wrapp(yDialogueGetMain(owid))
    local main = Entity.wrapp(ywCntWidgetFather(wid))
    local npc = main.npcs[wid.npc_nb:to_int()]

@@ -10,6 +10,11 @@
 			"action": ["Dialogue:goto", "gamba0"]
 		    },
 		    {
+			"condition":  ["=", "phq.quests.school_sub", 9],
+			"text": "hej bob, I got gamba",
+			"action": ["Dialogue:goto", "gamba2"]
+		    },
+		    {
 			"text": "hej",
 			"action": "phq.backToGame"
 		    }
@@ -34,6 +39,18 @@
 		    "actions": [
 			[ "setInt", "phq.quests.school_sub", 8 ],
 			"phq.backToGame"
+		    ]
+		}
+	    },
+	    "gamba2": {
+		"text": [ "Gamba, gambe, gamba my friend",
+			  "thanks a lot", "ok",
+			  "I go tell my father about this now"],
+		"answer": {
+		    "text": "nice let's go find him",
+		    "actions": [
+			[ "setInt", "phq.quests.school_sub", 10 ],
+			[ "phq.PjLeave", 1 ]
 		    ]
 		}
 	    }

@@ -2,6 +2,12 @@
     "Bill": {
 	"dialogue": [
 	    {
+		"text": ["I've hear from my son that you find his rat, thanks",
+			 "Agent Machette have your papper"],
+		"condition":  ["=", "phq.quests.school_sub", 10],
+		"action": "phq.backToGame"
+	    },
+	    {
 		"text": "Don't speak to me I'm just the assistant",
 		"answers": [
 		    {
@@ -47,6 +53,11 @@
 			"action": "phq.backToGame"
 		    },
 		    {
+			"text": "so, do you have my paper ?",
+			"condition":  ["=", "phq.quests.school_sub", 10],
+			"action": ["Dialogue:goto", "end_sub"]
+		    },
+		    {
 			"text": [
 			    "So I can't have the pove",
 			    "is there another way to have a certification ?"
@@ -60,8 +71,16 @@
 			    "yes I need a certifica from here in order",
 			    "to subscribe to my new school"
 			],
-			"condition":  ["=", "phq.quests.school_sub", 4]
+			"condition":  ["=", "phq.quests.school_sub", 4],
+			"action": ["Dialogue:goto", "end_sub"]
 		    }
+		]
+	    },
+	    "end_sub": {
+		"text": "yes, you can thanks my assistant\n(she give you the certification)",
+		"actions": [
+		    ["setInt", "phq.quests.school_sub", 11],
+		    "phq.backToGame"
 		]
 	    },
 	    "shool_sub": {
