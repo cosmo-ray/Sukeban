@@ -13,7 +13,7 @@
 			"text": "hello I'm here to subscribe to the neibourg school"
 		    }
 
-		],
+		]
 	    },
 	    "for school subscrition, you need to go to the subscription office, not here"
 	]
@@ -53,7 +53,13 @@
 			"condition":  ["=", "phq.quests.school_sub", 3],
 			"text": "hej, I've bring back my papper signed by my mom",
 			"action": ["Dialogue:goto", 3]
+		    },
+		    {
+			"condition":  ["=", "phq.quests.school_sub", 11],
+			"text": "here is my papper from the police, what other paper do I need to bring now ?",
+			"action": ["Dialogue:goto", 5]
 		    }
+
 		]
 	    },
 	    {
@@ -80,12 +86,12 @@
 			"the police certification ? what police certification ?",
 			"you ask for a paper sign by ny mom not for some police stuff"
 		    ]
-		},
+		}
 	    },
 	    {
 		"text": ["well you need a paper from your parent",
-			 "and a paper from the police don't know that",
-			 "anyway go to the police comiseria they have the habit",
+			 "and a paper from the police don't you know that ?",
+			 "anyway go to the police station they have the habit",
 			 "in the meantime I'll keep the document you've bring"],
 		"answer": {
 		    "text": "thanks, I guess",
@@ -93,9 +99,32 @@
 			[ "setInt", "phq.quests.school_sub", 4 ],
 			"phq.backToGame"
 		    ]
-		},
+		}
+	    },
+	    {
+		"text": ["what you all all the necesary paper",
+			 "we're not that burocratic"],
+		"answer": "so, it's good I can go to school now ?"
+	    },
+	    "of course",
+	    {
+		"text": "you just need to tampoo all the paper to the 'tampooning office'\nand bring them to the 'Town Hall Posting Office'",
+		"answer": "oh\nyou scare me, I though It finish"
+	    },
+	    {
+		"text": ["but I like you, I will do that for you",
+			 "congrat",
+			 "you can now go to school",
+			 "the school start in 21 days"],
+		"answer": {
+		    "text": "Well thanks",
+		    "actions": [
+			[ "setInt", "phq.quests.school_sub", 12 ],
+			[ "setInt", "phq.quests.school_1_semestre", 1 ],
+			"phq.backToGame"
+		    ]
+		}
 	    }
-
 	]
     }
 }
