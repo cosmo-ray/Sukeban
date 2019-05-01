@@ -359,7 +359,7 @@ function phq_action(entity, eve)
       return NOTHANDLE
    end
 
-   print("Last Turn Length: ", turn_timer, ywidTurnTimer())
+   --print("Last Turn Length: ", turn_timer, ywidTurnTimer())
    if newly_loaded then
       turn_timer = 1
       newly_loaded = false

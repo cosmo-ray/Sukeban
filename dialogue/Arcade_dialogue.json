@@ -55,6 +55,24 @@
 	    }
 	]
     },
+    "Warrior Of Asc II": {
+	"dialogue" : [
+	    {
+		"text": "Warrior Of Asc II\nplay 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1, "phq.playAI",
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
+	]
+    },
     "Standart Nerd": {
 	"dialogue": [
 	    {
