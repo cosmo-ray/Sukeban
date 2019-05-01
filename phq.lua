@@ -164,6 +164,7 @@ function init_phq(mod)
    mod.remove = Entity.new_func("remove")
    mod.use_time_point = Entity.new_func("use_time_point")
    mod.changeScene = Entity.new_func("changeScene")
+   mod.openGlobMenu = Entity.new_func("openGlobMenu")
 end
 
 function load_game(entity, save_dir)

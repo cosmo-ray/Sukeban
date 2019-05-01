@@ -51,12 +51,16 @@ function gmGetBackFocus(mn)
    return YEVE_NOACTION;
 end
 
-function openGlobMenu(main, on_idx)
+function openGlobMenu(main, on_idx, arg0)
    local mn = Container.new_entity("horizontal")
    --mn.ent.action = Entity.new_func("backToGameOnEnter")
    mn.ent.background = "rgba: 155 155 255 190"
    mn.ent.auto_foreground = "rgba: 0 0 120 50"
 
+   print("open GB")
+   if arg0 then
+      on_idx = yeGetInt(arg0)
+   end
    local panel = Menu.new_entity()
    local lf = Entity.new_func("gmLooseFocus")
    panel.ent["mn-type"] = "panel"
