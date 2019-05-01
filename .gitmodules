@@ -1,3 +1,6 @@
 [submodule "modules/tetris"]
 	path = modules/tetris
 	url = https://github.com/cosmo-ray/yirl-ascii-tetris.git
+[submodule "modules/AscII"]
+	path = modules/AscII
+	url = /home/uso/ai/

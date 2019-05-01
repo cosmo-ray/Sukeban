@@ -580,6 +580,24 @@ function playTetris(wid)
    return YEVE_ACTION
 end
 
+function play(wid, eve, game, timer)
+   local wid = Entity.wrapp(wid)
+   local main = getMainWid(wid)
+
+   print("play !!!!", eve, game, yeGetInt(timer))
+
+   ywCntPopLastEntry(main)
+   local t = Entity.new_array()
+
+   t["<type>"] = game
+   t.die = Entity.new_func("backToGame")
+   t.quit = Entity.new_func("backToGame")
+   t.oldTimer = main["turn-length"]
+   main["turn-length"] = timer
+   ywPushNewWidget(main, t)
+   return YEVE_ACTION
+end
+
 function playVapp(wid)
    local wid = Entity.wrapp(wid)
    local main = nil

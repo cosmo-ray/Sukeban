@@ -62,7 +62,7 @@
 		"answers": [
 		    {
 			"text": "Play",
-			"action": [ "phq.pay", 1, "phq.playAI",
+			"action": [ "phq.pay", 1, ["phq.play", "ai", 100000],
 				    "not enouth money" ]
 		    },
 		    {
