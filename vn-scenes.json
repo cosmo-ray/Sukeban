@@ -71,5 +71,7 @@ Introduce some characters too :)
 
 	},
 	"the basement, nothing to do here...\n"
-    ]
+    ], "Mall": {
+	"in": "your at the Mall entrance"
+    }
 }

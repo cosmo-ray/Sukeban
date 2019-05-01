@@ -14,6 +14,8 @@ quests_info = File.jsonToEnt("quests/main.json")
 
 main_widget = nil
 
+phq_action_timer = nil
+
 local window_width = 800
 local window_height = 600
 local pj_pos = nil
@@ -280,9 +282,22 @@ function CheckColision(main, canvasWid, pj)
    while i < yeLen(exites) do
       local rect = exites[i].rect
       if ywRectCollision(rect, colRect) then
-	 if checkObjTime(exites[i], cur_time) then
-	    local nextSceneTxt = yeGetString(yeToLower(exites[i].nextScene))
-	    load_scene(main, nextSceneTxt, yeGetInt(exites[i].entry))
+	 local exit = exites[i]
+	 if checkObjTime(exit, cur_time) then
+	    local nextSceneTxt = yeGetString(yeToLower(exit.nextScene))
+	    if yIsNil(nextSceneTxt) == false then
+	       load_scene(main, nextSceneTxt, yeGetInt(exit.entry))
+	    elseif yeGetInt(exit.disable_timer) == 0 or
+	    os.time() - yeGetInt(exit.disable_timer) > 2 then
+	       local args = { exit.Arg0, exit.Arg1,
+			      exit.Arg2, exit.Arg3 }
+
+	       exit.disable_timer = os.time()
+	       phq_action_timer = exit.disable_timer:cent()
+	       yesCall(ygGet(exit.Action:to_string()),
+		       main:cent(), exit:cent(), args[1],
+		       args[2], args[3], args[4])
+	    end
 	    return CHANGE_SCENE_COLISION
 	 elseif this_door_is_lock_msg == 0 then
 	    this_door_is_lock_msg = 20
@@ -484,14 +499,11 @@ function phq_action(entity, eve)
       yeDestroy(col)
    end
 
-   if yevIsGrpUp(eve, upKeys) then
-      entity.pj.move.up_down = 0
-   elseif yevIsGrpUp(eve, downKeys) then
+   if yevIsGrpUp(eve, upKeys) or yevIsGrpUp(eve, downKeys) then
       entity.pj.move.up_down = 0
    end
-   if yevIsGrpUp(eve, leftKeys) then
-      entity.pj.move.left_right = 0
-   elseif yevIsGrpUp(eve, rightKeys) then
+
+   if yevIsGrpUp(eve, leftKeys) or yevIsGrpUp(eve, rightKeys) then
       entity.pj.move.left_right = 0
    end
 

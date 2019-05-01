@@ -87,14 +87,14 @@
                  "name":"UpMall",
                  "properties":[
                         {
-                         "name":"entry",
-                         "type":"int",
-                         "value":2
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.vnScene"
                         }, 
                         {
-                         "name":"nextScene",
+                         "name":"Arg0",
                          "type":"string",
-                         "value":"street4"
+                         "value":"Mall"
                         }, 
                         {
                          "name":"side",

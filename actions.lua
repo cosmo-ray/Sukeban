@@ -96,6 +96,12 @@ function backToGame(wid)
 	 wid.src = nil
       end
    end
+
+   if (yIsNil(phq_action_timer) == false) then
+      yeSetInt(phq_action_timer, os.time())
+      phq_action_timer = nil
+   end
+
    if yeGetInt(wid.in_subcontained) == 1 then
       wid = Entity.wrapp(ywCntWidgetFather(wid))
    end
@@ -111,6 +117,8 @@ function backToGame(wid)
    end
    ywCntPopLastEntry(main)
    main.current = 0
+   main.pj.move.up_down = 0
+   main.pj.move.left_right = 0
    return YEVE_ACTION
 end
 
