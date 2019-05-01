@@ -289,14 +289,9 @@ function CheckColision(main, canvasWid, pj)
 	       load_scene(main, nextSceneTxt, yeGetInt(exit.entry))
 	    elseif yeGetInt(exit.disable_timer) == 0 or
 	    os.time() - yeGetInt(exit.disable_timer) > 2 then
-	       local args = { exit.Arg0, exit.Arg1,
-			      exit.Arg2, exit.Arg3 }
-
 	       exit.disable_timer = os.time()
 	       phq_action_timer = exit.disable_timer:cent()
-	       yesCall(ygGet(exit.Action:to_string()),
-		       main:cent(), exit:cent(), args[1],
-		       args[2], args[3], args[4])
+	       phq_do_action(main, exit)
 	    end
 	    return CHANGE_SCENE_COLISION
 	 elseif this_door_is_lock_msg == 0 then
@@ -362,6 +357,15 @@ function pushMainMenu(main)
    mn.ent.onEsc = Entity.new_func("gmGetBackFocus")
    mn.ent.next = Entity.wrapp(ywCntWidgetFather(main)).next
    ywPushNewWidget(main, mn.ent)
+end
+
+
+function phq_do_action(main, a)
+   local args = { a.Arg0, a.Arg1, a.Arg2, a.Arg3 }
+
+   yesCall(ygGet(a.Action:to_string()), main:cent(), a:cent(), args[1],
+	   args[2], args[3], args[4])
+
 end
 
 function phq_action(entity, eve)
@@ -467,8 +471,6 @@ function phq_action(entity, eve)
       while  i < yeLen(e_actionables) do
 	 if ywRectCollision(r.ent, e_actionables[i].rect) and
 	 checkTiledCondition(e_actionables[i]) then
-	    local args = { e_actionables[i].Arg0, e_actionables[i].Arg1,
-			   e_actionables[i].Arg2, e_actionables[i].Arg3 }
 	    local actioned = phq.actioned[entity.cur_scene_str:to_string()]
 	    local act_cnt = actioned[e_actionables[i].name:to_string()]
 
@@ -477,9 +479,7 @@ function phq_action(entity, eve)
 	    print("ACTION: ", phq.actioned, e_actionables[i].usable_once,
 		  e_actionables[i].Arg0)
 	    -- save here the number of time this object have been actioned
-	    yesCall(ygGet(e_actionables[i].Action:to_string()),
-		    entity:cent(), e_actionables[i]:cent(), args[1],
-		    args[2], args[3], args[4])
+	    phq_do_action(entity, e_actionables[i])
 	 end
 	 i = i + 1
       end

@@ -120,7 +120,7 @@
 		]
 	    },
 	    {
-		"text": "nothing you can ever reach",
+		"text": "nothing you will ever reach",
 		"answers": [
 		    { "text": "We'll see", "action": "phq.backToGame" },
 		    { "text": "Ok bye", "action": "phq.backToGame" }
