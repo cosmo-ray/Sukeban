@@ -72,6 +72,15 @@ Introduce some characters too :)
 	},
 	"the basement, nothing to do here...\n"
     ], "Mall": {
-	"in": "your at the Mall entrance"
+	"in": {
+	    "text": "your at Mall entrance",
+	    "answers": [
+		{
+		    "text": "go to roof",
+		    "action": ["phq.changeScene", "street4", 2]
+		},
+		"leave"
+	    ]
+	}
     }
 }
