@@ -85,6 +85,9 @@
 
     "school0" : {"tiled": "./tileset/school0.json"},
     "school1" : {"tiled": "./tileset/school1.json"},
+    "school2" : {"tiled": "./tileset/school2.json"},
+    "school3" : {"tiled": "./tileset/school3.json"},
+    "school_under" : {"tiled": "./tileset/school_under.json"},
     "school_class_00" : {"tiled": "./tileset/school_class_00.json"},
     "school_class_01" : {"tiled": "./tileset/school_class_01.json"},
     "school_class_02" : {"tiled": "./tileset/school_class_02.json"},

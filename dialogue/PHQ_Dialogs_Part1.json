@@ -158,11 +158,11 @@
 		},
 	    },
 	    {
-		"text": "nice, here's your 3 bucks",
+		"text": "nice, here's your 2 bucks",
 		"answer": {
 		    "text": "(reward !)",
 		    "actions": [
-			["phq.recive", "money", 3],
+			["phq.recive", "money", 2],
 			["phq.increase", "xp", 10],
 			["setInt", "phq.quests.no_rats", 2],
 			"phq.backToGame"
@@ -446,6 +446,11 @@
 		    }
 		]
 	    }
+	]
+    },
+    "Bruce" : {
+	"dialogue" : [
+	    "heja, It's me bruce"
 	]
     },
     "Short guy" : {

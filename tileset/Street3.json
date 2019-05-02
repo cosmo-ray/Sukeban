@@ -124,6 +124,33 @@
                  "width":66,
                  "x":928,
                  "y":671
+                }, 
+                {
+                 "height":41.7032484635645,
+                 "id":3,
+                 "name":"school_roof",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school3"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":39.5083406496927,
+                 "x":417.032484635645,
+                 "y":26.3388937664618
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -132,10 +159,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":3,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.1",
+ "tiledversion":"1.2.3",
  "tileheight":32,
  "tilesets":[
         {

@@ -65,7 +65,61 @@
          "draworder":"topdown",
          "id":5,
          "name":"Entries",
-         "objects":[],
+         "objects":[
+                {
+                 "height":37,
+                 "id":15,
+                 "name":"down",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school1"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":37,
+                 "x":513,
+                 "y":629
+                }, 
+                {
+                 "height":38,
+                 "id":17,
+                 "name":"up",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school3"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30,
+                 "x":1025,
+                 "y":477
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -73,7 +127,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":15,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -82,7 +136,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.1",
+ "tiledversion":"1.2.3",
  "tileheight":32,
  "tilesets":[
         {

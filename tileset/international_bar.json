@@ -397,14 +397,14 @@
                         {
                          "name":"Rotation",
                          "type":"string",
-                         "value":"down"
+                         "value":"right"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":100.341159943809,
-                 "y":305.037126229179
+                 "x":109.341159943809,
+                 "y":362.037126229179
                 }],
          "opacity":1,
          "type":"objectgroup",

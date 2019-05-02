@@ -319,6 +319,11 @@
                  "name":"up",
                  "properties":[
                         {
+                         "name":"entry",
+                         "type":"int",
+                         "value":8
+                        }, 
+                        {
                          "name":"nextScene",
                          "type":"string",
                          "value":"school1"
@@ -334,6 +339,33 @@
                  "width":74,
                  "x":445,
                  "y":76
+                }, 
+                {
+                 "height":25,
+                 "id":16,
+                 "name":"Down",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school_under"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31,
+                 "x":605,
+                 "y":100
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -342,7 +374,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":16,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -351,7 +383,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.1",
+ "tiledversion":"1.2.3",
  "tileheight":32,
  "tilesets":[
         {

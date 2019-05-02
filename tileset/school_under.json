@@ -47,7 +47,34 @@
          "draworder":"topdown",
          "id":5,
          "name":"Entries",
-         "objects":[],
+         "objects":[
+                {
+                 "height":59.9046970728387,
+                 "id":15,
+                 "name":"up",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":12
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school0"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":62.6276378488768,
+                 "x":623.55343771273,
+                 "y":68.073519400953
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -55,7 +82,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":15,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "properties":[
         {

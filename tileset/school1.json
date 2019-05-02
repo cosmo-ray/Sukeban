@@ -241,6 +241,60 @@
                  "width":29,
                  "x":322,
                  "y":527
+                }, 
+                {
+                 "height":35,
+                 "id":15,
+                 "name":"Down",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":11
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school0"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":58,
+                 "x":449,
+                 "y":93
+                }, 
+                {
+                 "height":41,
+                 "id":16,
+                 "name":"up",
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school2"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":37,
+                 "x":572,
+                 "y":626
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -249,7 +303,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":15,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -258,7 +312,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.1",
+ "tiledversion":"1.2.3",
  "tileheight":32,
  "tilesets":[
         {
