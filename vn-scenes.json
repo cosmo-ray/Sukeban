@@ -81,7 +81,7 @@ Introduce some characters too :)
 		},
 		{
 		    "text": "metro",
-		    "actions": [
+		    "actions": [["phq.setCurStation", 0, 1],
 				["phq.openGlobMenu", 3]]
 		},
 		"leave"

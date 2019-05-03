@@ -37,6 +37,11 @@ local function gotoStation(metroMap, station_idx, line_idx)
    return YEVE_ACTION
 end
 
+function setCurStation(main, useless, line, station)
+   phq.env.station[0] = line
+   phq.env.station[1] = station
+end
+
 function metroAction(metroMap, eve)
    metroMap = Entity.wrapp(metroMap)
    eve = Event.wrapp(eve)
