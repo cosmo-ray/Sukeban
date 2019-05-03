@@ -65,7 +65,7 @@ function backToGameOnEnter(wid, eve)
    return YEVE_NOTHANDLE
 end
 
-local function getMainWid(wid)
+function getMainWid(wid)
    wid = Entity.wrapp(wid)
    if wid:cent() == main_widget then
       return wid

@@ -79,6 +79,11 @@ Introduce some characters too :)
 		    "text": "go to roof",
 		    "action": ["phq.changeScene", "street4", 2]
 		},
+		{
+		    "text": "metro",
+		    "actions": [
+				["phq.openGlobMenu", 3]]
+		},
 		"leave"
 	    ]
 	}

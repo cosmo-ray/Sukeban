@@ -4,6 +4,7 @@ local phq = Entity.wrapp(ygGet("phq"))
 local arrow_path = Entity.wrapp(ygGet("DialogueBox.$path")):to_string() .. "/arrow_sheet.png"
 local line_actual0 = "currently on line: "
 local ST_NAME_IDX = 2
+usable_metro = false
 
 local function printable_st_name(station)
    local st_name = yeGet(station, ST_NAME_IDX)
@@ -86,13 +87,16 @@ function metroAction(metroMap, eve)
 	       end
 	       i = i + 1
 	    end
-	 elseif eve:key() == Y_ENTER_KEY then
+	 elseif eve:key() == Y_ENTER_KEY and usable_metro then
 	    local station_name = metroMap.station[ST_NAME_IDX]
 	    if station_name then
 	       local action = metro_file.actions[station_name:to_string()]
-	       if station_name:to_string() == "Nontoise" then
+	       if station_name:to_string() == "Nontoise" or
+	       station_name:to_string() == "Nontoise Gate" then
+		  usable_metro = false
 		  return ywidAction(action, metroMap, eve)
 	       elseif (use_time_point()) then
+		  usable_metro = false
 		  return ywidAction(action, metroMap, eve)
 	       else
 		  print("NOT ENOUTH TIME POINT")
@@ -100,6 +104,7 @@ function metroAction(metroMap, eve)
 	    end
 	 elseif eve:key() == Y_ESC_KEY or
 	 eve:key() == Y_M_KEY then
+	    usable_metro = false
 	    return gmGetBackFocus(metroMap)
 	 end
       end
@@ -134,6 +139,10 @@ function pushMetroMenu(main)
    can.ent.line_txt_info = can:new_text(250, 60,
 					line_actual0 .. math.floor(l_idx)).ent
    can.ent.st_txt_info = can:new_text(250, 80, printable_st_name(station)).ent
+   print("unusable_metro: ", unusable_metro)
+   if usable_metro == false then
+      can:new_text(250, 100, "NOT CURRENTLY IN A METRO")
+   end
 
    can:new_text(500, 500, "left/right: change station\n\nup/down: change line")
    can.ent.action = Entity.new_func("metroAction")

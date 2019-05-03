@@ -1,7 +1,8 @@
 {
     "lines": [
 	[
-	    [274, 302, "Nontoise"], [306, 325, "test_zone"], [346, 332], [377, 353],
+	    [274, 302, "Nontoise"], [306, 325, "Nontoise Gate"],
+	    [346, 332, "test_zone"], [377, 353],
 	    [437, 352], [474, 365], [520, 352, "Dock"]],
 	[
 	    [545, 443], [500, 440], [435, 432], [388, 406],
@@ -35,7 +36,8 @@
 
     ],
     "actions" : {
-	"Nontoise": ["phq:changeScene", "street1"],
+	"Nontoise": ["phq:changeScene", "street0", 3],
+	"Nontoise Gate": ["phq:changeScene", "street4", 1],
 	"test_zone": ["phq:changeScene", "test_zone"],
 	"international_bar": ["phq:changeScene", "international_bar"],
 	"Dock": ["phq:vnScene", "la Jetee"]

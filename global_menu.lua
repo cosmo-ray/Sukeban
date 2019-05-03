@@ -59,7 +59,10 @@ function openGlobMenu(main, on_idx, arg0)
 
    print("open GB")
    if arg0 then
+      backToGame(main)
+      main = main_widget
       on_idx = yeGetInt(arg0)
+      usable_metro = true
    end
    local panel = Menu.new_entity()
    local lf = Entity.new_func("gmLooseFocus")
