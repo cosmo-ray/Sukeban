@@ -96,6 +96,10 @@ end
 function checkObjTime(obj, cur_time)
    local obj_time = obj.Time
 
+   if yeGetInt(obj.disable_timer) and
+   os.time() - yeGetInt(obj.disable_timer) < 2 then
+      return false
+   end
    if obj_time then
       if yeStrCaseCmp(obj_time, cur_time) ~= 0 then
 	 return false
@@ -289,18 +293,19 @@ function CheckColision(main, canvasWid, pj)
 	    local nextSceneTxt = yeGetString(yeToLower(exit.nextScene))
 	    if yIsNil(nextSceneTxt) == false then
 	       load_scene(main, nextSceneTxt, yeGetInt(exit.entry))
-	    elseif yeGetInt(exit.disable_timer) == 0 or
-	    os.time() - yeGetInt(exit.disable_timer) > 2 then
+	    else
 	       exit.disable_timer = os.time()
 	       phq_action_timer = exit.disable_timer:cent()
 	       phq_do_action(main, exit)
 	    end
 	    return CHANGE_SCENE_COLISION
-	 elseif this_door_is_lock_msg == 0 then
-	    this_door_is_lock_msg = 20
-	    printMessage(main, nil, "This door seems lock")
-	 else
-	    this_door_is_lock_msg = this_door_is_lock_msg - 1
+	 elseif yeGetInt(exit.disable_timer) == 0 then
+	    if this_door_is_lock_msg == 0 then
+	       this_door_is_lock_msg = 20
+	       printMessage(main, nil, "This door seems lock")
+	    else
+	       this_door_is_lock_msg = this_door_is_lock_msg - 1
+	    end
 	 end
       end
       i = i + 1

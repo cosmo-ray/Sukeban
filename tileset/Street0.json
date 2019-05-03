@@ -148,6 +148,38 @@
                 }, 
                 {
                  "height":337,
+                 "id":20,
+                 "name":"metro",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.setCurStation"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":38,
+                 "x":1.5,
+                 "y":419.5
+                }, 
+                {
+                 "height":337,
                  "id":19,
                  "name":"metro",
                  "properties":[
@@ -346,7 +378,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.3",
