@@ -74,7 +74,7 @@
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"school_class_00"
+                         "value":"school_class_10"
                         }, 
                         {
                          "name":"side",
@@ -96,7 +96,7 @@
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"school_class_01"
+                         "value":"school_class_11"
                         }, 
                         {
                          "name":"side",
@@ -118,7 +118,7 @@
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"school_class_02"
+                         "value":"school_class_12"
                         }, 
                         {
                          "name":"side",
@@ -156,35 +156,13 @@
                 }, 
                 {
                  "height":0,
-                 "id":8,
-                 "name":"class14",
-                 "properties":[
-                        {
-                         "name":"nextScene",
-                         "type":"string",
-                         "value":"school_class_04"
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"left"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":852.333333333333,
-                 "y":370
-                }, 
-                {
-                 "height":0,
                  "id":9,
                  "name":"class13",
                  "properties":[
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"school_class_05"
+                         "value":"school_class_13"
                         }, 
                         {
                          "name":"side",
@@ -197,6 +175,28 @@
                  "width":0,
                  "x":853,
                  "y":493
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"class14",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school_class_14"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"left"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":852.333333333333,
+                 "y":370
                 }, 
                 {
                  "height":29,

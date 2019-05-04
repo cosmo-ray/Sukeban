@@ -44,7 +44,7 @@
                         {
                          "name":"entry",
                          "type":"int",
-                         "value":5
+                         "value":4
                         }, 
                         {
                          "name":"nextScene",
@@ -114,7 +114,7 @@
  "nextobjectid":2,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.1",
+ "tiledversion":"1.2.3",
  "tileheight":32,
  "tilesets":[
         {

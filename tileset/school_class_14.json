@@ -44,12 +44,12 @@
                         {
                          "name":"entry",
                          "type":"int",
-                         "value":5
+                         "value":14
                         }, 
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"school0"
+                         "value":"school1"
                         }, 
                         {
                          "name":"side",
@@ -114,7 +114,7 @@
  "nextobjectid":2,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.1",
+ "tiledversion":"1.2.3",
  "tileheight":32,
  "tilesets":[
         {
