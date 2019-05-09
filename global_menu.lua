@@ -291,29 +291,11 @@ function pushStatus(mn)
    return YEVE_ACTION
 end
 
-function gmUseItem(mn)
-   local main = Entity.wrapp(ywCntWidgetFather(mn))
-   local cur = Entity.wrapp(ywMenuGetCurrentEntry(mn))
-   local objs_list = phq.objects
-   local o = objs_list[cur.obName:to_string()]
-   print(objs_list:cent())
-   if o and o.func then
-      if yeType(o.func) == YFUNCTION then
-	 o.func(main, o)
-      else
-	 yesCall(ygGet(o.func:to_string()), main:cent(), o:cent())
-      end
-   end
-   print("use item !!", cur.obName,
-	 objs_list[cur.obName:to_string()])
-end
-
-function invList(mn)
-   local main = Entity.wrapp(ywCntWidgetFather(mn))
+local function doItemsListening(mn)
    local inv = phq.pj.inventory
-   ywCntPopLastEntry(main)
-   mn = Menu.new_entity()
    local i = 0
+
+   mn.ent.entries = {}
    while i < yeLen(inv) do
       if inv[i] then
 	 local name = yeGetKeyAt(inv, i)
@@ -331,6 +313,48 @@ function invList(mn)
       end
       i = i + 1
    end
+end
+
+function gmUseItem(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+   local cur = Entity.wrapp(ywMenuGetCurrentEntry(mn))
+   local objs_list = phq.objects
+   local o_str = cur.obName
+   local o = objs_list[o_str:to_string()]
+   local been_used = false
+   print(objs_list:cent())
+
+   if o then
+      if o.func then
+	 if yeType(o.func) == YFUNCTION then
+	    o.func(main, o)
+	 else
+	    yesCall(ygGet(o.func:to_string()), main:cent(), o:cent())
+	 end
+	 been_used = true
+      elseif o["stats+"] then
+	 local stats_p = o["stats+"]
+
+	 been_used = true
+	 local i = 0
+	 while i < yeLen(stats_p) do
+	    increaseStat(mn, phq.pj, yeGetKeyAt(stats_p, i),
+			 yeGetIntAt(stats_p, i))
+	    i = i + 1
+	 end
+      end
+   end
+   if been_used then
+      remove(mn, nil, o_str)
+   end
+   doItemsListening(Menu.wrapp(mn))
+end
+
+function invList(mn)
+   local main = Entity.wrapp(ywCntWidgetFather(mn))
+   ywCntPopLastEntry(main)
+   mn = Menu.new_entity()
+   doItemsListening(mn)
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent.onEsc = Entity.new_func("gmGetBackFocus")
    ywPushNewWidget(main, mn.ent)

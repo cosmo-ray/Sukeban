@@ -259,7 +259,7 @@ function recive(wid, eve, objStr, nb)
 end
 
 function remove(wid, eve, objStr, nb)
-   wid = ywCntWidgetFather(yDialogueGetMain(wid))
+   wid = main_widget
    nb = yeGetInt(nb)
    if nb == 0 then
       nb = -1
