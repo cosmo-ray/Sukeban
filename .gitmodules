@@ -4,3 +4,6 @@
 [submodule "modules/AscII"]
 	path = modules/AscII
 	url = /home/uso/ai/
+[submodule "modules/falling-guy"]
+	path = modules/falling-guy
+	url = https://github.com/cosmo-ray/falling-guy.git
