@@ -376,15 +376,15 @@ function phq_do_action(main, a)
 end
 
 function phq_action(entity, eve)
-   local turn_timer = ywidTurnTimer() / 10000
-   entity = Entity.wrapp(entity)
-   entity.tid = entity.tid + 1
-   local st_hooks = entity.st_hooks
-   local st_hooks_len = yeLen(entity.st_hooks)
-
-   if yeGetInt(entity.current) > 1 then
+   collectgarbage("collect")
+   if yeGetIntAt(entity, "current") > 1 then
       return NOTHANDLE
    end
+
+   local turn_timer = ywidTurnTimer() / 10000
+   entity = Entity.wrapp(entity)
+   local st_hooks = entity.st_hooks
+   local st_hooks_len = yeLen(entity.st_hooks)
 
    --print("Last Turn Length: ", turn_timer, ywidTurnTimer())
    if newly_loaded then
@@ -750,7 +750,6 @@ function create_phq(entity)
     local scenePath = nil
 
     main_widget = entity
-    ent.tid = 0
     ent.cur_scene_str = nil
     tiled.setAssetPath("./tileset");
     jrpg_fight.objects = phq.objects
