@@ -73,6 +73,24 @@
 	    }
 	]
     },
+    "Falling Guy": {
+	"dialogue" : [
+	    {
+		"text": "Falling Guy\nplay 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1, ["phq.play", "falling_guy"],
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
+	]
+    },
     "Standart Nerd": {
 	"dialogue": [
 	    {
