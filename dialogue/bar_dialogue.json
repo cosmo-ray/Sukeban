@@ -86,5 +86,14 @@
 		"enjoy your present, because it is awesome !"
 	    ]
 	]
+    },
+    "Herru": {
+	"dialogue" : {
+	    "main": {
+		"text": ["you saw a man in front of you",
+			 "not a man like any man",
+			 "a man with a bear, and a big glass of watter"]
+	    }
+	}
     }
 }

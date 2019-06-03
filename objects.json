@@ -33,5 +33,8 @@
     },
     "tetris_game": {
 	"name": "Tetris(sunix/1EBG)",
+    },
+    "pong_game": {
+	"name": "Pong(sunix/1EBG)",
     }
 }
