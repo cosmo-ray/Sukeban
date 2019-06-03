@@ -207,6 +207,24 @@
                  "width":0,
                  "x":179.207920792079,
                  "y":402.970297029703
+                }, 
+                {
+                 "height":0,
+                 "id":31,
+                 "name":"Herru",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"left"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":175.653013037676,
+                 "y":176.546658453958
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -215,7 +233,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":31,
+ "nextobjectid":32,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.3",
