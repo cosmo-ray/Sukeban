@@ -93,6 +93,16 @@
 		"text": ["you saw a man in front of you",
 			 "not a man like any man",
 			 "a man with a beer, and a big glass of watter"]
+	    },
+	    "give_drunk_quest": {
+		"text": "bla bla bla get a quest",
+		"answer": {
+		    "text": "bla bla I'll avenge you",
+		    "actions": [
+			[ "setInt", "phq.quests.a_drunk_story", 0 ],
+			"phq.backToGame"
+		    ]
+		}
 	    }
 	}
     }

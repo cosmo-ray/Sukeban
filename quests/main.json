@@ -38,5 +38,13 @@
 	    "go find that 'anno 1999' classic year vintage wine in the bar cellar",
 	    "go speak to bartender"
 	]
+    },
+    "A Drunk story": {
+	"stalk": "phq.quests.a_drunk_story",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "your good friend herru had someone puke on him at the nternational Bar, you need to go there and avange him",
+	    "Mission Complet, Stomack Empty, go see herru back"
+	]
     }
 }
