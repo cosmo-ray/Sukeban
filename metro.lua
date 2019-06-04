@@ -102,11 +102,14 @@ function metroAction(metroMap, eve)
 	       station_name:to_string() == "Nontoise Gate" then
 		  usable_metro = false
 		  return ywidAction(action, metroMap, eve)
-	       elseif (condition == nil or  yeCheckCondition(condition)) and use_time_point() then
+	       elseif (condition == nil or  yeCheckCondition(condition)) and
+	       use_time_point() == Y_TRUE then
 		  usable_metro = false
 		  return ywidAction(action, metroMap, eve)
 	       else
+		  local str = Entity.new_string("NOT ENOUTH TIME POINT")
 		  print("NOT ENOUTH TIME POINT")
+		  ywCanvasStringSet(metroMap.info_txt, str)
 	       end
 	    end
 	 elseif eve:key() == Y_ESC_KEY or
@@ -117,7 +120,7 @@ function metroAction(metroMap, eve)
       end
       eve = eve:next()
    end
-   return YEVE_NOTHANDLE
+   return YEVE_ACTION
 end
 
 function pushMetroMenu(main)
@@ -129,7 +132,6 @@ function pushMetroMenu(main)
    local station = line[station_info[1]:to_int()]
    local can = Canvas.new_entity()
 
-   print(intersections)
    can:new_img(0, 0, modPath .. "/metro.png")
    can.ent.rect = can:new_rect(station[0] - 10, station[1] - 10,
 			       "rgba: 0 0 0 124",
@@ -146,10 +148,11 @@ function pushMetroMenu(main)
    can.ent.line_txt_info = can:new_text(250, 60,
 					line_actual0 .. math.floor(l_idx)).ent
    can.ent.st_txt_info = can:new_text(250, 80, printable_st_name(station)).ent
-   print("unusable_metro: ", unusable_metro)
+   local info_str = ""
    if usable_metro == false then
-      can:new_text(250, 100, "NOT CURRENTLY IN A METRO")
+      info_str = "NOT CURRENTLY IN A METRO"
    end
+   can.ent.info_txt = can:new_text(250, 100, info_str).ent
 
    can:new_text(500, 500, "left/right: change station\n\nup/down: change line")
    can.ent.action = Entity.new_func("metroAction")
