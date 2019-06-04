@@ -96,11 +96,13 @@ function metroAction(metroMap, eve)
 	    local station_name = metroMap.station[ST_NAME_IDX]
 	    if station_name then
 	       local action = metro_file.actions[station_name:to_string()]
+	       local condition = metro_file.conditions[station_name:to_string()]
+
 	       if station_name:to_string() == "Nontoise" or
 	       station_name:to_string() == "Nontoise Gate" then
 		  usable_metro = false
 		  return ywidAction(action, metroMap, eve)
-	       elseif (use_time_point()) then
+	       elseif (condition == nil or  yeCheckCondition(condition)) and use_time_point() then
 		  usable_metro = false
 		  return ywidAction(action, metroMap, eve)
 	       else

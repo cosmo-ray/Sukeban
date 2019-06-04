@@ -35,6 +35,9 @@
 	[[4, 4], [0, 6]]
 
     ],
+    "conditions" : {
+	"international_bar": ["=", "phq.quests.a_drunk_story", 0]
+    },
     "actions" : {
 	"Nontoise": ["phq:changeScene", "street0", 3],
 	"Nontoise Gate": ["phq:changeScene", "street4", 1],
