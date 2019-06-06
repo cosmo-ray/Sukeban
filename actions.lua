@@ -207,7 +207,7 @@ function StartFight(wid, eve, enemy_type, afa)
    local inv = phq.pj.inventory
    while i < yeLen(inv) do
       local obj = phq.objects[yeGetKeyAt(inv, i)]
-      if obj and obj.type:to_string() == "usable" then
+      if obj and yeGetStringAt(obj, "type") == "usable" then
 	 usabel_items[yeGetKeyAt(inv, i)] = inv[i]
       end
       i  = i + 1
