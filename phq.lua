@@ -15,6 +15,7 @@ quests_info = File.jsonToEnt("quests/main.json")
 main_widget = nil
 
 phq_action_timer = nil
+local run_script = nil
 
 local window_width = 800
 local window_height = 600
@@ -540,12 +541,18 @@ function phq_action(entity, eve)
        walkDoStep(entity, entity.pj)
     end
     reposeCam(entity)
+
+    if run_script then
+       run_script(entity)
+    end
+
     return YEVE_ACTION
 end
 
 function destroy_phq(entity)
    local ent = Entity.wrapp(entity)
 
+   run_script = nil
    tiled.deinit()
    ent.mainScreen = nil
    ent.upCanvas = nil
@@ -588,7 +595,12 @@ function load_scene(ent, sceneTxt, entryIdx)
    local upCanvas = Canvas.wrapp(ent.upCanvas)
    local x = 0
    local y = 0
+   local c = mainCanvas.ent
 
+   if c.exit_script then
+      scripts[c.exit_script:to_string()](ent)
+   end
+   run_script = nil
    newly_loaded = true
    if sceneTxt == nil then
       print("can load a nil scene!\n")
@@ -600,7 +612,9 @@ function load_scene(ent, sceneTxt, entryIdx)
 
    ent.npc_act = {}
    ent.cur_scene_str = sceneTxt
+
    local scene = scenes[sceneTxt]
+
    if phq.actioned[ent.cur_scene_str:to_string()] == nil then
       phq.actioned[ent.cur_scene_str:to_string()] = {}
    end
@@ -610,18 +624,28 @@ function load_scene(ent, sceneTxt, entryIdx)
    -- clean old stuff :(
    upCanvas.ent.objs = {}
    upCanvas.ent.cam = Pos.new(0, 0).ent
-   mainCanvas.ent.objs = {}
-   mainCanvas.ent.objects = {}
+   c.objs = {}
+   c.objects = {}
+   c.exit_script = nil
+   c.tile_script = nil
+   c.enter_script = nil
+
    if (scene == nil) then
       print("Can not load scene: sceneTxt")
    end
+
    ywCanvasDisableWeight()
-   tiled.fileToCanvas(scene.tiled:to_string(), mainCanvas.ent:cent(),
+   tiled.fileToCanvas(scene.tiled:to_string(), c:cent(),
 		      upCanvas.ent:cent())
    ywCanvasEnableWeight()
+   if (c.tile_script) then
+      run_script = scripts[c.tile_script:to_string()]
+   end
+
    o_dialogues = File.jsonToEnt(yeGetString(scene.dialogues))
    dialogue_include(o_dialogues, o_dialogues)
    yeCopy(o_dialogues, dialogues)
+
    if saved_scenes[ent.cur_scene_str:to_string()] then
       ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()].o
       local patch = saved_scenes[ent.cur_scene_str:to_string()].d
@@ -630,7 +654,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       end
       tmpp = yePatchCreate(o_dialogues, dialogues)
    end
-   mainCanvas.ent.cam = Pos.new(0, 0).ent
+   c.cam = Pos.new(0, 0).ent
    -- Pj info:
 
    local objects = ent.mainScreen.objects
@@ -654,7 +678,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 checkNpcPresence(obj, npc, sceneTxt) then
 
 	 dressUp(npc)
-	 npc = lpcs.createCaracterHandler(npc, mainCanvas.ent, e_npcs)
+	 npc = lpcs.createCaracterHandler(npc, c, e_npcs)
 	 --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
 	 local pos = Pos.new_copy(obj.rect)
 	 pos:sub(20, 50)
@@ -735,6 +759,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),
 				    "rgba: 255 255 255 255")
    reposeCam(ent)
+   if (c.enter_script) then scripts[c.enter_script:to_string()](ent) end
 end
 
 function add_stat_hook(entity, stat, hook, val, comp_type)

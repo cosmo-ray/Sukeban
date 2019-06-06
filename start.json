@@ -36,6 +36,7 @@
 	{ "file" : "actions.lua", "type" : "lua" },
 	{ "file" : "victoryScreen.lua", "type" : "lua" },
 	{ "file" : "ai.lua", "type" : "lua" },
+	{ "file" : "quests_specific.lua", "type" : "lua" },
 	{ "file" : "phq.lua", "type" : "lua" }
     ],
     "pj" : {

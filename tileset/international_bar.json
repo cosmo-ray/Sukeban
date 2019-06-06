@@ -422,6 +422,11 @@
          "value":"inter_bar_in"
         }, 
         {
+         "name":"tile_script",
+         "type":"string",
+         "value":"inter_bar_running"
+        }, 
+        {
          "name":"exit_script",
          "type":"string",
          "value":"inter_bar_out"
