@@ -95,15 +95,19 @@
 			 "a man with a beer, and a big glass of watter"]
 	    },
 	    "give_drunk_quest": {
-		"text": "bla bla bla get a quest",
+		"text": ["don't pay attention to me I'm just trying to forgot my",
+			 "bad luck by drinking my hangover"],
 		"condition": ["<", "phq.quests.a_drunk_story", 0],
-		"answer": {
-		    "text": "bla bla I'll avenge you",
-		    "actions": [
-			[ "setInt", "phq.quests.a_drunk_story", 0 ],
-			"phq.backToGame"
-		    ]
-		}
+		"answers": [
+		    {
+			"text": "Nice, I have to go",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "Yeah what about you start making sense.",
+			"action": ["Dialogue:goto", "quest_dial1"]
+		    }
+		]
 	    },
 	    "win_quest": {
 		"text": "bla bla bla WIN",
@@ -119,7 +123,59 @@
 			 "while your head is so joyful",
 			 "mine is perputually mad",
 			 "from the booz to the lose...",
-			 "can you leave my in my misery"]
+			 "can you leave my in my misery"],
+		"action": "phq.backToGame"
+	    },
+	    "quest_dial1": {
+		"text": ["Ok sorry",
+			 "Some friends came visite my from Estonia yesterday",
+			 "at that moment all my trouble was far away",
+			 "I was hapilly drinking, not even too much",
+			 "when it happen..."]
+	    },
+	    "dial2": ["When some dude, that we never saw before came speak to us",
+		      "he was clairly not on water",
+		      "then he try talking politic with us",
+		      "and, humm and"],
+	    "dial3": "That Bastad puke on me",
+	    "dial4": {
+		"text": "do you imagine that",
+		"answers": [
+		    {
+			"text": "wow that's a cool story, ok I have to go bye",
+			"action": "phq.backToGame"
+		    },
+		    "what that's nasty did you take your revenge at last ?"
+		]
+	    },
+	    "dial5": {
+		"text": "I wish I have, but what can I do ?",
+		"answers": [
+		    {
+			"text": "nothing bye",
+			"action": "phq.backToGame"
+		    },
+		    "Well, have you ever hear 'an eye for an eye' ?"
+		]
+	    },
+	    "dial6": "what do you want me to do, go back to the bar and vomit on his face",
+	    "dial7": "Herru think...",
+	    "dial8": "well I have his photo I could do that\nbut I'm a gentleman\nit wouldn't be very gentleman from me",
+	    "dial9": {
+		"text": "you !\nyou can do this, would you do this for me",
+		"answers": [
+		    {
+			"text": "go to a bar, get completely shitfac\npuke on some stanger, a dream job, I'm you girl",
+			"actions" :[
+			    [ "setInt", "phq.quests.a_drunk_story", 0 ],
+			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": "erkk no sorry bye",
+			"action": "phq.backToGame"
+		    }
+		]
 	    }
 	}
     }
