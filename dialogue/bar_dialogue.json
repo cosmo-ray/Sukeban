@@ -96,6 +96,7 @@
 	    },
 	    "give_drunk_quest": {
 		"text": "bla bla bla get a quest",
+		"condition": ["<", "phq.quests.a_drunk_story", 0],
 		"answer": {
 		    "text": "bla bla I'll avenge you",
 		    "actions": [
@@ -103,6 +104,22 @@
 			"phq.backToGame"
 		    ]
 		}
+	    },
+	    "win_quest": {
+		"text": "bla bla bla WIN",
+		"condition": ["=", "phq.quests.school_sub", 1],
+		"actions": [
+		    [ "setInt", "phq.quests.a_drunk_story", 2 ],
+		    "phq.backToGame"
+		]
+	    },
+	    "boozebox": {
+		"text": ["Life's really pain in the ass",
+			 "my head atch, my stomack stay nuts",
+			 "while your head is so joyful",
+			 "mine is perputually mad",
+			 "from the booz to the lose...",
+			 "can you leave my in my misery"]
 	    }
 	}
     }

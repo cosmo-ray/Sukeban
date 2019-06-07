@@ -597,6 +597,7 @@ function load_scene(ent, sceneTxt, entryIdx)
    local y = 0
    local c = mainCanvas.ent
 
+   print("start load !!!\n")
    if c.exit_script then
       scripts[c.exit_script:to_string()](ent)
    end
@@ -776,11 +777,10 @@ function create_phq(entity)
 
     main_widget = entity
     ent.cur_scene_str = nil
-    tiled.setAssetPath("./tileset");
+    tiled.setAssetPath("./tileset")
     jrpg_fight.objects = phq.objects
 
     _include(npcs, npcs)
-    print("BILL: ", npcs.Bill)
 
     ent.st_hooks = {}
     add_stat_hook(ent, "drunk", "FinishGame", 99, PHQ_SUP)
@@ -792,6 +792,7 @@ function create_phq(entity)
        scenePath = Entity.new_string("house1")
     end
     Entity.new_func("phq_action", ent, "action")
+
     local mainCanvas = Canvas.new_entity(entity, "mainScreen")
     local upCanvas = Canvas.new_entity(entity, "upCanvas")
     ent["turn-length"] = TURN_LENGTH
@@ -802,9 +803,13 @@ function create_phq(entity)
     local ret = container:new_wid()
     ent.destroy = Entity.new_func("destroy_phq")
 
-    ent.soundcallgirl = ySoundLoad("./callgirl.mp3")
-    ent.soundhouse = ySoundLoad("./house_music.mp3")
-    ent.soundtatata = ySoundLoad("./rekuiemu.mp3")
+    print("LOAD SONGS --------------------")
+    ent.soundcallgirl = ySoundMusicLoad("./callgirl.mp3")
+    print("LOAD SONGS #######-------------")
+    ent.soundhouse = ySoundMusicLoad("./house_music.mp3")
+    print("LOAD SONGS #############-------")
+    ent.soundtatata = ySoundMusicLoad("./rekuiemu.mp3")
+    print("LOAD SONGS ####################")
 
     --ySoundPlayLoop(ent.soundtatata)
 

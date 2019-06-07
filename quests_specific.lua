@@ -62,7 +62,7 @@ function inter_bar_running(main)
 	 "Wowwww maybe I'm a little tipsy\n"..
 	 "THEN YOU PUKE ON HIS UGLY HEAD !!!\n" ..
 	 "- DON'T PUKE ON HEERRRRUUUU NEXT TIME  !\n"..
-	 "you said to him... then you leave"
+	 "you said to him...\nthen you leave"
 
       dial.answer = {}
       dial.answer.text = "(tatata)"
