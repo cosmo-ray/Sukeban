@@ -328,6 +328,7 @@ end
 function DrinkBeer(ent, obj)
    ent = Entity.wrapp(ent)
    local upcanvas = Canvas.wrapp(ent.upCanvas)
+   local m = Entity.wrapp(main_widget)
    increaseStat(ent, phq.pj, "drunk", 9, 100)
    increaseStat(ent, phq.pj, "life", 2, phq.pj.max_life:to_int())
 
@@ -336,10 +337,18 @@ function DrinkBeer(ent, obj)
 				    Entity.new_string(math.floor(phq.pj.life:to_int())),
                                     "rgba: 255 255 255 255")
    if phq.pj.drunk > 99 then
-       ent.next = "phq:menus.end_txt"
-       yCallNextWidget(ent:cent())
+      local indoorStr = ""
+      if m.cur_scene.exterior then
+	 indoorStr = "it has weird colors, maybe it's because you're indoor\n"
+      end
+      return printMessage(m, obj,
+			  Entity.new_string(
+			     -- TODO: fix borken english
+			     "you lift up you head, look at the stared sky\n" ..
+				indoorStr ..
+				"it's funny how it move"))
    end
-   return printMessage(ent, obj, Entity.new_string("Glou Glou !"))
+   return printMessage(m, obj, Entity.new_string("Glou Glou !"))
 end
 
 function GetDrink(wid, eve)

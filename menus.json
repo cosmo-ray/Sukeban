@@ -72,27 +72,6 @@ Good luck and good drinks!
 ",
 	"next" : "phq:menus.main"
     },
-    "end_txt" : {
-	"<type>" : "text-screen",
-	"text-align": "center",
-	"action" : "nextOnKeyDown",
-	"background" : "rgba: 255 255 255 255",
-	"text" : "
-        TODO ending
-
-        You did it! You really did it you absolute madman!
-
-        You filled up with all the crappy booze people gave you and you just regurgitated it all around!
-
-        It's beautiful, it's everywhere! People in the bar are all sticky with it!
-
-        It is indeed a great day!
-
-        PS: don't try a new game it's buggy
-        PPS: Well it's now fix, you can have a new game :)
-",
-	"next" : "phq:menus.main"
-    },
     "pj" : {
 	"name": "oscar",
 	"sex": "female",
