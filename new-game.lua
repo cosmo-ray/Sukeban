@@ -66,6 +66,7 @@ function create_new_game(entity)
    mn.size = 30
    mn["<type>"] = "menu"
    mn.next = "phq:menus.game"
+   mn.next_target = "main"
    mn.moveOn = Entity.new_func("newGameMoveOn")
    mn.entries = {}
    mn.entries[0] = {}

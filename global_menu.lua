@@ -71,7 +71,7 @@ function openGlobMenu(main, on_idx, arg0)
    panel:push("Status", lf)
    panel:push("Quests")
    panel:push("Map", lf)
-   panel:push("MICS (and boo)", lf)
+   panel:push("MISC (and boo)", lf)
    panel.ent.in_subcontained = 1
    panel.ent.size = 5
    panel.ent.moveOn = Entity.new_func("globMnMoveOn")

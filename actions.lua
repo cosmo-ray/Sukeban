@@ -597,6 +597,19 @@ function playTetris(wid)
    return YEVE_ACTION
 end
 
+function phs_start(wid)
+   local m = main_widget
+
+
+   print("PHS GO !")
+   print("PHS GO !")
+   local t = Entity.new_array()
+   t["<type>"] = "phs"
+   t.resources = ygGet("phs.resources")
+   ywPushNewWidget(m, t)
+   return YEVE_ACTION
+end
+
 function play(wid, eve, game, timer)
    local wid = Entity.wrapp(wid)
    local main = getMainWid(wid)

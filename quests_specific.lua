@@ -62,13 +62,16 @@ function inter_bar_running(main)
 	 "Wowwww maybe I'm a little tipsy\n"..
 	 "THEN YOU PUKE ON HIS UGLY HEAD !!!\n" ..
 	 "- DON'T PUKE ON HEERRRRUUUU NEXT TIME  !\n"..
-	 "you said to him...\nthen you leave"
+	 "you said to him...\nthen you leave...\n"..
+	 "But on your way home, you realise that ground is waving\n"..
+	 "the kind of wave that make you seesick..."
 
       dial.answer = {}
       dial.answer.text = "(tatata)"
       dial.answer.actions = {}
       dial.answer.actions[0] = {}
       dial.answer.actions[1] = {}
+      dial.answer.actions[2] = {}
       local a0 = dial.answer.actions[0]
       a0[0] = "setInt"
       a0[1] = "phq.quests.a_drunk_story"
@@ -77,6 +80,8 @@ function inter_bar_running(main)
       a1[0] = "phq.changeScene"
       a1[1] = "street4"
       a1[2] = 1
+      local a2 = dial.answer.actions[2]
+      a2[0] = "phq.phs_start"
 
       vnScene(main, nil, vn_quest_end)
    end

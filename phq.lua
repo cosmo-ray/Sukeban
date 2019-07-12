@@ -161,6 +161,7 @@ function init_phq(mod)
    mod.playVapp = Entity.new_func("playVapp")
    mod.play = Entity.new_func("play")
    mod.pay = Entity.new_func("pay")
+   mod.phs_start = Entity.new_func("phs_start")
    mod.takeObject = Entity.new_func("takeObject")
    mod.PjLeave = Entity.new_func("PjLeave")
    mod.vnScene = Entity.new_func("vnScene")
@@ -364,9 +365,9 @@ function pushMainMenu(main)
    mn.ent["text-align"] = "center"
    mn.ent.onEsc = Entity.new_func("gmGetBackFocus")
    mn.ent.next = Entity.wrapp(ywCntWidgetFather(main)).next
+   mn.ent.next_target = "main"
    ywPushNewWidget(main, mn.ent)
 end
-
 
 function phq_do_action(main, a)
    local args = { a.Arg0, a.Arg1, a.Arg2, a.Arg3 }
