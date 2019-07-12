@@ -3,10 +3,10 @@
 	url = https://github.com/cosmo-ray/yirl-ascii-tetris.git
 [submodule "modules/AscII"]
 	path = modules/AscII
-	url = /home/uso/ai/
+	url = http://github.com/cosmo-ray/ai.git
 [submodule "modules/falling-guy"]
 	path = modules/falling-guy
 	url = https://github.com/cosmo-ray/falling-guy.git
 [submodule "modules/pre-hangover-simulator"]
 	path = modules/pre-hangover-simulator
-	url = /home/uso/pre-hangover-simulator/
+	url = https://github.com/cosmo-ray/pre-hangover-simulator.git
