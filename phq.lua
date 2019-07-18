@@ -779,6 +779,7 @@ function create_phq(entity)
     tiled.setAssetPath("./tileset")
     jrpg_fight.objects = phq.objects
 
+    _include(phq.objects, phq.objects)
     _include(npcs, npcs)
 
     ent.st_hooks = {}

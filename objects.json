@@ -1,4 +1,6 @@
 {
+    "_include": [ "./items/food.json",
+		"./items/drink.json" ],
     "robe_white" : {
 	"type": "equipement",
 	"where": "torso",
@@ -8,40 +10,6 @@
 	"type": "equipement",
 	"path": "feet/shoes/female/brown_shoes_female.png",
 	"where": "feet"
-    },
-    "Guriko" : {
-	"type": "usable",
-	"stats+": {
-	    "life": 1,
-	    "drunk": -1,
-	}
-    },
-    "beer" : {
-	"type": "usable",
-	"func": "phq.DrinkBeer"
-    },
-    "Oeko piss" : {
-	"type": "usable",
-	"func": "phq.DrinkBeer"
-    },
-    "distiled_wheat_shoot": {
-	"type": "usable",
-	"name": "Distiled Wheat Shoot",
-	"stats+" : {
-	    "life": 5,
-	    "drunk": 10
-	}
-    },
-    "grog": {
-	"type": "usable",
-	"stats+" : {
-	    "life": 6,
-	    "drunk": 12
-	}
-    },
-    "Water": {
-	"type": "usable",
-	"stats+" : { "life": 3 }
     },
     "snake_game": {
 	"name": "Snake The Game(sunix/1EBG)",

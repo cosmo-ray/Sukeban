@@ -1,0 +1,9 @@
+{
+    "Guriko" : {
+	"type": "usable",
+	"stats+": {
+	    "life": 1,
+	    "drunk": -1,
+	}
+    }
+}
