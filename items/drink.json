@@ -25,5 +25,9 @@
     "Water": {
 	"type": "usable",
 	"stats+" : { "life": 3 }
+    },
+    "Naka Cola": {
+	"type": "usable",
+	"stats+" : { "life": 1 }
     }
 }
