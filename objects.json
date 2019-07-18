@@ -1,16 +1,7 @@
 {
     "_include": [ "./items/food.json",
-		"./items/drink.json" ],
-    "robe_white" : {
-	"type": "equipement",
-	"where": "torso",
-	"path": "torso/robes_female_no_th-sh/white.png"
-    },
-    "brown_shoes" : {
-	"type": "equipement",
-	"path": "feet/shoes/female/brown_shoes_female.png",
-	"where": "feet"
-    },
+		  "./items/drink.json",
+		  "./items/clothes.json"],
     "snake_game": {
 	"name": "Snake The Game(sunix/1EBG)",
     },
