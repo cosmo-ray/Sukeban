@@ -29,6 +29,7 @@
         { "file" : "menus.json", "type" : "json", "as" : "menus"},
         { "file" : "environement.json", "type" : "json", "as" : "env"},
         { "file" : "objects.json", "type" : "json", "as" : "objects"},
+        { "file" : "skills.json", "type" : "json", "as" : "skills"},
         { "file" : "stores.json", "type" : "json", "as" : "stores"},
 	{ "file" : "global_menu.lua", "type" : "lua" },
 	{ "file" : "metro.lua", "type" : "lua" },
@@ -44,7 +45,7 @@
 	"name": "oscar",
 	"sex": "female",
 	"type": "light",
-	"attack" : "unarmed1",
+	"attack" : "unarmed0",
 	"max_life" : 10,
 	"inventory" : {
 	    "money": 27,

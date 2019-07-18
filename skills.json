@@ -1,0 +1,10 @@
+{
+    "combots" : {
+	"unarmed0": {
+	    "cost": 5
+	},
+	"unarmed1": {
+	    "cost": 15
+	}
+    }
+}

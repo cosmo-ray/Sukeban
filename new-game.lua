@@ -11,6 +11,12 @@ local IDOLE_ARCHETYPE = 1
 local BRUTE_ARCHETYPE = 2
 local WORMS_COINOISSEUR_ARCHETYPE = 3
 
+local function learn_combot(cmb)
+   local cmbs = phq.pj.combots
+
+   cmbs[yeLen(cmbs)] = cmd
+end
+
 function newGameAction(menu, eve, arg)
    local game = Entity.wrapp(ygGet("phq:menus.game"))
    game.saved_data = nil
@@ -22,6 +28,8 @@ function newGameAction(menu, eve, arg)
    phq.pj.knowledge = {}
    phq.pj.trait = {}
    phq.pj.drunk = 0
+   phq.pj.combots = {}
+   learn_combot("unarmed0")
    phq.pj.xp = 0
    phq.pj.stats.charm = 0
    phq.pj.stats.strength = 0
@@ -42,6 +50,7 @@ function newGameAction(menu, eve, arg)
       phq.pj.knowledge.slang = 5
       phq.pj.trait.violance = 1
       phq.pj.stats.strength = 3
+      learn_combot("unarmed1")
    elseif archetype == WORMS_COINOISSEUR_ARCHETYPE then
       phq.pj.knowledge.worms = 5
       phq.pj.stats.smart = 1

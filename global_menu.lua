@@ -133,6 +133,7 @@ function pushSTatusTextScreen(container)
    local stats = phq.pj.stats
    local trait_str = "----- Trait -----\n"
    local trait = phq.pj.trait
+   local cmb_str = "-[Currrent Combot: {phq.pj.attack}]-\n"
 
    local i = 0
    while i < yeLen(knowledge) do
@@ -170,7 +171,7 @@ function pushSTatusTextScreen(container)
       "life: {phq.pj.life}\n" ..
       "xp: {phq.pj.xp} \n" ..
       alcohol_lvl_str() ..
-      knowledge_str .. stats_str
+      knowledge_str .. stats_str .. cmb_str
    txt_screen.background = "rgba: 155 155 255 190"
    ywPushNewWidget(container, txt_screen)
 end
@@ -223,7 +224,7 @@ function spendXpLvlUpStat(mn)
 end
 
 
-function spendXpGenMenu(statsMenu)
+local function spendXpGenMenu(statsMenu)
    local stats = phq.pj.stats
 
    statsMenu.ent["pre-text"] = "current xp: " .. yeGetInt(phq.pj.xp)
@@ -251,12 +252,17 @@ function spendXpOnStats(mn)
    return YEVE_ACTION
 end
 
+function learnableSkill(mn)
+   print("Skills :)")
+   print(phq.pj.combots)
+   print(phq.skills.combots)
+end
+
 function pushSpendXpWid(mn)
    -- 1: get status vertical container
    -- 2: get global menu horizontal container
    -- 3: get main stacking container
    local main = ywCntWidgetFather(ywCntWidgetFather(ywCntWidgetFather(mn)))
-   print("hej hej peoples ", main, " here")
    main = Entity.wrapp(main)
    local lvlUp = Container.new_entity("vertical")
    lvlUp.ent.background = "rgba: 255 255 255 255"
@@ -264,7 +270,7 @@ function pushSpendXpWid(mn)
    local menu = Menu.new_entity()
    menu:push("finish", Entity.new_func("popSpendXpWid"))
    menu:push("improve stats", Entity.new_func("spendXpOnStats"))
-   menu:push("learn skills")
+   menu:push("learn skills", Entity.new_func("learnableSkill"))
    lvlUp.ent.entries[0] = menu.ent
    menu.ent.size = 20
    ywPushNewWidget(main, lvlUp.ent)
