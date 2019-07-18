@@ -20,6 +20,10 @@
 	"type": "usable",
 	"func": "phq.DrinkBeer"
     },
+    "Oeko piss" : {
+	"type": "usable",
+	"func": "phq.DrinkBeer"
+    },
     "distiled_wheat_shoot": {
 	"type": "usable",
 	"name": "Distiled Wheat Shoot",
@@ -27,6 +31,17 @@
 	    "life": 5,
 	    "drunk": 10
 	}
+    },
+    "grog": {
+	"type": "usable",
+	"stats+" : {
+	    "life": 6,
+	    "drunk": 12
+	}
+    },
+    "Water": {
+	"type": "usable",
+	"stats+" : { "life": 3 }
     },
     "snake_game": {
 	"name": "Snake The Game(sunix/1EBG)",

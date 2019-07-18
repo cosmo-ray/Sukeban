@@ -3,7 +3,7 @@
 	"Guriko": 3,
 	"Pink Guriko": 3,
 	"Matcha Guriko": 3,
-	"Naka Cola": 3,
+	"Naka Cola": 3, // for nakama
 	"Water": 2
     },
     "DaiconGuy": {
@@ -15,6 +15,12 @@
 	"snake_game": 30,
 	"pong_game": 23,
 	"tetris_game": 25,
-    }
-
+    },
+    "bar": {
+	"beer": 5,
+	"distiled_wheat_shoot": 4,
+	"grog": 4,
+	"Oeko piss": 3,
+	"Water": 2
+    },
 }

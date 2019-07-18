@@ -133,8 +133,7 @@
 		    {
 			"text": "Here's a simple rule:\ntake my money and give me beer",
 			"actions": [
-			    [ "Dialogue:block", "phq.backToGame" ],
-			    "phq.GetDrink"
+			    [ "phq.openStore", "bar" ],
 			]
 		    }
 		]
@@ -146,9 +145,10 @@
 		    "yes you might have start the game as an 'idol'",
 		    "but the dev, lazy bastard they are didn't take the time",
 		    "to implement a road in this dialogue for 'cute' character",
-		    "If y'a want buck, go fetch me booze in my cellar",
+		    "If y'a want money that bad, go fetch me booze in my cellar",
 		    "the good one, the bottle with 'ciel' write on it",
-		    "don't like go there, it's dark, it stink, a job for you"
+		    "don't like to go there, it's dark, it stink, they;'s ",
+		    "a job for you, I'll give you 2 buck"
 		],
 		"answer": {
 		    "text": "(start a quest, yayyyyy)",
