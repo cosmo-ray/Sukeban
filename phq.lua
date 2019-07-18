@@ -636,10 +636,8 @@ function load_scene(ent, sceneTxt, entryIdx)
       print("Can not load scene: sceneTxt")
    end
 
-   ywCanvasDisableWeight()
    tiled.fileToCanvas(scene.tiled:to_string(), c:cent(),
 		      upCanvas.ent:cent())
-   ywCanvasEnableWeight()
    if (c.tile_script) then
       run_script = scripts[c.tile_script:to_string()]
    end
@@ -841,5 +839,7 @@ function create_phq(entity)
     if ent.saved_data == nil then
        phq.quests.school_sub = 0
     end
+    ywCanvasDisableWeight(mainCanvas.ent)
+    ywCanvasDisableWeight(upCanvas.ent)
     return ret
 end

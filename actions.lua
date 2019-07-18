@@ -600,9 +600,6 @@ end
 function phs_start(wid)
    local m = main_widget
 
-
-   print("PHS GO !")
-   print("PHS GO !")
    local t = Entity.new_array()
    t["<type>"] = "phs"
    t.resources = ygGet("phs.resources")
