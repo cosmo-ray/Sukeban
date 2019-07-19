@@ -11,10 +11,10 @@ local IDOLE_ARCHETYPE = 1
 local BRUTE_ARCHETYPE = 2
 local WORMS_COINOISSEUR_ARCHETYPE = 3
 
-local function learn_combot(cmb)
+function learn_combot(cmb)
    local cmbs = phq.pj.combots
 
-   cmbs[yeLen(cmbs)] = cmd
+   cmbs[yeLen(cmbs)] = cmb
 end
 
 function newGameAction(menu, eve, arg)

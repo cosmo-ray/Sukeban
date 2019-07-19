@@ -1,3 +1,4 @@
+[2018]
 octobre:
 	- VM like screen, metro [~done]
 	- Victory Screen [~done]
@@ -5,14 +6,15 @@ octobre:
 	- Create town hall interior [~done]
 
 Novembre:
-	- Empty School interior
+	- Empty School interior [mostly done]
 	- Global Menu [~done]
-	- experiance, competences tree ?
+	- experiance, competences tree ? [half done]
 	- Quest system [~done]
 
 Decembre:
-	- Fix widgets leak (useless needDestroy)
-	- School subsription quest
-	- Start working on school content
-	- Map Action Points
-	- combats skill tree
+	- Fix widgets leak (useless needDestroy) [done]
+	- School subsription quest [done: april 2019]
+	- Start working on school content [done ?)]
+	- Map Action Points [done]
+	- combats skill tree [on it agust 2019]
+

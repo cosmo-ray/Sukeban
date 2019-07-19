@@ -252,10 +252,45 @@ function spendXpOnStats(mn)
    return YEVE_ACTION
 end
 
-function learnableSkill(mn)
-   print("Skills :)")
+local function genLearnableSkill(nmn)
+   local cmbs = phq.pj.combots
+   local leanable_cmbs = phq.skills.combots
+   local i = 0
+
    print(phq.pj.combots)
    print(phq.skills.combots)
+   nmn.ent["pre-text"] = "current xp: " .. yeGetInt(phq.pj.xp)
+   nmn.ent.entries = {}
+
+   nmn:push( "<----", Entity.new_func("spendXpBack"))
+   while i < yeLen(leanable_cmbs) do
+      local ccmb = leanable_cmbs[i]
+      local cmb_name = yeGetKeyAt(leanable_cmbs, i)
+
+      if yIsNNil(yeFindString(cmbs, cmb_name)) then
+	 goto next
+      end
+      nmn:push(cmb_name .. " : " .. ccmb.cost:to_int(),
+	       Entity.new_func("learnSkillCombot"), cmb_name)
+      :: next ::
+      i = i + 1
+   end
+end
+
+function learnSkillCombot(mn)
+   print("learn combot:", Entity.wrapp(ywMenuGetCurrentEntry(mn)))
+   learn_combot(yeGetStringAt(ywMenuGetCurrentEntry(mn), "arg"))
+   genLearnableSkill(Menu.wrapp(mn))
+   return YEVE_ACTION
+end
+
+function learnableSkill(mn)
+   local main = ywCntWidgetFather(mn)
+   local nmn = Menu.new_entity()
+
+   genLearnableSkill(nmn)
+   ywPushNewWidget(main, nmn.ent)
+   return YEVE_ACTION
 end
 
 function pushSpendXpWid(mn)
