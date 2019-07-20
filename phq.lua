@@ -1,7 +1,7 @@
 local tiled = Entity.wrapp(ygGet("tiled"))
 local jrpg_fight = Entity.wrapp(ygGet("jrpg-fight"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
-local lpcs = Entity.wrapp(ygGet("lpcs"))
+lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 npcs = Entity.wrapp(ygGet("phq.npcs"))

@@ -1,4 +1,14 @@
 {
+    "robe_purple" : {
+	"type": "equipement",
+	"where": "torso",
+	"path": "torso/robes_female_no_th-sh/purple.png"
+    },
+    "robe_black" : {
+	"type": "equipement",
+	"where": "torso",
+	"path": "torso/robes_female_no_th-sh/black.png"
+    },
     "robe_white" : {
 	"type": "equipement",
 	"where": "torso",

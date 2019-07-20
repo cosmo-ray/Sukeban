@@ -23,4 +23,9 @@
 	"Oeko piss": 3,
 	"Water": 2
     },
+    "clothes": {
+	"robe_purple": 20,
+	"robe_black": 20,
+	"robe_white": 15,
+    }
 }

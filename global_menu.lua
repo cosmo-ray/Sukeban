@@ -312,6 +312,36 @@ function pushSpendXpWid(mn)
    return YEVE_ACTION
 end
 
+function setCmbAsAttack(mn)
+   print("set smb !", "current: " .. phq.pj.attack:to_string(),
+	 yeGetStringAt(mn, "pre-text"))
+   print(Entity.wrapp(ywMenuGetCurrentEntry(mn)))
+   phq.pj.attack = Entity.wrapp(ywMenuGetCurrentEntry(mn)).text
+   yeSetAt(mn, "pre-text", "current: " .. phq.pj.attack:to_string())
+end
+
+function chooseCombot(mn)
+   print("choose combot")
+   local cmbs = phq.pj.combots
+   local m = main_widget
+   local ccw = Container.new_entity("vertical")
+   ccw.ent.background = "rgba: 255 255 255 255"
+   local menu = Menu.new_entity()
+   local i = 0
+
+   menu.ent["pre-text"] = "current: " .. phq.pj.attack:to_string()
+   menu:push("back", Entity.new_func("popSpendXpWid"))
+   while i < yeLen(cmbs) do
+      local cmb = cmbs[i]
+      menu:push(cmb:to_string(), Entity.new_func("setCmbAsAttack"))
+      i = i +  1
+   end
+   ccw.ent.entries[0] = menu.ent
+   --menu.ent.size = 20
+   ywPushNewWidget(m, ccw.ent)
+   return YEVE_ACTION
+end
+
 function pushStatus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
    local stat_menu = Container.new_entity("vertical")
@@ -322,6 +352,7 @@ function pushStatus(mn)
 
    local menu = Menu.new_entity()
    menu:push("Spend XP", Entity.new_func("pushSpendXpWid"))
+   menu:push("Choose Combot", Entity.new_func("chooseCombot"))
    menu.ent.size = 20
    menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
    stat_menu.ent.entries[0] = menu.ent
@@ -418,6 +449,32 @@ function gmBuyItem(mn)
    end
 end
 
+function storeMoveOn(mn, current)
+   local cur = Entity.wrapp(ywMenuGetCurrentEntry(mn))
+   local img_p = cur.path
+   local cnt = ywCntWidgetFather(mn)
+   local cv = ywCntGetEntry(cnt, 1)
+
+   ywCanvasClear(cv)
+   if yIsNNil(img_p) then
+      local r = Rect.new(lpcs.x_threshold:to_int(),
+			 lpcs.y_threshold:to_int(),
+			 lpcs.w_sprite:to_int(),
+			 lpcs.h_sprite:to_int())
+
+      ywContainerUpdate(cnt, cv)
+      cv = Canvas.wrapp(cv)
+      local ob = cv:new_img(
+	 0, 0,
+	 yeGetString(lpcs["$path"]) .. "/" .. yeGetString(img_p), r.ent)
+      ob:force_size(Size.new(100,200))
+      print("LEN", yeLen(cv.ent.objs))
+   end
+   print(cur.cost, cur.obName, yeGetString(lpcs["$path"]),
+	 cur.path, yIsNNil(cur.path))
+   return YEVE_ACTION;
+end
+
 function openStore(main, obj_or_eve, storeName)
    main = Entity.wrapp(main)
    print(main.isDialogue)
@@ -429,8 +486,14 @@ function openStore(main, obj_or_eve, storeName)
    print("open ", storeName, stores[storeName])
 
    local store = stores[storeName]
-   mn = Menu.new_entity()
+   local cnt = Container.new_entity("vertical")
+
+   local cv = Canvas.new_entity()
+   local mn = Menu.new_entity()
+
+   mn.ent.in_subcontained = 1
    mn:push("Exit Store", Entity.new_func("backToGame"))
+
    local i = 0
    while i < yeLen(store) do
       if store[i] then
@@ -445,11 +508,16 @@ function openStore(main, obj_or_eve, storeName)
 			     math.floor(cost) .. "$",
 			     Entity.new_func("gmBuyItem"))
 	 cur.obName = yeGetKeyAt(store, i)
+	 cur.path = ob_desc.path
 	 cur.cost = cost
       end
       i = i + 1
    end
-   mn.ent.background = "rgba: 255 255 255 190"
-   ywPushNewWidget(main, mn.ent)
+   mn.ent.moveOn = Entity.new_func("storeMoveOn")
+   mn.ent.size = 40
+   cnt.ent.background = "rgba: 255 255 255 190"
+   cnt.ent.entries[0] = mn.ent
+   cnt.ent.entries[1] = cv.ent
+   ywPushNewWidget(main, cnt.ent)
    return YEVE_ACTION
 end

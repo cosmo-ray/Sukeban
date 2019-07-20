@@ -80,6 +80,11 @@ Introduce some characters too :)
 		    "action": ["phq.changeScene", "street4", 2]
 		},
 		{
+		    "text": "go to clothes shop",
+		    "action":
+		    [ "phq.openStore", "clothes" ]
+		},
+		{
 		    "text": "metro",
 		    "actions": [["phq.setCurStation", 0, 1],
 				["phq.openGlobMenu", 3]]
