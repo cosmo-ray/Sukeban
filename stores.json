@@ -23,9 +23,23 @@
 	"Oeko piss": 3,
 	"Water": 2
     },
+    "the shoes !": {
+	"brown_shoes": 40,
+	"black_shoes": 40,
+	"maroon longboot": 50,
+	"black_slippers" : 30
+    },
     "clothes": {
 	"robe_purple": 20,
 	"robe_black": 20,
 	"robe_white": 15,
+	"blue_vest" : 20,
+	"s_green_dress" : 30,
+	"white_pirate": 10,
+	"teal_pirate": 10,
+	"white_sleeveless": 10,
+	"teal_sleeveless": 10,
+	"tightdress_lightblue": 20,
+	"white_tunic": 10
     }
 }

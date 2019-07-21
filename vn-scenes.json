@@ -85,6 +85,11 @@ Introduce some characters too :)
 		    [ "phq.openStore", "clothes" ]
 		},
 		{
+		    "text": "go to 'the shoes !",
+		    "action":
+		    [ "phq.openStore", "the shoes !" ]
+		},
+		{
 		    "text": "metro",
 		    "actions": [["phq.setCurStation", 0, 1],
 				["phq.openGlobMenu", 3]]

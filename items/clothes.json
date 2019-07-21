@@ -14,9 +14,64 @@
 	"where": "torso",
 	"path": "torso/robes_female_no_th-sh/white.png"
     },
+    "white_pirate" : {
+	"type": "equipement",
+	"path": "torso/shirts/sleeveless/female/white_pirate.png",
+	"where": "torso"
+    },
+    "blue_vest" : {
+	"type": "equipement",
+	"path": "torso/dress_female/blue_vest.png",
+	"where": "torso"
+    },
+    "s_green_dress" : {
+	"type": "equipement",
+	"path": "torso/dress_female/dress_w_sash_female.png",
+	"where": "torso"
+    },
+    "tightdress_lightblue" : {
+	"type": "equipement",
+	"path": "torso/dress_female/tightdress_lightblue.png",
+	"where": "torso"
+    },
+    "teal_pirate" : {
+	"type": "equipement",
+	"path": "torso/shirts/sleeveless/female/teal_pirate.png",
+	"where": "torso"
+    },
+    "teal_sleeveless" : {
+	"type": "equipement",
+	"path": "torso/shirts/sleeveless/female/teal_sleeveless.png",
+	"where": "torso"
+    },
+    "white_sleeveless" : {
+	"type": "equipement",
+	"path": "torso/shirts/sleeveless/female/white_sleeveless.png",
+	"where": "torso"
+    },
+    "white_tunic" : {
+	"type": "equipement",
+	"path": "torso/tunics/female/white_tunic.png",
+	"where": "torso"
+    },
     "brown_shoes" : {
 	"type": "equipement",
 	"path": "feet/shoes/female/brown_shoes_female.png",
+	"where": "feet"
+    },
+    "black_slippers" : {
+	"type": "equipement",
+	"path": "feet/slippers_female/black.png",
+	"where": "feet"
+    },
+    "maroon longboot" : {
+	"type": "equipement",
+	"path": "feet/boots/female/maroon_longboots_female.png",
+	"where": "feet"
+    },
+    "black_shoes" : {
+	"type": "equipement",
+	"path": "feet/shoes/female/black_shoes_female.png",
 	"where": "feet"
     }
 }
