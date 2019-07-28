@@ -46,7 +46,7 @@ local leftKeys = Event.CreateGrp(Y_LEFT_KEY, Y_A_KEY)
 local rightKeys = Event.CreateGrp(Y_RIGHT_KEY, Y_D_KEY)
 local actionKeys = Event.CreateGrp(Y_SPACE_KEY, Y_ENTER_KEY)
 
-local function dressUp(caracter)
+function dressUp(caracter)
    if caracter.equipement == nil then
       return
    end
@@ -372,6 +372,10 @@ end
 function phq_do_action(main, a)
    local args = { a.Arg0, a.Arg1, a.Arg2, a.Arg3 }
 
+   if yIsNil(a.Action) then
+      print("no action in ", a)
+      return
+   end
    yesCall(ygGet(a.Action:to_string()), main:cent(), a:cent(), args[1],
 	   args[2], args[3], args[4])
 

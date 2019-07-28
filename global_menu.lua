@@ -342,6 +342,49 @@ function chooseCombot(mn)
    return YEVE_ACTION
 end
 
+function wear_cloth(mn)
+   local desc = Entity.wrapp(yeGet(ywMenuGetCurrentEntry(mn), "arg"))
+   local where = yeGetString(desc.where)
+
+   phq.pj.equipement[where] = yeGetString(desc.key_name)
+   dressUp(phq.pj)
+   lpcs.handlerReload(yeGet(main_widget, "pj"))
+ end
+
+function wear_clothes_mn(mn)
+   local m = main_widget
+   local ccw = Container.new_entity("vertical")
+   ccw.ent.background = "rgba: 255 255 255 255"
+   local menu = Menu.new_entity()
+   local inv = phq.pj.inventory
+   local i = 0
+
+   --menu.ent["pre-text"] = "current: " .. phq.pj.attack:to_string()
+   menu:push("back", Entity.new_func("popSpendXpWid"))
+   while i < yeLen(inv) do
+      local name = yeGetKeyAt(inv, i)
+      local ob_desc = phq.objects[name]
+
+      print(ob_desc, yIsNil(ob_desc), (yeGetStringAt(ob_desc, "type") ~= "equipement"))
+      if yIsNil(ob_desc) or (yeGetStringAt(ob_desc, "type") ~= "equipement") then
+	 goto next
+      end
+      ob_desc.key_name = name
+
+      if ob_desc.name then
+	 name = ob_desc.name:to_string()
+      end
+
+      menu:push(name, Entity.new_func("wear_cloth"), ob_desc)
+      :: next ::
+      i = i +  1
+   end
+   ccw.ent.entries[0] = menu.ent
+   --menu.ent.size = 20
+   ywPushNewWidget(m, ccw.ent)
+   return YEVE_ACTION
+end
+
 function pushStatus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
    local stat_menu = Container.new_entity("vertical")
@@ -353,6 +396,7 @@ function pushStatus(mn)
    local menu = Menu.new_entity()
    menu:push("Spend XP", Entity.new_func("pushSpendXpWid"))
    menu:push("Choose Combot", Entity.new_func("chooseCombot"))
+   menu:push("wear clothes", Entity.new_func("wear_clothes_mn"))
    menu.ent.size = 20
    menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
    stat_menu.ent.entries[0] = menu.ent
