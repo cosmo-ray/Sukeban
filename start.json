@@ -52,7 +52,8 @@
 	    "Guriko": 4
 	},
 	"equipement" : {
-	    "torso": "robe_white",
+	    "torso": "white_sleeveless",
+	    "legs": "teal pants female",
 	    "feet": "brown_shoes"
 	},
 	"hair": ["shoulderr", "blonde"]

@@ -345,8 +345,14 @@ end
 function wear_cloth(mn)
    local desc = Entity.wrapp(yeGet(ywMenuGetCurrentEntry(mn), "arg"))
    local where = yeGetString(desc.where)
+   local eq = phq.pj.equipement
 
-   phq.pj.equipement[where] = yeGetString(desc.key_name)
+   if (desc.where == "torso" or desc.where == "legs") and
+   (desc.full_body or eq.full_body) then
+      eq.torso = nil
+      eq.legs = nil
+   end
+   eq[where] = yeGetString(desc.key_name)
    dressUp(phq.pj)
    lpcs.handlerReload(yeGet(main_widget, "pj"))
  end
