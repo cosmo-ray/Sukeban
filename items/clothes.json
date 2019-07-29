@@ -2,16 +2,19 @@
     "robe_purple" : {
 	"type": "equipement",
 	"where": "torso",
+	"full_body": true,
 	"path": "torso/robes_female_no_th-sh/purple.png"
     },
     "robe_black" : {
 	"type": "equipement",
 	"where": "torso",
+	"full_body": true,
 	"path": "torso/robes_female_no_th-sh/black.png"
     },
     "robe_white" : {
 	"type": "equipement",
 	"where": "torso",
+	"full_body": true,
 	"path": "torso/robes_female_no_th-sh/white.png"
     },
     "white_pirate" : {
@@ -27,11 +30,13 @@
     "s_green_dress" : {
 	"type": "equipement",
 	"path": "torso/dress_female/dress_w_sash_female.png",
+	"full_body": true,
 	"where": "torso"
     },
     "tightdress_lightblue" : {
 	"type": "equipement",
 	"path": "torso/dress_female/tightdress_lightblue.png",
+	"full_body": true,
 	"where": "torso"
     },
     "teal_pirate" : {
@@ -78,5 +83,15 @@
 	"type": "equipement",
 	"where": "legs",
 	"path": "legs/skirt/female/robe_skirt_female_incomplete.png"
+    },
+    "teal pants female": {
+	"type": "equipement",
+	"where": "legs",
+	"path": "legs/pants/female/teal_pants_female.png"
+    },
+    "white pants female": {
+	"type": "equipement",
+	"where": "legs",
+	"path": "legs/pants/female/white_pants_female.png"
     }
 }
