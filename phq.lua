@@ -61,6 +61,14 @@ function dressUp(caracter)
 	 yeCreateString(cur_o.path:to_string(), clothes)
       end
    end
+
+   if e.legs then
+      local cur_o = objs[yeGetString(e.legs)]
+      if (cur_o.path) then
+	 yeCreateString(cur_o.path:to_string(), clothes)
+      end
+   end
+
    if e.torso then
       local cur_o = objs[yeGetString(e.torso)]
       if (cur_o.path) then

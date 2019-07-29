@@ -73,5 +73,10 @@
 	"type": "equipement",
 	"path": "feet/shoes/female/black_shoes_female.png",
 	"where": "feet"
+    },
+    "skirt": {
+	"type": "equipement",
+	"where": "legs",
+	"path": "legs/skirt/female/robe_skirt_female_incomplete.png"
     }
 }
