@@ -24,6 +24,7 @@ function newGameAction(menu, eve, arg)
    local archetype = ywMenuGetCurrent(menu)
    phq.quests = {}
    phq.env = File.jsonToEnt("environement.json")
+   phq.npcs = File.jsonToEnt("npcs.json")
    phq.pj = {}
    phq.pj.sex = "female"
    phq.pj.type = "light"

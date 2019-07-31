@@ -4,7 +4,7 @@ local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
-npcs = Entity.wrapp(ygGet("phq.npcs"))
+npcs = nil
 local scenes = Entity.wrapp(ygGet("phq.scenes"))
 saved_scenes = nil
 dialogues = Entity.new_array()
@@ -215,6 +215,8 @@ function load_game(entity, save_dir)
    end
    local events = File.jsonToEnt(save_dir.."/evenements.json")
    phq.events = events
+   local npcs = File.jsonToEnt(save_dir.."/npcs.json")
+   phq.npcs = npcs
    yeDestroy(env)
    yCallNextWidget(entity);
 end
@@ -249,6 +251,7 @@ function saveGame(main, saveDir)
    ygEntToFile(YJSON, destDir .. "/Arcade_score.json", phq.hightscores)
    ygEntToFile(YJSON, destDir .. "/actioned.json", phq.actioned)
    ygEntToFile(YJSON, destDir .. "/quests.json", phq.quests)
+   ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
 end
 
 function saveGameCallback(wid)
@@ -794,6 +797,7 @@ function create_phq(entity)
     local scenePath = nil
 
     main_widget = entity
+    npcs = Entity.wrapp(ygGet("phq.npcs"))
     ent.cur_scene_str = nil
     tiled.setAssetPath("./tileset")
     jrpg_fight.objects = phq.objects
