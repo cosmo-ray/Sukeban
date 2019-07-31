@@ -24,6 +24,28 @@ function newGameAction(menu, eve, arg)
    local archetype = ywMenuGetCurrent(menu)
    phq.quests = {}
    phq.env = File.jsonToEnt("environement.json")
+   phq.pj = {}
+   phq.pj.sex = "female"
+   phq.pj.type = "light"
+   phq.pj.attack = "unarmed0"
+   phq.pj.max_life = 10
+   phq.pj.equipement = {}
+   phq.pj.equipement.torso = "white_sleeveless"
+   phq.pj.equipement.legs = "teal pants female"
+   phq.pj.equipement.feet = "brown_shoes"
+   phq.pj.hair = {}
+   phq.pj.hair[0] = "shoulderr"
+   phq.pj.hair[1] = "blonde"
+   phq.pj.inventory = {}
+   addObject(main_widget, phq.pj, "money", 15)
+   addObject(main_widget, phq.pj, "white_sleeveless", 1)
+   addObject(main_widget, phq.pj, "teal pants female", 1)
+   addObject(main_widget, phq.pj, "brown_shoes", 1)
+   if archetype == IDOLE_ARCHETYPE then
+      addObject(main_widget, phq.pj, "Pink Guriko", 2)
+   else
+      addObject(main_widget, phq.pj, "Guriko", 2)
+   end
    phq.pj.stats = {}
    phq.pj.knowledge = {}
    phq.pj.trait = {}
@@ -46,6 +68,7 @@ function newGameAction(menu, eve, arg)
       phq.pj.knowledge.fashion = 5
       phq.pj.stats.charm = 5
       phq.pj.stats.strength = 1
+      addObject(main_widget, phq.pj, "robe_white", 1)
    elseif archetype == BRUTE_ARCHETYPE then
       phq.pj.knowledge.slang = 5
       phq.pj.trait.violance = 1

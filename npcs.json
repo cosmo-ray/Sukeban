@@ -265,6 +265,7 @@
             "torso/dress_female/dress_w_sash_female.png",
             "hair/female/ponytail/brunette2.png"
         ],
+	"location": "house0"
     },
     "Standart Nerd": {
 	"sex": "male",

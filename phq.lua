@@ -141,6 +141,13 @@ function checkNpcPresence(obj, npc, scene)
       end
       return false
    end
+   if yIsNNil(npc.location) then
+      if npc.location:to_string() == scene then
+	 return true
+      else
+	 return false
+      end
+   end
    return true
 end
 
