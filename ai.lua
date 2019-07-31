@@ -10,6 +10,10 @@ local ACTION_NPC = 0
 local ACTION_MV_TBL = 1
 local ACTION_MV_TBL_IDX = 2
 
+function npcAdvenceTime()
+   print("NPC Advence Time")
+end
+
 function NpcTurn(wid)
    local i = 0
    local npc_act = wid.npc_act

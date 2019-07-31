@@ -1,9 +1,20 @@
 local phq = Entity.wrapp(ygGet("phq"))
 
-local geekDescription = "I do undersatdn this 'mouse magic'\nthat make me thine bidding"
-local idoleDescription = "You need a new tailor,  your clothes are absolutely dreadful!"
-local bruteDescription = "So I kicked him in the head 'til he was dead. Mahahahahaha!"
-local wormsCoinoisseurDescription = "Surface-dwellers can be so stupid !"
+local geekDescription = "\"I do undersatdn this \"mouse magic\" that make me thine bidding\"\n" .. "description:\n" ..
+   "Like any responsable persones\nyou've spend all your free time watching animu, and playing games\nyou got a lot of knowledges about that\n" ..
+   "luckily we live in a computer world"
+
+local idoleDescription = "\"You need a new tailor,  your clothes are absolutely dreadful!\"\n" .. "description:\n" .. "there's 10 kind of boys:\nthe one that love you\nthe gay"
+
+local bruteDescription = "\"So I kicked him in the head 'til he was dead. Mahahahahaha!\"\n" .. "description:\n" ..
+   "some peoples are smart, you have muscles\nsome peoples are beautiful you have muscles\nsome peoples think they're strong than you\YOU BEAT'EM UP"
+
+local wormsCoinoisseurDescription = "\"Surface-dwellers can be so stupid !\"\n" .. "description:\n" ..
+   "Most peoples spend they childhoud playing game, thinking about boys or girl, fighting\n" ..
+   "You've learn everything you clould about worms, spend a lot of times observing them\n" ..
+   "Speaking with your friends about them, your friends are worms" ..
+   "you gather the kind of knowledge you don't really need in an RPG"
+
 local descArray = {geekDescription, idoleDescription,
 		   bruteDescription, wormsCoinoisseurDescription}
 local GEEK_ARCHETYPE = 0

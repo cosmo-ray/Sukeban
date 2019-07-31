@@ -358,7 +358,9 @@ function GetDrink(wid, eve)
    return backToGame(wid, eve)
 end
 
+-- in fact, this function do 2 things: adancing time and start sleep animation
 function sleep(main, obj)
+   npcAdvenceTime()
    if phq.env.time:to_string() == "night" then
       phq.env.time = "day"
       phq.env.day = phq.env.day + 1
