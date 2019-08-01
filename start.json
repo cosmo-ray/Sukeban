@@ -39,22 +39,5 @@
 	{ "file" : "ai.lua", "type" : "lua" },
 	{ "file" : "quests_specific.lua", "type" : "lua" },
 	{ "file" : "phq.lua", "type" : "lua" }
-    ],
-    "pj" : {
-	"name": "oscar",
-	"sex": "female",
-	"type": "light",
-	"attack" : "unarmed0",
-	"max_life" : 10,
-	"inventory" : {
-	    "money": 27,
-	    "Guriko": 4
-	},
-	"equipement" : {
-	    "torso": "white_sleeveless",
-	    "legs": "teal pants female",
-	    "feet": "brown_shoes"
-	},
-	"hair": ["shoulderr", "blonde"]
-    }
+    ]
 }
