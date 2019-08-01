@@ -260,6 +260,7 @@ function saveGameCallback(wid)
       wid = ywCntWidgetFather(wid)
    end
    saveGame(Entity.wrapp(ywCntWidgetFather(wid)), "cur")
+   printMessage(main_widget, nil, "Quick Save Done")
 end
 
 function checkTiledCondition(actionable)
@@ -376,11 +377,7 @@ end
 function pushMainMenu(main)
    local mn = Menu.new_entity()
 
-   mn:push("save game", Entity.new_func("saveGameCallback"))
-   mn:push("main menu", "callNext")
-   mn:push("Back To Game", "phq.backToGame")
-   mn.ent.background = "rgba: 255 255 255 190"
-   mn.ent["text-align"] = "center"
+   fillMiscMenu(mn.ent)
    mn.ent.onEsc = Entity.new_func("gmGetBackFocus")
    mn.ent.next = Entity.wrapp(ywCntWidgetFather(main)).next
    mn.ent.next_target = "main"
@@ -796,7 +793,7 @@ function create_phq(entity)
     local ent = container.ent
     local scenePath = nil
 
-    main_widget = entity
+    main_widget = Entity.wrapp(entity)
     npcs = Entity.wrapp(ygGet("phq.npcs"))
     ent.cur_scene_str = nil
     tiled.setAssetPath("./tileset")

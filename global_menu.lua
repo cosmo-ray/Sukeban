@@ -571,3 +571,65 @@ function openStore(main, obj_or_eve, storeName)
    ywPushNewWidget(main, cnt.ent)
    return YEVE_ACTION
 end
+
+function fillMiscMenu(mn)
+   print("fill time !")
+   mn = Menu.wrapp(mn)
+   mn.ent.entries = {}
+   mn:push("quick save", Entity.new_func("saveGameCallback"))
+   mn:push("save", Entity.new_func("saveGameMenu"))
+   mn:push("main menu", "callNext")
+   mn:push("Back To Game", "phq.backToGame")
+   mn.ent.background = "rgba: 255 255 255 190"
+   mn.ent["text-align"] = "center"
+end
+
+function saveSlot(mn)
+   local slot = Entity.wrapp(ywMenuGetCurrentEntry(mn)).slot:to_string()
+   print("save on ", slot)
+   saveGame(main_widget, slot)
+   printMessage(main_widget, nil, "save on slot: " .. slot)
+end
+
+function saveGameMenu(mn)
+   print("push save game menu ?")
+   local e = nil
+   mn = Entity.wrapp(mn)
+   mn.entries = {}
+   mn = Menu.wrapp(mn)
+   mn:push("back", Entity.new_func("fillMiscMenu"))
+   e = mn:push("slot 0", Entity.new_func("saveSlot"))
+   e.slot = "slot_0"
+   e = mn:push("slot 1", Entity.new_func("saveSlot"))
+   e.slot = "slot_1"
+   e = mn:push("slot 2", Entity.new_func("saveSlot"))
+   e.slot = "slot_2"
+   e = mn:push("slot 3", Entity.new_func("saveSlot"))
+   e.slot = "slot_3"
+   e = mn:push("slot 4", Entity.new_func("saveSlot"))
+   e.slot = "slot_4"
+   e = mn:push("slot 5", Entity.new_func("saveSlot"))
+   e.slot = "slot_5"
+   e = mn:push("slot 6", Entity.new_func("saveSlot"))
+   e.slot = "slot_6"
+   e = mn:push("slot 7", Entity.new_func("saveSlot"))
+   e.slot = "slot_7"
+   e = mn:push("slot 8", Entity.new_func("saveSlot"))
+   e.slot = "slot_8"
+   e = mn:push("slot 9", Entity.new_func("saveSlot"))
+   e.slot = "slot_9"
+   e = mn:push("slot A", Entity.new_func("saveSlot"))
+   e.slot = "slot_a"
+   e = mn:push("slot B", Entity.new_func("saveSlot"))
+   e.slot = "slot_b"
+   e = mn:push("slot C", Entity.new_func("saveSlot"))
+   e.slot = "slot_c"
+   e = mn:push("slot D", Entity.new_func("saveSlot"))
+   e.slot = "slot_d"
+   e = mn:push("slot E", Entity.new_func("saveSlot"))
+   e.slot = "slot_e"
+   e = mn:push("slot F", Entity.new_func("saveSlot"))
+   e.slot = "slot_f"
+   e = mn:push("slot 10", Entity.new_func("saveSlot"))
+   e.slot = "slot_10"
+end

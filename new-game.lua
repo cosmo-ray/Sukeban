@@ -7,7 +7,7 @@ local geekDescription = "\"I do undersatdn this \"mouse magic\" that make me thi
 local idoleDescription = "\"You need a new tailor,  your clothes are absolutely dreadful!\"\n" .. "description:\n" .. "there's 10 kind of boys:\nthe one that love you\nthe gay"
 
 local bruteDescription = "\"So I kicked him in the head 'til he was dead. Mahahahahaha!\"\n" .. "description:\n" ..
-   "some peoples are smart, you have muscles\nsome peoples are beautiful you have muscles\nsome peoples think they're strong than you\YOU BEAT'EM UP"
+   "some peoples are smart, you have muscles\nsome peoples are beautiful you have muscles\nsome peoples think they're strong than you\nYOU BEAT'EM UP"
 
 local wormsCoinoisseurDescription = "\"Surface-dwellers can be so stupid !\"\n" .. "description:\n" ..
    "Most peoples spend they childhoud playing game, thinking about boys or girl, fighting\n" ..
