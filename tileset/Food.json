@@ -1,0 +1,14 @@
+{ "columns":5,
+ "image":"Food.png",
+ "imageheight":160,
+ "imagewidth":160,
+ "margin":0,
+ "name":"Food",
+ "spacing":0,
+ "tilecount":25,
+ "tiledversion":"1.2.4",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.2
+}
