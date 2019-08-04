@@ -163,8 +163,8 @@ function init_phq(mod)
    mod.DrinkBeer = Entity.new_func("DrinkBeer")
    mod.openStore = Entity.new_func("openStore")
    mod.GetDrink = Entity.new_func("GetDrink")
-   mod.load_game = Entity.new_func("load_game")
    mod.continue = Entity.new_func("continue")
+   mod.load_slot = Entity.new_func("load_slot")
    mod.newGame = Entity.new_func("newGame")
    mod.printMessage = Entity.new_func("printMessage")
    mod.sleep = Entity.new_func("sleep")
@@ -189,7 +189,7 @@ function init_phq(mod)
    mod.setCurStation = Entity.new_func("setCurStation")
 end
 
-function load_game(entity, save_dir)
+function load_game(save_dir)
    local game = ygGet("phq:menus.game")
    game = Entity.wrapp(game)
    game.saved_dir = save_dir
@@ -204,6 +204,7 @@ function load_game(entity, save_dir)
 					       save_dir.."/saved-scenes.json"),
 				   true)
    phq.env = env
+   yeDestroy(env)
    phq.hightscores = File.jsonToEnt(save_dir.."/Arcade_score.json")
    local actioned = File.jsonToEnt(save_dir.."/actioned.json")
    if yeType(actioned) == YARRAY then
@@ -217,12 +218,48 @@ function load_game(entity, save_dir)
    phq.events = events
    local npcs = File.jsonToEnt(save_dir.."/npcs.json")
    phq.npcs = npcs
-   yeDestroy(env)
-   yCallNextWidget(entity);
+   ywidNext(ygGet("phq:menus.game"))
+   --yCallNextWidget(entity);
 end
 
 function continue(entity)
-   return load_game(entity, "./saved/cur")
+   return load_game("./saved/cur")
+end
+
+function mnLoadSlot(mn)
+   local slot = Entity.wrapp(ywMenuGetCurrentEntry(mn)).s:to_string()
+
+   print("LOAD slot: ", slot)
+   return load_game(slot)
+end
+
+function load_slot(entity)
+   local m = Menu.new_entity()
+   local slots = {0, 1, 2, 3, 4, 5, 6, 7 ,8, 9, 'A', 'B', 'C', 'E', 'F', 10}
+
+   print("load_slot!!!")
+   Entity.wrapp(ywMenuGetCurrentEntry(entity)).next = m
+   m.ent.background = "rgba: 255 255 255 255"
+   m.ent.next = entity
+   m.ent["text-align"] = "center"
+   m:push("back", "callNext")
+   for k,slot in pairs(slots) do
+      if yuiFileExist("saved/slot_" .. slot) == 0 then
+	 local e = m:push("slot " .. slot, Entity.new_func("mnLoadSlot"))
+	 e.s = "saved/slot_" .. slot
+      end
+
+      print(yuiFileExist("saved/slot_" .. slot))
+      print("slot_" .. slot)
+      print("slot " .. slot)
+      print(slot)
+   end
+
+   -- goto new menu
+   -- make load menu
+   -- put next new menu as current menu (for back)
+   ywidNext(m.ent, entity)
+   --return load_game(entity, "./saved/cur")
 end
 
 function saveCurDialogue(main)

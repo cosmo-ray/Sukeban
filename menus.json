@@ -110,6 +110,10 @@ We love you anyway",
 		"text" : "Continue",
 		"action" : "phq:continue"
 	    },
+	    {
+		"text" : "Load Game",
+		"action" : "phq:load_slot"
+	    },
             {
                 "text" : "How to play",
                 "next" : "phq:menus.bagare",
