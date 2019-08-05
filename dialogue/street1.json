@@ -1,0 +1,12 @@
+{
+    "Bouncer": {
+	"dialogue" : [
+	    {
+		"condition": ["S=", "phq.env.time", "day"],
+		"action": [ "phq.backToGame" ],
+		"text": "sorry bar close now, come back latter"
+	    },
+	    "Hello"
+	]
+    }
+}

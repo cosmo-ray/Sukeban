@@ -24,6 +24,7 @@
     },
     "street1" : {
 	"exterior": 1,
+	"dialogues" : "dialogue/street1.json",
 	"out": {
 	    "left" : "street0"
 	},
