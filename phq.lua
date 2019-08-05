@@ -443,6 +443,7 @@ function phq_action(entity, eve)
    entity = Entity.wrapp(entity)
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
+   local dir_change = false
 
    --print("Last Turn Length: ", turn_timer, ywidTurnTimer())
    if newly_loaded then
@@ -569,6 +570,11 @@ function phq_action(entity, eve)
    end
 
    if yevIsGrpUp(eve, leftKeys) or yevIsGrpUp(eve, rightKeys) then
+      if entity.pj.move.up_down > 0 then
+	 entity.pj.y = LPCS_DOWN
+      elseif entity.pj.move.up_down < 0 then
+	 entity.pj.y = LPCS_UP
+      end
       entity.pj.move.left_right = 0
    end
 
