@@ -72,7 +72,7 @@
 			    "to subscribe to my new school"
 			],
 			"condition":  ["=", "phq.quests.school_sub", 4],
-			"action": ["Dialogue:goto", "end_sub"]
+			"action": ["Dialogue:goto", "school_sub"]
 		    }
 		]
 	    },
@@ -83,7 +83,7 @@
 		    "phq.backToGame"
 		]
 	    },
-	    "shool_sub": {
+	    "school_sub": {
 		"text": [
 		    "hummm, okay gringo",
 		    "do you have a bill that prove where you live ?",
