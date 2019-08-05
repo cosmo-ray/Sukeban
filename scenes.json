@@ -99,6 +99,7 @@
     "school_class_12" : {"tiled": "./tileset/school_class_12.json"},
     "school_class_13" : {"tiled": "./tileset/school_class_13.json"},
     "school_class_14" : {"tiled": "./tileset/school_class_14.json"},
+    "science room" : {"tiled": "./tileset/science_room.json"},
     "teacher_room" : {"tiled": "./tileset/teacher_room.json"},
     "sick_room" : {"tiled": "./tileset/sick_room.json"},
     "wc_girl" : {"tiled": "./tileset/wc_girl.json"},

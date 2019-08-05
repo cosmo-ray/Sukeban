@@ -128,19 +128,19 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":28,
+                 "width":22,
                  "x":218,
                  "y":482.5
                 }, 
                 {
-                 "height":21,
+                 "height":27,
                  "id":7,
                  "name":"science room",
                  "properties":[
                         {
                          "name":"nextScene",
                          "type":"string",
-                         "value":"school_class_03"
+                         "value":"science room"
                         }, 
                         {
                          "name":"side",
@@ -150,9 +150,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":42,
-                 "x":820,
-                 "y":140
+                 "width":20,
+                 "x":849,
+                 "y":134
                 }, 
                 {
                  "height":0,
@@ -199,7 +199,7 @@
                  "y":370
                 }, 
                 {
-                 "height":29,
+                 "height":22,
                  "id":11,
                  "name":"Director",
                  "properties":[
@@ -218,10 +218,10 @@
                  "visible":true,
                  "width":32,
                  "x":768,
-                 "y":526
+                 "y":533
                 }, 
                 {
-                 "height":32,
+                 "height":24,
                  "id":12,
                  "name":" Material",
                  "properties":[
@@ -240,7 +240,7 @@
                  "visible":true,
                  "width":29,
                  "x":322,
-                 "y":527
+                 "y":535
                 }, 
                 {
                  "height":35,
@@ -312,7 +312,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.2.4",
  "tileheight":32,
  "tilesets":[
         {
