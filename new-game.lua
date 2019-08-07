@@ -37,6 +37,7 @@ function newGameAction(menu, eve, arg)
    phq.env = File.jsonToEnt("environement.json")
    phq.npcs = File.jsonToEnt("npcs.json")
    phq.pj = {}
+   phq.pj.name = "Oscar"
    phq.pj.sex = "female"
    phq.pj.type = "light"
    phq.pj.attack = "unarmed0"
