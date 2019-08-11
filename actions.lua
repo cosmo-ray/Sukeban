@@ -200,6 +200,7 @@ function StartFight(wid, eve, enemy_type, afa)
    end
    fWid["<type>"] = "jrpg-fight"
    fWid.endCallback = Entity.new_func("CombatEnd")
+   fWid.ychar_start = 80
    fWid.endCallbackArg = main
    fWid.player = phq.pj
    local usabel_items = Entity.new_array(phq.pj, "usable_items")
