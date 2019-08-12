@@ -83,7 +83,7 @@ end
 
 function backToGame(wid)
    wid = Entity.wrapp(wid)
-   if wid:cent() == main_widget then
+   if wid:cent() == main_widget:cent() then
       return
    end
 
