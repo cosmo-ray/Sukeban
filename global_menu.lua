@@ -252,9 +252,15 @@ function spendXpOnStats(mn)
    return YEVE_ACTION
 end
 
+function increase_recover_lvl(mn)
+   phq.pj.recover_level = yeGetIntAt(phq.pj, "recover_level") + 1
+   return YEVE_ACTION
+end
+
 local function genLearnableSkill(nmn)
    local cmbs = phq.pj.combots
    local leanable_cmbs = phq.skills.combots
+   local recover_improvement = phq.skills.recovers
    local i = 0
 
    print(phq.pj.combots)
@@ -275,6 +281,12 @@ local function genLearnableSkill(nmn)
       :: next ::
       i = i + 1
    end
+   local r_level = yeGetIntAt(phq.pj, "recover_level")
+   local r_name = yeGetKeyAt(recover_improvement, r_level)
+   local r_skill = recover_improvement[r_level]
+
+   nmn:push(r_name .. " : " .. r_skill.cost:to_int(),
+	    Entity.new_func("increase_recover_lvl"))
 end
 
 function learnSkillCombot(mn)
@@ -619,17 +631,17 @@ function saveGameMenu(mn)
    e = mn:push("slot 9", Entity.new_func("saveSlot"))
    e.slot = "slot_9"
    e = mn:push("slot A", Entity.new_func("saveSlot"))
-   e.slot = "slot_a"
+   e.slot = "slot_A"
    e = mn:push("slot B", Entity.new_func("saveSlot"))
-   e.slot = "slot_b"
+   e.slot = "slot_B"
    e = mn:push("slot C", Entity.new_func("saveSlot"))
-   e.slot = "slot_c"
+   e.slot = "slot_C"
    e = mn:push("slot D", Entity.new_func("saveSlot"))
-   e.slot = "slot_d"
+   e.slot = "slot_D"
    e = mn:push("slot E", Entity.new_func("saveSlot"))
-   e.slot = "slot_e"
+   e.slot = "slot_E"
    e = mn:push("slot F", Entity.new_func("saveSlot"))
-   e.slot = "slot_f"
+   e.slot = "slot_F"
    e = mn:push("slot 10", Entity.new_func("saveSlot"))
    e.slot = "slot_10"
 end

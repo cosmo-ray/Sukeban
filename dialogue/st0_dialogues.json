@@ -5,6 +5,11 @@
     "Thrug 0" : {
 	"dialogue" : [
 	    {
+		"text": ["Hello"],
+		"condition":  ["=", "phq.events.beat_up_charle", 1],
+		"action": "phq.backToGame"
+	    },
+	    {
 		"text": "hej mademoisel, give me your adress please",
 		"condition": [">", "phq.pj.stats.charm", 4],
 		"answer": {
@@ -17,6 +22,11 @@
     },
     "Thrug 1" : {
 	"dialogue" : [
+	    {
+		"text": ["Hello"],
+		"condition":  ["=", "phq.events.beat_up_charle", 1],
+		"action": "phq.backToGame"
+	    },
 	    "go away loser"
 	]
     },

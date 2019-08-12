@@ -6,5 +6,12 @@
 	"unarmed1": {
 	    "cost": 15
 	}
+    }, "recovers": {
+	"better breathing": {
+	    "cost": 10
+	},
+	"fast breathing": {
+	    "cost": 30
+	},
     }
 }
