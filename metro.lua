@@ -50,7 +50,6 @@ local function do_encounter(metroMap, enc, next_enc, action)
    local encounter_wid = Entity.new_array()
    local dial = nil
    encounter_wid[0] = {}
-   print("0")
    dial = encounter_wid[0]
 
    if (next_enc) then
@@ -65,7 +64,6 @@ local function do_encounter(metroMap, enc, next_enc, action)
       end
    end
 
-   print("1")
    dial.answer = {}
    if phq.pj.archetype == BRUTE_ARCHETYPE then
       dial.answer.text = "M.U.S.C.L.E Girl, GO FIGHT !"
@@ -74,7 +72,6 @@ local function do_encounter(metroMap, enc, next_enc, action)
    else
       dial.answer.text = "FIGHT !"
    end
-   print("2")
    --dial.answer.action = "Dialogue:gotoNext"
    dial.answer.action = {}
    local a = dial.answer.action
@@ -89,7 +86,6 @@ local function do_encounter(metroMap, enc, next_enc, action)
    dial.answer.text = "Stand up for the victory !"
    dial.answer.action = action
 
-   print("3", main_widget:cent(), action, action:cent())
    backToGame(metroMap)
    --return YEVE_ACTION
    return vnScene(main_widget, nil, encounter_wid)
