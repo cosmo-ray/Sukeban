@@ -42,6 +42,53 @@ function setCurStation(main, useless, line, station)
    phq.env.station[1] = station
 end
 
+local function do_encounter(metroMap, enc, next_enc, action)
+   print("you go to the metro, and boum enemies", enc)
+   print("your party are under attack, you must defend yourself",
+	 next_enc)
+
+   local encounter_wid = Entity.new_array()
+   local dial = nil
+   encounter_wid[0] = {}
+   print("0")
+   dial = encounter_wid[0]
+
+   if (next_enc) then
+      dial.text = "your party are under attack, you must defend yourself"
+   else
+      dial.text = "you go to the metro, and BOUM\nENEMIES"
+   end
+
+   print("1")
+   dial.answer = {}
+   if phq.pj.archetype == BRUTE_ARCHETYPE then
+      dial.answer.text = "M.U.S.C.L.E Girl, GO FIGHT !"
+   elseif phq.pj.archetype == WORMS_COINOISSEUR_ARCHETYPE then
+      dial.answer.text = "aye I'm dead"
+   else
+      dial.answer.text = "FIGHT !"
+   end
+   print("2")
+   --dial.answer.action = "Dialogue:gotoNext"
+   dial.answer.action = {}
+   local a = dial.answer.action
+   a[0] = "phq.StartFight"
+   a[1] = "rat"
+   a[2] = "CombatDialogueNext"
+   -- "action": [ "phq.StartFight", "rat", "CombatDialogueNext"]
+   encounter_wid[1] = {}
+   dial = encounter_wid[1]
+   dial.text = "WINNER FOREVER ! (you definitively got a strike team)"
+   dial.answer = {}
+   dial.answer.text = "Stand up for the victory !"
+   dial.answer.action = action
+
+   print("3", main_widget:cent(), action, action:cent())
+   backToGame(metroMap)
+   --return YEVE_ACTION
+   return vnScene(main_widget, nil, encounter_wid)
+end
+
 function metroAction(metroMap, eve)
    metroMap = Entity.wrapp(metroMap)
    eve = Event.wrapp(eve)
@@ -97,20 +144,37 @@ function metroAction(metroMap, eve)
 	    if station_name then
 	       local action = metro_file.actions[station_name:to_string()]
 	       local condition = metro_file.conditions[station_name:to_string()]
+	       local encount_dest = metro_file.encounter[station_name:to_string()]
+	       local o_station_name = yeGetString(metroMap.o_station[ST_NAME_IDX])
+	       local encount_src = metro_file.encounter[o_station_name]
 
+	       print("info: ", station_name, metroMap.station,
+		     metroMap.station_info,
+		     metroMap.o_station[ST_NAME_IDX])
+	       --[station_info[1]:to_int()]
 	       if station_name:to_string() == "Nontoise" or
 	       station_name:to_string() == "Nontoise Gate" then
-		  usable_metro = false
-		  return ywidAction(action, metroMap, eve)
+		  goto goto_station
 	       elseif (condition == nil or  yeCheckCondition(condition)) and
 	       use_time_point() == Y_TRUE then
-		  usable_metro = false
-		  return ywidAction(action, metroMap, eve)
+		  goto goto_station
 	       else
 		  local str = Entity.new_string("NOT ENOUTH TIME POINT")
 		  print("NOT ENOUTH TIME POINT")
 		  ywCanvasStringSet(metroMap.info_txt, str)
 	       end
+	       :: goto_station ::
+	       usable_metro = false
+	       if encount_src then
+		  return do_encounter(metroMap, encount_src,
+				      encount_dest, action)
+	       end
+
+	       if encount_dest then
+		  return do_encounter(metroMap, encount_dest, nil, action)
+	       end
+
+	       return ywidAction(action, metroMap, eve)
 	    end
 	 elseif eve:key() == Y_ESC_KEY or
 	 eve:key() == Y_M_KEY then
@@ -159,6 +223,7 @@ function pushMetroMenu(main)
    can.ent.line = line
    can.ent.station_info = station_info
    can.ent.station = station
+   can.ent.o_station = Entity.new_copy(station)
    ywPushNewWidget(main, can.ent)
    return can.ent
 end

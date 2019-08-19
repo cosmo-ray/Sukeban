@@ -17,10 +17,10 @@ local wormsCoinoisseurDescription = "\"Surface-dwellers can be so stupid !\"\n" 
 
 local descArray = {geekDescription, idoleDescription,
 		   bruteDescription, wormsCoinoisseurDescription}
-local GEEK_ARCHETYPE = 0
-local IDOLE_ARCHETYPE = 1
-local BRUTE_ARCHETYPE = 2
-local WORMS_COINOISSEUR_ARCHETYPE = 3
+GEEK_ARCHETYPE = 0
+IDOLE_ARCHETYPE = 1
+BRUTE_ARCHETYPE = 2
+WORMS_COINOISSEUR_ARCHETYPE = 3
 
 function learn_combot(cmb)
    local cmbs = phq.pj.combots

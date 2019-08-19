@@ -4,7 +4,7 @@ local dialogue = Entity.wrapp(ygGet("Dialogue"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 local window_width = 800
 local window_height = 600
-after_fight_action = nil
+fight_script = nil
 
 local use_time_point_action = Entity.new_string("phq.use_time_point")
 
@@ -123,7 +123,7 @@ function backToGame(wid)
 end
 
 function CombatEnd(wid, main, winner_id)
-   local main = Entity.wrapp(main)
+   local main = main_widget
    local wid = Entity.wrapp(wid)
    local upcanvas = Canvas.wrapp(main.upCanvas)
    local winner = Entity.wrapp(yJrpgGetWinner(wid, winner_id))
@@ -141,7 +141,7 @@ function CombatEnd(wid, main, winner_id)
 				     Entity.new_string(math.floor(phq.pj.life:to_int())),
 				     "rgba: 255 255 255 255")
 
-   if yeGetString(after_fight_action) == "CombatDialogueNext" then
+   if yeGetString(fight_script) == "CombatDialogueNext" then
       ywCntPopLastEntry(main)
    else
       backToGame(wid)
@@ -165,7 +165,7 @@ function npcDefaultInit(npc, enemy_type)
    return npc
 end
 
-function StartFight(wid, eve, enemy_type, afa)
+function StartFight(wid, eve, enemy_type, script)
    local main = getMainWid(wid)
    local fWid = Entity.new_array()
    local npc = nil
@@ -195,8 +195,8 @@ function StartFight(wid, eve, enemy_type, afa)
 
    end
 
-   if yIsNil(afa) == false then
-      after_fight_action = afa
+   if yIsNil(script) == false then
+      fight_script = script
    end
    fWid["<type>"] = "jrpg-fight"
    fWid.endCallback = Entity.new_func("CombatEnd")
@@ -215,7 +215,7 @@ function StartFight(wid, eve, enemy_type, afa)
    end
 
    fWid.enemy = npc
-   if yeGetString(after_fight_action) == "CombatDialogueNext" then
+   if yeGetString(fight_script) == "CombatDialogueNext" then
       dialogue.gotoNext(wid, eve)
    else
       backToGame(wid, eve)

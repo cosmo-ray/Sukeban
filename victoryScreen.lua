@@ -3,11 +3,9 @@ function victoryScreenAction(vs, eve)
    eve = Event.wrapp(eve)
 
    while eve:is_end() == false do
-      print("loop")
       if eve:type() == YKEY_DOWN then
 	 if eve:key() == Y_ENTER_KEY then
-	    print("enter")
-	    if yeGetString(after_fight_action) == "CombatDialogueNext" then
+	    if yeGetString(fight_script) == "CombatDialogueNext" then
 	       ywCntPopLastEntry(main_widget)
 	    else
 	       backToGame(vs)
