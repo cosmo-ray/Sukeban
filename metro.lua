@@ -56,7 +56,13 @@ local function do_encounter(metroMap, enc, next_enc, action)
    if (next_enc) then
       dial.text = "your party are under attack, you must defend yourself"
    else
-      dial.text = "you go to the metro, and BOUM\nENEMIES"
+      if phq.pj.archetype == GEEK_ARCHETYPE then
+	 dial.text = 'you hear peoples singging "lalah" "lalah"\n'..
+	    "and on the begining of your trip\n" ..
+	    "you have an encounter in metro\n"
+      else
+	 dial.text = "you go to the metro, and BOUM\nENEMIES"
+      end
    end
 
    print("1")
