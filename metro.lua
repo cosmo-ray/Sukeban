@@ -49,6 +49,7 @@ local function do_encounter(metroMap, enc, next_enc, action)
 
    local encounter_wid = Entity.new_array()
    local dial = nil
+   local enemies = enc.enemies
    encounter_wid[0] = {}
    dial = encounter_wid[0]
 
@@ -56,7 +57,7 @@ local function do_encounter(metroMap, enc, next_enc, action)
       dial.text = "your party are under attack, you must defend yourself"
    else
       if phq.pj.archetype == GEEK_ARCHETYPE then
-	 dial.text = 'you hear peoples singging "lalah" "lalah"\n'..
+	 dial.text = 'you hear peoples singing "lalah" "lalah"\n'..
 	    "and on the begining of your trip\n" ..
 	    "you have an encounter in metro\n"
       else
@@ -75,8 +76,17 @@ local function do_encounter(metroMap, enc, next_enc, action)
    --dial.answer.action = "Dialogue:gotoNext"
    dial.answer.action = {}
    local a = dial.answer.action
+   local nb_enemies = yuiRand() % yeGetIntAt(enemies, 2) + 1
+   if nb_enemies < yeGetIntAt(enemies, 1) then
+      nb_enemies = yeGetIntAt(enemies, 1)
+   end
    a[0] = "phq.StartFight"
-   a[1] = "rat"
+   a[1] = {}
+   local i = 0
+   while i < nb_enemies do
+      a[1][i] = yeGet(enemies, 0)
+      i = i + 1
+   end
    a[2] = "CombatDialogueNext"
    -- "action": [ "phq.StartFight", "rat", "CombatDialogueNext"]
    encounter_wid[1] = {}

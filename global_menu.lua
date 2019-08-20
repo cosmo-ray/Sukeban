@@ -570,7 +570,11 @@ function openStore(main, obj_or_eve, storeName)
 			     math.floor(cost) .. "$",
 			     Entity.new_func("gmBuyItem"))
 	 cur.obName = yeGetKeyAt(store, i)
-	 cur.path = ob_desc.path
+	 if yIsNil(yeGet(ob_desc, "path")) then
+	    cur.path = nil
+	 else
+	    cur.path = yeGet(ob_desc, "path")
+	 end
 	 cur.cost = cost
       end
       i = i + 1
