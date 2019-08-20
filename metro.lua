@@ -53,6 +53,12 @@ local function do_encounter(metroMap, enc, next_enc, action)
    encounter_wid[0] = {}
    dial = encounter_wid[0]
 
+   if yuiRand() % 100 > yeGetIntAt(enc, "%") then
+      if next_enc then
+	 return do_encounter(metroMap, next_enc, nil, action)
+      end
+      return ywidAction(action, metroMap, eve)
+   end
    if (next_enc) then
       dial.text = "your party are under attack, you must defend yourself"
    else
