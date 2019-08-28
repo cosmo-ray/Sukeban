@@ -67,7 +67,7 @@ end
 
 function getMainWid(wid)
    wid = Entity.wrapp(wid)
-   if wid:cent() == main_widget then
+   if wid:cent() == main_widget:cent() then
       return wid
    end
 
@@ -196,7 +196,11 @@ function StartFight(wid, eve, enemy_type, script)
    end
 
    if yIsNil(script) == false then
-      fight_script = script
+      if (yeType(script)) == YARRAY then
+	 fight_script = script[0]
+      else
+	 fight_script = script
+      end
    end
    fWid["<type>"] = "jrpg-fight"
    fWid.endCallback = Entity.new_func("CombatEnd")
@@ -217,9 +221,13 @@ function StartFight(wid, eve, enemy_type, script)
    fWid.enemy = npc
    if yeGetString(fight_script) == "CombatDialogueNext" then
       dialogue.gotoNext(wid, eve)
+   elseif yeGetString(fight_script) == "RemoveEnemy" then
+      lpcs.handlerNullify(script[1])
+      yeRemoveChild(main.enemies, script[1])
    else
       backToGame(wid, eve)
    end
+   print("NEW WID !", main:cent(), fWid:cent())
    ywPushNewWidget(main, fWid)
    return YEVE_ACTION
 end

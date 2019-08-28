@@ -370,6 +370,29 @@
                  "width":0,
                  "x":143,
                  "y":72
+                }, 
+                {
+                 "height":0,
+                 "id":21,
+                 "name":"Thrug",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Agresive",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":533.666666666667,
+                 "y":43.6666666666663
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -378,10 +401,10 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":21,
+ "nextobjectid":22,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.2.4",
  "tileheight":32,
  "tilesets":[
         {

@@ -21,12 +21,15 @@ local window_width = 800
 local window_height = 600
 local pj_pos = nil
 
+-- set as global so can be use by ai
+pix_mv = 0
 local PIX_MV_PER_MS = 3
 local TURN_LENGTH = Y_REQUEST_ANIMATION_FRAME
 
 local NO_COLISION = 0
 local NORMAL_COLISION = 1
 local CHANGE_SCENE_COLISION = 2
+local FIGHT_COLISION = 3
 local PHQ_SUP = 0
 local PHQ_INF = 1
 
@@ -329,9 +332,9 @@ function CheckColisionTryChangeScene(main, cur_scene, direction)
    return false
 end
 
-local function CheckColisionExit(col, ret)
+local function CheckColisionExit(col, ret, obj)
    yeDestroy(col)
-   return ret
+   return ret, obj
 end
 
 local this_door_is_lock_msg = 0
@@ -404,6 +407,11 @@ function CheckColision(main, canvasWid, pj)
       local obj = col[i]
       if yeGetIntAt(obj, "Collision") == 1 and
       ywCanvasCheckColisionsRectObj(colRect, obj) then
+	 if yeGetIntAt(obj, "agresive") > 0 then
+	    print("col here ????? ", obj)
+	    return CheckColisionExit(col, FIGHT_COLISION, obj)
+	 end
+	 print("col here", obj)
 	 return CheckColisionExit(col, NORMAL_COLISION)
       end
       i = i + 1
@@ -480,7 +488,6 @@ function phq_action(entity, eve)
 	 return YEVE_ACTION
       end
    end
-   NpcTurn(entity)
    if yevIsKeyDown(eve, Y_ESC_KEY) then
       return openGlobMenu(entity, GM_MISC_IDX)
    end
@@ -579,7 +586,7 @@ function phq_action(entity, eve)
    end
 
 
-   local pix_mv = turn_timer * PIX_MV_PER_MS
+   pix_mv = turn_timer * PIX_MV_PER_MS
    -- 2000 is absolutly random, and has not been test
    -- I would need a computer a lot more powerful to test this case
    -- and compute the proper uslepp value
@@ -588,12 +595,41 @@ function phq_action(entity, eve)
 
    entity.pj.mv_pix = entity.pj.mv_pix + math.abs(pix_mv)
 
+   NpcTurn(entity)
    local mvPos = Pos.new(pix_mv * entity.pj.move.left_right,
 			 pix_mv * entity.pj.move.up_down)
     ylpcsHandlerMove(entity.pj, mvPos.ent)
-    local col_rel = CheckColision(entity, entity.mainScreen, entity.pj)
+    local col_rel, col_obj = CheckColision(entity, entity.mainScreen, entity.pj)
+    print("COLISION !: ", col_rel)
     --local col_rel = NO_COLISION
 
+    if col_rel == FIGHT_COLISION then
+       local bye_guy = Entity.new_array()
+       local wid_npcs = entity.npcs
+       local npc_handler = nil
+       local i = 0
+
+       while i < yeLen(wid_npcs) do
+	  local cur_handler = wid_npcs[i]
+	  if cur_handler.canvas:cent() == col_obj:cent() then
+	     npc_handler = cur_handler
+	     break
+	  end
+	  i =  i + 1
+       end
+       if npc_handler == nil then
+	  print("CAN'T FIND NPC HANDLER FOR ", col_obj)
+	  ygTerminate();
+	  return YEVE_ACTION
+       end
+       print("Start Fight !!!", col_obj, yeGet(col_obj, "dialogue"))
+       print("current: ", yeGetIntAt(entity, "current"), entity:cent())
+       bye_guy[0] = Entity.new_string("RemoveEnemy")
+       bye_guy[1] = npc_handler
+       StartFight(entity, eve, yeGet(col_obj, "dialogue"), bye_guy)
+       print("current: ", yeGetIntAt(entity, "current"))
+       return YEVE_ACTION
+    end
     --print("MV: ", ywPosToString(mvPos:cent()))
     if col_rel == NORMAL_COLISION then
        mvPos:opposite()
@@ -724,7 +760,9 @@ function load_scene(ent, sceneTxt, entryIdx)
    local npc_idx = 0
    local j = 0
    local k = 0
+   local generic_npc_id = 0
    ent.npcs = {}
+   ent.enemies = {}
    ent.exits = {}
    ent.actionables = {}
    ent.cur_scene = scene
@@ -737,7 +775,7 @@ function load_scene(ent, sceneTxt, entryIdx)
       local npc = npcs[yeGetString(yeGet(obj, "name"))]
 
       if layer_name:to_string() == "NPC" and
-	 checkNpcPresence(obj, npc, sceneTxt) then
+      checkNpcPresence(obj, npc, sceneTxt) then
 
 	 dressUp(npc)
 	 npc = lpcs.createCaracterHandler(npc, c, e_npcs)
@@ -756,6 +794,15 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 end
 	 lpcs.handlerRefresh(npc)
 	 npc = Entity.wrapp(npc)
+	 if yeGetIntAt(obj, "Agresive") == 1 then
+	    yePushBack(ent.enemies, npc)
+	    yePushBack(npc, pos.ent, "orig_pos")
+	    npc.canvas.agresive = 1
+	 end
+	 if npc.char.is_generic then
+	    npc.generic_id = generic_npc_id
+	    generic_npc_id = generic_npc_id + 1
+	 end
 	 npc.canvas.Collision = 1
 	 npc.canvas.is_npc = 1
 	 npc.char.name = obj.name:to_string()
