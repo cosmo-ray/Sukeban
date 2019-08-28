@@ -124,6 +124,11 @@ function checkNpcPresence(obj, npc, scene)
    if npc == nil then
       return false
    end
+
+   local pp = yeGetIntAt(obj, "Presence %")
+   if pp > 0 and yuiRand() % 99 > pp then
+      return false
+   end
    local cur_time = phq.env.time:to_string()
 
    if checkObjTime(obj, cur_time) == false then

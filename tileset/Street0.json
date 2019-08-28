@@ -383,6 +383,11 @@
                          "value":true
                         }, 
                         {
+                         "name":"Presence %",
+                         "type":"int",
+                         "value":10
+                        }, 
+                        {
                          "name":"Rotation",
                          "type":"string",
                          "value":"down"
