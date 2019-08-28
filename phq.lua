@@ -605,7 +605,6 @@ function phq_action(entity, eve)
 			 pix_mv * entity.pj.move.up_down)
     ylpcsHandlerMove(entity.pj, mvPos.ent)
     local col_rel, col_obj = CheckColision(entity, entity.mainScreen, entity.pj)
-    print("COLISION !: ", col_rel)
     --local col_rel = NO_COLISION
 
     if col_rel == FIGHT_COLISION then

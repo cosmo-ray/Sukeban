@@ -12,7 +12,7 @@ local bruteDescription = "\"So I kicked him in the head 'til he was dead. Mahaha
 local wormsCoinoisseurDescription = "\"Surface-dwellers can be so stupid !\"\n" .. "description:\n" ..
    "Most peoples spend they childhoud playing game, thinking about boys or girl, fighting\n" ..
    "You've learn everything you clould about worms, spend a lot of times observing them\n" ..
-   "Speaking with your friends about them, your friends are worms" ..
+   "Speaking with your friends about them... your friends are worms\n" ..
    "you gather the kind of knowledge you don't really need in an RPG"
 
 local descArray = {geekDescription, idoleDescription,
@@ -108,7 +108,7 @@ function create_new_game(entity)
    entity.entries = {}
    entity.entries[0] = {}
    local mn = entity.entries[0]
-   mn.size = 30
+   mn.size = 20
    mn["<type>"] = "menu"
    mn.next = "phq:menus.game"
    mn.next_target = "main"

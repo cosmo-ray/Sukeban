@@ -147,7 +147,6 @@ function NpcTurn(wid)
       i = i + 1
    end
    i = i
-   print("NB ENEMIES: ", yeLen(wid.enemies))
    while i < yeLen(wid.enemies) do
       local enemy = wid.enemies[i]
       local mv_pos = searching(wid, enemy)
