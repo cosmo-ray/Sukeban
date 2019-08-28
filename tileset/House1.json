@@ -240,6 +240,48 @@
                  "width":29,
                  "x":577,
                  "y":73
+                }, 
+                {
+                 "height":26,
+                 "id":9,
+                 "name":"takeLombricopedia",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.takeObject"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"lombricopedia"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.pj.archetype"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":3
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":26,
+                 "x":548,
+                 "y":67
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -282,7 +324,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":9,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -291,7 +333,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.2.4",
  "tileheight":32,
  "tilesets":[
         {
