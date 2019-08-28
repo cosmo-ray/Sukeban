@@ -385,7 +385,7 @@
                         {
                          "name":"Presence %",
                          "type":"int",
-                         "value":10
+                         "value":100
                         }, 
                         {
                          "name":"Rotation",
@@ -398,6 +398,34 @@
                  "width":0,
                  "x":533.666666666667,
                  "y":43.6666666666663
+                }, 
+                {
+                 "height":0,
+                 "id":22,
+                 "name":"Thrug",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Agresive",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"Presence %",
+                         "type":"int",
+                         "value":100
+                        }, 
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":498.666666666667,
+                 "y":442.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -406,7 +434,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":22,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.4",

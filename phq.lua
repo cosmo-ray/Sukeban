@@ -629,10 +629,10 @@ function phq_action(entity, eve)
        end
        print("Start Fight !!!", col_obj, yeGet(col_obj, "dialogue"))
        print("current: ", yeGetIntAt(entity, "current"), entity:cent())
+       local d_nstr = Entity.new_string(yeGetStringAt(col_obj, "dialogue"))
        bye_guy[0] = Entity.new_string("RemoveEnemy")
        bye_guy[1] = npc_handler
-       StartFight(entity, eve, yeGet(col_obj, "dialogue"), bye_guy)
-       print("current: ", yeGetIntAt(entity, "current"))
+       StartFight(entity, eve, d_nstr, bye_guy)
        return YEVE_ACTION
     end
     --print("MV: ", ywPosToString(mvPos:cent()))
