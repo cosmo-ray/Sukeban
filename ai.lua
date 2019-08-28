@@ -17,9 +17,9 @@ function npcAdvenceTime()
    print("NPC Advence Time")
 end
 
-local function npc_check_col(canvas, enemy_canva, pos_add)
+local function npc_check_col(canvas, col_r, pos_add)
    local ret = false
-   local cols = ywCanvasProjectedColisionArray(canvas, enemy_canva, pos_add)
+   local cols = ywCanvasProjectedArColisionArray(canvas, col_r, pos_add)
    print("cols", cols, yeLen(cols), pos_add)
    local i = 0
    while i < yeLen(cols) do
@@ -45,6 +45,7 @@ local function searching(wid, enemy)
       local up_down = 0
       local left_right = 0
       local is_attacking = false
+      local colRect = Rect.new(ywPosX(pos) + 10, ywPosY(pos) + 30, 20, 20).ent
 
       if pj_dist > 300 then
 	 return nil
@@ -105,31 +106,31 @@ local function searching(wid, enemy)
 	 mvy = y_dist
       end
       local ret = Pos.new(mvx * left_right, mvy * up_down).ent
-      if npc_check_col(wid.mainScreen, enemy.canvas, ret) then
+      if npc_check_col(wid.mainScreen, colRect, ret) then
 	 if x_dist > y_dist then
 	    ret = Pos.new(mvx * left_right, 0).ent
-	    if npc_check_col(wid.mainScreen, enemy.canvas, ret) == false then
+	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
 	       return ret
 	    end
 	    ret = Pos.new(mvx * left_right, -mvy * up_down).ent
-	    if npc_check_col(wid.mainScreen, enemy.canvas, ret) == false then
+	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
 	       return ret
 	    end
 	    ret = Pos.new(0, mvy * up_down).ent
-	    if npc_check_col(wid.mainScreen, enemy.canvas, ret) == false then
+	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
 	       return ret
 	    end
 	 else
 	    ret = Pos.new(0, mvy * up_down).ent
-	    if npc_check_col(wid.mainScreen, enemy.canvas, ret) == false then
+	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
 	       return ret
 	    end
 	    ret = Pos.new(-mvx * left_right, mvy * up_down).ent
-	    if npc_check_col(wid.mainScreen, enemy.canvas, ret) == false then
+	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
 	       return ret
 	    end
 	    ret = Pos.new(mvx * left_right, 0).ent
-	    if npc_check_col(wid.mainScreen, enemy.canvas, ret) == false then
+	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
 	       return ret
 	    end
 	 end
@@ -146,6 +147,7 @@ function NpcTurn(wid)
       i = i + 1
    end
    i = i
+   print("NB ENEMIES: ", yeLen(wid.enemies))
    while i < yeLen(wid.enemies) do
       local enemy = wid.enemies[i]
       local mv_pos = searching(wid, enemy)
