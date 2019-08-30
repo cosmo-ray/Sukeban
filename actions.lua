@@ -371,12 +371,14 @@ end
 function sleep(main, obj)
    npcAdvenceTime()
    if phq.env.time:to_string() == "night" then
-      phq.env.time = "day"
+      phq.env.time = "morning"
       phq.env.day = phq.env.day + 1
       if phq.env.day > 6 then
 	 phq.env.day = 0
 	 phq.env.week = phq.env.week + 1
       end
+   elseif phq.env.time:to_string() == "morning" then
+      phq.env.time = "day"
    else
       phq.env.time = "night"
    end
