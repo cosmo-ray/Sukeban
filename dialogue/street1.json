@@ -2,7 +2,7 @@
     "Bouncer": {
 	"dialogue" : [
 	    {
-		"condition": ["S=", "phq.env.time", "day"],
+		"condition": ["not", ["S=", "phq.env.time", "night"]],
 		"action": [ "phq.backToGame" ],
 		"text": "sorry bar close now, come back latter"
 	    },

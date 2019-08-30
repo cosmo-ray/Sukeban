@@ -82,6 +82,11 @@
                          "name":"Rotation",
                          "type":"string",
                          "value":"down"
+                        }, 
+                        {
+                         "name":"Time",
+                         "type":"string",
+                         "value":"!morning"
                         }],
                  "rotation":0,
                  "type":"NPC",

@@ -113,6 +113,14 @@ function checkObjTime(obj, cur_time)
       return false
    end
    if obj_time then
+      local str_t = obj_time:to_string()
+      if (string.sub(str_t, 1, 1) == "!") then
+	 str_t =  string.sub(str_t, 2)
+	 if string.lower(str_t) == string.lower(cur_time) then
+	    return false
+	 end
+	 return true
+      end
       if yeStrCaseCmp(obj_time, cur_time) ~= 0 then
 	 return false
       end
