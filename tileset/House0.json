@@ -60,6 +60,33 @@
                  "width":27,
                  "x":355,
                  "y":251
+                }, 
+                {
+                 "height":58,
+                 "id":6,
+                 "name":"Mon bed",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.printMessage"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Sleeping here will just give a reason to mom to beat me up\nlet's not do that"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":54,
+                 "x":611,
+                 "y":55
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -241,7 +268,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -250,7 +277,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.2.4",
  "tileheight":32,
  "tilesets":[
         {

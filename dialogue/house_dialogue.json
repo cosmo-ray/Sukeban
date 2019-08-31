@@ -10,7 +10,7 @@
 		}
 	    },
 	    {
-		"text": "Can't you see I'm busy, bug off",
+		"text": "Can't you see I'm busy, bug off {phq.env.mean_name}",
 		"answers": [
                     {
 			"text": "Ok mom",
