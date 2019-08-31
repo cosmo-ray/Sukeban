@@ -368,7 +368,7 @@ function GetDrink(wid, eve)
 end
 
 -- in fact, this function do 2 things: adancing time and start sleep animation
-function sleep(main, obj)
+function advance_time(main)
    npcAdvenceTime()
    if phq.env.time:to_string() == "night" then
       phq.env.time = "morning"
@@ -383,10 +383,17 @@ function sleep(main, obj)
       phq.env.time = "night"
    end
    phq.env.time_point = 1
+   main = Entity.wrapp(main)
+   pj_pos = ylpcsHandePos(main.pj)
+   yeIncrRef(pj_pos)
+   load_scene(main, main.cur_scene_str:to_string(), -1)
+   main.sleep = 1
+end
+
+function sleep(main, obj)
+   advance_time(main)
    phq.pj.life = phq.pj.max_life
    phq.pj.drunk = 0
-   main = Entity.wrapp(main)
-   main.sleep = 1
 end
 
 function printMessage(main, obj, msg)

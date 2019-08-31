@@ -19,7 +19,7 @@ local run_script = nil
 
 local window_width = 800
 local window_height = 600
-local pj_pos = nil
+pj_pos = nil
 
 -- set as global so can be use by ai
 pix_mv = 0
@@ -708,7 +708,7 @@ function load_scene(ent, sceneTxt, entryIdx)
    local y = 0
    local c = mainCanvas.ent
 
-   print("start load !!!\n")
+   print("start load !!! ", sceneTxt, "\n")
    if c.exit_script then
       scripts[c.exit_script:to_string()](ent)
    end

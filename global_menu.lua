@@ -403,6 +403,13 @@ function wear_clothes_mn(mn)
    return YEVE_ACTION
 end
 
+function doAdvanceTime(mn)
+   local f_mn = ywCntWidgetFather(mn)
+
+   backToGame(f_mn)
+   advance_time(main_widget)
+end
+
 function pushStatus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
    local stat_menu = Container.new_entity("vertical")
@@ -415,6 +422,7 @@ function pushStatus(mn)
    menu:push("Spend XP", Entity.new_func("pushSpendXpWid"))
    menu:push("Choose Combot", Entity.new_func("chooseCombot"))
    menu:push("wear clothes", Entity.new_func("wear_clothes_mn"))
+   menu:push("advence time", Entity.new_func("doAdvanceTime"))
    menu.ent.size = 20
    menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
    stat_menu.ent.entries[0] = menu.ent
