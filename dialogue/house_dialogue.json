@@ -21,6 +21,7 @@
 			"condition":  ["and", ["=", "phq.quests.school_sub", 2],
 				       "phq.pj.inventory.beer"],
 			"actions": [
+			    [ "phq:remove", "beer" ],
 			    [ "setInt", "phq.quests.school_sub", 3 ],
 			    "phq.backToGame"]
                     },
