@@ -6,7 +6,8 @@
 	"attack" : "unarmed0",
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
-            "torso/dress_female/dress_w_sash_female.png",
+	    "torso/leather/chest_female.png",
+	    "legs/skirt/female/robe_skirt_female_incomplete.png",
             "hair/female/ponytail/brunette2.png"
         ]
     },

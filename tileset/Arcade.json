@@ -129,7 +129,7 @@
                  "y":339
                 }, 
                 {
-                 "height":13.3689839572193,
+                 "height":18.3823529411765,
                  "id":10,
                  "name":"Price_Start_Quest",
                  "properties":[
@@ -158,7 +158,7 @@
                  "visible":true,
                  "width":21.7245989304813,
                  "x":131.183155080214,
-                 "y":337.566844919786
+                 "y":332.553475935829
                 }, 
                 {
                  "height":52,
@@ -347,7 +347,7 @@
  "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.2.4",
  "tileheight":32,
  "tilesets":[
         {
