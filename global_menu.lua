@@ -201,6 +201,14 @@ function computeStatCost(st_val)
    return (st_val + 1) * 3
 end
 
+local function computeXpCost(player)
+   local ml = player.max_life:to_int()
+
+   ml = ml - 10
+   local multiplier = ml / 5
+   return 1 + multiplier
+end
+
 function spendXpLvlUpStat(mn)
    local stats = phq.pj.stats
    local st_idx = yeGetIntAt(ywMenuGetCurrentEntry(mn), "arg")
@@ -224,7 +232,25 @@ function spendXpLvlUpStat(mn)
 end
 
 
-local function spendXpGenMenu(statsMenu)
+function sendXpLvlUpXp(mn)
+   local player = phq.pj
+   local ml = player.max_life
+   local life = player.life
+   local cost = computeXpCost(player)
+
+   if cost < player.xp then
+      player.xp = player.xp - cost
+      yeSetInt(life, life + 1)
+      yeSetInt(ml, ml + 1)
+   else
+      print("someday, you be stronger but this day is not today !")
+   end
+
+   spendXpGenMenu(Menu.wrapp(mn))
+   return YEVE_ACTION
+end
+
+function spendXpGenMenu(statsMenu)
    local stats = phq.pj.stats
 
    statsMenu.ent["pre-text"] = "current xp: " .. yeGetInt(phq.pj.xp)
@@ -241,6 +267,9 @@ local function spendXpGenMenu(statsMenu)
       end
       i = i + 1
    end
+   local xp_cost = math.floor(computeXpCost(phq.pj))
+   statsMenu:push("max life: (" .. phq.pj.max_life:to_int() .. "): "
+		     .. xp_cost .. " xp", Entity.new_func("sendXpLvlUpXp"))
 end
 
 function spendXpOnStats(mn)
