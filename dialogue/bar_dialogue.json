@@ -111,7 +111,7 @@
 	    },
 	    "win_quest": {
 		"text": "bla bla bla WIN",
-		"condition": ["=", "phq.quests.school_sub", 1],
+		"condition": ["=", "phq.quests.a_drunk_story", 1],
 		"actions": [
 		    [ "setInt", "phq.quests.a_drunk_story", 2 ],
 		    "phq.backToGame"
