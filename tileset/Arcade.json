@@ -225,6 +225,11 @@
                          "name":"Rotation",
                          "type":"string",
                          "value":"down"
+                        }, 
+                        {
+                         "name":"Time",
+                         "type":"string",
+                         "value":"!Night"
                         }],
                  "rotation":0,
                  "type":"",
@@ -232,6 +237,52 @@
                  "width":0,
                  "x":113,
                  "y":312
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"Jaquobe",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Presence %",
+                         "type":"int",
+                         "value":80
+                        }, 
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":239,
+                 "y":217
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"Ashley",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"Time",
+                         "type":"string",
+                         "value":"Night"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":109,
+                 "y":308
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -344,7 +395,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":13,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.4",

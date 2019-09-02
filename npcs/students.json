@@ -9,7 +9,7 @@
             "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
-        ],
+        ]
     },
     "Charle": {
         "sex": "male",
@@ -21,6 +21,28 @@
             "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
-        ],
+        ]
+    },
+    "Jaquobe": {
+	"sex": "male",
+        "type": "light",
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/raven.png"
+        ]
+        "max_life": 10
+    },
+    "Ashley": {
+	"sex": "female",
+        "type": "light",
+        "max_life": 10,
+	"hair": ["loose", "redhead2"],
+	"equipement": {
+	    "torso": "white_sleeveless",
+	    "legs": "short skirt",
+	    "feet": "black_slippers"
+	}
     }
 }

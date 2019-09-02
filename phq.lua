@@ -60,6 +60,9 @@ function dressUp(caracter)
 
    if e.feet then
       local cur_o = objs[yeGetString(e.feet)]
+      if (yIsNil(cur_o)) then
+	 print("can't find ", yeGetString(e.feet))
+      end
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
       end
@@ -67,6 +70,9 @@ function dressUp(caracter)
 
    if e.legs then
       local cur_o = objs[yeGetString(e.legs)]
+      if (yIsNil(cur_o)) then
+	 print("can't find ", yeGetString(e.legs))
+      end
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
       end

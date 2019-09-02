@@ -209,6 +209,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
+	"image_rotate": -90,
 	"image": "./Portrait_09.png",
     },
     "Creepy guy in the corner": {

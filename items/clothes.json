@@ -79,10 +79,15 @@
 	"path": "feet/shoes/female/black_shoes_female.png",
 	"where": "feet"
     },
-    "skirt": {
+    "long skirt": {
 	"type": "equipement",
 	"where": "legs",
 	"path": "legs/skirt/female/robe_skirt_female_incomplete.png"
+    },
+    "short skirt": {
+	"type": "equipement",
+	"where": "legs",
+	"path": "legs/skirt/female/short_skirt.png"
     },
     "teal pants female": {
 	"type": "equipement",
