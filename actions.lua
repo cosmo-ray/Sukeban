@@ -435,6 +435,7 @@ function startDialogue(main, obj, dialogue)
       dialogueWid.npc_nb = npc_nb
       dialogueWid["<type>"] = "dialogue-canvas"
       dialogueWid.image = npc.image
+      dialogueWid.image_rotate = npc.image_rotate
       dialogueWid.name = npc.name
       dialogueWid.endAction = "phq.backToGame"
       ywPushNewWidget(entity, dialogueWid)

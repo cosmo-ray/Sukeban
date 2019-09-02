@@ -173,6 +173,24 @@ function checkNpcPresence(obj, npc, scene)
    return true
 end
 
+local function _include(target, file)
+   local includes = file._include
+   local i = 0
+
+   while i < yeLen(includes) do
+      local inc = includes[i]
+      inc = File.jsonToEnt(inc:to_string())
+      _include(target, inc)
+      local j = 0
+      while j < yeLen(inc) do
+	 yePushBack(target, yeGet(inc, j), yeGetKeyAt(inc, j));
+	 j = j + 1
+      end
+      i = i + 1
+   end
+   file._include = nil
+end
+
 function init_phq(mod)
    Widget.new_subtype("phq", "create_phq")
    Widget.new_subtype("phq-new-game", "create_new_game")
@@ -238,7 +256,22 @@ function load_game(save_dir)
    end
    local events = File.jsonToEnt(save_dir.."/evenements.json")
    phq.events = events
-   local npcs = File.jsonToEnt(save_dir.."/npcs.json")
+   local loaded_npcs = File.jsonToEnt(save_dir.."/npcs.json")
+   local npcs = File.jsonToEnt("npcs.json")
+   _include(npcs, npcs)
+   local i = 0
+   while i < yeLen(loaded_npcs) do
+      local n = yeGetKeyAt(loaded_npcs, i)
+      local cnpc = npcs[n]
+      local clnpc = loaded_npcs[i]
+
+      if yIsNil(cnpc) then goto next_loop end
+
+      cnpc.life = clnpc.life
+
+      :: next_loop ::
+      i = i + 1
+   end
    phq.npcs = npcs
    ywidNext(ygGet("phq:menus.game"))
    --yCallNextWidget(entity);
@@ -682,24 +715,6 @@ function destroy_phq(entity)
       ygUnstalk(stalk)
       i = i + 1
    end
-end
-
-local function _include(target, file)
-   local includes = file._include
-   local i = 0
-
-   while i < yeLen(includes) do
-      local inc = includes[i]
-      inc = File.jsonToEnt(inc:to_string())
-      _include(target, inc)
-      local j = 0
-      while j < yeLen(inc) do
-	 yePushBack(target, yeGet(inc, j), yeGetKeyAt(inc, j));
-	 j = j + 1
-      end
-      i = i + 1
-   end
-   file._include = nil
 end
 
 -- push all caracters to dial, but read c_dial
