@@ -505,6 +505,7 @@ function phq_action(entity, eve)
    local st_hooks_len = yeLen(entity.st_hooks)
    local dir_change = false
 
+   entity.require_ret = 0
    --print("Last Turn Length: ", turn_timer, ywidTurnTimer())
    if newly_loaded then
       turn_timer = 1
@@ -527,6 +528,7 @@ function phq_action(entity, eve)
       end
       i = i + 1
    end
+
    if entity.box_t then
       if entity.box_t > 100 then
 	 dialogue_box.rm(entity.upCanvas, entity.box)
@@ -605,6 +607,9 @@ function phq_action(entity, eve)
 		  e_actionables[i].Arg0)
 	    -- save here the number of time this object have been actioned
 	    phq_do_action(entity, e_actionables[i])
+	    if yeGetInt(entity.require_ret) == 1 then
+	       return YEVE_ACTION
+	    end
 	 end
 	 i = i + 1
       end

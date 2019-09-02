@@ -388,6 +388,7 @@ function advance_time(main)
    yeIncrRef(pj_pos)
    load_scene(main, main.cur_scene_str:to_string(), -1)
    main.sleep = 1
+   main.require_ret = 1
 end
 
 function sleep(main, obj)
