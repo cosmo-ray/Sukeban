@@ -141,7 +141,7 @@ function CombatEnd(wid, main, winner_id)
 				     Entity.new_string(math.floor(phq.pj.life:to_int())),
 				     "rgba: 255 255 255 255")
 
-   local fsstr = yeGetString(fight_script)
+   local fsstr = fight_script
    if fsstr == "CombatDialogueNext" or fsstr == "CombatDialogueGoto" then
       ywCntPopLastEntry(main)
    else
@@ -199,9 +199,9 @@ function StartFight(wid, eve, enemy_type, script)
    if yIsNil(script) == false then
       if (yeType(script)) == YARRAY then
 	 script = Entity.wrapp(script)
-	 fight_script = script[0]
+	 fight_script = yeGetString(script[0])
       else
-	 fight_script = script
+	 fight_script = yeGetString(script)
       end
    end
    fWid["<type>"] = "jrpg-fight"
@@ -221,12 +221,12 @@ function StartFight(wid, eve, enemy_type, script)
    end
 
    fWid.enemy = npc
-   if yeGetString(fight_script) == "CombatDialogueNext" then
+   if fight_script == "CombatDialogueNext" then
       dialogue.gotoNext(wid, eve)
-   elseif yeGetString(fight_script) == "RemoveEnemy" then
+   elseif fight_script == "RemoveEnemy" then
       lpcs.handlerNullify(script[1])
       yeRemoveChild(main.enemies, script[1])
-   elseif yeGetString(fight_script) == "CombatDialogueGoto" then
+   elseif fight_script == "CombatDialogueGoto" then
       dialogue["goto"](wid, eve, script[1])
    else
       backToGame(wid, eve)

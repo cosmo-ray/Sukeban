@@ -5,7 +5,7 @@ function victoryScreenAction(vs, eve)
    while eve:is_end() == false do
       if eve:type() == YKEY_DOWN then
 	 if eve:key() == Y_ENTER_KEY then
-	    if yeGetString(fight_script) == "CombatDialogueNext" then
+	    if fight_script == "CombatDialogueNext" then
 	       ywCntPopLastEntry(main_widget)
 	    else
 	       backToGame(vs)
