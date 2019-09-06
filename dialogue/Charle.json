@@ -1,0 +1,278 @@
+{
+    "Charle": {
+	"dialogue": {
+	    "been beat up": {
+		"text": ["hello my very violent friend"],
+		"condition":  ["=", "phq.events.beat_up_charle", 1],
+		"action": "phq.backToGame"
+	    },
+	    "been beat up": {
+		"text": ["Hej hej {phq.pj.name}"],
+		"condition":  ["=", "phq.events.negociate_with_charle", 1],
+		"action": "phq.backToGame"
+	    },
+	    "cute": {
+		"text": ["Bonjour mademoiselle"],
+		"condition": [">", "phq.pj.stats.charm", 4],
+		"answers": [
+		    {
+			"text": "(pretent you've here nothing, turn away)",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "hello, I'm Oscar, I'm looking for Charle, is that you ?",
+			"condition":  ["=", "phq.quests.school_sub", 8],
+			"action": ["Dialogue:goto", "cute-1"]
+		    }
+		]
+	    },
+	    "start": {
+		"text": ["hello, my dear",
+			 "I am in the deep regret to inform you",
+			 "that you are a visual aggression to me",
+			 "and if you stay in my sight, I might not without purpose",
+			 "give an impulsion to my left arm",
+			 "that will propulse my hand behind your head",
+			 "that crossing your face on the way",
+			 "and make all the tax you mother pay to heal care",
+			 "worth it"],
+		"answers": [
+		    {
+			"text": "bye then",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": ["Well, not that I like the idea of getting mycosis",
+				 "from your face please me,",
+				 "But I'm looking for a rat,",
+				 "a different species of your. Some rats have brain.",
+				 "the one I'm looking for is call Gambat do you have it ?"],
+			"condition":  ["=", "phq.quests.school_sub", 8]
+		    }
+		]
+	    },
+	    "gambat0" : {
+		"text": "(lauch) rats eat worms too, and I'm hunrgy",
+		"action": [ "phq.StartFight",
+			    ["Charle", "Thrug 0", "Thrug 1"],
+			    "CombatDialogueNext"]
+	    },
+	    "gambat1" : {
+		"text" : [ "(you win !",
+			  "as combat scripting are still very poor",
+			  "and dialogue script despite been messy",
+			  "have a lot of functionality",
+			  "I've add this text to give you your well deserve reward",
+			  "Also I will improve combat script in the future",
+			  "I might let this text tough)"],
+		"answer": {
+		    "text": "(get reward and be happy <3 <3 <3 <3)",
+		    "actions": [
+			[ "setInt", "phq.quests.school_sub", 9],
+			[ "setInt", "phq.events.beat_up_charle", 1],
+			"phq.backToGame"
+		    ]
+		}
+	    },
+	    "cute-1": {
+		"text": "My dear, yes I am, why is a sublime creature like you looking for me",
+		"answers": [
+		    {
+			"text": "wow, Bob did not tell me how awesome you are",
+			"actions": [["increaseInt", "phq.env.charle<3", 1],
+				    ["Dialogue:goto", "bob?"]]
+		    },
+		    {
+			"text": "I'm looking for Bob's rat, can you give it to me please ?",
+			"action": ["Dialogue:goto", "bob-rat"]
+		    }
+		]
+	    }, "bob?" : {
+		"text": [ "Bob ?",
+			  " why whould a mademoiselle like you",
+			  " talk to a Despicable thing like that." ],
+		"answers": [
+		    {
+			"text": "I need his rat",
+			"action": ["Dialogue:goto", "bob-rat"]
+
+		    },
+		    {
+			"text": [
+			    "I don't want to help Bob, I'm too wonderful for his kind",
+			    "but his father, blackmail me to help his son get his rat back"
+			],
+			"actions":[
+			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "Dialogue:goto", "bad-rat" ]
+			]
+		    }
+		]
+	    }, "bob-rat" : {
+		"text": [
+		    "Erkkk, why would you want that",
+		    "why should I give it to you ?",
+		    "Well you're cute, so maybe we can make an arangment",
+		    "one that include your skin touching mine"
+		],
+		"answers": [
+		    {
+			"text": [
+			    "I'm so glad you say that, I was starting to think you're a nice guy",
+			    "but no, you're just an ass, and beating you,",
+			    "that will be delightful"],
+			"action": [ "phq.StartFight",
+				    ["Charle", "Thrug 0", "Thrug 1"],
+				    ["CombatDialogueGoto", "gambat1"]]
+		    },
+		    {
+			"text": ["with your 2 body guard around you, Gross",
+				 "ask them to leave, and we can work up on something"],
+			"action": ["phq:quest_script", "charle_body_guard_leave"]
+		    }
+		]
+	    },
+	    "bad-rat" : {
+		"texts" : [
+		    {
+			"text": ["Normaly I would not do that",
+				 "But as a gentlemen, I must help",
+				 "wonderful girl"],
+			"condition": [">", "phq.pj.stats.charm", 5]
+		    },
+		    {
+			"text": ["you are awesome indead",
+				 "But bob, that bastard, I cannot forgive him",
+				 "he need to pay what he's done to me"]
+		    }
+		],
+		"answers": [
+		    {
+			"text": ["well thanks CHarle"],
+			"condition": [">", "phq.pj.stats.charm", 5],
+			"actions": [
+			    [ "setInt", "phq.quests.school_sub", 9],
+			    [ "setInt", "phq.events.negociate_with_charle", 1],
+			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": ["but now I think about it",
+				 "I'm too wonderful for you too, so wonderful",
+				 "that I'm gona beat you up, that will by my masterpiece of violance"],
+			"action": [ "phq.StartFight",
+				    ["Charle", "Thrug 0", "Thrug 1"],
+				    ["CombatDialogueGoto", "gambat1"] ]
+		    },
+		    {
+			"text": ["you want to make Bob pay right",
+				 "I dont like been use by someone else",
+				 "I don't like him too, and now I think about it",
+				 "he ask me for his rat, but he didn't say he must be alive"],
+			"actions": [
+			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "Dialogue:goto", "dead-rat" ]
+			]
+
+		    }
+		]
+	    },
+	    "dead-rat" : {
+		"text": [ "Wow that's not a bad idea",
+			  "killing it ie a little too violant though",
+			  "let's remove him an ear",
+			  "he take a knife from his pocket"],
+		"answers" : [
+		    {
+			"text": "nice let's do this",
+			"actions": [
+			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "phq.increase", "trait", "violance", 1],
+			    [ "phq.increase", "trait", "sensitivity", -1],
+			    [ "setInt", "phq.events.gambat_hurt", 1],
+			    [ "setInt", "phq.quests.school_sub", 9],
+			    [ "setInt", "phq.events.negociate_with_charle", 1],
+			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": ["what, let me show you how we deal with anoying roden",
+				 "(stangle gambat to dead)"],
+			"actions": [
+			    [ "phq.increase", "trait", "violance", 1],
+			    [ "phq.increase", "trait", "sensitivity", -3],
+			    [ "setInt", "phq.events.gambat_dead", 1],
+			    [ "setInt", "phq.quests.school_sub", 9],
+			    [ "setInt", "phq.events.negociate_with_charle", 1],
+			    "phq.backToGame"
+			]
+
+		    },
+		    {
+			"text": ["wooo, stop I was joking",
+				 "you are the worst kind of trash this planet have you know",
+				 "you need to be remove"],
+			"action": [ "phq.StartFight",
+				    ["Charle", "Thrug 0", "Thrug 1"],
+				    ["CombatDialogueGoto", "gambat1"]]
+		    }
+		]
+	    }
+	}
+    },
+    "Lonely Charle" : {
+	"dialogue": [
+	    {
+		"text": "so, It's just you and me now\nIt's fun time !",
+		"answers": [
+		    {
+			"text": "So :)\nyou wanted physical contact with me\n(puch him)",
+			"action": ["phq.StartFight", "Charle",
+				   "CombatDialogueNext"]
+		    },
+		    {
+			"text": ["your mother must be sad, a stupide son",
+				 "that got beat up by the weak girl I am",
+				 "(attack him)"],
+			"action": ["phq.StartFight", "Charle",
+				   "CombatDialogueNext"]
+		    }
+
+		]
+	    },
+	    {
+		"text": ["After some physical exchange",
+			 "Charle is liying down on the street",
+			 "And seems a lot less exited than he was before",
+			 "But as a man who have great respect for whomen he tell you",
+			 "\"Whore, I'll make you pay for this\""],
+		"answers": [
+		    {
+			"text": ["Yes Charle, Touching your skins was nice",
+				 "we can do that again when-ever you want",
+				 "thanks for the rat by the way"],
+			"actions": [
+			    [ "setInt", "phq.quests.school_sub", 9],
+			    [ "setInt", "phq.events.beat_up_charle", 1],
+			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": ["Oh, right",
+				 "you didn't wanted me to touch you like this",
+				 "you wanted me to touch your genital",
+				 "I can do that",
+				 "(kick him in the place no men want to be kick)"],
+			"actions": [
+			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "setInt", "phq.quests.school_sub", 9],
+			    [ "setInt", "phq.events.beat_up_charle", 1],
+			    "phq.backToGame"
+			]
+
+		    }
+		]
+	    }
+	]
+    }
+}
