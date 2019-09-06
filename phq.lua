@@ -223,6 +223,7 @@ function init_phq(mod)
    mod.increase = Entity.new_func("increase")
    mod.recive = Entity.new_func("recive")
    mod.remove = Entity.new_func("remove")
+   mod.quest_script = Entity.new_func("call_quest_script")
    mod.use_time_point = Entity.new_func("use_time_point")
    mod.changeScene = Entity.new_func("changeScene")
    mod.openGlobMenu = Entity.new_func("openGlobMenu")
@@ -652,7 +653,14 @@ function phq_action(entity, eve)
 
    entity.pj.mv_pix = entity.pj.mv_pix + math.abs(pix_mv)
 
+
    NpcTurn(entity)
+
+   if entity.block_script then
+      scripts[entity.block_script:to_string()](entity)
+      return YEVE_ACTION
+   end
+
    local mvPos = Pos.new(pix_mv * entity.pj.move.left_right,
 			 pix_mv * entity.pj.move.up_down)
     ylpcsHandlerMove(entity.pj, mvPos.ent)
@@ -810,13 +818,14 @@ function load_scene(ent, sceneTxt, entryIdx)
    while i < yeLen(objects) do
       local obj = objects[i]
       local layer_name = obj.layer_name
-      local npc = npcs[yeGetString(yeGet(obj, "name"))]
+      local npc_name = yeGetString(yeGet(obj, "name"))
+      local npc = npcs[npc_name]
 
       if layer_name:to_string() == "NPC" and
       checkNpcPresence(obj, npc, sceneTxt) then
 
 	 dressUp(npc)
-	 npc = lpcs.createCaracterHandler(npc, c, e_npcs)
+	 npc = lpcs.createCaracterHandler(npc, c, e_npcs, npc_name)
 	 --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
 	 local pos = Pos.new_copy(obj.rect)
 	 pos:sub(20, 50)
@@ -843,7 +852,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 end
 	 npc.canvas.Collision = 1
 	 npc.canvas.is_npc = 1
-	 npc.char.name = obj.name:to_string()
+	 npc.char.name = npc_name
 	 npc.canvas.dialogue = obj.name:to_string()
 	 npc.canvas.current = npc_idx
 	 npc_idx = npc_idx + 1

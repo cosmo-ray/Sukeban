@@ -141,7 +141,8 @@ function CombatEnd(wid, main, winner_id)
 				     Entity.new_string(math.floor(phq.pj.life:to_int())),
 				     "rgba: 255 255 255 255")
 
-   if yeGetString(fight_script) == "CombatDialogueNext" then
+   local fsstr = yeGetString(fight_script)
+   if fsstr == "CombatDialogueNext" or fsstr == "CombatDialogueGoto" then
       ywCntPopLastEntry(main)
    else
       backToGame(wid)
@@ -197,6 +198,7 @@ function StartFight(wid, eve, enemy_type, script)
 
    if yIsNil(script) == false then
       if (yeType(script)) == YARRAY then
+	 script = Entity.wrapp(script)
 	 fight_script = script[0]
       else
 	 fight_script = script
@@ -224,6 +226,8 @@ function StartFight(wid, eve, enemy_type, script)
    elseif yeGetString(fight_script) == "RemoveEnemy" then
       lpcs.handlerNullify(script[1])
       yeRemoveChild(main.enemies, script[1])
+   elseif yeGetString(fight_script) == "CombatDialogueGoto" then
+      dialogue["goto"](wid, eve, script[1])
    else
       backToGame(wid, eve)
    end
@@ -367,6 +371,12 @@ function GetDrink(wid, eve)
    return backToGame(wid, eve)
 end
 
+function call_quest_script(wid, eve, script)
+   print(wid, eve, script)
+   scripts[yeGetString(script)](main_widget, wid)
+   return YEVE_ACTION
+end
+
 -- in fact, this function do 2 things: adancing time and start sleep animation
 function advance_time(main)
    npcAdvenceTime()
@@ -412,6 +422,7 @@ function printMessage(main, obj, msg)
 end
 
 function startDialogue(main, obj, dialogue)
+   print("start dialogue ", dialogue)
    dialogue = Entity.wrapp(dialogue)
    if dialogue and dialogues[dialogue:to_string()] then
       local entity = Entity.wrapp(main)

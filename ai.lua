@@ -175,6 +175,7 @@ function NpcTurn(wid)
 end
 
 function PjLeaveController(wid, action)
+   print("bye bye")
    wid = Entity.wrapp(wid)
    action = Entity.wrapp(action)
    local mv_tbl_idx = action[ACTION_MV_TBL_IDX]
@@ -207,6 +208,23 @@ function PjLeaveController(wid, action)
    end
    walkDoStep(wid, npc)
    ylpcsHandlerSetPos(npc, mvPos)
+end
+
+function pushPjLeave(npc, entryPoint)
+   local main = main_widget
+   local action = Entity.new_array(main.npc_act)
+   local exit = main.exits[yeGetInt(entryPoint)]
+
+   npc.move = {}
+   action[ACTION_NPC] = npc
+   action[ACTION_MV_TBL] = {}
+   action[ACTION_MV_TBL_IDX] = 0
+   print(exit.rect, yeGetInt(entryPoint))
+   ywCanvasDoPathfinding(main.mainScreen, npc.canvas, exit.rect,
+			 Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
+			 action[ACTION_MV_TBL])
+   print(action.mv_table)
+   action.controller = Entity.new_func("PjLeaveController")
 end
 
 function PjLeave(owid, eve, entryPoint)

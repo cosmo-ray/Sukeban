@@ -87,8 +87,27 @@ function inter_bar_running(main)
    end
 end
 
+local charle_body_guard_leave_t = nil
+
+function charle_body_guard_leave(main, dialogue_wid)
+   if dialogue_wid then
+      print("init leave")
+      backToGame(dialogue_wid)
+      main.block_script = "charle_body_guard_leave"
+      pushPjLeave(main.npcs["Thrug 0"], 1)
+      pushPjLeave(main.npcs["Thrug 1"], 1)
+      charle_body_guard_leave_t = YTimerCreate()
+   end
+   local t = YTimerGet(charle_body_guard_leave_t)
+   print("charle_body_guard_leave !!!!", YTimerGet(charle_body_guard_leave_t))
+   if t > 2500000 then
+      main.block_script = nil
+      startDialogue(main, main.npcs["Charle"], Entity.new_string("Lonely Charle"))
+   end
+end
+
 scripts = {}
 scripts["inter_bar_in"] = inter_bar_in
 scripts["inter_bar_out"] = inter_bar_out
 scripts["inter_bar_running"] = inter_bar_running
-
+scripts["charle_body_guard_leave"] = charle_body_guard_leave
