@@ -200,6 +200,7 @@
 				 "(stangle gambat to dead)"],
 			"actions": [
 			    [ "phq.increase", "trait", "violance", 1],
+			    [ "phq.increase", "reputation", "insane", 1],
 			    [ "phq.increase", "trait", "sensitivity", -3],
 			    [ "setInt", "phq.events.gambat_dead", 1],
 			    [ "setInt", "phq.quests.school_sub", 9],

@@ -42,6 +42,15 @@ function newGameAction(menu, eve, arg)
    phq.pj.type = "light"
    phq.pj.attack = "unarmed0"
    phq.pj.max_life = 10
+   -- reputation is how the other see you, not how you are
+   -- if someone give flase rumor about you, it will afect your reputation
+   -- if you do something bad, but no one know it, it will afect your trait
+   phq.pj.reputation = {}
+   phq.pj.reputation.insane = 0
+   phq.pj.reputation.bully = 0
+   phq.pj.reputation.weak = 0
+   -- I don't have polite way for this one, sorry
+   phq.pj.reputation.slut = 0
    phq.pj.equipement = {}
    phq.pj.equipement.torso = "white_sleeveless"
    phq.pj.equipement.legs = "teal pants female"
