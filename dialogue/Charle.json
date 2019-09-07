@@ -265,6 +265,7 @@
 				 "(kick him in the place no men want to be kick)"],
 			"actions": [
 			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "phq.increase", "trait", "violance", 1],
 			    [ "setInt", "phq.quests.school_sub", 9],
 			    [ "setInt", "phq.events.beat_up_charle", 1],
 			    "phq.backToGame"

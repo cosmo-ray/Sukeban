@@ -1,6 +1,42 @@
 {
     "Bob": {
 	"dialogue" : {
+	    "dead": {
+		"text": ["hey, did you find Gambat ?",
+			 "I had a bad dream",
+			 "that something really bad was hapening to him"],
+		"condition": ["and",
+			      [">", "phq.events.gambat_dead", 0],
+			      ["=", "phq.quests.school_sub", 9]
+			     ],
+		"answers": [
+		    {
+			"text": "Yes, but I'm sorry, he's dead\n(give him the dead rat)",
+			"action": ["Dialogue:goto", "gamba_dead"]
+		    },
+		    {
+			"text": "No yet",
+			"action": "phq.backToGame"
+		    }
+		]
+	    },
+	    "outch": {
+		"text": "hey, did you find Gambat ?",
+		"condition": ["and",
+			      [">", "phq.events.gambat_hurt", 0],
+			      ["=", "phq.quests.school_sub", 9]
+			     ],
+		"answers": [
+		    {
+			"text": "Yes, but I'm sorry, Charle hurt him bad",
+			"action": ["Dialogue:goto", "gamba_hurt"]
+		    },
+		    {
+			"text": "No not yet, sorry",
+			"action": "phq.backToGame"
+		    }
+		]
+	    },
 	    "hi" : {
 		"text": "hej",
 		"answers": [
@@ -53,6 +89,35 @@
 			[ "phq.PjLeave", 1 ]
 		    ]
 		}
+	    },
+	    "gamba_hurt": {
+		"text": ["that bastard, I'll make him pay for this, I sware",
+			 "anyway, you help me, So I'll tell my father you help me",
+			 "thanks"],
+		"actions": [
+		    [ "setInt", "phq.quests.school_sub", 10 ],
+		    [ "phq.PjLeave", 1 ]
+		]
+	    },
+	    "gamba_dead": {
+		"text": ["what no, that's a lie what's happen",
+			 "(you can see tear on his face)"],
+		"answers": [
+		    {
+			"text": ["when I arrive he was alerady dead",
+				 "I'm sorry, they was playing with his dead body",
+				 "I had to fight him to get him back",
+				 "at last you can give him a proper funeral"],
+			"action": ["Dialogue:goto", "gamba_dead_lie"]
+		    }
+		]
+	    },
+	    "gamba_dead_lie": {
+		"text": ["Well, thanks for helping me, I'll tell my father"],
+		"actions": [
+		    [ "setInt", "phq.quests.school_sub", 10 ],
+		    [ "phq.PjLeave", 1 ]
+		]
 	    }
 	}
     }
