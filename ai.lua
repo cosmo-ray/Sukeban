@@ -160,7 +160,23 @@ function NpcTurn(wid)
 	 local agresive = ec.agresive
 
 	 enemy.ai_state = ENEMY_ATTACKING
-	 ylpcsHandlerNextStep(enemy)
+	 if math.abs(ywPosX(mv_pos)) > math.abs(ywPosY(mv_pos)) and
+	    (enemy.y:to_int() == LPCS_UP or enemy.y:to_int() == LPCS_DOWN) then
+	       if ywPosX(mv_pos) > 0 then
+		  lpcs.handlerSetOrigXY(enemy, 0, LPCS_RIGHT)
+	       else
+		  lpcs.handlerSetOrigXY(enemy, 0, LPCS_LEFT)
+	       end
+	 elseif math.abs(ywPosX(mv_pos)) < math.abs(ywPosY(mv_pos)) and
+	 (enemy.y:to_int() == LPCS_LEFT or enemy.y:to_int() == LPCS_RIGHT) then
+	    if ywPosY(mv_pos) > 0 then
+	       lpcs.handlerSetOrigXY(enemy, 0, LPCS_UP)
+	    else
+	       lpcs.handlerSetOrigXY(enemy, 0, LPCS_DOWN)
+	    end
+	 else
+	    ylpcsHandlerNextStep(enemy)
+	 end
 	 ylpcsHandlerRefresh(enemy)
 	 ylpcsHandlerMove(enemy, mv_pos)
 	 ec = enemy.canvas
