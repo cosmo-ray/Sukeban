@@ -100,12 +100,23 @@
 		]
 	    },
 	    "gamba_dead": {
-		"text": ["what no, that's a lie what's happen",
+		"text": ["what no, that's a lie (sob), what's happen",
 			 "(you can see tear on his face)"],
 		"answers": [
 		    {
+			"text": ["Very easy, Charle give it back to me, and I thought",
+				 "\"I don't like Bob, he's not atractive, ",
+				 "I just need it so I can convince his Father to help me\"",
+				 "and gamba watch me with he's small eye, so I put my hand aroud he's neck",
+				 "He made funy noise like \"kwii\", \"kwii\", then he die, isn't it dramatic ?"],
+			"actions": [
+			    [ "phq.increase", "trait", "sensitivity", -1],
+			    ["Dialogue:goto", "monster"]
+			]
+		    },
+		    {
 			"text": ["when I arrive he was alerady dead",
-				 "I'm sorry, they was playing with his dead body",
+				 "they was playing with his dead body",
 				 "I had to fight him to get him back",
 				 "at last you can give him a proper funeral"],
 			"action": ["Dialogue:goto", "gamba_dead_lie"]
@@ -117,6 +128,51 @@
 		"actions": [
 		    [ "setInt", "phq.quests.school_sub", 10 ],
 		    [ "phq.PjLeave", 1 ]
+		]
+	    },
+	    "monster": {
+		"text": "I hate you, I hate you, I hate you",
+		"action": ["phq.StartFight", "Bob", "CombatDialogueNext"]
+	    },
+	    "bad guy win": {
+		"text": "you beat Bob, he's on the floor, bearly concience",
+		"answer": {
+		    "text": [
+			"so this is what's gona happen, you are going to tell",
+			"you are going to tell your father how much I help you",
+			"and how much Carle is an horible Guy and if you dont",
+			"due I'm gona play with you, much more than what I've play",
+			"with Gamba, okay ?"
+		    ]
+		}
+	    },
+	    "bad end": {
+		"text": "he acquiesce, but you can still see he's hate in he's eye",
+		"answesr": [
+		    {
+			"text": [
+			    "thanks, I knew I could count on you",
+			    "Oh, and smile a little, you don't talk to cute girl",
+			    "every day"
+			],
+			"actions": [
+			    [ "setInt", "phq.quests.school_sub", 10 ],
+			    [ "phq.PjLeave", 1 ]
+			]
+		    },
+		    {
+			"text": [
+			    "thanks, one thing before I part",
+			    "You was finish before I",
+			    "that's not how you should treat a girl (beat him again)"
+			],
+			"actions": [
+			    [ "phq.increase", "trait", "violance", 2],
+			    [ "setInt", "phq.quests.school_sub", 10 ],
+			    [ "phq.PjLeave", 1 ]
+			]
+
+		    }
 		]
 	    }
 	}
