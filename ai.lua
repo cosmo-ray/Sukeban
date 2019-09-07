@@ -170,9 +170,9 @@ function NpcTurn(wid)
 	 elseif math.abs(ywPosX(mv_pos)) < math.abs(ywPosY(mv_pos)) and
 	 (enemy.y:to_int() == LPCS_LEFT or enemy.y:to_int() == LPCS_RIGHT) then
 	    if ywPosY(mv_pos) > 0 then
-	       lpcs.handlerSetOrigXY(enemy, 0, LPCS_UP)
-	    else
 	       lpcs.handlerSetOrigXY(enemy, 0, LPCS_DOWN)
+	    else
+	       lpcs.handlerSetOrigXY(enemy, 0, LPCS_UP)
 	    end
 	 else
 	    ylpcsHandlerNextStep(enemy)
