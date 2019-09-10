@@ -105,6 +105,7 @@ function pushQuests(panel)
       local stalk_path = yeGetStringAt(quest, "stalk")
       local cur = yeGetInt(ygGet(stalk_path))
 
+      print(quest_name, cur, stalk_sart)
       if (cur > stalk_sart) then
 	 local descs = quest.descriptions
 	 txt = txt .. "[ " ..  yeGetKeyAt(quests_info, i) .. " ]\n"
@@ -160,10 +161,17 @@ function pushSTatusTextScreen(container)
       i = i + 1
    end
 
+   local chap_txt = "capter: "
+
+   if yeGetIntAt(phq.env.chapter) < 1 then
+      chap_txt = chap_txt .. "Prologue"
+   else
+      chap_txt = chap_txt .. yeGetIntAt(phq.env.chapter)
+   end
    txt_screen["<type>"] = "text-screen"
    txt_screen["text-align"] = "center"
    txt_screen.fmt = "yirl"
-   txt_screen.text = "Day: " ..
+   txt_screen.text = chap_txt .. "\nDay: " ..
       DAY_STR[phq.env.day:to_int() + 1] .. ", {phq.env.time}\n" ..
       "week: {phq.env.week}\n" ..
       "time point: {phq.env.time_point}\n" ..
@@ -439,6 +447,15 @@ function doAdvanceTime(mn)
    advance_time(main_widget)
 end
 
+function gotoEndChapter(mn)
+   local f_mn = ywCntWidgetFather(mn)
+
+   backToGame(f_mn)
+   phq.env.day = 7
+   phq.env.time = "night"
+   sleep(main_widget)
+end
+
 function pushStatus(mn)
    local main = Entity.wrapp(ywCntWidgetFather(mn))
    local stat_menu = Container.new_entity("vertical")
@@ -452,6 +469,9 @@ function pushStatus(mn)
    menu:push("Choose Combot", Entity.new_func("chooseCombot"))
    menu:push("wear clothes", Entity.new_func("wear_clothes_mn"))
    menu:push("advence time", Entity.new_func("doAdvanceTime"))
+   if is_end_of_chapter then
+      menu:push("end chapter", Entity.new_func("gotoEndChapter"))
+   end
    menu.ent.size = 20
    menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
    stat_menu.ent.entries[0] = menu.ent

@@ -5,6 +5,8 @@ local drunk_bar1 = nil
 local window_width = 800
 local window_height = 600
 
+is_end_of_chapter = false
+
 function inter_bar_in(main)
    local c = Canvas.wrapp(main.mainScreen)
    local cc = c.ent
@@ -106,8 +108,42 @@ function charle_body_guard_leave(main, dialogue_wid)
    end
 end
 
+function end_chapter_0(main)
+   if yIsNil(main.sleep_script) then
+      main.sleep_script = "end_chapter_0"
+      is_end_of_chapter = true
+      return
+   end
+   if phq.env.day:to_int() == 7 and
+   phq.env.time:to_string() == "night" then
+      is_end_of_chapter = false
+      main.sleep_script = nil
+      phq.env.chapter = 1
+      phq.quests.school_1_semestre = 1
+   end
+   load_scene(main, "house1", 0)
+   local vn_quest_end = Entity.new_array()
+
+   vn_quest_end[0] = Entity.new_array()
+   -- 1rst dialogue
+   local dial = vn_quest_end[0]
+   dial.text = "Tin tin....\n" ..
+      "ttin tin tin tin tin tin tin tin tinnn, tinnnnn\n" ..
+      "The Dawn is especially crude this morning\n" ..
+      "you wake up wih the reaisationt that the holiday are over\n" ..
+      "and you have to go to a new school\n" ..
+      "where you know only a few peoples\n"
+
+   dial.answer = {}
+   dial.answer.text = "Gather your books before venturing for"
+   dial.answer.action = "phq.backToGame"
+
+   vnScene(main, nil, vn_quest_end)
+end
+
 scripts = {}
 scripts["inter_bar_in"] = inter_bar_in
 scripts["inter_bar_out"] = inter_bar_out
 scripts["inter_bar_running"] = inter_bar_running
 scripts["charle_body_guard_leave"] = charle_body_guard_leave
+scripts["end_chapter_0"] = end_chapter_0

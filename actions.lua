@@ -37,9 +37,18 @@ function quest_update(original, copy, arg)
    local rewards = quest.rewards
    local r_idx = yeGetInt(original)
    local reward = yeGetIntAt(rewards, r_idx)
+   local qi_scripts = quest.scripts
 
    print("changed:", Entity.wrapp(original), Entity.wrapp(copy), quest_name)
    print("reward:", reward)
+
+   local j = 0
+   while j < yeLen(qi_scripts) do
+      if r_idx == yeGetIntAt(qi_scripts[j], "at") then
+	 scripts[yeGetStringAt(qi_scripts[j], "script")](main_widget)
+      end
+      j = j + 1
+   end
    if reward ~= 0 then
       increaseStat(main, phq.pj, "xp", reward)
    end
@@ -379,6 +388,10 @@ end
 
 -- in fact, this function do 2 things: adancing time and start sleep animation
 function advance_time(main)
+   if main.sleep_script then
+      scripts[main.sleep_script:to_string()](main)
+   end
+
    npcAdvenceTime()
    if phq.env.time:to_string() == "night" then
       phq.env.time = "morning"

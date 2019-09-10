@@ -999,5 +999,31 @@ function create_phq(entity)
     end
     ywCanvasDisableWeight(mainCanvas.ent)
     ywCanvasDisableWeight(upCanvas.ent)
+    -- call current quests script
+    i = 0
+
+    while i < yeLen(quests_info) do
+       local qi_scripts = quests_info[i].scripts
+       local j = 0
+       local stalk_path = nil
+       local cur = nil
+
+       if yIsNil(qi_scripts) then
+	  goto next_loop
+       end
+
+       stalk_path = yeGetStringAt(quests_info[i], "stalk")
+       cur = yeGetInt(ygGet(stalk_path))
+
+       while j < yeLen(qi_scripts) do
+	  if cur == yeGetIntAt(qi_scripts[j], "at") then
+	     scripts[yeGetStringAt(qi_scripts[j], "script")](ent)
+	  end
+	  j = j + 1
+       end
+
+       :: next_loop ::
+       i = i + 1
+    end
     return ret
 end

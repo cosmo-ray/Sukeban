@@ -1,4 +1,19 @@
 {
+    "school 1rst semester": {
+	"stalk": "phq.quests.school_1_semestre",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "await next week for school opening\n(or hit skip chapter in status menu)",
+	    "go to school"
+	],
+	"scripts": [
+	    {
+		"at": 0,
+		"script": "end_chapter_0"
+	    }
+	],
+	"rewards": [0, 0]
+    },
     "school subscription": {
 	"stalk": "phq.quests.school_sub",
 	"stalk_sart": -1,
@@ -17,7 +32,7 @@
 	    "go to city town again"
 	],
 	"rewards": [
-	    0, 0, 5, 10, 0, 0, 0, 0, 0, 15, 0, 0, 25,
+	    0, 0, 5, 10, 0, 0, 0, 0, 0, 15, 0, 0, 25
 	]
     },
     "hightscores": {
@@ -28,7 +43,7 @@
 	    "beat garashi at any game at the Arcade"
 	],
 	"rewards": [
-	    0, 10, 100,
+	    0, 10, 100
 	]
     },
     "No Rats": {

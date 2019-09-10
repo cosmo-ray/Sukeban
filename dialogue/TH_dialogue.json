@@ -120,7 +120,7 @@
 		    "text": "Well thanks",
 		    "actions": [
 			[ "setInt", "phq.quests.school_sub", 12 ],
-			[ "setInt", "phq.quests.school_1_semestre", 1 ],
+			[ "setInt", "phq.quests.school_1_semestre", 0 ],
 			"phq.backToGame"
 		    ]
 		}
