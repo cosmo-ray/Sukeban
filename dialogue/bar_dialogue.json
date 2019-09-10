@@ -22,7 +22,7 @@
 		]
 	    },
 	    {
-		"text": "and so she leave, as did her mother do at her time, what an eternal loop of this existence",
+		"text": "and so she leave, as her mother do at her time, what an eternal loop of this existence",
 		"answers": [
 		    {
 			"text": "OK bye",
@@ -34,14 +34,14 @@
 	    [
 		"if I know your mother ?",
 		" well no, but I know what it is to be young",
-		"I know how you think you are different from us, old lad"
+		"I know how you think that, you are different from us, old lad"
 	    ],
 	    {
 		"text": "I was young too, you know what was my dream at your age ?",
 		"answer": "be a dentist ?"
 	    },
 	    [
-		"be realisator, I've learn letter, I've watch a shitton of movies",
+		"be realisator, I've learn story writing, I've watch a shitton of movies",
 		"especially SF, Brobi the Brobo, apes 21, underground cops",
 		"well turn out watch movie don't make you a realisator"
 	    ],
@@ -49,7 +49,7 @@
 		"text": "I've learn to film, how sound work, do you know to what it lead me ?",
 		"answers": [
 		    "be a dentist ?",
-		    "you know It's not Brobi the Brobo,\nbut 'not Allowed planet'"
+		    "Also the movie is not Brobi the Brobo,\nbut 'not Allowed planet'"
 		]
 	    },
 	    {
@@ -59,6 +59,10 @@
 		    "well at last you still see camera"
 		]
 	    },
+	    [
+		"Also the only thing peoples remeber from 'not allow planet' is",
+		"Broby he Brobo"
+	    ],
 	    [
 		"got a wife, 2 child what an happy family",
 		"I've dream to film alien fighting in space",
