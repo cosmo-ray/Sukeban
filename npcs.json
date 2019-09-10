@@ -352,7 +352,7 @@
 	"max_life": 5,
 	"sprite": {
 	    "path": "imgs/rat.png",
-	    "img_enlarge": 200,
+	    "enlarge": 200,
 	    "size": 32,
 	    "y": 32,
 	    "length": 3
