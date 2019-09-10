@@ -345,6 +345,19 @@
 	    "length": 3
 	}
     },
+    "big rat": {
+	"sex": "male",
+	"type": "light",
+	"is_generic": true,
+	"max_life": 5,
+	"sprite": {
+	    "path": "imgs/rat.png",
+	    "img_enlarge": 200,
+	    "size": 32,
+	    "y": 32,
+	    "length": 3
+	}
+    },
     "The nerd": {
 	"sex": "male",
 	"type": "dark",

@@ -24,10 +24,10 @@ Introduce some characters too :)
     "bar_underground": [
 	{
 	    "text" : [
-		"you're in the bar not call 'velvet' underground",
+		"you're in the bar underground",
 		"It's night, or at last light are turn off,",
 		"but it's irrelevant to you glorious quest",
-		"you are looking for wine in that cellar, without windows",
+		"you are looking for wine in that cellar without windows",
 		"and while thinking the narrative are really lacking imagination",
 		"because come on, looking for wine, in a cellar, how unoriginal is that",
 		"you realize that the next cliche things that could happen,",
@@ -54,7 +54,7 @@ Introduce some characters too :)
 	    "condition": ["=", "phq.quests.no_rats", 0],
 	    "answer" : {
 		"text": "(fight)",
-		"action": [ "phq.StartFight", "rat", "CombatDialogueNext"]
+		"action": [ "phq.StartFight", "big rat", "CombatDialogueNext"]
 	    }
 	},
 	{
