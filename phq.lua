@@ -935,6 +935,7 @@ function create_phq(entity)
     ent.cur_scene_str = nil
     tiled.setAssetPath("./tileset")
     jrpg_fight.objects = phq.objects
+    is_end_of_chapter = false
 
     _include(phq.objects, phq.objects)
     _include(npcs, npcs)
