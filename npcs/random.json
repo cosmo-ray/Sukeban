@@ -46,5 +46,14 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ]
+    },
+    "wouaf": {
+	"type": "sprite",
+	"sprite": {
+	    "path": "imgs/lpccatratdog.png",
+	    "size": 32,
+	    "y": 32,
+	    "length": 3
+	}
     }
 }

@@ -335,8 +335,7 @@
         ]
     },
     "rat": {
-	"sex": "male",
-	"type": "light",
+	"type": "sprite",
 	"is_generic": true,
 	"sprite": {
 	    "path": "imgs/rat.png",
@@ -346,8 +345,7 @@
 	}
     },
     "big rat": {
-	"sex": "male",
-	"type": "light",
+	"type": "sprite",
 	"is_generic": true,
 	"max_life": 5,
 	"sprite": {

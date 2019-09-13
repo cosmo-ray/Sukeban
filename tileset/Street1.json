@@ -94,6 +94,24 @@
                  "width":0,
                  "x":1294,
                  "y":392
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"wouaf",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":155,
+                 "y":51
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -240,7 +258,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":16,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.4",
