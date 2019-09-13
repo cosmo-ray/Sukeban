@@ -149,6 +149,11 @@ function checkNpcPresence(obj, npc, scene)
       return false
    end
 
+   local c_place = yeGetString(npc._place)
+   print("NPC pres:", c_place, scene, yIsNNil(c_place), npc)
+   if yIsNNil(c_place) and c_place ~= scene then
+      return false
+   end
    print("checkNpcPresence", npc.calendar)
    if npc.calendar then
       local day_calenday = npc.calendar[DAY_STR[phq.env.day:to_int() + 1]]

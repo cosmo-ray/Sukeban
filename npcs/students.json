@@ -2,6 +2,7 @@
     "Bob": {
         "sex": "male",
         "type": "light",
+	"ai": "bob_ai",
         "max_life": 10,
 	"attack" : "unarmed0",
         "clothes": [

@@ -13,8 +13,33 @@ local ACTION_MV_TBL_IDX = 2
 local ENEMY_IDLE = 0
 local ENEMY_ATTACKING = 1
 
+function bob_ai(main, npc)
+   main = Entity.wrapp(main)
+   npc = Entity.wrapp(npc)
+
+   local c_place = "bob_house"
+   local p = yuiRand() % 100
+
+   if (p < 50) then
+      c_place = "street3"
+   end
+      npc._place = c_place
+end
+
 function npcAdvenceTime()
-   print("NPC Advence Time")
+   for i = 0, yeLen(npcs) do
+      local n = npcs[i]
+
+      if yIsNil(n) then
+	 goto skip
+      end
+
+      local ai = n.ai
+      if ai then
+	 Entity.new_func(yeGetString(ai))(main_widget, n)
+      end
+      :: skip ::
+   end
 end
 
 local function npc_check_col(canvas, col_r, pos_add)
