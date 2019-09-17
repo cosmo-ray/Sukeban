@@ -291,6 +291,35 @@
         }, 
         {
          "draworder":"topdown",
+         "id":9,
+         "name":"NPC",
+         "objects":[
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"rat",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":94,
+                 "y":113
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":8,
          "name":"Entries",
          "objects":[
@@ -323,8 +352,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":9,
- "nextobjectid":10,
+ "nextlayerid":10,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "properties":[
         {

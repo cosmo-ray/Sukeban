@@ -2,6 +2,7 @@ local tiled = Entity.wrapp(ygGet("tiled"))
 local jrpg_fight = Entity.wrapp(ygGet("jrpg-fight"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 lpcs = Entity.wrapp(ygGet("lpcs"))
+sprite_man = Entity.wrapp(ygGet("sprite-man"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 npcs = nil
@@ -48,6 +49,14 @@ local downKeys = Event.CreateGrp(Y_DOWN_KEY, Y_S_KEY)
 local leftKeys = Event.CreateGrp(Y_LEFT_KEY, Y_A_KEY)
 local rightKeys = Event.CreateGrp(Y_RIGHT_KEY, Y_D_KEY)
 local actionKeys = Event.CreateGrp(Y_SPACE_KEY, Y_ENTER_KEY)
+
+function generic_handlerRefresh(npc)
+   if yeGetString(npc.char.type) == "sprite" then
+      sprite_man.handlerRefresh(npc)
+   else
+      lpcs.handlerRefresh(npc)
+   end
+end
 
 function dressUp(caracter)
    if caracter.equipement == nil then
@@ -829,23 +838,31 @@ function load_scene(ent, sceneTxt, entryIdx)
       if layer_name:to_string() == "NPC" and
       checkNpcPresence(obj, npc, sceneTxt) then
 
-	 dressUp(npc)
-	 npc = lpcs.createCaracterHandler(npc, c, e_npcs, npc_name)
-	 --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
 	 local pos = Pos.new_copy(obj.rect)
-	 pos:sub(20, 50)
-	 lpcs.handlerMove(npc, pos.ent)
-	 if yeGetString(obj.Rotation) == "left" then
-	    lpcs.handlerSetOrigXY(npc, 0, LPCS_LEFT)
-	 elseif yeGetString(obj.Rotation) == "right" then
-	    lpcs.handlerSetOrigXY(npc, 0, LPCS_RIGHT)
-	 elseif yeGetString(obj.Rotation) == "down" then
-	    lpcs.handlerSetOrigXY(npc, 0, LPCS_DOWN)
+	 if yeGetString(npc.type) == "sprite" then
+	    -- TODO: here we assume the sprite is 32/32 but we should get the real value
+	    pos:sub(16, 16)
+	    npc = sprite_man.createHandler(npc, c, e_npcs, npc_name)
+	    sprite_man.handlerMove(npc, pos.ent)
 	 else
-	    lpcs.handlerSetOrigXY(npc, 0, LPCS_UP)
+	    dressUp(npc)
+	    npc = lpcs.createCaracterHandler(npc, c, e_npcs, npc_name)
+	    --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
+	    local pos = Pos.new_copy(obj.rect)
+	    pos:sub(20, 50)
+	    lpcs.handlerMove(npc, pos.ent)
+	    if yeGetString(obj.Rotation) == "left" then
+	       lpcs.handlerSetOrigXY(npc, 0, LPCS_LEFT)
+	    elseif yeGetString(obj.Rotation) == "right" then
+	       lpcs.handlerSetOrigXY(npc, 0, LPCS_RIGHT)
+	    elseif yeGetString(obj.Rotation) == "down" then
+	       lpcs.handlerSetOrigXY(npc, 0, LPCS_DOWN)
+	    else
+	       lpcs.handlerSetOrigXY(npc, 0, LPCS_UP)
+	    end
 	 end
-	 lpcs.handlerRefresh(npc)
 	 npc = Entity.wrapp(npc)
+	 generic_handlerRefresh(npc)
 	 if yeGetIntAt(obj, "Agresive") == 1 then
 	    yePushBack(ent.enemies, npc)
 	    yePushBack(npc, pos.ent, "orig_pos")
