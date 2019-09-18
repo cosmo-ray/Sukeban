@@ -37,10 +37,13 @@ void *handlerRefresh(int nargs, void **args)
 	Entity *w = yeGet(h, "wid");
 	Entity *c;
 	Entity *ret;
-	int size = yeGetIntAt(yeGet(h, "sp"), "size");
-	yeAutoFree Entity *rect = ywRectCreateInts(0, 0, size, size, NULL, NULL);
+	Entity *sp = yeGet(h, "sp");
+	int size = yeGetIntAt(sp, "size");
+	int sy = yeGetIntAt(sp, "src-pos");
+	yeAutoFree Entity *rect = ywRectCreateInts(0, sy, size, size, NULL, NULL);
 	assert(size);
 
+	printf("sy: %d\n", sy);
 	if ((c = yeGet(h, "canvas"))) {
 		Entity *tmpp = ywCanvasObjPos(c);
 		printf("%d %d\n", x, y);

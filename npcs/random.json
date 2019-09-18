@@ -51,8 +51,9 @@
 	"type": "sprite",
 	"sprite": {
 	    "path": "imgs/lpccatratdog.png",
+	    "src-pos": 128,
 	    "size": 32,
-	    "y": 32,
+	    "y": 150,
 	    "length": 3
 	}
     }
