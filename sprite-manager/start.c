@@ -53,7 +53,6 @@ void *handlerRefresh(int nargs, void **args)
 	}
 	ret = ywCanvasNewImgFromTexture(w, x, y, yeGet(h, "text"), rect);
 	yePushBack(h, ret, "canvas");
-	yeDestroy(ret);
 	return h;
 }
 
@@ -67,6 +66,16 @@ void *handlerMove(int nbArg, void **args)
 	}
 
 	ywCanvasObjSetPosByEntity(yeGet(h, "canvas"), p);
+}
+
+void *handlerNullify(int nbArg, void **args)
+{
+	Entity *h = args[0];
+	Entity *w = yeGet(h, "wid");
+
+	ywCanvasRemoveObj(yeGet(h, "wid"), yeGet(h, "canvas"));
+	yeRemoveChild(h, "canvas");
+	yeRemoveChild(h, "char");
 }
 
 void *mod_init(int nbArg, void **args)
