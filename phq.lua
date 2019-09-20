@@ -307,7 +307,6 @@ function load_slot(entity)
    local m = Menu.new_entity()
    local slots = {0, 1, 2, 3, 4, 5, 6, 7 ,8, 9, 'A', 'B', 'C', 'E', 'F', 10}
 
-   print("load_slot!!!")
    Entity.wrapp(ywMenuGetCurrentEntry(entity)).next = m
    m.ent.background = "rgba: 255 255 255 255"
    m.ent.next = entity
@@ -318,11 +317,6 @@ function load_slot(entity)
 	 local e = m:push("slot " .. slot, Entity.new_func("mnLoadSlot"))
 	 e.s = "saved/slot_" .. slot
       end
-
-      print(yuiFileExist("saved/slot_" .. slot))
-      print("slot_" .. slot)
-      print("slot " .. slot)
-      print(slot)
    end
 
    -- goto new menu
@@ -341,7 +335,6 @@ function saveCurDialogue(main)
 end
 
 function saveGame(main, saveDir)
-   print(saveDir)
    local destDir = "./saved/" .. saveDir
    local misc = Entity.new_array()
 
@@ -475,10 +468,8 @@ function CheckColision(main, canvasWid, pj)
       if yeGetIntAt(obj, "Collision") == 1 and
       ywCanvasCheckColisionsRectObj(colRect, obj) then
 	 if yeGetIntAt(obj, "agresive") > 0 then
-	    print("col here ????? ", obj)
 	    return CheckColisionExit(col, FIGHT_COLISION, obj)
 	 end
-	 print("col here", obj)
 	 return CheckColisionExit(col, NORMAL_COLISION)
       end
       i = i + 1

@@ -265,10 +265,7 @@ function addObject(main, character, objStr, nb)
       msg = "lose "
       nb = nb * -1
    end
-   return printMessage(main, obj, Entity.new_string(msg ..
-						    math.floor(nb) ..
-						    " " ..
-						    objStr))
+   return printMessage(main, obj, msg .. math.floor(nb) .. " " .. objStr)
 end
 
 function recive(wid, eve, objStr, nb)

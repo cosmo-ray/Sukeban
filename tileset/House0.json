@@ -198,42 +198,6 @@
                  "width":0,
                  "x":639,
                  "y":97
-                }, 
-                {
-                 "height":0,
-                 "id":7,
-                 "name":"rat",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":349,
-                 "y":149
-                }, 
-                {
-                 "height":0,
-                 "id":8,
-                 "name":"rat",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":426,
-                 "y":117
                 }],
          "opacity":1,
          "type":"objectgroup",

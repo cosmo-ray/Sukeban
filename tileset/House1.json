@@ -309,26 +309,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":94,
-                 "y":113
-                }, 
-                {
-                 "height":0,
-                 "id":12,
-                 "name":"rat",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":127,
-                 "y":206
+                 "x":86,
+                 "y":168
                 }, 
                 {
                  "height":0,
@@ -339,86 +321,14 @@
                         {
                          "name":"Rotation",
                          "type":"string",
-                         "value":"down"
+                         "value":"up"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":197,
-                 "y":127
-                }, 
-                {
-                 "height":0,
-                 "id":14,
-                 "name":"rat",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":58,
-                 "y":174
-                }, 
-                {
-                 "height":0,
-                 "id":15,
-                 "name":"rat",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":172,
-                 "y":282
-                }, 
-                {
-                 "height":0,
-                 "id":16,
-                 "name":"rat",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":87,
-                 "y":277
-                }, 
-                {
-                 "height":0,
-                 "id":17,
-                 "name":"rat",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"Rotation",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":148,
-                 "y":364
+                 "x":82,
+                 "y":245
                 }],
          "opacity":1,
          "type":"objectgroup",
