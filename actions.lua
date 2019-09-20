@@ -412,7 +412,7 @@ function advance_time(main)
 end
 
 function sleep(main, obj)
-   advance_time(main)
+   advance_time(main_widget)
    phq.pj.life = phq.pj.max_life
    phq.pj.drunk = 0
 end
