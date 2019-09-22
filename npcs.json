@@ -340,7 +340,6 @@
 	"sprite": {
 	    "path": "imgs/rat.png",
 	    "size": 32,
-	    "src-pos": 64,
 	    "y": 32,
 	    "length": 3
 	}

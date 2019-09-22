@@ -835,6 +835,15 @@ function load_scene(ent, sceneTxt, entryIdx)
 	    pos:sub(16, 16)
 	    npc = sprite_man.createHandler(npc, c, e_npcs, npc_name)
 	    sprite_man.handlerMove(npc, pos.ent)
+	    if yeGetString(obj.Rotation) == "left" then
+	       yeSetAt(npc, "y_offset", 32)
+	    elseif yeGetString(obj.Rotation) == "right" then
+	       yeSetAt(npc, "y_offset", 96)
+	    elseif yeGetString(obj.Rotation) == "down" then
+	       yeSetAt(npc, "y_offset", 64)
+	    else
+	       -- y offset is 0 here
+	    end
 	 else
 	    dressUp(npc)
 	    npc = lpcs.createCaracterHandler(npc, c, e_npcs, npc_name)

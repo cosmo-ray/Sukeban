@@ -27,6 +27,7 @@ void *createHandler(int nbArg, void **args)
 	yePushBack(ret, canvas_wid, "wid");
 	yeCreateInt(0, ret, "x");
 	yeCreateInt(0, ret, "y");
+	yeCreateInt(0, ret, "y_offset");
 	return ret;
 }
 
@@ -40,7 +41,9 @@ void *handlerRefresh(int nargs, void **args)
 	Entity *sp = yeGet(h, "sp");
 	int size = yeGetIntAt(sp, "size");
 	int sy = yeGetIntAt(sp, "src-pos");
-	yeAutoFree Entity *rect = ywRectCreateInts(0, sy, size, size, NULL, NULL);
+	yeAutoFree Entity *rect =
+		ywRectCreateInts(0, sy + yeGetIntAt(h, "y_offset"),
+				 size, size, NULL, NULL);
 	assert(size);
 
 	printf("sy: %d\n", sy);
