@@ -44,15 +44,15 @@ void *handlerRefresh(int nargs, void **args)
 	yeAutoFree Entity *rect =
 		ywRectCreateInts(0, sy + yeGetIntAt(h, "y_offset"),
 				 size, size, NULL, NULL);
+
 	assert(size);
 
-	printf("sy: %d\n", sy);
 	if ((c = yeGet(h, "canvas"))) {
 		Entity *tmpp = ywCanvasObjPos(c);
-		printf("%d %d\n", x, y);
 		x = ywPosX(tmpp);
 		y = ywPosY(tmpp);
 		ywCanvasRemoveObj(w, c);
+		yeRemoveChild(h, "canvas");
 	}
 	ret = ywCanvasNewImgFromTexture(w, x, y, yeGet(h, "text"), rect);
 	yePushBack(h, ret, "canvas");

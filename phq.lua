@@ -465,6 +465,7 @@ function CheckColision(main, canvasWid, pj)
    i = 0
    while i < yeLen(col) do
       local obj = col[i]
+
       if yeGetIntAt(obj, "Collision") == 1 and
       ywCanvasCheckColisionsRectObj(colRect, obj) then
 	 if yeGetIntAt(obj, "agresive") > 0 then
@@ -831,8 +832,10 @@ function load_scene(ent, sceneTxt, entryIdx)
 
 	 local pos = Pos.new_copy(obj.rect)
 	 if yeGetString(npc.type) == "sprite" then
+	    local sp = yeGet(npc, "sprite");
+	    local s = yeGetIntAt(sp, "size")
 	    -- TODO: here we assume the sprite is 32/32 but we should get the real value
-	    pos:sub(16, 16)
+	    pos:sub(s / 2, s / 2)
 	    npc = sprite_man.createHandler(npc, c, e_npcs, npc_name)
 	    sprite_man.handlerMove(npc, pos.ent)
 	    if yeGetString(obj.Rotation) == "left" then
@@ -841,8 +844,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 	       yeSetAt(npc, "y_offset", 96)
 	    elseif yeGetString(obj.Rotation) == "down" then
 	       yeSetAt(npc, "y_offset", 64)
-	    else
-	       -- y offset is 0 here
+	    else -- y offset is 0 for "up"
 	    end
 	 else
 	    dressUp(npc)
