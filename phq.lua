@@ -536,6 +536,7 @@ function phq_action(entity, eve)
       i = i + 1
    end
 
+   smallTalkRemover(entity)
    if entity.box_t then
       if entity.box_t > 100 then
 	 dialogue_box.rm(entity.upCanvas, entity.box)
@@ -626,10 +627,16 @@ function phq_action(entity, eve)
       --print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
       i = 0
       while i < yeLen(col) do
-	 local dialogue = col[i].dialogue
-	 if startDialogue(entity, col[i], dialogue) == YEVE_ACTION then
-	    yeDestroy(col)
-	    return YEVE_ACTION
+	 local c = col[i]
+	 if yeGetInt(c.is_npc) > 0 then
+	    local dialogue = col[i].dialogue
+	    if startDialogue(entity, c, dialogue) == YEVE_ACTION then
+	       yeDestroy(col)
+	       return YEVE_ACTION
+	    end
+	    if c.small_talk then
+	       smallTalk(entity, c)
+	    end
 	 end
 	 i = i + 1
       end
@@ -878,6 +885,7 @@ function load_scene(ent, sceneTxt, entryIdx)
 	 npc.canvas.is_npc = 1
 	 npc.char.name = npc_name
 	 npc.canvas.dialogue = obj.name:to_string()
+	 npc.canvas.small_talk = npc.char["small talk"]
 	 npc.canvas.current = npc_idx
 	 npc_idx = npc_idx + 1
       elseif layer_name:to_string() == "Entries" then

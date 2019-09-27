@@ -49,6 +49,7 @@
     },
     "wouaf": {
 	"type": "sprite",
+	"small talk": "wouaf wouaf !\nwouaf",
 	"sprite": {
 	    "path": "imgs/lpccatratdog.png",
 	    "src-pos": 128,

@@ -170,6 +170,7 @@ function NpcTurn(wid)
 	 local dialogue = ec.dialogue:to_string()
 	 local current = ec.current
 	 local agresive = ec.agresive
+	 local st = ec.small_talk
 
 	 enemy.ai_state = ENEMY_ATTACKING
 	 if math.abs(ywPosX(mv_pos)) > math.abs(ywPosY(mv_pos)) and
@@ -197,6 +198,7 @@ function NpcTurn(wid)
 	 ec.dialogue = dialogue
 	 ec.current = current
 	 ec.agresive = agresive
+	 ec.small_talk = st
       end
       i  = i + 1
    end

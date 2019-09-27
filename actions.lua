@@ -431,6 +431,37 @@ function printMessage(main, obj, msg)
    main.box_t = 0
 end
 
+function smallTalk(main, c)
+   --local n = npcs[yeGetInt(c.current)]
+   local p = ywCanvasObjPos(c)
+   local uc = main.upCanvas
+   local small_texts = yeTryCreateArray(uc, "small-talks")
+   local txt_box = Entity.new_array(small_texts)
+   local txt = c.small_talk
+   local nb_nl = yeCountCharacters(txt, "\n", -1) + 1
+
+   yeCreateInt(0, txt_box)
+   dialogue_box.new_text(uc, ywPosX(p) - 40, ywPosY(p) - (40 * nb_nl),
+			 yeGetString(txt), txt_box)
+end
+
+function smallTalkRemover(main)
+   local i = 0
+   local uc = main.upCanvas
+   local small_texts = yeGet(uc, "small-talks")
+
+   while (i < yeLen(small_texts)) do
+      sti = yeGet(small_texts, i)
+      if yeGetIntAt(sti, 0) > 20 then
+	 dialogue_box.rm(uc, yeGet(sti, 1))
+	 yeRemoveChild(small_texts, i)
+      else
+	 yeIncrAt(sti, 0)
+      end
+      i = i + 1
+   end
+end
+
 function startDialogue(main, obj, dialogue)
    print("start dialogue ", dialogue)
    dialogue = Entity.wrapp(dialogue)
