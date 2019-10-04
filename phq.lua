@@ -149,6 +149,7 @@ function checkNpcPresence(obj, npc, scene)
    end
 
    local pp = yeGetIntAt(obj, "Presence %")
+   print("PRESENCE:", yuiRand() % 99, " > ", pp);
    if pp > 0 and yuiRand() % 99 > pp then
       return false
    end

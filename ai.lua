@@ -165,12 +165,14 @@ function NpcTurn(wid)
 
       if (mv_pos and yuiRand() % 2) then
 	 local ec = enemy.canvas
-	 local Collision = ec.Collision
-	 local is_npc = ec.is_npc
-	 local dialogue = ec.dialogue:to_string()
-	 local current = ec.current
-	 local agresive = ec.agresive
-	 local st = ec.small_talk
+	 local tmp = Entity.new_array()
+
+	 tmp.Collision = ec.Collision
+	 tmp.is_npc = ec.is_npc
+	 tmp.dialogue = ec.dialogue:to_string()
+	 tmp.current = ec.current
+	 tmp.agresive = ec.agresive
+	 tmp.st = ec.small_talk
 
 	 enemy.ai_state = ENEMY_ATTACKING
 	 if math.abs(ywPosX(mv_pos)) > math.abs(ywPosY(mv_pos)) and
@@ -193,19 +195,18 @@ function NpcTurn(wid)
 	 ylpcsHandlerRefresh(enemy)
 	 ylpcsHandlerMove(enemy, mv_pos)
 	 ec = enemy.canvas
-	 ec.Collision = Collision
-	 ec.is_npc = is_npc
-	 ec.dialogue = dialogue
-	 ec.current = current
-	 ec.agresive = agresive
-	 ec.small_talk = st
+	 ec.Collision = tmp.Collision
+	 ec.is_npc = tmp.is_npc
+	 ec.dialogue = tmp.dialogue
+	 ec.current = tmp.current
+	 ec.agresive = tmp.agresive
+	 ec.small_talk = tmp.st
       end
       i  = i + 1
    end
 end
 
 function PjLeaveController(wid, action)
-   print("bye bye")
    wid = Entity.wrapp(wid)
    action = Entity.wrapp(action)
    local mv_tbl_idx = action[ACTION_MV_TBL_IDX]
