@@ -59,14 +59,14 @@ function newGameAction(menu, eve, arg)
    phq.pj.hair[0] = "shoulderr"
    phq.pj.hair[1] = "blonde"
    phq.pj.inventory = {}
-   addObject(main_widget, phq.pj, "money", 15)
-   addObject(main_widget, phq.pj, "white_sleeveless", 1)
-   addObject(main_widget, phq.pj, "teal pants female", 1)
-   addObject(main_widget, phq.pj, "brown_shoes", 1)
+   addObject(nil, phq.pj, "money", 15)
+   addObject(nil, phq.pj, "white_sleeveless", 1)
+   addObject(nil, phq.pj, "teal pants female", 1)
+   addObject(nil, phq.pj, "brown_shoes", 1)
    if archetype == IDOLE_ARCHETYPE then
-      addObject(main_widget, phq.pj, "Pink Guriko", 2)
+      addObject(nil, phq.pj, "Pink Guriko", 2)
    else
-      addObject(main_widget, phq.pj, "Guriko", 2)
+      addObject(nil, phq.pj, "Guriko", 2)
    end
    phq.pj.stats = {}
    phq.pj.knowledge = {}

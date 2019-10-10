@@ -457,11 +457,13 @@ function gotoEndChapter(mn)
 end
 
 function pushStatus(mn)
-   local main = Entity.wrapp(ywCntWidgetFather(mn))
+   local gm_cnt = Entity.wrapp(ywCntWidgetFather(mn))
+   local main = main_widget
    local stat_menu = Container.new_entity("vertical")
+   local hooks = main.gmenu_hook
 
-   ywCntPopLastEntry(main)
-   ywPushNewWidget(main, stat_menu.ent)
+   ywCntPopLastEntry(gm_cnt)
+   ywPushNewWidget(gm_cnt, stat_menu.ent)
    stat_menu.ent.isChildContainer = true
 
    local menu = Menu.new_entity()
@@ -472,11 +474,21 @@ function pushStatus(mn)
    if is_end_of_chapter then
       menu:push("end chapter", Entity.new_func("gotoEndChapter"))
    end
-   menu.ent.size = 20
+   local i = 0
+   while  i < yeLen(hooks) do
+      local h = hooks[i]
+      print(hooks[i])
+      if (h[0]:to_int() == GM_STATS_IDX) then
+	 h[1](main, menu.ent)
+      end
+      i = i + 1
+   end
+
+   menu.ent.size = 30
    menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
    stat_menu.ent.entries[0] = menu.ent
 
-   ywCntConstructChilds(main)
+   ywCntConstructChilds(gm_cnt)
    pushSTatusTextScreen(stat_menu.ent)
    stat_menu.ent.current = 0
    return YEVE_ACTION

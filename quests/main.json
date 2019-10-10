@@ -10,6 +10,10 @@
 	    {
 		"at": 0,
 		"script": "end_chapter_0"
+	    },
+	    {
+		"after": 0,
+		"script": "chapter_1"
 	    }
 	],
 	"rewards": [0, 0]

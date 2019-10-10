@@ -108,6 +108,44 @@ function charle_body_guard_leave(main, dialogue_wid)
    end
 end
 
+function chapter_1_sleep(main)
+   if phq.env.time:to_string() == "morning" and
+      phq.env.day < 6
+   then
+      main.cant_skip_time = true
+      cant_skip_time_reason = "must go to school"
+   else
+      main.cant_skip_time = false
+      cant_skip_time_reason = nil
+   end
+end
+
+function chapter_1(main)
+   main.sleep_script = "chapter_1_sleep"
+   local s = Entity.new_array()
+   s[0] = GM_STATS_IDX
+   s[1] = Entity.new_func("chapter_1_menu")
+   yePushBack(main.gmenu_hook, s)
+end
+
+function morning_class(mn)
+   print("I'm at school, yayyyyyy")
+   local f_mn = ywCntWidgetFather(mn)
+
+   backToGame(f_mn)
+   main_widget.cant_skip_time = 0
+   print(main_widget.cant_skip_time)
+   advance_time(main_widget, "school0", true)
+end
+
+function chapter_1_menu(main, mn)
+   local mn = Menu.wrapp(mn)
+   if phq.env.time:to_string() == "morning" and phq.env.day < 6 then
+      mn:push("go to morning class", Entity.new_func("morning_class"))
+   end
+   print("\nchapter_1_menu!!!!!\n", main, mn)
+end
+
 function end_chapter_0(main)
    if yIsNil(main.sleep_script) then
       main.sleep_script = "end_chapter_0"
@@ -147,3 +185,5 @@ scripts["inter_bar_out"] = inter_bar_out
 scripts["inter_bar_running"] = inter_bar_running
 scripts["charle_body_guard_leave"] = charle_body_guard_leave
 scripts["end_chapter_0"] = end_chapter_0
+scripts["chapter_1"] = chapter_1
+scripts["chapter_1_sleep"] = chapter_1_sleep

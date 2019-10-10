@@ -20,7 +20,6 @@ local run_script = nil
 
 local window_width = 800
 local window_height = 600
-pj_pos = nil
 
 -- set as global so can be use by ai
 pix_mv = 0
@@ -255,7 +254,7 @@ function load_game(save_dir)
    phq.pj = pj
    yeDestroy(pj)
    local env = ygFileToEnt(YJSON, save_dir.."/env.json")
-   pj_pos = ygFileToEnt(YJSON, save_dir.."/pj-pos.json")
+   game.saved_data.pj_pos = ygFileToEnt(YJSON, save_dir.."/pj-pos.json")
    saved_scenes = Entity._wrapp_(ygFileToEnt(YJSON,
 					       save_dir.."/saved-scenes.json"),
 				   true)
@@ -749,7 +748,7 @@ local function dialogue_include(dial, c_dial)
    _include(dial, c_dial)
 end
 
-function load_scene(ent, sceneTxt, entryIdx)
+function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    local mainCanvas = Canvas.wrapp(ent.mainScreen)
    local upCanvas = Canvas.wrapp(ent.upCanvas)
    local x = 0
@@ -926,8 +925,6 @@ function load_scene(ent, sceneTxt, entryIdx)
 
    if pj_pos then
       ylpcsHandlerSetPos(ent.pj, pj_pos)
-      yeDestroy(pj_pos)
-      pj_pos = nil
    else
       ylpcsHandlerSetPos(ent.pj, Pos.new(x, y).ent)
    end
@@ -959,105 +956,125 @@ function add_stat_hook(entity, stat, hook, val, comp_type)
 end
 
 function create_phq(entity)
-    local container = Container.init_entity(entity, "stacking")
-    local ent = container.ent
-    local scenePath = nil
+   -- keep saved data
+   local sav_dir = yeGetStringAt(entity, "saved_dir")
+   local sav_data = yeGet(entity, "saved_data")
+   local pj_pos = nil
 
-    main_widget = Entity.wrapp(entity)
-    npcs = Entity.wrapp(ygGet("phq.npcs"))
-    ent.cur_scene_str = nil
-    tiled.setAssetPath("./tileset")
-    jrpg_fight.objects = phq.objects
-    is_end_of_chapter = false
+   yeIncrRef(sav_data)
+   yeClearArray(entity)
+   yePushBack(entity, sav_data, "saved_data")
+   if (yIsNNil(sav_dir)) then
+      yeCreateString(sav_dir, entity, "saved_dir");
+   end
+   yeDestroy(sav_data)
 
-    _include(phq.objects, phq.objects)
-    _include(npcs, npcs)
+   local container = Container.init_entity(entity, "stacking")
+   local ent = container.ent
+   local scenePath = nil
 
-    ent.st_hooks = {}
-    add_stat_hook(ent, "life", "FinishGame", 0, PHQ_INF)
-    yJrpgFightSetCombots("phq.combots")
-    if ent.saved_data then
-       scenePath = ent.saved_data.cur_scene_str
-    else
-       scenePath = Entity.new_string("house1")
-    end
-    Entity.new_func("phq_action", ent, "action")
+   main_widget = Entity.wrapp(entity)
+   main_widget["<type>"] = "phq"
+   main_widget.next = "phq:menus.main"
+   npcs = Entity.wrapp(ygGet("phq.npcs"))
+   ent.cur_scene_str = nil
+   tiled.setAssetPath("./tileset")
+   jrpg_fight.objects = phq.objects
+   is_end_of_chapter = false
 
-    local mainCanvas = Canvas.new_entity(entity, "mainScreen")
-    local upCanvas = Canvas.new_entity(entity, "upCanvas")
-    ent["turn-length"] = TURN_LENGTH
-    ent.entries = {}
-    ent.background = "rgba: 127 127 127 255"
-    ent.entries[0] = mainCanvas.ent
-    ent.entries[1] = upCanvas.ent
-    local ret = container:new_wid()
-    ent.destroy = Entity.new_func("destroy_phq")
+   _include(phq.objects, phq.objects)
+   _include(npcs, npcs)
 
-    print("LOAD SONGS --------------------")
-    ent.soundcallgirl = ySoundMusicLoad("./callgirl.mp3")
-    print("LOAD SONGS #######-------------")
-    ent.soundhouse = ySoundMusicLoad("./house_music.mp3")
-    print("LOAD SONGS #############-------")
-    ent.soundtatata = ySoundMusicLoad("./rekuiemu.mp3")
-    print("LOAD SONGS ####################")
+   ent.st_hooks = {}
+   ent.gmenu_hook = {}
+   add_stat_hook(ent, "life", "FinishGame", 0, PHQ_INF)
+   yJrpgFightSetCombots("phq.combots")
+   if ent.saved_data then
+      scenePath = ent.saved_data.cur_scene_str
+      pj_pos = ent.saved_data.pj_pos
+   else
+      scenePath = Entity.new_string("house1")
+   end
+   Entity.new_func("phq_action", ent, "action")
 
-    --ySoundPlayLoop(ent.soundtatata)
+   local mainCanvas = Canvas.new_entity(entity, "mainScreen")
+   local upCanvas = Canvas.new_entity(entity, "upCanvas")
+   ent["turn-length"] = TURN_LENGTH
+   ent.entries = {}
+   ent.background = "rgba: 127 127 127 255"
+   ent.entries[0] = mainCanvas.ent
+   ent.entries[1] = upCanvas.ent
+   local ret = container:new_wid()
+   ent.destroy = Entity.new_func("destroy_phq")
 
-    ent.pj = nil
-    dressUp(phq.pj)
-    lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
-    load_scene(ent, yeGetString(yeToLower(scenePath)), 0)
-    ent.pj.mv_pix = Entity.new_float(0)
-    ent.pj.move = {}
-    ent.pj.move.up_down = 0
-    ent.pj.move.left_right = 0
-    local i = 0
-    while i < yeLen(quests_info) do
-       local name = yeGetKeyAt(quests_info, i)
-       local quest = quests_info[i]
-       local stalk = yeGetStringAt(quest, "stalk")
-       local stalked = ygGet(stalk)
-       local stalk_sart = yeGetIntAt(quest, "stalk_sart")
+   print("LOAD SONGS --------------------")
+   ent.soundcallgirl = ySoundMusicLoad("./callgirl.mp3")
+   print("LOAD SONGS #######-------------")
+   ent.soundhouse = ySoundMusicLoad("./house_music.mp3")
+   print("LOAD SONGS #############-------")
+   ent.soundtatata = ySoundMusicLoad("./rekuiemu.mp3")
+   print("LOAD SONGS ####################")
 
-       if yLovePtrToNumber(stalked) == 0 then
-	  ygReCreateInt(stalk, stalk_sart)
-       end
-       local arg = Entity.new_array()
-       yePushBack(arg, ent)
-       yeCreateString(name, arg)
-       ygStalk(stalk, Entity.new_func("quest_update"), arg)
-       i = i + 1
-    end
-    if ent.saved_data == nil then
-       phq.quests.school_sub = 0
-    end
-    ywCanvasDisableWeight(mainCanvas.ent)
-    ywCanvasDisableWeight(upCanvas.ent)
-    -- call current quests script
-    i = 0
+   --ySoundPlayLoop(ent.soundtatata)
 
-    while i < yeLen(quests_info) do
-       local qi_scripts = quests_info[i].scripts
-       local j = 0
-       local stalk_path = nil
-       local cur = nil
+   ent.pj = nil
+   dressUp(phq.pj)
+   lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
+   load_scene(ent, yeGetString(yeToLower(scenePath)), 0, pj_pos)
+   ent.pj.mv_pix = Entity.new_float(0)
+   ent.pj.move = {}
+   ent.pj.move.up_down = 0
+   ent.pj.move.left_right = 0
+   local i = 0
+   while i < yeLen(quests_info) do
+      local name = yeGetKeyAt(quests_info, i)
+      local quest = quests_info[i]
+      local stalk = yeGetStringAt(quest, "stalk")
+      local stalked = ygGet(stalk)
+      local stalk_sart = yeGetIntAt(quest, "stalk_sart")
 
-       if yIsNil(qi_scripts) then
-	  goto next_loop
-       end
+      if yLovePtrToNumber(stalked) == 0 then
+	 ygReCreateInt(stalk, stalk_sart)
+      end
+      local arg = Entity.new_array()
+      yePushBack(arg, ent)
+      yeCreateString(name, arg)
+      ygStalk(stalk, Entity.new_func("quest_update"), arg)
+      i = i + 1
+   end
+   if ent.saved_data == nil then
+      phq.quests.school_sub = 0
+   end
+   ywCanvasDisableWeight(mainCanvas.ent)
+   ywCanvasDisableWeight(upCanvas.ent)
+   -- call current quests script
+   i = 0
 
-       stalk_path = yeGetStringAt(quests_info[i], "stalk")
-       cur = yeGetInt(ygGet(stalk_path))
+   while i < yeLen(quests_info) do
+      local qi_scripts = quests_info[i].scripts
+      local j = 0
+      local stalk_path = nil
+      local cur = nil
 
-       while j < yeLen(qi_scripts) do
-	  if cur == yeGetIntAt(qi_scripts[j], "at") then
-	     scripts[yeGetStringAt(qi_scripts[j], "script")](ent)
-	  end
-	  j = j + 1
-       end
+      if yIsNil(qi_scripts) then
+	 goto next_loop
+      end
 
-       :: next_loop ::
-       i = i + 1
-    end
-    return ret
+      stalk_path = yeGetStringAt(quests_info[i], "stalk")
+      cur = yeGetInt(ygGet(stalk_path))
+
+      while j < yeLen(qi_scripts) do
+	 if cur == yeGetIntAt(qi_scripts[j], "at") then
+	    scripts[yeGetStringAt(qi_scripts[j], "script")](ent)
+	 elseif yIsNNil(qi_scripts[j].after) and
+	 cur > yeGetIntAt(qi_scripts[j], "after") then
+	    scripts[yeGetStringAt(qi_scripts[j], "script")](ent)
+	 end
+	 j = j + 1
+      end
+
+      :: next_loop ::
+      i = i + 1
+   end
+   return ret
 end

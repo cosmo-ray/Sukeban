@@ -383,12 +383,25 @@ function call_quest_script(wid, eve, script)
    return YEVE_ACTION
 end
 
+cant_skip_time_reason = nil
+
 -- in fact, this function do 2 things: adancing time and start sleep animation
-function advance_time(main)
+function advance_time(main, next_loc, force_skip_time)
    if main.sleep_script then
       scripts[main.sleep_script:to_string()](main)
    end
+   print(main.cant_skip_time)
+   if force_skip_time then
+      main.cant_skip_time = 0
+   end
+   if main.cant_skip_time and main.cant_skip_time > 0 then
+      printMessage(main, nil, "Can't skip time: " .. cant_skip_time_reason)
+      return
+   end
 
+   if yeType(next_loc) == YSTRING or type(next_loc) == "string" then
+      main.sleep_loc = next_loc
+   end
    npcAdvenceTime()
    if phq.env.time:to_string() == "night" then
       phq.env.time = "morning"
@@ -403,10 +416,6 @@ function advance_time(main)
       phq.env.time = "night"
    end
    phq.env.time_point = 1
-   main = Entity.wrapp(main)
-   pj_pos = ylpcsHandePos(main.pj)
-   yeIncrRef(pj_pos)
-   load_scene(main, main.cur_scene_str:to_string(), -1)
    main.sleep = 1
    main.require_ret = 1
 end
@@ -421,6 +430,10 @@ function printMessage(main, obj, msg)
    local txt = yLuaString(msg)
    main = Entity.wrapp(main)
    if main.box then
+      local txt = yeGetString(dialogue_box.get_text(main.box))
+      if yIsNil(txt) then
+	 return
+      end
       txt = yeGetString(dialogue_box.get_text(main.box)) ..
 	 "\n-------------------------------\n" .. txt
       dialogue_box.rm(main.upCanvas, main.box)
@@ -734,6 +747,20 @@ function doSleep(ent, upCanvas)
    local pjPos = Pos.wrapp(ylpcsHandePos(ent.pj))
    local x0 = pjPos:x() - window_width / 2
    local y0 = pjPos:y() - window_height / 2
+   local sl = main_widget.sleep_loc
+
+   if sleep_time == 100 then
+      if yIsNNil(sl) then
+	 print("CHANGE SCENE !!!!", sl)
+	 changeScene(main_widget, nil, sl, Entity.new_int(0))
+	 main_widget.sleep_loc = nil
+      else
+	 pj_pos = ylpcsHandePos(main_widget.pj)
+	 yeIncrRef(pj_pos)
+	 load_scene(main_widget, main_widget.cur_scene_str:to_string(), -1, pj_pos)
+	 yeDestroy(pj_pos)
+      end
+   end
 
    if sleep_time < 100 then
 
