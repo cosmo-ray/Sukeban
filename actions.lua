@@ -775,6 +775,6 @@ function doSleep(ent, upCanvas)
 				      Pos.new(window_width,
 					      window_height).ent).ent
    end
-   sleep_time = sleep_time + 1
+   sleep_time = sleep_time + 2
    return false
 end
