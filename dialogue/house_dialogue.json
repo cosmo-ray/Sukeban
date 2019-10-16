@@ -161,6 +161,12 @@
 				   "it's a function to call\nwhen you know the reason why, Dear process we run for what is right (tu tu tutu)\na noble electricity usage, when ld-sunix call you pay the price\nfor the computer I would give my life!\nFOR GLORIOUSE SUNIX I WOULD GIVE ME LIFE..."
 				  ]
 		    },
+		    {
+			"text": "Internet",
+			"action": ["Dialogue:change-text",
+				   "Error 418: I'm a teapot"
+				  ]
+		    },
 		    "Play Dnoom",
 		    {
 			"text": "Shut Down",
