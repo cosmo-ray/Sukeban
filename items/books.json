@@ -26,5 +26,9 @@
 	    "This book is about how Jeane of Arbalest",
 	    "'boot the engarchlich out off bagland'"
 	]
+    },
+    "Wromcyclopedia": {
+	"type" : "book",
+	"summary": "An Encyclopedia, about worms, it warm your heart to read it"
     }
 }
