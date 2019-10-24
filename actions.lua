@@ -8,6 +8,18 @@ fight_script = nil
 
 local use_time_point_action = Entity.new_string("phq.use_time_point")
 
+function read_book(b, b_key)
+   print("BOOK: ", b_key)
+   print(b.summary)
+   local ts = Entity.new_array()
+   ts["<type>"] = "text-screen"
+   ts.text = "BOOK: " .. yeGetString(b_key) .. "\n" .. b.summary:to_string()
+   ts.background = "rgba: 255 255 200 255"
+   ts.actions = Entity.new_func("backToGameOnEnter")
+   ywPushNewWidget(main_widget, ts)
+   return YEVE_ACTION
+end
+
 function use_time_point(box)
    if phq.env.time_point:to_int() == 0 then
       printMessage(main_boxget, nil, "Not enough time point")
@@ -125,7 +137,7 @@ function backToGame(wid)
       nb_layers = nb_layers - 1
    end
    ywCntPopLastEntry(main)
-   main.current = 0
+   main.current = yeLen(main.entries) - 1
    main.pj.move.up_down = 0
    main.pj.move.left_right = 0
    return YEVE_ACTION

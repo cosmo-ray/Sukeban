@@ -527,24 +527,29 @@ function gmUseItem(mn)
    local been_used = false
    print(objs_list:cent())
 
-   if o then
-      if o.func then
-	 if yeType(o.func) == YFUNCTION then
-	    o.func(main, o)
-	 else
-	    yesCall(ygGet(o.func:to_string()), main:cent(), o:cent())
-	 end
-	 been_used = true
-      elseif o["stats+"] then
-	 local stats_p = o["stats+"]
+   if yIsNil(o) then
+      return YEVE_NOTHANDLE
+   end
+   print("use o", o:cent())
+   if o.type:to_string() == "book" then
+      return read_book(o, o_str)
+   end
+   if o.func then
+      if yeType(o.func) == YFUNCTION then
+	 o.func(main, o)
+      else
+	 yesCall(ygGet(o.func:to_string()), main:cent(), o:cent())
+      end
+      been_used = true
+   elseif o["stats+"] then
+      local stats_p = o["stats+"]
 
-	 been_used = true
-	 local i = 0
-	 while i < yeLen(stats_p) do
-	    increaseStat(mn, phq.pj, yeGetKeyAt(stats_p, i),
-			 yeGetIntAt(stats_p, i))
-	    i = i + 1
-	 end
+      been_used = true
+      local i = 0
+      while i < yeLen(stats_p) do
+	 increaseStat(mn, phq.pj, yeGetKeyAt(stats_p, i),
+		      yeGetIntAt(stats_p, i))
+	 i = i + 1
       end
    end
    if been_used then
