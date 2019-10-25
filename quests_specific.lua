@@ -146,6 +146,17 @@ function chapter_1_menu(main, mn)
    print("\nchapter_1_menu!!!!!\n", main, mn)
 end
 
+function gen_school()
+   if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
+      return
+   end
+   phq.env.school = {}
+   local s = phq.env.school
+   s.is_gen = 1
+   s.students = {"Bob", "Charle", "Jaquobe", "Ashley"}
+   print(s)
+end
+
 function end_chapter_0(main)
    if yIsNil(main.sleep_script) then
       main.sleep_script = "end_chapter_0"
@@ -162,6 +173,7 @@ function end_chapter_0(main)
       local vn_quest_end = Entity.new_array()
 
       vn_quest_end[0] = Entity.new_array()
+      gen_school()
       -- 1rst dialogue
       local dial = vn_quest_end[0]
       dial.text = "Tin tin....\n" ..

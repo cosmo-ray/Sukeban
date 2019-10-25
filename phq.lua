@@ -1064,7 +1064,8 @@ function create_phq(entity)
       cur = yeGetInt(ygGet(stalk_path))
 
       while j < yeLen(qi_scripts) do
-	 if cur == yeGetIntAt(qi_scripts[j], "at") then
+	 local at = yeGet(qi_scripts[j], "at")
+	 if yIsNNil(at) and cur == yeGetInt(at) then
 	    scripts[yeGetStringAt(qi_scripts[j], "script")](ent)
 	 elseif yIsNNil(qi_scripts[j].after) and
 	 cur > yeGetIntAt(qi_scripts[j], "after") then

@@ -40,6 +40,21 @@ function use_time_point(box)
    return Y_TRUE
 end
 
+function quest_try_Call_script(main, qi_scripts, cur)
+   local j = 0
+
+   while j < yeLen(qi_scripts) do
+      local at = yeGet(qi_scripts[j], "at")
+      if yIsNNil(at) and cur == yeGetInt(at) then
+	 scripts[yeGetStringAt(qi_scripts[j], "script")](main)
+      elseif yIsNNil(qi_scripts[j].after) and
+      cur > yeGetIntAt(qi_scripts[j], "after") then
+	 scripts[yeGetStringAt(qi_scripts[j], "script")](main)
+      end
+      j = j + 1
+   end
+end
+
 function quest_update(original, copy, arg)
    local main = yeGet(arg, 0)
    local quest_name = yeGet(arg, 1)
@@ -53,14 +68,8 @@ function quest_update(original, copy, arg)
 
    print("changed:", Entity.wrapp(original), Entity.wrapp(copy), quest_name)
    print("reward:", reward)
+   quest_try_Call_script(main_widget, qi_scripts, r_idx)
 
-   local j = 0
-   while j < yeLen(qi_scripts) do
-      if r_idx == yeGetIntAt(qi_scripts[j], "at") then
-	 scripts[yeGetStringAt(qi_scripts[j], "script")](main_widget)
-      end
-      j = j + 1
-   end
    if reward ~= 0 then
       increaseStat(main, phq.pj, "xp", reward)
    end
