@@ -505,6 +505,7 @@ function startDialogue(main, obj, dialogue)
       local dialogueWid = Entity.new_array()
       local npc = nil
       local npc_nb = -1
+
       if obj.current then
 	 npc = entity.npcs[obj.current:to_int()].char
 	 npc_nb = obj.current

@@ -169,7 +169,7 @@ function end_chapter_0(main)
       main.sleep_script = nil
       phq.env.chapter = 1
       phq.quests.school_1_semestre = 1
-      load_scene(main, "house1", 0)
+      main.sleep_loc = "house1"
       local vn_quest_end = Entity.new_array()
 
       vn_quest_end[0] = Entity.new_array()
