@@ -146,6 +146,14 @@ function chapter_1_menu(main, mn)
    print("\nchapter_1_menu!!!!!\n", main, mn)
 end
 
+local function push_students(dest, stds)
+   for i = 1, #stds do
+      local s = stds[i]
+
+      yePushBack(dest, npcs[s], s)
+   end
+end
+
 function gen_school()
    if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
       return
@@ -153,7 +161,9 @@ function gen_school()
    phq.env.school = {}
    local s = phq.env.school
    s.is_gen = 1
-   s.students = {"Bob", "Charle", "Jaquobe", "Ashley"}
+   s.students = {}
+   local stds = s.students
+   push_students(stds, {"Bob", "Charle", "Jaquobe", "Ashley"})
    print(s)
 end
 
