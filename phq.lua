@@ -1063,17 +1063,7 @@ function create_phq(entity)
       stalk_path = yeGetStringAt(quests_info[i], "stalk")
       cur = yeGetInt(ygGet(stalk_path))
 
-      while j < yeLen(qi_scripts) do
-	 local at = yeGet(qi_scripts[j], "at")
-	 if yIsNNil(at) and cur == yeGetInt(at) then
-	    scripts[yeGetStringAt(qi_scripts[j], "script")](ent)
-	 elseif yIsNNil(qi_scripts[j].after) and
-	 cur > yeGetIntAt(qi_scripts[j], "after") then
-	    scripts[yeGetStringAt(qi_scripts[j], "script")](ent)
-	 end
-	 j = j + 1
-      end
-
+      quest_try_Call_script(ent, qi_scripts, cur)
       :: next_loop ::
       i = i + 1
    end
