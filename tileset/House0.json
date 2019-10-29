@@ -42,7 +42,7 @@
                         {
                          "name":"Condition",
                          "type":"string",
-                         "value":"S="
+                         "value":"S!"
                         }, 
                         {
                          "name":"ConditionArg0",
@@ -52,7 +52,7 @@
                         {
                          "name":"ConditionArg1",
                          "type":"string",
-                         "value":"night"
+                         "value":"day"
                         }],
                  "rotation":0,
                  "type":"",
