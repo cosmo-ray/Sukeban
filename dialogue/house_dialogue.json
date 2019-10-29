@@ -76,6 +76,15 @@
     "TV": {
 	"dialogue" : [
 	    {
+		"condition":  ["S=", "phq.env.time", "morning"],
+		"text": "News about how meupporpg player should be internate",
+		"answer": {
+		    "text": "leave",
+		    "action": "phq.backToGame"
+		}
+	    },
+
+	    {
 		"text": "warere wo nerau kuroi kage\nseikai no heiwa we mamoru kage\n(... an episode of some Super Hero...)",
 		"answers": [
 		    {
