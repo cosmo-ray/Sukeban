@@ -57,5 +57,17 @@
 	    "y": 150,
 	    "length": 3
 	}
+    },
+    "Madao": {
+	"sex": "male",
+        "type": "light",
+	"max_life": 10,
+	"attack" : "unarmed1",
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/skirt/male/robe_skirt_male.png",
+            "hair/male/long/blonde.png"
+        ]
     }
 }
