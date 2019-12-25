@@ -163,10 +163,10 @@ function pushSTatusTextScreen(container)
 
    local chap_txt = "capter: "
 
-   if yeGetIntAt(phq.env.chapter) < 1 then
+   if yeGetInt(phq.env.chapter) < 1 then
       chap_txt = chap_txt .. "Prologue"
    else
-      chap_txt = chap_txt .. yeGetIntAt(phq.env.chapter)
+      chap_txt = chap_txt .. yeGetInt(phq.env.chapter)
    end
    txt_screen["<type>"] = "text-screen"
    txt_screen["text-align"] = "center"
@@ -487,7 +487,6 @@ function pushStatus(mn)
    menu.ent.size = 30
    menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
    stat_menu.ent.entries[0] = menu.ent
-
    ywCntConstructChilds(gm_cnt)
    pushSTatusTextScreen(stat_menu.ent)
    stat_menu.ent.current = 0
