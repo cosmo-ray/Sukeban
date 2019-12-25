@@ -10,3 +10,6 @@
 [submodule "modules/pre-hangover-simulator"]
 	path = modules/pre-hangover-simulator
 	url = https://github.com/cosmo-ray/pre-hangover-simulator.git
+[submodule "modules/star-pike-and-jmp"]
+	path = modules/star-pike-and-jmp
+	url = https://github.com/cosmo-ray/star-pike-and-jmp.git

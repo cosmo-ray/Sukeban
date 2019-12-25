@@ -20,6 +20,7 @@
         { "file" : "modules/tetris", "type" : "module" },
         { "file" : "modules/AscII", "type" : "module" },
         { "file" : "modules/falling-guy/", "type" : "module" },
+        { "file" : "modules/star-pike-and-jmp/", "type" : "module" },
         { "file" : "modules/pre-hangover-simulator/", "type" : "module" },
         { "file" : "sprite-manager/", "type" : "module" },
         { "file" : "Arcade_score.json", "type" : "json", "as" : "hightscores"},

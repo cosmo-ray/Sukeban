@@ -3,6 +3,10 @@
 	"dialogues" : "dialogue/Arcade_dialogue.json",
 	"tiled": "./tileset/Arcade.json"
     },
+    "arcade-under" : {
+	"dialogues" : "dialogue/Arcade_dialogue.json",
+	"tiled": "./tileset/Arcade-under.json"
+    },
     "bar" : {
 	"dialogues" : "dialogue/PHQ_Dialogs_Part1.json",
 	"tiled": "./tileset/bar1.json"
