@@ -54,6 +54,7 @@
 	"out": {
 	    "up" : "street3"
 	},
+	"dialogues" : "dialogue/madao.json",
 	"tiled": "./tileset/Street4.json"
     },
     "wut" : {
