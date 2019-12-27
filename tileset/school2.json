@@ -119,6 +119,39 @@
                  "width":30,
                  "x":1025,
                  "y":477
+                }, 
+                {
+                 "height":39,
+                 "id":18,
+                 "name":"Bibliotech",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school_bibli"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":191,
+                 "y":219
+                }, 
+                {
+                 "height":33,
+                 "id":19,
+                 "name":"Computers",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":575,
+                 "y":221
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -127,7 +160,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":18,
+ "nextobjectid":20,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -136,7 +169,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.2.4",
  "tileheight":32,
  "tilesets":[
         {
