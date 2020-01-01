@@ -55,6 +55,24 @@
 	    }
 	]
     },
+    "jump star and pikes": {
+	"dialogue" : [
+	    {
+		"text": "jump star and pikes\nplay 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1, ["phq.play", "jumper"],
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
+	]
+    },
     "Warrior Of Asc II": {
 	"dialogue" : [
 	    {
