@@ -21,8 +21,25 @@
 		]
 	    },
 	    {
-		"text": ["oh my",
-			 " 3D girl talk to me now ?, leave..."],
+		"texts": [
+		    {
+			"condition": [">", "phq.pj.stats.charm", 4],
+			"text": ["bu, but",
+				 "Yes ????????", "what am I doing, I dont feel attracted to 3D",
+				 "please you made me fell unease, can you leave",
+				 "I need to finish ronce 3, an Eroge"]
+		    },
+		    {
+			"condition": [">", "phq.pj.stats.charm", 1],
+			"text": ["oh my",
+				 " 3D girl talk to me now ?, leave..."]
+		    },
+		    {
+			"text": ["humm, you just remmeber why I like 2D better",
+				 "we don't fix 3D here"]
+		    }
+
+		],
 		"answers": [
 		    {
 			"text": "nice",
