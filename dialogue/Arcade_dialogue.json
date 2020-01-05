@@ -1,4 +1,7 @@
 {
+    "_include": [
+	"./dialogue/Jaquobe.json"
+    ],
     "Asteroid Shooter": {
 	"dialogue" : [
 	    {
