@@ -728,6 +728,7 @@ end
 function destroy_phq(entity)
    local ent = Entity.wrapp(entity)
 
+   ygRemoveFromGlobalScope("phq_wid");
    run_script = nil
    tiled.deinit()
    ent.mainScreen = nil
@@ -974,6 +975,7 @@ function create_phq(entity)
    local scenePath = nil
 
    main_widget = Entity.wrapp(entity)
+   ygPushToGlobalScope(entity, "phq_wid");
    main_widget["<type>"] = "phq"
    main_widget.next = "phq:menus.main"
    npcs = Entity.wrapp(ygGet("phq.npcs"))

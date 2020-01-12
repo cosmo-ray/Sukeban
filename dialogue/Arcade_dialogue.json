@@ -79,6 +79,11 @@
     "Warrior Of Asc II": {
 	"dialogue" : [
 	    {
+		"condition": "phq_wid.npcs.Jaquobe",
+		"text": "Jaquobe's here",
+		"action": "phq.backToGame"
+	    },
+	    {
 		"text": "Warrior Of Asc II\nplay 1$:",
 		"answers": [
 		    {
