@@ -1,0 +1,7 @@
+-- some notes about how to hack phq (for now pretty empty I'll write tip as I'll need them):
+
+phq_wid: is a global object push at init that contain main widget, and can be use in dialogue
+
+2 kind of ai:
+- one which is run at every turn tick (see NpcTurn and ai.lua)
+- and one run each time time advance (see npcAdvenceTime in acion.lua and npcs-ai.lua)
