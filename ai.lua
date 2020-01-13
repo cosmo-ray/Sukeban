@@ -158,7 +158,7 @@ function NpcTurn(wid)
       wid.npc_act[i].controller(wid, npc_act[i])
       i = i + 1
    end
-   i = i
+   i = 0
    while i < yeLen(wid.enemies) do
       local enemy = wid.enemies[i]
       local mv_pos = searching(wid, enemy)
