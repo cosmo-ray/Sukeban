@@ -3,5 +3,5 @@
 phq_wid: is a global object push at init that contain main widget, and can be use in dialogue
 
 2 kind of ai:
-- one which is run at every turn tick (see NpcTurn and ai.lua)
-- and one run each time time advance (see npcAdvenceTime in acion.lua and npcs-ai.lua)
+- one which is run at every turn tick (see NpcTurn and ai.lua), this one is used to move npc on map, attack you and so on
+- one that run each time, time advance (see npcAdvenceTime in ai.lua and npcs-ai.lua), this one is use to move npc around map, make them do stuff when you don't see them
