@@ -3,6 +3,7 @@
         "sex": "male",
         "type": "light",
 	"ai": "bob_ai",
+	"student_year": 1,
         "max_life": 10,
 	"attack" : "unarmed0",
         "clothes": [
@@ -15,6 +16,7 @@
     "Charle": {
         "sex": "male",
         "type": "light",
+	"student_year": 1,
         "max_life": 10,
 	"attack" : "unarmed0",
         "clothes": [
@@ -27,6 +29,7 @@
     "Jaquobe": {
 	"sex": "male",
         "type": "light",
+	"student_year": 1,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -38,6 +41,7 @@
     "Ashley": {
 	"sex": "female",
         "type": "light",
+	"student_year": 1,
         "max_life": 10,
 	"hair": ["loose", "redhead2"],
 	"equipement": {

@@ -179,6 +179,29 @@ function end_chapter_0(main)
       main.sleep_script = nil
       phq.env.chapter = 1
       phq.quests.school_1_semestre = 1
+      for i = 0, yeLen(npcs) do
+	 local n = npcs[i]
+
+	 if yIsNil(n) or yeGetIntAt(n, "student_year") < 1 then
+	    goto skip
+	 end
+
+	 if yIsNil(yeGet(n, "ai")) then
+	    yeCreateString("student_ai", n, "ai")
+	 end
+
+	 if yIsNil(yeGet(n, "class")) then
+	    yeCreateInt(yuiRand() % 3, n, "class")
+	 end
+
+	 print("n: ", yeGetIntAt(n, "class"),
+	       yeGetStringAt(n, "ai"), yeGet(n, "class"),
+	       yIsNil(yeGet(n, "class")), yeGet(n, "ai"),
+	       yIsNil(yeGet(n, "ai")))
+	 :: skip ::
+      end
+
+
       main.sleep_loc = "house1"
       local vn_quest_end = Entity.new_array()
 
