@@ -85,7 +85,10 @@
 	    },
 
 	    {
-		"text": "warere wo nerau kuroi kage\nseikai no heiwa we mamoru kage\n(... an episode of some Super Hero...)",
+		"rand-texts": [
+		    "warera wo nerau kuroi kage\nseikai no heiwa we mamoru kage\n(... an episode of some Super Hero...)",
+		    "Chotto ochame no ohimesama, SAL... SAL..."
+			 ],
 		"answers": [
 		    {
 			"text": "leave",
