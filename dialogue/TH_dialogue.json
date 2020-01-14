@@ -115,7 +115,7 @@
 		"text": ["but I like you, I will do that for you",
 			 "congrat",
 			 "you can now go to school",
-			 "the school start in 21 days"],
+			 "School start Monday"],
 		"answer": {
 		    "text": "Well thanks",
 		    "actions": [
