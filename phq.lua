@@ -274,19 +274,8 @@ function load_game(save_dir)
    local loaded_npcs = File.jsonToEnt(save_dir.."/npcs.json")
    local npcs = File.jsonToEnt("npcs.json")
    _include(npcs, npcs)
-   local i = 0
-   while i < yeLen(loaded_npcs) do
-      local n = yeGetKeyAt(loaded_npcs, i)
-      local cnpc = npcs[n]
-      local clnpc = loaded_npcs[i]
-
-      if yIsNil(cnpc) then goto next_loop end
-
-      cnpc.life = clnpc.life
-
-      :: next_loop ::
-      i = i + 1
-   end
+   local p = yePatchCreate(npcs, loaded_npcs)
+   yePatchAplyExt(npcs, p, YE_PATCH_NO_SUP)
    phq.npcs = npcs
    ywidNext(ygGet("phq:menus.game"))
    --yCallNextWidget(entity);
