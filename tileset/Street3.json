@@ -104,6 +104,11 @@
                  "name":"toSchool",
                  "properties":[
                         {
+                         "name":"Time",
+                         "type":"string",
+                         "value":"!night"
+                        }, 
+                        {
                          "name":"entry",
                          "type":"int",
                          "value":0
@@ -162,7 +167,7 @@
  "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.2.4",
  "tileheight":32,
  "tilesets":[
         {

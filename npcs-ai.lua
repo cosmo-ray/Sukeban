@@ -9,6 +9,12 @@ function student_ai(main, npc, name)
    end
    if t == "morning" and d < 6 then
       print("School Time")
+   elseif t == "night" then
+      print("morning")
+   elseif t == "day" then
+      print("night")
+   else
+      print("fin de semaine !")
    end
 
    print("ai of ", name, ":", Entity.wrapp(npc))

@@ -412,7 +412,7 @@ function CheckColision(main, canvasWid, pj)
 	 elseif yeGetInt(exit.disable_timer) == 0 then
 	    if this_door_is_lock_msg == 0 then
 	       this_door_is_lock_msg = 20
-	       printMessage(main, nil, "This door seems lock")
+	       printMessage(main, nil, "It's close !")
 	    else
 	       this_door_is_lock_msg = this_door_is_lock_msg - 1
 	    end
