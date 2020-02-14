@@ -601,7 +601,7 @@ function storeMoveOn(mn, current)
       cv = Canvas.wrapp(cv)
       local ob = cv:new_img(
 	 0, 0,
-	 yeGetString(lpcs["$path"]) .. "/" .. yeGetString(img_p), r.ent)
+	 yeGetString(lpcs["$path"]) .. "/" .. "spritesheets" .. "/" .. yeGetString(img_p), r.ent)
       ob:force_size(Size.new(100,200))
       print("LEN", yeLen(cv.ent.objs))
    end

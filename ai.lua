@@ -173,6 +173,7 @@ function NpcTurn(wid)
 	 tmp.current = ec.current
 	 tmp.agresive = ec.agresive
 	 tmp.st = ec.small_talk
+	 tmp.dc = ec.dialogue_condition
 
 	 enemy.ai_state = ENEMY_ATTACKING
 	 if math.abs(ywPosX(mv_pos)) > math.abs(ywPosY(mv_pos)) and
@@ -201,6 +202,7 @@ function NpcTurn(wid)
 	 ec.current = tmp.current
 	 ec.agresive = tmp.agresive
 	 ec.small_talk = tmp.st
+	 ec.dialogue_condition = tmp.dc
       end
       i  = i + 1
    end

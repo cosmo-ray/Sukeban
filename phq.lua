@@ -622,8 +622,7 @@ function phq_action(entity, eve)
 	    if startDialogue(entity, c, dialogue) == YEVE_ACTION then
 	       yeDestroy(col)
 	       return YEVE_ACTION
-	    end
-	    if c.small_talk then
+	    elseif c.small_talk then
 	       smallTalk(entity, c)
 	    end
 	 end
@@ -876,6 +875,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc.char.name = npc_name
 	 npc.canvas.dialogue = obj.name:to_string()
 	 npc.canvas.small_talk = npc.char["small talk"]
+	 npc.canvas.dialogue_condition = npc.char.dialogue_condition
 	 npc.canvas.current = npc_idx
 	 npc_idx = npc_idx + 1
       elseif layer_name:to_string() == "Entries" then

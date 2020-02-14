@@ -50,6 +50,8 @@
     "wouaf": {
 	"type": "sprite",
 	"small talk": "wouaf wouaf !\nwouaf",
+	"dialogue_condition": ["S=", "phq.pj.equipement.torso",
+			       "Black Leather blouse"],
 	"sprite": {
 	    "path": "imgs/lpccatratdog.png",
 	    "src-pos": 128,

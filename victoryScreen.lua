@@ -49,7 +49,8 @@ function pushNewVictoryScreen(main, unused, loosers)
 		  print(yeGetKeyAt(loot, i))
 		  txt = txt .. math.floor(yeGetIntAt(loot, i)) .. ": " ..
 		     yeGetKeyAt(loot, i) .. "\n"
-		  addObject(main, phq.pj, yeGetKeyAt(loot, i), yeGetIntAt(loot, i))
+		  addObject(main, phq.pj, yeGetKeyAt(loot, i),
+			    yeGetIntAt(loot, i))
 	       else
 		  if yeGetStringAt(loot, i) == "auto" then
 		     txt = autoLoot(main, phq.pj, txt)

@@ -500,8 +500,13 @@ function startDialogue(main, obj, dialogue)
    print("start dialogue ", dialogue)
    dialogue = Entity.wrapp(dialogue)
    if dialogue and dialogues[dialogue:to_string()] then
-      local entity = Entity.wrapp(main)
       local obj = Entity.wrapp(obj)
+      local condition = obj.dialogue_condition
+
+      if yIsNNil(condition) and yeCheckCondition(condition) == false then
+	 goto out
+      end
+      local entity = Entity.wrapp(main)
       local dialogueWid = Entity.new_array()
       local npc = nil
       local npc_nb = -1
@@ -529,6 +534,7 @@ function startDialogue(main, obj, dialogue)
       ywPushNewWidget(entity, dialogueWid)
       return YEVE_ACTION
    end
+   :: out ::
    return YEVE_NOTHANDLE
 end
 

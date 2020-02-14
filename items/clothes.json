@@ -19,7 +19,12 @@
     },
     "white_pirate" : {
 	"type": "equipement",
-	"path": "torso/shirts/sleeveless/female/white_pirate.png",
+	"path": "torso/shirts/pirate_shirt/pirate_shirt_white.png",
+	"where": "torso"
+    },
+    "Black Leather blouse" : {
+	"type": "equipement",
+	"path": "torso/shirts/blouse/blouse_black.png",
 	"where": "torso"
     },
     "blue_vest" : {
@@ -35,23 +40,23 @@
     },
     "tightdress_lightblue" : {
 	"type": "equipement",
-	"path": "torso/dress_female/tightdress_lightblue.png",
+	"path": "torso/shirts/dress/TightDress_lightblue.png",
 	"full_body": true,
 	"where": "torso"
     },
     "teal_pirate" : {
 	"type": "equipement",
-	"path": "torso/shirts/sleeveless/female/teal_pirate.png",
+	"path": "torso/shirts/pirate_shirt/pirate_shirt_teal.png",
 	"where": "torso"
     },
     "teal_sleeveless" : {
 	"type": "equipement",
-	"path": "torso/shirts/sleeveless/female/teal_sleeveless.png",
+	"path": "torso/shirts/sleeveless/sleeveless_teal.png",
 	"where": "torso"
     },
     "white_sleeveless" : {
 	"type": "equipement",
-	"path": "torso/shirts/sleeveless/female/white_sleeveless.png",
+	"path": "torso/shirts/sleeveless/sleeveless_white.png",
 	"where": "torso"
     },
     "white_tunic" : {
