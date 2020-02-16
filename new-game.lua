@@ -80,6 +80,7 @@ function newGameAction(menu, eve, arg)
    phq.pj.stats.smart = 0
    phq.pj.archetype = archetype
    phq.pj.life = phq.pj.max_life
+   phq.pj.allies = {}
    phq.events = {}
    saved_scenes = Entity.new_array()
    if archetype == GEEK_ARCHETYPE then

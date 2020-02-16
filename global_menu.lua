@@ -392,6 +392,7 @@ function chooseCombot(mn)
 end
 
 function wear_cloth(mn)
+   mn = Entity.wrapp(mn)
    local desc = Entity.wrapp(yeGet(ywMenuGetCurrentEntry(mn), "arg"))
    local where = yeGetString(desc.where)
    local eq = phq.pj.equipement
@@ -404,6 +405,8 @@ function wear_cloth(mn)
    eq[where] = yeGetString(desc.key_name)
    dressUp(phq.pj)
    lpcs.handlerReload(yeGet(main_widget, "pj"))
+   lpcs.handlerReload(mn.pj)
+   return YEVE_ACTION
  end
 
 function wear_clothes_mn(mn)
@@ -415,6 +418,12 @@ function wear_clothes_mn(mn)
    local i = 0
 
    --menu.ent["pre-text"] = "current: " .. phq.pj.attack:to_string()
+   local c = Canvas.new_entity()
+   menu.ent.pj = lpcs.createCaracterHandler(phq.pj, c.ent)
+   ylpcsHandlerSetPos(menu.ent.pj, Pos.new(20, 10).ent)
+   lpcs.handlerSetOrigXY(menu.ent.pj, 0, 10)
+   lpcs.handlerRefresh(menu.ent.pj)
+
    menu:push("back", Entity.new_func("popSpendXpWid"))
    while i < yeLen(inv) do
       local name = yeGetKeyAt(inv, i)
@@ -435,7 +444,22 @@ function wear_clothes_mn(mn)
       i = i +  1
    end
    ccw.ent.entries[0] = menu.ent
+   ccw.ent.entries[1] = c.ent
    --menu.ent.size = 20
+   ywPushNewWidget(m, ccw.ent)
+   return YEVE_ACTION
+end
+
+function allies_mn(mn)
+   local m = main_widget
+   local ccw = Container.new_entity("vertical")
+   ccw.ent.background = "rgba: 255 255 255 255"
+   local menu = Menu.new_entity()
+   local allies = phq.pj.allies
+   -- TODO ALLIES SCREEN
+
+   ccw.ent.entries[0] = menu.ent
+   menu:push("back", Entity.new_func("popSpendXpWid"))
    ywPushNewWidget(m, ccw.ent)
    return YEVE_ACTION
 end
@@ -471,6 +495,7 @@ function pushStatus(mn)
    menu:push("Choose Combot", Entity.new_func("chooseCombot"))
    menu:push("wear clothes", Entity.new_func("wear_clothes_mn"))
    menu:push("advence time", Entity.new_func("doAdvanceTime"))
+   menu:push("Allies", Entity.new_func("allies_mn"))
    if is_end_of_chapter then
       menu:push("end chapter", Entity.new_func("gotoEndChapter"))
    end
