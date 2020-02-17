@@ -325,7 +325,7 @@ function join_team(wid, eves)
    local npcidx = yeGetIntAt(m, "npc_nb")
 
    printMessage(main_widget, nil, npcname .. " have join the Team !")
-   yePushBack(phq.pj.allies, npcname)
+   yeCreateString(npcname, phq.pj.allies)
    NpcGoTo(main_widget.npcs[npcidx], ylpcsHandePos(main_widget.pj))
 end
 

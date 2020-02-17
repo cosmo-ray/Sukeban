@@ -460,6 +460,10 @@ function allies_mn(mn)
 
    ccw.ent.entries[0] = menu.ent
    menu:push("back", Entity.new_func("popSpendXpWid"))
+   print(allies)
+   for i = 0, yeLen(allies) do
+      menu:push(allies[i])
+   end
    ywPushNewWidget(m, ccw.ent)
    return YEVE_ACTION
 end
