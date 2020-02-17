@@ -11,7 +11,10 @@
     },
     "wouaf": {
 	"dialogue" : [
-	    "Wouaf Wouaf <3 <3"
+	    {
+		"text": "Wouaf Wouaf <3 <3",
+		"actions": ["phq.join_team", "phq.backToGame"]
+	    }
 	]
     }
 }

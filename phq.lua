@@ -242,6 +242,8 @@ function init_phq(mod)
    mod.changeScene = Entity.new_func("changeScene")
    mod.openGlobMenu = Entity.new_func("openGlobMenu")
    mod.setCurStation = Entity.new_func("setCurStation")
+   mod.join_team = Entity.new_func("join_team")
+
 end
 
 function load_game(save_dir)

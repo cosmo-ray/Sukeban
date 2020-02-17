@@ -319,6 +319,16 @@ function takeObject(main, actionable_obj, what, nb)
    actionable_obj.is_used = true
 end
 
+function join_team(wid, eves)
+   local m = yDialogueGetMain(wid)
+   local npcname = yeGetStringAt(m, "name")
+   local npcidx = yeGetIntAt(m, "npc_nb")
+
+   printMessage(main_widget, nil, npcname .. " have join the Team !")
+   yePushBack(phq.pj.allies, npcname)
+   NpcGoTo(main_widget.npcs[npcidx], ylpcsHandePos(main_widget.pj))
+end
+
 function pay(wid, eve, cost, okAction, noDialogue)
    cost = yeGetInt(cost)
    if phq.pj.inventory.money >= cost then

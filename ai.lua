@@ -243,6 +243,18 @@ function PjLeaveController(wid, action)
    ylpcsHandlerSetPos(npc, mvPos)
 end
 
+function NpcGoTo(npc, dest_pos)
+   local main = main_widget
+   local action = Entity.new_array(main.npc_act)
+   local rdst = Rect.new(ywPosX(dest_pos), ywPosY(dest_pos), 1, 1)
+
+   npc.move = {}
+   action[ACTION_NPC] = npc
+   action[ACTION_MV_TBL] = {}
+   action[ACTION_MV_TBL_IDX] = 0
+   action.controller = Entity.new_func("PjLeaveController")
+end
+
 function pushPjLeave(npc, entryPoint)
    local main = main_widget
    local action = Entity.new_array(main.npc_act)
