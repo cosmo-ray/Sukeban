@@ -244,9 +244,12 @@ function StartFight(wid, eve, enemy_type, script)
       if yIsNil(allies[0].life) then
 	 allies[0].life = allies[0].max_life
       end
-      --if allies[1] then
-      --player_array[2] = allies[1]
-      --end
+      if allies[1] then
+	 player_array[2] = allies[1]
+	 if yIsNil(allies[1].life) then
+	    allies[1].life = allies[1].max_life
+	 end
+      end
    end
    fWid["<type>"] = "jrpg-fight"
    fWid.endCallback = Entity.new_func("CombatEnd")
