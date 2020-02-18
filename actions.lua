@@ -325,7 +325,7 @@ function join_team(wid, eves)
    local npcidx = yeGetIntAt(m, "npc_nb")
 
    printMessage(main_widget, nil, npcname .. " have join the Team !")
-   yeCreateString(npcname, phq.pj.allies)
+   yePushBack(phq.pj.allies, npcs[npcname], npcname)
    NpcGoTo(main_widget.npcs[npcidx], ylpcsHandePos(main_widget.pj))
 end
 
@@ -513,6 +513,7 @@ function startDialogue(main, obj, dialogue)
       local obj = Entity.wrapp(obj)
       local condition = obj.dialogue_condition
 
+      print("CONDITON", condition, phq.pj.equipement.torso)
       if yIsNNil(condition) and yeCheckCondition(condition) == false then
 	 goto out
       end

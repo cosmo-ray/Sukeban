@@ -177,6 +177,13 @@ function checkNpcPresence(obj, npc, scene)
       end
       return false
    end
+
+   local nname = yeGetString(npc.name)
+   local anpc = yeGet(phq.pj.allies, nname)
+   if yIsNNil(anpc) then
+      return false
+   end
+
    if yIsNNil(npc.location) then
       if npc.location:to_string() == scene then
 	 return true

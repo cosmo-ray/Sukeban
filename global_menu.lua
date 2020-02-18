@@ -450,6 +450,10 @@ function wear_clothes_mn(mn)
    return YEVE_ACTION
 end
 
+function alliesMoveOn(mn)
+   print("allies move on !\n")
+end
+
 function allies_mn(mn)
    local m = main_widget
    local ccw = Container.new_entity("vertical")
@@ -460,11 +464,11 @@ function allies_mn(mn)
 
    ccw.ent.entries[0] = menu.ent
    menu:push("back", Entity.new_func("popSpendXpWid"))
-   print(allies)
    for i = 0, yeLen(allies) do
-      menu:push(allies[i])
+      menu:push(yeGetKeyAt(allies, i))
    end
    ywPushNewWidget(m, ccw.ent)
+   menu.ent.moveOn = Entity.new_func("alliesMoveOn")
    return YEVE_ACTION
 end
 
