@@ -282,6 +282,13 @@ function load_game(save_dir)
    local p = yePatchCreate(npcs, loaded_npcs)
    yePatchAplyExt(npcs, p, YE_PATCH_NO_SUP)
    phq.npcs = npcs
+   local allies = phq.pj.allies
+   for i = 0, yeLen(allies) do
+      local k = yeGetKeyAt(allies, i)
+      local npc = npcs[k]
+
+      yeAttach(allies, npcs[k], i, k, 0)
+   end
    ywidNext(ygGet("phq:menus.game"))
    --yCallNextWidget(entity);
 end

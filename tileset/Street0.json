@@ -413,7 +413,7 @@
                         {
                          "name":"Presence %",
                          "type":"int",
-                         "value":8
+                         "value":100
                         }, 
                         {
                          "name":"Rotation",

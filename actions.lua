@@ -234,11 +234,25 @@ function StartFight(wid, eve, enemy_type, script)
 	 fight_script = yeGetString(script)
       end
    end
+   local player_array = Entity.new_array()
+   local allies = phq.pj.allies
+
+   player_array[0] = phq.pj
+   print(allies[1], allies[0])
+   if allies[0] then
+      player_array[1] = allies[0]
+      if yIsNil(allies[0].life) then
+	 allies[0].life = allies[0].max_life
+      end
+      --if allies[1] then
+      --player_array[2] = allies[1]
+      --end
+   end
    fWid["<type>"] = "jrpg-fight"
    fWid.endCallback = Entity.new_func("CombatEnd")
    fWid.ychar_start = 80
    fWid.endCallbackArg = main
-   fWid.player = phq.pj
+   fWid.player = player_array
    local usabel_items = Entity.new_array(phq.pj, "usable_items")
    local i = 0
    local inv = phq.pj.inventory
