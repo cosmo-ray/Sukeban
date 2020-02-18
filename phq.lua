@@ -148,7 +148,6 @@ function checkNpcPresence(obj, npc, scene)
    end
 
    local pp = yeGetIntAt(obj, "Presence %")
-   print("PRESENCE:", yuiRand() % 99, " > ", pp);
    if pp > 0 and yuiRand() % 99 > pp then
       return false
    end
@@ -159,14 +158,11 @@ function checkNpcPresence(obj, npc, scene)
    end
 
    local c_place = yeGetString(npc._place)
-   print("NPC pres:", c_place, scene, yIsNNil(c_place), npc)
    if yIsNNil(c_place) and c_place ~= scene then
       return false
    end
-   print("checkNpcPresence", npc.calendar)
    if npc.calendar then
       local day_calenday = npc.calendar[DAY_STR[phq.env.day:to_int() + 1]]
-      print(day_calenday, yeType(day_calenday))
       if day_calenday == nil then
 	 day_calenday = npc.calendar.everyday
       end
