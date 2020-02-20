@@ -54,6 +54,7 @@
 			       "Black Leather blouse"],
 	"attack" : "unarmed0",
         "max_life": 7,
+	"ai": "wouaf_ai",
 	"sprite": {
 	    "path": "imgs/lpccatratdog.png",
 	    "src-pos": 128,

@@ -8,6 +8,12 @@ fight_script = nil
 
 local use_time_point_action = Entity.new_string("phq.use_time_point")
 
+function is_npc_ally(pj, npcname)
+   local anpc = yeGet(pj.allies, npcname)
+
+   return yIsNNil(anpc)
+end
+
 function read_book(b, b_key)
    print("BOOK: ", b_key)
    print(b.summary)
@@ -334,6 +340,11 @@ function takeObject(main, actionable_obj, what, nb)
    end
    addObject(main, phq.pj, yeGetString(what), yeGetInt(nb))
    actionable_obj.is_used = true
+end
+
+function leave_team(who)
+   printMessage(main_widget, nil, who .. " leave the Team !")
+   yeRemoveChild(phq.pj.allies, who)
 end
 
 function join_team(wid, eves)
