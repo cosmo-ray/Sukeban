@@ -3,12 +3,10 @@ local phq = Entity.wrapp(ygGet("phq"))
 function wouaf_ai(main, npc, name)
    local t = ygGetString("phq.env.time")
 
-   print("wouaf AI", name)
    if is_npc_ally(phq.pj, name) then
       if (t == "night") then
 	 leave_team(name)
       end
-      print("wouaf wouaf !")
    end
 end
 
