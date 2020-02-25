@@ -92,6 +92,11 @@
     "short skirt": {
 	"type": "equipement",
 	"where": "legs",
+	"path": "legs/skirt/female/short_skirt.png"
+    },
+    "legion skirt": {
+	"type": "equipement",
+	"where": "legs",
 	"path": "legs/skirt/Female_legionSkirt.png"
     },
     "teal pants female": {
