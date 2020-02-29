@@ -4,7 +4,19 @@
 	    {
 		"condition": "phq.events.jaquobe_ally",
 		"text": "So, what can I do for you",
-		"action": "phq.backToGame"
+		"answers": [
+		    {
+			"text": "nothing, bye",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "I require your help, follow me",
+			"actions": [
+			    "phq.join_team",
+			    "phq.backToGame"
+			]
+		    }
+		]
 	    },
 	    {
 		"condition": "phq.env.have_win_ascii2",

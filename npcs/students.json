@@ -29,6 +29,8 @@
     "Jaquobe": {
 	"sex": "male",
         "type": "light",
+	"attack" : "unarmed0",
+        "max_life": 10,
 	"student_year": 1,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
