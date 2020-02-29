@@ -85,10 +85,11 @@
 	    },
 	    {
 		"text": "Warrior Of Asc II\nplay 1$:",
+		"condition": [">", "phq.pj.knowledge.computer", 1],
 		"answers": [
 		    {
 			"text": "Play",
-			"action": [ "phq.pay", 1, ["phq.play", "ai", 100000],
+			"action": [ "phq.pay", 1, ["phq.play", "ai", 100000, "ascii_end"],
 				    "not enouth money" ]
 		    },
 		    {
@@ -96,6 +97,9 @@
 			"action": "phq.backToGame"
 		    }
 		]
+	    },
+	    {
+		"text": "No !, that game is definitively too nerdy for me"
 	    }
 	]
     },

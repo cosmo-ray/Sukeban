@@ -1,6 +1,31 @@
 {
     "Jaquobe": {
 	"dialogue": [
+	    {
+		"condition": "phq.events.jaquobe_ally",
+		"text": "So, what can I do for you",
+		"action": "phq.backToGame"
+	    },
+	    {
+		"condition": "phq.env.have_win_ascii2",
+		"text": "what you complete this game ? tell me how, please",
+		"answers": [
+		    {
+			"text": "No ? not my fault if you're bad at gaming",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "Ok, but if I need your help for anything, you'll help me, ok ?",
+			"actions": [
+			    ["setInt", "phq.events.jaquobe_ally", 1],
+			    ["phq.increase", "xp", 3],
+			    ["phq.printMessage", "Jaquobe is now your ally"],
+			    "phq.backToGame"
+			]
+		    }
+
+		]
+	    },
 	    "Can't you see I'm playing {phq.env.mean_name}"
 	    /* Add condition so if you geek and have alerady beat the game */
 	    /* You can tell him how trick to finish it as well and then ask him */

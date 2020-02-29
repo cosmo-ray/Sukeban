@@ -487,10 +487,11 @@ end
 
 function printMessage(main, obj, msg)
    local txt = yLuaString(msg)
-   main = Entity.wrapp(main)
+   main = main_widget
+
    if main.box then
-      local txt = yeGetString(dialogue_box.get_text(main.box))
-      if yIsNil(txt) then
+      local txt_tmp = yeGetString(dialogue_box.get_text(main.box))
+      if yIsNil(txt_tmp) then
 	 return
       end
       txt = yeGetString(dialogue_box.get_text(main.box)) ..
@@ -761,7 +762,12 @@ function phs_start(wid)
    return YEVE_ACTION
 end
 
-function play(wid, eve, game, timer)
+function ascii_end(wid)
+   phq.env.have_win_ascii2 = yeGetIntAt(wid, "have_win")
+   backToGame(wid)
+end
+
+function play(wid, eve, game, timer, end_f_str)
    local wid = Entity.wrapp(wid)
    local main = getMainWid(wid)
 
@@ -771,8 +777,13 @@ function play(wid, eve, game, timer)
    local t = Entity.new_array()
 
    t["<type>"] = game
-   t.die = Entity.new_func("backToGame")
-   t.quit = Entity.new_func("backToGame")
+   if yIsNNil(end_f_str) then
+      t.die = Entity.new_func(yeGetString(end_f_str))
+      t.quit = Entity.new_func(yeGetString(end_f_str))
+   else
+      t.die = Entity.new_func("backToGame")
+      t.quit = Entity.new_func("backToGame")
+   end
    t.oldTimer = main["turn-length"]
    main["turn-length"] = timer
    ywPushNewWidget(main, t)
