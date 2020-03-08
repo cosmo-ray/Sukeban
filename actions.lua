@@ -489,6 +489,9 @@ function printMessage(main, obj, msg)
    local txt = yLuaString(msg)
    main = main_widget
 
+   if (yIsNil(main)) then
+      return
+   end
    if main.box then
       local txt_tmp = yeGetString(dialogue_box.get_text(main.box))
       if yIsNil(txt_tmp) then
