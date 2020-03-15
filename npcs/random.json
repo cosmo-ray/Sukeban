@@ -74,5 +74,16 @@
             "legs/skirt/male/robe_skirt_male.png",
             "hair/male/bedhead/black.png"
         ]
+    },
+    "Canteen_Girl": {
+	"sex": "female",
+        "type": "light",
+        "max_life": 10,
+	"hair": ["shortknot", "brown"],
+	"equipement": {
+	    "torso": "white_sleeveless",
+	    "legs": "short skirt",
+	    "feet": "black_slippers"
+	}
     }
 }
