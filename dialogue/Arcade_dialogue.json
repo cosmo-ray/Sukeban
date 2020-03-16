@@ -1,5 +1,6 @@
 {
     "_include": [
+	"./dialogue/ashley.json",
 	"./dialogue/Jaquobe.json"
     ],
     "Asteroid Shooter": {
