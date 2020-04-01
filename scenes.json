@@ -22,7 +22,7 @@
 	    "right" : {
 		"to": "STREET1",
 		"entry" : 2
-	    },
+	    }
 	},
 	"tiled": "./tileset/Street0.json"
     },
@@ -136,6 +136,12 @@
 
     "test_zone" : {
 	"dialogues" : "dialogue/test_d.json",
+	"out": {
+	    "right" : { "to": "STREET1", "entry" : 2 },
+	    "left" : { "to": "STREET1", "entry" : 2 },
+	    "up" : { "to": "STREET1", "entry" : 2 },
+	    "down" : { "to": "STREET1", "entry" : 2 }
+	},
 	"tiled": "./tileset/test_zone.json"
     }
 }
