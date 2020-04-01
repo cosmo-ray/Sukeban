@@ -77,6 +77,25 @@
 	    }
 	]
     },
+    "little space": {
+	"dialogue" : [
+	    {
+		"text": "Little Space\nplay 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1, ["phq.play",
+						   "little-space"],
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
+	]
+    },
     "Warrior Of Asc II": {
 	"dialogue" : [
 	    {

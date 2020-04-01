@@ -13,3 +13,6 @@
 [submodule "modules/star-pike-and-jmp"]
 	path = modules/star-pike-and-jmp
 	url = https://github.com/cosmo-ray/star-pike-and-jmp.git
+[submodule "modules/little-space"]
+	path = modules/little-space
+	url = https://github.com/cosmo-ray/little-space.git
