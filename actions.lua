@@ -835,6 +835,9 @@ function doSleep(ent, upCanvas)
    local y0 = pjPos:y() - window_height / 2
    local sl = main_widget.sleep_loc
 
+   if (ywidTurnTimer() < 10000) then
+      yuiUsleep(10000)
+   end
    if sleep_time == 100 then
       if yIsNNil(sl) then
 	 print("CHANGE SCENE !!!!", sl)

@@ -622,7 +622,8 @@ function phq_action(entity, eve)
 	 i = i + 1
       end
 
-      local col = ywCanvasNewCollisionsArrayWithRectangle(entity.mainScreen, r:cent())
+      local col = ywCanvasNewCollisionsArrayWithRectangle(entity.mainScreen,
+							  r:cent())
       col = Entity.wrapp(col)
       --print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
       i = 0
