@@ -46,6 +46,16 @@
 			"action": "phq.backToGame"
 		    },
 		    {
+			"text": "what ?\nwhich 3D thing are you talking about",
+			"actions": [
+			    [
+				"Dialogue:change-text",
+				"Oh,\nbut that 3D isn't very smart it seems\nI'm talking about YOU\nYOU'RE 3D\nand that's ugly, I don't like it\nLEAVEEEEE"
+			    ],
+			    "Dialogue:hide"
+			]
+		    },
+		    {
 			"text": "yeah well... seriously\nyou know, I kinda wanna be part of this club guys\nyou know I like bits too",
 			"condition": [">", "phq.pj.knowledge.computer", 4]
 		    }
