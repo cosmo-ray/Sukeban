@@ -538,12 +538,12 @@ function phq_action(entity, eve)
 
    smallTalkRemover(entity)
    if entity.box_t then
-      if entity.box_t > 100 then
+      if entity.box_t < 0 then
 	 dialogue_box.rm(entity.upCanvas, entity.box)
 	 entity.box = nil
-	 entity.box_t = nil
+	 entity.box_t = 0
       else
-	 entity.box_t = entity.box_t + 1
+	 entity.box_t = entity.box_t - ywidGetTurnTimer()
       end
    elseif entity.sleep then
       if doSleep(entity, Canvas.wrapp(entity.upCanvas)) == false then

@@ -487,6 +487,7 @@ end
 
 function printMessage(main, obj, msg)
    local txt = yLuaString(msg)
+   local TIME_RESET = 500000
    main = main_widget
 
    if (yIsNil(main)) then
@@ -504,7 +505,11 @@ function printMessage(main, obj, msg)
    end
    dialogue_box.new_text(main.upCanvas, 0, 0,
 			 txt, main, "box")
-   main.box_t = 0
+   if main.box_t then
+      main.box_t = main.box_t + TIME_RESET
+   else
+      main.box_t = TIME_RESET
+   end
 end
 
 function smallTalk(main, c)
