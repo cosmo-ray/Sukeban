@@ -580,6 +580,94 @@ function phq_action(entity, eve)
       return openGlobMenu(entity, GM_QUEST_IDX)
    end
 
+   if yevIsKeyDown(eve, Y_LSHIFT_KEY) then
+      if (yeLen(main_widget.show_actionable) < 1) then
+	 local e_actionables = entity.actionables
+	 local e_exits = entity.exits
+	 local show_act = entity.show_actionable
+	 local i = 0
+
+	 while  i < yeLen(e_actionables) do
+	    local cr = e_actionables[i].rect
+
+	    show_act[i] = ywCanvasNewRectangle(entity.upCanvas,
+					       ywRectX(cr), ywRectY(cr),
+					       ywRectW(cr), ywRectH(cr),
+					       "rgba: 250 250 127 127")
+	    i = i  + 1
+	 end
+	 local j = 0
+	 while j < yeLen(e_exits) do
+	    local cr = e_exits[j].rect
+	    local w = ywRectW(cr)
+	    local h = ywRectH(cr)
+
+	    if w < 3 then
+	       w = 10
+	    end
+	    if h < 3 then
+	       h = 10
+	    end
+	    show_act[i] = ywCanvasNewRectangle(entity.upCanvas,
+					       ywRectX(cr), ywRectY(cr),
+					       w, h,
+					       "rgba: 250 127 127 127")
+
+	    j = j + 1
+	    i = i  + 1
+	 end
+	 local cur_scene = entity.cur_scene
+	 local canvasWid = entity.mainScreen
+	 if cur_scene.out["left"] then
+	    show_act[i] = ywCanvasNewRectangle(entity.upCanvas,
+					       0, 0,
+					       5, canvasWid["tiled-hpix"]:to_int(),
+					       "rgba: 250 127 127 127")
+	    i = i + 1
+	 end
+	 if cur_scene.out["right"] then
+	    show_act[i] = ywCanvasNewRectangle(
+	       entity.upCanvas,
+	       canvasWid["tiled-wpix"]:to_int() - 10, 0,
+	       5, canvasWid["tiled-hpix"]:to_int(),
+	       "rgba: 250 127 127 127")
+	    i = i + 1
+	 end
+	 if cur_scene.out["up"] then
+	    show_act[i] = ywCanvasNewRectangle(
+	       entity.upCanvas,
+	       0, 0,
+	       canvasWid["tiled-wpix"]:to_int(),
+	       5,
+	       "rgba: 250 127 127 127")
+	    i = i + 1
+	 end
+	 if cur_scene.out["down"] then
+	    show_act[i] = ywCanvasNewRectangle(
+	       entity.upCanvas,
+	       0, canvasWid["tiled-hpix"]:to_int() - 10,
+	       canvasWid["tiled-wpix"]:to_int(),
+	       5,
+	       "rgba: 250 127 127 127")
+	    i = i + 1
+	 end
+      end
+   end
+
+   if yevIsKeyUp(eve, Y_LSHIFT_KEY) then
+      if (yeLen(main_widget.show_actionable) > 0) then
+	 local show_act = main_widget.show_actionable
+	 local sal = yeLen(show_act)
+	 local i = 0
+
+	 while i < sal do
+	    ywCanvasRemoveObj(entity.upCanvas, show_act[i])
+	    i = i + 1
+	 end
+	 yeClearArray(show_act)
+      end
+   end
+
    if yevIsGrpDown(eve, actionKeys) then
       local pjPos = ylpcsHandePos(entity.pj)
       local x_add = 0
@@ -979,6 +1067,7 @@ function create_phq(entity)
    ygPushToGlobalScope(entity, "phq_wid");
    main_widget["<type>"] = "phq"
    main_widget.next = "phq:menus.main"
+   main_widget.show_actionable = {}
    npcs = Entity.wrapp(ygGet("phq.npcs"))
    ent.cur_scene_str = nil
    tiled.setAssetPath("./tileset")
