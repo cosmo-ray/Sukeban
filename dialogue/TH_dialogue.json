@@ -14,7 +14,9 @@
 			"action": "phq.backToGame"
 		    },
 		    {
-			"condition":  ["=", "phq.quests.school_sub", 0],
+			"condition":  ["and",
+				       ["=", "phq.quests.school_sub", 0],
+				       ["not", ["exist", "phq.events.greta_insult"]]],
 			"text": "hello I'm here to subscribe to the neibourg's school"
 		    }
 
@@ -27,7 +29,7 @@
 			"text": "Thanks, I guess...",
 			"action": "phq.backToGame"
 		    },
-		    "Thanks, and could you tell me where is the subscription office ?",
+		    "Thanks, and could you tell me where is the subscription office ?"
 		]
 	    },
 	    {
@@ -57,7 +59,30 @@
 	    "booo poor child, what are you goind to do\ngoing to school with other normaly like childrens\nthen faild your exam becaus nobody care about you",
 	    "and durring this time you will waste time of teacher\ntrying to teach good childrent stuff they should know",
 	    "you're better of this school, this city have a dock\n it's a good place for {phq.env.mean_name} like you\nnot working but under the see, where you can't bread",
-	    "AND IT'S THE BEST THING YOU COULD DO OF YOUR LIFE, GET OUT !!"
+	    {
+		"text": "AND IT'S THE BEST THING YOU COULD DO OF YOUR LIFE, GET OUT !!",
+		"answers": [
+		    {
+			"condition":  [">", "phq.pj.trait.violance", 1],
+			"text": "(beat the shit out of this bitch)",
+			"actions": [
+			    [ "phq.increase", "trait", "violance", 1],
+			    [ "setInt", "phq.events.greta_insult", 1],
+			    "phq:gotoJail"
+			]
+		    },
+		    {
+			"condition":  ["<", "phq.pj.trait.violance", 2],
+			"text": "(not knowing what to answer, and keeping your cool\nleave)",
+			"actions": [
+			    [ "setInt", "phq.events.greta_insult", 1],
+			    "phq.backToGame"
+			]
+
+		    }
+
+		]
+	    }
 	]
     },
     "Tera" : {

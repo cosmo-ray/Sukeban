@@ -28,7 +28,7 @@ end
 
 function use_time_point(box)
    if phq.env.time_point:to_int() == 0 then
-      printMessage(main_boxget, nil, "Not enough time point")
+      printMessage(main_widget, nil, "Not enough time point")
       return Y_FALSE
    end
 
@@ -487,7 +487,7 @@ end
 
 function printMessage(main, obj, msg)
    local txt = yLuaString(msg)
-   local TIME_RESET = 500000
+   local TIME_RESET = 1000000
    main = main_widget
 
    if (yIsNil(main)) then
@@ -505,6 +505,7 @@ function printMessage(main, obj, msg)
    end
    dialogue_box.new_text(main.upCanvas, 0, 0,
 			 txt, main, "box")
+   print("main.box_t: ", main.box_t, " msg: ", msg)
    if main.box_t then
       main.box_t = main.box_t + TIME_RESET
    else
@@ -708,14 +709,22 @@ function playSnake(wid, eve, version)
       ywPushNewWidget(main, tx)
    end
    main.current = 2
-   return YEVE_ACTION
 end
 
 function changeScene(wid, eve, scene, entry)
    local main = getMainWid(wid)
    load_scene(main, yeGetString(scene), yeGetInt(entry))
    backToGame(wid)
-   return YEVE_ACTION
+end
+
+function gotoJail(wid)
+   print("WESHHHHHH!\n\n\n\n\n\n")
+   load_scene(main_widget, "police", 1)
+   ygSetInt("phq.events.in_jail", 1)
+   backToGame(wid)
+   printMessage(main_widget, nil,
+		"you go to jail you don't touch anything and\nmake no joke about board game")
+   print("out")
 end
 
 function playAstShoot(wid)

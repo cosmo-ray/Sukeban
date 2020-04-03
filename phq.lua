@@ -242,6 +242,7 @@ function init_phq(mod)
    mod.quest_script = Entity.new_func("call_quest_script")
    mod.use_time_point = Entity.new_func("use_time_point")
    mod.changeScene = Entity.new_func("changeScene")
+   mod.gotoJail = Entity.new_func("gotoJail")
    mod.openGlobMenu = Entity.new_func("openGlobMenu")
    mod.setCurStation = Entity.new_func("setCurStation")
    mod.join_team = Entity.new_func("join_team")
@@ -511,12 +512,13 @@ function phq_action(entity, eve)
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
    local dir_change = false
+   local isNewlyLoad = newly_loaded
 
+   newly_loaded = false
    entity.require_ret = 0
    --print("Last Turn Length: ", turn_timer, ywidTurnTimer())
-   if newly_loaded then
+   if isNewlyLoad then
       turn_timer = 1
-      newly_loaded = false
    end
    local i = 0
    while i < st_hooks_len do
@@ -542,8 +544,8 @@ function phq_action(entity, eve)
 	 dialogue_box.rm(entity.upCanvas, entity.box)
 	 entity.box = nil
 	 entity.box_t = 0
-      else
-	 entity.box_t = entity.box_t - ywidGetTurnTimer()
+      elseif isNewlyLoad == false then
+	    entity.box_t = entity.box_t - ywidGetTurnTimer()
       end
    elseif entity.sleep then
       if doSleep(entity, Canvas.wrapp(entity.upCanvas)) == false then
