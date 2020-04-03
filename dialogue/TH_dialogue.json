@@ -2,20 +2,62 @@
     "Greta" : {
 	"dialogue" : [
 	    {
-		"text": "welcom to the town hall",
+		"text": [
+		    "(greta is doing doing crosswork",
+		    "and doesn't really seems intrested by you",
+		    "after and half minut waiting in front of her",
+		    "see raise her head, look at you  and say with a annoyed voice)",
+		    "welcom to the town hall, what can I do for you"],
+		"answers": [
+		    {
+			"text": "humm, nothing I leave",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"condition":  ["=", "phq.quests.school_sub", 0],
+			"text": "hello I'm here to subscribe to the neibourg's school"
+		    }
+
+		]
+	    },
+	    {
+		"text": "for school subscrition, you need to go to the subscription office, not here",
+		"answers": [
+		    {
+			"text": "Thanks, I guess...",
+			"action": "phq.backToGame"
+		    },
+		    "Thanks, and could you tell me where is the subscription office ?",
+		]
+	    },
+	    {
+		"text": "she is back to her corssword and doesn't seems to listen to you anymore",
 		"answers": [
 		    {
 			"text": "(leave)",
 			"action": "phq.backToGame"
 		    },
-		    {
-			"condition":  ["=", "phq.quests.school_sub", 0],
-			"text": "hello I'm here to subscribe to the neibourg school"
-		    }
-
+		    "hello"
 		]
 	    },
-	    "for school subscrition, you need to go to the subscription office, not here"
+	    {
+		"text": "what, can't you see I'm working",
+		"answers": [
+		    {
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    },
+		    "no, you're doing crosswork, can you help me please\nI'm trying to have a school"
+		]
+	    },
+	    "listen, I know trash like you, what 15 years old\nsubscribint to school alone",
+	    "for peoples of you age, it's always the parent that came\nnot the child and you know why",
+	    "because parents care about they child\ncrapp like you left alone disgust me",
+	    "what's your story, your mother left, you're father drink too much",
+	    "booo poor child, what are you goind to do\ngoing to school with other normaly like childrens\nthen faild your exam becaus nobody care about you",
+	    "and durring this time you will waste time of teacher\ntrying to teach good childrent stuff they should know",
+	    "you're better of this school, this city have a dock\n it's a good place for {phq.env.mean_name} like you\nnot working but under the see, where you can't bread",
+	    "AND IT'S THE BEST THING YOU COULD DO OF YOUR LIFE, GET OUT !!"
 	]
     },
     "Tera" : {

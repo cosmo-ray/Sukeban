@@ -618,14 +618,14 @@ function phq_action(entity, eve)
 	 end
 	 local cur_scene = entity.cur_scene
 	 local canvasWid = entity.mainScreen
-	 if cur_scene.out["left"] then
+	 if cur_scene.out and cur_scene.out["left"] then
 	    show_act[i] = ywCanvasNewRectangle(entity.upCanvas,
 					       0, 0,
 					       5, canvasWid["tiled-hpix"]:to_int(),
 					       "rgba: 250 127 127 127")
 	    i = i + 1
 	 end
-	 if cur_scene.out["right"] then
+	 if cur_scene.out and cur_scene.out["right"] then
 	    show_act[i] = ywCanvasNewRectangle(
 	       entity.upCanvas,
 	       canvasWid["tiled-wpix"]:to_int() - 10, 0,
@@ -633,7 +633,7 @@ function phq_action(entity, eve)
 	       "rgba: 250 127 127 127")
 	    i = i + 1
 	 end
-	 if cur_scene.out["up"] then
+	 if cur_scene.out and cur_scene.out["up"] then
 	    show_act[i] = ywCanvasNewRectangle(
 	       entity.upCanvas,
 	       0, 0,
@@ -642,7 +642,7 @@ function phq_action(entity, eve)
 	       "rgba: 250 127 127 127")
 	    i = i + 1
 	 end
-	 if cur_scene.out["down"] then
+	 if cur_scene.out and cur_scene.out["down"] then
 	    show_act[i] = ywCanvasNewRectangle(
 	       entity.upCanvas,
 	       0, canvasWid["tiled-hpix"]:to_int() - 10,
