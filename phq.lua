@@ -752,7 +752,7 @@ function phq_action(entity, eve)
    -- I would need a computer a lot more powerful to test this case
    -- and compute the proper uslepp value
    --print(entity.pj.mv_pix, " - ", pix_mv)
-   if (pix_mv < 1) then print("TOO SLOW !!!!!", pix_mv) yuiUsleep(2000); pix_mv = 1 end
+   if (pix_mv < 1) then yuiUsleep(2000); pix_mv = 1 end
 
    entity.pj.mv_pix = entity.pj.mv_pix + math.abs(pix_mv)
 
