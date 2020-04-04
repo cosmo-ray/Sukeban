@@ -449,7 +449,6 @@ function advance_time(main, next_loc, force_skip_time)
    if main.sleep_script then
       scripts[main.sleep_script:to_string()](main)
    end
-   print(main.cant_skip_time)
    if force_skip_time then
       main.cant_skip_time = 0
    end
@@ -718,10 +717,10 @@ function changeScene(wid, eve, scene, entry)
 end
 
 function gotoJail(wid)
-   print("WESHHHHHH!\n\n\n\n\n\n")
    load_scene(main_widget, "police", 1)
    ygSetInt("phq.events.in_jail", 1)
    backToGame(wid)
+   ygIncreaseInt("phq.pj.reputation.bully", 1)
    printMessage(main_widget, nil,
 		"you go to jail you don't touch anything and\nmake no joke about board game")
    print("out")

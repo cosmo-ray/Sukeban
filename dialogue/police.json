@@ -2,6 +2,18 @@
     "Bill": {
 	"dialogue": [
 	    {
+		"text": ["let me guess you want to go out ?",
+			 "I've call your mother, she tell me she didn't want to get you",
+			 "so, we'll keep you for 24 hours, sorry"],
+		"condition":  ["=", "phq.events.in_jail", 1],
+		"actions": [
+		    ["setInt", "phq.events.in_jail", 0],
+		    "phq.sleep", "phq.sleep", "phq.sleep",
+		    "phq.use_time_point",
+		    ["phq.changeScene", "street4", 1]
+		]
+	    },
+	    {
 		"text": ["I've hear from my son that you find his rat, thanks",
 			 "Agent Machette have your papper"],
 		"condition":  ["=", "phq.quests.school_sub", 10],
