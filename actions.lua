@@ -93,7 +93,8 @@ function backToGameOnEnter(wid, eve)
    eve = Event.wrapp(eve)
 
    while eve:is_end() == false do
-      if eve:type() == YKEY_DOWN and eve:key() == Y_ENTER_KEY then
+      if eve:type() == YKEY_DOWN and (eve:key() == Y_ENTER_KEY or
+				      eve:key() == Y_ESC_KEY) then
 	 backToGame(wid)
       end
       eve = eve:next()

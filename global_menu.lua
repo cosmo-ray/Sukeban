@@ -694,6 +694,13 @@ function openStore(main, obj_or_eve, storeName)
    return YEVE_ACTION
 end
 
+function howtoplay(mn)
+   local mncp = Entity.new_copy(ygGet("phq:menus.bagare"))
+
+   mncp.action = Entity.new_func("backToGameOnEnter")
+   ywPushNewWidget(main_widget, mncp)
+end
+
 function fillMiscMenu(mn)
    print("fill time !")
    mn = Menu.wrapp(mn)
@@ -701,6 +708,7 @@ function fillMiscMenu(mn)
    mn:push("quick save", Entity.new_func("saveGameCallback"))
    mn:push("save", Entity.new_func("saveGameMenu"))
    mn:push("main menu", "callNext")
+   mn:push("How to Play", Entity.new_func("howtoplay"))
    mn:push("Back To Game", "phq.backToGame")
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent["text-align"] = "center"
