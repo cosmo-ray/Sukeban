@@ -37,7 +37,14 @@ Good luck and good drinks!
 	"action" : "nextOnKeyDown",
 	"background" : "rgba: 255 255 255 255",
 	"text" : "
-        How to fight
+        How to play:
+
+        left shift: show actionable items and exit points
+        arrows: moving
+        entrer and space: action (speak, take items...)
+        esc,i,m,c,j: menu (open on diferent tab depending of key press)
+
+        How to fight:
 
         When you piss someone else you will enter in battle mode
 
