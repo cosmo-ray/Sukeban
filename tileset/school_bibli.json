@@ -1,4 +1,12 @@
-{ "height":11,
+{ "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"tileset"
+        }
+    },
+ "height":11,
  "infinite":false,
  "layers":[
         {
@@ -140,6 +148,12 @@
          "id":3,
          "name":"BookShelve",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"upLayer",
+                 "type":"int",
+                 "value":1
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":13,
@@ -150,7 +164,7 @@
  "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.4",
+ "tiledversion":"1.3.3",
  "tileheight":32,
  "tilesets":[
         {
