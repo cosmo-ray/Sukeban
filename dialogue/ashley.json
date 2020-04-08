@@ -1,12 +1,17 @@
 {
     "Ashley": {
-	"dialogue" : [
-	    {
+	"dialogue" : {
+	    "cute-arcade" : {
+		"text": "Well, I though there was only ugly nerd here, was I wrong ?",
+		"condition": [">", "phq.pj.stats.charm", 2],
+		"action": "phq.backToGame"
+	    },
+	    "acade": {
 		"text": [
 		    "Listen nerd, I don't care about you",
 		    "I'm only here to watch that crappy loser-pool place call Arcade"
-		],
+		]
 	    }
-	]
+	}
     }
 }
