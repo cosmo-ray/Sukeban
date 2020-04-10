@@ -1,0 +1,9 @@
+{
+    "Harri": {
+	"dialogue" : {
+	    "base": "I'm drinkning with my friend, and on the next update\nI'll ass the the player what I should bring to a party",
+	    "maybe_banana": "one of thoses answer will be banana, that amough clasic, vodka and stuff",
+	    "end": "if banana is answer, then on the next encounter (a day or more after this meeting)\nI'll be super happy, and thanks the player(with xp and stuff)\nthen I'll tell the player to 'always take a banana to a party'"
+	}
+    }
+}
