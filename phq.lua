@@ -547,7 +547,8 @@ function phq_action(entity, eve)
       elseif isNewlyLoad == false then
 	    entity.box_t = entity.box_t - ywidGetTurnTimer()
       end
-   elseif entity.sleep then
+   end
+   if entity.sleep then
       if doSleep(entity, Canvas.wrapp(entity.upCanvas)) == false then
 	 return YEVE_ACTION
       end
