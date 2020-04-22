@@ -69,6 +69,7 @@ void *handlerMove(int nbArg, void **args)
 	}
 
 	ywCanvasObjSetPosByEntity(yeGet(h, "canvas"), p);
+	return NULL;
 }
 
 void *handlerNullify(int nbArg, void **args)
@@ -79,6 +80,7 @@ void *handlerNullify(int nbArg, void **args)
 	ywCanvasRemoveObj(yeGet(h, "wid"), yeGet(h, "canvas"));
 	yeRemoveChild(h, "canvas");
 	yeRemoveChild(h, "char");
+	return NULL;
 }
 
 void *mod_init(int nbArg, void **args)
@@ -91,6 +93,6 @@ void *mod_init(int nbArg, void **args)
 		mod.handlerRefresh = handlerRefresh;
 		mod.handlerMove = handlerMove;
 	}
-	printf("SPRITE MANAGER !!!\n");
+	printf("SPRITE MANAGER %p!!!\n", mod);
 	return mod;
 }

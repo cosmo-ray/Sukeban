@@ -1,6 +1,7 @@
 {
     "_include": [
-	"./dialogue/harri.json"
+	"./dialogue/harri.json",
+	"./dialogue/willo.json"
     ],
     "Jean": {
 	"dialogue" : [
