@@ -70,6 +70,7 @@
 	"student_year": 1,
         "max_life": 10,
 	"hair": ["loose", "redhead2"],
+	"image": "./imgs/Willo-Default-Default-Default.png",
 	"equipement": {
 	    "torso": "white_sleeveless",
 	    "legs": "short skirt",
