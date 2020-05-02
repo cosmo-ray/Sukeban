@@ -19,6 +19,7 @@
         { "path" : "YIRL_MODULES_PATH/hightscore/", "type" : "module" },
         { "file" : "modules/tetris", "type" : "module" },
         { "file" : "modules/little-space/", "type" : "module" },
+        { "file" : "modules/little-mage/", "type" : "module" },
         { "file" : "modules/AscII", "type" : "module" },
         { "file" : "modules/falling-guy/", "type" : "module" },
         { "file" : "modules/star-pike-and-jmp/", "type" : "module" },

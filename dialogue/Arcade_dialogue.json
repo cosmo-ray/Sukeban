@@ -80,12 +80,31 @@
     "little space": {
 	"dialogue" : [
 	    {
-		"text": "Little Space\nplay 1$:",
+		"text": "Little Space By little shump production\nplay 1$:",
 		"answers": [
 		    {
 			"text": "Play",
 			"action": [ "phq.pay", 1, ["phq.play",
 						   "little-space"],
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
+	]
+    },
+    "little mage": {
+	"dialogue" : [
+	    {
+		"text": "Little Mage By little shump production\nplay 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1, ["phq.play",
+						   "little-mage"],
 				    "not enouth money" ]
 		    },
 		    {
