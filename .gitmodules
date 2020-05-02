@@ -16,3 +16,6 @@
 [submodule "modules/little-space"]
 	path = modules/little-space
 	url = https://github.com/cosmo-ray/little-space.git
+[submodule "modules/little-mage"]
+	path = modules/little-mage
+	url = https://github.com/cosmo-ray/little-space.git
