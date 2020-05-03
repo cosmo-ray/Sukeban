@@ -27,12 +27,14 @@ function read_book(b, b_key)
 end
 
 function use_time_point(box)
+   box = Entity.wrapp(box)
    if phq.env.time_point:to_int() == 0 then
-      printMessage(main_widget, nil, "Not enough time point")
+      if box.is_dialogue_condition < 1 then
+	 printMessage(main_widget, nil, "Not enough time point")
+      end
       return Y_FALSE
    end
 
-   box = Entity.wrapp(box)
    if box and box.is_dialogue_condition then
       local answer = Entity.wrapp(yDialogueCurAnswer(box))
       local actions = answer.actions
