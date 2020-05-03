@@ -2,8 +2,6 @@ local sleep_time = 0
 local phq = Entity.wrapp(ygGet("phq"))
 local dialogue = Entity.wrapp(ygGet("Dialogue"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
-local window_width = 800
-local window_height = 600
 fight_script = nil
 
 local use_time_point_action = Entity.new_string("phq.use_time_point")

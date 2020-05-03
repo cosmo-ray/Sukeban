@@ -18,8 +18,8 @@ main_widget = nil
 phq_action_timer = nil
 local run_script = nil
 
-local window_width = 800
-local window_height = 600
+window_width = 800
+window_height = 600
 
 -- set as global so can be use by ai
 pix_mv = 0
@@ -1167,5 +1167,10 @@ function create_phq(entity)
       :: next_loop ::
       i = i + 1
    end
+   local wid_size = yeGet(entity, "wid-pix");
+
+   window_width = ywRectW(wid_size);
+   window_height = ywRectH(wid_size);
+
    return ret
 end
