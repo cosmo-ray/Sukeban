@@ -493,6 +493,10 @@ function gotoEndChapter(mn)
    sleep(main_widget)
 end
 
+function god_window(mn)
+   print("not yet implemented will contain devloper toot that allow to cheat, and see every npc stats.\nmaybe edit'em at some point")
+end
+
 function pushStatus(mn)
    local gm_cnt = Entity.wrapp(ywCntWidgetFather(mn))
    local main = main_widget
@@ -507,6 +511,7 @@ function pushStatus(mn)
    menu:push("Spend XP", Entity.new_func("pushSpendXpWid"))
    menu:push("Choose Combot", Entity.new_func("chooseCombot"))
    menu:push("wear clothes", Entity.new_func("wear_clothes_mn"))
+   menu:push("God Mode", Entity.new_func("god_window"))
    menu:push("advence time", Entity.new_func("doAdvanceTime"))
    menu:push("Allies", Entity.new_func("allies_mn"))
    if is_end_of_chapter then
