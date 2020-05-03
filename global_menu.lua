@@ -494,7 +494,20 @@ function gotoEndChapter(mn)
 end
 
 function god_window(mn)
-   print("not yet implemented will contain devloper toot that allow to cheat, and see every npc stats.\nmaybe edit'em at some point")
+   local m = main_widget
+   local ccw = Container.new_entity("vertical")
+   ccw.ent.background = "rgba: 255 255 255 255"
+
+   local menu = Menu.new_entity()
+   ccw.ent.entries[0] = menu.ent
+   menu:push("back", Entity.new_func("popSpendXpWid"))
+   menu:push("Time Select")
+   menu:push("Chapter Select")
+   menu:push("Quest Select")
+   menu:push("NPCs")
+   ywPushNewWidget(m, ccw.ent)
+   return YEVE_ACTION
+
 end
 
 function pushStatus(mn)
