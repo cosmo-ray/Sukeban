@@ -735,6 +735,11 @@ function phq_action(entity, eve)
    end
 
    if yevIsGrpUp(eve, upKeys) or yevIsGrpUp(eve, downKeys) then
+      if entity.pj.move.left_right > 0 then
+	 entity.pj.y = LPCS_RIGHT
+      elseif entity.pj.move.left_right < 0 then
+	 entity.pj.y = LPCS_LEFT
+      end
       entity.pj.move.up_down = 0
    end
 
