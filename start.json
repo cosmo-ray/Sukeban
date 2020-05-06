@@ -35,6 +35,7 @@
         { "file" : "skills.json", "type" : "json", "as" : "skills"},
         { "file" : "stores.json", "type" : "json", "as" : "stores"},
 	{ "file" : "global_menu.lua", "type" : "lua" },
+	{ "file" : "cheat_menu.lua", "type" : "lua" },
 	{ "file" : "metro.lua", "type" : "lua" },
 	{ "file" : "vn.lua", "type" : "lua" },
 	{ "file" : "new-game.lua", "type" : "lua" },
