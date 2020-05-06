@@ -501,7 +501,17 @@ function god_window(mn)
    local menu = Menu.new_entity()
    ccw.ent.entries[0] = menu.ent
    menu:push("back", Entity.new_func("popSpendXpWid"))
-   menu:push("Time Select")
+   local slider = Entity.new_array()
+   slider[0] = {}
+   slider[0].text = "night"
+   slider[0].action = {"recreateString", "phq.env.time", "night"}
+   slider[1] = {}
+   slider[1].text = "day"
+   slider[1].action = {"recreateString", "phq.env.time", "day"}
+   slider[2] = {}
+   slider[2].text = "morning"
+   slider[2].action = {"recreateString", "phq.env.time", "morning"}
+   ywMenuPushSlider(menu.ent, "Time Select: ", slider)
    menu:push("Chapter Select")
    menu:push("Quest Select")
    menu:push("NPCs")
