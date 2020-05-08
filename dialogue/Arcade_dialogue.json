@@ -100,7 +100,7 @@
 	"dialogue" : [
 	    {
 		"condition": ["<", "phq.env.chapter", 1],
-		"text": "Little Mage, the new game b little shump production\ncomming soon !",
+		"text": "Little Mage, the new game by little shump production\ncomming soon !",
 		"action": "phq.backToGame"
 	    },
 	    {
