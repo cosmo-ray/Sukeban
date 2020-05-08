@@ -37,6 +37,16 @@ function cheat_main_mn(mn)
    return YEVE_ACTION
 end
 
+function cheat_quest_action(mn)
+   local cur_txt = Entity.wrapp(ywMenuGetCurrentEntry(mn)).text:to_string()
+   print(cur_txt, phq.quests[cur_txt], "phq.quests." .. cur_txt)
+   ygIncreaseInt("phq.quests." .. cur_txt, 1);
+   print(cur_txt, phq.quests[cur_txt], "phq.quests." .. cur_txt)
+   local f = ywCntWidgetFather(mn)
+   popSpendXpWid(mn)
+   return backToGame(f)
+end
+
 function cheat_quest_select_mn(main_mn)
    --local quest_action = Entity.new_array()
    --quest_action[0] = {"increaseInt", yeGetInt(cu)}
@@ -47,6 +57,9 @@ function cheat_quest_select_mn(main_mn)
 
    qmn.ent["pre-text"] = "Quest Cheat Menu"
    qmn:push("Back", Entity.new_func("cheat_main_mn"))
+   for i = 0, yeLen(phq.quests) - 1 do
+      qmn:push(yeGetKeyAt(phq.quests, i), Entity.new_func("cheat_quest_action"))
+   end
    qmn.ent.size = 30
    ywReplaceEntry(cnt, 0, qmn.ent)
    return YEVE_ACTION

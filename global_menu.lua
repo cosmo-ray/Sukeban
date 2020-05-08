@@ -104,13 +104,11 @@ function pushQuests(panel)
    -- quests_info
    local i = 0
    while i < yeLen(quests_info) do
-      local quest_name = yeGetString(quest_name)
       local quest = quests_info[i]
       local stalk_sart = yeGetIntAt(quest, "stalk_sart")
       local stalk_path = yeGetStringAt(quest, "stalk")
       local cur = yeGetInt(ygGet(stalk_path))
 
-      print(quest_name, cur, stalk_sart)
       if (cur > stalk_sart) then
 	 local descs = quest.descriptions
 	 txt = txt .. "[ " ..  yeGetKeyAt(quests_info, i) .. " ]\n"
