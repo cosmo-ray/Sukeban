@@ -194,7 +194,7 @@ function alcohol_lvl_str()
    return ""
 end
 
-function popSpendXpWid(mn)
+function popGlobMnOtherMenu(mn)
    local main = ywCntWidgetFather(ywCntWidgetFather(mn))
 
    ywCntPopLastEntry(main)
@@ -355,7 +355,7 @@ function pushSpendXpWid(mn)
    lvlUp.ent.background = "rgba: 255 255 255 255"
 
    local menu = Menu.new_entity()
-   menu:push("finish", Entity.new_func("popSpendXpWid"))
+   menu:push("finish", Entity.new_func("popGlobMnOtherMenu"))
    menu:push("improve stats", Entity.new_func("spendXpOnStats"))
    menu:push("learn skills", Entity.new_func("learnableSkill"))
    lvlUp.ent.entries[0] = menu.ent
@@ -382,7 +382,7 @@ function chooseCombot(mn)
    local i = 0
 
    menu.ent["pre-text"] = "current: " .. phq.pj.attack:to_string()
-   menu:push("back", Entity.new_func("popSpendXpWid"))
+   menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
    while i < yeLen(cmbs) do
       local cmb = cmbs[i]
       menu:push(cmb:to_string(), Entity.new_func("setCmbAsAttack"))
@@ -427,7 +427,7 @@ function wear_clothes_mn(mn)
    lpcs.handlerSetOrigXY(menu.ent.pj, 0, 10)
    lpcs.handlerRefresh(menu.ent.pj)
 
-   menu:push("back", Entity.new_func("popSpendXpWid"))
+   menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
    while i < yeLen(inv) do
       local name = yeGetKeyAt(inv, i)
       local ob_desc = phq.objects[name]
@@ -466,7 +466,7 @@ function allies_mn(mn)
    -- TODO ALLIES SCREEN
 
    ccw.ent.entries[0] = menu.ent
-   menu:push("back", Entity.new_func("popSpendXpWid"))
+   menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
    for i = 0, yeLen(allies) do
       menu:push(yeGetKeyAt(allies, i))
    end

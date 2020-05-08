@@ -4,7 +4,7 @@ local function mk_main_mn()
    local menu = Menu.new_entity()
    menu.ent.size = 30
    menu.ent["pre-text"] = "Cheat Menu\nhere for debuging purpose:"
-   menu:push("back", Entity.new_func("popSpendXpWid"))
+   menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
    local slider = Entity.new_array()
    slider[0] = {}
    slider[0].text = "night"
@@ -43,7 +43,7 @@ function cheat_quest_action(mn)
    ygIncreaseInt("phq.quests." .. cur_txt, 1);
    print(cur_txt, phq.quests[cur_txt], "phq.quests." .. cur_txt)
    local f = ywCntWidgetFather(mn)
-   popSpendXpWid(mn)
+   popGlobMnOtherMenu(mn)
    return backToGame(f)
 end
 
