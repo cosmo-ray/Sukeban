@@ -27,7 +27,7 @@ local function mk_main_mn()
    slider[1].actions[1] = {"recreateInt", "phq.quests.school_1_semestre", 1}
    ywMenuPushSlider(menu.ent, "Chapter Select: ", slider)
    menu:push("Quests", Entity.new_func("cheat_quest_select_mn"))
-   menu:push("NPCs")
+   menu:push("NPCs", Entity.new_func("cheat_npcs_mn"))
    return menu.ent
 end
 
@@ -48,10 +48,6 @@ function cheat_quest_action(mn)
 end
 
 function cheat_quest_select_mn(main_mn)
-   --local quest_action = Entity.new_array()
-   --quest_action[0] = {"increaseInt", yeGetInt(cu)}
-   --quest_action[1] = {"phq.backToGame"}
-   print("heja")
    local cnt = ywCntWidgetFather(main_mn)
    local qmn = Menu.new_entity()
 
@@ -62,6 +58,26 @@ function cheat_quest_select_mn(main_mn)
    end
    qmn.ent.size = 30
    ywReplaceEntry(cnt, 0, qmn.ent)
+   return YEVE_ACTION
+end
+
+function cheat_npcs_mn(main_mn)
+   local cnt = ywCntWidgetFather(main_mn)
+   local nmn = Menu.new_entity()
+
+   nmn.ent["pre-text"] = "Quest Cheat Menu"
+   nmn:push("Back", Entity.new_func("cheat_main_mn"))
+   print(npcs)
+   print(npcs["Tera"])
+   for i = 0, yeLen(npcs) - 1 do
+      local npc_key = yeGetKeyAt(npcs, i)
+
+      if (yIsNNil(npc_key)) then
+	 nmn:push(npc_key)
+      end
+   end
+   nmn.ent.size = 30
+   ywReplaceEntry(cnt, 0, nmn.ent)
    return YEVE_ACTION
 end
 

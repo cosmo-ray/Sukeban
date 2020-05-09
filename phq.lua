@@ -102,8 +102,8 @@ end
 
 local function reposScreenInfo(ent, x0, y0)
    ywCanvasObjSetPos(ent.night_r, x0, y0)
-   ywCanvasObjSetPos(ent.life_txt, x0 + 360, y0 + 10)
-   ywCanvasObjSetPos(ent.life_nb, x0 + 410, y0 + 10)
+   ywCanvasObjSetPos(ent.life_txt, x0 + 460, y0 + 10)
+   ywCanvasObjSetPos(ent.life_nb, x0 + 510, y0 + 10)
    dialogue_box.set_pos(ent.box, 40 + x0, 40 + y0)
 end
 
@@ -422,11 +422,14 @@ function CheckColision(main, canvasWid, pj)
 	    end
 	    return CHANGE_SCENE_COLISION
 	 elseif yeGetInt(exit.disable_timer) == 0 then
-	    if this_door_is_lock_msg == 0 then
-	       this_door_is_lock_msg = 20
+	    local TIME_RESET = 1000000
+
+	    if this_door_is_lock_msg < 1 then
+	       this_door_is_lock_msg = TIME_RESET
 	       printMessage(main, nil, "It's close !")
 	    else
-	       this_door_is_lock_msg = this_door_is_lock_msg - 1
+	       print(this_door_is_lock_msg)
+	       this_door_is_lock_msg = this_door_is_lock_msg - ywidGetTurnTimer()
 	    end
 	 end
       end
