@@ -3,7 +3,7 @@
     {
      "export":
         {
-         "target":"tileset\/tileset\/tileset"
+         "target":"tileset\/tileset\/tileset\/tileset"
         }
     },
  "height":15,
@@ -91,6 +91,28 @@
                  "width":29,
                  "x":286.823201886545,
                  "y":38.815144766147
+                }, 
+                {
+                 "height":62,
+                 "id":6,
+                 "name":"phs",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.startDialogue"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"phs"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30,
+                 "x":96,
+                 "y":33
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -237,7 +259,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.3.3",

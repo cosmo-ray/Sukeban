@@ -120,6 +120,29 @@
 	    }
 	]
     },
+    "phs": {
+	"dialogue" : [
+	    {
+		"condition": ["<", "phq.quests.a_drunk_story", 2],
+		"text": "Pre Hangover Simulator ! Comming Soon",
+		"action": "phq.backToGame"
+	    },
+	    {
+		"text": "Pre Hangover Simulator !\nplay 1$:",
+		"answers": [
+		    {
+			"text": "Play",
+			"action": [ "phq.pay", 1, ["phq.phs_start"],
+				    "not enouth money" ]
+		    },
+		    {
+			"text": "Leave",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
+	]
+    },
     "Warrior Of Asc II": {
 	"dialogue" : [
 	    {
