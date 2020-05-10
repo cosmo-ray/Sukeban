@@ -314,12 +314,11 @@ function addObject(main, character, objStr, nb)
 end
 
 function recive(wid, eve, objStr, nb)
-   wid = ywCntWidgetFather(yDialogueGetMain(wid))
    nb = yeGetInt(nb)
    if nb == 0 then
       nb = 1
    end
-   addObject(wid, phq.pj, yeGetString(objStr), nb)
+   addObject(main_widget, phq.pj, yeGetString(objStr), nb)
 end
 
 function remove(wid, eve, objStr, nb)
