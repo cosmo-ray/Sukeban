@@ -27,6 +27,13 @@ local function mk_main_mn()
    slider[1].actions[1] = {"recreateInt", "phq.quests.school_1_semestre", 1}
    ywMenuPushSlider(menu.ent, "Chapter Select: ", slider)
    menu:push("Quests", Entity.new_func("cheat_quest_select_mn"))
+
+   local money_action = Entity.new_array()
+   money_action[0] = "phq.recive"
+   money_action[1] = "money"
+   money_action[2] = 50
+
+   menu:push("give 50$", money_action)
    menu:push("NPCs", Entity.new_func("cheat_npcs_mn"))
    return menu.ent
 end
