@@ -4,6 +4,7 @@ local function mk_main_mn()
    local menu = Menu.new_entity()
    menu.ent.size = 30
    menu.ent["pre-text"] = "Cheat Menu\nhere for debuging purpose:"
+   menu.ent.onEsc = Entity.new_func("popGlobMnOtherMenu")
    menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
    local slider = Entity.new_array()
    slider[0] = {}
@@ -23,8 +24,9 @@ local function mk_main_mn()
    slider[1] = {}
    slider[1].text = "1"
    slider[1].actions = {}
-   slider[1].actions[0] = {"recreateInt", "phq.env.chapter", 1}
-   slider[1].actions[1] = {"recreateInt", "phq.quests.school_1_semestre", 1}
+   slider[1].actions[0] = {"recreateInt", "phq.env.day", 1}
+   slider[1].actions[1] = {"recreateString", "phq.env.time", "night"}
+   slider[1].actions[2] = {"phq:quest_script", "end_chapter_0"}
    ywMenuPushSlider(menu.ent, "Chapter Select: ", slider)
    menu:push("Quests", Entity.new_func("cheat_quest_select_mn"))
 
@@ -35,6 +37,7 @@ local function mk_main_mn()
 
    menu:push("give 50$", money_action)
    menu:push("NPCs", Entity.new_func("cheat_npcs_mn"))
+   menu:push("Students", Entity.new_func("cheat_students_mn"))
    return menu.ent
 end
 
@@ -59,6 +62,7 @@ function cheat_quest_select_mn(main_mn)
    local qmn = Menu.new_entity()
 
    qmn.ent["pre-text"] = "Quest Cheat Menu"
+   qmn.ent.onEsc = Entity.new_func("cheat_main_mn")
    qmn:push("Back", Entity.new_func("cheat_main_mn"))
    for i = 0, yeLen(phq.quests) - 1 do
       qmn:push(yeGetKeyAt(phq.quests, i), Entity.new_func("cheat_quest_action"))
@@ -68,14 +72,32 @@ function cheat_quest_select_mn(main_mn)
    return YEVE_ACTION
 end
 
+function cheat_students_mn(main_mn)
+   local cnt = ywCntWidgetFather(main_mn)
+   local nmn = Menu.new_entity()
+
+   nmn.ent["pre-text"] = "Quest Cheat Menu"
+   nmn.ent.onEsc = Entity.new_func("cheat_main_mn")
+   nmn:push("Back", Entity.new_func("cheat_main_mn"))
+   for i = 0, yeLen(npcs) - 1 do
+      local npc = yeGet(npcs, i)
+      local npc_key = yeGetKeyAt(npcs, i)
+      if yIsNNil(yeGet(npc, "student_year")) then
+	 nmn:push(npc_key)
+      end
+   end
+   nmn.ent.size = 30
+   ywReplaceEntry(cnt, 0, nmn.ent)
+   return YEVE_ACTION
+end
+
 function cheat_npcs_mn(main_mn)
    local cnt = ywCntWidgetFather(main_mn)
    local nmn = Menu.new_entity()
 
    nmn.ent["pre-text"] = "Quest Cheat Menu"
+   nmn.ent.onEsc = Entity.new_func("cheat_main_mn")
    nmn:push("Back", Entity.new_func("cheat_main_mn"))
-   print(npcs)
-   print(npcs["Tera"])
    for i = 0, yeLen(npcs) - 1 do
       local npc_key = yeGetKeyAt(npcs, i)
 

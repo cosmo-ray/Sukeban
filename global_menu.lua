@@ -182,7 +182,9 @@ function pushSTatusTextScreen(container)
       "life: {phq.pj.life}\n" ..
       "xp: {phq.pj.xp} \n" ..
       alcohol_lvl_str() ..
-      knowledge_str .. stats_str .. cmb_str
+      knowledge_str ..
+      stats_str ..
+      cmb_str
    txt_screen.background = "rgba: 155 155 255 190"
    ywPushNewWidget(container, txt_screen)
 end

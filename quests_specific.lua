@@ -146,15 +146,35 @@ function chapter_1_menu(main, mn)
    print("\nchapter_1_menu!!!!!\n", main, mn)
 end
 
-local function push_students(dest, stds)
-   for i = 1, #stds do
-      local s = stds[i]
 
-      yePushBack(dest, npcs[s], s)
-   end
-end
+local function gen_school()
+   local FEMALE = 1
+   local MALE = 2
 
-function gen_school()
+   print("gen_school")
+   local sexes = {"female", "male"}
+
+   local array_name = {
+      {"Georgette", "Michelle", "Germaine", "Lynda", "Clemence", "Camille",
+       "Geraldine", "Fraise", "Anna", "Hanna", "Mya", "Francoise",
+       "Fleur", "Alice", "Petra", "Geunievre"},
+      {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
+       "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
+       "Camille", "Matthias", "Perceval", "Jacouille"}
+   }
+
+   local last_name = {
+      "Georette", "Michelle", "Germaine", "Lynda", "Clemence",
+      "Geraldine", "Fraise", "Raoul", "Asran", "Tibeau",
+      "Adrien", "George", "Du-champs", "Tomodachi", "Ichogo", "Troie",
+      "Hero", "Determinated", "Peacecraft", "Warmaker", "Neko",
+      "Geraldine", "Fraise", "Cat", "Sed", "Weechat", "Archer",
+      "Linus", "Richard", "Stallman", "Armstrong", "Char", "Aznabulu",
+      "Tomino", "Osamu", "Dezaki"
+   }
+
+   local types = {"light", "dark"}
+
    if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
       return
    end
@@ -163,16 +183,46 @@ function gen_school()
    s.is_gen = 1
    s.students = {}
    local stds = s.students
-   push_students(stds, {"Bob", "Charle", "Jaquobe", "Ashley"})
+   for i = 0, yeLen(npcs) - 1 do
+      local npc = yeGet(npcs, i)
+      local npc_key = yeGetKeyAt(npcs, i)
+
+      if yIsNNil(yeGet(npc, "student_year")) then
+	 yePushBack(s.students, npc, npc_key)
+	 if (yIsNil(yeGet(npc, "class"))) then
+	    yeCreateInt(yuiRand() % 3, npc, "class")
+	 end
+      end
+   end
+
+   for i = 0, 10 do
+      :: again ::
+      local gender =  yuiRand() % 2 + 1
+      local name_table = array_name[gender]
+      local name = name_table[yuiRand() % #name_table[gender] + 1] .. " " ..
+	 last_name[yuiRand() % #last_name + 1]
+      if npcs[name] then
+	 goto again
+      end
+      local n = Entity.new_array(npcs, name)
+      n.sex = sexes[gender]
+      n.type = types[yuiRand() % #types + 1]
+      n.class = yuiRand() % 3
+      n.student_year = yuiRand() % 3 + 1
+      yePushBack(s.students, n, name)
+      -- clothes still needed
+   end
    print(s)
 end
 
 function end_chapter_0(main)
+   print("end_chapter_0")
    if yIsNil(main.sleep_script) then
       main.sleep_script = "end_chapter_0"
       is_end_of_chapter = true
       return
    end
+   print("then ?")
    if phq.env.day:to_int() == 7 and
    phq.env.time:to_string() == "night" then
       is_end_of_chapter = false
