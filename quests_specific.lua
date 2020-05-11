@@ -171,7 +171,7 @@ local function gen_school()
       "Hero", "Determinated", "Peacecraft", "Warmaker", "Neko",
       "Geraldine", "Fraise", "Cat", "Sed", "Weechat", "Archer",
       "Linus", "Richard", "Stallman", "Armstrong", "Char", "Aznabulu",
-      "Tomino", "Osamu", "Dezaki", "Jacouille"
+      "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay"
    }
 
    local types = {"light", "dark"}
