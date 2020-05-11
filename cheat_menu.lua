@@ -27,6 +27,7 @@ local function mk_main_mn()
    slider[1].actions[0] = {"recreateInt", "phq.env.day", 1}
    slider[1].actions[1] = {"recreateString", "phq.env.time", "night"}
    slider[1].actions[2] = {"phq:quest_script", "end_chapter_0"}
+   slider[1].actions[3] = Entity.new_func("popGlobMnOtherMenu")
    ywMenuPushSlider(menu.ent, "Chapter Select: ", slider)
    menu:push("Quests", Entity.new_func("cheat_quest_select_mn"))
 
