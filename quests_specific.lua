@@ -157,10 +157,10 @@ local function gen_school()
    local array_name = {
       {"Georgette", "Michelle", "Germaine", "Lynda", "Clemence", "Camille",
        "Geraldine", "Fraise", "Anna", "Hanna", "Mya", "Francoise",
-       "Fleur", "Alice", "Petra", "Geunievre"},
+       "Fleur", "Alice", "Petra", "Geunievre", "Oscar"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
-       "Camille", "Matthias", "Perceval", "Jacouille"}
+       "Camille", "Matthias", "Perceval", "Harry", "Oscar"}
    }
 
    local last_name = {
@@ -170,7 +170,7 @@ local function gen_school()
       "Hero", "Determinated", "Peacecraft", "Warmaker", "Neko",
       "Geraldine", "Fraise", "Cat", "Sed", "Weechat", "Archer",
       "Linus", "Richard", "Stallman", "Armstrong", "Char", "Aznabulu",
-      "Tomino", "Osamu", "Dezaki"
+      "Tomino", "Osamu", "Dezaki", "Jacouille"
    }
 
    local types = {"light", "dark"}
