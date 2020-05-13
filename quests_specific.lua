@@ -174,7 +174,12 @@ local function gen_school()
       "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay"
    }
 
-   local types = {"light", "dark"}
+   local types = {
+      {"light", "dark", "dark2", "woman-black", "woman-white",
+       "woman-olive", "woman-peach"},
+      {"light", "dark", "dark2", "man-black", "man-white", "man-olive",
+       "man-peach"}
+   }
 
    if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
       return
@@ -200,20 +205,19 @@ local function gen_school()
       :: again ::
       local gender =  yuiRand() % 2 + 1
       local name_table = array_name[gender]
-      local name = name_table[yuiRand() % #name_table[gender] + 1] .. " " ..
+      local name = name_table[yuiRand() % #name_table + 1] .. " " ..
 	 last_name[yuiRand() % #last_name + 1]
       if npcs[name] then
 	 goto again
       end
       local n = Entity.new_array(npcs, name)
       n.sex = sexes[gender]
-      n.type = types[yuiRand() % #types + 1]
+      n.type = types[gender][yuiRand() % #types[gender] + 1]
       n.class = yuiRand() % 3
       n.student_year = yuiRand() % 3 + 1
       yePushBack(s.students, n, name)
       -- clothes still needed
    end
-   print(s)
 end
 
 function end_chapter_0(main)
