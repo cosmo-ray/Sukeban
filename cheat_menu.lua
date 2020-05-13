@@ -1,4 +1,8 @@
 local phq = Entity.wrapp(ygGet("phq"))
+local LPCS_LEFT = 9
+local LPCS_DOWN = 10
+local LPCS_RIGHT = 11
+local LPCS_UP = 8
 
 local function mk_main_mn()
    local menu = Menu.new_entity()
@@ -74,11 +78,12 @@ function cheat_quest_select_mn(main_mn)
 end
 
 function cheat_students_mn(main_mn)
-   local cnt = ywCntWidgetFather(main_mn)
+   local cnt = Entity.wrapp(ywCntWidgetFather(main_mn))
    local nmn = Menu.new_entity()
 
    nmn.ent["pre-text"] = "Quest Cheat Menu"
    nmn.ent.onEsc = Entity.new_func("cheat_main_mn")
+   nmn.ent.moveOn = Entity.new_func("cheat_show_npc")
    nmn:push("Back", Entity.new_func("cheat_main_mn"))
    for i = 0, yeLen(npcs) - 1 do
       local npc = yeGet(npcs, i)
@@ -89,15 +94,41 @@ function cheat_students_mn(main_mn)
    end
    nmn.ent.size = 30
    ywReplaceEntry(cnt, 0, nmn.ent)
+   ywPushNewWidget(cnt, Canvas.new_entity().ent);
+   cnt.current = 0
    return YEVE_ACTION
 end
 
+function cheat_show_npc(mn, current)
+   local cur = Entity.wrapp(ywMenuGetCurrentEntry(mn))
+   local cnt = ywCntWidgetFather(mn)
+   local canvas = Entity.wrapp(ywCntGetEntry(cnt, 1))
+   local npc = npcs[cur.text]
+   local handler = nil
+
+   canvas.h = nil
+   ywCanvasClear(canvas)
+   if yIsNil(npc) then
+      return YEVE_ACTION;
+   end
+   if yeGetString(npc.type) == "sprite" then
+      canvas.h = sprite_man.createHandler(npc, canvas)
+   else
+      canvas.h = lpcs.createCaracterHandler(npc, canvas)
+      canvas.h.y = LPCS_DOWN
+   end
+   handler = canvas.h
+   generic_handlerRefresh(handler)
+   return YEVE_ACTION;
+end
+
 function cheat_npcs_mn(main_mn)
-   local cnt = ywCntWidgetFather(main_mn)
+   local cnt = Entity.wrapp(ywCntWidgetFather(main_mn))
    local nmn = Menu.new_entity()
 
    nmn.ent["pre-text"] = "Quest Cheat Menu"
    nmn.ent.onEsc = Entity.new_func("cheat_main_mn")
+   nmn.ent.moveOn = Entity.new_func("cheat_show_npc")
    nmn:push("Back", Entity.new_func("cheat_main_mn"))
    for i = 0, yeLen(npcs) - 1 do
       local npc_key = yeGetKeyAt(npcs, i)
@@ -108,6 +139,8 @@ function cheat_npcs_mn(main_mn)
    end
    nmn.ent.size = 30
    ywReplaceEntry(cnt, 0, nmn.ent)
+   ywPushNewWidget(cnt, Canvas.new_entity().ent);
+   cnt.current = 0
    return YEVE_ACTION
 end
 

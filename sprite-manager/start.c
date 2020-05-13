@@ -9,8 +9,8 @@ void *createHandler(int nbArg, void **args)
 {
 	Entity *thing = args[0];
 	Entity *canvas_wid = args[1];
-	Entity *father = args[2];
-	const char *name = args[3];
+	Entity *father = nbArg > 2 ? args[2] : NULL;
+	const char *name = nbArg > 3 ? args[3] : NULL;
 	Entity *s_info = yeGet(thing, "sprite");
 	Entity *ret;
 	Entity *text;
