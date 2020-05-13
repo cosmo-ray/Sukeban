@@ -8,12 +8,12 @@
         "max_life": 10,
 	"is_generic": true,
 	"attack" : "unarmed0",
-        "clothes": [
-            "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
-            "legs/pants/male/teal_pants_male.png",
-            "hair/male/plain/raven.png"
-        ]
+	"hair": ["plain", "raven"],
+	"equipement": {
+	    "torso": "white longsleeve m",
+	    "legs": "teal pants m",
+	    "feet": "brown_shoes m"
+	}
     },
     "Greta": {
 	"sex": "female",

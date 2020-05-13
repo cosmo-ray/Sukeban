@@ -2,7 +2,8 @@
     "_include": [ "./items/food.json",
 		  "./items/drink.json",
 		  "./items/books.json",
-		  "./items/clothes.json"],
+		  "./items/clothes.json",
+		  "./items/m_clothes.json"],
     "snake_game": {
 	"name": "Snake The Game(sunix/1EBG)",
     },

@@ -1,0 +1,17 @@
+{
+    "white longsleeve m" : {
+	"type": "equipement",
+	"path": "torso/shirts/longsleeve/male/white_longsleeve.png",
+	"where": "torso"
+    },
+    "teal pants m": {
+	"type": "equipement",
+	"where": "legs",
+	"path": "legs/pants/male/teal_pants_male.png"
+    },
+    "brown_shoes m" : {
+	"type": "equipement",
+	"path": "feet/shoes/male/brown_shoes_male.png",
+	"where": "feet"
+    }
+}
