@@ -184,21 +184,32 @@ local function gen_school()
    }
 
    local hair_type = {
+      {
 	 "plain", "loose", "bangs", "bangslong", "bangslong2", "bangsshort",
 	 "bedhead", "bunches", "jewfro", "long", "longhawk", "longknot",
 	 "loose", "messy1", "messy2", "mohawk", "page", "page2", "parted",
 	 "pixie", "plain", "ponytail", "ponytail2", "princess", "shorthawk",
 	 "shortknot", "shoulderl", "shoulderr", "swoop", "unkempt", "xlong",
 	 "xlongknot"
+      },
+      {
+	 "plain", "loose", "bangs", "bangslong", "bangslong2", "bangsshort",
+	 "bedhead", "jewfro", "long", "longhawk", "longknot",
+	 "loose", "messy1", "messy2", "mohawk", "page", "page2", "parted",
+	 "plain", "princess", "shorthawk", "pixie",
+	 "shortknot", "swoop", "unkempt", "xlong",
+	 "xlongknot"
+      }
    }
 
    local hair_color = {
-      "black", "redhead2", "redhead", "blonde", "blonde2", "blue",
+      "black", "black", "black", "black", "blonde", "blonde",
+      "redhead2", "redhead", "blonde", "blonde2", "blue",
       "blue2", "brown", "brown2", "brunette", "brunette2", "dark-blonde",
       "gold", "gray", "gray2", "green", "green2", "light-blonde",
       "light-blonde2", "pink", "pink2", "purple", "raven", "raven2",
       "ruby-red", "white-blonde", "white-blonde2", "white-cyan",
-      "white"
+      "white", "raven", "raven2", "raven", "raven2", "raven", "raven2"
    }
 
    local torso = {
@@ -265,7 +276,7 @@ local function gen_school()
       n.class = class
       n.student_year = year
       local hair = Entity.new_array(n, "hair")
-      hair[0] = rand_array_elem(hair_type)
+      hair[0] = rand_array_elem(hair_type[gender])
       hair[1] = rand_array_elem(hair_color)
       yePushBack(s.students, n, name)
       -- clothes still needed
