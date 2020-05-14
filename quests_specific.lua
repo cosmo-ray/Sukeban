@@ -157,7 +157,8 @@ local function gen_school()
    local array_name = {
       {"Georgette", "Michelle", "Germaine", "Lynda", "Clemence", "Camille",
        "Geraldine", "Fraise", "Anna", "Hanna", "Mya", "Francoise",
-       "Fleur", "Alice", "Petra", "Geunievre", "Oscar", "Helena", "Louise"},
+       "Fleur", "Alice", "Petra", "Geunievre", "Oscar", "Helena", "Louise",
+       "Kim"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed",
@@ -171,7 +172,8 @@ local function gen_school()
       "Hero", "Determinated", "Peacecraft", "Warmaker", "Neko",
       "Geraldine", "Fraise", "Cat", "Sed", "Weechat", "Archer",
       "Linus", "Richard", "Stallman", "Armstrong", "Char", "Aznabulu",
-      "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay"
+      "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay",
+      "Kanzaki"
    }
 
    local types = {
@@ -218,6 +220,9 @@ local function gen_school()
       {"brown_shoes m"}
    }
 
+   local class_members = {{0,0,0}, {0,0,0}, {0,0,0}}
+
+   class_members[1][phq.pj.class:to_int()] = 1
    if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
       return
    end
@@ -229,29 +234,36 @@ local function gen_school()
    for i = 0, yeLen(npcs) - 1 do
       local npc = yeGet(npcs, i)
       local npc_key = yeGetKeyAt(npcs, i)
+      local s_year = yeGet(npc, "student_year")
 
-      if yIsNNil(yeGet(npc, "student_year")) then
+      if yIsNNil(s_year) then
+	 local class = yeGet(npc, "class")
 	 yePushBack(s.students, npc, npc_key)
-	 if (yIsNil(yeGet(npc, "class"))) then
+	 if (yIsNil(class)) then
 	    yeCreateInt(yuiRand() % 3, npc, "class")
 	 end
+	 class = yeGetInt(class)
+	 s_year = yeGetInt(s_year)
+	 class_members[s_year][class + 1] = class_members[s_year][class + 1] + 1
       end
    end
 
-   for i = 0, 10 do
+   for i = 0, 40 do
       :: again ::
       local gender =  yuiRand() % 2 + 1
       local name_table = array_name[gender]
       local name = rand_array_elem(name_table) .. " " ..
 	 rand_array_elem(last_name)
+      local year = yuiRand() % 3 + 1
+      local class = yuiRand() % 3
 
-      if npcs[name] then goto again end
+      if npcs[name] or class_members[year][class + 1] > 9 then goto again end
 
       local n = Entity.new_array(npcs, name)
       n.sex = sexes[gender]
       n.type = rand_array_elem(types[gender])
-      n.class = yuiRand() % 3
-      n.student_year = yuiRand() % 3 + 1
+      n.class = class
+      n.student_year = year
       local hair = Entity.new_array(n, "hair")
       hair[0] = rand_array_elem(hair_type)
       hair[1] = rand_array_elem(hair_color)
@@ -261,8 +273,13 @@ local function gen_school()
       eq.torso = rand_array_elem(torso[gender])
       eq.legs = rand_array_elem(legs[gender])
       eq.feet = rand_array_elem(feet[gender])
-
       dressUp(n)
+      class_members[year][class + 1] = class_members[year][class + 1] + 1
+   end
+
+   for i = 1, 3 do
+      print(class_members[i])
+      print(class_members[i][1], class_members[i][2], class_members[i][3])
    end
 end
 
@@ -273,6 +290,7 @@ function end_chapter_0(main)
       is_end_of_chapter = true
       return
    end
+
    print("then ?")
    if phq.env.day:to_int() == 7 and
    phq.env.time:to_string() == "night" then
@@ -307,6 +325,7 @@ function end_chapter_0(main)
       local vn_quest_end = Entity.new_array()
 
       vn_quest_end[0] = Entity.new_array()
+      phq.pj.class = yuiRand() % 3
       gen_school()
       -- 1rst dialogue
       local dial = vn_quest_end[0]
