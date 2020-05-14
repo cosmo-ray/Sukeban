@@ -120,6 +120,29 @@ function cheat_show_npc(mn, current)
    end
    handler = canvas.h
    generic_handlerRefresh(handler)
+
+   local image = npc.image
+   if yIsNNil(image) then
+      local tx = 0;
+      local ty = 0;
+
+      if yeType(image) == YSTRING then
+	 local img = yeGetString(image);
+      else
+	    local threshold = yeGet(image, "dst-threshold");
+
+	    img = yeGetStringAt(image, "src");
+	    tx = yeGetIntAt(threshold, 0);
+	    ty = yeGetIntAt(threshold, 1);
+      end
+
+      local img_e = ywCanvasNewImg(canvas, 300 + tx, 300 + ty,
+				   img, NULL);
+      local  r = yeGetIntAt(main, "image_rotate");
+      if r > 0 or r < 0 then
+	 ywCanvasRotate(img_e, r);
+      end
+   end
    return YEVE_ACTION;
 end
 
