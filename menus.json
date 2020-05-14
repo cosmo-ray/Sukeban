@@ -79,14 +79,34 @@ Good luck and good drinks!
 ",
 	"next" : "phq:menus.main"
     },
-    "pj" : {
-	"name": "oscar",
-	"sex": "female",
-	"type": "light",
-	"max_life" : 10,
-	"clothes": ["feet/shoes/female/brown_shoes_female.png",
-		    "torso/robes_female_no_th-sh/white.png",
-		    "hair/female/shoulderr/blonde.png"]
+    "game Info" : {
+	"<type>" : "text-screen",
+	"text-align": "center",
+	"action" : "nextOnKeyDown",
+	"background" : "rgba: 255 255 255 255",
+	"text" : ["This game is a very ambitious projet",
+		  "I want it 3 chapters and 1 Prologue",
+		  "Currently only prologue 0 is entierly playable",
+		  "Chapter 1 is at the very begining",
+		  "I want this RPG to be the most open source posible",
+		  "In my dream this game won't be my game",
+		  "but a game made by hundreds of peoples",
+		  "full of diferents art, story, characters",
+		  "Where every contributors would have bring",
+		  "his own piece to this game",
+		  "So pelase if you don't like something or see a way to improve this game",
+		  "Contribute !",
+		  "Though I'll still give my view of how I see the chapters here:",
+		  "Chapter 1 should focus on building relation shit",
+		  "gain influance in your school",
+		  "going to class, and do school activity",
+		  "Chapter 2 will be entierly story focus, and will be the winter holidays",
+		  "Chapter 3 will be focus on controlling zones, and",
+		  "adding other school, also gang management, and raiding other gangs",
+		  "The ending will be at the end of the school year",
+		  "And a bad ending, because I hate good ending",
+		  "Not by killing the main character so We could make a sequel"],
+	"next" : "phq:menus.main"
     },
     "credit" : {
 	"<type>" : "text-screen",
@@ -124,6 +144,11 @@ We love you anyway",
             {
                 "text" : "How to play",
                 "next" : "phq:menus.bagare",
+		"action" : "menuNext"
+	    },
+            {
+                "text" : "game Info",
+                "next" : "phq:menus.game Info",
 		"action" : "menuNext"
 	    },
 	    {
