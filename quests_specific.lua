@@ -181,6 +181,24 @@ local function gen_school()
        "man-peach"}
    }
 
+   local hair_type = {
+	 "plain", "loose", "bangs", "bangslong", "bangslong2", "bangsshort",
+	 "bedhead", "bunches", "jewfro", "long", "longhawk", "longknot",
+	 "loose", "messy1", "messy2", "mohawk", "page", "page2", "parted",
+	 "pixie", "plain", "ponytail", "ponytail2", "princess", "shorthawk",
+	 "shortknot", "shoulderl", "shoulderr", "swoop", "unkempt", "xlong",
+	 "xlongknot"
+   }
+
+   local hair_color = {
+      "black", "redhead2", "redhead", "blonde", "blonde2", "blue",
+      "blue2", "brown", "brown2", "brunette", "brunette2", "dark-blonde",
+      "gold", "gray", "gray2", "green", "green2", "light-blonde",
+      "light-blonde2", "pink", "pink2", "purple", "raven", "raven2",
+      "ruby-red", "white-blonde", "white-blonde2", "white-cyan",
+      "white"
+   }
+
    if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
       return
    end
@@ -205,18 +223,23 @@ local function gen_school()
       :: again ::
       local gender =  yuiRand() % 2 + 1
       local name_table = array_name[gender]
-      local name = name_table[yuiRand() % #name_table + 1] .. " " ..
-	 last_name[yuiRand() % #last_name + 1]
-      if npcs[name] then
-	 goto again
-      end
+      local name = rand_array_elem(name_table) .. " " ..
+	 rand_array_elem(last_name)
+
+      if npcs[name] then goto again end
+
       local n = Entity.new_array(npcs, name)
       n.sex = sexes[gender]
-      n.type = types[gender][yuiRand() % #types[gender] + 1]
+      n.type = rand_array_elem(types[gender])
       n.class = yuiRand() % 3
       n.student_year = yuiRand() % 3 + 1
+      local hair = Entity.new_array(n, "hair")
+      hair[0] = rand_array_elem(hair_type)
+      hair[1] = rand_array_elem(hair_color)
       yePushBack(s.students, n, name)
       -- clothes still needed
+      dressUp(n)
+      print(s)
    end
 end
 

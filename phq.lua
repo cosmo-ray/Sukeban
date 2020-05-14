@@ -58,13 +58,19 @@ function generic_handlerRefresh(npc)
 end
 
 function dressUp(caracter)
-   if caracter.equipement == nil then
-      return
-   end
    local e = caracter.equipement
    local objs = phq.objects
-   caracter.clothes = nil
-   local clothes = Entity.new_array(caracter, "clothes")
+   local clothes = nil
+
+   if (yIsNil(caracter.clothes)) then
+      clothes = Entity.new_array(caracter, "clothes")
+   else
+      clothes = caracter.clothes
+   end
+
+   if caracter.equipement == nil then
+      goto hair;
+   end
 
    if e.feet then
       local cur_o = objs[yeGetString(e.feet)]
@@ -92,6 +98,8 @@ function dressUp(caracter)
 	 yeCreateString(cur_o.path:to_string(), clothes)
       end
    end
+
+   :: hair ::
    if caracter.hair then
       yeCreateString("hair/" .. caracter.sex:to_string() .. "/" ..
 		     caracter.hair[0]:to_string() .. "/" ..
