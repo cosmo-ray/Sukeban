@@ -199,6 +199,25 @@ local function gen_school()
       "white"
    }
 
+   local torso = {
+      {"white_sleeveless", "robe_purple", "robe_black", "robe_white",
+       "white_pirate", "Black Leather blouse", "blue_vest", "s_green_dress",
+       "tightdress_lightblue", "teal_pirate", "teal_sleeveless",
+       "white_sleeveless", "white_tunic"},
+      {"white longsleeve m"}
+   }
+
+   local legs = {
+      {"long skirt", "short skirt", "legion skirt", "teal pants female",
+       "white pants female"},
+      {"teal pants m"}
+   }
+
+   local feet = {
+      {"brown_shoes", "black_slippers", "maroon longboot", "black_shoes"},
+      {"brown_shoes m"}
+   }
+
    if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
       return
    end
@@ -238,8 +257,12 @@ local function gen_school()
       hair[1] = rand_array_elem(hair_color)
       yePushBack(s.students, n, name)
       -- clothes still needed
+      local eq = Entity.new_array(n, "equipement")
+      eq.torso = rand_array_elem(torso[gender])
+      eq.legs = rand_array_elem(legs[gender])
+      eq.feet = rand_array_elem(feet[gender])
+
       dressUp(n)
-      print(s)
    end
 end
 
