@@ -105,5 +105,21 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ]
+    },
+    "Saki Miya": {
+	"sex": "female",
+        "type": "light",
+	"student_year": 1,
+        "max_life": 10,
+	"hair": ["unkempt", "raven"],
+	"image": {
+	    "dst-threshold": [-100,-300],
+	    "src" : "./imgs/L2a_Angry.png"
+	},
+	"equipement": {
+	    "torso": "white_sleeveless",
+	    "legs": "teal pants female",
+	    "feet": "maroon longboot"
+	}
     }
 }

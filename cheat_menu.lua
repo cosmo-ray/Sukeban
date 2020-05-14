@@ -114,6 +114,7 @@ function cheat_show_npc(mn, current)
    if yeGetString(npc.type) == "sprite" then
       canvas.h = sprite_man.createHandler(npc, canvas)
    else
+      dressUp(npc)
       canvas.h = lpcs.createCaracterHandler(npc, canvas)
       canvas.h.y = LPCS_DOWN
    end

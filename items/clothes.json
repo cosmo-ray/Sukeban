@@ -76,7 +76,7 @@
     },
     "maroon longboot" : {
 	"type": "equipement",
-	"path": "feet/boots/female/maroon_longboots_female.png",
+	"path": "feet/shoes/LongBoots_brown.png",
 	"where": "feet"
     },
     "black_shoes" : {
