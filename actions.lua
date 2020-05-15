@@ -139,7 +139,7 @@ function backToGame(wid)
       phq_action_timer = nil
    end
 
-   if yeGetInt(wid.in_subcontained) == 1 then
+   while yeGetInt(wid.in_subcontained) == 1 do
       wid = Entity.wrapp(ywCntWidgetFather(wid))
    end
    local main = Entity.wrapp(ywCntWidgetFather(wid))

@@ -41,14 +41,23 @@ local function mk_main_mn()
    money_action[2] = 50
 
    menu:push("give 50$", money_action)
+
+   local m_actions = Entity.new_array()
+   m_actions[0] = {"phq.openGlobMenu", 3}
+
+   local e = menu:push("Metro")
+   e.actions = m_actions
    menu:push("NPCs", Entity.new_func("cheat_npcs_mn"))
    menu:push("Students", Entity.new_func("cheat_students_mn"))
+
+   menu.ent.in_subcontained = 1
    return menu.ent
 end
 
 function cheat_main_mn(mn)
    local cnt = ywCntWidgetFather(mn)
    ywReplaceEntry(cnt, 0, mk_main_mn())
+   Entity.wrapp(cnt).in_subcontained = 1
    return YEVE_ACTION
 end
 
@@ -151,9 +160,11 @@ function cheat_npcs_mn(main_mn)
    local nmn = Menu.new_entity()
 
    nmn.ent["pre-text"] = "Quest Cheat Menu"
-   nmn.ent.onEsc = Entity.new_func("cheat_main_mn")
+
    nmn.ent.moveOn = Entity.new_func("cheat_show_npc")
    nmn:push("Back", Entity.new_func("cheat_main_mn"))
+   nmn.ent.onEsc = Entity.new_func("cheat_main_mn")
+
    for i = 0, yeLen(npcs) - 1 do
       local npc_key = yeGetKeyAt(npcs, i)
 

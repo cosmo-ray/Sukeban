@@ -57,7 +57,6 @@ function openGlobMenu(main, on_idx, arg0)
    mn.ent.background = "rgba: 155 155 255 190"
    mn.ent.auto_foreground = "rgba: 0 0 120 50"
 
-   print("open GB")
    if arg0 then
       backToGame(main)
       main = main_widget
@@ -385,6 +384,7 @@ function chooseCombot(mn)
 
    menu.ent["pre-text"] = "current: " .. phq.pj.attack:to_string()
    menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
+   menu.ent.onEsc = Entity.new_func("popGlobMnOtherMenu")
    while i < yeLen(cmbs) do
       local cmb = cmbs[i]
       menu:push(cmb:to_string(), Entity.new_func("setCmbAsAttack"))
@@ -430,6 +430,7 @@ function wear_clothes_mn(mn)
    lpcs.handlerRefresh(menu.ent.pj)
 
    menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
+   menu.ent.onEsc = Entity.new_func("popGlobMnOtherMenu")
    while i < yeLen(inv) do
       local name = yeGetKeyAt(inv, i)
       local ob_desc = phq.objects[name]
@@ -469,6 +470,7 @@ function allies_mn(mn)
 
    ccw.ent.entries[0] = menu.ent
    menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
+   menu.ent.onEsc = Entity.new_func("popGlobMnOtherMenu")
    for i = 0, yeLen(allies) do
       menu:push(yeGetKeyAt(allies, i))
    end
@@ -667,6 +669,7 @@ function openStore(main, obj_or_eve, storeName)
 
    mn.ent.in_subcontained = 1
    mn:push("Exit Store", Entity.new_func("backToGame"))
+   mn.ent.onEsc = Entity.new_func("backToGame")
 
    local i = 0
    while i < yeLen(store) do
