@@ -110,8 +110,9 @@
 	"sex": "female",
         "type": "light",
 	"student_year": 1,
-        "max_life": 10,
+        "max_life": 40,
 	"hair": ["unkempt", "raven"],
+	"attack" : "yoyo3",
 	"image": {
 	    "dst-threshold": [-100,-300],
 	    "src" : "./imgs/L2a_Angry.png"
