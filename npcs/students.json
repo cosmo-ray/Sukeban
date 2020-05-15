@@ -109,8 +109,9 @@
     "Saki Miya": {
 	"sex": "female",
         "type": "light",
-	"student_year": 1,
-        "max_life": 40,
+	"student_year": 3,
+	"class": 1,
+        "max_life": 120,
 	"hair": ["unkempt", "raven"],
 	"attack" : "yoyo3",
 	"image": {
