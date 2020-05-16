@@ -19,12 +19,12 @@
 	"student_year": 1,
         "max_life": 10,
 	"attack" : "unarmed0",
-        "clothes": [
-            "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
-            "legs/pants/male/teal_pants_male.png",
-            "hair/male/plain/raven.png"
-        ]
+	"hair": ["princess", "white-blonde2"],
+	"equipement": {
+	    "torso": "white longsleeve m",
+	    "legs": "teal pants m",
+	    "feet": "brown_shoes m"
+	}
     },
     "Jaquobe": {
 	"sex": "male",
