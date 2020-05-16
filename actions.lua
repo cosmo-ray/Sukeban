@@ -27,7 +27,8 @@ end
 function use_time_point(box)
    box = Entity.wrapp(box)
    if phq.env.time_point:to_int() == 0 then
-      if box.is_dialogue_condition < 1 then
+      if yIsNil(box) or box.is_dialogue_condition == nil
+      or box.is_dialogue_condition < 1 then
 	 printMessage(main_widget, nil, "Not enough time point")
       end
       return Y_FALSE

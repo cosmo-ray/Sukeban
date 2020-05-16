@@ -124,6 +124,7 @@ function pushQuests(panel)
    txt_screen["<type>"] = "text-screen"
    txt_screen["text-align"] = "center"
    txt_screen.text = txt
+   txt_screen.action = Entity.new_func("gmGetBackFocus")
    txt_screen.background = "rgba: 155 155 255 190"
    ywPushNewWidget(main, txt_screen)
 end
