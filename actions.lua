@@ -122,9 +122,7 @@ end
 function backToGame2()
    local main = main_widget
 
-   print("To Game 2 !", yeLen(main.entries))
    while yeLen(main.entries)  > 2 do
-      print("wesh !")
       ywCntPopLastEntry(main)
    end
 
@@ -153,11 +151,6 @@ function backToGame(wid)
 	 wid.src.block = wid.block
 	 wid.src = nil
       end
-   end
-
-   if (yIsNil(phq_action_timer) == false) then
-      yeSetInt(phq_action_timer, os.time())
-      phq_action_timer = nil
    end
 
    while yeGetInt(wid.in_subcontained) == 1 do

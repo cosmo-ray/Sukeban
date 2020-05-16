@@ -15,7 +15,6 @@ quests_info = File.jsonToEnt("quests/main.json")
 
 main_widget = nil
 
-phq_action_timer = nil
 local run_script = nil
 
 window_width = 800
@@ -425,7 +424,6 @@ function CheckColision(main, canvasWid, pj)
 	       load_scene(main, nextSceneTxt, yeGetInt(exit.entry))
 	    else
 	       exit.disable_timer = os.time()
-	       phq_action_timer = exit.disable_timer:cent()
 	       phq_do_action(main, exit)
 	    end
 	    return CHANGE_SCENE_COLISION
