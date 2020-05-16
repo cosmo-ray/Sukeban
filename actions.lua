@@ -119,7 +119,27 @@ function getMainWid(wid)
    return main
 end
 
+function backToGame2()
+   local main = main_widget
+
+   print("To Game 2 !", yeLen(main.entries))
+   while yeLen(main.entries)  > 2 do
+      print("wesh !")
+      ywCntPopLastEntry(main)
+   end
+
+   main.current = 0
+   main.pj.move.up_down = 0
+   main.pj.move.left_right = 0
+
+   return YEVE_ACTION
+end
+
 function backToGame(wid)
+   if yIsNil(wid) then
+      return backToGame2()
+   end
+
    wid = Entity.wrapp(wid)
    if wid:cent() == main_widget:cent() then
       return
@@ -714,7 +734,7 @@ end
 function changeScene(wid, eve, scene, entry)
    local main = getMainWid(wid)
    load_scene(main, yeGetString(scene), yeGetInt(entry))
-   backToGame(wid)
+   backToGame2()
 end
 
 function gotoJail(wid)

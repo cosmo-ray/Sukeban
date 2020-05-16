@@ -74,7 +74,7 @@ function openGlobMenu(main, on_idx, arg0)
    panel.ent.in_subcontained = 1
    panel.ent.size = 5
    panel.ent.moveOn = Entity.new_func("globMnMoveOn")
-   panel.ent.onEsc = Entity.new_func("backToGame")
+   panel.ent.onEsc = Entity.new_func("backToGame2")
    local on_down = Entity.new_array()
    on_down[0] = Y_DOWN_KEY
    on_down[1] = lf
