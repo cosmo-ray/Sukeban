@@ -158,7 +158,7 @@ local function gen_school()
       {"Georgette", "Michelle", "Germaine", "Lynda", "Clemence", "Camille",
        "Geraldine", "Fraise", "Anna", "Hanna", "Mya", "Francoise",
        "Fleur", "Alice", "Petra", "Geunievre", "Oscar", "Helena", "Louise",
-       "Kim"},
+       "Kim", "Agustina", "Codel", "Lisette"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed",
@@ -231,6 +231,12 @@ local function gen_school()
       {"brown_shoes m"}
    }
 
+   local usable_imgs = {
+      {FEMALE, "dark", "imgs/agustina.png", false},
+      {FEMALE, "light", "imgs/Codel4.png", false},
+      {FEMALE, "light", "imgs/saki_normal.png", false}
+   }
+
    local class_members = {{0,0,0}, {0,0,0}, {0,0,0}}
 
    class_members[1][phq.pj.class:to_int()] = 1
@@ -272,7 +278,8 @@ local function gen_school()
 
       local n = Entity.new_array(npcs, name)
       n.sex = sexes[gender]
-      n.type = rand_array_elem(types[gender])
+      local t = rand_array_elem(types[gender])
+      n.type = t
       n.class = class
       n.student_year = year
       local hair = Entity.new_array(n, "hair")
@@ -280,6 +287,18 @@ local function gen_school()
       hair[1] = rand_array_elem(hair_color)
       yePushBack(s.students, n, name)
       -- clothes still needed
+      for j = 1, #usable_imgs do
+	 uii = usable_imgs[j]
+	 if uii[4] == false and uii[1] == gender and
+	 uii[2] == t then
+	    uii[4] = true
+	    local i_array = Entity.new_array()
+	    i_array.src = uii[3]
+	    ywPosCreate(-100, -300, i_array, "dst-threshold")
+	    n.image = i_array
+	    print("give image ", uii[3], "to", name)
+	 end
+      end
       local eq = Entity.new_array(n, "equipement")
       eq.torso = rand_array_elem(torso[gender])
       eq.legs = rand_array_elem(legs[gender])
