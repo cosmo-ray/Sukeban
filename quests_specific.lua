@@ -228,14 +228,21 @@ local function gen_school()
 
    local feet = {
       {"brown_shoes", "black_slippers", "maroon longboot", "black_shoes"},
-n       {"brown_shoes m"}
+      {"brown_shoes m"}
    }
 
    local usable_imgs = {
       {FEMALE, "dark", "imgs/agustina.png", false},
-      {FEMALE, "light", "imgs/Codel4.png", false},
-      --{FEMALE, "light", {"src": "imgs/saki_normal.png",
-      --"resize": 50}, false}
+      {FEMALE, "light", {
+	  ["src"] = "imgs/Codel4.png",
+	  ["reduce"] = 50,
+	  ["threshold"] = {20, 100}},
+       false},
+      {FEMALE, "light",
+       { ["src"] = "imgs/saki_normal.png",
+	  ["reduce"] = 20,
+	  ["threshold"] = {0, -500}},
+       false}
    }
 
    local class_members = {{0,0,0}, {0,0,0}, {0,0,0}}
@@ -294,8 +301,15 @@ n       {"brown_shoes m"}
 	 uii[2] == t then
 	    uii[4] = true
 	    local i_array = Entity.new_array()
-	    i_array.src = uii[3]
-	    ywPosCreate(-100, -300, i_array, "dst-threshold")
+	    if type(uii[3]) == "string" then
+	       i_array.src = uii[3]
+	       ywPosCreate(-100, -300, i_array, "dst-threshold")
+	    else
+	       local t = uii[3].threshold
+	       i_array.src = uii[3].src
+	       i_array.reduce = uii[3].reduce
+	       ywPosCreate(t[1], t[2], i_array, "dst-threshold")
+	    end
 	    n.image = i_array
 	    print("give image ", uii[3], "to", name)
 	    break
