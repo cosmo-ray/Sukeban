@@ -60,7 +60,7 @@
 	"hair": ["loose", "redhead2"],
 	"image": {
 	    "dst-threshold": [0,-500],
-	    "src" : "./imgs/saki_normal.png",
+	    "src" : "./imgs/miu_neutral.png",
 	    "reduce": 20
 	},
 	"equipement": {
