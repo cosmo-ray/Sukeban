@@ -1,0 +1,8 @@
+{
+    "Baffy": {
+	"dialogue" : {
+	    "base": ["Sorry, {phq.env.mean_name} I'm talking with my friend",
+		     "And I don't think you're one of them"]
+	}
+    }
+}

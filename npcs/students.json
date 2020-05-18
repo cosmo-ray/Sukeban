@@ -58,6 +58,11 @@
 	"student_year": 1,
         "max_life": 10,
 	"hair": ["loose", "redhead2"],
+	"image": {
+	    "dst-threshold": [0,-500],
+	    "src" : "./imgs/saki_normal.png",
+	    "reduce": 20
+	},
 	"equipement": {
 	    "torso": "white_sleeveless",
 	    "legs": "short skirt",
@@ -71,7 +76,7 @@
         "max_life": 10,
 	"hair": ["loose", "redhead2"],
 	"image": {
-	    "dst-threshold": [-100,-300],
+	    "dst-threshold": [-100,-400],
 	    "src" : "./imgs/Willo-Default-Default-Default.png"
 	},
 	"equipement": {

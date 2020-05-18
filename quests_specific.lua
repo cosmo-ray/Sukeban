@@ -228,13 +228,14 @@ local function gen_school()
 
    local feet = {
       {"brown_shoes", "black_slippers", "maroon longboot", "black_shoes"},
-      {"brown_shoes m"}
+n       {"brown_shoes m"}
    }
 
    local usable_imgs = {
       {FEMALE, "dark", "imgs/agustina.png", false},
       {FEMALE, "light", "imgs/Codel4.png", false},
-      {FEMALE, "light", "imgs/saki_normal.png", false}
+      --{FEMALE, "light", {"src": "imgs/saki_normal.png",
+      --"resize": 50}, false}
    }
 
    local class_members = {{0,0,0}, {0,0,0}, {0,0,0}}
@@ -265,7 +266,7 @@ local function gen_school()
       end
    end
 
-   for i = 0, 40 do
+   for i = 0, 45 do
       :: again ::
       local gender =  yuiRand() % 2 + 1
       local name_table = array_name[gender]
@@ -297,6 +298,7 @@ local function gen_school()
 	    ywPosCreate(-100, -300, i_array, "dst-threshold")
 	    n.image = i_array
 	    print("give image ", uii[3], "to", name)
+	    break
 	 end
       end
       local eq = Entity.new_array(n, "equipement")
