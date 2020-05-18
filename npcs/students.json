@@ -20,6 +20,10 @@
         "max_life": 10,
 	"attack" : "unarmed0",
 	"hair": ["princess", "white-blonde2"],
+	"image": {
+	    "dst-threshold": [-100,-300],
+	    "src" : "./imgs/charle.png"
+	},
 	"equipement": {
 	    "torso": "white longsleeve m",
 	    "legs": "teal pants m",
