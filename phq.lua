@@ -1129,6 +1129,11 @@ function create_phq(entity)
    ent.pj = nil
    dressUp(phq.pj)
    lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
+   local wid_size = yeGet(entity, "wid-pix");
+
+   window_width = ywRectW(wid_size);
+   window_height = ywRectH(wid_size);
+
    load_scene(ent, yeGetString(yeToLower(scenePath)), 0, pj_pos)
    ent.pj.mv_pix = Entity.new_float(0)
    ent.pj.move = {}
@@ -1176,10 +1181,5 @@ function create_phq(entity)
       :: next_loop ::
       i = i + 1
    end
-   local wid_size = yeGet(entity, "wid-pix");
-
-   window_width = ywRectW(wid_size);
-   window_height = ywRectH(wid_size);
-
    return ret
 end
