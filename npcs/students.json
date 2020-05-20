@@ -50,6 +50,11 @@
 	"student_year": 1,
         "max_life": 10,
 	"hair": ["loose", "redhead2"],
+	"image": {
+	    "dst-threshold": [-100,-300],
+	    "layers": ["./imgs/ashley-Default-Default-0.png"],
+	    "src" : "./imgs/ashley-Clothing_Preset_2-Default-Default.png"
+	},
 	"equipement": {
 	    "torso": "white_sleeveless",
 	    "legs": "short skirt",
