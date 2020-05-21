@@ -5,8 +5,8 @@ Codel4.png
 https://lisadikaprio.itch.io/codel-visual-novel-sprite
 Open Source Permison Without explicit licence
 
-L2a_Angry.png
-https://sraye.itch.io/lisette
+L2a_Angry.png DF_Neutral.png
+https://sraye.itch.io/
 Open Source Permison Without explicit licence
 
 saki_normal.png, miu_neutral.png reina_normal.png:
