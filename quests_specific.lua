@@ -158,11 +158,11 @@ local function gen_school()
       {"Georgette", "Michelle", "Germaine", "Lynda", "Clemence", "Camille",
        "Geraldine", "Fraise", "Anna", "Hanna", "Mya", "Francoise",
        "Fleur", "Alice", "Petra", "Geunievre", "Oscar", "Helena", "Louise",
-       "Kim", "Agustina", "Codel", "Lisette"},
+       "Kim", "Agustina", "Codel", "Lisette", "Athena"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed",
-       "Mohamed", "Michelle"}
+       "Mohamed", "Michelle", "Arthur", "Romain", "Benjamin"}
    }
 
    local last_name = {
@@ -173,7 +173,7 @@ local function gen_school()
       "Geraldine", "Fraise", "Cat", "Sed", "Weechat", "Archer",
       "Linus", "Richard", "Stallman", "Armstrong", "Char", "Aznabulu",
       "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay",
-      "Kanzaki"
+      "Kanzaki", "Le Francais", "Coucou"
    }
 
    local types = {
@@ -232,14 +232,23 @@ local function gen_school()
    }
 
    local usable_imgs = {
+      {MALE, "light", {
+	  ["src"] = "imgs/DF_Neutral.png",
+	  ["reduce"] = 50
+       },
+       false},
       {FEMALE, "dark", "imgs/agustina.png", false},
       {FEMALE, "light", {
 	  ["src"] = "imgs/Codel4.png",
-	  ["reduce"] = 50,
-	  ["threshold"] = {20, 100}},
+	  ["reduce"] = 50},
        false},
       {FEMALE, "light",
        { ["src"] = "imgs/saki_normal.png",
+	  ["reduce"] = 20,
+	  ["threshold"] = {0, -500}},
+       false},
+      {FEMALE, "woman-white",
+       { ["src"] = "imgs/reina_normal.png",
 	  ["reduce"] = 20,
 	  ["threshold"] = {0, -500}},
        false}
@@ -301,14 +310,18 @@ local function gen_school()
 	 uii[2] == t then
 	    uii[4] = true
 	    local i_array = Entity.new_array()
+	    local t = nil
 	    if type(uii[3]) == "string" then
 	       i_array.src = uii[3]
-	       ywPosCreate(-100, -300, i_array, "dst-threshold")
 	    else
-	       local t = uii[3].threshold
+	       t = uii[3].threshold
 	       i_array.src = uii[3].src
 	       i_array.reduce = uii[3].reduce
+	    end
+	    if t then
 	       ywPosCreate(t[1], t[2], i_array, "dst-threshold")
+	    else
+	       ywPosCreate(-100, -300, i_array, "dst-threshold")
 	    end
 	    n.image = i_array
 	    print("give image ", uii[3], "to", name)
