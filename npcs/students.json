@@ -51,7 +51,7 @@
         "max_life": 10,
 	"hair": ["loose", "redhead2"],
 	"image": {
-	    "dst-threshold": [-100,-300],
+	    "dst-threshold": [-100, -400],
 	    "layers": ["./imgs/ashley-Default-Default-0.png"],
 	    "src" : "./imgs/ashley-Clothing_Preset_2-Default-Default.png"
 	},
@@ -130,7 +130,8 @@
 	"attack" : "yoyo3",
 	"image": {
 	    "dst-threshold": [-100,-300],
-	    "src" : "./imgs/L2a_Angry.png"
+	    "src" : "./imgs/L2a_Angry.png",
+	    "reduce": 50
 	},
 	"equipement": {
 	    "torso": "white_pirate",
