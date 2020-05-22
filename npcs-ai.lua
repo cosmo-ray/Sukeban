@@ -45,3 +45,10 @@ function bob_ai(main, npc, name)
    npc._place = c_place
    return student_ai(main, npc, name)
 end
+
+function sakai(main, npc, name)
+   main = Entity.wrapp(main)
+   npc = Entity.wrapp(npc)
+
+   print("Sak Ai !!!")
+end

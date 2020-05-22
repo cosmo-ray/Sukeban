@@ -23,6 +23,7 @@ function npcAdvenceTime()
 
       local ai = n.ai
       if ai then
+	 print("AI of: ", n.name)
 	 Entity.new_func(yeGetString(ai))(main_widget, n, yeGetKeyAt(npcs, i))
       end
       :: skip ::

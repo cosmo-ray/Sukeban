@@ -128,6 +128,7 @@
         "max_life": 120,
 	"hair": ["unkempt", "raven"],
 	"attack" : "yoyo3",
+	"ai": "sakai",
 	"image": {
 	    "dst-threshold": [-100,-300],
 	    "src" : "./imgs/L2a_Angry.png",
