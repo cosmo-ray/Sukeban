@@ -52,8 +52,7 @@
 	"hair": ["loose", "redhead2"],
 	"image": {
 	    "dst-threshold": [-100, -400],
-	    "layers": ["./imgs/ashley-Default-Default-0.png"],
-	    "src" : "./imgs/ashley-Clothing_Preset_2-Default-Default.png"
+	    "src" : "./imgs/ashley-casual.png"
 	},
 	"equipement": {
 	    "torso": "white_sleeveless",
