@@ -129,7 +129,7 @@
 	"attack" : "yoyo3",
 	"ai": "sakai",
 	"image": {
-	    "dst-threshold": [-100,-300],
+	    "dst-threshold": [200,-300],
 	    "src" : "./imgs/L2a_Angry.png",
 	    "reduce": 50
 	},

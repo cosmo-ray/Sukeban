@@ -46,9 +46,20 @@ function bob_ai(main, npc, name)
    return student_ai(main, npc, name)
 end
 
+local function push_to_ai_point(map, p, name)
+   if phq.env.ai_point == nil then
+      phq.env.ai_point = {}
+   end
+   if phq.env.ai_point[map] == nil then
+      phq.env.ai_point[map] = {}
+   end
+   phq.env.ai_point[map][p] = name
+end
+
 function sakai(main, npc, name)
    main = Entity.wrapp(main)
    npc = Entity.wrapp(npc)
 
-   print("Sak Ai !!!")
+   print("Sak Ai !!!", name)
+   push_to_ai_point("street3", "Runner_0", name)
 end

@@ -1,4 +1,11 @@
 {
+    "_include": [
+	"./dialogue/computer_club.json",
+	"./dialogue/saki.json",
+	"./dialogue/willo.json",
+	"./dialogue/baffy.json",
+	"./dialogue/bob.json"
+    ],
     "Canteen_Girl": {
 	"dialogue" : [
 	    {

@@ -46,7 +46,7 @@
 		"entry" : 4
 	    }
 	},
-	"dialogues" : "dialogue/bob.json",
+	"dialogues" : "dialogue/school.json",
 	"tiled": "./tileset/Street3.json"
     },
     "street4" : {

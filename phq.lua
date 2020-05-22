@@ -940,6 +940,14 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       local npc_name = yeGetString(yeGet(obj, "name"))
       local npc = npcs[npc_name]
 
+      if obj.ai_point then
+	 local ap = phq.env.ai_point
+	 if ap and ap[sceneTxt] then
+	    npc_name = ap[sceneTxt][npc_name]
+	    npc = npcs[npc_name]
+	 end
+      end
+
       if layer_name:to_string() == "NPC" and
       checkNpcPresence(obj, npc, sceneTxt) then
 
@@ -990,7 +998,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc.canvas.Collision = 1
 	 npc.canvas.is_npc = 1
 	 npc.char.name = npc_name
-	 npc.canvas.dialogue = obj.name:to_string()
+	 npc.canvas.dialogue = npc_name
 	 npc.canvas.small_talk = npc.char["small talk"]
 	 npc.canvas.dialogue_condition = npc.char.dialogue_condition
 	 npc.canvas.current = npc_idx
@@ -1003,6 +1011,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 e_actionables[k] = obj
 	 k = k + 1
       end
+      :: next_obj ::
       i = i + 1
    end
 
