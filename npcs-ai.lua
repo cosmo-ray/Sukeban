@@ -56,10 +56,40 @@ local function push_to_ai_point(map, p, name)
    phq.env.ai_point[map][p] = name
 end
 
+local runner0_nb_pos = 7
+local runner0_pos = 0
+
+function runner_0_(main, npc)
+   local pos = nil
+   print(main_widget.ai_point)
+   if runner0_pos < runner0_nb_pos - 2 then
+      pos = main_widget.misc["r0-" .. runner0_pos].rect
+      print("go  to: ", "r0-" .. runner0_pos)
+   else
+      print("go  to: Runner_0")
+      pos = main_widget.ai_point["Runner_0"].rect
+   end
+   runner0_pos = runner0_pos + 1
+   runner0_pos = runner0_pos % runner0_nb_pos
+   NpcGoTo(npc, pos, 2, Entity.new_func("runner_0_"))
+end
+
+function runner_0(main, action)
+   runner0_pos = 0
+   action = Entity.wrapp(action)
+   runner_0_(main, main_widget.npcs[action[0]])
+   yeRemoveChild(main_widget.npc_act, action)
+end
+
 function sakai(main, npc, name)
-   main = Entity.wrapp(main)
    npc = Entity.wrapp(npc)
 
-   print("Sak Ai !!!", name)
    push_to_ai_point("street3", "Runner_0", name)
+
+   -- if name is not null, then it's call from advence time
+   if main_widget.cur_scene_str:to_string() == "street3" then
+      local action = Entity.new_array(main_widget.npc_act)
+      action[0] = name
+      action.controller = Entity.new_func("runner_0")
+   end
 end

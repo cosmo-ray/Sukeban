@@ -6,7 +6,7 @@ sprite_man = Entity.wrapp(ygGet("sprite-man"))
 local phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 npcs = nil
-local scenes = Entity.wrapp(ygGet("phq.scenes"))
+scenes = Entity.wrapp(ygGet("phq.scenes"))
 saved_scenes = nil
 dialogues = Entity.new_array()
 o_dialogues = nil
@@ -875,7 +875,6 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       saveCurDialogue(ent)
    end
 
-   ent.npc_act = {}
    ent.cur_scene_str = sceneTxt
 
    local scene = scenes[sceneTxt]
@@ -925,15 +924,20 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    local npc_idx = 0
    local j = 0
    local k = 0
+   local l = 0
    local generic_npc_id = 0
    ent.npcs = {}
    ent.enemies = {}
    ent.exits = {}
    ent.actionables = {}
+   ent.misc = {}
+   ent.ai_point = {}
    ent.cur_scene = scene
    local e_npcs = ent.npcs
    local e_exits = ent.exits
    local e_actionables = ent.actionables
+   local e_misc = ent.misc
+
    while i < yeLen(objects) do
       local obj = objects[i]
       local layer_name = obj.layer_name
@@ -941,9 +945,11 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       local npc = npcs[npc_name]
 
       if obj.ai_point then
+	 ent.ai_point[npc_name] = obj
+
 	 local ap = phq.env.ai_point
 	 if ap and ap[sceneTxt] then
-	    npc_name = ap[sceneTxt][npc_name]
+	    npc_name = yeGetString(ap[sceneTxt][npc_name])
 	    npc = npcs[npc_name]
 	 end
       end
@@ -970,6 +976,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 else
 	    dressUp(npc)
 	    npc = lpcs.createCaracterHandler(npc, c, e_npcs, npc_name)
+	    print("push '", npc_name, "'", yeLen(e_npcs))
 	    --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
 	    local pos = Pos.new_copy(obj.rect)
 	    pos:sub(20, 50)
@@ -1004,12 +1011,15 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc.canvas.current = npc_idx
 	 npc_idx = npc_idx + 1
       elseif layer_name:to_string() == "Entries" then
-	 e_exits[j] = obj
+	 yeAttach(e_exits, obj, j, obj.name:to_string(), 0)
 	 j = j + 1
       elseif layer_name:to_string() == "Actionable" and
       checkObjTime(obj, phq.env.time:to_string()) then
 	 e_actionables[k] = obj
 	 k = k + 1
+      elseif layer_name:to_string() == "MISC" then
+	 yeAttach(e_misc, obj, l, obj.name:to_string(), 0)
+	 l = l + 1
       end
       :: next_obj ::
       i = i + 1

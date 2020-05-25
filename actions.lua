@@ -849,6 +849,7 @@ function doSleep(ent, upCanvas)
    if sleep_time > 200 then
       ent.sleep = nil
       sleep_time = 0
+      
       return true
    end
 

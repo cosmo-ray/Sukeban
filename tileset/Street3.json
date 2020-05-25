@@ -117,6 +117,77 @@
         }, 
         {
          "draworder":"topdown",
+         "id":7,
+         "name":"MISC",
+         "objects":[
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"r0-0",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2647.90925266904,
+                 "y":1033.14056939502
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"r0-1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2676.82384341637,
+                 "y":947.508896797153
+                }, 
+                {
+                 "height":0,
+                 "id":7,
+                 "name":"r0-2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2570.06227758007,
+                 "y":841.859430604982
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"r0-3",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1871.66370106762,
+                 "y":842.97153024911
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"r0-4",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1804.93772241993,
+                 "y":940.836298932384
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":5,
          "name":"Entries",
          "objects":[
@@ -212,8 +283,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":7,
- "nextobjectid":5,
+ "nextlayerid":8,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.3.3",

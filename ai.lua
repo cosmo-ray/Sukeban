@@ -6,7 +6,7 @@ local LPCS_DOWN = 10
 local LPCS_RIGHT = 11
 local LPCS_UP = 8
 
-local ACTION_NPC = 0
+ACTION_NPC = 0
 local ACTION_MV_TBL = 1
 local ACTION_MV_TBL_IDX = 2
 
@@ -14,6 +14,7 @@ local ENEMY_IDLE = 0
 local ENEMY_ATTACKING = 1
 
 function npcAdvenceTime()
+   main_widget.npc_act = {}
    for i = 0, yeLen(npcs) do
       local n = npcs[i]
 
@@ -23,7 +24,6 @@ function npcAdvenceTime()
 
       local ai = n.ai
       if ai then
-	 print("AI of: ", n.name)
 	 Entity.new_func(yeGetString(ai))(main_widget, n, yeGetKeyAt(npcs, i))
       end
       :: skip ::
@@ -155,8 +155,12 @@ end
 function NpcTurn(wid)
    local i = 0
    local npc_act = wid.npc_act
-   while i < yeLen(npc_act) do
-      wid.npc_act[i].controller(wid, npc_act[i])
+   local nb_na = yeLen(npc_act)
+   print("turn in !\n")
+   while i < nb_na do
+      if npc_act[i] then
+	 wid.npc_act[i].controller(wid, npc_act[i])
+      end
       i = i + 1
    end
    i = 0
@@ -220,8 +224,14 @@ function PjLeaveController(wid, action)
    local dif_y = ywPosY(mvPos) - ywPosY(curPos)
    action[ACTION_MV_TBL_IDX] = action[ACTION_MV_TBL_IDX] + 1
 
+   print("wesh ???")
    if mvPos == nil then
-      ywCanvasRemoveObj(npc.wid, npc.canvas)
+      local end_f = action.end_f
+      if (end_f) then
+	 end_f(wid, npc)
+      else
+	 ywCanvasRemoveObj(npc.wid, npc.canvas)
+      end
       yeRemoveChild(wid.npc_act, action)
       return
    end
@@ -244,16 +254,28 @@ function PjLeaveController(wid, action)
    ylpcsHandlerSetPos(npc, mvPos)
 end
 
-function NpcGoTo(npc, dest_pos)
+function NpcGoTo(npc, dest_pos, speed, end_f)
    local main = main_widget
-   local action = Entity.new_array(main.npc_act)
+   local action = Entity.new_array(nil)
    local rdst = Rect.new(ywPosX(dest_pos), ywPosY(dest_pos), 1, 1)
+   npc = Entity.wrapp(npc)
+
+   if speed == nil then
+      speed = 1
+   end
 
    npc.move = {}
    action[ACTION_NPC] = npc
    action[ACTION_MV_TBL] = {}
    action[ACTION_MV_TBL_IDX] = 0
+
+   ywCanvasDoPathfinding(main.mainScreen, npc.canvas,  dest_pos,
+			 Pos.new(PIX_PER_FRAME * speed, PIX_PER_FRAME * speed).ent,
+			 action[ACTION_MV_TBL])
+   action.end_f = end_f
+
    action.controller = Entity.new_func("PjLeaveController")
+   yePush(main.npc_act, action)
 end
 
 function pushPjLeave(npc, entryPoint)
