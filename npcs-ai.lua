@@ -57,27 +57,44 @@ local function push_to_ai_point(map, p, name)
 end
 
 local runner0_nb_pos = 7
+local runner_lpos = nil
 local runner0_pos = 0
+local runner0_tbl = nil
 
-function runner_0_(main, npc)
+function runner_0_mk_tbl(npc)
    local pos = nil
-   print(main_widget.ai_point)
+
    if runner0_pos < runner0_nb_pos - 2 then
       pos = main_widget.misc["r0-" .. runner0_pos].rect
       print("go  to: ", "r0-" .. runner0_pos)
    else
       print("go  to: Runner_0")
       pos = main_widget.ai_point["Runner_0"].rect
+      ywPosAddXY(pos, 0, -40);
    end
+   ywCanvasDoPathfinding(main_widget.mainScreen, runner_lpos, pos,
+			 Pos.new(PIX_PER_FRAME * 2, PIX_PER_FRAME * 2).ent,
+			 runner0_tbl)
+
    runner0_pos = runner0_pos + 1
-   runner0_pos = runner0_pos % runner0_nb_pos
-   NpcGoTo(npc, pos, 2, Entity.new_func("runner_0_"))
+   runner0_pos = runner0_pos % (runner0_nb_pos - 1)
+   runner_lpos = pos
+end
+
+function runner_0_loop(main, npc)
+   NpcGoToTbl(npc, runner0_tbl, Entity.new_func("runner_0_loop"))
 end
 
 function runner_0(main, action)
-   runner0_pos = 0
+   runner0_tbl = Entity.new_array()
    action = Entity.wrapp(action)
-   runner_0_(main, main_widget.npcs[action[0]])
+   local npc = main_widget.npcs[action[0]]
+   runner_lpos = ywCanvasObjPos(npc.canvas)
+   runner0_pos = 0
+   :: again ::
+   runner_0_mk_tbl(npc)
+   if runner0_pos ~= 0 then goto again end
+   runner_0_loop(nil, npc)
    yeRemoveChild(main_widget.npc_act, action)
 end
 

@@ -13,19 +13,6 @@
 			   YW_PATH_WENT_UP | YW_PATH_WENT_DOWN)
 #define YW_PATH_LAST YW_PATH_WENT_DOWN
 
-static int pathInvers(int dir)
-{
-	if (dir == YW_PATH_WENT_LEFT)
-		return YW_PATH_WENT_RIGHT;
-	else if (dir == YW_PATH_WENT_RIGHT)
-		return YW_PATH_WENT_LEFT;
-	else if (dir == YW_PATH_WENT_UP)
-		return YW_PATH_WENT_DOWN;
-	else if (dir == YW_PATH_WENT_DOWN)
-		return YW_PATH_WENT_UP;
-	return -1;
-}
-
 static int pathfindingChooseDirection(Entity *canvas,
 				      Entity *curDirInfo, Entity *to,
 				      Entity *newDirInfo)
@@ -65,8 +52,6 @@ static int pathfindingChooseDirection(Entity *canvas,
 		YUI_SWAP_VALUE(optimalArray[0], optimalArray[1]);
 		YUI_SWAP_VALUE(optimalArray[2], optimalArray[3]);
 	}
-	ywPosAddXY(tmpRect, 10, -10);
-	ywRectAddWH(tmpRect, -20, -20);
 
 	for (int i = 0; i < 4; ++i) {
 		yeAutoFree Entity *colArray = NULL;
@@ -86,40 +71,35 @@ static int pathfindingChooseDirection(Entity *canvas,
 			    yeGetIntAt(col, "Collision")) {
 				ywPosSubXY(tmpRect, ywRectW(tmpRect) * optx,
 					   ywRectH(tmpRect) * opty);
-				goto continue_loop;
+				continue;
 			}
 		}
-		ret = 1;
-		ywPosAddXY(tmpRect, -10, 10);
-		ywRectAddWH(tmpRect, 20, 20);
 		yePushBack(newDirInfo, tmpRect, NULL);
-		yeCreateInt(pathInvers(optimalArray[i]), newDirInfo, NULL);
-	continue_loop:
-		if (ret)
-			break;
+		ret = 1;
+		break;
 	}
 	yeSetInt(yeGet(curDirInfo, 1), curDir);
 	yeDestroy(tmpRect);
 	return ret;
 }
 
-static int ywCanvasDoPathfinding_(Entity *canvas, Entity *obj, Entity *to_pos,
+static int ywCanvasDoPathfinding_(Entity *canvas, Entity *opos, Entity *to_pos,
 				  Entity *speed, Entity *path_array)
 {
 	if (!path_array)
 		return -1;
 
-	Entity *opos = ywCanvasObjPos(obj);
 	int i = 0;
 	// Entity *tmpPos = ywPosCreateEnt(opos, 0, NULL, NULL);
 	Entity *tmpArray = yeCreateArray(NULL, NULL);
 	Entity *curDirInfo = yeCreateArray(NULL, NULL);
 	Entity *newDirInfo = yeCreateArray(NULL, NULL);
 
-	ywRectCreatePosSize(opos, ywCanvasObjSize(canvas, obj), curDirInfo, NULL);
+	ywRectCreatePosSize(opos, speed, curDirInfo, NULL);
 	yeCreateInt(0, curDirInfo, NULL);
 
-	while (i < 10 && ywPosDistance(yeGet(curDirInfo, 0), to_pos) > 100) {
+	printf("%s to %s\n", ywPosToString(opos), ywPosToString(to_pos));
+	while (i < 10 && ywPosDistance(yeGet(curDirInfo, 0), to_pos) > 20) {
 		if (!pathfindingChooseDirection(canvas, curDirInfo,
 						to_pos, newDirInfo))
 			break;

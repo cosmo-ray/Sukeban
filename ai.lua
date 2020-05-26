@@ -1,4 +1,4 @@
-local PIX_PER_FRAME = 6
+PIX_PER_FRAME = 6
 local ACTION_MOVE = 1
 
 local LPCS_LEFT = 9
@@ -156,7 +156,7 @@ function NpcTurn(wid)
    local i = 0
    local npc_act = wid.npc_act
    local nb_na = yeLen(npc_act)
-   print("turn in !\n")
+
    while i < nb_na do
       if npc_act[i] then
 	 wid.npc_act[i].controller(wid, npc_act[i])
@@ -224,7 +224,6 @@ function PjLeaveController(wid, action)
    local dif_y = ywPosY(mvPos) - ywPosY(curPos)
    action[ACTION_MV_TBL_IDX] = action[ACTION_MV_TBL_IDX] + 1
 
-   print("wesh ???")
    if mvPos == nil then
       local end_f = action.end_f
       if (end_f) then
@@ -254,9 +253,9 @@ function PjLeaveController(wid, action)
    ylpcsHandlerSetPos(npc, mvPos)
 end
 
-function NpcGoTo(npc, dest_pos, speed, end_f)
+function NpcGoToTbl(npc, tbl, end_f)
    local main = main_widget
-   local action = Entity.new_array(nil)
+   local action = Entity.new_array()
    local rdst = Rect.new(ywPosX(dest_pos), ywPosY(dest_pos), 1, 1)
    npc = Entity.wrapp(npc)
 
@@ -266,16 +265,22 @@ function NpcGoTo(npc, dest_pos, speed, end_f)
 
    npc.move = {}
    action[ACTION_NPC] = npc
-   action[ACTION_MV_TBL] = {}
+   action[ACTION_MV_TBL] = tbl
    action[ACTION_MV_TBL_IDX] = 0
 
-   ywCanvasDoPathfinding(main.mainScreen, npc.canvas,  dest_pos,
-			 Pos.new(PIX_PER_FRAME * speed, PIX_PER_FRAME * speed).ent,
-			 action[ACTION_MV_TBL])
    action.end_f = end_f
 
    action.controller = Entity.new_func("PjLeaveController")
    yePush(main.npc_act, action)
+end
+
+function NpcGoTo(npc, dest_pos, speed, end_f)
+   local tbl = Entity.new_array()
+
+   ywCanvasDoPathfinding(main.mainScreen, npc.canvas,  dest_pos,
+			 Pos.new(PIX_PER_FRAME * speed, PIX_PER_FRAME * speed).ent,
+			 abl)
+   NpcGoToTbl(npc, tbl, end_f)
 end
 
 function pushPjLeave(npc, entryPoint)
