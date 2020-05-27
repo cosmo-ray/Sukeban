@@ -152,6 +152,32 @@ local function searching(wid, enemy)
       return ret
 end
 
+function saveNpcCanvasMatadata(dst, npc_canvas)
+   dst = Entity.wrapp(dst)
+   npc_canvas = Entity.wrapp(npc_canvas)
+
+   dst.Collision = npc_canvas.Collision
+   dst.is_npc = npc_canvas.is_npc
+   dst.dialogue = yeGetString(npc_canvas.dialogue)
+   dst.current = npc_canvas.current
+   dst.agresive = npc_canvas.agresive
+   dst.st = npc_canvas.small_talk
+   dst.dc = npc_canvas.dialogue_condition
+end
+
+function restoreNpcCanvasMatadata(npc_canvas, src)
+   src = Entity.wrapp(src)
+   npc_canvas = Entity.wrapp(npc_canvas)
+
+   npc_canvas.Collision = src.Collision
+   npc_canvas.is_npc = src.is_npc
+   npc_canvas.dialogue = src.dialogue
+   npc_canvas.current = src.current
+   npc_canvas.agresive = src.agresive
+   npc_canvas.small_talk = src.st
+   npc_canvas.dialogue_condition = src.dc
+end
+
 function NpcTurn(wid)
    local i = 0
    local npc_act = wid.npc_act
@@ -172,14 +198,7 @@ function NpcTurn(wid)
 	 local ec = enemy.canvas
 	 local tmp = Entity.new_array()
 
-	 tmp.Collision = ec.Collision
-	 tmp.is_npc = ec.is_npc
-	 tmp.dialogue = ec.dialogue:to_string()
-	 tmp.current = ec.current
-	 tmp.agresive = ec.agresive
-	 tmp.st = ec.small_talk
-	 tmp.dc = ec.dialogue_condition
-
+	 saveNpcCanvasMatadata(tmp, ec)
 	 enemy.ai_state = ENEMY_ATTACKING
 	 if math.abs(ywPosX(mv_pos)) > math.abs(ywPosY(mv_pos)) and
 	    (enemy.y:to_int() == LPCS_UP or enemy.y:to_int() == LPCS_DOWN) then
@@ -201,13 +220,7 @@ function NpcTurn(wid)
 	 ylpcsHandlerRefresh(enemy)
 	 ylpcsHandlerMove(enemy, mv_pos)
 	 ec = enemy.canvas
-	 ec.Collision = tmp.Collision
-	 ec.is_npc = tmp.is_npc
-	 ec.dialogue = tmp.dialogue
-	 ec.current = tmp.current
-	 ec.agresive = tmp.agresive
-	 ec.small_talk = tmp.st
-	 ec.dialogue_condition = tmp.dc
+	 restoreNpcCanvasMatadata(ec, tmp)
       end
       i  = i + 1
    end
@@ -236,21 +249,25 @@ function PjLeaveController(wid, action)
    end
    -- if checkcolision still todo:
    npc.move.left_right = 1
-   if yuiAbs(dif_x) > yuiAbs(dif_y) then
+   if math.abs(dif_y) == 0 then
       if dif_x > 0 then
 	 npc.y = LPCS_RIGHT
       else
 	 npc.y = LPCS_LEFT
       end
-   else
+   end
+   if math.abs(dif_x) == 0 then
       if dif_y < 0 then
 	 npc.y = LPCS_UP
       else
 	 npc.y = LPCS_DOWN
       end
    end
+   local tmp = Entity.new_array()
+   saveNpcCanvasMatadata(tmp, npc.canvas)
    walkDoStep(wid, npc)
    ylpcsHandlerSetPos(npc, mvPos)
+   restoreNpcCanvasMatadata(npc.canvas, tmp)
 end
 
 function NpcGoToTbl(npc, tbl, end_f)

@@ -66,14 +66,12 @@ function runner_0_mk_tbl(npc)
 
    if runner0_pos < runner0_nb_pos - 2 then
       pos = main_widget.misc["r0-" .. runner0_pos].rect
-      print("go  to: ", "r0-" .. runner0_pos)
    else
-      print("go  to: Runner_0")
       pos = main_widget.ai_point["Runner_0"].rect
-      ywPosAddXY(pos, 0, -40);
+      ywPosAddXY(pos, 0, -50);
    end
    ywCanvasDoPathfinding(main_widget.mainScreen, runner_lpos, pos,
-			 Pos.new(PIX_PER_FRAME * 2, PIX_PER_FRAME * 2).ent,
+			 Pos.new(PIX_PER_FRAME * 4, PIX_PER_FRAME * 4).ent,
 			 runner0_tbl)
 
    runner0_pos = runner0_pos + 1

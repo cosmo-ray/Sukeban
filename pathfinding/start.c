@@ -61,7 +61,6 @@ static int pathfindingChooseDirection(Entity *canvas,
 		if (curDir & optimalArray[i])
 			continue;
 		curDir |= optimalArray[i];
-		ywRectPrint(tmpRect);
 		ywPosAddXY(tmpRect, ywRectW(tmpRect) * optx,
 			   ywRectH(tmpRect) * opty);
 		colArray = ywCanvasNewCollisionsArrayWithRectangle(canvas,
@@ -74,6 +73,7 @@ static int pathfindingChooseDirection(Entity *canvas,
 				continue;
 			}
 		}
+		/* ywPosAddXY(tmpRect, -10, 10); */
 		yePushBack(newDirInfo, tmpRect, NULL);
 		ret = 1;
 		break;
@@ -98,8 +98,7 @@ static int ywCanvasDoPathfinding_(Entity *canvas, Entity *opos, Entity *to_pos,
 	ywRectCreatePosSize(opos, speed, curDirInfo, NULL);
 	yeCreateInt(0, curDirInfo, NULL);
 
-	printf("%s to %s\n", ywPosToString(opos), ywPosToString(to_pos));
-	while (i < 10 && ywPosDistance(yeGet(curDirInfo, 0), to_pos) > 20) {
+	while (i < 10 && ywPosDistance(yeGet(curDirInfo, 0), to_pos) > 50) {
 		if (!pathfindingChooseDirection(canvas, curDirInfo,
 						to_pos, newDirInfo))
 			break;
@@ -134,7 +133,6 @@ static int ywCanvasDoPathfinding_(Entity *canvas, Entity *opos, Entity *to_pos,
  */
 void *ywCanvasDoPathfinding(int n, void **args)
 {
-	printf("ywCanvasDoPathfinding !!!\n");
 	return ywCanvasDoPathfinding_(args[0], args[1], args[2],
 				      args[3], args[4]);
 }
@@ -142,12 +140,10 @@ void *ywCanvasDoPathfinding(int n, void **args)
 void *mod_init(int nbArg, void **args)
 {
 	Entity *mod = args[0];
-	printf("WESH !!!!!!\n");
 
 	YEntityBlock {
 		mod.name = "pathfinder";
 	}
 	ygRegistreFunc(5, "ywCanvasDoPathfinding", "ywCanvasDoPathfinding");
-	printf("pathfinder %p!!!\n", mod);
 	return mod;
 }
