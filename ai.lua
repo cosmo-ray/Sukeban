@@ -285,18 +285,27 @@ function NpcGoToTbl(npc, tbl, end_f)
    action[ACTION_MV_TBL] = tbl
    action[ACTION_MV_TBL_IDX] = 0
 
-   action.end_f = end_f
+   if end_f then
+      action.end_f = end_f
+   end
 
    action.controller = Entity.new_func("PjLeaveController")
+   if main.npc_act == nil then
+      main.npc_act = {}
+   end
    yePush(main.npc_act, action)
 end
 
 function NpcGoTo(npc, dest_pos, speed, end_f)
    local tbl = Entity.new_array()
 
-   ywCanvasDoPathfinding(main.mainScreen, npc.canvas,  dest_pos,
+   if speed == nil then
+      speed = 1
+   end
+   ywCanvasDoPathfinding(main_widget.mainScreen, ywCanvasObjPos(npc.canvas),
+			 dest_pos,
 			 Pos.new(PIX_PER_FRAME * speed, PIX_PER_FRAME * speed).ent,
-			 abl)
+			 tbl)
    NpcGoToTbl(npc, tbl, end_f)
 end
 
@@ -310,7 +319,7 @@ function pushPjLeave(npc, entryPoint)
    action[ACTION_MV_TBL] = {}
    action[ACTION_MV_TBL_IDX] = 0
    print(exit.rect, yeGetInt(entryPoint))
-   ywCanvasDoPathfinding(main.mainScreen, npc.canvas, exit.rect,
+   ywCanvasDoPathfinding(main.mainScreen, ywCanvasObjPos(npc.canvas), exit.rect,
 			 Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
 			 action[ACTION_MV_TBL])
    print(action.mv_table)
@@ -328,7 +337,7 @@ function PjLeave(owid, eve, entryPoint)
    action[ACTION_MV_TBL] = {}
    action[ACTION_MV_TBL_IDX] = 0
    print(exit.rect, yeGetInt(entryPoint))
-   ywCanvasDoPathfinding(main.mainScreen, npc.canvas, exit.rect,
+   ywCanvasDoPathfinding(main.mainScreen, ywCanvasObjPos(npc.canvas), exit.rect,
 		      Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
 		      action[ACTION_MV_TBL])
    print(action.mv_table)

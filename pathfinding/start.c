@@ -32,6 +32,7 @@ static int pathfindingChooseDirection(Entity *canvas,
 	int y = ywPosY(curRect) - ywPosY(to);
 	int ret = 0;
 
+	ywRectPrint(curRect);
 	if (x < 0)  {// optimal might be right
 		optimalArray[0] = YW_PATH_WENT_RIGHT;
 		optimalArray[3] = YW_PATH_WENT_LEFT;
@@ -89,16 +90,24 @@ static int ywCanvasDoPathfinding_(Entity *canvas, Entity *opos, Entity *to_pos,
 	if (!path_array)
 		return -1;
 
+	int ret = 0;
 	int i = 0;
+	int max = 100;
 	// Entity *tmpPos = ywPosCreateEnt(opos, 0, NULL, NULL);
 	Entity *tmpArray = yeCreateArray(NULL, NULL);
 	Entity *curDirInfo = yeCreateArray(NULL, NULL);
 	Entity *newDirInfo = yeCreateArray(NULL, NULL);
 
 	ywRectCreatePosSize(opos, speed, curDirInfo, NULL);
+	ywPosPrint(opos);
+	ywPosPrint(yeGet(curDirInfo, 0));
 	yeCreateInt(0, curDirInfo, NULL);
 
 	while (i < 10 && ywPosDistance(yeGet(curDirInfo, 0), to_pos) > 50) {
+		if (i > max) {
+			ret = -1;
+			goto out;
+		}
 		if (!pathfindingChooseDirection(canvas, curDirInfo,
 						to_pos, newDirInfo))
 			break;
@@ -118,10 +127,12 @@ static int ywCanvasDoPathfinding_(Entity *canvas, Entity *opos, Entity *to_pos,
 		if (!goal)
 			goal = to_pos;
 		while (ywPosMoveToward2(tmpPos, goal,
-					ywPosX(speed), ywPosY(speed)))
+					ywPosX(speed), ywPosY(speed))) {
 			ywPosCreateEnt(tmpPos, 0, path_array, NULL);
+		}
 		++i;
 	}
+out:
 	yeMultDestroy(curDirInfo, newDirInfo, tmpArray);
 	return 0;
 }
