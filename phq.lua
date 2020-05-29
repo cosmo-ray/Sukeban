@@ -129,6 +129,9 @@ end
 function checkObjTime(obj, cur_time)
    local obj_time = obj.Time
 
+   if main_widget.no_chktime_t > 0 then
+      return false
+   end
    if yeGetInt(obj.disable_timer) and
    os.time() - yeGetInt(obj.disable_timer) < 2 then
       return false
@@ -548,6 +551,12 @@ function phq_action(entity, eve)
    end
 
    smallTalkRemover(entity)
+   if entity.no_chktime_t > 0 then
+      entity.no_chktime_t = entity.no_chktime_t - ywidGetTurnTimer()
+   elseif entity.no_chktime_t < 0 then
+      entity.no_chktime_t = 0
+   end
+
    if entity.box_t then
       if entity.box_t < 0 then
 	 dialogue_box.rm(entity.upCanvas, entity.box)
@@ -861,6 +870,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    local y = 0
    local c = mainCanvas.ent
 
+   ent.no_chktime_t = 0
    print("start load !!! ", sceneTxt, "\n")
    if c.exit_script then
       scripts[c.exit_script:to_string()](ent)

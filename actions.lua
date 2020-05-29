@@ -119,6 +119,14 @@ function getMainWid(wid)
    return main
 end
 
+local function backToGameReset(main)
+   local TIME_RESET = 1000000
+
+   main.pj.move.up_down = 0
+   main.pj.move.left_right = 0
+   main.no_chktime_t = TIME_RESET
+end
+
 function backToGame2()
    local main = main_widget
 
@@ -127,9 +135,7 @@ function backToGame2()
    end
 
    main.current = 0
-   main.pj.move.up_down = 0
-   main.pj.move.left_right = 0
-
+   backToGameReset(main)
    return YEVE_ACTION
 end
 
@@ -168,8 +174,7 @@ function backToGame(wid)
    end
    ywCntPopLastEntry(main)
    main.current = yeLen(main.entries) - 1
-   main.pj.move.up_down = 0
-   main.pj.move.left_right = 0
+   backToGameReset(main)
    return YEVE_ACTION
 end
 
