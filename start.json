@@ -1,7 +1,7 @@
 {
     "name" : "phq",
     "starting widget" : "menus.main",
-    "window size" : [1024, 600],
+    "window size" : [1024, 768],
     "window name" : "Sukeban !",
     "init-scripts" : [
 	"init_phq"
