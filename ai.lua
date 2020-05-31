@@ -226,7 +226,14 @@ function NpcTurn(wid)
    end
 end
 
+local  PjLeaveController_t = 0
 function PjLeaveController(wid, action)
+   PjLeaveController_t = PjLeaveController_t  + ywidGetTurnTimer()
+   if PjLeaveController_t > 10000 then
+      PjLeaveController_t = 0
+   else
+      return
+   end
    wid = Entity.wrapp(wid)
    action = Entity.wrapp(action)
    local mv_tbl_idx = action[ACTION_MV_TBL_IDX]
