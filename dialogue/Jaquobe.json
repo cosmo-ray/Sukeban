@@ -38,10 +38,25 @@
 
 		]
 	    },
-	    "Can't you see I'm playing {phq.env.mean_name}"
-	    /* Add condition so if you geek and have alerady beat the game */
-	    /* You can tell him how trick to finish it as well and then ask him */
-	    /* To join you */
+	    {
+		"text": "Can't you see I'm playing {phq.env.mean_name}",
+		"answers": [
+		    {
+			"text": "you bug off this game, before I paint you red",
+			"actions": [
+			    [ "phq.increase", "trait", "violance", 1],
+			    ["phq.StartFight", "Jaquobe", "CombatDialogueNext"]]
+		    },
+		    {
+			"text": "yeah, no need to be an mean, asshole",
+			"action": "phq.backToGame"
+		    }
+		]
+	    },
+	    {
+		"text": "Pff, you won't even aprecate it...",
+		"action": [ "phq.PjLeave", 0 ]
+	    }
 	]
     }
 }

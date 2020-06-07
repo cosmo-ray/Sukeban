@@ -250,6 +250,7 @@ function PjLeaveController(wid, action)
 	 end_f(wid, npc)
       else
 	 ywCanvasRemoveObj(npc.wid, npc.canvas)
+	 yeRemoveChild(main_widget.npcs, npc)
       end
       yeRemoveChild(wid.npc_act, action)
       return
@@ -318,6 +319,9 @@ end
 
 function pushPjLeave(npc, entryPoint)
    local main = main_widget
+   if main.npc_act == nil then
+      main.npc_act = {}
+   end
    local action = Entity.new_array(main.npc_act)
    local exit = main.exits[yeGetInt(entryPoint)]
 
@@ -337,9 +341,14 @@ function PjLeave(owid, eve, entryPoint)
    wid = Entity.wrapp(yDialogueGetMain(owid))
    local main = Entity.wrapp(ywCntWidgetFather(wid))
    local npc = main.npcs[wid.npc_nb:to_int()]
+   if main.npc_act == nil then
+      main.npc_act = {}
+   end
+
    local action = Entity.new_array(main.npc_act)
    local exit = main.exits[yeGetInt(entryPoint)]
    npc.move = {}
+   print(npc)
    action[ACTION_NPC] = npc
    action[ACTION_MV_TBL] = {}
    action[ACTION_MV_TBL_IDX] = 0
