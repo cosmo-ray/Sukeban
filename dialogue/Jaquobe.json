@@ -39,7 +39,7 @@
 		]
 	    },
 	    {
-		"text": "Can't you see I'm playing {phq.env.mean_name}",
+		"text": "Can't you see I'm playing {phq.env.mean_name2}",
 		"answers": [
 		    {
 			"text": "you bug off this game, before I paint you red",

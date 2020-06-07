@@ -88,22 +88,26 @@ function newGameAction(menu, eve, arg)
       phq.pj.knowledge.animu = 5
       phq.pj.stats.smart = 3
       phq.env.mean_name = "losser"
+      phq.env.mean_name2 = "nerd"
    elseif archetype == IDOLE_ARCHETYPE then
       phq.pj.knowledge.fashion = 5
       phq.pj.stats.charm = 5
       phq.pj.stats.strength = 1
       addObject(main_widget, phq.pj, "robe_white", 1)
       phq.env.mean_name = "whore"
+      phq.env.mean_name2 = "slut"
    elseif archetype == BRUTE_ARCHETYPE then
       phq.pj.knowledge.slang = 5
       phq.pj.trait.violance = 1
       phq.pj.stats.strength = 3
       learn_combot("unarmed1")
       phq.env.mean_name = "dumdass"
+      phq.env.mean_name2 = "rat brain"
    elseif archetype == WORMS_COINOISSEUR_ARCHETYPE then
       phq.pj.knowledge.worms = 5
       phq.pj.stats.smart = 1
       phq.env.mean_name = "trash"
+      phq.env.mean_name2 = "worthless person"
    end
    yesCall((ygGet("callNext")), menu);
 end
