@@ -1,7 +1,23 @@
 {
     "Harri": {
 	"dialogue" : {
-	    "base": "I'm drinkning with my friend, and on the next update\nI'll ass the the player what I should bring to a party",
+	    "base": {
+		"text": "I'm drinkning with my friend, and on the next update\nI'll ask the the player what I should bring to a party",
+		"answers": [
+		    {
+			"text": "Just take picon and beer",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "Nothing you look too drunk alerady, just goto sleep",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "What, I don't know bring a banana ?, peoples like when I bring bananas to party",
+			"action": ["Dialogue:goto", "maybe_banana"]
+		    }
+		]
+	    },
 	    "maybe_banana": "one of thoses answer will be banana, that amough clasic, vodka and stuff",
 	    "end": "if banana is answer, then on the next encounter (a day or more after this meeting)\nI'll be super happy, and thanks the player(with xp and stuff)\nthen I'll tell the player to 'always take a banana to a party'"
 	}
