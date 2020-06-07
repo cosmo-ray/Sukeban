@@ -64,7 +64,8 @@
 	"sex": "female",
         "type": "light",
 	"student_year": 1,
-        "max_life": 10,
+	"attack" : "unarmed1",
+        "max_life": 25,
 	"hair": ["loose", "redhead2"],
 	"image": {
 	    "dst-threshold": [0,-500],

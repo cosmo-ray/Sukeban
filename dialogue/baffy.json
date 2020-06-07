@@ -1,8 +1,58 @@
 {
     "Baffy": {
 	"dialogue" : {
-	    "base": ["Sorry, {phq.env.mean_name} I'm talking with my friend",
-		     "And I don't think you're one of them"]
+	    "base": {
+		"text": ["Sorry, {phq.env.mean_name} I'm talking with my friend",
+			 "And I don't think you're one of them"],
+		"answers": [
+		    {
+		    	"condition": [">", "phq.pj.stats.charm", 1],
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "(continue)",
+			"condition": ["<", "phq.pj.stats.charm", 2]
+		    }
+		]
+	    },
+	    "loser_slayer": {
+		"text": ["Wait...",
+			 "Actually, I have a nick name",
+			 "Baffy the looser Slayer",
+			 "(She start to Smill)"]
+	    },
+	    "loser_slayer1": {
+		"text": ["You look a wonderful speciment, But you know",
+			 "Today I fell nice, I'm drinking with me friend",
+			 "If you pay me let's say, 20 buck, I let you leave"],
+		"answers": [
+		    {
+			"text": ["I you pay me 20 buck I let you leave, lol",
+				 "Suck my dick"],
+			"action": ["phq.StartFight", "Baffy",
+				   "CombatDialogueNext"]
+		    },
+		    {
+			"text": ["Oh, well, hope you won't hate me too much",
+				 "once your cute skin will be red"],
+			"action": ["phq.StartFight", "Baffy",
+				   "CombatDialogueNext"]
+		    },
+		    {
+			"text": ["I don't have that much money"],
+			"action": ["phq.StartFight", "Baffy",
+				   "CombatDialogueNext"]
+		    },
+		    {
+			"text": "Ok",
+			"condition": [">", "phq.pj.inventory.money", 20],
+			"action": [ "phq.pay", 1, ["phq.backToGame", 1],
+				    "not enouth money" ]
+		    }
+		]
+	    }
+
 	}
     }
 }
