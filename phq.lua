@@ -56,6 +56,14 @@ function generic_handlerRefresh(npc)
    end
 end
 
+function generic_handlerPos(npc)
+   if yeGetString(npc.char.type) == "sprite" then
+      return sprite_man.handlerPos(npc)
+   else
+      return ylpcsHandePos(npc)
+   end
+end
+
 function dressUp(caracter)
    local e = caracter.equipement
    local objs = phq.objects
@@ -942,6 +950,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    ent.actionables = {}
    ent.misc = {}
    ent.ai_point = {}
+   ent.npc_act = {}
    ent.cur_scene = scene
    local e_npcs = ent.npcs
    local e_exits = ent.exits
@@ -974,7 +983,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	    -- TODO: here we assume the sprite is 32/32 but we should get the real value
 	    pos:sub(s / 2, s / 2)
 	    npc = sprite_man.createHandler(npc, c, e_npcs, npc_name)
-	    sprite_man.handlerMove(npc, pos.ent)
+	    sprite_man.handlerSetPos(npc, pos.ent)
 	    if yeGetString(obj.Rotation) == "left" then
 	       yeSetAt(npc, "y_offset", 32)
 	    elseif yeGetString(obj.Rotation) == "right" then
@@ -1020,6 +1029,16 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc.canvas.dialogue_condition = npc.char.dialogue_condition
 	 npc.canvas.current = npc_idx
 	 npc_idx = npc_idx + 1
+	 local ai = yeGetStringAt(obj, "ai")
+	 if yIsNNil(ai) then
+	    local action = Entity.new_array(ent.npc_act)
+	    print("new ai !!!:", ai)
+	    action[0] = npc_name
+	    if yIsNNil(npc.generic_id) then
+	       action.generic_id = generic_npc_id
+	    end
+	    action.controller = Entity.new_func(ai)
+	 end
       elseif layer_name:to_string() == "Entries" then
 	 yeAttach(e_exits, obj, j, obj.name:to_string(), 0)
 	 j = j + 1

@@ -239,7 +239,7 @@ function PjLeaveController(wid, action)
    local mv_tbl_idx = action[ACTION_MV_TBL_IDX]
    local mvPos = action[ACTION_MV_TBL][mv_tbl_idx:to_int()]
    local npc = action[ACTION_NPC]
-   local curPos = ylpcsHandePos(npc)
+   local curPos = generic_handlerPos(npc)
    local dif_x = ywPosX(mvPos) - ywPosX(curPos)
    local dif_y = ywPosY(mvPos) - ywPosY(curPos)
    action[ACTION_MV_TBL_IDX] = action[ACTION_MV_TBL_IDX] + 1
@@ -273,8 +273,24 @@ function PjLeaveController(wid, action)
    end
    local tmp = Entity.new_array()
    saveNpcCanvasMatadata(tmp, npc.canvas)
-   walkDoStep(wid, npc)
-   ylpcsHandlerSetPos(npc, mvPos)
+   if yeGetString(npc.char.type) == "sprite" then
+      --print("npc.y: ", yeGetInt(npc.y), " - ", LPCS_LEFT, LPCS_UP, LPCS_RIGHT, LPCS_DOWN, yeGetInt(npc.y) == LPCS_DOWN)
+      if yeGetInt(npc.y) == LPCS_LEFT then
+	 yeSetAt(npc, "y_offset", 96)
+      elseif yeGetInt(npc.y) == LPCS_RIGHT then
+	 yeSetAt(npc, "y_offset", 32)
+      elseif yeGetInt(npc.y) == LPCS_DOWN then
+	 yeSetAt(npc, "y_offset", 64)
+      else -- y offset is 0 for "up"
+	 yeSetAt(npc, "y_offset", 0)
+      end
+
+      sprite_man.handlerSetPos(npc, mvPos)
+      sprite_man.handlerRefresh(npc)
+   else
+      walkDoStep(wid, npc)
+      ylpcsHandlerSetPos(npc, mvPos)
+   end
    restoreNpcCanvasMatadata(npc.canvas, tmp)
 end
 
@@ -348,15 +364,12 @@ function PjLeave(owid, eve, entryPoint)
    local action = Entity.new_array(main.npc_act)
    local exit = main.exits[yeGetInt(entryPoint)]
    npc.move = {}
-   print(npc)
    action[ACTION_NPC] = npc
    action[ACTION_MV_TBL] = {}
    action[ACTION_MV_TBL_IDX] = 0
-   print(exit.rect, yeGetInt(entryPoint))
    ywCanvasDoPathfinding(main.mainScreen, ywCanvasObjPos(npc.canvas), exit.rect,
 		      Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
 		      action[ACTION_MV_TBL])
-   print(action.mv_table)
    action.controller = Entity.new_func("PjLeaveController")
    backToGame(owid, eve, arg)
 end

@@ -56,18 +56,17 @@ local function push_to_ai_point(map, p, name)
    phq.env.ai_point[map][p] = name
 end
 
-local runner0_nb_pos = 7
 local runner_lpos = nil
 local runner0_pos = 0
 local runner0_tbl = nil
 
-function runner_0_mk_tbl(npc)
+function runner_0_mk_tbl(npc, point_prefix, nb_pos, start_p)
    local pos = nil
 
-   if runner0_pos < runner0_nb_pos - 2 then
-      pos = main_widget.misc["r0-" .. runner0_pos].rect
+   if runner0_pos < nb_pos - 2 then
+      pos = main_widget.misc[point_prefix .. runner0_pos].rect
    else
-      pos = main_widget.ai_point["Runner_0"].rect
+      pos = main_widget.ai_point[start_p].rect
       ywPosAddXY(pos, 0, -50);
    end
    ywCanvasDoPathfinding(main_widget.mainScreen, runner_lpos, pos,
@@ -75,7 +74,7 @@ function runner_0_mk_tbl(npc)
 			 runner0_tbl)
 
    runner0_pos = runner0_pos + 1
-   runner0_pos = runner0_pos % (runner0_nb_pos - 1)
+   runner0_pos = runner0_pos % (nb_pos - 1)
    runner_lpos = pos
 end
 
@@ -90,7 +89,7 @@ function runner_0(main, action)
    runner_lpos = ywCanvasObjPos(npc.canvas)
    runner0_pos = 0
    :: again ::
-   runner_0_mk_tbl(npc)
+   runner_0_mk_tbl(npc, "r0-", 7, "Runner_0")
    if runner0_pos ~= 0 then goto again end
    runner_0_loop(nil, npc)
    yeRemoveChild(main_widget.npc_act, action)
@@ -107,4 +106,23 @@ function sakai(main, npc, name)
       action[0] = name
       action.controller = Entity.new_func("runner_0")
    end
+end
+
+
+function run_rat0(main, action)
+   runner0_tbl = Entity.new_array()
+   action = Entity.wrapp(action)
+   local npc = main_widget.npcs[action[0]]
+   runner_lpos = ywCanvasObjPos(npc.canvas)
+   runner0_pos = 0
+   :: again ::
+   runner_0_mk_tbl(npc, "rp", 5, "rat")
+   --print("last pos:", runner_lpos, runner0_pos)
+   if runner0_pos ~= 0 then goto again end
+   runner_0_loop(nil, npc)
+   yeRemoveChild(main_widget.npc_act, action)
+end
+
+function run_rat1(main, action)
+   --print("run_rat1", action)
 end

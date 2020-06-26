@@ -1,4 +1,12 @@
-{ "height":18,
+{ "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"tileset\/tileset\/tileset"
+        }
+    },
+ "height":18,
  "infinite":false,
  "layers":[
         {
@@ -303,7 +311,12 @@
                         {
                          "name":"Rotation",
                          "type":"string",
-                         "value":"down"
+                         "value":"up"
+                        }, 
+                        {
+                         "name":"ai",
+                         "type":"string",
+                         "value":"run_rat0"
                         }],
                  "rotation":0,
                  "type":"",
@@ -321,7 +334,17 @@
                         {
                          "name":"Rotation",
                          "type":"string",
-                         "value":"up"
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"ai",
+                         "type":"string",
+                         "value":"run_rat1"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -329,6 +352,53 @@
                  "width":0,
                  "x":82,
                  "y":245
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":10,
+         "name":"MISC",
+         "objects":[
+                {
+                 "height":0,
+                 "id":20,
+                 "name":"rp0",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":193,
+                 "y":160
+                }, 
+                {
+                 "height":0,
+                 "id":21,
+                 "name":"rp1",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":182,
+                 "y":467
+                }, 
+                {
+                 "height":0,
+                 "id":22,
+                 "name":"rp2",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":79,
+                 "y":475
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -370,8 +440,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":10,
- "nextobjectid":20,
+ "nextlayerid":11,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -380,7 +450,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.4",
+ "tiledversion":"1.3.3",
  "tileheight":32,
  "tilesets":[
         {

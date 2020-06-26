@@ -59,13 +59,21 @@ void *handlerRefresh(int nargs, void **args)
 	return h;
 }
 
-void *handlerMove(int nbArg, void **args)
+void *handlerPos(int nba, void **args)
+{
+	Entity *h = args[0];
+	Entity *c = yeGet(h, "canvas");
+
+	return c ? ywCanvasObjPos(c) : NULL;
+}
+
+void *handlerSetPos(int nbArg, void **args)
 {
 	Entity *h = args[0];
 	Entity *p = args[1];
 
 	if (!yeGet(h, "canvas")) {
-		handlerRefresh(0, (void *[]){h});
+		handlerRefresh(1, (void *[]){h});
 	}
 
 	ywCanvasObjSetPosByEntity(yeGet(h, "canvas"), p);
@@ -91,7 +99,8 @@ void *mod_init(int nbArg, void **args)
 		mod.name = "sprite-man";
 		mod.createHandler = createHandler;
 		mod.handlerRefresh = handlerRefresh;
-		mod.handlerMove = handlerMove;
+		mod.handlerSetPos = handlerSetPos;
+		mod.handlerPos = handlerPos;
 	}
 	printf("SPRITE MANAGER %p!!!\n", mod);
 	return mod;
