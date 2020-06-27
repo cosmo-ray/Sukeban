@@ -98,6 +98,11 @@
                          "value":"right"
                         }, 
                         {
+                         "name":"ai",
+                         "type":"string",
+                         "value":"runner_0"
+                        }, 
+                        {
                          "name":"ai_point",
                          "type":"bool",
                          "value":true

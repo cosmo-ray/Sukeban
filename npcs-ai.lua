@@ -99,13 +99,6 @@ function sakai(main, npc, name)
    npc = Entity.wrapp(npc)
 
    push_to_ai_point("street3", "Runner_0", name)
-
-   -- if name is not null, then it's call from advence time
-   if main_widget.cur_scene_str:to_string() == "street3" then
-      local action = Entity.new_array(main_widget.npc_act)
-      action[0] = name
-      action.controller = Entity.new_func("runner_0")
-   end
 end
 
 
