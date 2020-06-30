@@ -67,6 +67,9 @@
     "neighbor_house0" : {
 	"tiled": "./tileset/neighbor_house0.json"
     },
+    "neighbor_house1" : {
+	"tiled": "./tileset/neighbor_house1.json"
+    },
     "house0" : {
 	"dialogues" : "dialogue/house_dialogue.json",
 	"tiled": "./tileset/House0.json"
