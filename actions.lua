@@ -228,6 +228,16 @@ function StartFight(wid, eve, enemy_type, script)
    local npc = nil
    --ySoundPlayLoop(main.soundcallgirl:to_int())
 
+   if yIsNil(script) == false then
+      if (yeType(script)) == YARRAY then
+	 script = Entity.wrapp(script)
+	 fight_script = yeGetString(script[0])
+      else
+	 fight_script = yeGetString(script)
+      end
+   end
+
+
    if (yIsNil(enemy_type)) then
       local wid = yDialogueGetMain(wid)
       wid = Entity.wrapp(wid)
@@ -252,14 +262,6 @@ function StartFight(wid, eve, enemy_type, script)
 
    end
 
-   if yIsNil(script) == false then
-      if (yeType(script)) == YARRAY then
-	 script = Entity.wrapp(script)
-	 fight_script = yeGetString(script[0])
-      else
-	 fight_script = yeGetString(script)
-      end
-   end
    local player_array = Entity.new_array()
    local allies = phq.pj.allies
 
@@ -297,8 +299,23 @@ function StartFight(wid, eve, enemy_type, script)
    if fight_script == "CombatDialogueNext" then
       dialogue.gotoNext(wid, eve)
    elseif fight_script == "RemoveEnemy" then
-      lpcs.handlerNullify(script[1])
-      yeRemoveChild(main.enemies, script[1])
+      local npc_a = main_widget.npc_act
+
+      if main_widget.mainScreen.objects[script[1].obj_idx].no_respawn then
+	 main_widget.mainScreen.objects[script[1].obj_idx].dead = 1
+      end
+      if main_widget.mainScreen.objects[script[1].obj_idx].ai then
+	 for j = 0, yeLen(npc_a) do
+	    if yIsNNil(npc_a[j]) and script[1] == npc_a[j][ACTION_NPC] then
+	       yeRemoveChild(wid.npc_act, j)
+	       break
+	    end
+	 end
+	 generic_handlerNullify(script[1])
+      else
+	 generic_handlerNullify(script[1])
+	 yeRemoveChild(main.enemies, script[1])
+      end
    elseif fight_script == "CombatDialogueGoto" then
       dialogue["goto"](wid, eve, script[1])
    else

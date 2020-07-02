@@ -85,7 +85,7 @@ void *handlerNullify(int nbArg, void **args)
 	Entity *h = args[0];
 	Entity *w = yeGet(h, "wid");
 
-	ywCanvasRemoveObj(yeGet(h, "wid"), yeGet(h, "canvas"));
+	ywCanvasRemoveObj(w, yeGet(h, "canvas"));
 	yeRemoveChild(h, "canvas");
 	yeRemoveChild(h, "char");
 	return NULL;
@@ -100,6 +100,7 @@ void *mod_init(int nbArg, void **args)
 		mod.createHandler = createHandler;
 		mod.handlerRefresh = handlerRefresh;
 		mod.handlerSetPos = handlerSetPos;
+		mod.handlerNullify = handlerNullify;
 		mod.handlerPos = handlerPos;
 	}
 	printf("SPRITE MANAGER %p!!!\n", mod);

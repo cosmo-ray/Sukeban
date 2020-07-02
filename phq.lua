@@ -56,7 +56,18 @@ function generic_handlerRefresh(npc)
    end
 end
 
+function generic_handlerNullify(npc)
+   if yeGetString(npc.char.type) == "sprite" then
+      sprite_man.handlerNullify(npc)
+   else
+      lpcs.handlerNullify(npc)
+   end
+end
+
 function generic_handlerPos(npc)
+   if yIsNil(npc) or npc.char == nil then
+      return
+   end
    if yeGetString(npc.char.type) == "sprite" then
       return sprite_man.handlerPos(npc)
    else
@@ -167,6 +178,9 @@ function checkNpcPresence(obj, npc, scene)
 
    local pp = yeGetIntAt(obj, "Presence %")
    if pp > 0 and yuiRand() % 99 > pp then
+      return false
+   end
+   if yeGetIntAt(obj, "dead") == 1 then
       return false
    end
    local cur_time = phq.env.time:to_string()
@@ -810,7 +824,9 @@ function phq_action(entity, eve)
 
        while i < yeLen(wid_npcs) do
 	  local cur_handler = wid_npcs[i]
-	  if cur_handler.canvas:cent() == col_obj:cent() then
+	  if cur_handler and
+	     cur_handler.canvas and
+	  cur_handler.canvas:cent() == col_obj:cent() then
 	     npc_handler = cur_handler
 	     break
 	  end
@@ -1012,9 +1028,12 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 end
 	 npc = Entity.wrapp(npc)
 	 generic_handlerRefresh(npc)
+	 local ai = yeGetStringAt(obj, "ai")
 	 if yeGetIntAt(obj, "Agresive") == 1 then
-	    yePushBack(ent.enemies, npc)
-	    yePushBack(npc, pos.ent, "orig_pos")
+	    if yIsNil(ai) then
+	       yePushBack(ent.enemies, npc)
+	       yePushBack(npc, pos.ent, "orig_pos")
+	    end
 	    npc.canvas.agresive = 1
 	 end
 	 if npc.char.is_generic then
@@ -1028,11 +1047,10 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc.canvas.small_talk = npc.char["small talk"]
 	 npc.canvas.dialogue_condition = npc.char.dialogue_condition
 	 npc.canvas.current = npc_idx
+	 npc.obj_idx = i
 	 npc_idx = npc_idx + 1
-	 local ai = yeGetStringAt(obj, "ai")
 	 if yIsNNil(ai) then
 	    local action = Entity.new_array(ent.npc_act)
-	    print("new ai !!!:", ai)
 	    action[0] = npc_name
 	    if yIsNNil(npc.generic_id) then
 	       action.generic_id = generic_npc_id

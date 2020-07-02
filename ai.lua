@@ -239,6 +239,9 @@ function PjLeaveController(wid, action)
    local mv_tbl_idx = action[ACTION_MV_TBL_IDX]
    local mvPos = action[ACTION_MV_TBL][mv_tbl_idx:to_int()]
    local npc = action[ACTION_NPC]
+   if yIsNil(npc) or npc.char == nil then
+      return
+   end
    local curPos = generic_handlerPos(npc)
    local dif_x = ywPosX(mvPos) - ywPosX(curPos)
    local dif_y = ywPosY(mvPos) - ywPosY(curPos)

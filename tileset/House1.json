@@ -3,7 +3,7 @@
     {
      "export":
         {
-         "target":"tileset\/tileset\/tileset"
+         "target":"tileset\/tileset\/tileset\/tileset\/tileset\/tileset"
         }
     },
  "height":18,
@@ -309,6 +309,11 @@
                  "point":true,
                  "properties":[
                         {
+                         "name":"Agresive",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"Rotation",
                          "type":"string",
                          "value":"up"
@@ -317,6 +322,11 @@
                          "name":"ai",
                          "type":"string",
                          "value":"run_rat0"
+                        }, 
+                        {
+                         "name":"no_respawn",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -332,6 +342,11 @@
                  "point":true,
                  "properties":[
                         {
+                         "name":"Agresive",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"Rotation",
                          "type":"string",
                          "value":"down"
@@ -343,6 +358,11 @@
                         }, 
                         {
                          "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"no_respawn",
                          "type":"bool",
                          "value":true
                         }],
