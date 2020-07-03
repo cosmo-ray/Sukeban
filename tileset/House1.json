@@ -3,7 +3,7 @@
     {
      "export":
         {
-         "target":"tileset\/tileset\/tileset\/tileset\/tileset\/tileset"
+         "target":"tileset\/tileset\/tileset\/tileset\/tileset\/tileset\/tileset\/tileset"
         }
     },
  "height":18,
@@ -327,6 +327,16 @@
                          "name":"no_respawn",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"vapath",
+                         "type":"string",
+                         "value":"phq.quests.vry_perso_quest"
+                        }, 
+                        {
+                         "name":"victory_action",
+                         "type":"string",
+                         "value":"increase_int"
                         }],
                  "rotation":0,
                  "type":"",
@@ -365,6 +375,16 @@
                          "name":"no_respawn",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"vapath",
+                         "type":"string",
+                         "value":"phq.quests.vry_perso_quest"
+                        }, 
+                        {
+                         "name":"victory_action",
+                         "type":"string",
+                         "value":"increase_int"
                         }],
                  "rotation":0,
                  "type":"",

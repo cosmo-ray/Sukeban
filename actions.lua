@@ -259,7 +259,6 @@ function StartFight(wid, eve, enemy_type, script)
 	 npc = npcs[yeGetString(enemy_type)]
 	 npc = npcDefaultInit(npc, enemy_type)
       end
-
    end
 
    local player_array = Entity.new_array()
@@ -296,15 +295,24 @@ function StartFight(wid, eve, enemy_type, script)
    end
 
    fWid.enemy = npc
+
    if fight_script == "CombatDialogueNext" then
       dialogue.gotoNext(wid, eve)
    elseif fight_script == "RemoveEnemy" then
       local npc_a = main_widget.npc_act
+      local obj = main_widget.mainScreen.objects[script[1].obj_idx]
 
-      if main_widget.mainScreen.objects[script[1].obj_idx].no_respawn then
-	 main_widget.mainScreen.objects[script[1].obj_idx].dead = 1
+      if obj.no_respawn then
+	 obj.dead = 1
       end
-      if main_widget.mainScreen.objects[script[1].obj_idx].ai then
+      if yIsNNil(obj.victory_action) then
+	 print("va !!!", obj.victory_action, obj.vapath)
+	 npc.victory_action = obj.victory_action
+	 if yIsNNil(obj.vapath) then
+	    npc.vapath = obj.vapath
+	 end
+      end
+      if obj.ai then
 	 for j = 0, yeLen(npc_a) do
 	    if yIsNNil(npc_a[j]) and script[1] == npc_a[j][ACTION_NPC] then
 	       yeRemoveChild(wid.npc_act, j)

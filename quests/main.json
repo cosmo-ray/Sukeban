@@ -65,5 +65,15 @@
 	    "your good friend herru had someone puke on him at the nternational Bar, you need to go there and avange him",
 	    "Mission Complet, Stomack Empty, go see herru back"
 	]
+    },
+    "A very personal quest": {
+	"stalk": "phq.quests.vry_perso_quest",
+	"stalk_sart": -1,
+	"rewards": [
+	    2, 17
+	],
+	"descriptions": [
+	    "It seems you might have find a way to stop thoses annoying rats\nyou hear at night"
+	]
     }
 }

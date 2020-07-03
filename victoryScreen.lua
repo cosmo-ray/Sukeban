@@ -31,9 +31,20 @@ function pushNewVictoryScreen(main, unused, loosers)
    local i = 0
 
    while i < yeLen(loosers) do
-      local loot = loosers[i].loot
+      local looser = loosers[i]
+      local loot = loosers.loot
 
       print(loot)
+      if looser.victory_action then
+	 print("cmp: ", looser.victory_action:to_string(), "increase_int",
+	       looser.victory_action:to_string() == "increase_int")
+	 if looser.victory_action:to_string() == "increase_int" then
+	    print("ygIncreaseInt", looser.vapath)
+	    ygIncreaseInt(looser.vapath:to_string(), 1)
+	 else
+	    print("unknow action: ", looser.victory_action)
+	 end
+      end
       if loot then
 	 if yeType(loot) == YSTRING then
 	    if loot:to_string() == "auto" then
