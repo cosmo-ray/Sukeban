@@ -139,5 +139,17 @@
 	    "legs": "teal pants female",
 	    "feet": "maroon longboot"
 	}
-    }
+    },
+    "Lufa Mig Saucer": {
+	"sex": "female",
+        "type": "light",
+	"student_year": 2,
+        "max_life": 13,
+	"hair": ["unkempt", "blonde"],
+	"equipement": {
+	    "torso": "white_pirate",
+	    "legs": "teal pants female",
+	    "feet": "maroon longboot"
+	}
+    },
 }
