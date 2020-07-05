@@ -2,6 +2,7 @@
     "_include": [
 	"./dialogue/computer_club.json",
 	"./dialogue/saki.json",
-	"./dialogue/bar_dialogue.json"
+	"./dialogue/bar_dialogue.json",
+	"./dialogue/Lufa.json"
     ]
 }

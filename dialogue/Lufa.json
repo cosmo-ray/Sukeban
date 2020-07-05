@@ -1,0 +1,10 @@
+{
+    "Lufa Mig Saucer": {
+	"dialogue" : {
+	    "hej" : {
+		"text": ["you <3 <3 <3",
+			 "I was waiting for you"]
+	    }
+	}
+    }
+}
