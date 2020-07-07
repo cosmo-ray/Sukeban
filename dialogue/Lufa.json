@@ -3,7 +3,23 @@
 	"dialogue" : {
 	    "hej" : {
 		"text": ["you <3 <3 <3",
-			 "I was waiting for you"]
+			 "I was waiting for you"],
+		"answers": [
+		    {
+			"text": "But, how I don't know you"
+		    }
+		]
+	    },
+	    "try my game": {
+		"text" : ["me neither, but it doesn't matter",
+			  "I got this new game call mediaval battle",
+			  "And you're gonna play with me",
+			  "Let's have fun <3 <3 <3"],
+		"answers": [
+		    {
+			"text": "Naa, games are for kids"
+		    }
+		]
 	    }
 	}
     }
