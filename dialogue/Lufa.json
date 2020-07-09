@@ -18,6 +18,10 @@
 		"answers": [
 		    {
 			"text": "Naa, games are for kids"
+		    },
+		    {
+			"text": "Ok, why not",
+			"action": ["phq.play", "medieval_battle"]
 		    }
 		]
 	    }

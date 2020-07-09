@@ -19,3 +19,6 @@
 [submodule "modules/little-mage"]
 	path = modules/little-mage
 	url = https://github.com/cosmo-ray/little-space.git
+[submodule "modules/medieval_battle"]
+	path = modules/medieval_battle
+	url = https://github.com/cosmo-ray/medieval_battle
