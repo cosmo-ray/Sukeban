@@ -645,12 +645,8 @@ function phq_action(entity, eve)
 	    local w = ywRectW(cr)
 	    local h = ywRectH(cr)
 
-	    if w < 3 then
-	       w = 10
-	    end
-	    if h < 3 then
-	       h = 10
-	    end
+	    if w < 3 then w = 10 end
+	    if h < 3 then h = 10 end
 	    show_act[i] = ywCanvasNewRectangle(entity.upCanvas,
 					       ywRectX(cr), ywRectY(cr),
 					       w, h,

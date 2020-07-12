@@ -164,6 +164,11 @@ function backToGame(wid)
    end
    local main = Entity.wrapp(ywCntWidgetFather(wid))
 
+   -- if not bailing out
+   if yeGetStringAt(main, "<type>") ~= "phq" then
+      return backToGame2()
+   end
+
    if wid.oldTimer then
       main["turn-length"] = wid.oldTimer
    end
@@ -249,10 +254,8 @@ function StartFight(wid, eve, enemy_type, script)
 	 npc = Entity.new_array()
 	 while i < yeLen(enemy_type) do
 	    local enemy_type = yeGet(enemy_type, i)
-	    print("npc ", i , ": ", yeGetString(enemy_type))
 	    npc[i] = npcs[yeGetString(enemy_type)]
 	    npc[i] = npcDefaultInit(npc[i], enemy_type)
-	    print("npc: ", npc[i])
 	    i = i + 1
 	 end
       else
@@ -767,7 +770,6 @@ function gotoJail(wid)
    ygIncreaseInt("phq.pj.reputation.bully", 1)
    printMessage(main_widget, nil,
 		"you go to jail you don't touch anything and\nmake no joke about board game")
-   print("out")
 end
 
 function playAstShoot(wid)
@@ -796,7 +798,6 @@ function playTetris(wid)
    local wid = Entity.wrapp(wid)
    local main = nil
 
-   print("play T !!!!")
    if wid.isDialogue then
       wid = Entity.wrapp(yDialogueGetMain(wid))
    end
@@ -831,7 +832,7 @@ function play(wid, eve, game, timer, end_f_str)
    local wid = Entity.wrapp(wid)
    local main = getMainWid(wid)
 
-   print("play !!!!", eve, game, yeGetInt(timer))
+   print("play !!!!", eve, game, yeGetInt(timer),  " - ", yeLen(main.entries))
 
    ywCntPopLastEntry(main)
    local t = Entity.new_array()
@@ -845,7 +846,9 @@ function play(wid, eve, game, timer, end_f_str)
       t.quit = Entity.new_func("backToGame")
    end
    t.oldTimer = main["turn-length"]
-   main["turn-length"] = timer
+   if yIsNNil(timer) then
+      main["turn-length"] = timer
+   end
    ywPushNewWidget(main, t)
    return YEVE_ACTION
 end
