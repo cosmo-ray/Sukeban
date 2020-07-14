@@ -21,7 +21,7 @@
 		    },
 		    {
 			"text": "Ok, why not",
-			"action": ["phq.play", "medieval_battle"]
+			"action": ["phq.play", "medieval_dbattle"]
 		    }
 		]
 	    }
