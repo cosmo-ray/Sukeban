@@ -15,6 +15,7 @@ function student_ai(main, npc, name)
    local c = ygGetInt("phq.env.chapter")
    local d = ygGetInt("phq.env.day")
 
+   print("student_ai", name, c, d, t)
    if c ~= 1 then
       return
    end

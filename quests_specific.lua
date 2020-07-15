@@ -299,7 +299,19 @@ local function gen_school()
       n.type = t
       n.class = class
       n.student_year = year
+      yeCreateString("student_ai", n, "ai")
       local hair = Entity.new_array(n, "hair")
+      n.max_life = 3 + yuiRand() % 20
+      n.stats = {}
+      n.stats.charm = yuiRand() % 10
+      n.stats.strength = yuiRand() % 10
+      n.stats.smart = yuiRand() % 10
+      n.trait = {}
+      n.trait.violance = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
+      n.trait.sensitivity = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
+      n.trait.perv = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
+      -- this should be determinate depending of "stats"
+      n.attack = "unarmed0"
       hair[0] = rand_array_elem(hair_type[gender])
       hair[1] = rand_array_elem(hair_color)
       yePushBack(s.students, n, name)

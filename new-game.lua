@@ -50,6 +50,8 @@ function newGameAction(menu, eve, arg)
    phq.pj.reputation.bully = 0
    phq.pj.reputation.weak = 0
    -- I don't have polite way for this one, sorry
+   -- I as a personal note I think it's never okay to considering someone as a
+   -- "slut", but I don't want this game to be dark.
    phq.pj.reputation.slut = 0
    phq.pj.equipement = {}
    phq.pj.equipement.torso = "white_sleeveless"
