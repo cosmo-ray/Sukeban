@@ -6,6 +6,16 @@
 	"student_year": 1,
         "max_life": 10,
 	"attack" : "unarmed0",
+	"stats": {
+	    "charm": 0,
+	    "strength": 0,
+	    "smart": 1
+	},
+	"trait": {
+	    "violance": -4,
+	    "perv": 2,
+	    "sensitivity": 6
+	},
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -64,6 +74,16 @@
 	    "dst-threshold": [-100, -400],
 	    "src" : "./imgs/ashley-casual.png"
 	},
+	"stats": {
+	    "charm": 7,
+	    "strength": 1,
+	    "smart": 5
+	},
+	"trait": {
+	    "violance": 0,
+	    "perv": 1,
+	    "sensitivity": -4
+	},
 	"equipement": {
 	    "torso": "white_sleeveless",
 	    "legs": "short skirt",
@@ -82,6 +102,16 @@
 	    "src" : "./imgs/miu_neutral.png",
 	    "reduce": 20
 	},
+	"stats": {
+	    "charm": 6,
+	    "strength": 8,
+	    "smart": 1
+	},
+	"trait": {
+	    "violance": 4,
+	    "perv": -1,
+	    "sensitivity": -1
+	},
 	"equipement": {
 	    "torso": "white_sleeveless",
 	    "legs": "short skirt",
@@ -97,6 +127,16 @@
 	"image": {
 	    "dst-threshold": [-100,-400],
 	    "src" : "./imgs/Willo-Default-Default-Default.png"
+	},
+	"stats": {
+	    "charm": 2,
+	    "strength": 0,
+	    "smart": 6
+	},
+	"trait": {
+	    "violance": 3,
+	    "perv": 3,
+	    "sensitivity": 2
 	},
 	"equipement": {
 	    "torso": "white_sleeveless",
@@ -123,6 +163,16 @@
 	"student_year": 1,
         "max_life": 10,
 	"attack" : "unarmed0",
+	"stats": {
+	    "charm": 3,
+	    "strength": 2,
+	    "smart": 0
+	},
+	"trait": {
+	    "violance": -2,
+	    "perv": 1,
+	    "sensitivity": 1
+	},
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -144,6 +194,16 @@
 	    "src" : "./imgs/L2a_Angry.png",
 	    "reduce": 50
 	},
+	"stats": {
+	    "charm": 9,
+	    "strength": 12,
+	    "smart": 6
+	},
+	"trait": {
+	    "violance": 5,
+	    "perv": 0,
+	    "sensitivity": 3
+	},
 	"equipement": {
 	    "torso": "white_pirate",
 	    "legs": "teal pants female",
@@ -156,6 +216,16 @@
 	"student_year": 2,
         "max_life": 13,
 	"hair": ["unkempt", "blonde"],
+	"stats": {
+	    "charm": 4,
+	    "strength": 1,
+	    "smart": 3
+	},
+	"trait": {
+	    "violance": -5,
+	    "perv": 7,
+	    "sensitivity": 3
+	},
 	"equipement": {
 	    "torso": "white_pirate",
 	    "legs": "teal pants female",
