@@ -303,7 +303,8 @@ local function gen_school()
       local hair = Entity.new_array(n, "hair")
       n.max_life = 3 + yuiRand() % 20
       n.stats = {}
-      n.stats.charm = yuiRand() % 10
+      -- charm can be negative...
+      n.stats.charm = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.stats.strength = yuiRand() % 10
       n.stats.smart = yuiRand() % 10
       n.trait = {}

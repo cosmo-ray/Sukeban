@@ -20,6 +20,16 @@
         "max_life": 10,
 	"attack" : "unarmed0",
 	"hair": ["princess", "white-blonde2"],
+	"stats": {
+	    "charm": 9,
+	    "strength": 5,
+	    "smart": 3
+	},
+	"trait": {
+	    "violance": 4,
+	    "perv": 8,
+	    "sensitivity": -2
+	},
 	"image": {
 	    "dst-threshold": [-100,-300],
 	    "src" : "./imgs/charle.png"
