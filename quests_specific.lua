@@ -311,6 +311,10 @@ local function gen_school()
       n.trait.violance = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.trait.sensitivity = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.trait.perv = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
+      -- maybe a male should have less chances to be attrated by male
+      -- and same for female ???
+      n.trait.male_atraction = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
+      n.trait.female_atraction = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       -- this should be determinate depending of "stats"
       n.attack = "unarmed0"
       hair[0] = rand_array_elem(hair_type[gender])
