@@ -4,7 +4,8 @@
 	"./dialogue/saki.json",
 	"./dialogue/willo.json",
 	"./dialogue/baffy.json",
-	"./dialogue/bob.json"
+	"./dialogue/bob.json",
+	"./dialogue/Leika_Ryusaki.json"
     ],
     "Canteen_Girl": {
 	"dialogue" : [

@@ -232,4 +232,27 @@
 	    "feet": "maroon longboot"
 	}
     },
+    "Leika Lyusaki": {
+	"sex": "female",
+        "type": "light",
+	"student_year": 2,
+        "max_life": 23,
+	"hair": ["unkempt", "blonde"],
+	"stats": {
+	    "charm": 6,
+	    "strength": 3,
+	    "smart": 3
+	},
+	"trait": {
+	    "violance": 0,
+	    "perv": -1,
+	    "sensitivity": 1
+	},
+	"equipement": {
+	    "torso": "white_pirate",
+	    "legs": "teal pants female",
+	    "feet": "maroon longboot"
+	}
+
+    }
 }
