@@ -131,6 +131,13 @@ local function reposScreenInfo(ent, x0, y0)
    ywCanvasObjSetPos(ent.life_txt, x0 + 460, y0 + 10)
    ywCanvasObjSetPos(ent.life_nb, x0 + 510, y0 + 10)
    dialogue_box.set_pos(ent.box, 40 + x0, 40 + y0)
+   for i = 0, yeLen(ent.rain_a) - 1 do
+      local r = ent.rain_a[i]
+      local x = yuiRand() % window_width
+      local y = yuiRand() % window_height
+
+      ywCanvasObjSetPos(r, x + x0, y + y0)
+   end
 end
 
 local function reposeCam(main)
@@ -1104,6 +1111,17 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       ent.night_r = upCanvas:new_rect(0, 0, "rgba: 0 0 26 127",
 				      Pos.new(window_width,
 					      window_height).ent).ent
+   end
+   local is_raining = phq.env.is_raining
+   if scene.exterior and  is_raining and is_raining > 0 then
+      local i = 0
+      ent.rain_a = {}
+
+      while i < 25 do
+	 ent.rain_a[i] = upCanvas:new_rect(0, 0, "rgba: 200 200 200 255",
+					   Pos.new(1, 20).ent).ent
+	 i = i + 1
+      end
    end
 
    ent.life_txt = ywCanvasNewTextExt(upCanvas.ent, 360, 10,

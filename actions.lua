@@ -520,6 +520,12 @@ function advance_time(main, next_loc, force_skip_time)
    else
       phq.env.time = "night"
    end
+   -- I must handle season now
+   local is_raining = 0
+   if (yuiRand() % 3) == 0 then
+      is_raining = 1
+   end
+   phq.env.is_raining = is_raining
    phq.env.time_point = 1
    main.sleep = 1
    main.require_ret = 1
