@@ -333,14 +333,14 @@ function load_game(save_dir)
 end
 
 function continue(entity)
-   return load_game("./saved/cur")
+   return load_game(ygUserDir() .. "saved/cur")
 end
 
 function mnLoadSlot(mn)
    local slot = Entity.wrapp(ywMenuGetCurrentEntry(mn)).s:to_string()
 
-   print("LOAD slot: ", slot)
-   return load_game(slot)
+   print("LOAD slot: ", ygUserDir() .. slot)
+   return load_game(ygUserDir() .. slot)
 end
 
 function load_slot(entity)
@@ -353,7 +353,7 @@ function load_slot(entity)
    m.ent["text-align"] = "center"
    m:push("back", "callNext")
    for k,slot in pairs(slots) do
-      if yuiFileExist("saved/slot_" .. slot) == 0 then
+      if yuiFileExist(ygUserDir() .. "/saved/slot_" .. slot) == 0 then
 	 local e = m:push("slot " .. slot, Entity.new_func("mnLoadSlot"))
 	 e.s = "saved/slot_" .. slot
       end
@@ -375,10 +375,10 @@ function saveCurDialogue(main)
 end
 
 function saveGame(main, saveDir)
-   local destDir = "./saved/" .. saveDir
+   local destDir = ygUserDir() .. "./saved/" .. saveDir
    local misc = Entity.new_array()
 
-   yuiMkdir("./saved")
+   yuiMkdir(ygUserDir() .. "./saved")
    yuiMkdir(destDir)
    misc.cur_scene_str = main.cur_scene_str
    saveCurDialogue(main)
@@ -1014,7 +1014,6 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 else
 	    dressUp(npc)
 	    npc = lpcs.createCaracterHandler(npc, c, e_npcs, npc_name)
-	    print("push '", npc_name, "'", yeLen(e_npcs))
 	    --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
 	    local pos = Pos.new_copy(obj.rect)
 	    pos:sub(20, 50)
@@ -1196,13 +1195,9 @@ function create_phq(entity)
    local ret = container:new_wid()
    ent.destroy = Entity.new_func("destroy_phq")
 
-   print("LOAD SONGS --------------------")
    ent.soundcallgirl = ySoundMusicLoad("./callgirl.mp3")
-   print("LOAD SONGS #######-------------")
    ent.soundhouse = ySoundMusicLoad("./house_music.mp3")
-   print("LOAD SONGS #############-------")
    ent.soundtatata = ySoundMusicLoad("./rekuiemu.mp3")
-   print("LOAD SONGS ####################")
 
    --ySoundPlayLoop(ent.soundtatata)
 
