@@ -579,7 +579,6 @@ function phq_action(entity, eve)
       i = i + 1
    end
 
-   smallTalkRemover(entity)
    if entity.no_chktime_t > 0 then
       entity.no_chktime_t = entity.no_chktime_t - ywidGetTurnTimer()
    elseif entity.no_chktime_t < 0 then
@@ -600,6 +599,17 @@ function phq_action(entity, eve)
 	 return YEVE_ACTION
       end
    end
+
+   smallTalkRemover(entity)
+   -- At firt it's here to test pushSmallTalk
+   -- But why not keep it ?
+   -- We could even use that latter to add easter egg
+   if yevIsKeyDown(eve, Y_H_KEY) then
+      local pjPos = Pos.wrapp(ylpcsHandePos(entity.pj))
+
+      pushSmallTalk("Hello", pjPos:x(), pjPos:y())
+   end
+
    if yevIsKeyDown(eve, Y_ESC_KEY) then
       return openGlobMenu(entity, GM_MISC_IDX)
    end
@@ -1120,6 +1130,11 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 ent.rain_a[i] = upCanvas:new_rect(0, 0, "rgba: 200 200 200 255",
 					   Pos.new(1, 20).ent).ent
 	 i = i + 1
+      end
+      if (is_raining > 1) then
+	 local pjPos = Pos.wrapp(ylpcsHandePos(main_widget.pj))
+
+	 pushSmallTalk("Ohh it's raining again", pjPos:x(), pjPos:y())
       end
    end
 

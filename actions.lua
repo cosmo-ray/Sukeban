@@ -525,7 +525,13 @@ function advance_time(main, next_loc, force_skip_time)
    if (yuiRand() % 3) == 0 then
       is_raining = 1
    end
-   phq.env.is_raining = is_raining
+   if is_raining then
+      if phq.env.is_raining and is_raining > 0 then
+	 phq.env.is_raining = phq.env.is_raining + 1
+      else
+	 phq.env.is_raining = is_raining
+      end
+   end
    phq.env.time_point = 1
    main.sleep = 1
    main.require_ret = 1
@@ -563,6 +569,23 @@ function printMessage(main, obj, msg)
    else
       main.box_t = TIME_RESET
    end
+end
+
+function pushSmallTalk(txt, x, y)
+   if type(txt) == "string" then
+      txt = Entity.new_string(txt)
+   end
+   local main = main_widget
+   local uc = main.upCanvas
+   local small_texts = yeTryCreateArray(uc, "small-talks")
+   local txt_box = Entity.new_array(small_texts)
+   local nb_nl = yeCountCharacters(txt, "\n", -1) + 1
+
+   print("in:", main_widget.pj.x, main_widget.pj.y)
+   print("push:", txt, x - 40, y - (40 * nb_nl))
+   yeCreateInt(0, txt_box)
+   dialogue_box.new_text(uc, x - 40, y - (40 * nb_nl),
+			 yeGetString(txt), txt_box)
 end
 
 function smallTalk(main, c)
@@ -885,6 +908,9 @@ end
 function doSleep(ent, upCanvas)
    ywCanvasRemoveObj(upCanvas.ent, ent.sleep_r)
 
+   local up = main_widget.upCanvas
+   print("sleep: ", yeGet(up, "small-talks"),
+	 yeLen(yeGet(up, "small-talks")))
    if sleep_time > 200 then
       ent.sleep = nil
       sleep_time = 0
