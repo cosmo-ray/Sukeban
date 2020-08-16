@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sukeban
+GenericName=JRPG Game
+Comment=A Random JRPG
+Keywords=singleplayer;JRPG;school;
+Exec=sh -c "sukeban >/dev/null 2>&1"
+Categories=Game;JRPGGame;
