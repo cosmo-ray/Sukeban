@@ -3,7 +3,7 @@ Small RPG filled with pints and tavern brawls
 # Download
 Sometime I make a new release on itch: https://uso.itch.io/sukeban
 
-Otherwise for glorious Arch user, ``` yay -Sy sukeban-git should work. ```
+Otherwise for glorious Arch user, ``` yay -Sy sukeban-git ``` should work.
 
 # Goal
 Game that might one day have 3 chapters
