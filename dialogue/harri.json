@@ -11,11 +11,11 @@
 		"answers": [
 		    {
 			"text": "Just take picon and beer",
-			"action": "phq.backToGame"
+			"action": [ "phq.PjLeave", 0 ]
 		    },
 		    {
 			"text": "Nothing you look too drunk alerady, just goto sleep",
-			"action": "phq.backToGame"
+			"action": [ "phq.PjLeave", 0 ]
 		    },
 		    {
 			"text": "What, I don't know bring a banana",
@@ -27,7 +27,7 @@
 		"text": "yeah, sure...",
 		"actions": [
 		    [ "setInt", "phq.env.ha_bring_banana", 1 ],
-		    "phq.backToGame"
+		    [ "phq.PjLeave", 0 ]
 		]
 	    }
 	}
