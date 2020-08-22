@@ -75,5 +75,13 @@
 	"descriptions": [
 	    "It seems you might have find a way to stop thoses annoying rats\nyou hear at night"
 	]
+    },
+    "Aligator 427": {
+	"stalk": "phq.quests.vry_perso_quest",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "Explore The Lab",
+	    "Kill the aligator 427"
+	]
     }
 }

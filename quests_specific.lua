@@ -132,6 +132,10 @@ function morning_class(mn)
    print("I'm at school, yayyyyyy")
    local f_mn = ywCntWidgetFather(mn)
 
+   -- if day 0, vn scene school presentation
+   -- them problems with "akira ?"
+   -- Fight you can't win !
+   -- Akira show his super skill
    backToGame(f_mn)
    main_widget.cant_skip_time = 0
    print(main_widget.cant_skip_time)
