@@ -3,7 +3,7 @@
     {
      "export":
         {
-         "target":"tileset\/tileset\/tileset"
+         "target":"..\/Pre-Hangover-Quest\/tileset\/tileset\/tileset\/tileset"
         }
     },
  "height":18,
@@ -280,6 +280,16 @@
                          "name":"Rotation",
                          "type":"string",
                          "value":"right"
+                        }, 
+                        {
+                         "name":"WalkTalk",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"WalkTalkCnd",
+                         "type":"string",
+                         "value":"phq.env.ha_need_party"
                         }],
                  "rotation":0,
                  "type":"",

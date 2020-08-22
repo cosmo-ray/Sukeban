@@ -48,6 +48,10 @@ local leftKeys = Event.CreateGrp(Y_LEFT_KEY, Y_A_KEY)
 local rightKeys = Event.CreateGrp(Y_RIGHT_KEY, Y_D_KEY)
 local actionKeys = Event.CreateGrp(Y_SPACE_KEY, Y_ENTER_KEY)
 
+local AGRESIVE_TALKER = 2
+local AGRESIVE_ATTACKER = 1
+local NOT_AGRESIVE = 0
+
 function generic_handlerRefresh(npc)
    if yeGetString(npc.char.type) == "sprite" then
       sprite_man.handlerRefresh(npc)
@@ -510,8 +514,20 @@ function CheckColision(main, canvasWid, pj)
 
       if yeGetIntAt(obj, "Collision") == 1 and
       ywCanvasCheckColisionsRectObj(colRect, obj) then
-	 if yeGetIntAt(obj, "agresive") > 0 then
-	    return CheckColisionExit(col, FIGHT_COLISION, obj)
+	 local agresivity = yeGetIntAt(obj, "agresive")
+
+	 if agresivity > 0 then
+	    if agresivity == AGRESIVE_ATTACKER then
+	       return CheckColisionExit(col, FIGHT_COLISION, obj)
+	    elseif agresivity == AGRESIVE_TALKER then
+	       local dialogue = obj.dialogue
+
+	       startDialogue(main_widget, obj, dialogue)
+	       obj.agresive = NOT_AGRESIVE
+	       yeRemoveChild(main_widget.enemies,
+			     npc_handler_from_canva(obj))
+	       return YEVE_ACTION
+	    end
 	 end
 	 return CheckColisionExit(col, NORMAL_COLISION)
       end
@@ -1041,12 +1057,17 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc = Entity.wrapp(npc)
 	 generic_handlerRefresh(npc)
 	 local ai = yeGetStringAt(obj, "ai")
-	 if yeGetIntAt(obj, "Agresive") == 1 then
+	 local walkTalker = yIsNNil(yeGet(obj, "WalkTalk"))
+	 if yeGetIntAt(obj, "Agresive") == 1 or walkTalker then
 	    if yIsNil(ai) then
 	       yePushBack(ent.enemies, npc)
 	       yePushBack(npc, pos.ent, "orig_pos")
 	    end
-	    npc.canvas.agresive = 1
+	    if walkTalker then
+	       npc.canvas.agresive = AGRESIVE_TALKER
+	    else
+	       npc.canvas.agresive = AGRESIVE_ATTACKER
+	    end
 	 end
 	 if npc.char.is_generic then
 	    npc.generic_id = generic_npc_id

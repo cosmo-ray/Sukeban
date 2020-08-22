@@ -192,7 +192,13 @@ function NpcTurn(wid)
    i = 0
    while i < yeLen(wid.enemies) do
       local enemy = wid.enemies[i]
-      local mv_pos = searching(wid, enemy)
+      local mv_pos = nil
+
+      if yIsNil(enemy) then
+	 goto loop_next;
+      end
+
+      mv_pos = searching(wid, enemy)
 
       if (mv_pos and yuiRand() % 2) then
 	 local ec = enemy.canvas
@@ -222,6 +228,7 @@ function NpcTurn(wid)
 	 ec = enemy.canvas
 	 restoreNpcCanvasMatadata(ec, tmp)
       end
+      :: loop_next ::
       i  = i + 1
    end
 end

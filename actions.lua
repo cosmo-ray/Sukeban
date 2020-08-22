@@ -619,6 +619,10 @@ function smallTalkRemover(main)
    end
 end
 
+function npc_handler_from_canva(c)
+   return main_widget.npcs[c.current:to_int()]
+end
+
 function startDialogue(main, obj, dialogue)
    print("start dialogue ", dialogue)
    dialogue = Entity.wrapp(dialogue)
@@ -636,7 +640,7 @@ function startDialogue(main, obj, dialogue)
       local npc_nb = -1
 
       if obj.current then
-	 npc = entity.npcs[obj.current:to_int()].char
+	 npc = npc_handler_from_canva(obj).char
 	 npc_nb = obj.current
       else
 	 npc = obj
