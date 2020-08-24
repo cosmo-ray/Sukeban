@@ -913,8 +913,7 @@ function doSleep(ent, upCanvas)
    ywCanvasRemoveObj(upCanvas.ent, ent.sleep_r)
 
    local up = main_widget.upCanvas
-   print("sleep: ", yeGet(up, "small-talks"),
-	 yeLen(yeGet(up, "small-talks")))
+   --print("sleep: ", yeGet(up, "small-talks"), yeLen(yeGet(up, "small-talks")))
    if sleep_time > 200 then
       ent.sleep = nil
       sleep_time = 0

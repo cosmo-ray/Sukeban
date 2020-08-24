@@ -107,5 +107,12 @@ Like a bad guy call Killer The Butcher, who resside on the boat call Zan on deck
 		"leave"
 	    ]
 	}
+    }, "school_presentation": {
+	"0": {
+	    "text": "School presentation...",
+	    "answers": [
+		"Listen then leave"
+	    ]
+	}
     }
 }

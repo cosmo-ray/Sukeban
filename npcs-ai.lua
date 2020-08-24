@@ -29,8 +29,8 @@ function student_ai(main, npc, name)
       print("fin de semaine !")
    end
 
-   print("ai of ", name, ":", Entity.wrapp(npc))
-   print("time: ", t, " chapter: ", c)
+   --print("ai of ", name, ":", Entity.wrapp(npc))
+   --print("time: ", t, " chapter: ", c)
 end
 
 function bob_ai(main, npc, name)

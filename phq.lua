@@ -289,7 +289,6 @@ function init_phq(mod)
    mod.openGlobMenu = Entity.new_func("openGlobMenu")
    mod.setCurStation = Entity.new_func("setCurStation")
    mod.join_team = Entity.new_func("join_team")
-
 end
 
 function load_game(save_dir)
@@ -593,6 +592,15 @@ function phq_action(entity, eve)
 	 end
       end
       i = i + 1
+   end
+
+   -- I might make school_events a more generic array
+   local action_eve = yeFirst(school_events)
+   if yIsNNil(action_eve) then
+      local ret = ywidAction(action_eve, wid, nil)
+      print("do: ", action_eve)
+      yeUnsetFirst(school_events)
+      return ret
    end
 
    if entity.no_chktime_t > 0 then

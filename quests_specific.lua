@@ -6,6 +6,7 @@ local window_width = 800
 local window_height = 600
 
 is_end_of_chapter = false
+school_events = Entity.new_array()
 
 function inter_bar_in(main)
    local c = Canvas.wrapp(main.mainScreen)
@@ -128,18 +129,32 @@ function chapter_1(main)
    yePushBack(main.gmenu_hook, s)
 end
 
-function morning_class(mn)
-   print("I'm at school, yayyyyyy")
-   local f_mn = ywCntWidgetFather(mn)
+function end_morning_class()
+   print("WESH !!!!!!")
+   advance_time(main_widget, "school0", true)
+   phq.env.school_day = phq.env.school_day + 1
+end
 
+function morning_class(mn)
+   print("I'm at school, yayyyyyy", phq.env.school_day)
+   local f_mn = ywCntWidgetFather(mn)
+   local school_day = phq.env.school_day:to_int()
+
+   yeClearArray(school_events)
+
+   if school_day == 0 then
+      local a = Entity.new_array(school_events)
+
+      Entity.new_string("phq.vnScene", a)
+      Entity.new_string("school_presentation", a)
+   end
+   Entity.new_func("end_morning_class", school_events)
    -- if day 0, vn scene school presentation
    -- them problems with "akira ?"
    -- Fight you can't win !
    -- Akira show his super skill
    backToGame(f_mn)
    main_widget.cant_skip_time = 0
-   print(main_widget.cant_skip_time)
-   advance_time(main_widget, "school0", true)
 end
 
 function chapter_1_menu(main, mn)
@@ -162,11 +177,11 @@ local function gen_school()
       {"Georgette", "Michelle", "Germaine", "Lynda", "Clemence", "Camille",
        "Geraldine", "Fraise", "Anna", "Hanna", "Mya", "Francoise",
        "Fleur", "Alice", "Petra", "Geunievre", "Oscar", "Helena", "Louise",
-       "Kim", "Agustina", "Codel", "Lisette", "Athena"},
+       "Kim", "Agustina", "Codel", "Lisette", "Athena", "Georette", "Isis"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed",
-       "Mohamed", "Michelle", "Arthur", "Romain", "Benjamin"}
+       "Mohamed", "Michelle", "Arthur", "Romain", "Benjamin", "Akira", "Mars"}
    }
 
    local last_name = {
@@ -177,7 +192,7 @@ local function gen_school()
       "Geraldine", "Fraise", "Cat", "Sed", "Weechat", "Archer",
       "Linus", "Richard", "Stallman", "Armstrong", "Char", "Aznabulu",
       "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay",
-      "Kanzaki", "Le Francais", "Coucou"
+      "Kanzaki", "Le Francais", "Coucou", "Mars"
    }
 
    local types = {
@@ -266,6 +281,7 @@ local function gen_school()
    end
    phq.env.school = {}
    local s = phq.env.school
+   phq.env.school_day = 0
    s.is_gen = 1
    s.students = {}
    local stds = s.students
