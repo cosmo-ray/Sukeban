@@ -1017,7 +1017,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       local npc = npcs[npc_name]
 
       if obj.ai_point then
-	 ent.ai_point[npc_name] = obj
+	 ent.ai_point[npc_name] = Entity.new_copy(obj)
 
 	 local ap = phq.env.ai_point
 	 if ap and ap[sceneTxt] then
