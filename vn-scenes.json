@@ -1,10 +1,13 @@
 {
     "la Jetee" : [
- 	"you're in a shadowy narrow street of the port
+	{
+ 	    "text": "you're in a shadowy narrow street of the port
 you can sees docked ships charging and discharging they container
 tier sailor walking searching for a place to spend time
 while your here spending your time watching them, an image that remember
 you an  era, where with your father you was watching boat coming in and out",
+	    "speaker_background": "imgs/hamburg.jpg"
+	},
 	"advancing on your way walking along dark alley, and street
 you saw a light in the distance,
 not a plain light as you can see from a building
