@@ -131,6 +131,16 @@ function cheat_show_npc(mn, current)
    generic_handlerRefresh(handler)
 
    yShowDialogueImage(canvas, npc)
+   if npc.stats then
+      ywCanvasNewTextExt(canvas, 200, 20,
+			 Entity.new_string(npc.stats:to_string()),
+			 "rgba: 0 0 0 255")
+   end
+   if npc.trait then
+      ywCanvasNewTextExt(canvas, 200, 120,
+			 Entity.new_string(npc.trait:to_string()),
+			 "rgba: 0 0 0 255")
+   end
    return YEVE_ACTION;
 end
 
