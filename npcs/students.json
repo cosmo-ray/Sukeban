@@ -157,6 +157,29 @@
             "hair/male/plain/raven.png"
         ]
     },
+    "Akira Gentelman": {
+        "sex": "male",
+        "type": "light",
+	"student_year": 1,
+        "max_life": 10,
+	"attack" : "unarmed0",
+	"stats": {
+	    "charm": 4,
+	    "strength": 2,
+	    "smart": 5
+	},
+	"trait": {
+	    "violance": -5,
+	    "perv": 0,
+	    "sensitivity": 7
+	},
+        "clothes": [
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/bangs/black.png"
+        ]
+    },
     "Harri": {
         "sex": "male",
         "type": "light",
