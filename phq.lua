@@ -1126,18 +1126,20 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       x = ywRectX(rect)
       y = ywRectY(rect)
       if side == "up" or side == "up_left" or
-	 side == "up_right" then
+      side == "up_right" then
 	 y = y - 75
       elseif side == "down" or side == "down_right"
       or side == "down_left" then
 	 y = y + ywRectH(rect) + 15
       end
       if side == "left" or side == "up_left" or
-	    side == "down_left" then
+      side == "down_left" then
 	 x = x - 45
       elseif side == "right" or side == "down_right"
-	 or side == "up_right" then
+      or side == "up_right" then
 	 x = x + ywRectW(rect) + 45
+      elseif side == "near_down" then
+	 y = y + ywRectH(rect) - 5
       end
    end
 
