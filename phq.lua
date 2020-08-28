@@ -144,7 +144,7 @@ local function reposScreenInfo(ent, x0, y0)
    end
 end
 
-local function reposeCam(main)
+function reposeCam(main)
    local canvas = main.mainScreen
    local upCanvas = main.upCanvas
    local pjPos = Pos.wrapp(ylpcsHandePos(main.pj))
@@ -594,15 +594,6 @@ function phq_action(entity, eve)
       i = i + 1
    end
 
-   -- I might make school_events a more generic array
-   local action_eve = yeFirst(school_events)
-   if yIsNNil(action_eve) then
-      local ret = ywidAction(action_eve, wid, nil)
-      print("do: ", action_eve)
-      yeUnsetFirst(school_events)
-      return ret
-   end
-
    if entity.no_chktime_t > 0 then
       entity.no_chktime_t = entity.no_chktime_t - ywidGetTurnTimer()
    elseif entity.no_chktime_t < 0 then
@@ -625,6 +616,19 @@ function phq_action(entity, eve)
    end
 
    smallTalkRemover(entity)
+
+   -- I might make school_events a more generic array
+   local action_eve = yeFirst(school_events)
+   if yIsNNil(action_eve) then
+      local ret = ywidAction(action_eve, wid, nil)
+      if ret == BLOCK_EVE_NO_UNSET then
+	 return 0
+      end
+      print("do: ", action_eve)
+      yeUnsetFirst(school_events)
+      return ret
+   end
+
    -- At firt it's here to test pushSmallTalk
    -- But why not keep it ?
    -- We could even use that latter to add easter egg
@@ -849,7 +853,7 @@ function phq_action(entity, eve)
 
    local mvPos = Pos.new(pix_mv * entity.pj.move.left_right,
 			 pix_mv * entity.pj.move.up_down)
-    ylpcsHandlerMove(entity.pj, mvPos.ent)
+   ylpcsHandlerMove(entity.pj, mvPos.ent)
     local col_rel, col_obj = CheckColision(entity, entity.mainScreen, entity.pj)
     --local col_rel = NO_COLISION
 

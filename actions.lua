@@ -492,7 +492,7 @@ end
 cant_skip_time_reason = nil
 
 -- in fact, this function do 2 things: adancing time and start sleep animation
-function advance_time(main, next_loc, force_skip_time)
+function advance_time(main, next_loc, force_skip_time, next_pos)
    if main.sleep_script then
       scripts[main.sleep_script:to_string()](main)
    end
@@ -506,6 +506,7 @@ function advance_time(main, next_loc, force_skip_time)
 
    if yeType(next_loc) == YSTRING or type(next_loc) == "string" then
       main.sleep_loc = next_loc
+      main.sleep_loc_pos = next_pos
    end
    npcAdvenceTime()
    if phq.env.time:to_string() == "night" then
@@ -930,9 +931,14 @@ function doSleep(ent, upCanvas)
    end
    if sleep_time == 100 then
       if yIsNNil(sl) then
-	 print("CHANGE SCENE !!!!", sl)
+	 local slp = main_widget.sleep_loc_pos
 	 changeScene(main_widget, nil, sl, Entity.new_int(0))
+	 if yIsNNil(slp) then
+	    ylpcsHandlerSetPos(main_widget.pj, slp)
+	    reposeCam(main_widget)
+	 end
 	 main_widget.sleep_loc = nil
+	 main_widget.sleep_loc_pos = nil
       else
 	 pj_pos = ylpcsHandePos(main_widget.pj)
 	 yeIncrRef(pj_pos)

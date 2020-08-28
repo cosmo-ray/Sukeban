@@ -5,6 +5,8 @@ local drunk_bar1 = nil
 local window_width = 800
 local window_height = 600
 
+BLOCK_EVE_NO_UNSET = 10
+
 is_end_of_chapter = false
 school_events = Entity.new_array()
 
@@ -129,10 +131,27 @@ function chapter_1(main)
    yePushBack(main.gmenu_hook, s)
 end
 
-function end_morning_class()
+local function end_morning_class()
    print("WESH !!!!!!")
    advance_time(main_widget, "school0", true)
    phq.env.school_day = phq.env.school_day + 1
+end
+
+local game_scene_state = 0
+
+local function game_scene(wid, eve, scene)
+
+   if game_scene_state == 0 then
+      advance_time(main_widget, "street3", true, Pos.new(1000, 750).ent)
+      game_scene_state = game_scene_state + 1
+      return BLOCK_EVE_NO_UNSET
+   elseif game_scene_state == 1 then
+      game_scene_state = game_scene_state + 1
+      return BLOCK_EVE_NO_UNSET
+   end
+   game_scene_state = 0
+   yuiUsleep(2000000)
+   return 0
 end
 
 function morning_class(mn)
@@ -147,8 +166,13 @@ function morning_class(mn)
 
       Entity.new_string("phq.vnScene", a)
       Entity.new_string("school_presentation", a)
+   elseif school_day == 2 then
+      local a = Entity.new_array(school_events)
+
+      Entity.new_func(game_scene, a)
+      Entity.new_string("akira_fight", a)
    end
-   Entity.new_func("end_morning_class", school_events)
+   Entity.new_func(end_morning_class, school_events)
    -- if day 0, vn scene school presentation
    -- them problems with "akira ?"
    -- Fight you can't win !
