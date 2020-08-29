@@ -1,2 +1,60 @@
 {
+    "baffy_talk": [
+	{
+	    "action": "change-scene",
+	    "scene": "school0",
+	    "force-pos": [600, 320]
+	},
+	{
+	    "action": "place-npcs",
+	    "npcs": [[650, 420, "Thrug", "down"],
+		     [700, 420, "Thrug", "down"],
+		     [670, 460, "Baffy", "up"]]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "So you guys want to joint the Students Protection Club\ndespite not been from our school right ?",
+	    "timer": 3000,
+	    "force-pos": [650, 460]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Sure bade",
+	    "force-pos": [700, 400]
+	},
+	{
+	    "action": "small-talk", "txt": "Yeap",
+	    "timer": 500, "force-pos": [650, 420],
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "img-time": 300,
+	    "force-pos": [650, 400]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Don't babe me, dumbass!",
+	    "timer": 700,
+	    "force-pos": [650, 460]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Anyway\nI have a plan about this guy call Akira...",
+	    "timer": 2000,
+	    "force-pos": [650, 460]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "!!!!!!!!!",
+	    "timer": 500,
+	    "force-pos": [650, 460]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "It's too crowded here\nlet's talk about it somewhere else",
+	    "timer": 2000,
+	    "force-pos": [650, 460]
+	},
+    ]
 }

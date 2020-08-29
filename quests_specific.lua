@@ -174,6 +174,7 @@ local function game_scene(wid, eve, scene)
 
    local cs = scene[game_scene_state]
    local csa = cs.action:to_string()
+   local timer = yeGetIntAt(cs, "timer")
 
    if csa == "change-scene" then
       local pos = cs["force-pos"]
@@ -181,7 +182,7 @@ local function game_scene(wid, eve, scene)
 
       advance_time(main_widget, s, true, pos)
    elseif csa == "timer" then
-      return game_scene_do_timer(yeGetIntAt(cs, "timer"))
+      return game_scene_do_timer(timer)
    elseif csa == "move-cam" then
       reposeCam(main_widget, yeGetIntAt(cs.mov, 0), yeGetIntAt(cs.mov, 1))
    elseif csa == "place-npcs" then
@@ -198,11 +199,21 @@ local function game_scene(wid, eve, scene)
    elseif csa == "small-talk" then
       local txt = yeGetString(cs.txt)
       local pos = cs["force-pos"]
+      local start = 0
 
-      pushSmallTalk(txt, yeGetIntAt(pos, 0), yeGetIntAt(pos, 1))
+      if timer ~= 0 then
+	 start = -timer + 500
+      end
+      pushSmallTalk(txt, yeGetIntAt(pos, 0), yeGetIntAt(pos, 1), start)
+   elseif csa == "tmp-image" then
+      local pos = cs["force-pos"]
+      local path = yeGetString(cs.path)
+      local img = ywCanvasNewImgByPath(main_widget.upCanvas, ywPosX(pos),
+					    ywPosY(pos), path)
+      pushTmpCanvasObj(img)
    end
 
-   if yIsNNil(cs.timer) then
+   if timer ~= 0 then
       cs.action = "timer"
       return BLOCK_EVE_NO_UNSET
    end
@@ -223,7 +234,14 @@ function morning_class(mn)
 
       Entity.new_string("phq.vnScene", a)
       Entity.new_string("school_presentation", a)
-   elseif school_day == 2 then
+   end
+   if school_day == 2 then
+      local a = Entity.new_array(school_events)
+
+      Entity.new_func(game_scene, a)
+      Entity.new_string("baffy_talk", a)
+   end
+   if school_day == 2 then
       local a = Entity.new_array(school_events)
 
       Entity.new_func(game_scene, a)

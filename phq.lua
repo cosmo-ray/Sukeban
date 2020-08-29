@@ -632,7 +632,7 @@ function phq_action(entity, eve)
       end
    end
 
-   smallTalkRemover(entity)
+   tmpObjsRemover(entity)
 
    -- I might make school_events a more generic array
    local action_eve = yeFirst(school_events)

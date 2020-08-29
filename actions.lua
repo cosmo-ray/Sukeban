@@ -572,19 +572,34 @@ function printMessage(main, obj, msg)
    end
 end
 
-function pushSmallTalk(txt, x, y)
+local TMP_OBJ_SMALL_TALK = 0
+local TMP_OBJ_CANVAS_OBJ = 1
+
+function pushTmpCanvasObj(img)
+   local tmp_objs = yeTryCreateArray(main_widget.upCanvas, "tmp-objs")
+   local box = Entity.new_array(tmp_objs)
+
+   yeCreateInt(0, box)
+   yeCreateInt(TMP_OBJ_CANVAS_OBJ, box)
+   yePushBack(box, img)
+end
+
+function pushSmallTalk(txt, x, y, start_time)
    if type(txt) == "string" then
       txt = Entity.new_string(txt)
    end
    local main = main_widget
    local uc = main.upCanvas
-   local small_texts = yeTryCreateArray(uc, "small-talks")
+   local small_texts = yeTryCreateArray(uc, "tmp-objs")
    local txt_box = Entity.new_array(small_texts)
    local nb_nl = yeCountCharacters(txt, "\n", -1) + 1
 
-   print("in:", main_widget.pj.x, main_widget.pj.y)
-   print("push:", txt, x - 40, y - (40 * nb_nl))
-   yeCreateInt(0, txt_box)
+   if yIsNNil(start_time) then
+      yeCreateInt(start_time, txt_box)
+   else
+      yeCreateInt(0, txt_box)
+   end
+   yeCreateInt(TMP_OBJ_SMALL_TALK, txt_box)
    dialogue_box.new_text(uc, x - 40, y - (40 * nb_nl),
 			 yeGetString(txt), txt_box)
 end
@@ -593,28 +608,37 @@ function smallTalk(main, c)
    --local n = npcs[yeGetInt(c.current)]
    local p = ywCanvasObjPos(c)
    local uc = main.upCanvas
-   local small_texts = yeTryCreateArray(uc, "small-talks")
+   local small_texts = yeTryCreateArray(uc, "tmp-objs")
    local txt_box = Entity.new_array(small_texts)
    local txt = c.small_talk
    local nb_nl = yeCountCharacters(txt, "\n", -1) + 1
 
    yeCreateInt(0, txt_box)
+   yeCreateInt(TMP_OBJ_SMALL_TALK, txt_box)
    dialogue_box.new_text(uc, ywPosX(p) - 40, ywPosY(p) - (40 * nb_nl),
 			 yeGetString(txt), txt_box)
 end
 
-function smallTalkRemover(main)
+function tmpObjsRemover(main)
    local i = 0
    local uc = main.upCanvas
-   local small_texts = yeGet(uc, "small-talks")
+   local small_texts = yeGet(uc, "tmp-objs")
+   local time = ywidTurnTimer() / 1000
 
    while (i < yeLen(small_texts)) do
-      sti = yeGet(small_texts, i)
-      if yeGetIntAt(sti, 0) > 20 then
-	 dialogue_box.rm(uc, yeGet(sti, 1))
+      local sti = yeGet(small_texts, i)
+      if yeGetIntAt(sti, 0) > 500 then
+	 if yeGetIntAt(sti, 1) == TMP_OBJ_SMALL_TALK then
+	    dialogue_box.rm(uc, yeGet(sti, 2))
+	 elseif yeGetIntAt(sti, 1) == TMP_OBJ_CANVAS_OBJ then
+	    print("\nTRY REMOVE IMG:", yeGet(sti, 2))
+	    ywCanvasRemoveObj(uc, yeGet(sti, 2))
+	 else
+	    print("can't remove obj of type: ", yeGetIntAt(sti, 1))
+	 end
 	 yeRemoveChild(small_texts, i)
       else
-	 yeIncrAt(sti, 0)
+	 yeSetAt(sti, 0, yeGetIntAt(sti, 0) + time)
       end
       i = i + 1
    end
@@ -914,7 +938,6 @@ function doSleep(ent, upCanvas)
    ywCanvasRemoveObj(upCanvas.ent, ent.sleep_r)
 
    local up = main_widget.upCanvas
-   --print("sleep: ", yeGet(up, "small-talks"), yeLen(yeGet(up, "small-talks")))
    if sleep_time > 200 then
       ent.sleep = nil
       sleep_time = 0

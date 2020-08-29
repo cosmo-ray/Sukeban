@@ -62,12 +62,12 @@
 	{
 	    "action": "small-talk",
 	    "txt": "Then you'll pay in blood, how much is it ?",
-	    "timer": 700, "force-pos": [1010, 970]
+	    "timer": 1000, "force-pos": [1010, 970]
 	},
 	{
 	    "action": "small-talk",
 	    "txt": "A lot let's say, util no one ca reconise him",
-	    "timer": 700, "force-pos": [1050, 960]
+	    "timer": 1000, "force-pos": [1050, 960]
 	},
 	{
 	    "action": "move-cam"
