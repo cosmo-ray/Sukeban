@@ -32,10 +32,10 @@ local FIGHT_COLISION = 3
 local PHQ_SUP = 0
 local PHQ_INF = 1
 
-local LPCS_LEFT = 9
-local LPCS_DOWN = 10
-local LPCS_RIGHT = 11
-local LPCS_UP = 8
+LPCS_LEFT = 9
+LPCS_DOWN = 10
+LPCS_RIGHT = 11
+LPCS_UP = 8
 
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
@@ -51,6 +51,17 @@ local actionKeys = Event.CreateGrp(Y_SPACE_KEY, Y_ENTER_KEY)
 local AGRESIVE_TALKER = 2
 local AGRESIVE_ATTACKER = 1
 local NOT_AGRESIVE = 0
+
+function lpcsStrToDir(sdir)
+   if sdir == "left" then
+      return LPCS_LEFT
+   elseif sdir == "right" then
+      return LPCS_RIGHT
+   elseif sdir == "down" then
+      return LPCS_DOWN
+   end
+   return LPCS_UP
+end
 
 function generic_handlerRefresh(npc)
    if yeGetString(npc.char.type) == "sprite" then
@@ -144,13 +155,19 @@ local function reposScreenInfo(ent, x0, y0)
    end
 end
 
-function reposeCam(main)
+function reposeCam(main, xadd, yadd)
    local canvas = main.mainScreen
    local upCanvas = main.upCanvas
    local pjPos = Pos.wrapp(ylpcsHandePos(main.pj))
    local x0 = pjPos:x() - window_width / 2
    local y0 = pjPos:y() - window_height / 2
 
+   if yIsNNil(xadd) then
+      x0 = x0 + xadd
+   end
+   if yIsNNil(yadd) then
+      y0 = y0 + yadd
+   end
    ywPosSet(canvas.cam, x0, y0)
    ywPosSet(upCanvas.cam, x0, y0)
    reposScreenInfo(main, x0, y0)
@@ -1056,15 +1073,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	    local pos = Pos.new_copy(obj.rect)
 	    pos:sub(20, 50)
 	    lpcs.handlerMove(npc, pos.ent)
-	    if yeGetString(obj.Rotation) == "left" then
-	       lpcs.handlerSetOrigXY(npc, 0, LPCS_LEFT)
-	    elseif yeGetString(obj.Rotation) == "right" then
-	       lpcs.handlerSetOrigXY(npc, 0, LPCS_RIGHT)
-	    elseif yeGetString(obj.Rotation) == "down" then
-	       lpcs.handlerSetOrigXY(npc, 0, LPCS_DOWN)
-	    else
-	       lpcs.handlerSetOrigXY(npc, 0, LPCS_UP)
-	    end
+	    lpcs.handlerSetOrigXY(npc, 0, lpcsStrToDir(yeGetString(obj.Rotation)))
 	 end
 	 npc = Entity.wrapp(npc)
 	 generic_handlerRefresh(npc)

@@ -17,7 +17,8 @@
         { "path" : "YIRL_MODULES_PATH/dialogue/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/jrpg-fight/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/hightscore/", "type" : "module" },
-        { "file" : "modules/tetris", "type" : "module" },
+
+	{ "file" : "modules/tetris", "type" : "module" },
         { "file" : "modules/little-space/", "type" : "module" },
         { "file" : "modules/little-mage/", "type" : "module" },
         { "file" : "modules/AscII", "type" : "module" },
@@ -27,7 +28,8 @@
         { "file" : "modules/medieval_battle/", "type" : "module" },
         { "file" : "sprite-manager/", "type" : "module" },
         { "file" : "pathfinding/", "type" : "module"},
-        { "file" : "Arcade_score.json", "type" : "json", "as" : "hightscores"},
+
+	{ "file" : "Arcade_score.json", "type" : "json", "as" : "hightscores"},
         { "file" : "scenes.json", "type" : "json", "as" : "scenes"},
         { "file" : "vn-scenes.json", "type" : "json", "as" : "vn-scenes"},
         { "file" : "combots.json", "type" : "json", "as" : "combots"},
@@ -36,6 +38,9 @@
         { "file" : "objects.json", "type" : "json", "as" : "objects"},
         { "file" : "skills.json", "type" : "json", "as" : "skills"},
         { "file" : "stores.json", "type" : "json", "as" : "stores"},
+        { "file" : "game_senes/akira_intro.json", "type" : "json",
+	  "as" : "game_senes"},
+
 	{ "file" : "global_menu.lua", "type" : "lua" },
 	{ "file" : "cheat_menu.lua", "type" : "lua" },
 	{ "file" : "metro.lua", "type" : "lua" },

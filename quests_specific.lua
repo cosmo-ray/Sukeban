@@ -138,20 +138,77 @@ local function end_morning_class()
 end
 
 local game_scene_state = 0
+local game_scene_timer = 0
 
-local function game_scene(wid, eve, scene)
-
-   if game_scene_state == 0 then
-      advance_time(main_widget, "street3", true, Pos.new(1000, 750).ent)
-      game_scene_state = game_scene_state + 1
-      return BLOCK_EVE_NO_UNSET
-   elseif game_scene_state == 1 then
-      game_scene_state = game_scene_state + 1
+local function game_scene_do_timer(t)
+   if game_scene_timer < t then
+      game_scene_timer = game_scene_timer + ywidTurnTimer() / 1000
       return BLOCK_EVE_NO_UNSET
    end
-   game_scene_state = 0
-   yuiUsleep(2000000)
-   return 0
+   game_scene_timer = 0
+   game_scene_state = game_scene_state + 1
+   return BLOCK_EVE_NO_UNSET
+end
+
+local function push_npc(pos, name, dir)
+      local npc = npcs[name]
+      local c = main_widget.mainScreen
+      local name = name
+
+      dressUp(npc)
+      npc = lpcs.createCaracterHandler(npc, c, main_widget.npcs, name)
+      npc = Entity.wrapp(npc)
+      lpcs.handlerMove(npc, pos.ent)
+      lpcs.handlerSetOrigXY(npc, 0, dir)
+      generic_handlerRefresh(npc)
+end
+
+local function game_scene(wid, eve, scene)
+   local scenes = ygGet("phq.game_senes")
+   local scene = Entity.wrapp(yeGet(scenes, yeGetString(scene)))
+
+   if yIsNil(scene) or yIsNil(scene[game_scene_state]) then
+      game_scene_state = 0
+      return 0
+   end
+
+   local cs = scene[game_scene_state]
+   local csa = cs.action:to_string()
+
+   if csa == "change-scene" then
+      local pos = cs["force-pos"]
+      local s = yeGetString(cs.scene)
+
+      advance_time(main_widget, s, true, pos)
+   elseif csa == "timer" then
+      return game_scene_do_timer(yeGetIntAt(cs, "timer"))
+   elseif csa == "move-cam" then
+      reposeCam(main_widget, yeGetIntAt(cs.mov, 0), yeGetIntAt(cs.mov, 1))
+   elseif csa == "place-npcs" then
+      local npcs = cs.npcs
+
+      for i = 0, yeLen(npcs) - 1 do
+	 local npc = npcs[i]
+	 local npcp = Pos.new(yeGetIntAt(npc, 0), yeGetIntAt(npc, 1))
+	 local npcn = yeGetStringAt(npc, 2)
+	 local npcd = lpcsStrToDir(yeGetStringAt(npc, 3))
+
+	 push_npc(npcp, npcn, npcd)
+      end
+   elseif csa == "small-talk" then
+      local txt = yeGetString(cs.txt)
+      local pos = cs["force-pos"]
+
+      pushSmallTalk(txt, yeGetIntAt(pos, 0), yeGetIntAt(pos, 1))
+   end
+
+   if yIsNNil(cs.timer) then
+      cs.action = "timer"
+      return BLOCK_EVE_NO_UNSET
+   end
+   print(scene[game_scene_state])
+   game_scene_state = game_scene_state + 1
+   return BLOCK_EVE_NO_UNSET
 end
 
 function morning_class(mn)
