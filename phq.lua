@@ -1231,6 +1231,7 @@ function create_phq(entity)
 
    _include(phq.objects, phq.objects)
    _include(npcs, npcs)
+   _include(phq.game_senes, phq.game_senes)
 
    ent.st_hooks = {}
    ent.gmenu_hook = {}

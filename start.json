@@ -38,7 +38,7 @@
         { "file" : "objects.json", "type" : "json", "as" : "objects"},
         { "file" : "skills.json", "type" : "json", "as" : "skills"},
         { "file" : "stores.json", "type" : "json", "as" : "stores"},
-        { "file" : "game_senes/akira_intro.json", "type" : "json",
+        { "file" : "game_senes/main.json", "type" : "json",
 	  "as" : "game_senes"},
 
 	{ "file" : "global_menu.lua", "type" : "lua" },

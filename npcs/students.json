@@ -93,7 +93,7 @@
     "Baffy": {
 	"sex": "female",
         "type": "light",
-	"student_year": 1,
+	"student_year": 2,
 	"attack" : "unarmed1",
         "max_life": 25,
 	"hair": ["loose", "redhead2"],
