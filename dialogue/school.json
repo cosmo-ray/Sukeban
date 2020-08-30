@@ -13,5 +13,12 @@
 		"text": "Sorry canteen is only for students"
 	    }
 	]
+    },
+    "akira_fight": {
+	"dialogue": [
+	    {
+		"text": "Should I help him ?"
+	    }
+	]
     }
 }

@@ -208,6 +208,10 @@ local function game_scene(wid, eve, scene)
       local txt = yeGetString(cs.txt)
 
       pushSmallTalk(txt, yeGetIntAt(pos, 0), yeGetIntAt(pos, 1), start)
+   elseif csa == "yirl-action" then
+      local a = cs.yaction
+
+      ywidAction(a, main_widget, nil)
    elseif csa == "tmp-image" then
       local path = yeGetString(cs.path)
       local img = ywCanvasNewImgByPath(main_widget.upCanvas, ywPosX(pos),
@@ -229,7 +233,6 @@ local function game_scene(wid, eve, scene)
       cs.action = "timer"
       return BLOCK_EVE_NO_UNSET
    end
-   print(scene[game_scene_state])
    game_scene_state = game_scene_state + 1
    return BLOCK_EVE_NO_UNSET
 end
@@ -246,14 +249,12 @@ function morning_class(mn)
 
       Entity.new_string("phq.vnScene", a)
       Entity.new_string("school_presentation", a)
-   end
-   if school_day == 1 then
+   elseif school_day == 1 then
       local a = Entity.new_array(school_events)
 
       Entity.new_func(game_scene, a)
       Entity.new_string("baffy_talk", a)
-   end
-   if school_day == 2 then
+   elseif school_day == 2 then
       local a = Entity.new_array(school_events)
 
       Entity.new_func(game_scene, a)

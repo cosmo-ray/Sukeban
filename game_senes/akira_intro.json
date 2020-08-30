@@ -74,7 +74,35 @@
 	    "timer": 1500, "force-pos": [1050, 960]
 	},
 	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "img-time": 300, "reduce-%": 50,
+	    "timer": 50, "force-pos": [1020, 900]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "img-time": 300, "reduce-%": 50,
+	    "timer": 50, "force-pos": [1030, 940]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "img-time": 300, "reduce-%": 50,
+	    "timer": 50, "force-pos": [1045, 920]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "reduce-%": 50, "timer": 300,
+	    "force-pos": [1010, 930]
+	},
+	{
 	    "action": "move-cam"
+	},
+	{
+	    "action": "yirl-action",
+	    "yaction": ["phq.startDialogue", "akira_fight"]
 	}
     ]
 }
