@@ -381,6 +381,10 @@ local function gen_school()
 	  ["src"] = "imgs/Codel4.png",
 	  ["reduce"] = 50},
        false},
+      {FEMALE, "light", {
+	  ["src"] = "imgs/199.png",
+	  ["reduce"] = 50},
+       false},
       {FEMALE, "light",
        { ["src"] = "imgs/saki_normal.png",
 	  ["reduce"] = 20,
