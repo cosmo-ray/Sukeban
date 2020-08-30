@@ -14,6 +14,8 @@
 	"trait": {
 	    "violance": -4,
 	    "perv": 2,
+	    "male_atraction": -1,
+	    "female_atraction": 1,
 	    "sensitivity": 6
 	},
         "clothes": [
@@ -38,6 +40,8 @@
 	"trait": {
 	    "violance": 4,
 	    "perv": 8,
+	    "male_atraction": 1,
+	    "female_atraction": 1,
 	    "sensitivity": -2
 	},
 	"image": {
@@ -62,6 +66,18 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
+	"stats": {
+	    "charm": -1,
+	    "strength": 1,
+	    "smart": 4
+	},
+	"trait": {
+	    "violance": 6,
+	    "perv": 4,
+	    "male_atraction": -1,
+	    "female_atraction": 1,
+	    "sensitivity": -2
+	},
         "max_life": 10
     },
     "Ashley": {
@@ -82,6 +98,8 @@
 	"trait": {
 	    "violance": 0,
 	    "perv": 1,
+	    "male_atraction": 1,
+	    "female_atraction": 0,
 	    "sensitivity": -4
 	},
 	"equipement": {
@@ -104,13 +122,15 @@
 	},
 	"stats": {
 	    "charm": 6,
-	    "strength": 8,
+	    "strength": 5,
 	    "smart": 1
 	},
 	"trait": {
 	    "violance": 4,
 	    "perv": -1,
-	    "sensitivity": -1
+	    "sensitivity": -1,
+	    "male_atraction": 1,
+	    "female_atraction": 0
 	},
 	"equipement": {
 	    "torso": "white_sleeveless",
@@ -136,7 +156,9 @@
 	"trait": {
 	    "violance": 3,
 	    "perv": 3,
-	    "sensitivity": 2
+	    "sensitivity": 2,
+	    "male_atraction": 1,
+	    "female_atraction": 1
 	},
 	"equipement": {
 	    "torso": "white_sleeveless",
@@ -171,7 +193,9 @@
 	"trait": {
 	    "violance": -5,
 	    "perv": 0,
-	    "sensitivity": 7
+	    "sensitivity": 7,
+	    "male_atraction": 0,
+	    "female_atraction":1
 	},
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
@@ -194,7 +218,9 @@
 	"trait": {
 	    "violance": -2,
 	    "perv": 1,
-	    "sensitivity": 1
+	    "sensitivity": 1,
+	    "male_atraction": -1,
+	    "female_atraction":1
 	},
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
@@ -225,7 +251,10 @@
 	"trait": {
 	    "violance": 5,
 	    "perv": 0,
-	    "sensitivity": 3
+	    "sensitivity": 3,
+	    "male_atraction": -1,
+	    "female_atraction": 1
+
 	},
 	"equipement": {
 	    "torso": "white_pirate",
@@ -247,7 +276,9 @@
 	"trait": {
 	    "violance": -5,
 	    "perv": 7,
-	    "sensitivity": 3
+	    "sensitivity": 3,
+	    "male_atraction": 1,
+	    "female_atraction": 1
 	},
 	"equipement": {
 	    "torso": "white_pirate",
@@ -269,7 +300,9 @@
 	"trait": {
 	    "violance": 0,
 	    "perv": -1,
-	    "sensitivity": 1
+	    "sensitivity": 1,
+	    "male_atraction": 1,
+	    "female_atraction": -1
 	},
 	"equipement": {
 	    "torso": "white_pirate",
