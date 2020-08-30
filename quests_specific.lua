@@ -244,12 +244,21 @@ function morning_class(mn)
 
    yeClearArray(school_events)
 
+   -- this block is for events before class
    if school_day == 0 then
       local a = Entity.new_array(school_events)
 
       Entity.new_string("phq.vnScene", a)
       Entity.new_string("school_presentation", a)
-   elseif school_day == 1 then
+
+   end
+
+   local class_a = Entity.new_array(school_events)
+
+   Entity.new_string("phq.vnScene", class_a)
+   Entity.new_string("class", class_a)
+   -- this block is for events after class
+   if school_day == 1 then
       local a = Entity.new_array(school_events)
 
       Entity.new_func(game_scene, a)
@@ -258,13 +267,12 @@ function morning_class(mn)
       local a = Entity.new_array(school_events)
 
       Entity.new_func(game_scene, a)
+      -- Fight you can't win !
+      -- Akira show his super skill
       Entity.new_string("akira_fight", a)
    end
    Entity.new_func(end_morning_class, school_events)
-   -- if day 0, vn scene school presentation
-   -- them problems with "akira ?"
-   -- Fight you can't win !
-   -- Akira show his super skill
+
    backToGame(f_mn)
    main_widget.cant_skip_time = 0
 end
@@ -445,8 +453,8 @@ local function gen_school()
       n.trait.perv = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       -- maybe a male should have less chances to be attrated by male
       -- and same for female ???
-      n.trait.male_atraction = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
-      n.trait.female_atraction = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
+      n.trait.male_atraction = yuiRand() % 2 * (1 + (yuiRand() % 2 * -2))
+      n.trait.female_atraction = yuiRand() % 2 * (1 + (yuiRand() % 2 * -2))
       -- this should be determinate depending of "stats"
       n.attack = "unarmed0"
       hair[0] = rand_array_elem(hair_type[gender])

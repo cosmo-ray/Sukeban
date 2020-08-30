@@ -1,4 +1,5 @@
 {
+    "_include": [ "vn-scene/class.json"],
     "la Jetee" : [
 	{
  	    "text": "you're in a shadowy narrow street of the port
