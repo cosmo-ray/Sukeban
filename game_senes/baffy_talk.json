@@ -30,7 +30,16 @@
 	    "action": "tmp-image",
 	    "path": "imgs/explosion.png",
 	    "img-time": 300,
-	    "force-pos": [650, 400]
+	    "reduce-%": 50,
+	    "timer": 50,
+	    "force-pos": [710, 410]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "reduce-%": 50,
+	    "timer": 300,
+	    "force-pos": [700, 420]
 	},
 	{
 	    "action": "small-talk",

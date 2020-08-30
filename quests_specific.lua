@@ -175,9 +175,17 @@ local function game_scene(wid, eve, scene)
    local cs = scene[game_scene_state]
    local csa = cs.action:to_string()
    local timer = yeGetIntAt(cs, "timer")
+   local pos = cs["force-pos"]
+   local start = 0
+   if timer ~= 0 then
+      start = -timer + 500
+   end
 
    if csa == "change-scene" then
-      local pos = cs["force-pos"]
+      changeScene(main_widget, nil, cs.scene, Entity.new_int(0))
+      ylpcsHandlerSetPos(main_widget.pj, pos)
+      reposeCam(main_widget)
+   elseif csa == "advance-time" then
       local s = yeGetString(cs.scene)
 
       advance_time(main_widget, s, true, pos)
@@ -198,19 +206,23 @@ local function game_scene(wid, eve, scene)
       end
    elseif csa == "small-talk" then
       local txt = yeGetString(cs.txt)
-      local pos = cs["force-pos"]
-      local start = 0
 
-      if timer ~= 0 then
-	 start = -timer + 500
-      end
       pushSmallTalk(txt, yeGetIntAt(pos, 0), yeGetIntAt(pos, 1), start)
    elseif csa == "tmp-image" then
-      local pos = cs["force-pos"]
       local path = yeGetString(cs.path)
       local img = ywCanvasNewImgByPath(main_widget.upCanvas, ywPosX(pos),
-					    ywPosY(pos), path)
-      pushTmpCanvasObj(img)
+				       ywPosY(pos), path)
+      local reduce = yeGetIntAt(cs, "reduce-%")
+      local img_time = yeGetIntAt(cs, "img-time")
+
+      if img_time ~= 0 then
+	 start = -img_time + 500
+      end
+
+      if reduce ~= 0 then
+	 ywCanvasPercentReduce(img, reduce)
+      end
+      pushTmpCanvasObj(img, start)
    end
 
    if timer ~= 0 then
@@ -235,7 +247,7 @@ function morning_class(mn)
       Entity.new_string("phq.vnScene", a)
       Entity.new_string("school_presentation", a)
    end
-   if school_day == 2 then
+   if school_day == 1 then
       local a = Entity.new_array(school_events)
 
       Entity.new_func(game_scene, a)

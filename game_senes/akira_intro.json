@@ -19,55 +19,59 @@
 	{
 	    "action": "small-talk",
 	    "txt": "hej you, you're new here right ?",
-	    "timer": 500,
-	    "force-pos": [1010, 970]
+	    "timer": 1000,
+	    "force-pos": [950, 970]
 	},
 	{
 	    "action": "small-talk", "txt": "Mmmm, me ?",
-	    "timer": 500, "force-pos": [1020, 900]
+	    "timer": 800, "force-pos": [1020, 900]
 	},
 	{
 	    "action": "small-talk", "txt": "Yes, you",
-	    "force-pos": [1010, 970]
+	    "force-pos": [950, 970]
 	},
 	{
 	    "action": "small-talk", "txt": "He's cute",
-	    "timer": 500, "force-pos": [1050, 970]
+	    "timer": 1000, "force-pos": [1050, 970]
 	},
 	{
 	    "action": "small-talk", "txt": "Yes, wh.. why?",
-	    "timer": 500, "force-pos": [1020, 900]
+	    "timer": 1500, "force-pos": [1020, 900]
 	},
 	{
 	    "action": "small-talk", "txt": "Did you pay your cirtuclation tax",
-	    "timer": 300, "force-pos": [1010, 970]
+	    "timer": 1000, "force-pos": [950, 970]
 	},
 	{
 	    "action": "small-talk", "txt": "No, he didn't",
-	    "timer": 500, "force-pos": [1050, 960]
+	    "timer": 1000, "force-pos": [1050, 960]
 	},
 	{
 	    "action": "small-talk", "txt": "What I though, pay now !",
-	    "timer": 500, "force-pos": [1010, 970]
+	    "timer": 1000, "force-pos": [950, 970]
 	},
 	{
-	    "action": "small-talk", "txt": "It'll cost you.. all your money",
-	    "timer": 500, "force-pos": [1050, 960]
+	    "action": "small-talk", "txt": "It'll cost you..",
+	    "timer": 1500, "force-pos": [1050, 960]
+	},
+	{
+	    "action": "small-talk", "txt": "all your money",
+	    "timer": 1000, "force-pos": [1050, 960]
 	},
 	{
 	    "action": "small-talk",
 	    "txt": "Please, I need my money, and don't like fighting",
-	    "timer": 1000, "force-pos": [1020, 900]
+	    "timer": 2000, "force-pos": [1020, 900]
 	},
 	{
 	    "action": "small-talk",
 	    "txt": "Then you'll pay in blood, how much is it ?",
-	    "timer": 1000, "force-pos": [1010, 970]
+	    "timer": 1500, "force-pos": [950, 970]
 	},
 	{
 	    "action": "small-talk",
 	    "txt": "A lot let's say, util no one ca reconise him",
-	    "timer": 1000, "force-pos": [1050, 960]
+	    "timer": 1500, "force-pos": [1050, 960]
 	},
 	{
 	    "action": "move-cam"

@@ -575,11 +575,15 @@ end
 local TMP_OBJ_SMALL_TALK = 0
 local TMP_OBJ_CANVAS_OBJ = 1
 
-function pushTmpCanvasObj(img)
+function pushTmpCanvasObj(img, start_time)
    local tmp_objs = yeTryCreateArray(main_widget.upCanvas, "tmp-objs")
    local box = Entity.new_array(tmp_objs)
 
-   yeCreateInt(0, box)
+   if yIsNNil(start_time) then
+      yeCreateInt(start_time, box)
+   else
+      yeCreateInt(0, box)
+   end
    yeCreateInt(TMP_OBJ_CANVAS_OBJ, box)
    yePushBack(box, img)
 end
