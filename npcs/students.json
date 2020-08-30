@@ -60,6 +60,7 @@
 	"attack" : "unarmed0",
         "max_life": 10,
 	"student_year": 1,
+	"organisations": ["Computer club", "Animu Club"],
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -102,6 +103,7 @@
 	    "female_atraction": 0,
 	    "sensitivity": -4
 	},
+	"organisations": ["Student Club"],
 	"equipement": {
 	    "torso": "white_sleeveless",
 	    "legs": "short skirt",
@@ -132,6 +134,7 @@
 	    "male_atraction": 1,
 	    "female_atraction": 0
 	},
+	"organisations": ["Students Club", "Students Protection Group"],
 	"equipement": {
 	    "torso": "white_sleeveless",
 	    "legs": "short skirt",
@@ -148,8 +151,9 @@
 	    "dst-threshold": [-100,-400],
 	    "src" : "./imgs/Willo-Default-Default-Default.png"
 	},
+	"organisations": "Students Club",
 	"stats": {
-	    "charm": 2,
+	    "charm": 3,
 	    "strength": 0,
 	    "smart": 6
 	},
@@ -169,15 +173,30 @@
     "Will": {
         "sex": "male",
         "type": "light",
-	"student_year": 1,
+	"student_year": 2,
         "max_life": 10,
 	"attack" : "unarmed0",
+	"organisations": "Students Protection Group",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
-        ]
+        ],
+	"stats": {
+	    "charm": 5,
+	    "strength": 4,
+	    "smart": 2
+	},
+	"trait": {
+	    "violance": 0,
+	    "perv": -1,
+	    "sensitivity": 4,
+	    "male_atraction": -1,
+	    "female_atraction": 1
+	},
+	"description": ["totally in Love with Saki",
+			"join the Student Protection club because of her"]
     },
     "Akira Gentelman": {
         "sex": "male",
@@ -211,7 +230,7 @@
         "max_life": 10,
 	"attack" : "unarmed0",
 	"stats": {
-	    "charm": 3,
+	    "charm": 4,
 	    "strength": 2,
 	    "smart": 0
 	},
@@ -222,6 +241,7 @@
 	    "male_atraction": -1,
 	    "female_atraction":1
 	},
+	"organisations": "Students Club",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -248,6 +268,7 @@
 	    "strength": 12,
 	    "smart": 6
 	},
+	"organisations": "Students Protection Group",
 	"trait": {
 	    "violance": 5,
 	    "perv": 0,
@@ -273,6 +294,7 @@
 	    "strength": 1,
 	    "smart": 3
 	},
+	"organisations": "Board Game and Roleplay Fanclub",
 	"trait": {
 	    "violance": -5,
 	    "perv": 7,
