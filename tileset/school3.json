@@ -149,6 +149,28 @@
                  "width":35.8172446929326,
                  "x":190.442910806325,
                  "y":479.601642351708
+                }, 
+                {
+                 "height":33,
+                 "id":18,
+                 "name":"animu_club",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school_animu_club"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":350.234926306387,
+                 "y":224.679097811523
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -157,7 +179,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":18,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -166,7 +188,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.3.3",
+ "tiledversion":"1.4.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -191,6 +213,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.4,
  "width":34
 }

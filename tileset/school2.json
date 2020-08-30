@@ -1,4 +1,12 @@
-{ "height":22,
+{ "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
+ "height":22,
  "infinite":false,
  "layers":[
         {
@@ -141,17 +149,6 @@
                  "width":32,
                  "x":191,
                  "y":219
-                }, 
-                {
-                 "height":33,
-                 "id":19,
-                 "name":"Computers",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":575,
-                 "y":221
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -169,7 +166,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.4",
+ "tiledversion":"1.4.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -194,6 +191,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.4,
  "width":34
 }
