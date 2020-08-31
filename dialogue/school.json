@@ -17,7 +17,17 @@
     "akira_fight": {
 	"dialogue": [
 	    {
-		"text": "Should I help him ?"
+		"text": "Should I help him ?",
+		"answers": [
+		    "nope, move alone",
+		    {
+			"text": "Yes, help him",
+			"actions": [
+			    ["phq.join_team", "Akira Gentelman"],
+			    ["phq.StartFight", ["Thrug", "Thrug"]]
+			]
+		    }
+		]
 	    }
 	]
     }

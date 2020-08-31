@@ -397,14 +397,22 @@ function leave_team(who)
    yeRemoveChild(phq.pj.allies, who)
 end
 
-function join_team(wid, eves)
-   local m = yDialogueGetMain(wid)
-   local npcname = yeGetStringAt(m, "name")
-   local npcidx = yeGetIntAt(m, "npc_nb")
+function join_team(wid, eves, who)
+   local npcname = yeGetString(who)
+   local npcidx = nil
+
+   if yIsNil(who) then
+      local m = yDialogueGetMain(wid)
+      npcname = yeGetStringAt(m, "name")
+      npcidx = yeGetIntAt(m, "npc_nb")
+   end
 
    printMessage(main_widget, nil, npcname .. " have join the Team !")
    yePushBack(phq.pj.allies, npcs[npcname], npcname)
-   NpcGoTo(main_widget.npcs[npcidx], ylpcsHandePos(main_widget.pj))
+
+   if yIsNNil(npcidx) then
+      NpcGoTo(main_widget.npcs[npcidx], ylpcsHandePos(main_widget.pj))
+   end
 end
 
 function pay(wid, eve, cost, okAction, noDialogue)
