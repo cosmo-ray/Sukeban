@@ -685,6 +685,14 @@ function phq_action(entity, eve)
       return openGlobMenu(entity, GM_QUEST_IDX)
    end
 
+   if yevIsKeyDown(eve, Y_F_KEY) then
+      local a = Entity.new_array()
+      join_team(main_widget, nil, Entity.new_string("Akira Gentelman"))
+      a[0] = "Thrug"
+      a[1] = "Thrug"
+      StartFight(main_widget, nil, a, nil)
+   end
+
    if yevIsKeyDown(eve, Y_LSHIFT_KEY) then
       if (yeLen(main_widget.show_actionable) < 1) then
 	 local e_actionables = entity.actionables

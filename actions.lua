@@ -217,6 +217,9 @@ function npcDefaultInit(npc, enemy_type)
    if npc.is_generic then
       npc = Entity.new_copy(npc)
    end
+   if yIsNil(npc.clothes) and yIsNNil(npc.equipement) then
+      dressUp(npc)
+   end
    if yIsNil(npc.name) then
       npc.name = enemy_type
    end
@@ -255,9 +258,6 @@ function StartFight(wid, eve, enemy_type, script)
 	 while i < yeLen(enemy_type) do
 	    local enemy_type = yeGet(enemy_type, i)
 	    npc[i] = npcs[yeGetString(enemy_type)]
-	    if yIsNil(npc[i].clothes) and yIsNNil(npc[i].equipement) then
-	       dressUp(npc[i])
-	    end
 	    npc[i] = npcDefaultInit(npc[i], enemy_type)
 	    i = i + 1
 	 end
@@ -271,17 +271,12 @@ function StartFight(wid, eve, enemy_type, script)
    local allies = phq.pj.allies
 
    player_array[0] = phq.pj
-   print(allies[1], allies[0])
    if allies[0] then
       player_array[1] = allies[0]
-      if yIsNil(allies[0].life) then
-	 allies[0].life = allies[0].max_life
-      end
+      allies[0] = npcDefaultInit(allies[0], yeGetKeyAt(allies, 0))
       if allies[1] then
 	 player_array[2] = allies[1]
-	 if yIsNil(allies[1].life) then
-	    allies[1].life = allies[1].max_life
-	 end
+	 allies[1] = npcDefaultInit(allies[1], yeGetKeyAt(allies, 1))
       end
    end
    fWid["<type>"] = "jrpg-fight"
