@@ -255,6 +255,9 @@ function StartFight(wid, eve, enemy_type, script)
 	 while i < yeLen(enemy_type) do
 	    local enemy_type = yeGet(enemy_type, i)
 	    npc[i] = npcs[yeGetString(enemy_type)]
+	    if yIsNil(npc[i].clothes) and yIsNNil(npc[i].equipement) then
+	       dressUp(npc[i])
+	    end
 	    npc[i] = npcDefaultInit(npc[i], enemy_type)
 	    i = i + 1
 	 end
