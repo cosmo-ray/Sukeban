@@ -286,6 +286,19 @@ function chapter_1_menu(main, mn)
 end
 
 
+local function check_img_cndition(cnd, npc)
+   if cnd == nil then
+      return true
+   end
+   if cnd.max_charm ~= nil and npc.stats.charm > cnd.max_charm then
+      return false
+   end
+   if cnd.min_charm ~= nil and npc.stats.charm < cnd.min_charm then
+      return false
+   end
+   return true
+end
+
 local function gen_school()
    local FEMALE = 1
    local MALE = 2
@@ -373,9 +386,13 @@ local function gen_school()
    local usable_imgs = {
       {MALE, "light", {
 	  ["src"] = "imgs/DF_Neutral.png",
+	  ["hair-color"] = "redhead",
 	  ["reduce"] = 50
        },
-       false},
+       false, {
+	  ["min_charm"] = 2,
+	      }
+      },
       {FEMALE, "dark", "imgs/agustina.png", false},
       {FEMALE, "light", {
 	  ["src"] = "imgs/Codel4.png",
@@ -384,7 +401,10 @@ local function gen_school()
       {FEMALE, "light", {
 	  ["src"] = "imgs/199.png",
 	  ["reduce"] = 50},
-       false},
+       false, {
+	  ["max_charm"] = 0,
+	      }
+      },
       {FEMALE, "light",
        { ["src"] = "imgs/saki_normal.png",
 	  ["reduce"] = 20,
@@ -468,7 +488,7 @@ local function gen_school()
       for j = 1, #usable_imgs do
 	 uii = usable_imgs[j]
 	 if uii[4] == false and uii[1] == gender and
-	 uii[2] == t then
+	 uii[2] == t and check_img_cndition(uii[5], n) then
 	    uii[4] = true
 	    local i_array = Entity.new_array()
 	    local t = nil
