@@ -251,6 +251,9 @@ function morning_class(mn)
       Entity.new_string("phq.vnScene", a)
       Entity.new_string("school_presentation", a)
 
+      a = Entity.new_array(school_events)
+      Entity.new_func(game_scene, a)
+      Entity.new_string("school_intro", a)
    end
 
    local class_a = Entity.new_array(school_events)

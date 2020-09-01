@@ -110,6 +110,32 @@
 	    "feet": "black_slippers"
 	}
     },
+    "Lemie Oksan Ai": {
+	"sex": "female",
+        "type": "light",
+	"student_year": 3,
+	"attack" : "unarmed1",
+        "max_life": 25,
+	"hair": ["", "LongHair_gold"],
+	"stats": {
+	    "charm": 9,
+	    "strength": 4,
+	    "smart": 2
+	},
+	"trait": {
+	    "violance": 3,
+	    "perv": 0,
+	    "sensitivity": -10,
+	    "male_atraction": 1,
+	    "female_atraction": 0
+	},
+	"organisations": ["Students Club", "Beautification Club"],
+	"equipement": {
+	    "torso": "white_sleeveless",
+	    "legs": "short skirt",
+	    "feet": "black_slippers"
+	}
+    },
     "Baffy": {
 	"sex": "female",
         "type": "light",
