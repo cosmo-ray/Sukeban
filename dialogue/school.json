@@ -5,7 +5,8 @@
 	"./dialogue/willo.json",
 	"./dialogue/baffy.json",
 	"./dialogue/bob.json",
-	"./dialogue/Leika_Ryusaki.json"
+	"./dialogue/Leika_Ryusaki.json",
+	"./dialogue/Lufa.json"
     ],
     "Canteen_Girl": {
 	"dialogue" : [

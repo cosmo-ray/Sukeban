@@ -171,6 +171,28 @@
                  "width":32,
                  "x":350.234926306387,
                  "y":224.679097811523
+                }, 
+                {
+                 "height":44.5532,
+                 "id":19,
+                 "name":"boardgame_club",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"school_boardgame_club"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":35.8172,
+                 "x":448.073237129671,
+                 "y":480.435473842489
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -179,7 +201,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":19,
+ "nextobjectid":20,
  "orientation":"orthogonal",
  "properties":[
         {

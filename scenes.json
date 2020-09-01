@@ -135,6 +135,8 @@
 		      "dialogues" : "dialogue/school.json"},
     "school_computer_club" : {"tiled": "./tileset/school_computer_club.json",
 			      "dialogues" : "dialogue/school.json"},
+    "school_boardgame_club" : {"tiled": "./tileset/school_boardgame_club.json",
+			      "dialogues" : "dialogue/school.json"},
     "school_animu_club" : {"tiled": "./tileset/animu_club.json",
 			      "dialogues" : "dialogue/school.json"},
     "sick_room" : {"tiled": "./tileset/sick_room.json",
