@@ -1,0 +1,20 @@
+{
+    "school_intro": [
+	{
+	    "action": "change-scene",
+	    "scene": "school_boardgame_club",
+	    "force-pos": [320, 40],
+	},
+	{
+	    "action": "place-npcs",
+	    "npcs": [[320, 100, "Lemie Oksan Ai", "up"]
+		    ]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "This is the Board Game club",
+	    "timer": 3000,
+	    "force-pos": [320, 100]
+	}
+    ]
+}
