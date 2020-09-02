@@ -193,6 +193,28 @@
                  "width":35.8172,
                  "x":448.073237129671,
                  "y":480.435473842489
+                }, 
+                {
+                 "height":37.2189965758523,
+                 "id":20,
+                 "name":"music_club",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"music_club"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32.7527169867501,
+                 "x":960.25011165699,
+                 "y":217.358940002978
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -201,7 +223,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "properties":[
         {
