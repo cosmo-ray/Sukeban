@@ -20,14 +20,25 @@
 	    {
 		"text": "Should I help him ?",
 		"answers": [
-		    "nope, move alone",
+		    {
+			"text":	"nope, move alone",
+			"action": "phq.backToGame"
+		    },
 		    {
 			"text": "Yes, help him",
 			"actions": [
 			    ["phq.join_team", "Akira Gentelman"],
-			    ["phq.StartFight", ["Thrug", "Thrug"]]
+			    ["phq.StartFight", ["Thrug", "Thrug"],
+			     "CombatDialogueNext"]
 			]
 		    }
+		],
+	    },
+	    {
+		"text": "Akira seems very angry...",
+		"actions": [
+		    ["phq.leave_team", "Akira Gentelman"],
+		    "phq.backToGame"
 		]
 	    }
 	]

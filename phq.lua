@@ -306,6 +306,7 @@ function init_phq(mod)
    mod.openGlobMenu = Entity.new_func("openGlobMenu")
    mod.setCurStation = Entity.new_func("setCurStation")
    mod.join_team = Entity.new_func("join_team")
+   mod.leave_team = Entity.new_func("leave_team_callback")
 end
 
 function load_game(save_dir)

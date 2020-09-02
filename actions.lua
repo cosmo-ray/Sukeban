@@ -392,6 +392,10 @@ function leave_team(who)
    yeRemoveChild(phq.pj.allies, who)
 end
 
+function leave_team_callback(wid, eves, who)
+   leave_team(yeGetString(who))
+end
+
 function join_team(wid, eves, who)
    local npcname = yeGetString(who)
    local npcidx = nil
