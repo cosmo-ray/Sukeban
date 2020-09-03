@@ -228,6 +228,7 @@
         "sex": "male",
         "type": "light",
 	"student_year": 1,
+	"atk_mod": "berserker",
         "max_life": 10,
 	"attack" : "unarmed0",
 	"stats": {
