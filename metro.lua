@@ -6,6 +6,8 @@ local line_actual0 = "currently on line: "
 local ST_NAME_IDX = 2
 usable_metro = false
 
+local cur_action = nil
+
 local function sl_quit()
    ywCntPopLastEntry(main_widget)
 end
@@ -24,6 +26,14 @@ local function show_sl()
    ywPushNewWidget(main_widget, sl_wid)
    ywCntConstructChilds(main_widget)
    ywidActions(sl_wid, sl_wid, nil);
+end
+
+local function sl_action(wid)
+   local action = cur_action
+   cur_action = nil
+   print("SL ACTION", wid, action)
+   show_sl()
+   return ywidAction(action, wid, nil)
 end
 
 local function printable_st_name(station)
@@ -71,14 +81,13 @@ local function do_encounter(metroMap, enc, next_enc, action)
 
    -- see if we avoid the attack
    if yuiRand() % 100 > yeGetIntAt(enc, "%") then
-      if next_enc then
-	 return do_encounter(metroMap, next_enc, nil, action)
+      if next_enc and next_enc ~= true then
+   	 return do_encounter(metroMap, next_enc, nil, action)
       end
       show_sl()
       return ywidAction(action, metroMap, eve)
    end
    if (next_enc) then
-      show_sl()
       dial.text = "your party are under attack, you must defend yourself"
    else
       if phq.pj.archetype == GEEK_ARCHETYPE then
@@ -86,7 +95,7 @@ local function do_encounter(metroMap, enc, next_enc, action)
 	    "and on the begining of your trip\n" ..
 	    "you have an encounter in metro\n"
       else
-	 dial.text = "you go to the metro, and BOUM\nENEMIES"
+   	 dial.text = "you go to the metro, and BOUM\nENEMIES"
       end
    end
 
@@ -119,7 +128,13 @@ local function do_encounter(metroMap, enc, next_enc, action)
    dial.text = "WINNER FOREVER ! (you definitively got a strike team)"
    dial.answer = {}
    dial.answer.text = "Stand up for the victory !"
-   dial.answer.action = action
+   if next_enc then
+      show_sl()
+      dial.answer.action = action
+   else
+      cur_action = action
+      dial.answer.action = Entity.new_func(sl_action)
+   end
 
    backToGame(metroMap)
    --return YEVE_ACTION
@@ -208,7 +223,7 @@ function metroAction(metroMap, eve)
 	       end
 
 	       if encount_dest then
-		  return do_encounter(metroMap, encount_dest, nil, action)
+		  return do_encounter(metroMap, encount_dest, true, action)
 	       end
 
 	       show_sl()
