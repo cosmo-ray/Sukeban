@@ -6,6 +6,26 @@ local line_actual0 = "currently on line: "
 local ST_NAME_IDX = 2
 usable_metro = false
 
+local function sl_quit()
+   ywCntPopLastEntry(main_widget)
+end
+
+local function show_sl()
+   local sl_wid = Entity.new_array()
+
+   sl_wid["<type>"] = "capp"
+   sl_wid.files = {}
+   sl_wid.files[0] = "./modules/sl/sl.c"
+   sl_wid.args = {}
+   sl_wid.args[0] = "-G"
+   sl_wid.args[1] = "-w"
+   sl_wid.background = "rgba: 255 255 255 127"
+   sl_wid.quit = Entity.new_func(sl_quit)
+   ywPushNewWidget(main_widget, sl_wid)
+   ywCntConstructChilds(main_widget)
+   ywidActions(sl_wid, sl_wid, nil);
+end
+
 local function printable_st_name(station)
    local st_name = yeGet(station, ST_NAME_IDX)
 
@@ -43,23 +63,22 @@ function setCurStation(main, useless, line, station)
 end
 
 local function do_encounter(metroMap, enc, next_enc, action)
-   print("you go to the metro, and boum enemies", enc)
-   print("your party are under attack, you must defend yourself",
-	 next_enc)
-
    local encounter_wid = Entity.new_array()
    local dial = nil
    local enemies = enc.enemies
    encounter_wid[0] = {}
    dial = encounter_wid[0]
 
+   -- see if we avoid the attack
    if yuiRand() % 100 > yeGetIntAt(enc, "%") then
       if next_enc then
 	 return do_encounter(metroMap, next_enc, nil, action)
       end
+      show_sl()
       return ywidAction(action, metroMap, eve)
    end
    if (next_enc) then
+      show_sl()
       dial.text = "your party are under attack, you must defend yourself"
    else
       if phq.pj.archetype == GEEK_ARCHETYPE then
@@ -192,6 +211,7 @@ function metroAction(metroMap, eve)
 		  return do_encounter(metroMap, encount_dest, nil, action)
 	       end
 
+	       show_sl()
 	       return ywidAction(action, metroMap, eve)
 	    end
 	 elseif eve:key() == Y_ESC_KEY or

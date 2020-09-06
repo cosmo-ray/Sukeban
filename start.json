@@ -17,6 +17,7 @@
         { "path" : "YIRL_MODULES_PATH/dialogue/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/jrpg-fight/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/hightscore/", "type" : "module" },
+        { "path" : "YIRL_MODULES_PATH/c_app/", "type" : "module" },
 
 	{ "file" : "modules/tetris", "type" : "module" },
         { "file" : "modules/little-space/", "type" : "module" },

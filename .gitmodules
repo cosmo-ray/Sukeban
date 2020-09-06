@@ -22,3 +22,6 @@
 [submodule "modules/medieval_battle"]
 	path = modules/medieval_battle
 	url = https://github.com/cosmo-ray/medieval_battle
+[submodule "modules/sl"]
+	path = modules/sl
+	url = https://github.com/cosmo-ray/sl.git
