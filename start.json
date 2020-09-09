@@ -27,6 +27,7 @@
         { "file" : "modules/star-pike-and-jmp/", "type" : "module" },
         { "file" : "modules/pre-hangover-simulator/", "type" : "module" },
         { "file" : "modules/medieval_battle/", "type" : "module" },
+	{ "file" : "modules/CursesBird/", "type" : "module" },
         { "file" : "sprite-manager/", "type" : "module" },
         { "file" : "pathfinding/", "type" : "module"},
 

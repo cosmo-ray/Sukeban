@@ -59,7 +59,7 @@
 			"text": "yeah well... seriously\nyou know, I kinda wanna be part of this club guys\nyou know I like bits too",
 			"condition": [">", "phq.pj.knowledge.computer", 4]
 		    }
-		],
+		]
 	    },
 	    "the nerd in front of you seems very surprise\n",
 	    "oh, ok, here's the upscription form",
@@ -76,5 +76,52 @@
 		"text": "sunics, with a CS, what a joke, go sprear your stupide rumor somewhere else...\nwe have real work to do, for real men"
 	    }
 	]
+    },
+    "old_school_Computer": {
+	"dialogue" : [
+	    "Loading",
+	    "...",
+	    "...",
+	    {
+		"text": "...",
+		"answers": [
+		    {
+			"text": "leave",
+			"action": "phq.backToGame"
+		    },
+		    "wait"
+		]
+
+	    },
+	    "...",
+	    "...",
+	    {
+		"text": "...",
+		"answers": [
+		    {
+			"text": "leave",
+			"action": "phq.backToGame"
+		    },
+		    "wait"
+		]
+
+	    },
+	    "...",
+	    "...",
+	    {
+		"text": "$ IITS anonymouse user:",
+		"answers": [
+		    {
+			"text": "poweroff",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "cursesbird",
+			"action": ["phq.play", "CursesBird"]
+		    }
+		]
+	    }
+	]
+
     }
 }

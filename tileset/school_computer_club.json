@@ -109,6 +109,54 @@
         }, 
         {
          "draworder":"topdown",
+         "id":8,
+         "name":"Actionable",
+         "objects":[
+                {
+                 "height":29.874213836478,
+                 "id":4,
+                 "name":"old_computer",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.startDialogue"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"old_school_Computer"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":">"
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.events.computer_club_mb"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":29.0880503144654,
+                 "x":418.238993710692,
+                 "y":285.377358490566
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":7,
          "name":"NPC",
          "objects":[
@@ -136,8 +184,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":8,
- "nextobjectid":4,
+ "nextlayerid":9,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "properties":[
         {
