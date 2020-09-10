@@ -25,3 +25,6 @@
 [submodule "modules/sl"]
 	path = modules/sl
 	url = https://github.com/cosmo-ray/sl.git
+[submodule "modules/CursesBird"]
+	path = modules/CursesBird
+	url = https://github.com/cosmo-ray/CursesBird.git
