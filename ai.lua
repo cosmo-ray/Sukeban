@@ -33,12 +33,10 @@ end
 local function npc_check_col(canvas, col_r, pos_add)
    local ret = false
    local cols = ywCanvasProjectedArColisionArray(canvas, col_r, pos_add)
-   print("cols", cols, yeLen(cols), pos_add)
    local i = 0
    while i < yeLen(cols) do
       local col = yeGet(cols, i)
 
-      print("does Collision:", yeGetIntAt(col, "Collision"))
       if yIsNil(yeGet(col, "is_npc")) and yeGetIntAt(col, "Collision") ~= 0 then
 	 ret = true
 	 break
@@ -68,8 +66,6 @@ local function searching(wid, enemy)
 	 is_attacking = true
       end
       print("ENEMY TURN !!!!")
-      print("enemy lpcs pos:", enemy.y, LPCS_LEFT, LPCS_RIGHT, LPCS_UP,
-	    LPCS_DOWN)
       if ywPosX(pj_pos) > ywPosX(pos) then
 	 if (is_attacking == false and enemy.y:to_int() == LPCS_LEFT) then
 	    return nil
@@ -355,11 +351,9 @@ function pushPjLeave(npc, entryPoint)
    action[ACTION_NPC] = npc
    action[ACTION_MV_TBL] = {}
    action[ACTION_MV_TBL_IDX] = 0
-   print(exit.rect, yeGetInt(entryPoint))
    ywCanvasDoPathfinding(main.mainScreen, ywCanvasObjPos(npc.canvas), exit.rect,
 			 Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
 			 action[ACTION_MV_TBL])
-   print(action.mv_table)
    action.controller = Entity.new_func("PjLeaveController")
 end
 

@@ -403,13 +403,14 @@ function join_team(wid, eves, who)
    if yIsNil(who) then
       local m = yDialogueGetMain(wid)
       npcname = yeGetStringAt(m, "name")
-      npcidx = yeGetIntAt(m, "npc_nb")
+      npcidx = yeGet(m, "npc_nb")
    end
 
    printMessage(main_widget, nil, npcname .. " have join the Team !")
    yePushBack(phq.pj.allies, npcs[npcname], npcname)
 
    if yIsNNil(npcidx) then
+      npcidx = yeGetInt(npcidx)
       NpcGoTo(main_widget.npcs[npcidx], ylpcsHandePos(main_widget.pj))
    end
 end
