@@ -70,6 +70,10 @@
     "neighbor_house1" : {
 	"tiled": "./tileset/neighbor_house1.json"
     },
+    "rand_student_house_l" : {
+	"tiled": "./tileset/rand_student_house_l.json",
+	"dialogues" : "dialogue/school.json"
+    },
     "house0" : {
 	"dialogues" : "dialogue/house_dialogue.json",
 	"tiled": "./tileset/House0.json"
