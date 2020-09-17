@@ -71,7 +71,7 @@ function runner_0_mk_tbl(npc, point_prefix, nb_pos, start_p)
       ywPosAddXY(pos, 0, -50);
    end
    ywCanvasDoPathfinding(main_widget.mainScreen, runner_lpos, pos,
-			 Pos.new(PIX_PER_FRAME * 2, PIX_PER_FRAME * 2).ent,
+			 Pos.new(PIX_PER_FRAME * 1.2, PIX_PER_FRAME * 1.2).ent,
 			 runner0_tbl)
 
    runner0_pos = runner0_pos + 1
