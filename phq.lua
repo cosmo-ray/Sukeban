@@ -22,6 +22,7 @@ window_height = 600
 
 -- set as global so can be use by ai
 pix_mv = 0
+pix_floor_left = 0
 local PIX_MV_PER_MS = 5
 local TURN_LENGTH = Y_REQUEST_ANIMATION_FRAME
 
@@ -860,12 +861,8 @@ function phq_action(entity, eve)
    end
 
 
-   pix_mv = turn_timer * PIX_MV_PER_MS
-   -- 2000 is absolutly random, and has not been test
-   -- I would need a computer a lot more powerful to test this case
-   -- and compute the proper uslepp value
-   --print(entity.pj.mv_pix, " - ", pix_mv)
-   if (pix_mv < 1) then yuiUsleep(2000); pix_mv = 1 end
+   pix_mv = turn_timer * PIX_MV_PER_MS + pix_floor_left
+   pix_floor_left = pix_mv - math.floor(pix_mv)
 
    entity.pj.mv_pix = entity.pj.mv_pix + math.abs(pix_mv)
 
