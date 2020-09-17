@@ -22,7 +22,7 @@ window_height = 600
 
 -- set as global so can be use by ai
 pix_mv = 0
-local PIX_MV_PER_MS = 4
+local PIX_MV_PER_MS = 5
 local TURN_LENGTH = Y_REQUEST_ANIMATION_FRAME
 
 local NO_COLISION = 0
