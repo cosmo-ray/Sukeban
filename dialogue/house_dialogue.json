@@ -77,7 +77,14 @@
 	"dialogue" : [
 	    {
 		"condition":  ["S=", "phq.env.time", "morning"],
-		"text": "News about why meupporpg player should be internate",
+		"rand-texts": [
+		    "News about why meupporpg player should be internate",
+		    "News about the incresement of dogs abandon",
+		    "News about the recent taxe on rice floor",
+		    "News about noddle shop been affected by bool shortage",
+		    "News about the new think call internet chat\nwhere peoples recive indecent propositions",
+		    "News about a new cats fan club"
+		],
 		"answer": {
 		    "text": "leave",
 		    "action": "phq.backToGame"
