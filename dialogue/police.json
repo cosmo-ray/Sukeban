@@ -36,16 +36,17 @@
 	    },
 	    {
 		"text": "well, officially I can't help you",
-		"answer": "officially, is there a unofficial way you can help me pelase"
+		"answer": "officially, is there an unofficial way you can help me pelase"
 	    },
 	    "well, let me think",
-	    "ok, You might be hable to help me",
+	    "ok, You might be able to help me",
 	    {
 		"text": [
 		    "my son, Bob, have lost his rat, gambat",
 		    "he really like him, and would be really happy to get him back",
 		    "I know I'm police but officer machette, don't let me spend time on that",
-		    "if you can help him, I can help you"
+		    "if you can help him, I can help you",
+		    "he's generally in front of the school playing card"
 		],
 		"answer": {
 		    "text": "thanks !, I'll do whatever I can, wish me good luck !",
