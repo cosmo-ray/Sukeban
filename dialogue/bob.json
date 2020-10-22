@@ -38,7 +38,13 @@
 		]
 	    },
 	    "hi" : {
-		"text": "hej",
+		"text": "rand-texts":[
+		    "hej",
+		    "Hey",
+		    "Yo",
+		    "Coucou",
+		    "squeak, mean hello in rat"
+		    ],
 		"answers": [
 		    {
 			"condition":  ["=", "phq.quests.school_sub", 7],
@@ -147,7 +153,7 @@
 		}
 	    },
 	    "bad end": {
-		"text": "he acquiesce, but you can still see he's hate in he's eye",
+		"text": "he acquiesce, but you can still see his hate in his eye",
 		"answesr": [
 		    {
 			"text": [
