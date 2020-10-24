@@ -118,10 +118,10 @@ sprites from www.opengameart.org
 music from www.rengoku-teihen.com
 portrait-1-14 by andre tran CC-BY-3
 to copy past website, use a terminal and do:
-cat start.json | grep www
 Ther's also a imgs/credit.txt that try to resence all art author
 If I've forgot an artwork, thank to create an issue, Pull Request
 or notice me :)
+grep www start.json imgs/credit.txt
 yes that's a little geeky,
 but to compensate for peoples who dont know how to use a terminal
 here is a lot of hearts <3 <3 <3 <3 <3 <3
