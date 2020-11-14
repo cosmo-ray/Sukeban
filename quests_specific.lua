@@ -313,11 +313,14 @@ local function gen_school()
       {"Georgette", "Michelle", "Germaine", "Lynda", "Clemence", "Camille",
        "Geraldine", "Fraise", "Anna", "Hanna", "Mya", "Francoise",
        "Fleur", "Alice", "Petra", "Geunievre", "Oscar", "Helena", "Louise",
-       "Kim", "Agustina", "Codel", "Lisette", "Athena", "Georette", "Isis"},
+       "Kim", "Agustina", "Codel", "Lisette", "Athena", "Georette", "Isis",
+       "Charlotte", "Carole", "Caroline", "Linette", "Caterine", "Olivia",
+       "Yuki", "Anako"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed", "Jean",
-       "Mohamed", "Michelle", "Arthur", "Romain", "Benjamin", "Akira", "Mars"}
+       "Mohamed", "Michelle", "Arthur", "Romain", "Benjamin", "Akira", "Mars",
+       "Bill", "Charle", "Romain", "Thomas", "Mehdi", "Olivie"}
    }
 
    local last_name = {
@@ -328,7 +331,8 @@ local function gen_school()
       "Geraldine", "Fraise", "Cat", "Sed", "Weechat", "Archer",
       "Linus", "Richard", "Stallman", "Armstrong", "Char", "Aznabulu",
       "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay",
-      "Kanzaki", "Le Francais", "Coucou", "Mars", "Szabo"
+      "Kanzaki", "Le Francais", "Coucou", "Mars", "Szabo", "Bookseller",
+      "Manualreader", "Mac Ross", "Squirel", "Backdoor", "Adlez", "Harissa"
    }
 
    local types = {
