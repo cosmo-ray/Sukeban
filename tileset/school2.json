@@ -82,7 +82,7 @@
                         {
                          "name":"entry",
                          "type":"int",
-                         "value":0
+                         "value":9
                         }, 
                         {
                          "name":"nextScene",
