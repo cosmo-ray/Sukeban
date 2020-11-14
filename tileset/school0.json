@@ -1,4 +1,12 @@
-{ "height":22,
+{ "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "target":"."
+        }
+    },
+ "height":22,
  "infinite":false,
  "layers":[
         {
@@ -372,9 +380,112 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":7,
+         "name":"NPC",
+         "objects":[
+                {
+                 "height":0,
+                 "id":21,
+                 "name":"s0_uw",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":720.804331013148,
+                 "y":119.102861562258
+                }, 
+                {
+                 "height":0,
+                 "id":22,
+                 "name":"s0_3talk_0",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":658.932714617169,
+                 "y":252.126836813612
+                }, 
+                {
+                 "height":0,
+                 "id":23,
+                 "name":"s0_3talk_1",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"up"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":657.38592420727,
+                 "y":301.624129930394
+                }, 
+                {
+                 "height":0,
+                 "id":24,
+                 "name":"s0_3talk_2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"left"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":702.242846094354,
+                 "y":272.235112142305
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":7,
- "nextobjectid":18,
+ "nextlayerid":8,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -383,7 +494,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.4.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -404,6 +515,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":1.4,
  "width":34
 }
