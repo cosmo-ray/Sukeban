@@ -68,7 +68,6 @@ local function searching(wid, enemy)
       if yeGetInt(enemy.ai_state) == ENEMY_ATTACKING then
 	 is_attacking = true
       end
-      print("ENEMY TURN !!!!")
       if ywPosX(pj_pos) > ywPosX(pos) then
 	 if (is_attacking == false and enemy.y:to_int() == LPCS_LEFT) then
 	    return nil

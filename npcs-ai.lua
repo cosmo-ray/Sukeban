@@ -79,7 +79,7 @@ function student_ai(main, npc, name)
    if csap ~= nil then
       local idx = 1
       :: again ::
-      if idx < #csap
+      if idx <= #csap
 	 and push_to_ai_point_(cur_pos,
 			       csap[idx].p,
 			       name, true) == false then
