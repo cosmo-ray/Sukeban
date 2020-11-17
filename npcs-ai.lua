@@ -44,7 +44,22 @@ local ai_points = {
       {
 	 ["p"] = "s0_uw",
       }
+   },
+   ["street3"] = {
+      {
+	 ["p"] = "f0_t2_1",
+      },
+      {
+	 ["p"] = "f0_t2_0",
+      },
+      {
+	 ["p"] = "r_t2_0",
+      },
+      {
+	 ["p"] = "r_t2_1",
+      }
    }
+
 }
 
 function student_ai(main, npc, name)
@@ -62,6 +77,8 @@ function student_ai(main, npc, name)
       local r = yuiRand() % 4
       if r == 0 then
 	 cur_pos = "school0"
+      elseif r == 1 then
+	 cur_pos = "street3"
       else
 	 -- find other place to be
 	 -- also compute which class if still in class
