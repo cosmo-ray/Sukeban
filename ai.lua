@@ -13,8 +13,11 @@ local ACTION_MV_TBL_IDX = 2
 local ENEMY_IDLE = 0
 local ENEMY_ATTACKING = 1
 
+local phq = Entity.wrapp(ygGet("phq"))
+
 function npcAdvenceTime()
    main_widget.npc_act = {}
+   phq.env.ai_point = {}
    for i = 0, yeLen(npcs) do
       local n = npcs[i]
 

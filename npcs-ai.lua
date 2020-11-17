@@ -1,5 +1,25 @@
 local phq = Entity.wrapp(ygGet("phq"))
 
+local function push_to_ai_point_(map, p, name, check)
+   print("? ", map, p, name, check, " ?")
+   if phq.env.ai_point == nil then
+      phq.env.ai_point = {}
+   end
+   if phq.env.ai_point[map] == nil then
+      phq.env.ai_point[map] = {}
+   end
+
+   if check and yIsNNil(phq.env.ai_point[map][p]) then
+      return false
+   end
+   phq.env.ai_point[map][p] = name
+   return true
+end
+
+local function push_to_ai_point(map, p, name)
+   return push_to_ai_point_(map, p, name, false)
+end
+
 function wouaf_ai(main, npc, name)
    local t = ygGetString("phq.env.time")
 
@@ -10,6 +30,23 @@ function wouaf_ai(main, npc, name)
    end
 end
 
+local ai_points = {
+   ["school0"] = {
+      {
+	 ["p"] = "s0_3talk_0",
+      },
+      {
+	 ["p"] = "s0_3talk_1",
+      },
+      {
+	 ["p"] = "s0_3talk_2",
+      },
+      {
+	 ["p"] = "s0_uw",
+      }
+   }
+}
+
 function student_ai(main, npc, name)
    local t = ygGetString("phq.env.time")
    local c = ygGetInt("phq.env.chapter")
@@ -19,7 +56,16 @@ function student_ai(main, npc, name)
    if c ~= 1 then
       return
    end
+   local cur_pos = name .. " House"
+
    if t == "morning" and d < 6 then
+      local r = yuiRand() % 4
+      if r == 0 then
+	 cur_pos = "school0"
+      else
+	 -- find other place to be
+	 -- also compute which class if still in class
+      end
       print("School Time")
    elseif t == "night" then
       print("morning")
@@ -29,6 +75,18 @@ function student_ai(main, npc, name)
       print("fin de semaine !")
    end
 
+   local csap = ai_points[cur_pos]
+   if csap ~= nil then
+      local idx = 1
+      :: again ::
+      if idx < #csap
+	 and push_to_ai_point_(cur_pos,
+			       csap[idx].p,
+			       name, true) == false then
+	    idx = idx + 1
+	    goto again
+      end
+   end
    --print("ai of ", name, ":", Entity.wrapp(npc))
    --print("time: ", t, " chapter: ", c)
 end
@@ -45,16 +103,6 @@ function bob_ai(main, npc, name)
    end
    npc._place = c_place
    return student_ai(main, npc, name)
-end
-
-local function push_to_ai_point(map, p, name)
-   if phq.env.ai_point == nil then
-      phq.env.ai_point = {}
-   end
-   if phq.env.ai_point[map] == nil then
-      phq.env.ai_point[map] = {}
-   end
-   phq.env.ai_point[map][p] = name
 end
 
 local runner_lpos = nil
