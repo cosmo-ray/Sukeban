@@ -104,7 +104,11 @@ function student_ai(main, npc, name)
 	    goto again
       end
    end
-   Entity.wrapp(npc).dialogue = "neutral-student"
+   print("yeGetIntAt(npc, 'is_random_student'): ", yeGetIntAt(npc, "is_random_student"),
+	 yeGetIntAt(npc, "is_random_student") > 0, name)
+   if yeGetIntAt(npc, "is_random_student") > 0 then
+      Entity.wrapp(npc).dialogue = "neutral-student"
+   end
    --print("ai of ", name, ":", Entity.wrapp(npc))
    --print("time: ", t, " chapter: ", c)
 end

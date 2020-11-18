@@ -473,6 +473,7 @@ local function gen_school()
       yeCreateString("student_ai", n, "ai")
       local hair = Entity.new_array(n, "hair")
       n.max_life = 3 + yuiRand() % 20
+      n.is_random_student = 1
       n.stats = {}
       -- charm can be negative...
       n.stats.charm = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
