@@ -1052,6 +1052,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	    npc = npcs[npc_name]
 	 end
       end
+      local npc_dialogue = yeGetStringAt(npc, "dialogue")
 
       if layer_name:to_string() == "NPC" and
       checkNpcPresence(obj, npc, sceneTxt) then
@@ -1103,7 +1104,11 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc.canvas.Collision = 1
 	 npc.canvas.is_npc = 1
 	 npc.char.name = npc_name
-	 npc.canvas.dialogue = npc_name
+	 if yIsNNil(npc_dialogue) then
+	    npc.canvas.dialogue = npc_dialogue
+	 else
+	    npc.canvas.dialogue = npc_name
+	 end
 	 npc.canvas.small_talk = npc.char["small talk"]
 	 npc.canvas.dialogue_condition = npc.char.dialogue_condition
 	 npc.canvas.current = npc_idx

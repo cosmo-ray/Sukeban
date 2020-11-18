@@ -104,6 +104,7 @@ function student_ai(main, npc, name)
 	    goto again
       end
    end
+   Entity.wrapp(npc).dialogue = "neutral-student"
    --print("ai of ", name, ":", Entity.wrapp(npc))
    --print("time: ", t, " chapter: ", c)
 end
