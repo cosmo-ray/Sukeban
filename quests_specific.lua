@@ -315,7 +315,7 @@ local function gen_school()
        "Fleur", "Alice", "Petra", "Geunievre", "Oscar", "Helena", "Louise",
        "Kim", "Agustina", "Codel", "Lisette", "Athena", "Georette", "Isis",
        "Charlotte", "Carole", "Caroline", "Linette", "Caterine", "Olivia",
-       "Yuki", "Anako", "Geromine", "Gwenegann"},
+       "Yuki", "Anako", "Geromine", "Gwenegann", "Katyusha"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed", "Jean",
@@ -333,7 +333,7 @@ local function gen_school()
       "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay",
       "Kanzaki", "Le Francais", "Coucou", "Mars", "Szabo", "Bookseller",
       "Manualreader", "Mac Ross", "Squirel", "Backdoor", "Adlez", "Harissa",
-      "Anako", "Geromine", "Gwenegann", "Noir"
+      "Anako", "Geromine", "Gwenegann", "Noir", "Katyusha"
    }
 
    local types = {
