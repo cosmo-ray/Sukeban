@@ -109,6 +109,14 @@ function student_ai(main, npc, name)
    if yeGetIntAt(npc, "is_random_student") > 0 then
       Entity.wrapp(npc).dialogue = "neutral-student"
    end
+
+   npc = Entity.wrapp(npc)
+   npc.out_time = next_time()
+   print("---\n", npc.out_time, "\n==\n",
+	 phq.env.day:to_int(),
+	 phq.env.week:to_int(),
+	 phq.env.time:to_string(), "\n___\n"
+   )
    --print("ai of ", name, ":", Entity.wrapp(npc))
    --print("time: ", t, " chapter: ", c)
 end

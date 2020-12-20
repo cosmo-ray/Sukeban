@@ -6,6 +6,26 @@ fight_script = nil
 
 local use_time_point_action = Entity.new_string("phq.use_time_point")
 
+function next_time()
+   local ret = Entity.new_array()
+
+   ret.day = phq.env.day
+   ret.week = phq.env.week
+   if phq.env.time:to_string() == "night" then
+      ret.time = "morning"
+      ret.day = phq.env.day + 1
+      if phq.env.day > 6 then
+	 ret.day = 0
+	 ret.week = phq.env.week + 1
+      end
+   elseif phq.env.time:to_string() == "morning" then
+      ret.time = "day"
+   else
+      ret.time = "night"
+   end
+   return ret
+end
+
 function is_npc_ally(pj, npcname)
    local anpc = yeGet(pj.allies, npcname)
 

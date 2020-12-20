@@ -200,7 +200,7 @@ function checkObjTime(obj, cur_time)
    return true
 end
 
-function checkNpcPresence(obj, npc, scene)
+function checkNpcPresence(obj, npc, scene, is_ai_point)
    if npc == nil then
       return false
    end
@@ -222,6 +222,18 @@ function checkNpcPresence(obj, npc, scene)
    if yIsNNil(c_place) and c_place ~= scene then
       return false
    end
+
+   print("check: ", phq.env.day:to_int(), phq.env.week:to_int(),
+	 phq.env.time:to_string(), npc.out_time)
+   if npc.out_time and
+      is_ai_point == false and
+      yeGetInt(npc.out_time.day) == phq.env.day:to_int() and
+      yeGetInt(npc.out_time.week) == phq.env.week:to_int() and
+   yeGetString(npc.out_time.time) == phq.env.time:to_string() then
+      print("out time !")
+      return false
+   end
+
    if npc.calendar then
       local day_calenday = npc.calendar[DAY_STR[phq.env.day:to_int() + 1]]
       if day_calenday == nil then
@@ -1042,12 +1054,14 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       local layer_name = obj.layer_name
       local npc_name = yeGetString(yeGet(obj, "name"))
       local npc = npcs[npc_name]
+      local is_ai_point = false
 
       if obj.ai_point then
 	 ent.ai_point[npc_name] = Entity.new_copy(obj)
 
 	 local ap = phq.env.ai_point
 	 if ap and ap[sceneTxt] then
+	    is_ai_point = true
 	    npc_name = yeGetString(ap[sceneTxt][npc_name])
 	    npc = npcs[npc_name]
 	 end
@@ -1055,7 +1069,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       local npc_dialogue = yeGetStringAt(npc, "dialogue")
 
       if layer_name:to_string() == "NPC" and
-      checkNpcPresence(obj, npc, sceneTxt) then
+      checkNpcPresence(obj, npc, sceneTxt, is_ai_point) then
 
 	 local pos = Pos.new_copy(obj.rect)
 	 if yeGetString(npc.type) == "sprite" then
