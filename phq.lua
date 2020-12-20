@@ -223,14 +223,11 @@ function checkNpcPresence(obj, npc, scene, is_ai_point)
       return false
    end
 
-   print("check: ", phq.env.day:to_int(), phq.env.week:to_int(),
-	 phq.env.time:to_string(), npc.out_time)
    if npc.out_time and
       is_ai_point == false and
       yeGetInt(npc.out_time.day) == phq.env.day:to_int() and
       yeGetInt(npc.out_time.week) == phq.env.week:to_int() and
    yeGetString(npc.out_time.time) == phq.env.time:to_string() then
-      print("out time !")
       return false
    end
 
