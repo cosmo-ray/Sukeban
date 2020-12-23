@@ -31,7 +31,16 @@
 	    "Elf Domain": {
 		"text": "Welcom to the eleven queen lair",
 		"condition": ["s=", "phq.env.cur_scene", "school_boardgame_club"],
-		"action": "phq.backToGame"
+		"answers": [
+		    {
+			"text": "No,  I leave",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "Let's play Polis at War",
+			"action": ["phq.play", "polis-at-war"]
+		    },
+	        ]
 	    },
 	    "Hello": {
 		"Hello Human"
