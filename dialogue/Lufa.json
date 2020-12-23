@@ -4,6 +4,7 @@
 	    "hej" : {
 		"text": ["you <3 <3 <3",
 			 "I was waiting for you"],
+		"condition": ["<", "phq.env.chapter", 1],
 		"answers": [
 		    {
 			"text": "But, how I don't know you"
@@ -15,15 +16,20 @@
 			  "I got this new game call mediaval battle",
 			  "And you're gonna play with me",
 			  "Let's have fun <3 <3 <3"],
+		"condition": ["<", "phq.env.chapter", 1],
 		"answers": [
 		    {
-			"text": "Naa, games are for kids"
+			"text": "Naa, games are for kids",
+			"action": "phq.backToGame"
 		    },
 		    {
 			"text": "Ok, why not",
 			"action": ["phq.play", "medieval_dbattle"]
 		    }
 		]
+	    },
+	    "Hello": {
+		    "Hello Human",
 	    }
 	}
     }
