@@ -28,8 +28,13 @@
 		    }
 		]
 	    },
+	    "Elf Domain": {
+		"text": "Welcom to the eleven queen lair",
+		"condition": ["s=", "phq.env.cur_scene", "school_boardgame_club"],
+		"action": "phq.backToGame"
+	    },
 	    "Hello": {
-		    "Hello Human"
+		"Hello Human"
 	    }
 	}
     }
