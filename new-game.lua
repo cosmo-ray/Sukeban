@@ -83,11 +83,16 @@ function newGameAction(menu, eve, arg)
    phq.pj.archetype = archetype
    phq.pj.life = phq.pj.max_life
    phq.pj.allies = {}
+   phq.pj.trait.shy = 0
+   phq.pj.trait.violance = 0
+   phq.pj.trait.perv = 0
+   phq.pj.trait.sensitivity = 0
    phq.events = {}
    saved_scenes = Entity.new_array()
    if archetype == GEEK_ARCHETYPE then
       phq.pj.knowledge.computer = 5
       phq.pj.knowledge.animu = 5
+      phq.pj.trait.shy = 1
       phq.pj.stats.smart = 3
       phq.env.mean_name = "losser"
       phq.env.mean_name2 = "nerd"
@@ -108,8 +113,9 @@ function newGameAction(menu, eve, arg)
    elseif archetype == WORMS_COINOISSEUR_ARCHETYPE then
       phq.pj.knowledge.worms = 5
       phq.pj.stats.smart = 1
+      phq.pj.trait.shy = 2
       phq.env.mean_name = "trash"
-      phq.env.mean_name2 = "worthless person"
+      phq.env.mean_name2 = "slug"
    end
    yesCall((ygGet("callNext")), menu);
 end
