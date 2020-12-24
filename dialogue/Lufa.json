@@ -30,7 +30,7 @@
 	    },
 	    "Elf Domain": {
 		"text": "Welcom to the eleven queen lair",
-		"condition": ["s=", "phq.env.cur_scene", "school_boardgame_club"],
+		"condition": ["s=", "phq_wid.cur_scene_str", "school_boardgame_club"],
 		"answers": [
 		    {
 			"text": "No,  I leave",
