@@ -481,6 +481,7 @@ local function gen_school()
       n.stats.strength = yuiRand() % 10
       n.stats.smart = yuiRand() % 10
       n.trait = {}
+      n.trait.shy = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.trait.violance = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.trait.sensitivity = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.trait.perv = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
