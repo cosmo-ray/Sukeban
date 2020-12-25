@@ -28,3 +28,6 @@
 [submodule "modules/CursesBird"]
 	path = modules/CursesBird
 	url = https://github.com/cosmo-ray/CursesBird.git
+[submodule "modules/polis-at-war"]
+	path = modules/polis-at-war
+	url = http://github.com/cosmo-ray/polis-at-war.git
