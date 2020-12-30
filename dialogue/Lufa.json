@@ -40,6 +40,10 @@
 			"text": "Let's play Polis at War",
 			"action": ["phq.play", "polis-at-war"]
 		    },
+		    {
+			"text": "Do you tabletop role play too",
+			"action": ["phq.play", "dungeon-story"]
+		    },
 	        ]
 	    },
 	    "Hello": {
