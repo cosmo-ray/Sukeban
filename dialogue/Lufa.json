@@ -30,7 +30,7 @@
 	    },
 	    "Elf Domain": {
 		"text": "Welcom to the eleven queen lair",
-		"condition": ["s=", "phq_wid.cur_scene_str", "school_boardgame_club"],
+		"condition": ["S=", "phq_wid.cur_scene_str", "school_boardgame_club"],
 		"answers": [
 		    {
 			"text": "No,  I leave",
@@ -43,12 +43,10 @@
 		    {
 			"text": "Do you tabletop role play too",
 			"action": ["phq.play", "dungeon-story"]
-		    },
+		    }
 	        ]
 	    },
-	    "Hello": {
-		"Hello Human"
-	    }
+	    "Hello": "Hello Human"
 	}
     }
 }
