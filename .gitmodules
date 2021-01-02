@@ -31,3 +31,6 @@
 [submodule "modules/polis-at-war"]
 	path = modules/polis-at-war
 	url = http://github.com/cosmo-ray/polis-at-war.git
+[submodule "modules/clash-of-iron-and-bronze"]
+	path = modules/clash-of-iron-and-bronze
+	url = http://github.com/cosmo-ray/clash-of-iron-and-bronze
