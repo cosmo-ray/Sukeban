@@ -925,7 +925,8 @@ function play(wid, eve, game, timer, end_f_str)
    local wid = Entity.wrapp(wid)
    local main = getMainWid(wid)
 
-   print("play !!!!", eve, game, yeGetInt(timer),  " - ", yeLen(main.entries))
+   print("play !!!!", eve, game, yeGetInt(timer),
+	 " - ", yeLen(main.entries))
 
    ywCntPopLastEntry(main)
    local t = Entity.new_array()
