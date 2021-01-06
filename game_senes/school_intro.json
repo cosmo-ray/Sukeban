@@ -14,7 +14,7 @@
 	    "action": "small-talk",
 	    "txt": "This is the Board Game club",
 	    "timer": 3000,
-	    "force-pos": [320, 100]
+	    "npc-pos": "Lemie Oksan Ai"
 	}
     ]
 }

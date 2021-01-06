@@ -175,7 +175,14 @@ local function game_scene(wid, eve, scene)
    local cs = scene[game_scene_state]
    local csa = cs.action:to_string()
    local timer = yeGetIntAt(cs, "timer")
-   local pos = cs["force-pos"]
+   local pos = nil
+
+   if cs["force-pos"] then
+      pos = cs["force-pos"]
+   elseif cs["npc-pos"] then
+      pos = generic_handlerPos(main_widget.npcs[cs["npc-pos"]])
+   end
+
    local start = 0
    if timer ~= 0 then
       start = -timer + 500
