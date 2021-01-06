@@ -694,7 +694,6 @@ function startDialogue(main, obj, dialogue)
       if yIsNNil(condition) and yeCheckCondition(condition) == false then
 	 goto out
       end
-      local entity = Entity.wrapp(main)
       local dialogueWid = Entity.new_array()
       local npc = nil
       local npc_nb = -1
@@ -719,7 +718,8 @@ function startDialogue(main, obj, dialogue)
       dialogueWid.image_rotate = npc.image_rotate
       dialogueWid.name = npc.name
       dialogueWid.endAction = "phq.backToGame"
-      ywPushNewWidget(entity, dialogueWid)
+      main_widget.dialogue_npc = npc
+      ywPushNewWidget(main_widget, dialogueWid)
       return YEVE_ACTION
    end
    :: out ::

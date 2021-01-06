@@ -5,7 +5,7 @@
         "text": "hello",
         "answers": [
           "(leave)",
-          "(Talk with {phq_wid.dialogue_npc_name})"
+          "(Talk with {phq_wid.dialogue_npc.name})"
         ]
       }
     }

@@ -12,8 +12,11 @@
     "Canteen_Girl": {
 	"dialogue" : [
 	    {
-		"text": "Sorry canteen is only for students"
-	    }
+		"condition": ["<", "phq.env.chapter", 1],
+		"text": "Sorry canteen is only for students",
+		"action": "phq.backToGame"
+	    },
+	    "Sorry we're out of food"
 	]
     },
     "akira_fight": {
