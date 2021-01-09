@@ -151,16 +151,15 @@ local function game_scene_do_timer(t)
 end
 
 local function push_npc(pos, name, dir)
-      local npc = npcs[name]
-      local c = main_widget.mainScreen
-      local name = name
+   local npc = npcs[name]
+   local c = main_widget.mainScreen
 
-      dressUp(npc)
-      npc = lpcs.createCaracterHandler(npc, c, main_widget.npcs, name)
-      npc = Entity.wrapp(npc)
-      lpcs.handlerMove(npc, pos.ent)
-      lpcs.handlerSetOrigXY(npc, 0, dir)
-      generic_handlerRefresh(npc)
+   dressUp(npc)
+   npc = lpcs.createCaracterHandler(npc, c, main_widget.npcs, name)
+   npc = Entity.wrapp(npc)
+   lpcs.handlerMove(npc, pos.ent)
+   lpcs.handlerSetOrigXY(npc, 0, dir)
+   generic_handlerRefresh(npc)
 end
 
 local function game_scene(wid, eve, scene)
@@ -188,6 +187,7 @@ local function game_scene(wid, eve, scene)
       start = -timer + 500
    end
 
+   print("CSA: ", csa)
    if csa == "change-scene" then
       changeScene(main_widget, nil, cs.scene, Entity.new_int(0))
       ylpcsHandlerSetPos(main_widget.pj, pos)
@@ -200,6 +200,20 @@ local function game_scene(wid, eve, scene)
       return game_scene_do_timer(timer)
    elseif csa == "move-cam" then
       reposeCam(main_widget, yeGetIntAt(cs.mov, 0), yeGetIntAt(cs.mov, 1))
+   elseif csa == "place-students" then
+      local studs = cs.students
+      for i = 0, yeLen(studs) - 1 do
+	 local npc = studs[i]
+	 local npcp = Pos.new(yeGetIntAt(npc, 0), yeGetIntAt(npc, 1))
+	 local sy = yeGetIntAt(npc, 2)
+	 local sc = yeGetIntAt(npc, 3)
+	 local scid = yeGetIntAt(npc, 4)
+	 local npcn, _ = find_student(sy, sc, scid)
+	 local npcd = lpcsStrToDir(yeGetStringAt(npc, 5))
+
+	 push_npc(npcp, npcn, npcd)
+      end
+
    elseif csa == "place-npcs" then
       local npcs = cs.npcs
 
@@ -309,7 +323,25 @@ local function check_img_cndition(cnd, npc)
    return true
 end
 
+function find_student(year, class, class_id)
+   local students = phq.env.school.students
+
+   for i = 0, yeLen(students) - 1 do
+      s = students[i]
+      if s and s.student_year:to_int() == year and
+	 s.class:to_int() == class and
+      s.class_id:to_int() == class_id then
+	 return yeGetKeyAt(students, i), s
+      end
+   end
+   return nil
+end
+
 local function gen_school()
+   if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
+      return
+   end
+
    local FEMALE = 1
    local MALE = 2
 
@@ -434,10 +466,9 @@ local function gen_school()
 
    local class_members = {{0,0,0}, {0,0,0}, {0,0,0}}
 
-   class_members[1][phq.pj.class:to_int()] = 1
-   if (yIsNNil(yeGet(phq.env.school, "is_gen"))) then
-      return
-   end
+   phq.pj.class_id = 0
+   class_members[1][phq.pj.class:to_int() + 1] = 1
+
    phq.env.school = {}
    local s = phq.env.school
    phq.env.school_day = 0
@@ -451,12 +482,13 @@ local function gen_school()
 
       if yIsNNil(s_year) then
 	 local class = yeGet(npc, "class")
-	 yePushBack(s.students, npc, npc_key)
+	 yePushBack(stds, npc, npc_key)
 	 if (yIsNil(class)) then
 	    yeCreateInt(yuiRand() % 3, npc, "class")
 	 end
 	 class = yeGetInt(class)
 	 s_year = yeGetInt(s_year)
+	 Entity.wrapp(npc).class_id = class_members[s_year][class + 1]
 	 class_members[s_year][class + 1] = class_members[s_year][class + 1] + 1
       end
    end
@@ -500,7 +532,7 @@ local function gen_school()
       n.attack = "unarmed0"
       hair[0] = rand_array_elem(hair_type[gender])
       hair[1] = rand_array_elem(hair_color)
-      yePushBack(s.students, n, name)
+      yePushBack(stds, n, name)
       -- clothes still needed
       for j = 1, #usable_imgs do
 	 uii = usable_imgs[j]
@@ -531,6 +563,7 @@ local function gen_school()
       eq.legs = rand_array_elem(legs[gender])
       eq.feet = rand_array_elem(feet[gender])
       dressUp(n)
+      n.class_id = class_members[year][class + 1]
       class_members[year][class + 1] = class_members[year][class + 1] + 1
    end
 
@@ -583,6 +616,7 @@ function end_chapter_0(main)
 
       vn_quest_end[0] = Entity.new_array()
       phq.pj.class = yuiRand() % 3
+      phq.pj.student_year = 1
       gen_school()
       -- 1rst dialogue
       local dial = vn_quest_end[0]

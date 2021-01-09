@@ -6,6 +6,17 @@
 	    "force-pos": [320, 40],
 	},
 	{
+	    "action": "place-students",
+	    "students": [
+		[220, 60, 1, 1, 1, "down"],
+		[175, 60, 1, 1, 2, "down"],
+		[130, 60, 1, 1, 3, "down"],
+		[370, 40, 1, 1, 4, "down"],
+		[470, 110, 1, 1, 5, "left"],
+		[470, 150, 1, 1, 6, "left"]
+	    ]
+	},
+	{
 	    "action": "place-npcs",
 	    "npcs": [[320, 100, "Lemie Oksan Ai", "up"]
 		    ]
