@@ -26,6 +26,37 @@
 	    "txt": "This is the Board Game club",
 	    "timer": 3000,
 	    "npc-pos": "Lemie Oksan Ai"
-	}
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Like the computer and anime club\nIt's totally a place for loser",
+	    "timer": 4000,
+	    "npc-pos": "Lemie Oksan Ai"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Hey !",
+	    "timer": 1000,
+	    "npc-pos": "Lufa Mig Saucer"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "But they president, Lufa is totally fuck up\nI love her\nIf you have no life you should join his club",
+	    "timer": 3000,
+	    "npc-pos": "Lemie Oksan Ai"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Thanks great fairy",
+	    "timer": 1000,
+	    "npc-pos": "Lufa Mig Saucer"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "anyway let's move on...",
+	    "timer": 3000,
+	    "npc-pos": "Lemie Oksan Ai"
+	},
+
     ]
 }
