@@ -187,10 +187,14 @@ local function game_scene(wid, eve, scene)
       start = -timer + 500
    end
 
-   print("CSA: ", csa)
    if csa == "change-scene" then
+      local dir = cs.direction
       changeScene(main_widget, nil, cs.scene, Entity.new_int(0))
       ylpcsHandlerSetPos(main_widget.pj, pos)
+      if dir ~= nil then
+	 lpcs.handlerSetOrigXY(main_widget.pj, 0, lpcsStrToDir(yeGetString(dir)))
+	 generic_handlerRefresh(main_widget.pj)
+      end
       reposeCam(main_widget)
    elseif csa == "advance-time" then
       local s = yeGetString(cs.scene)
@@ -208,10 +212,12 @@ local function game_scene(wid, eve, scene)
 	 local sy = yeGetIntAt(npc, 2)
 	 local sc = yeGetIntAt(npc, 3)
 	 local scid = yeGetIntAt(npc, 4)
-	 local npcn, _ = find_student(sy, sc, scid)
-	 local npcd = lpcsStrToDir(yeGetStringAt(npc, 5))
+	 local npcn, s = find_student(sy, sc, scid)
+	 if s ~= nil then
+	    local npcd = lpcsStrToDir(yeGetStringAt(npc, 5))
 
-	 push_npc(npcp, npcn, npcd)
+	    push_npc(npcp, npcn, npcd)
+	 end
       end
 
    elseif csa == "place-npcs" then
