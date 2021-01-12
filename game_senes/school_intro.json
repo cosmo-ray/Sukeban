@@ -60,10 +60,27 @@
 	{
 	    "action": "small-talk",
 	    "txt": "So at this floor you have school clubs",
-	    "timer": 3000,
+	    "timer": 2500,
 	    "npc-pos": "Lemie Oksan Ai"
 	},
-
+	{
+	    "action": "small-talk",
+	    "txt": "There's the anime club, and computer club here",
+	    "timer": 2500,
+	    "npc-pos": "Lemie Oksan Ai"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Peoples there are worms unfit for humanity",
+	    "timer": 2500,
+	    "npc-pos": "Lemie Oksan Ai"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "the only point of those club is to identify\nnon-grata personnes",
+	    "timer": 2500,
+	    "npc-pos": "Lemie Oksan Ai"
+	},
 
 
 	{
