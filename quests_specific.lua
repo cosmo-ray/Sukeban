@@ -277,16 +277,14 @@ function morning_class(mn)
 
       Entity.new_string("phq.vnScene", a)
       Entity.new_string("school_presentation", a)
-
-      a = Entity.new_array(school_events)
-      Entity.new_func(game_scene, a)
-      Entity.new_string("school_intro", a)
    end
 
    local class_a = Entity.new_array(school_events)
 
    Entity.new_string("phq.vnScene", class_a)
    Entity.new_string("class", class_a)
+
+   print("HUM HUM: ", school_day)
    -- this block is for events after class
    if school_day == 1 then
       local a = Entity.new_array(school_events)
@@ -300,6 +298,11 @@ function morning_class(mn)
       -- Fight you can't win !
       -- Akira show his super skill
       Entity.new_string("akira_fight", a)
+   elseif school_day == 5 then
+      local a = Entity.new_array(school_events)
+
+      Entity.new_func(game_scene, a)
+      Entity.new_string("saki intro", a)
    end
    Entity.new_func(end_morning_class, school_events)
 

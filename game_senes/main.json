@@ -2,5 +2,6 @@
     "_include": [
 	"game_senes/school_intro.json",
 	"game_senes/akira_intro.json",
-	"game_senes/baffy_talk.json"],
+	"game_senes/baffy_talk.json",
+	"game_senes/saki_intro.json"],
 }
