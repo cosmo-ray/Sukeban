@@ -1,0 +1,20 @@
+{
+    "saki intro": [
+	{
+	    "action": "change-scene",
+	    "scene": "street3",
+	    "force-pos": [1000, 750]
+	},
+	{
+	    "action": "move-cam",
+	    "mov": [100, 200]
+	},
+	{
+	    "action": "place-npcs",
+	    "npcs": [[1010, 970, "Thrug", "up"],
+		     [1050, 970, "Thrug", "up"],
+		     [1020, 900, "Saki Miya", "down"]
+		    ]
+	}
+    ]
+}
