@@ -13,8 +13,101 @@
 	    "action": "place-npcs",
 	    "npcs": [[1010, 970, "Thrug", "up"],
 		     [1050, 970, "Thrug", "up"],
+		     [950, 970, "Thrug", "right"],
+		     [950, 900, "Thrug", "right"],
+		     [1020, 840, "Thrug", "down"],
+		     [1050, 840, "Thrug", "down"],
 		     [1020, 900, "Saki Miya", "down"]
 		    ]
+	},
+	{
+	    "action": "small-talk", "txt": "He, you",
+	    "timer": 1000, "force-pos": [1050, 970]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Hum hum ?",
+	    "timer": 1000,
+	    "force-pos": [1020, 900]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "your the one who cause a rampage in our school",
+	    "timer": 2500, "force-pos": [1050, 970]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Yeap",
+	    "timer": 1000,
+	    "force-pos": [1020, 900]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Your going to pay for that",
+	    "timer": 2500, "force-pos": [1050, 970]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "you're goina cry soon bitch",
+	    "timer": 2500, "force-pos": [1020, 850]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "you think you can take use all whore ?",
+	    "timer": 2500, "force-pos": [1050, 850]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Yeap",
+	    "timer": 1000,
+	    "force-pos": [1020, 900]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "You're gona DIE !",
+	    "timer": 1000, "force-pos": [1050, 850]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "reduce-%": 50,
+	    "timer": 300,
+	    "force-pos": [1050, 850]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "reduce-%": 50,
+	    "timer": 300,
+	    "force-pos": [1020, 850]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "reduce-%": 50,
+	    "timer": 300,
+	    "force-pos": [1010, 970]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "reduce-%": 50,
+	    "timer": 300,
+	    "force-pos": [1050, 970]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "reduce-%": 50,
+	    "timer": 300,
+	    "force-pos": [950, 970]
+	},
+	{
+	    "action": "tmp-image",
+	    "path": "imgs/explosion.png",
+	    "reduce-%": 50,
+	    "timer": 300,
+	    "force-pos": [950, 900]
 	}
     ]
 }
