@@ -33,10 +33,11 @@ local FIGHT_COLISION = 3
 local PHQ_SUP = 0
 local PHQ_INF = 1
 
-LPCS_LEFT = 9
-LPCS_DOWN = 10
-LPCS_RIGHT = 11
-LPCS_UP = 8
+
+LPCS_LEFT = ygGetInt("lpcs.LEFT")
+LPCS_DOWN = ygGetInt("lpcs.DOWN")
+LPCS_RIGHT = ygGetInt("lpcs.RIGHT")
+LPCS_UP = ygGetInt("lpcs.UP")
 
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
@@ -694,14 +695,6 @@ function phq_action(entity, eve)
       return openGlobMenu(entity, GM_MAP_IDX)
    elseif yevIsKeyDown(eve, Y_J_KEY) then
       return openGlobMenu(entity, GM_QUEST_IDX)
-   end
-
-   if yevIsKeyDown(eve, Y_F_KEY) then
-      local a = Entity.new_array()
-      join_team(main_widget, nil, Entity.new_string("Akira Gentelman"))
-      a[0] = "Thrug"
-      a[1] = "Thrug"
-      StartFight(main_widget, nil, a, nil)
    end
 
    if yevIsKeyDown(eve, Y_LSHIFT_KEY) then

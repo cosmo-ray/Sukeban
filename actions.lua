@@ -213,6 +213,7 @@ function CombatEnd(wid, main, winner_id)
    ySoundStop(main.soundcallgirl)
    wid.main = nil
    if yLovePtrToNumber(winner_id) == 3 then
+      -- you lose
       backToGame(wid)
       yCallNextWidget(main:cent())
       return
@@ -981,8 +982,9 @@ function doSleep(ent, upCanvas)
    end
 
    local pjPos = Pos.wrapp(ylpcsHandePos(ent.pj))
-   local x0 = pjPos:x() - window_width / 2
-   local y0 = pjPos:y() - window_height / 2
+   local cam = main_widget.mainScreen.cam
+   local x0 = ywPosX(cam)
+   local y0 = ywPosY(cam)
    local sl = main_widget.sleep_loc
 
    if (ywidTurnTimer() < 10000) then
