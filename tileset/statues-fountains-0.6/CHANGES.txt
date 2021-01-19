@@ -1,0 +1,27 @@
+0.6
+- Added 50% scaled down version of RayaneFLX's knight statue.
+- Added mold's column.
+- Added Clint Bellanger's tombwoof (rotated by mold).
+
+0.5
+- Added knight w/ sword, owls, & bear statues by RayaneFLX (CC BY-SA 3.0).
+- Created alternate knight w/ sword without ponytail from RayaneFLX's statue.
+- Added Casper Nilsson's foodog statue (CC BY-SA 3.0 / GPL 3.0).
+- Centered foodog statue.
+
+0.4
+- Reworked Hyptosis's smaller fountain to be a simple pedestal.
+- Added romanic angel statue by TheraHedwig (CC BY-SA 3.0 / GPL 3.0).
+- Added larger fountain from Mage City Arcanos (CC0).
+  - Animated by Zabin.
+
+0.3
+- Corrected some attributions.
+- Added wolf statue reworked by mold (CC0).
+
+0.2
+- Added Zabin's stone armor statue (CC BY 3.0).
+
+0.1
+- Added bust statue & fountain by Hyptosis (CC0).
+- Added child praying statue reworked by mold (CC0).
