@@ -18,8 +18,8 @@
 	    [390, 406], [381, 456]
 	],
 	[
-	    [538, 136], [516, 174], [505, 236], [501, 289],
-	    [517, 354], [523, 397], [546, 443]
+	    [538, 136], [516, 174], [505, 236, "fighting pit"], [501, 289],
+	    [517, 354, "Dock"], [523, 397], [546, 443]
 	]
     ],
     "intersections": [
@@ -48,6 +48,7 @@
 	"Nontoise": ["phq:changeScene", "street0", 3],
 	"Nontoise Gate": ["phq:changeScene", "street4", 1],
 	"test_zone": ["phq:changeScene", "test_zone"],
+	"fighting pit": ["phq:changeScene", "fighting pit"],
 	"international_bar": ["phq:changeScene", "international_bar"],
 	"Dock": ["phq:vnScene", "la Jetee"]
     }
