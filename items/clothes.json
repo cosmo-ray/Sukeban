@@ -87,7 +87,7 @@
     "long skirt": {
 	"type": "equipement",
 	"where": "legs",
-	"path": "legs/skirt/female/robe_skirt_female_incomplete.png"
+	"path": "legs/skirt/female/legs_skirt_female.png"
     },
     "short skirt": {
 	"type": "equipement",
