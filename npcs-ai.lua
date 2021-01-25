@@ -112,6 +112,7 @@ function student_ai(main, npc, name)
    if yeGetIntAt(npc, "is_random_student") > 0 then
       Entity.wrapp(npc).dialogue = "neutral-student"
    end
+   Entity.wrapp(npc).have_talk = 0
 
    --print("ai of ", name, ":", Entity.wrapp(npc))
    --print("time: ", t, " chapter: ", c)

@@ -1,13 +1,28 @@
 {
-  "neutral-student": {
-    "dialogue": {
-      "greeting": {
-        "text": "hello",
-        "answers": [
-          "(leave)",
-          "(Talk with {phq_wid.dialogue_npc.name})"
-        ]
-      }
+    "neutral-student": {
+	"dialogue": {
+	    "greeting": {
+		"text": "hello",
+		"answers": [
+		    {
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "(Talk with {phq_wid.dialogue_npc.name})",
+			"actions": [
+			    ["setInt", "phq_wid.dialogue_npc.have_talk", 1],
+			    ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
+			    ["Dialogue.goto", "talking"]
+			],
+			"condition":  ["<", "phq_wid.dialogue_npc.have_talk", 1]
+		    }
+		]
+	    },
+	    "talking": {
+		"text": ["you talk with {phq_wid.dialogue_npc.name}",
+			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
+	    }
+	}
     }
-  }
 }

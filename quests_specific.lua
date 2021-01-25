@@ -544,6 +544,9 @@ local function gen_school()
       -- and same for female ???
       n.trait.male_atraction = yuiRand() % 2 * (1 + (yuiRand() % 2 * -2))
       n.trait.female_atraction = yuiRand() % 2 * (1 + (yuiRand() % 2 * -2))
+      n.relation = {}
+      n.relation.affection = 0
+      n.relation.love = 0
       -- this should be determinate depending of "stats"
       n.attack = "unarmed0"
       hair[0] = rand_array_elem(hair_type[gender])
