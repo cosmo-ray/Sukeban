@@ -254,6 +254,9 @@ local function game_scene(wid, eve, scene)
 	 ywCanvasPercentReduce(img, reduce)
       end
       pushTmpCanvasObj(img, start)
+   elseif csa == "set" then
+      -- I should check for other types
+      ygReCreateInt(yeGetStringAt(cs, "variable"), yeGetIntAt(cs, "value"))
    end
 
    if timer ~= 0 then

@@ -1,6 +1,11 @@
 {
     "saki intro": [
 	{
+	    "action": "set",
+	    "variable": "phq.events.saki_presentaion",
+	    "value": 1
+	},
+	{
 	    "action": "change-scene",
 	    "scene": "street3",
 	    "force-pos": [1000, 750]

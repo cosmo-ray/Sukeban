@@ -1,7 +1,15 @@
 {
     "Saki Miya": {
 	"dialogue" : {
-	    "base": ["Yeah..., no, you don't want to talk to me right now"]
+	    "base": {
+		"text": ["Yeah..., no, you don't want to talk to me right now"],
+		"condition": ["<", "phq.events.saki_presentaion", 1],
+		"action": "phq.backToGame"
+	    },
+	    "then_base": {
+		"text": "Yes ?",
+		"action": "phq.backToGame"
+	    }
 	}
     }
 }
