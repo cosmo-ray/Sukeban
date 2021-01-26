@@ -13,15 +13,23 @@
 			"actions": [
 			    ["setInt", "phq_wid.dialogue_npc.have_talk", 1],
 			    ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
-			    ["Dialogue.goto", "talking"]
+			    ["Dialogue.condition_goto",
+			     ["call", "chk_affection"], "talking-incr-affection",
+			     "talking-dislike"]
 			],
 			"condition":  ["<", "phq_wid.dialogue_npc.have_talk", 1]
 		    }
 		]
 	    },
-	    "talking": {
+	    "talking-incr-affection": {
 		"text": ["you talk with {phq_wid.dialogue_npc.name}",
 			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
+	        "action": "phq.backToGame"
+	    },
+	    "talking-dislike": {
+		    "text": ["you talk with {phq_wid.dialogue_npc.name}, it didnt't go well",
+			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
+		     "action": "phq.backToGame"
 	    }
 	}
     }
