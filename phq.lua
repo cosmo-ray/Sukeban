@@ -318,6 +318,7 @@ function init_phq(mod)
    mod.setCurStation = Entity.new_func("setCurStation")
    mod.join_team = Entity.new_func("join_team")
    mod.leave_team = Entity.new_func("leave_team_callback")
+   mod.chk_affection = Entity.new_func(chk_affection)
 end
 
 function load_game(save_dir)

@@ -10,6 +10,15 @@ BLOCK_EVE_NO_UNSET = 10
 is_end_of_chapter = false
 school_events = Entity.new_array()
 
+function chk_affection()
+   if yuiRand() % 2 == 1 then
+      print("go bad @")
+      return 0
+   end
+   print("go pas bad !")
+   return 1
+end
+
 function inter_bar_in(main)
    local c = Canvas.wrapp(main.mainScreen)
    local cc = c.ent
