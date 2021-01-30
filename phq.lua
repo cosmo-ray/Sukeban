@@ -1252,6 +1252,9 @@ function create_phq(entity)
 
    ent.st_hooks = {}
    ent.gmenu_hook = {}
+
+   ent.dialogues = dialogues
+
    add_stat_hook(ent, "life", "FinishGame", 0, PHQ_INF)
    yJrpgFightSetCombots("phq.combots")
    if ent.saved_data then

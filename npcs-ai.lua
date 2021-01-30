@@ -105,7 +105,6 @@ function student_ai(main, npc, name)
       end
       npc = Entity.wrapp(npc)
       npc.out_time = next_time()
-
    end
    print("yeGetIntAt(npc, 'is_random_student'): ", yeGetIntAt(npc, "is_random_student"),
 	 yeGetIntAt(npc, "is_random_student") > 0, name)
