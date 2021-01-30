@@ -1,4 +1,10 @@
 {
+    "pure red" : {
+	"type": "equipement",
+	"where": "torso",
+	"full_body": true,
+	"path": "torso/dress_female/commune_dress.png"
+    },
     "robe_purple" : {
 	"type": "equipement",
 	"where": "torso",
