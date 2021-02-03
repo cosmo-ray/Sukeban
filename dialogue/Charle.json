@@ -177,7 +177,7 @@
 				 "I don't like him too, and now I think about it",
 				 "he ask me for his rat, but he didn't say he must be alive"],
 			"actions": [
-			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
 			    [ "Dialogue:goto", "dead-rat" ]
 			]
 
@@ -193,7 +193,7 @@
 		    {
 			"text": "nice let's do this",
 			"actions": [
-			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
 			    [ "phq.increase", "trait", "violance", 1],
 			    [ "phq.increase", "trait", "sensitivity", -1],
 			    [ "setInt", "phq.events.gambat_hurt", 1],
@@ -272,7 +272,7 @@
 				 "I can do that",
 				 "(kick him in the place no men want to be kick)"],
 			"actions": [
-			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
 			    [ "phq.increase", "trait", "violance", 1],
 			    [ "setInt", "phq.quests.school_sub", 9],
 			    [ "setInt", "phq.events.beat_up_charle", 1],
