@@ -5,7 +5,7 @@
 		    "condition": ["or" [ "S=", "phq_wid.cur_scene_str", "school1"],
 				  [ "S=", "phq_wid.cur_scene_str", "school0"] ],
 		    "pre-action": ["Dialogue.swap", "phq_wid.dialogues.neutral-student"]
-	    }
+	    },
 	    "base": "Willo, is talking with her firends and doesn't seems very interested in you",
 	}
     }
