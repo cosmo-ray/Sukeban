@@ -1,6 +1,13 @@
 {
     "Charle": {
 	"dialogue": {
+	    "base-student-swap": {
+		 "condition": ["or",
+			       [ "S=", "phq_wid.cur_scene_str", "school1"],
+			       [ "S=", "phq_wid.cur_scene_str", "school0"]
+			      ],
+		    "pre-action": ["Dialogue.swap", "phq_wid.dialogues.neutral-student"]
+	    },
 	    "been beat up": {
 		"text": ["hello my very violent friend"],
 		"condition":  ["=", "phq.events.beat_up_charle", 1],
