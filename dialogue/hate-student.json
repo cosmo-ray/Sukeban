@@ -2,7 +2,7 @@
     "hate-student": {
 	"dialogue": {
 	    "hej te": {
-		"text": "I hate you"
+		"text": "I hate you",
 		"action": [ "phq.StartFight", "phq_wid.dialogue_npc", "CombatDialogueNext"]
 	    },
 	    "beat me": {
