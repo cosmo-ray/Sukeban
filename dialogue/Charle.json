@@ -79,7 +79,7 @@
 		"answers": [
 		    {
 			"text": "wow, Bob did not tell me how awesome you are",
-			"actions": [["increaseInt", "phq.env.charle<3", 1],
+			"actions": [["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
 				    ["Dialogue:goto", "bob?"]]
 		    },
 		    {
@@ -103,7 +103,7 @@
 			    "but his father, blackmail me to help his son get his rat back"
 			],
 			"actions":[
-			    [ "increaseInt", "phq.env.charle<3", 1],
+			    [ "increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
 			    [ "Dialogue:goto", "bad-rat" ]
 			]
 		    }
