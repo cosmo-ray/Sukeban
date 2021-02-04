@@ -6,9 +6,11 @@
 		"action": [ "phq.StartFight", "phq_wid.dialogue_npc", "CombatDialogueNext"]
 	    },
 	    "beat me": {
-		    "text": "pffff",
-		    "actions": [["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
-				[ "phq.PjLeave", 1]]
+		"text": "pffff",
+		"actions": [["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
+			    [ "phq.PjLeave", 1],
+			    ["phq.ai_point_remove", "phq_wid.dialogue_npc.name"]
+			   ]
 	    }
 	}
     }

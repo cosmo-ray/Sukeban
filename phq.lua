@@ -318,6 +318,7 @@ function init_phq(mod)
    mod.setCurStation = Entity.new_func("setCurStation")
    mod.join_team = Entity.new_func("join_team")
    mod.leave_team = Entity.new_func("leave_team_callback")
+   mod.ai_point_remove = Entity.new_func(ai_point_remove)
    mod.chk_affection = Entity.new_func(chk_affection)
 end
 
@@ -952,6 +953,20 @@ end
 -- push all caracters to dial, but read c_dial
 local function dialogue_include(dial, c_dial)
    _include(dial, c_dial)
+end
+
+function ai_point_remove(useless0, useless1, name_path)
+   local name = yeGetString(ygGet(yeGetString(name_path)))
+   local sname = yeGetString(main_widget.cur_scene_str)
+   local e_ai_point = main_widget.ai_point
+
+   for i = 0, yeLen(e_ai_point) - 1 do
+      apname = yeGetKeyAt(e_ai_point, i)
+      if yeGetString(phq.env.ai_point[sname][apname]) == name then
+	 phq.env.ai_point[sname][apname] = nil
+	 return
+      end
+   end
 end
 
 function load_scene(ent, sceneTxt, entryIdx, pj_pos)
