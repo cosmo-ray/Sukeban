@@ -284,6 +284,10 @@ function StartFight(wid, eve, enemy_type, script)
 	 end
       else
 	 npc = npcs[yeGetString(enemy_type)]
+	 if npc == nil then
+	    npc = Entity.wrapp(ygGet(yeGetString(enemy_type)))
+	    enemy_type = npc.name
+	 end
 	 npc = npcDefaultInit(npc, enemy_type)
       end
    end
