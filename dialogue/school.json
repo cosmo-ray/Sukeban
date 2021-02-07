@@ -1,14 +1,16 @@
 {
     "_include": [
-	"./dialogue/computer_club.json",
-	"./dialogue/saki.json",
-	"./dialogue/willo.json",
+	"./dialogue/ashley.json",
 	"./dialogue/baffy.json",
 	"./dialogue/bob.json",
+	"./dialogue/Charle.json",
+	"./dialogue/computer_club.json",
+	"./dialogue/hate-student.json",
 	"./dialogue/Leika_Ryusaki.json",
 	"./dialogue/Lufa.json",
-	"./dialogue/hate-student.json",
-	"./dialogue/neutral-student.json"
+	"./dialogue/neutral-student.json",
+	"./dialogue/saki.json",
+	"./dialogue/willo.json"
     ],
     "Canteen_Girl": {
 	"dialogue" : [

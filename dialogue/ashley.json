@@ -1,6 +1,18 @@
 {
     "Ashley": {
 	"dialogue" : {
+	    "base-student-swap": {
+		"condition":
+		["or",
+		 ["or",
+		  [ "S=", "phq_wid.cur_scene_str", "school1"],
+		  [ "S=", "phq_wid.cur_scene_str", "school0"]
+		 ],
+		 [ "S=", "phq_wid.cur_scene_str", "street3"]
+		],
+		"pre-action": ["Dialogue.swap",
+			       "phq_wid.dialogues.neutral-student"]
+	    },
 	    "cute-arcade" : {
 		"text": "Well, I though there was only ugly nerd here, was I wrong ?",
 		"condition": [">", "phq.pj.stats.charm", 2],
