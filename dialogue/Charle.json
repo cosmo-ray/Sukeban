@@ -130,9 +130,10 @@
 		"answers": [
 		    {
 			"text": [
-			    "I'm so glad you say that, I was starting to think you're a nice guy",
+			    "I'm so glad you say that",
+			    "I was starting to think you where a nice guy",
 			    "but no, you're just an ass, and beating you,",
-			    "that will be delightful"],
+			    "will be delightful"],
 			"action": [ "phq.StartFight",
 				    ["Charle", "Thrug 0", "Thrug 1"],
 				    ["CombatDialogueGoto", "gambat1"]]
@@ -166,6 +167,14 @@
 			    [ "setInt", "phq.quests.school_sub", 9],
 			    [ "setInt", "phq.events.negociate_with_charle", 1],
 			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": ["But please there is no way to negociatte",
+				 "For the rat ?"],
+			"condition": ["<", "phq.pj.stats.charm", 6],
+			"actions": [
+			    [ "Dialogue:goto", "bob-rat" ]
 			]
 		    },
 		    {
