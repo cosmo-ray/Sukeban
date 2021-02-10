@@ -196,7 +196,6 @@
             "hair/male/plain/raven.png"
         ],
 	"image": "./Portrait_08.png",
-        "dialogue": 9
     },
     "Way too sober guy": {
         "sex": "male",

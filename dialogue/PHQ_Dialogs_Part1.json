@@ -56,7 +56,7 @@
                     }
 		]
             }
-	],
+	]
     },
     "Strangely familiar guy": {
 	"dialogue": [
@@ -86,16 +86,7 @@
     "Robert": {
 	"dialogue": [
 	    {
-		"texts": [
-		    {
-			"text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
-			"action": ["setInt", "phq.events.meet_barman", 1],
-			"condition": ["!=", "phq.events.meet_barman", 1]
-		    },
-		    {
-			"text": "hola !\nwhat can i do for ya ?",
-		    }
-		],
+		"text": "Hoy, what can I do you for ?",
 		"answers": [
 		    {
 			"text": [
@@ -104,40 +95,31 @@
 			    "I am here seeking for a job"
 			],
 			"condition": ["=", "phq.quests.no_rats", -1],
-			"action": ["Dialogue:goto", 2]
+			"action": ["Dialogue:goto", 1]
 		    },
 		    {
 			"text": "Aye, I kill all y'ur rats",
 			"condition": ["=", "phq.quests.no_rats", 1],
-			"action": ["Dialogue:goto", 3]
+			"action": ["Dialogue:goto", 2]
 		    },
                     {
-			"text": "You're right, dude. Time to go to bed.",
+			"text": "Nothing... hum hej da.",
 			"action": "phq.backToGame"
                     },
-		    "Before the sweet nectar we all stand humble and equal.",
-                    {
-			"text": "Ask your Mom!",
-			"actions": [
-			    [ "Dialogue:block", "phq.backToGame" ],
-			    "phq.StartFight"
-			]
-                    }
-		]
-            },
-	    {
-		"text": ["we might be equal but, there's rules here",
-			 "like the one in the panel behind the bar",
-			"(not yet implemented)"],
-		"answers": [
 		    {
-			"text": "Here's a simple rule:\ntake my money and give me beer",
-			"actions": [
-			    [ "phq.openStore", "bar" ],
-			]
+			"texts": [
+			    {
+				"text": "Beeer I want beer, vodka, boozeeeeee !!!!!.",
+				"condition": [">", "phq.pj.drunk", 5]
+			    },
+			    {
+				"text": "Alcohol I guess, can you sell me some :) ?"
+			    }
+			],
+			"action": [ "phq.openStore", "bar" ]
 		    }
 		]
-	    },
+            },
 	    {
 		"text": [
 		    "a job you say, Well you're not the kind of person I would hire to work here",
@@ -449,8 +431,49 @@
 	]
     },
     "Bruce" : {
-	"dialogue" : [
-	    "heja, It's me bruce\nI'm sorry but you look to young to be served"
+	"dialogue": [
+	    {
+		"texts": [
+		    {
+			"text": "Hold on, young lad!\nYou don't quite seem old enough to be drinking alcohol, are you?",
+			"action": ["setInt", "phq.events.meet_barman", 1],
+			"condition": ["!=", "phq.events.meet_barman", 1]
+		    },
+		    {
+			"text": "hola !\nwhat can i do for ya ?",
+		    }
+		],
+		"answers": [
+		    {
+			"text": [
+			    "hola old men",
+			    "you seems to be fast to juge me as a client",
+			    "I am here seeking for a job"
+			],
+			"condition": ["=", "phq.quests.no_rats", -1],
+			"action": ["Dialogue:goto", 2]
+		    },
+                    {
+			"text": "You're right, dude. Time to go to bed.",
+			"action": "phq.backToGame"
+                    },
+		    "Before the sweet nectar we all stand humble and equal.",
+		]
+            },
+	    {
+		"text": ["we might be equal but, there's rules here",
+			 "like the one in the panel behind the bar",
+			"(not yet implemented)"],
+		"answers": [
+		    {
+			"text": "Here's a simple rule:\ntake my money and give me beer",
+			"actions": [
+			    [ "phq.openStore", "bar" ],
+			]
+		    }
+		]
+	    },
+	    "I'm sorry but the developers didn't implement jobs yet"
 	]
     },
     "Short guy" : {

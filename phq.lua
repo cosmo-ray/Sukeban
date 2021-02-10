@@ -1072,10 +1072,18 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	    npc = npcs[npc_name]
 	 end
       end
-      local npc_dialogue = yeGetStringAt(npc, "dialogue")
+      local npc_dialogue = yeGet(npc, "dialogue")
 
-      if layer_name:to_string() == "NPC" and
-      checkNpcPresence(obj, npc, sceneTxt, is_ai_point) then
+      if yeType(npc_dialogue) ~= YARRAY then
+	 yeRemoveChild(npc, "dialogue")
+	 npc_dialogue = nil
+      else
+	 npc_dialogue = yeGetString(npc_dialogue)
+      end
+      yeGetStringAt(npc, "dialogue")
+
+      local is_here = checkNpcPresence(obj, npc, sceneTxt, is_ai_point)
+      if layer_name:to_string() == "NPC" and is_here then
 
 	 local pos = Pos.new_copy(obj.rect)
 	 if yeGetString(npc.type) == "sprite" then

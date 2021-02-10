@@ -4,7 +4,7 @@
 	    "end": {
 		"text": "Dude, I went to the shop, buy alcohol\nand buy Bananas too, and the party was awosome, we've made a lot of cocktel\nseriously it was a wonderful advice\n'always take a banana to a party'",
 		"condition": "phq.env.ha_bring_banana",
-		"action": "phq.backToGame"
+		"actions": [ ["phq.PjLeave", 0] ]
 	    },
 	    "base": {
 		"text": "I'm drinkning with my friend, and on the next update\nI'll ask the the player what I should bring to a party",

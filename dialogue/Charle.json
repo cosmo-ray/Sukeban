@@ -25,10 +25,10 @@
 	    },
 	    "cute": {
 		"text": ["Bonjour mademoiselle"],
-		"condition": [">", "phq.pj.stats.charm", 4],
+		"condition": [">", "phq.pj.stats.charm", 2],
 		"answers": [
 		    {
-			"text": "(pretent you've here nothing, turn away)",
+			"text": "(pretent you've hear nothing, turn away)",
 			"action": "phq.backToGame"
 		    },
 		    {
@@ -46,7 +46,7 @@
 			 "give an impulsion to my left arm",
 			 "that will propulse my hand behind your head",
 			 "that crossing your face on the way",
-			 "and make all the tax you mother pay to heal care",
+			 "and make all the tax your parents pay to heal care",
 			 "worth it"],
 		"answers": [
 		    {
@@ -160,7 +160,7 @@
 		],
 		"answers": [
 		    {
-			"text": ["well thanks CHarle"],
+			"text": ["well thanks Charle"],
 			"condition": [">", "phq.pj.stats.charm", 5],
 			"actions": [
 			    [ "setInt", "phq.quests.school_sub", 9],
@@ -178,7 +178,7 @@
 		    },
 		    {
 			"text": ["you want to make Bob pay right",
-				 "I dont like been use by someone else",
+				 "I dont like been used by someone else",
 				 "I don't like him too, and now I think about it",
 				 "he ask me for his rat, but he didn't say he must be alive"],
 			"actions": [
