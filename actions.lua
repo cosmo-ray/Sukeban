@@ -600,8 +600,7 @@ function printMessage(main, obj, msg)
    end
    dialogue_box.new_text(main.upCanvas, 0, 0,
 			 txt, main, "box")
-   print("main.box_t: ", main.box_t, " msg: ", msg)
-   if main.box_t then
+   if main.box_t and main.box < 700000 then
       main.box_t = main.box_t + TIME_RESET
    else
       main.box_t = TIME_RESET
