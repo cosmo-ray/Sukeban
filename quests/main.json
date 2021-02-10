@@ -61,6 +61,9 @@
     "A Drunk story": {
 	"stalk": "phq.quests.a_drunk_story",
 	"stalk_sart": -1,
+	"rewards": [
+	    0, 5, 5
+	],
 	"descriptions": [
 	    "your good friend herru had someone puke on him at the nternational Bar, you need to go there and avange him",
 	    "Mission Complet, Stomack Empty, go see herru back"
