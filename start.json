@@ -18,6 +18,7 @@
         { "path" : "YIRL_MODULES_PATH/jrpg-fight/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/hightscore/", "type" : "module" },
         { "path" : "YIRL_MODULES_PATH/c_app/", "type" : "module" },
+        { "path" : "YIRL_MODULES_PATH/sprite-manager/", "type" : "module" },
 
 	{ "file" : "modules/tetris", "type" : "module" },
         { "file" : "modules/little-space/", "type" : "module" },
@@ -30,7 +31,6 @@
 	{ "file" : "modules/CursesBird/", "type" : "module" },
 	{ "file" : "modules/polis-at-war/", "type" : "module" },
 	{ "file" : "modules/clash-of-iron-and-bronze/", "type" : "module" },
-        { "file" : "sprite-manager/", "type" : "module" },
         { "file" : "pathfinding/", "type" : "module"},
 
 	{ "file" : "Arcade_score.json", "type" : "json", "as" : "hightscores"},
