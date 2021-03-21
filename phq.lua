@@ -1226,7 +1226,8 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 				     "rgba: 255 255 255 255")
    upCanvas:remove(ent.life_nb )
    ent.life_nb = ywCanvasNewTextExt(upCanvas.ent, 410, 10,
-				    Entity.new_string(math.floor(phq.pj.life:to_int())),
+				    Entity.new_string(
+				       math.floor(phq.pj.life:to_int())),
 				    "rgba: 255 255 255 255")
    reposeCam(ent)
    if (c.enter_script) then scripts[c.enter_script:to_string()](ent) end

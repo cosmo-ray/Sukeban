@@ -343,6 +343,21 @@
                          "name":"Arg0",
                          "type":"string",
                          "value":"Yomoe Magamochi on Tour !"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.env.chapter"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":0
                         }],
                  "rotation":0,
                  "type":"",
@@ -350,6 +365,48 @@
                  "width":25,
                  "x":964.443699731904,
                  "y":319.446380697051
+                }, 
+                {
+                 "height":41,
+                 "id":24,
+                 "name":"Lucky Seato",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.printMessage"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Luck Seat new Album, including the Music from 'Bilboquet Cop Boy'"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.env.chapter"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":25,
+                 "x":964.179750634957,
+                 "y":320.067998152852
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -358,7 +415,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":24,
+ "nextobjectid":25,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.2",
