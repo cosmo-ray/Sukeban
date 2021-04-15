@@ -868,7 +868,7 @@ function phq_action(entity, eve)
    pix_mv = turn_timer * PIX_MV_PER_MS + pix_floor_left
    pix_floor_left = pix_mv - math.floor(pix_mv)
 
-   entity.pj.mv_pix = entity.pj.mv_pix + math.abs(pix_mv)
+   entity.pj.mv_pix = entity.pj.mv_pix + pix_mv
 
 
    NpcTurn(entity)
@@ -918,7 +918,7 @@ function phq_action(entity, eve)
        mvPos:opposite()
        ylpcsHandlerMove(entity.pj, mvPos.ent)
     end
-    if (entity.pj.mv_pix > 6) then
+    if (entity.pj.mv_pix > 20) then
        entity.pj.mv_pix = 0
        walkDoStep(entity, entity.pj)
     end
