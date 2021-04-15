@@ -202,6 +202,10 @@ function NpcTurn(wid)
 	 local ec = enemy.canvas
 	 local tmp = Entity.new_array()
 
+	 if yeGetIntAt(enemy, "ai_state") == ENEMY_IDLE then
+	    enemy.mv_pix = 0
+	 end
+	 
 	 saveNpcCanvasMatadata(tmp, ec)
 	 enemy.ai_state = ENEMY_ATTACKING
 	 if math.abs(ywPosX(mv_pos)) > math.abs(ywPosY(mv_pos)) and
@@ -219,7 +223,13 @@ function NpcTurn(wid)
 	       lpcs.handlerSetOrigXY(enemy, 0, LPCS_UP)
 	    end
 	 else
-	    ylpcsHandlerNextStep(enemy)
+	    if (enemy.mv_pix > 20) then
+	       enemy.mv_pix = 0
+	       ylpcsHandlerNextStep(enemy)
+	    else
+	       enemy.mv_pix = enemy.mv_pix + ywSizeDistance(mv_pos)
+	    end
+	    
 	 end
 	 ylpcsHandlerRefresh(enemy)
 	 ylpcsHandlerMove(enemy, mv_pos)
