@@ -673,6 +673,10 @@ function phq_action(entity, eve)
       return openGlobMenu(entity, GM_MISC_IDX)
    end
 
+   if yevIsKeyDown(eve, Y_F_KEY) then
+      StartFight(entity, eve, Entity.new_string("rat"))
+   end
+
    if yevIsGrpDown(eve, upKeys) then
       entity.pj.move.up_down = -1
       entity.pj.y = LPCS_UP
