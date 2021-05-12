@@ -99,6 +99,13 @@ Like a bad guy call Killer The Butcher, who resside on the boat call Zan on deck
 		    [ "phq.openStore", "clothes" ]
 		},
 		{
+		    "text": "HHHO Tennis Equipement Store",
+		    "action": [
+			"Dialogue:change-text",
+			"Close Open Soon"
+		    ]
+		},
+		{
 		    "text": "go to 'the shoes !",
 		    "action":
 		    [ "phq.openStore", "the shoes !" ]
