@@ -485,6 +485,33 @@ function increase(wid, eve, whatType, what, val)
    return increaseStat(wid, stat_container, what, yeGetInt(val))
 end
 
+function tmp_increase(wid, actionable_obj, what, val)
+   actionable_obj = Entity.wrapp(actionable_obj)
+
+   if actionable_obj.t and
+      actionable_obj.t.d == phq.env.day and
+      actionable_obj.t.t == phq.env.time and
+      actionable_obj.t.w == phq.env.week
+   then
+      return YEVE_ACTION
+   end
+
+   local val = yeGetInt(val)
+   if yIsNil(phq.pj.tmp_stats) then
+      phq.pj.tmp_stats = {}
+   end
+   local tsts = Entity.new_array(phq.pj.tmp_stats)
+   tsts[0] = what
+   tsts[1] = -val
+   local s = "Increase: " .. yeGetString(what) .. " temporary of: " .. val
+   printMessage(main_widget, nil, s)
+   actionable_obj.t = {}
+   actionable_obj.t.t = phq.env.time
+   actionable_obj.t.d = phq.env.day
+   actionable_obj.t.w = phq.env.week
+   ygIncreaseInt(yeGetString(what), val)
+end
+
 
 function DrinkBeer(ent, obj)
    ent = Entity.wrapp(ent)
@@ -545,6 +572,12 @@ function advance_time(main, next_loc, force_skip_time, next_pos)
       main.sleep_loc_pos = next_pos
    end
    npcAdvenceTime()
+   local tmp_stats = phq.pj.tmp_stats
+   for i = 0, yeLen(tmp_stats) - 1 do
+      local st = tmp_stats[i]
+      ygIncreaseInt(yeGetStringAt(st, 0), yeGetIntAt(st, 1))
+   end
+   yeClearArray(tmp_stats)
    if phq.env.time:to_string() == "night" then
       phq.env.time = "morning"
       phq.env.day = phq.env.day + 1

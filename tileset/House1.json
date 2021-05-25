@@ -344,6 +344,38 @@
                  "width":31.5656565656566,
                  "x":537.878787878788,
                  "y":353.535353535354
+                }, 
+                {
+                 "height":54.2929292929293,
+                 "id":26,
+                 "name":"increase char",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.tmp_increase"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"phq.pj.stats.charm"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.5656565656566,
+                 "x":606.060606060606,
+                 "y":349.747474747475
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -562,7 +594,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":26,
+ "nextobjectid":29,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -571,7 +603,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.5.0",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -584,6 +616,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.5,
+ "version":"1.6",
  "width":24
 }
