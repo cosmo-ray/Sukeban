@@ -556,6 +556,7 @@ cant_skip_time_reason = nil
 
 -- in fact, this function do 2 things: adancing time and start sleep animation
 function advance_time(main, next_loc, force_skip_time, next_pos)
+   main = main_widget
    if main.sleep_script then
       scripts[main.sleep_script:to_string()](main)
    end

@@ -96,10 +96,10 @@
 		"rand-texts": [
 		    "warera wo nerau kuroi kage\nseikai no heiwa we mamoru kage\n(... an episode of some Super Hero...)",
 		    "Chotto ochame no ohimesama, SAL... SAL...\n(some magical girl Anime)",
-		    "Let's all the wonders come to me, The fantasy feel, fell my heart...\n(a Fantasy Anime)", // I'll never wonder, for all the love, I have I have you, all the spirits of the winds, spear they magic winds and fly...
+		    "Let's all the wonders come to me, The fantasy feel, fell my heart...\n(a Fantasy Anime)",
 		    "We go to outer space, We're leaving mother earth, to save the human race...\n(a SF Anime)",
-		    "I was made to hit the Americans, I was made to hit the Americans !...\n(a Music Anime)", // I might have slightly change the lyrics here
-		    "I've a big gun, I took it from my king\nsick with justice, I just want to hit you\n(An anime with a girl with a big gun)", // that one too
+		    "I was made to hit the Americans, I was made to hit the Americans !...\n(a Music Anime)",
+		    "I've a big gun, I took it from my king\nsick with justice, I just want to hit you\n(An anime with a girl with a big gun)",
 		    "Kikoeru ka Kikoeru darou harukane todoroki...(A Robot that could destroy humanity... nonsense)",
 	 	    "La La La La La Remember while apart, The bright red scarf !!!!(another SF anime)",
 		    "Nasaku muyou ! Asteroid Belt no Outlaw mo furue dasu...(The Mecha sherif of the galaxy ?)"
@@ -135,7 +135,7 @@
 	    { "text": "Init Video\nInit Network\nInit Sound"},
 	    { "text": "Init Video\nInit Network\nInit Sound\nInit Shell"},
 	    {
-		"text": "Operations:\n(Dev note: create a real shell for futur version)\n(Dev Note 2: add a faxe Win stuff OS for impure user that use impure OS)\n(Dev Note 3: but we don't like thers guy who don't even use emacs right ?)",
+		"text": "Operations:\n(Dev note: create a real shell for futur version)\n(Dev Note 2: add a fake Win stuff OS for impure user that use impure OS)\n(Dev Note 3: but we don't like thers guy who don't even use emacs right ?)",
 		"answers": [
 		    {
 			"text": "Install Snake",
@@ -174,15 +174,6 @@
 			"action": ["phq.play", "pong", 15000]
 		    },
 		    {
-			"text": "Watch ASCII Pr0m\n(Dev note: yes I know in futur version I'll add a faxe ascii browser, and I'll hide this feature\nI might add the ASCII pr0m too)",
-			"condition": ["call", "phq.use_time_point", "__box"],
-			"actions": [
-			    ["phq.increase", "trait", "perv", 1],
-			    "phq.backToGame"
-			]
-
-		    },
-		    {
 			"text": "Sing",
 			"action": ["Dialogue:change-text",
 				   "it's a function to call\nwhen you know the reason why, Dear process we run for what is right (tu tu tutu)\na noble electricity usage, when ld-sunix call you pay the price\nfor the computer I would give my life!\nFOR GLORIOUSE SUNIX I WOULD GIVE ME LIFE..."
@@ -190,9 +181,33 @@
 		    },
 		    {
 			"text": "Internet",
+			"condition": ["not", "phq.events.internet_configured"],
 			"action": ["Dialogue:change-text",
 				   "Error 418: I'm a teapot"
 				  ]
+		    },
+		    {
+			"text": "so there is this site call wikipedia",
+			"condition": "phq.events.internet_configured",
+			"actions": [
+			    [ "randomCall",
+			      ["phq.increase", "knowledge", "computer", 1],
+			      ["phq.increase", "knowledge", "animu", 1],
+			      ["phq.increase", "knowledge", "fashion", 1]
+			    ],
+			    "phq.advance_time",
+			    "phq.backToGame"
+			]
+
+		    },
+		    {
+			"text": "Go to the web, and woo what is that site ?\n(Dev note: yes I know in futur version I'll add a fake ascii browser\n)",
+			"condition": ["and", "phq.events.internet_configured", ["call", "phq.use_time_point", "__box"]],
+			"actions": [
+			    ["phq.increase", "trait", "perv", 1],
+			    "phq.backToGame"
+			]
+
 		    },
 		    "Play Dnoom",
 		    {

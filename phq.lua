@@ -321,6 +321,7 @@ function init_phq(mod)
    mod.leave_team = Entity.new_func("leave_team_callback")
    mod.ai_point_remove = Entity.new_func(ai_point_remove)
    mod.chk_affection = Entity.new_func(chk_affection)
+   mod.advance_time = Entity.new_func(advance_time)
 end
 
 function load_game(save_dir)
