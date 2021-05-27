@@ -14,7 +14,15 @@
 			"action": "phq.backToGame"
 		    },
 		    {
-			"text": "I've read sunix was at first call sunics, ay idea why they change cs to x ?",
+			"text": "So I'm trying to configure internet at home, but I got an error could you help me",
+			"condition": ["=", "phq.events.try_config_internet", 1],
+			"action": [
+			    "Dialogue:change-text",
+			    "No, your brains is unfit to use a computer properly, and I prefer to spend my time on real men task"
+			]
+		    },
+		    {
+			"text": "I've read sunix was at first call sunics, any idea why they change cs to x ?",
 			"condition": [">", "phq.pj.knowledge.computer", 25],
 			"action": ["Dialogue:goto", 6]
 		    }
@@ -57,7 +65,7 @@
 		    },
 		    {
 			"text": "yeah well... seriously\nyou know, I kinda wanna be part of this club guys\nyou know I like bits too",
-			"condition": [">", "phq.pj.knowledge.computer", 4]
+			"condition": [">", "phq.pj.knowledge.computer", 2]
 		    }
 		]
 	    },

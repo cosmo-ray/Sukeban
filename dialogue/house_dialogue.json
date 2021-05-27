@@ -180,11 +180,18 @@
 				  ]
 		    },
 		    {
-			"text": "Internet",
-			"condition": ["not", "phq.events.internet_configured"],
-			"action": ["Dialogue:change-text",
-				   "Error 418: I'm a teapot"
-				  ]
+			"text": "Configure Internet",
+			"condition": ["and", ["not", "phq.events.internet_configured"], ["<", "phq.pj.knowledge.computer", 5]],
+			"actions": [["Dialogue:change-text", "Error 418: I'm a teapot" ], ["setInt", "phq.events.try_config_internet", 1]]
+		    },
+		    {
+			"text": "Configure Internet",
+			"condition": ["and", ["not", "phq.events.internet_configured"], [">", "phq.pj.knowledge.computer", 4]],
+			"actions": [
+			    ["Dialogue:change-text", "Statue: Connected"],
+			    ["setInt", "phq.events.try_config_internet", 2],
+			    ["setInt", "phq.events.internet_configured", 1]
+			]
 		    },
 		    {
 			"text": "so there is this site call wikipedia",
@@ -201,7 +208,7 @@
 
 		    },
 		    {
-			"text": "Go to the web, and woo what is that site ?\n(Dev note: yes I know in futur version I'll add a fake ascii browser\n)",
+			"text": "Go to the web, and oulala what is that site ?\n",
 			"condition": ["and", "phq.events.internet_configured", ["call", "phq.use_time_point", "__box"]],
 			"actions": [
 			    ["phq.increase", "trait", "perv", 1],

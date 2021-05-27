@@ -90,7 +90,7 @@ function newGameAction(menu, eve, arg)
    phq.events = {}
    saved_scenes = Entity.new_array()
    if archetype == GEEK_ARCHETYPE then
-      phq.pj.knowledge.computer = 5
+      phq.pj.knowledge.computer = 3
       phq.pj.knowledge.animu = 5
       phq.pj.trait.shy = 1
       phq.pj.stats.smart = 3
