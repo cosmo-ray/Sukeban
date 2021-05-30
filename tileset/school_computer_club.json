@@ -148,6 +148,33 @@
                  "width":29.0880503144654,
                  "x":418.238993710692,
                  "y":285.377358490566
+                }, 
+                {
+                 "height":41.6666666666667,
+                 "id":5,
+                 "name":"Oh R'lly: Learn AWK",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.takeObject"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Oh R'lly: Learn AWK"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":26.7295597484277,
+                 "x":35.377358490566,
+                 "y":19.6540880503145
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -185,7 +212,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":5,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -194,7 +221,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.4.2",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -207,6 +234,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":"1.6",
  "width":18
 }

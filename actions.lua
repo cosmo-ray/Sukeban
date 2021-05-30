@@ -451,7 +451,7 @@ function pay(wid, eve, cost, okAction, noDialogue)
 end
 
 function increaseStat(wid, stats_container, stat, nb, max_min)
-   local s = stats_container[stat]
+   local s = Entity.wrapp(yeGetByStr(stats_container, stat))
    local opStr = "increase"
 
    yeSetInt(s, s:to_int() + nb)

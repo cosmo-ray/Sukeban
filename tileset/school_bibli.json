@@ -135,6 +135,33 @@
                  "width":58.2010582010582,
                  "x":226.455026455026,
                  "y":45.5026455026455
+                }, 
+                {
+                 "height":45.8545048952782,
+                 "id":6,
+                 "name":"sed book",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.takeObject"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Oh R'lly: Learn Sed"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":28.5041516916594,
+                 "x":32.2220845210063,
+                 "y":49.5724377246251
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -161,10 +188,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.3.3",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -177,6 +204,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":"1.6",
  "width":13
 }

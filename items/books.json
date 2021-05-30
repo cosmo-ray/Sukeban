@@ -30,5 +30,20 @@
     "lombricopedia": {
 	"type" : "book",
 	"summary": "An Encyclopedia, about worms, it warm your heart to read it"
+    },
+    "Oh R'lly: Learn Sed": {
+	"type": "usable",
+	"summary": "Sed Book",
+	"stats+" : {
+	    "knowledge.computer": 1
+	}
+    },
+    "Oh R'lly: Learn AWK": {
+	"type": "usable",
+	"summary": "Book about awk",
+	"stats+" : {
+	    "knowledge.computer": 1
+	}
     }
+
 }
