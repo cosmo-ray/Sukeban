@@ -1,9 +1,11 @@
-{ "height":15,
+{ "compressionlevel":-1,
+ "height":15,
  "infinite":false,
  "layers":[
         {
          "data":[2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758, 2758],
          "height":15,
+         "id":1,
          "name":"Ground",
          "opacity":1,
          "type":"tilelayer",
@@ -15,16 +17,15 @@
         {
          "data":[2729, 2731, 2731, 2731, 2731, 2731, 2731, 2731, 2731, 2728, 2700, 3348, 3348, 3326, 3349, 3326, 3348, 3348, 3326, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2700, 0, 0, 0, 0, 0, 0, 0, 0, 2698, 2697, 2667, 2667, 2667, 2667, 2667, 2667, 0, 2667, 2696],
          "height":15,
+         "id":2,
          "name":"Walls",
          "opacity":1,
-         "properties":
-            {
-             "Collision":1
-            },
-         "propertytypes":
-            {
-             "Collision":"int"
-            },
+         "properties":[
+                {
+                 "name":"Collision",
+                 "type":"int",
+                 "value":1
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":10,
@@ -32,18 +33,17 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2435, 0, 0, 0, 0, 0, 2329, 2330, 0, 0, 2400, 2368, 0, 0, 0, 0, 2361, 2362, 0, 0, 2759, 2759, 2759, 2759, 0, 0, 2393, 2394, 0, 0, 0, 2759, 2759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2759, 0, 0, 0, 0, 2524, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2392, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2759, 2759, 0, 0, 0, 0, 0, 0, 0, 0, 2759, 2759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2435, 0, 0, 0, 0, 0, 2329, 2330, 0, 0, 2400, 2368, 3414, 3415, 0, 0, 2361, 2362, 0, 0, 2759, 2759, 2759, 2759, 0, 0, 2393, 2394, 0, 0, 0, 2759, 2759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2759, 0, 0, 0, 0, 2524, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2392, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2759, 2759, 0, 0, 0, 0, 0, 0, 0, 0, 2759, 2759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":15,
+         "id":3,
          "name":"Furniture Col",
          "opacity":1,
-         "properties":
-            {
-             "Collision":1
-            },
-         "propertytypes":
-            {
-             "Collision":"int"
-            },
+         "properties":[
+                {
+                 "name":"Collision",
+                 "type":"int",
+                 "value":1
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":10,
@@ -52,36 +52,77 @@
         }, 
         {
          "draworder":"topdown",
+         "id":4,
          "name":"Actionable",
          "objects":[
                 {
                  "height":72.6651323360184,
                  "id":5,
                  "name":"Bed",
-                 "properties":
-                    {
-                     "Action":"phq.actionOrPrint",
-                     "Check0":"phq.pj.drunk",
-                     "Check1":90,
-                     "CheckOperation":">",
-                     "Message":"No F****** way I Sleep in this",
-                     "SucessAction":"phq.sleep"
-                    },
-                 "propertytypes":
-                    {
-                     "Action":"string",
-                     "Check0":"string",
-                     "Check1":"int",
-                     "CheckOperation":"string",
-                     "Message":"string",
-                     "SucessAction":"string"
-                    },
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.actionOrPrint"
+                        }, 
+                        {
+                         "name":"Check0",
+                         "type":"string",
+                         "value":"phq.pj.drunk"
+                        }, 
+                        {
+                         "name":"Check1",
+                         "type":"int",
+                         "value":90
+                        }, 
+                        {
+                         "name":"CheckOperation",
+                         "type":"string",
+                         "value":">"
+                        }, 
+                        {
+                         "name":"Message",
+                         "type":"string",
+                         "value":"No F****** way I Sleep in this"
+                        }, 
+                        {
+                         "name":"SucessAction",
+                         "type":"string",
+                         "value":"phq.sleep"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":51,
                  "x":228.383774453395,
                  "y":58.2445339470656
+                }, 
+                {
+                 "height":28,
+                 "id":7,
+                 "name":"1ebg",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.takeObject"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Programming Boot Sector Game for 1EBG"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":36,
+                 "x":120,
+                 "y":62
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -91,6 +132,7 @@
         }, 
         {
          "draworder":"topdown",
+         "id":5,
          "name":"Entries",
          "objects":[
                 {
@@ -98,18 +140,22 @@
                  "id":3,
                  "name":"Door",
                  "point":true,
-                 "properties":
-                    {
-                     "entry":1,
-                     "nextScene":"street0",
-                     "side":"up"
-                    },
-                 "propertytypes":
-                    {
-                     "entry":"int",
-                     "nextScene":"string",
-                     "side":"string"
-                    },
+                 "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"street0"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
                  "rotation":0,
                  "type":"EntryPoint",
                  "visible":true,
@@ -123,10 +169,11 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":6,
+ "nextlayerid":6,
+ "nextobjectid":8,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.1.5",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -148,9 +195,13 @@
         {
          "firstgid":3284,
          "source":"Pipes-RustyWalls.json"
+        }, 
+        {
+         "firstgid":3372,
+         "source":"Objects.json"
         }],
  "tilewidth":32,
  "type":"map",
- "version":1,
+ "version":"1.6",
  "width":10
 }

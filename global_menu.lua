@@ -572,6 +572,8 @@ function gmUseItem(mn)
       return YEVE_NOTHANDLE
    end
    print("use o", o:cent())
+   local time_consumption = o.time_consumption
+
    if o.type:to_string() == "book" then
       return read_book(o, o_str)
    end
@@ -597,6 +599,10 @@ function gmUseItem(mn)
       remove(mn, nil, o_str)
    end
    doItemsListening(Menu.wrapp(mn))
+   if yeGetString(time_consumption) == "time" then
+      backToGame2()
+      advance_time(main_widget)
+   end
 end
 
 function invList(mn)
