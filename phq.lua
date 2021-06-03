@@ -713,12 +713,23 @@ function phq_action(entity, eve)
 	 local i = 0
 
 	 while  i < yeLen(e_actionables) do
-	    local cr = e_actionables[i].rect
+	    local a = e_actionables[i]
+	    local cr = a.rect
+
+	    if (a.t and
+		   a.t.d == phq.env.day and
+		   a.t.t == phq.env.time and
+		   a.t.w == phq.env.week)
+	       or a.is_used
+	    or checkTiledCondition(a) == false then
+	       goto next_loop
+	    end
 
 	    show_act[i] = ywCanvasNewRectangle(entity.upCanvas,
 					       ywRectX(cr), ywRectY(cr),
 					       ywRectW(cr), ywRectH(cr),
 					       "rgba: 250 250 127 127")
+	    :: next_loop ::
 	    i = i  + 1
 	 end
 	 local j = 0
