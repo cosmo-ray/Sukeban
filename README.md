@@ -29,7 +29,7 @@ Char dedicated to my game engine, but because no one there,
 you can come chat about anything there
 especially game made by yirl, like this one
 
-* irc: #yirl on freenode
+* irc: #yirl on freenode or #yirl on libera
 * discord: https://discord.gg/8QrKTtV
 
 # Arch Linux:
