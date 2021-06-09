@@ -29,7 +29,7 @@
 		"answers": [
 		    {
 			"text": ["I you pay me 20 buck I let you leave, lol",
-				 "Suck my dick"],
+				 "What about you go have coitus with yourself ?"],
 			"action": ["phq.StartFight", "Baffy",
 				   "CombatDialogueNext"]
 		    },
