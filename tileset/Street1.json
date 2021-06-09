@@ -133,10 +133,9 @@
          "name":"Entries",
          "objects":[
                 {
-                 "height":0,
-                 "id":2,
-                 "name":"barDoor",
-                 "point":true,
+                 "height":48.4876471946433,
+                 "id":30,
+                 "name":"badDoor",
                  "properties":[
                         {
                          "name":"Time",
@@ -161,15 +160,14 @@
                  "rotation":0,
                  "type":"EntryPoint",
                  "visible":true,
-                 "width":0,
-                 "x":1265,
-                 "y":370
+                 "width":34.6340337104596,
+                 "x":1246.82521357654,
+                 "y":330.177788039714
                 }, 
                 {
-                 "height":0,
-                 "id":3,
+                 "height":41.5608404525514,
+                 "id":27,
                  "name":"houseDoor",
-                 "point":true,
                  "properties":[
                         {
                          "name":"entry",
@@ -189,9 +187,9 @@
                  "rotation":0,
                  "type":"EntryPoint",
                  "visible":true,
-                 "width":0,
-                 "x":111,
-                 "y":381
+                 "width":28.8616947587162,
+                 "x":98.1297621796352,
+                 "y":340.567998152852
                 }, 
                 {
                  "height":4,
@@ -499,10 +497,10 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":27,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.2",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -535,6 +533,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":"1.6",
  "width":45
 }
