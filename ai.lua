@@ -18,7 +18,10 @@ local phq = Entity.wrapp(ygGet("phq"))
 function npcAdvenceTime()
    main_widget.npc_act = {}
    phq.env.ai_point = {}
-   for i = 0, yeLen(npcs) do
+   local npcs_l = yeLen(npcs)
+   local threshold = yuiRand()
+   for i0 = 0, npcs_l - 1 do
+      local i = (i0 + threshold) % npcs_l
       local n = npcs[i]
 
       if yIsNil(n) then
@@ -205,7 +208,7 @@ function NpcTurn(wid)
 	 if yeGetIntAt(enemy, "ai_state") == ENEMY_IDLE then
 	    enemy.mv_pix = 0
 	 end
-	 
+
 	 saveNpcCanvasMatadata(tmp, ec)
 	 enemy.ai_state = ENEMY_ATTACKING
 	 if math.abs(ywPosX(mv_pos)) > math.abs(ywPosY(mv_pos)) and
@@ -229,8 +232,8 @@ function NpcTurn(wid)
 	    else
 	       enemy.mv_pix = enemy.mv_pix + ywSizeDistance(mv_pos)
 	    end
-	    
 	 end
+
 	 ylpcsHandlerRefresh(enemy)
 	 ylpcsHandlerMove(enemy, mv_pos)
 	 ec = enemy.canvas

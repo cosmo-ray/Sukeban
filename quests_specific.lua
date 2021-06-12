@@ -5,6 +5,8 @@ local drunk_bar1 = nil
 local window_width = 800
 local window_height = 600
 
+local SKIP_CLASS_SCENE = false
+
 BLOCK_EVE_NO_UNSET = 10
 
 is_end_of_chapter = false
@@ -283,6 +285,10 @@ function morning_class(mn)
 
    yeClearArray(school_events)
 
+   if SKIP_CLASS_SCENE == true then
+      goto mid_skip
+   end
+
    -- this block is for events before class
    if school_day == 0 then
       local a = Entity.new_array(school_events)
@@ -295,7 +301,13 @@ function morning_class(mn)
       Entity.new_string("school_intro", a)
    end
 
+   :: mid_skip ::
+
    local class_a = Entity.new_array(school_events)
+
+   if SKIP_CLASS_SCENE == true then
+      goto finalize
+   end
 
    Entity.new_string("phq.vnScene", class_a)
    Entity.new_string("class", class_a)
@@ -320,6 +332,8 @@ function morning_class(mn)
       Entity.new_func(game_scene, a)
       Entity.new_string("saki intro", a)
    end
+   :: finalize ::
+
    Entity.new_func(end_morning_class, school_events)
 
    backToGame(f_mn)

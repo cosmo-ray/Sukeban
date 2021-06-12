@@ -1091,13 +1091,12 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       end
       local npc_dialogue = yeGet(npc, "dialogue")
 
-      if yeType(npc_dialogue) ~= YARRAY then
+      if yeType(npc_dialogue) ~= YSTRING then
 	 yeRemoveChild(npc, "dialogue")
 	 npc_dialogue = nil
       else
 	 npc_dialogue = yeGetString(npc_dialogue)
       end
-      yeGetStringAt(npc, "dialogue")
 
       local is_here = checkNpcPresence(obj, npc, sceneTxt, is_ai_point)
       if layer_name:to_string() == "NPC" and is_here then
@@ -1149,6 +1148,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc.canvas.Collision = 1
 	 npc.canvas.is_npc = 1
 	 npc.char.name = npc_name
+	 print("npc_dialogue: ", npc_dialogue)
 	 if yIsNNil(npc_dialogue) then
 	    npc.canvas.dialogue = npc_dialogue
 	 else

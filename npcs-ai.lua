@@ -106,10 +106,8 @@ function student_ai(main, npc, name)
       npc = Entity.wrapp(npc)
       npc.out_time = next_time()
    end
-   print("yeGetIntAt(npc, 'is_random_student'): ", yeGetIntAt(npc, "is_random_student"),
-	 yeGetIntAt(npc, "is_random_student") > 0, name)
    if yeGetIntAt(npc, "is_random_student") > 0 then
-      Entity.wrapp(npc).dialogue = "neutral-student"
+      Entity.wrapp(npc).dialogue = Entity.new_string("neutral-student")
    end
    Entity.wrapp(npc).have_talk = 0
 
