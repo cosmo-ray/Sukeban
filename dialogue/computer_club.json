@@ -2,7 +2,7 @@
     "The nerd": {
 	"dialogue" : [
 	    {
-		"text": "nom please no outsider here, especially femoid",
+		"text": "please no outsider here, especially femoid",
 		"condition": ["<", "phq.env.chapter", 1],
 		"answers": [
 		    "text": "(leave)",
