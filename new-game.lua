@@ -45,6 +45,7 @@ function newGameAction(menu, eve, arg)
    -- reputation is how the other see you, not how you are
    -- if someone give flase rumor about you, it will afect your reputation
    -- if you do something bad, but no one know it, it will afect your trait
+   phq.pj.organisations = {}
    phq.pj.reputation = {}
    phq.pj.reputation.insane = 0
    phq.pj.reputation.bully = 0

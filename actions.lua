@@ -3,6 +3,7 @@ local phq = Entity.wrapp(ygGet("phq"))
 local dialogue = Entity.wrapp(ygGet("Dialogue"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 fight_script = nil
+dialogue_npc = nil
 
 local use_time_point_action = Entity.new_string("phq.use_time_point")
 
@@ -743,6 +744,7 @@ function startDialogue(main, obj, dialogue)
 	 npc = obj
       end
       local dialogue = dialogues[dialogue:to_string()]
+      dialogue_npc = npc
 
       if dialogue.dialogue then
 	 yeCopy(dialogue, dialogueWid)

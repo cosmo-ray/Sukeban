@@ -5,20 +5,56 @@ local drunk_bar1 = nil
 local window_width = 800
 local window_height = 600
 
-local SKIP_CLASS_SCENE = false
+local SKIP_CLASS_SCENE = true
 
 BLOCK_EVE_NO_UNSET = 10
 
 is_end_of_chapter = false
 school_events = Entity.new_array()
 
-function chk_affection()
-   if yuiRand() % 2 == 1 then
+function chk_affection(wid)
+   print(wid)
+   print(dialogue_npc, "\nvs\n", phq.pj.stats)
+   -- base: charm
+   -- 4 % per common club
+   -- 30 % reputation x trait
+   -- 20 % common trait
+   -- 25 % common knowledge
+   -- 3 % if gender attraction based of charm
+
+   local pj = phq.pj
+   local roll = yuiRand() % 100
+   local charm = phq.pj.stats.charm:to_int()
+   local base = charm
+
+   if charm > 2 and trait.dialogue_npc.female_atraction > 0 then
+      if charm < 4 then
+	 base = base + 1
+      elseif charm < 6 then
+	 base = base + 2
+      else
+	 base = base + 3
+      end
+   end
+
+   local trait_acc = 0
+   local pj_traits = pj.trait
+   --for i = 0, yeLen(pj_traits) - 1 do
+   --local tk = yeGetKeyAt(pj_traits, i)
+   --end
+
+   if roll == 0 then
+      print("critical sucess")
+      return 2
+   elseif roll > 98 or true then
+      print("critical failure")
+      return 3
+   elseif roll > base then
       print("go bad @")
-      return 0
+      return 1
    end
    print("go pas bad !")
-   return 1
+   return 0
 end
 
 function inter_bar_in(main)

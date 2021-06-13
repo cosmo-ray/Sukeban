@@ -16,9 +16,10 @@
 			"text": "(Talk with {phq_wid.dialogue_npc.name})",
 			"actions": [
 			    ["setInt", "phq_wid.dialogue_npc.have_talk", 1],
-			    ["Dialogue.condition_goto",
-			     ["call", "phq.chk_affection"], "talking-incr-affection",
-			     "talking-dislike"]
+			    ["Dialogue.condition_switch",
+			     "phq.chk_affection", "talking-incr-affection",
+			     "talking-dislike", "talking-crit-sucess",
+			     "talking-fumble"]
 			],
 			"condition":  ["<", "phq_wid.dialogue_npc.have_talk", 1]
 		    }
@@ -30,11 +31,25 @@
 		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
 	        "action": "phq.backToGame"
 	    },
+	    "talking-crit-sucess": {
+		"text": ["you talk with {phq_wid.dialogue_npc.name}, it go very well",
+			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
+		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 10],
+	        "action": "phq.backToGame"
+	    },
+
 	    "talking-dislike": {
 		"text": ["you talk with {phq_wid.dialogue_npc.name}, it didnt't go well",
 			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
 		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", -1],
 		     "action": "phq.backToGame"
+	    },
+	    "talking-fumble": {
+		"text": ["I talk with {phq_wid.dialogue_npc.name}, humm don't how how this happen",
+			 "but I this person hate me now",
+			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
+		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", -10],
+		"action": "phq.backToGame"
 	    }
 	}
     }
