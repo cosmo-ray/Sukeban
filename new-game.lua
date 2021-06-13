@@ -93,12 +93,16 @@ function newGameAction(menu, eve, arg)
    if archetype == GEEK_ARCHETYPE then
       phq.pj.knowledge.computer = 3
       phq.pj.knowledge.animu = 5
+      phq.pj.knowledge.idoles = 2
       phq.pj.trait.shy = 1
       phq.pj.stats.smart = 3
       phq.env.mean_name = "losser"
       phq.env.mean_name2 = "nerd"
    elseif archetype == IDOLE_ARCHETYPE then
       phq.pj.knowledge.fashion = 5
+      phq.pj.knowledge.makeup = 3
+      phq.pj.knowledge.boys_bands = 3
+      phq.pj.knowledge.idoles = 1
       phq.pj.stats.charm = 5
       phq.pj.stats.strength = 1
       addObject(main_widget, phq.pj, "robe_white", 1)
