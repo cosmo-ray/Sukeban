@@ -12,6 +12,15 @@ BLOCK_EVE_NO_UNSET = 10
 is_end_of_chapter = false
 school_events = Entity.new_array()
 
+school_students_organisation = {
+   "Computer club",
+   "Animu Club",
+   "Student Club",
+   "Beautification Club",
+   "Students Protection Group",
+   "Board Game and Roleplay Club"
+}
+
 function chk_affection(wid)
    print(wid)
    print(dialogue_npc, "\nvs\n", phq.pj.stats)

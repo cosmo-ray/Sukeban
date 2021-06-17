@@ -5,13 +5,16 @@
 		"text": "please no outsider here, especially femoid",
 		"condition": ["<", "phq.env.chapter", 1],
 		"answers": [
-		    "text": "(leave)",
-		    "action": "phq.backToGame"
+		    {
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    }
 		]
 	    },
 	    {
 		"text": "hej to our glorious she member",
-		"condition": "phq.events.computer_club_mb",
+		"condition": ["contain_string", "phq.pj.organisations",
+			      "Computer club"],
 		"answers": [
 		    {
 			"text": "do you need to remember me of my gender every time I talk to you ?",
@@ -84,7 +87,9 @@
 		"text": "well, your a member, our first female member, that's great",
 		"answer": {
 		    "text": "(tatat ta ta tatata)",
-		    "actions": [[ "setInt", "phq.events.computer_club_mb", 1 ],
+		    "actions": [[ "recreateString",
+				  "phq.pj.organisations.computer_club",
+				  "Computer club"],
 				"phq.backToGame"]
 		}
 	    },
