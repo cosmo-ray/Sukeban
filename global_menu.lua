@@ -138,6 +138,7 @@ function pushSTatusTextScreen(container)
    local trait_str = "----- Trait -----\n"
    local trait = phq.pj.trait
    local cmb_str = "-[Currrent Combot: {phq.pj.attack}]-\n"
+   local school_club = ""
 
    local i = 0
    while i < yeLen(knowledge) do
@@ -171,6 +172,17 @@ function pushSTatusTextScreen(container)
    else
       chap_txt = chap_txt .. yeGetInt(phq.env.chapter)
    end
+
+   local pj_orgas = phq.pj.organisations
+   if pj_orgas then
+      school_club = "club:"
+
+      for j = 0, yeLen(pj_orgas) - 1 do
+	 school_club = school_club .. " " .. pj_orgas[j]:to_string()
+      end
+      school_club = school_club .. "\n"
+   end
+
    txt_screen["<type>"] = "text-screen"
    txt_screen["text-align"] = "center"
    txt_screen.fmt = "yirl"
@@ -184,7 +196,8 @@ function pushSTatusTextScreen(container)
       alcohol_lvl_str() ..
       knowledge_str ..
       stats_str ..
-      cmb_str
+      cmb_str ..
+      school_club
    txt_screen.background = "rgba: 155 155 255 190"
    ywPushNewWidget(container, txt_screen)
 end
