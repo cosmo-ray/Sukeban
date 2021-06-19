@@ -651,6 +651,29 @@ local function gen_school()
       eq.feet = rand_array_elem(feet[gender])
       dressUp(n)
       n.class_id = class_members[year][class + 1]
+      local school_club = (yuiRand() % #school_students_organisation) + 1
+      n.knowledge = {}
+      n.knowledge.slang = yuiRand() % 5
+      n.knowledge.boys_bands = yuiRand() % 4
+      n.knowledge.idoles = yuiRand() % 4
+      if school_club == "Computer club" then
+	 n.knowledge.computer = yuiRand() % 8 + 1
+	 n.knowledge.animu = yuiRand() % 4
+      elseif school_club == "Animu Club" then
+	 n.knowledge.animu = yuiRand() % 8 + 1
+	 n.knowledge.computer = yuiRand() % 4
+      elseif school_club == "Student Club" or
+      school_club == "Beautification Club" then
+	 n.knowledge.fashion = yuiRand() % 6 + 1
+	 n.knowledge.makeup = yuiRand() % 6 + 1
+      elseif school_club == "Students Protection Group" then
+	 n.knowledge.weapon = yuiRand() % 6
+      elseif school_club == "Board Game and Roleplay Club" then
+	 n.knowledge.boardgames = yuiRand() % 6 + 1
+	 n.knowledge.roleplay = yuiRand() % 6 + 1
+      end
+      n.organisations = school_students_organisation[school_club]
+
       class_members[year][class + 1] = class_members[year][class + 1] + 1
    end
 
