@@ -55,7 +55,7 @@ function chk_affection(wid)
    if roll == 0 then
       print("critical sucess")
       return 2
-   elseif roll > 98 or true then
+   elseif roll > 98 then
       print("critical failure")
       return 3
    elseif roll > base then
