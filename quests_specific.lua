@@ -23,7 +23,7 @@ school_students_organisation = {
 
 function chk_affection(wid)
    print(wid)
-   print(dialogue_npc, "\nvs\n", phq.pj.stats)
+   print(dialogue_npc.trait, "\nvs\n", phq.pj.trait)
    -- base: charm
    -- 4 % per common club
    -- 30 % reputation x trait
@@ -34,24 +34,50 @@ function chk_affection(wid)
    local pj = phq.pj
    local roll = yuiRand() % 100
    local charm = phq.pj.stats.charm:to_int()
-   local base = charm
+   local base = charm + 1
+   local n_traits = dialogue_npc.trait
 
-   if charm > 2 and trait.dialogue_npc.female_atraction > 0 then
+   if charm > 2 and n_traits.female_atraction > 0 then
       if charm < 4 then
-	 base = base + 1
-      elseif charm < 6 then
 	 base = base + 2
+      elseif charm < 6 then
+	 base = base + 4
       else
-	 base = base + 3
+	 base = base + 6
       end
    end
 
    local trait_acc = 0
    local pj_traits = pj.trait
-   --for i = 0, yeLen(pj_traits) - 1 do
-   --local tk = yeGetKeyAt(pj_traits, i)
-   --end
+   for i = 0, yeLen(pj_traits) - 1 do
+      local tk = yeGetKeyAt(pj_traits, i)
+      local tki = yeGetIntAt(pj_traits, i)
+      local pjt = pj.trait[tk]
+      if yeGetInt(pjt) ~= 0 and tki ~= 0 then
+	 pjt = yeGetInt(pjt)
+	 if pjt > 0 and tki > 0 or pjt < 0 and tki < 0 then
+	    pjt = yuiAbs(pjt)
+	    tki = yuiAbs(tki)
 
+	    if pjt > tki then
+	       base = base + tki
+	    else
+	       base = base + pjt
+	    end
+	 else
+	    pjt = yuiAbs(pjt)
+	    tki = yuiAbs(tki)
+
+	    if pjt > tki then
+	       base = base - tki
+	    else
+	       base = base - pjt
+	    end
+	 end
+      end
+   end
+
+   print("end base:" , base, " roll: ", roll)
    if roll == 0 then
       print("critical sucess")
       return 2
