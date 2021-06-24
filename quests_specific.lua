@@ -21,38 +21,12 @@ school_students_organisation = {
    "Board Game and Roleplay Club"
 }
 
-function chk_affection(wid)
-   print(wid)
-   print(dialogue_npc.trait, "\nvs\n", phq.pj.trait)
-   -- base: charm
-   -- 4 % per common club
-   -- 30 % reputation x trait
-   -- 20 % common trait
-   -- 25 % common knowledge
-   -- 3 % if gender attraction based of charm
-
-   local pj = phq.pj
-   local roll = yuiRand() % 100
-   local charm = phq.pj.stats.charm:to_int()
-   local base = charm + 1
-   local n_traits = dialogue_npc.trait
-
-   if charm > 2 and n_traits.female_atraction > 0 then
-      if charm < 4 then
-	 base = base + 2
-      elseif charm < 6 then
-	 base = base + 4
-      else
-	 base = base + 6
-      end
-   end
-
-   local trait_acc = 0
-   local pj_traits = pj.trait
-   for i = 0, yeLen(pj_traits) - 1 do
-      local tk = yeGetKeyAt(pj_traits, i)
-      local tki = yeGetIntAt(pj_traits, i)
-      local pjt = pj.trait[tk]
+function chk_affection_sunchar(pj_char, npc_char)
+   local base = 0
+   for i = 0, yeLen(npc_char) - 1 do
+      local tk = yeGetKeyAt(npc_char, i)
+      local tki = yeGetIntAt(npc_char, i)
+      local pjt = pj_char[tk]
       if yeGetInt(pjt) ~= 0 and tki ~= 0 then
 	 pjt = yeGetInt(pjt)
 	 if pjt > 0 and tki > 0 or pjt < 0 and tki < 0 then
@@ -75,6 +49,50 @@ function chk_affection(wid)
 	    end
 	 end
       end
+   end
+   return base
+end
+
+function chk_affection(wid)
+   print(wid)
+   print(dialogue_npc.trait, "\nvs\n", phq.pj.trait)
+   -- base: charm
+   -- 4 % per common club
+   -- 30 % reputation x trait
+   -- 20 % common trait
+   -- 25 % common knowledge
+   -- 3 % if gender attraction based of charm
+
+   local pj = phq.pj
+   local roll = yuiRand() % 100
+   local charm = phq.pj.stats.charm:to_int()
+   local base = (charm * 2) + 1
+   local n_traits = dialogue_npc.trait
+
+   if charm > 2 and n_traits.female_atraction > 0 then
+      if charm < 4 then
+	 base = base + 2
+      elseif charm < 6 then
+	 base = base + 4
+      else
+	 base = base + 6
+      end
+   end
+
+   local pj_traits = pj.trait
+   base = base + chk_affection_sunchar(pj_traits, n_traits)
+   base = base + chk_affection_sunchar(pj.knowledge, dialogue_npc.knowledge)
+   local organisations = dialogue_npc.organisations
+   local pj_o = pj.organisations
+   for i = 0, yeLen(organisations) - 1 do
+      local ostr = yeGetStringAt(organisations, i)
+      for j = 0, yeLen(pj_o) - 1 do
+	 if ostr == yeGetStringAt(pj_o, j) then
+	    base = base + 5
+	    goto continu_loop
+	 end
+      end
+      :: continu_loop ::
    end
 
    print("end base:" , base, " roll: ", roll)
