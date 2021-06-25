@@ -1278,7 +1278,7 @@ function create_phq(entity)
    main_widget = Entity.wrapp(entity)
    ygPushToGlobalScope(entity, "phq_wid");
    main_widget["<type>"] = "phq"
-   main_widget.next = "phq:menus.main"
+   main_widget.next = "phq:menus.game over"
    main_widget.show_actionable = {}
    npcs = Entity.wrapp(ygGet("phq.npcs"))
    ent.cur_scene_str = nil
