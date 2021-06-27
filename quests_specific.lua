@@ -21,7 +21,7 @@ school_students_organisation = {
    "Board Game and Roleplay Club"
 }
 
-function chk_affection_sunchar(pj_char, npc_char)
+function chk_affection_subchar(pj_char, npc_char, multipliyer)
    local base = 0
    for i = 0, yeLen(npc_char) - 1 do
       local tk = yeGetKeyAt(npc_char, i)
@@ -34,18 +34,18 @@ function chk_affection_sunchar(pj_char, npc_char)
 	    tki = yuiAbs(tki)
 
 	    if pjt > tki then
-	       base = base + tki
+	       base = base + (tki * multipliyer)
 	    else
-	       base = base + pjt
+	       base = base + (pjt * multipliyer)
 	    end
 	 else
 	    pjt = yuiAbs(pjt)
 	    tki = yuiAbs(tki)
 
 	    if pjt > tki then
-	       base = base - tki
+	       base = base - (tki * multipliyer)
 	    else
-	       base = base - pjt
+	       base = base - (pjt * multipliyer)
 	    end
 	 end
       end
@@ -80,8 +80,8 @@ function chk_affection(wid)
    end
 
    local pj_traits = pj.trait
-   base = base + chk_affection_sunchar(pj_traits, n_traits)
-   base = base + chk_affection_sunchar(pj.knowledge, dialogue_npc.knowledge)
+   base = base + chk_affection_subchar(pj_traits, n_traits, 1)
+   base = base + chk_affection_subchar(pj.knowledge, dialogue_npc.knowledge, 2)
    local organisations = dialogue_npc.organisations
    local pj_o = pj.organisations
    for i = 0, yeLen(organisations) - 1 do
