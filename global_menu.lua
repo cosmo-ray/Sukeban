@@ -56,11 +56,13 @@ function openGlobMenu(main, on_idx, arg0)
    --mn.ent.action = Entity.new_func("backToGameOnEnter")
    mn.ent.background = "rgba: 155 155 255 190"
    mn.ent.auto_foreground = "rgba: 0 0 120 50"
+   local force_in = false
 
    if arg0 then
       backToGame(main)
       main = main_widget
       on_idx = yeGetInt(arg0)
+      force_in = true
       usable_metro = true
    end
    local panel = Menu.new_entity()
@@ -90,6 +92,9 @@ function openGlobMenu(main, on_idx, arg0)
    ywPushNewWidget(main, mn.ent)
    ywCntConstructChilds(main)
    ywMenuMove(panel.ent, on_idx)
+   if force_in == true then
+      mn.ent.current = 1
+   end
    return YEVE_ACTION
 end
 
