@@ -85,5 +85,16 @@
 	    "legs": "short skirt",
 	    "feet": "black_slippers"
 	}
+    },
+    "Fighter-bartender": {
+	"sex": "male",
+	"type": "light",
+	"max_life": 35,
+	"attack" : "unarmed2",
+	"equipement": {
+	    "torso": "white longsleeve m",
+	    "legs": "teal pants m",
+	    "feet": "brown_shoes m"
+	}
     }
 }
