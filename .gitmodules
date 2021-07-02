@@ -34,3 +34,6 @@
 [submodule "modules/clash-of-iron-and-bronze"]
 	path = modules/clash-of-iron-and-bronze
 	url = http://github.com/cosmo-ray/clash-of-iron-and-bronze
+[submodule "modules/le-temps-des-escargots"]
+	path = modules/le-temps-des-escargots
+	url = http://github.com/cosmo-ray/mggj-3

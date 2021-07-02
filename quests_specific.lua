@@ -482,7 +482,7 @@ local function gen_school()
        "Fleur", "Alice", "Petra", "Geunievre", "Oscar", "Helena", "Louise",
        "Kim", "Agustina", "Codel", "Lisette", "Athena", "Georette", "Isis",
        "Charlotte", "Carole", "Caroline", "Linette", "Caterine", "Olivia",
-       "Yuki", "Anako", "Geromine", "Gwenegann", "Katyusha"},
+       "Yuki", "Anako", "Geromine", "Gwenegann", "Katyusha", "Olya"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed", "Jean",
