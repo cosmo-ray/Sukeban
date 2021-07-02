@@ -12,6 +12,7 @@
 	"tiled": "./tileset/bar1.json"
     },
     "fighting pit": {
+	"dialogues" : "dialogue/fight-pit.json",
 	"tiled": "./tileset/battle-pit.json"
     },
     "international_bar" : {
