@@ -188,7 +188,7 @@
 	    }
 	]
     },
-    "Standart Nerd": {
+    "Nerdi le Nerd": {
 	"dialogue": [
 	    {
 		"condition":  ["call", "phq.checkHightScore", 0],
