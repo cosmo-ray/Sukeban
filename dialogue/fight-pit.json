@@ -19,7 +19,18 @@
 		    "Ok here is the oponant that are willing to dance with you",
 		    "Standard Nerd",
 		    "Basic Thrug"
+		],
+		"answers": [
+		    {
+			"text": "Na after some thinking, I'm in no dancing mood",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": ["I need to warm up, a Standard Nerd to train my fist"],
+			"action": [ "phq.StartFight", "std_nerd"]
+		    }
 		]
+
 	    }
 	}
     }
