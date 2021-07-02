@@ -1,0 +1,10 @@
+{
+    "Fighter-bartender" : {
+	"dialogue": {
+	    "hello": {
+		"text": ["hello friend,",
+			 "welcome the the hall of Blood and Honnor appreciator"],
+	    }
+	}
+    }
+}
