@@ -4,6 +4,22 @@
 	    "hello": {
 		"text": ["hello friend,",
 			 "welcome the the hall of Blood and Honnor appreciator"],
+		"answers": [
+		    {
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "I came to fight"
+		    }
+		]
+	    },
+	    "enemy lisy": {
+		"text": [
+		    "Ok here is the oponant that are willing to dance with you",
+		    "Standard Nerd",
+		    "Basic Thrug"
+		]
 	    }
 	}
     }

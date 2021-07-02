@@ -1,4 +1,17 @@
 {
+    "std_nerd": {
+	"sex": "male",
+	"type": "light",
+        "max_life": 7,
+	"is_generic": true,
+	"attack" : "unarmed0",
+	"hair": ["plain", "raven"],
+	"equipement": {
+	    "torso": "white longsleeve m",
+	    "legs": "teal pants m",
+	    "feet": "brown_shoes m"
+	}
+    },
     "Thrug 0": {
         "sex": "male",
         "type": "light",
