@@ -162,6 +162,33 @@
                  "width":28.5041516916594,
                  "x":32.2220845210063,
                  "y":49.5724377246251
+                }, 
+                {
+                 "height":37.1793282934688,
+                 "id":8,
+                 "name":"escargots",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.takeObject"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Le Temps Des Escargots"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30.9827735778907,
+                 "x":32.2220845210063,
+                 "y":153.674556946338
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -188,7 +215,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":7,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",

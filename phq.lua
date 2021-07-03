@@ -1,4 +1,4 @@
-local tiled = Entity.wrapp(ygGet("tiled"))
+tiled = Entity.wrapp(ygGet("tiled"))
 local jrpg_fight = Entity.wrapp(ygGet("jrpg-fight"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 lpcs = Entity.wrapp(ygGet("lpcs"))
@@ -322,6 +322,8 @@ function init_phq(mod)
    mod.ai_point_remove = Entity.new_func(ai_point_remove)
    mod.chk_affection = Entity.new_func(chk_affection)
    mod.advance_time = Entity.new_func(advance_time)
+   mod.misc_fnc = {}
+   mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
 end
 
 function load_game(save_dir)

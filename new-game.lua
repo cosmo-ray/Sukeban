@@ -54,6 +54,7 @@ function newGameAction(menu, eve, arg)
    -- I as a personal note I think it's never okay to considering someone as a
    -- "slut", but I don't want this game to be dark.
    phq.pj.reputation.slut = 0
+   phq.pj.used_items = {}
    phq.pj.equipement = {}
    phq.pj.equipement.torso = "white_sleeveless"
    phq.pj.equipement.legs = "teal pants female"

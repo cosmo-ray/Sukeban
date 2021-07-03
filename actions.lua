@@ -42,6 +42,16 @@ function read_book(b, b_key)
    ts.background = "rgba: 255 255 200 255"
    ts.actions = Entity.new_func("backToGameOnEnter")
    ywPushNewWidget(main_widget, ts)
+   if yIsNNil(b.action) then
+      if b.usable_once > 0 then
+	 if yIsNil(phq.pj.used_items[b_key:to_string()]) then
+	    phq.pj.used_items[b_key:to_string()] = 1
+	    ywidAction(b.action, main_widget, nil)
+	 end
+      else
+	 ywidAction(b.action, main_widget, nil)
+      end
+   end
    return YEVE_ACTION
 end
 
@@ -146,6 +156,13 @@ local function backToGameReset(main)
    main.pj.move.up_down = 0
    main.pj.move.left_right = 0
    main.no_chktime_t = TIME_RESET
+end
+
+function backToGameDirOut()
+   ygModDirOut()
+   -- this need to be done in case submodule cange that
+   tiled.setAssetPath("./tileset")
+   return backToGame2()
 end
 
 function backToGame2()

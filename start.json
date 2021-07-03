@@ -30,6 +30,7 @@
         { "file" : "modules/medieval_battle/", "type" : "module" },
 	{ "file" : "modules/CursesBird/", "type" : "module" },
 	{ "file" : "modules/polis-at-war/", "type" : "module" },
+	{ "file" : "modules/le-temps-des-escargots/", "type" : "module" },
 	{ "file" : "modules/clash-of-iron-and-bronze/", "type" : "module" },
         { "file" : "pathfinding/", "type" : "module"},
 

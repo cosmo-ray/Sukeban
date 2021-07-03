@@ -27,6 +27,14 @@
 	    "'boot the engarchlich out off bagland'"
 	]
     },
+    "Le Temps Des Escargots": {
+	"type": "book",
+	"usable_once": true,
+	"action": "phq.misc_fnc.read_temps_des_escargots",
+	"summary": [
+	    "Story about how bagland became a fedaration"
+	]
+    },
     "lombricopedia": {
 	"type" : "book",
 	"summary": "An Encyclopedia, about worms, it warm your heart to read it"
