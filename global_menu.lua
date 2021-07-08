@@ -589,7 +589,6 @@ function gmUseItem(mn)
    if yIsNil(o) then
       return YEVE_NOTHANDLE
    end
-   print("use o", o:cent())
    local time_consumption = o.time_consumption
 
    if o.type:to_string() == "book" then

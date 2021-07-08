@@ -34,8 +34,6 @@ function is_npc_ally(pj, npcname)
 end
 
 function read_book(b, b_key)
-   print("BOOK: ", b_key)
-   print(b.summary)
    local ts = Entity.new_array()
    ts["<type>"] = "text-screen"
    ts.text = "BOOK: " .. yeGetString(b_key) .. "\n" .. b.summary:to_string()

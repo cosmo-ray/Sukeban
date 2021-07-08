@@ -799,7 +799,6 @@ scripts["chapter_1"] = chapter_1
 scripts["chapter_1_sleep"] = chapter_1_sleep
 
 function rd_tps_ds_escgt()
-   print("you just read le temps des escargots !!!!")
    if yIsNil(phq.pj.knowledge.history) then
       phq.pj.knowledge.history = 0
    end
@@ -814,5 +813,4 @@ function rd_tps_ds_escgt()
    lted.action = Entity.new_func(backToGameDirOut)
    ltew.action = Entity.new_func(backToGameDirOut)
    ywPushNewWidget(main_widget, lteb)
-   print(lteb, lted, ltew)
 end
