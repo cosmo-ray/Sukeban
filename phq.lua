@@ -698,11 +698,11 @@ function phq_action(entity, eve)
    end
 
    if yevIsKeyDown(eve, Y_C_KEY) then
-      return openGlobMenu(entity, GM_STATS_IDX)
+      return openGlobMenu(entity, GM_STATS_IDX, true)
    elseif yevIsKeyDown(eve, Y_I_KEY) then
-      return openGlobMenu(entity, GM_INV_IDX)
+      return openGlobMenu(entity, GM_INV_IDX, true)
    elseif yevIsKeyDown(eve, Y_M_KEY) then
-      return openGlobMenu(entity, GM_MAP_IDX)
+      return openGlobMenu(entity, GM_MAP_IDX, true)
    elseif yevIsKeyDown(eve, Y_J_KEY) then
       return openGlobMenu(entity, GM_QUEST_IDX)
    end
