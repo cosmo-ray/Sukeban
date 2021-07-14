@@ -14,7 +14,7 @@
 		    }
 		]
 	    },
-	    "enemy lisy": {
+	    "enemy list": {
 		"text": [
 		    "Ok here is the oponant that are willing to dance with you",
 		    "Standard Nerd",
@@ -26,8 +26,12 @@
 			"action": "phq.backToGame"
 		    },
 		    {
-			"text": ["I need to warm up, a Standard Nerd to train my fist"],
+			"text": "I need to warm up, a Standard Nerd to train my fist",
 			"action": [ "phq.StartFight", "std_nerd"]
+		    },
+		    {
+			"text": "A Basic Thrug will regret comming here",
+			"action": [ "phq.StartFight", "Thrug"]
 		    }
 		]
 
