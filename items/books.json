@@ -1,6 +1,8 @@
 {
     "Battle Of Edosee History" : {
 	"type": "book",
+	"usable_once": true,
+	"action": ["phq.increase", "knowledge", "history", 1],
 	"summary": [
 	    "This book is about the battle of edosee, durring the colony era\n",
 	    "battle that take palce in the see of edo",
@@ -20,6 +22,8 @@
     },
     "Tale of Jeane of Arbalest": {
 	"type": "book",
+	"usable_once": true,
+	"action": ["phq.increase", "knowledge", "history", 1],
 	"summary": [
 	    "After the battle of azinlong",
 	    "the bagets lose most of they country(bagland)",

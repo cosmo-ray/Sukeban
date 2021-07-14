@@ -487,7 +487,7 @@ function increaseStat(wid, stats_container, stat, nb, max_min)
 end
 
 function increase(wid, eve, whatType, what, val)
-   wid = ywCntWidgetFather(yDialogueGetMain(wid))
+   wid = main_widget
    if yeType(what) == YINT then
       val = what
       what = whatType
