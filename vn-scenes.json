@@ -2,11 +2,22 @@
     "_include": [ "vn-scene/class.json"],
     "la Jetee" : [
 	{
+	    "condition": "phq.events.harbour_walking",
+	    "text": "Nothing to do here",
+	    "action": "phq.backToGame"
+	},
+	{
  	    "text": "you're in a shadowy narrow street of the port
-you can sees docked ships charging and discharging they container
-tier sailor walking searching for a place to spend time
-while your here spending your time watching them, an image that remember
-you an  era, where with your father you was watching boat coming in and out",
+you can sees docked charging and discharging containers
+tier sailor searching for a place to spend time
+while you're here wasting your time,
+an image from the past came into your head:
+you and your father, where watching boat coming in and out
+And you gazing at those floating monster wondering what was inside them",
+	    "actions": [
+		[ "setInt", "phq.events.harbour_walking", 1 ],
+		"Dialogue:gotoNext"
+	    ],
 	    "speaker_background": "imgs/hamburg.jpg"
 	},
 	"advancing on your way walking along dark alley, and street
@@ -21,13 +32,13 @@ a lot of peoples on the seafront, surrounding a 'jetee' of the port,
 in the middle of these peoples: a dead man lying on the street
 and among the faces, one seems particularly expressive:
 an horrified sad woman watching him, hoping to wake up from a dream
-but you can wake up from reality",
+but reality awaking her from hope",
 	    "answers": [
 		{
 		    "text": "move on, nothing to see here",
 		    "action": "phq.backToGame"
 		},
-		"stay to understand what happen"
+		"stay to understand what's happen"
 	    ]
 	},
  	"someday ... I'll finish this scene, add events, and make it a one time even
