@@ -49,6 +49,13 @@ local ai_points = {
       { ["p"] = "r_t2_0" },
       { ["p"] = "r_t2_1" }
    },
+   ["class"] = {
+      { ["p"] = "p_0" },
+      { ["p"] = "p_1" },
+      { ["p"] = "p_2" },
+      { ["p"] = "p_3" },
+      { ["p"] = "p_4" }
+   },
    ["house"] = {
       { ["p"] = "npc_bed" }
    }
@@ -58,6 +65,7 @@ function student_ai(main, npc, name)
    local t = ygGetString("phq.env.time")
    local c = ygGetInt("phq.env.chapter")
    local d = ygGetInt("phq.env.day")
+   npc = Entity.wrapp(npc)
 
    print("student_ai", name, c, d, t)
    if c ~= 1 then
@@ -74,6 +82,8 @@ function student_ai(main, npc, name)
       elseif r == 2 then
 	 cur_pos = "school_under"
       else
+	 cur_pos = "class"
+	 print("IN CLASS: ", npc.class_id)
 	 -- find other place to be
 	 -- also compute which class if still in class
       end
@@ -94,6 +104,9 @@ function student_ai(main, npc, name)
       local idx = 1
       if cur_pos == "house" then
 	 cur_pos = yeGetStringAt(npc, "house")
+      elseif cur_pos == "class" then
+	 cur_pos = "school_class_0" .. math.floor(yeGetIntAt(npc, "class_id"))
+	 print("new cur pos: ", cur_pos)
       end
       :: again ::
       if idx <= #csap

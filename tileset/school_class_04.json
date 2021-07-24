@@ -1,4 +1,5 @@
-{ "height":15,
+{ "compressionlevel":-1,
+ "height":15,
  "infinite":false,
  "layers":[
         {
@@ -73,7 +74,122 @@
          "draworder":"topdown",
          "id":4,
          "name":"NPC",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"p_1",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":178.824699808795,
+                 "y":77.4529834289356
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"p_0",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":173.863608030593,
+                 "y":198.852772466539
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"p_2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":270.788699808795,
+                 "y":119.480983428936
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"p_3",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":273.927699808795,
+                 "y":81.8209834289356
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"p_4",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":76.4818355640535,
+                 "y":386.23326959847
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -111,10 +227,10 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":2,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.1",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -127,6 +243,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":"1.6",
  "width":15
 }
