@@ -8,16 +8,40 @@
 		"the girl, of her knee cry"
 	    ],
 	    "answers": [
-		"just leave, this sordid spectacle is not for you"
+		{
+		    "text": "just leave, this sordid spectacle is not for you",
+		    "action": "phq.backToGame"
+		},
+		{
+		    "text": "listen to the men",
+		    "actions": [
+			"Dialogue:hide",
+			["Dialogue:goto", "racist"]
+		    ]
+		},
+		{
+		    "text": "listen to the boys",
+		    "actions": [
+			"Dialogue:hide",
+			["Dialogue:goto", "zan boys 3"]
+		    ]
+		}
 	    ]
 	},
-	"summary": {
+	"racist": {
+	    "text" : [
+		"Generic Racist Talk"
+	    ],
+	    "actions": [["Dialogue:goto", "in"]],
+	},
+	"zan boys 3": {
 	    "text": [
-		"someday ... I'll finish this scene, add events",
-		"Introduce some characters too :)",
-		"Like a bad guy call Murderer The Butcher",
-		"who reside on the boat call Zan on deck 3"
-	    ]
+		"- So I bet it's the Zan Gang, again",
+		"- Yeah they chief is completelly nuts, you should nerver cross his way",
+		"- Isn't his nick Murderer The Butcher ?",
+		"- Yes he live on a boat on deck 3, the 'Zan' boat"
+	    ],
+	    "actions": [["Dialogue:goto", "in"]]
 	}
     }
 }
