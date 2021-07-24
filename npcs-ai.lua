@@ -105,7 +105,11 @@ function student_ai(main, npc, name)
       if cur_pos == "house" then
 	 cur_pos = yeGetStringAt(npc, "house")
       elseif cur_pos == "class" then
-	 cur_pos = "school_class_0" .. math.floor(yeGetIntAt(npc, "class_id"))
+	 local class_id = yeGetIntAt(npc, "class_id")
+	 if class_id > 5 then
+	    class_id = class_id + 4
+	 end
+	 cur_pos = "school_class_0" .. math.floor(class_id)
 	 print("new cur pos: ", cur_pos)
       end
       :: again ::

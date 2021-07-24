@@ -1,4 +1,5 @@
-{ "height":15,
+{ "compressionlevel":-1,
+ "height":15,
  "infinite":false,
  "layers":[
         {
@@ -62,6 +63,98 @@
                  "width":37,
                  "x":6,
                  "y":296
+                }, 
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"p_1",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":171.897,
+                 "y":328.632
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"p_0",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":74.88,
+                 "y":204.2
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"p_2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":263.861,
+                 "y":370.66
+                }, 
+                {
+                 "height":0,
+                 "id":5,
+                 "name":"p_3",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":74,
+                 "y":387
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -111,10 +204,10 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":2,
+ "nextobjectid":6,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.2.3",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -127,6 +220,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":"1.6",
  "width":15
 }
