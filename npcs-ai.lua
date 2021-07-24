@@ -79,6 +79,8 @@ function student_ai(main, npc, name)
 	 cur_pos = "school0"
       elseif r == 1 then
 	 cur_pos = "street3"
+      elseif r == 2 then
+	 cur_pos = "school_under"
       else
 	 -- find other place to be
 	 -- also compute which class if still in class

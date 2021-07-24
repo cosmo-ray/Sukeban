@@ -66,6 +66,98 @@
                  "width":0,
                  "x":1040.2881128274,
                  "y":532.199462726662
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"talk_0",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"left"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":591.660405709992,
+                 "y":375.657400450789
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"talk_1",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":497.746055597295,
+                 "y":380.353117956424
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"talk_2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"left"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":589.781768595041,
+                 "y":215.063579263711
+                }, 
+                {
+                 "height":0,
+                 "id":20,
+                 "name":"talk_3",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"right"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":495.867768595041,
+                 "y":219.759579263711
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -124,7 +216,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":17,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -133,7 +225,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.3.2",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {
@@ -154,6 +246,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.2,
+ "version":"1.6",
  "width":34
 }
