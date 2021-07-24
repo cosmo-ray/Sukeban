@@ -5,7 +5,7 @@ local drunk_bar1 = nil
 local window_width = 800
 local window_height = 600
 
-local SKIP_CLASS_SCENE = false
+local SKIP_CLASS_SCENE = true
 
 BLOCK_EVE_NO_UNSET = 10
 
@@ -66,7 +66,7 @@ function chk_affection(wid)
    local pj = phq.pj
    local roll = yuiRand() % 100
    local charm = phq.pj.stats.charm:to_int()
-   local base = (charm * 2) + 1
+   local base = (charm * 2) + 4
    local n_traits = dialogue_npc.trait
 
    if charm > 2 and n_traits.female_atraction > 0 then
@@ -475,6 +475,8 @@ local function gen_school()
 
    print("gen_school")
    local sexes = {"female", "male"}
+   local avaible_house = {"rand_student_house_l"}
+   local avaible_house_idx = 1
 
    local array_name = {
       {"Georgette", "Michelle", "Germaine", "Lynda", "Clemence", "Camille",
@@ -717,6 +719,10 @@ local function gen_school()
 	 n.knowledge.roleplay = yuiRand() % 6 + 1
       end
       n.organisations = school_students_organisation[school_club]
+      if avaible_house_idx <= #avaible_house then
+	 n.house = avaible_house[avaible_house_idx]
+	 avaible_house_idx = avaible_house_idx + 1
+      end
 
       class_members[year][class + 1] = class_members[year][class + 1] + 1
    end

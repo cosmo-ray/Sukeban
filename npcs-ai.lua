@@ -48,8 +48,10 @@ local ai_points = {
       { ["p"] = "f0_t2_0" },
       { ["p"] = "r_t2_0" },
       { ["p"] = "r_t2_1" }
+   },
+   ["house"] = {
+      { ["p"] = "npc_bed" }
    }
-
 }
 
 function student_ai(main, npc, name)
@@ -79,6 +81,9 @@ function student_ai(main, npc, name)
    elseif t == "night" then
       print("morning")
    elseif t == "day" then
+      if yIsNNil(yeGet(npc, "house")) then
+	 cur_pos = "house"
+      end
       print("night")
    else
       print("fin de semaine !")
@@ -87,6 +92,9 @@ function student_ai(main, npc, name)
    local csap = ai_points[cur_pos]
    if csap ~= nil then
       local idx = 1
+      if cur_pos == "house" then
+	 cur_pos = yeGetStringAt(npc, "house")
+      end
       :: again ::
       if idx <= #csap
 	 and push_to_ai_point_(cur_pos,
