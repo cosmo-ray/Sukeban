@@ -5,7 +5,7 @@ local drunk_bar1 = nil
 local window_width = 800
 local window_height = 600
 
-local SKIP_CLASS_SCENE = true
+local SKIP_CLASS_SCENE = false
 
 BLOCK_EVE_NO_UNSET = 10
 

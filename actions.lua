@@ -231,7 +231,7 @@ function CombatEnd(wid, main, winner_id)
    if yLovePtrToNumber(winner_id) == 3 then
       -- you lose
       backToGame(wid)
-      yesCall(ygGet("callNextLose"), main:cent())
+      yNextLose(main:cent())
       return
    end
    upcanvas:remove(main.life_nb)
