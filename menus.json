@@ -174,7 +174,8 @@ We love you anyway",
     },
     "new-game" : {
         "<type>" : "phq-new-game",
-	"next" : "phq:menus.game over"
+	"next" : "phq:menus.main",
+	"next-lose" : "phq:menus.game over"
     },
     "game over": {
 	"<type>" : "text-screen",
