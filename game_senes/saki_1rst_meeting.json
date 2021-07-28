@@ -1,13 +1,85 @@
 {
     "saki 1rst meeting" : [
-   	    {
-	        "action": "change-scene",
-	        "scene": "school0",
-	        "force-pos": [400, 300],
-	    },
+	{
+	    "action": "recreate-string",
+	    "variable": "phq.pj.organisations.students_protection_group",
+	    "value": "Students Protection Group"
+	},
+   	{
+	    "action": "change-scene",
+	    "scene": "school0",
+	    "direction": "up",
+	    "force-pos": [400, 300],
+	},
         {
-	       "action": "place-npcs",
-	       "npcs": [[400, 200, "Saki Miya", "down"]]
-	    }
+	    "action": "place-npcs",
+	    "npcs": [[400, 200, "Saki Miya", "down"]]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "{phq.pj.name} we need to talk",
+	    "timer": 1000,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Yes, you know my name ?",
+	    "timer": 1000,
+	    "force-pos": [400, 290]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "I'm the president of the Students Protection Club",
+	    "timer": 1500,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Of course I know your name",
+	    "timer": 1200,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Anyway",
+	    "timer": 600,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Charle tell me how you handle Bob Rats Situation",
+	    "timer": 1600,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "We need peoples like you in our... club",
+	    "timer": 1600,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "So you are now part of the Students Protection Club",
+	    "timer": 1600,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Of course, you can refuse, but if you do so\nI would advise you to change school",
+	    "timer": 2900,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "If I need you. I'll came back to you",
+	    "timer": 2000,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Have a Nice Day",
+	    "timer": 1500,
+	    "npc-pos": "Saki Miya"
+	}
     ]
 }

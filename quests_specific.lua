@@ -357,6 +357,9 @@ local function game_scene(wid, eve, scene)
    elseif csa == "set" then
       -- I should check for other types
       ygReCreateInt(yeGetStringAt(cs, "variable"), yeGetIntAt(cs, "value"))
+   elseif csa == "recreate-string" then
+      -- I should check for other types
+      ygReCreateString(yeGetStringAt(cs, "variable"), yeGetStringAt(cs, "value"))
    end
 
    if timer ~= 0 then
