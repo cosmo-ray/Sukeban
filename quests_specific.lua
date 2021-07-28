@@ -420,6 +420,11 @@ function morning_class(mn)
 
       Entity.new_func(game_scene, a)
       Entity.new_string("saki intro", a)
+   elseif school_day == 7 then
+      local a = Entity.new_array(school_events)
+
+      Entity.new_func(game_scene, a)
+      Entity.new_string("saki 1rst meeting", a)
    end
    :: finalize ::
 
