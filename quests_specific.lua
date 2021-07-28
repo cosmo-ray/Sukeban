@@ -502,7 +502,8 @@ local function gen_school()
       "Tomino", "Osamu", "Dezaki", "Jacouille", "Francois De jarjay",
       "Kanzaki", "Le Francais", "Coucou", "Mars", "Szabo", "Bookseller",
       "Manualreader", "Mac Ross", "Squirel", "Backdoor", "Adlez", "Harissa",
-      "Anako", "Geromine", "Gwenegann", "Noir", "Katyusha"
+      "Anako", "Geromine", "Gwenegann", "Noir", "Katyusha", "Poireau",
+      "Articho", "Ananas", "Anko"
    }
 
    local types = {
