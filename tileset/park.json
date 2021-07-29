@@ -106,8 +106,18 @@
                 {
                  "height":274.756934423601,
                  "id":1,
-                 "name":"Street3 entry",
+                 "name":"Street2 entry",
                  "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":5
+                        }, 
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"street2"
+                        }, 
                         {
                          "name":"side",
                          "type":"string",
@@ -125,6 +135,11 @@
                  "id":19,
                  "name":"street 0",
                  "properties":[
+                        {
+                         "name":"entry",
+                         "type":"int",
+                         "value":5
+                        }, 
                         {
                          "name":"nextScene",
                          "type":"string",
@@ -174,7 +189,7 @@
  "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.1",
+ "tiledversion":"1.6.0",
  "tileheight":32,
  "tilesets":[
         {

@@ -19,6 +19,10 @@
 	"dialogues" : "dialogue/PHQ_Dialogs_Part1.json",
 	"tiled": "./tileset/international_bar.json"
     },
+    "park": {
+	"tiled": "./tileset/park.json",
+	"exterior": 1
+    },
     "street0": {
 	"exterior": 1,
 	"dialogues" : "dialogue/st0_dialogues.json",
@@ -26,6 +30,10 @@
 	    "right" : {
 		"to": "STREET1",
 		"entry" : 2
+	    },
+	    "up" : {
+		"to": "park",
+		"entry": 1
 	    }
 	},
 	"tiled": "./tileset/Street0.json"

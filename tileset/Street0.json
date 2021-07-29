@@ -230,6 +230,18 @@
                  "width":27,
                  "x":1,
                  "y":419
+                }, 
+                {
+                 "height":0,
+                 "id":23,
+                 "name":"park",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":389.08984260436,
+                 "y":6.84328868902141
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -460,7 +472,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":23,
+ "nextobjectid":24,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.6.0",
