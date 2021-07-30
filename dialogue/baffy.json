@@ -1,6 +1,17 @@
 {
     "Baffy": {
 	"dialogue" : {
+	    "protection_club": {
+		"text": "hej fellow club member",
+		"condition": ["contain_string", "phq.pj.organisations",
+			      "Students Protection Group"],
+		"action": "phq.backToGame"
+	    },
+	    "not_so_loser": {
+		"text": "Ok, I was wrong at last your strong, you got that",
+		"condition":  ["=", "phq_wid.dialogue_npc.have_bullied", 1],
+		"action": "phq.backToGame"
+	    },
 	    "base": {
 		"text": ["Sorry, {phq.env.mean_name} I'm talking with my friend",
 			 "And I don't think you're one of them"],
@@ -20,7 +31,12 @@
 		"text": ["Wait...",
 			 "Actually, I have a nick name",
 			 "Baffy the looser Slayer",
-			 "(She start to Smill)"]
+			 "(She start to Smile)"],
+		"answer": {
+		    "text": "(continue)",
+		    "actions": [["setInt", "phq_wid.dialogue_npc.have_bullied", 1],
+				"Dialogue.gotoNext"]
+		}
 	    },
 	    "loser_slayer1": {
 		"text": ["You look a wonderful speciment, But you know",
