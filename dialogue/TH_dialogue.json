@@ -103,6 +103,38 @@
 	    "no, it's the unsubscription office"
 	]
     },
+    "Tetra": {
+	"dialogue": [
+	    {
+		"text": ["Hello, welcome to the Wedding Office 01",
+			 "Here we take care of all Weeding between",
+			 "Heterosexal Peoles aged between 18 and 30",
+			 "and Homosexal aged between 27 and 80"]
+	    }
+	]
+    },
+    "Neta": {
+	"dialogue": [
+	    {
+		"text": ["Hello, welcome to the Wedding Office 02",
+			 "Here we take care of all Weeding between",
+			 "Heterosexal Peoles aged between 31 and 80",
+			 "and Homosexal aged between 17 and 25"]
+	    }
+	]
+    },
+    "Ceta": {
+	"dialogue": [
+	    {
+		"text": ["Hello, welcome to the Unplaned Wedding Office",
+			 "Here we take care of all Weeding not",
+			 "handle by other weeding office",
+			 "exept of course for weeding that include a parent that",
+			 "alerady have 5 child in which case you must go to the",
+			 "subscription office"]
+	    }
+	]
+    },
     "Petra" : {
 	"dialogue" : [
 	    {
