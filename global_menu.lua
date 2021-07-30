@@ -185,6 +185,9 @@ function pushSTatusTextScreen(container)
       school_club = "club:"
 
       for j = 0, yeLen(pj_orgas) - 1 do
+	 if j ~= 0 then
+	    school_club = school_club .. ";"
+	 end
 	 school_club = school_club .. " " .. pj_orgas[j]:to_string()
       end
       school_club = school_club .. "\n"
