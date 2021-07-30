@@ -79,6 +79,13 @@
 	    "It seems you might have find a way to stop thoses annoying rats\nyou hear at night"
 	]
     },
+    "Protetion Club Test": {
+	"stalk": "phq.quests.prot_club_m0",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "Talk to Saki",
+	]
+    },
     "Aligator 427": {
 	"stalk": "phq.quests.aligator_427",
 	"stalk_sart": -1,

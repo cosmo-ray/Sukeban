@@ -1,0 +1,25 @@
+{
+    "prot_club_mission_0": [
+	{
+	    "action": "change-scene",
+	    "scene": "street3",
+	    "force-pos": [1000, 750]
+	},
+	{
+	    "action": "place-npcs",
+	    "npcs": [
+		[1000, 900, "Baffy", "up"]
+	    ]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Wait {phq.pj.name} !!",
+	    "timer": 1000,
+	    "npc-pos": "Baffy"
+	},
+	{
+	    "action": "yirl-action",
+	    "yaction": ["phq.startDialogue", "baffy_give_mission"]
+	}
+    ]
+}

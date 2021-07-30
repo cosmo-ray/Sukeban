@@ -266,6 +266,8 @@ local function game_scene(wid, eve, scene)
    local scenes = ygGet("phq.game_senes")
    local scene = Entity.wrapp(yeGet(scenes, yeGetString(scene)))
 
+   print("GO prot_club_mission_0", scene)
+   print("GO prot_club_mission_0", scene[game_scene_state])
    if yIsNil(scene) or yIsNil(scene[game_scene_state]) then
       game_scene_state = 0
       return 0
@@ -428,6 +430,11 @@ function morning_class(mn)
 
       Entity.new_func(game_scene, a)
       Entity.new_string("saki 1rst meeting", a)
+   elseif school_day == 8 then
+      local a = Entity.new_array(school_events)
+
+      Entity.new_func(game_scene, a)
+      Entity.new_string("prot_club_mission_0", a)
    end
    :: finalize ::
 

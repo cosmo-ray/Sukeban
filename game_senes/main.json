@@ -4,5 +4,6 @@
 	"game_senes/akira_intro.json",
 	"game_senes/baffy_talk.json",
 	"game_senes/saki_intro.json",
-    	"game_senes/saki_1rst_meeting.json"],
+    	"game_senes/saki_1rst_meeting.json",
+	"game_senes/mission_0.json"],
 }

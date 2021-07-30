@@ -70,5 +70,20 @@
 	    }
 
 	}
-    }
+    },
+    "baffy_give_mission": [
+	{
+	    "text": [
+		"Hej",
+		"Saki have a Mission for you, so talk to her when you can"
+	    ],
+	    "answer": {
+		"actions": [
+		    ["setInt", "phq.quests.prot_club_m0", 0],
+		    "phq.backToGame"
+		],
+		"text": "Ok, thanks"
+	    }
+	}
+    ]
 }
