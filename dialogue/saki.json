@@ -8,7 +8,18 @@
 	    },
 	    "then_base": {
 		"text": "Yes ?",
-		"action": "phq.backToGame"
+		"action": "phq.backToGame",
+		"answers": [
+		    {
+			"text": "I was told you have something to make me do ?",
+			"condition": ["=", "phq.quests.prot_club_m0", 0]
+		    },
+		    {
+			"text": "Nothing :)",
+			"action": "phq.backToGame"
+		    }
+
+		]
 	    }
 	}
     }
