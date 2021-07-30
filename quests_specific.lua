@@ -266,8 +266,6 @@ local function game_scene(wid, eve, scene)
    local scenes = ygGet("phq.game_senes")
    local scene = Entity.wrapp(yeGet(scenes, yeGetString(scene)))
 
-   print("GO prot_club_mission_0", scene)
-   print("GO prot_club_mission_0", scene[game_scene_state])
    if yIsNil(scene) or yIsNil(scene[game_scene_state]) then
       game_scene_state = 0
       return 0
