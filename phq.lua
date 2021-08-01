@@ -593,6 +593,8 @@ function phq_do_action(main, a)
 
 end
 
+local should_track_mouse = false
+
 function phq_action(entity, eve)
    collectgarbage("collect")
    if yeGetIntAt(entity, "current") > 1 then
@@ -670,6 +672,58 @@ function phq_action(entity, eve)
       return ret
    end
 
+   local is_upkey_up = yevIsGrpUp(eve, upKeys)
+   local is_downkey_up = yevIsGrpUp(eve, downKeys)
+   local is_leftkey_up = yevIsGrpUp(eve, leftKeys)
+   local is_rightkey_up = yevIsGrpUp(eve, rightKeys)
+
+
+   if yevMouseDown(eve) then
+      should_track_mouse = true
+      print("MOUSE DOWN: !!!!!")
+   end
+
+   if yevMouseUp(eve) then
+      should_track_mouse = false
+      print("MOUSE UP: !!!!!")
+      is_rightkey_up = true
+      is_leftkey_up = true
+      is_downkey_up = true
+      is_upkey_up = true
+   end
+
+   if should_track_mouse and yIsNNil(yevMousePos(eve)) then
+      local mouse_pos = Entity.new_copy(yevMousePos(eve))
+      local cam = entity.mainScreen.cam
+      ywPosAdd(mouse_pos, cam)
+      local pjpos = Entity.wrapp(ylpcsHandePos(entity.pj))
+      local x_dist = ywPosX(mouse_pos) - ywPosX(pjpos);
+      local y_dist = ywPosY(mouse_pos) - ywPosY(pjpos);
+      local dist = math.sqrt(x_dist * x_dist + y_dist * y_dist)
+
+      entity.pj.move.up_down = Entity.new_float(y_dist / dist)
+      entity.pj.move.left_right = Entity.new_float(x_dist / dist)
+
+      print(math.abs(y_dist / dist), " > ", math.abs(x_dist / dist))
+      if (math.abs(y_dist / dist) > math.abs(x_dist / dist)) then
+	 if y_dist > 0 then
+	    entity.pj.y = LPCS_DOWN
+	 else
+	    entity.pj.y = LPCS_UP
+	 end
+      else
+	 if x_dist > 0 then
+	    entity.pj.y = LPCS_RIGHT
+	 else
+	    entity.pj.y = LPCS_LEFT
+	 end
+      end
+      lpcs.handlerRefresh(main_widget.pj)
+      print("something been set: ", entity.pj.y)
+
+      --print("entity.print.move: ", entity.pj.move, x_dist / dist, y_dist / dist)
+   end
+
    -- At firt it's here to test pushSmallTalk
    -- But why not keep it ?
    -- We could even use that latter to add easter egg
@@ -688,18 +742,18 @@ function phq_action(entity, eve)
    end
 
    if yevIsGrpDown(eve, upKeys) then
-      entity.pj.move.up_down = -1
+      entity.pj.move.up_down = Entity.new_float(-1)
       entity.pj.y = LPCS_UP
    elseif yevIsGrpDown(eve, downKeys) then
-      entity.pj.move.up_down = 1
+      entity.pj.move.up_down = Entity.new_float(1)
       entity.pj.y = LPCS_DOWN
    end
 
    if yevIsGrpDown(eve, leftKeys) then
-      entity.pj.move.left_right = -1
+      entity.pj.move.left_right = Entity.new_float(-1)
       entity.pj.y = LPCS_LEFT
    elseif yevIsGrpDown(eve, rightKeys) then
-      entity.pj.move.left_right = 1
+      entity.pj.move.left_right = Entity.new_float(1)
       entity.pj.y = LPCS_RIGHT
    end
 
@@ -871,7 +925,7 @@ function phq_action(entity, eve)
       yeDestroy(col)
    end
 
-   if yevIsGrpUp(eve, upKeys) or yevIsGrpUp(eve, downKeys) then
+   if is_upkey_up or is_downkey_up then
       if entity.pj.move.left_right > 0 then
 	 entity.pj.y = LPCS_RIGHT
       elseif entity.pj.move.left_right < 0 then
@@ -880,7 +934,7 @@ function phq_action(entity, eve)
       entity.pj.move.up_down = 0
    end
 
-   if yevIsGrpUp(eve, leftKeys) or yevIsGrpUp(eve, rightKeys) then
+   if is_leftkey_up or is_rightkey_up then
       if entity.pj.move.up_down > 0 then
 	 entity.pj.y = LPCS_DOWN
       elseif entity.pj.move.up_down < 0 then
@@ -903,8 +957,8 @@ function phq_action(entity, eve)
       return YEVE_ACTION
    end
 
-   local mvPos = Pos.new(pix_mv * entity.pj.move.left_right,
-			 pix_mv * entity.pj.move.up_down)
+   local mvPos = Pos.new(pix_mv * yeGetFloat(entity.pj.move.left_right),
+			 pix_mv * yeGetFloat(entity.pj.move.up_down))
    ylpcsHandlerMove(entity.pj, mvPos.ent)
     local col_rel, col_obj = CheckColision(entity, entity.mainScreen, entity.pj)
     --local col_rel = NO_COLISION
@@ -1342,8 +1396,8 @@ function create_phq(entity)
    load_scene(ent, yeGetString(yeToLower(scenePath)), 0, pj_pos)
    ent.pj.mv_pix = Entity.new_float(0)
    ent.pj.move = {}
-   ent.pj.move.up_down = 0
-   ent.pj.move.left_right = 0
+   ent.pj.move.up_down = Entity.new_float(0)
+   ent.pj.move.left_right = Entity.new_float(0)
    local i = 0
    while i < yeLen(quests_info) do
       local name = yeGetKeyAt(quests_info, i)
