@@ -12,13 +12,21 @@
 		"answers": [
 		    {
 			"text": "I was told you have something to make me do ?",
-			"condition": ["=", "phq.quests.prot_club_m0", 0]
+			"condition": ["=", "phq.quests.prot_club_m0", 0],
+			"action": ["Dialogue:goto", "mission_0"]
 		    },
 		    {
 			"text": "Nothing :)",
 			"action": "phq.backToGame"
 		    }
 
+		]
+	    },
+	    "mission_0": {
+		"text": "mission explication !(TODO)",
+		"actions": [
+		    ["phq.changeScene", "street3", 1],
+		    ["phq.tacticalFight"]
 		]
 	    }
 	}

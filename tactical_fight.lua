@@ -9,7 +9,7 @@ local function end_fight()
    TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
 end
 
-function do_tactical_figght(eve)
+function do_tactical_fight(eve)
    if TACTICAL_FIGHT_MODE == MODE_TACTICAL_FIGHT_INIT then
       printMessage(main_widget, nil,
 		   "TACTICAL FIGHT MODE START, unimlemented press 'ESC' to quit")
@@ -20,5 +20,6 @@ function do_tactical_figght(eve)
       return end_fight()
    end
 
-   print("do Tactical Fight")
+   reposeCam(main_widget)
+   return YEVE_ACTION
 end

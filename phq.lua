@@ -322,6 +322,7 @@ function init_phq(mod)
    mod.ai_point_remove = Entity.new_func(ai_point_remove)
    mod.chk_affection = Entity.new_func(chk_affection)
    mod.advance_time = Entity.new_func(advance_time)
+   mod.tacticalFight = Entity.new_func(tacticalFight)
    mod.misc_fnc = {}
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
 end
@@ -644,6 +645,11 @@ function phq_action(entity, eve)
 	    entity.box_t = entity.box_t - ywidGetTurnTimer()
       end
    end
+
+   if TACTICAL_FIGHT_MODE ~= MODE_NO_TACTICAL_FIGHT then
+      return do_tactical_fight(eve)
+   end
+
    if entity.sleep then
       if doSleep(entity, Canvas.wrapp(entity.upCanvas)) == false then
 	 return YEVE_ACTION

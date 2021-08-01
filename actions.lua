@@ -653,6 +653,7 @@ function printMessage(main, obj, msg)
    end
    dialogue_box.new_text(main.upCanvas, 0, 0,
 			 txt, main, "box")
+
    if main.box_t and main.box < 700000 then
       main.box_t = main.box_t + TIME_RESET
    else
@@ -906,6 +907,10 @@ function playSnake(wid, eve, version)
       ywPushNewWidget(main, tx)
    end
    main.current = 2
+end
+
+function tacticalFight(wid)
+   TACTICAL_FIGHT_MODE = MODE_TACTICAL_FIGHT_INIT
 end
 
 function changeScene(wid, eve, scene, entry)
