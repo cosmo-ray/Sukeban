@@ -635,6 +635,9 @@ function printMessage(main, obj, msg)
    local TIME_RESET = 1000000
    main = main_widget
 
+   if (#txt > 30) then
+      TIME_RESET = TIME_RESET * #txt / 30
+   end
    if (yIsNil(main)) then
       return
    end
