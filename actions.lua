@@ -112,8 +112,8 @@ function quest_update(original, copy, arg)
 end
 
 function walkDoStep(wid, character)
-   if (yuiAbs(yeGetInt(character.move.left_right)) == 1 or
-       yuiAbs(yeGetInt(character.move.up_down)) == 1)  then
+   if (math.abs(yeGetFloat(character.move.left_right)) > 0 or
+       math.abs(yeGetFloat(character.move.up_down)) > 0)  then
       ylpcsHandlerNextStep(character)
       ylpcsHandlerRefresh(character)
    end

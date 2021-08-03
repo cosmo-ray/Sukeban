@@ -704,7 +704,6 @@ function phq_action(entity, eve)
       entity.pj.move.up_down = Entity.new_float(y_dist / dist)
       entity.pj.move.left_right = Entity.new_float(x_dist / dist)
 
-      print(math.abs(y_dist / dist), " > ", math.abs(x_dist / dist))
       if (math.abs(y_dist / dist) > math.abs(x_dist / dist)) then
 	 if y_dist > 0 then
 	    entity.pj.y = LPCS_DOWN
@@ -719,7 +718,6 @@ function phq_action(entity, eve)
 	 end
       end
       lpcs.handlerRefresh(main_widget.pj)
-      print("something been set: ", entity.pj.y)
 
       --print("entity.print.move: ", entity.pj.move, x_dist / dist, y_dist / dist)
    end
