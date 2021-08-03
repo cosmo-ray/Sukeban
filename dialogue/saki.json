@@ -26,7 +26,13 @@
 		"text": "mission explication !(TODO)",
 		"actions": [
 		    ["phq.changeScene", "street3", 1],
-		    ["phq.tacticalFight"]
+		    ["phq.tacticalFight",
+		     {
+			 "add-enemies": [
+			     [700, 420, "Thrug", "down"]
+			 ],
+		     }
+		    ]
 		]
 	    }
 	}

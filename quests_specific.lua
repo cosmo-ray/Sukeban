@@ -250,7 +250,7 @@ local function game_scene_do_timer(t)
    return BLOCK_EVE_NO_UNSET
 end
 
-local function push_npc(pos, name, dir)
+function push_npc(pos, name, dir)
    local npc = npcs[name]
    local c = main_widget.mainScreen
 
