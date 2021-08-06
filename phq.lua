@@ -1015,9 +1015,6 @@ function phq_action(entity, eve)
        return YEVE_ACTION
     end
     --print("MV: ", ywPosToString(mvPos:cent()))
-    print("col_rel == NORMAL_COLISION: ", col_rel, NORMAL_COLISION,
-	  col_rel == NORMAL_COLISION, mvPos.ent)
-
     if col_rel == NORMAL_COLISION then
        mvPos:opposite()
        ylpcsHandlerMove(entity.pj, mvPos.ent)
