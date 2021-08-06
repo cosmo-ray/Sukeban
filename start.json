@@ -52,6 +52,7 @@
 	{ "file" : "vn.lua", "type" : "lua" },
 	{ "file" : "new-game.lua", "type" : "lua" },
 	{ "file" : "tactical_fight.lua", "type" : "lua" },
+	{ "file" : "trigger.lua", "type" : "lua" },
 	{ "file" : "actions.lua", "type" : "lua" },
 	{ "file" : "victoryScreen.lua", "type" : "lua" },
 	{ "file" : "ai.lua", "type" : "lua" },

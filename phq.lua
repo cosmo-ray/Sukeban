@@ -26,10 +26,10 @@ pix_floor_left = 0
 local PIX_MV_PER_MS = 5
 local TURN_LENGTH = Y_REQUEST_ANIMATION_FRAME
 
-local NO_COLISION = 0
-local NORMAL_COLISION = 1
-local CHANGE_SCENE_COLISION = 2
-local FIGHT_COLISION = 3
+NO_COLISION = 0
+NORMAL_COLISION = 1
+CHANGE_SCENE_COLISION = 2
+FIGHT_COLISION = 3
 local PHQ_SUP = 0
 local PHQ_INF = 1
 
@@ -325,7 +325,11 @@ function init_phq(mod)
    mod.tacticalFight = Entity.new_func(tacticalFight)
    mod.misc_fnc = {}
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
+   mod.triggers = {}
+   mod.triggers.block_message = Entity.new_func(trigger_block_message)
 end
+
+
 
 function load_game(save_dir)
    local game = ygGet("phq:menus.game")
@@ -478,39 +482,59 @@ end
 
 local this_door_is_lock_msg = 0
 
+local function exit_trigger_check(exit, colRect, cur_time)
+   if checkTiledCondition(exit) == false then
+      return NO_COLISION
+   end
+
+   local rect = exit.rect
+   if ywRectCollision(rect, colRect) then
+      if checkObjTime(exit, cur_time) then
+	 local nextSceneTxt = yeGetString(yeToLower(exit.nextScene))
+	 if yIsNil(nextSceneTxt) == false then
+	    load_scene(main_widget, nextSceneTxt, yeGetInt(exit.entry))
+	 else
+	    phq_do_action(main_widget, exit)
+	    if yIsNil(exit.no_disable_timer) then
+	       exit.disable_timer = os.time()
+	    end
+	    if exit.colision_ret and exit.colision_ret > 0 then
+	       return exit.colision_ret:to_int()
+	    end
+	 end
+	 return CHANGE_SCENE_COLISION
+      elseif yeGetInt(exit.disable_timer) == 0 then
+	 local TIME_RESET = 1000000
+
+	 if this_door_is_lock_msg < 1 then
+	    this_door_is_lock_msg = TIME_RESET
+	    printMessage(main_widget, nil, "It's close !")
+	 else
+	    print(this_door_is_lock_msg)
+	    this_door_is_lock_msg = this_door_is_lock_msg - ywidGetTurnTimer()
+	 end
+      end
+   end
+   return NO_COLISION
+end
+
 function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
    local colRect = Rect.new(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30, 20, 20).ent
    local exites = main.exits
+   local triggers = main.triggers
    local cur_time = phq.env.time:to_string()
-   local i = 0
 
-   while i < yeLen(exites) do
-      local rect = exites[i].rect
-      if ywRectCollision(rect, colRect) then
-	 local exit = exites[i]
-	 if checkObjTime(exit, cur_time) then
-	    local nextSceneTxt = yeGetString(yeToLower(exit.nextScene))
-	    if yIsNil(nextSceneTxt) == false then
-	       load_scene(main, nextSceneTxt, yeGetInt(exit.entry))
-	    else
-	       exit.disable_timer = os.time()
-	       phq_do_action(main, exit)
-	    end
-	    return CHANGE_SCENE_COLISION
-	 elseif yeGetInt(exit.disable_timer) == 0 then
-	    local TIME_RESET = 1000000
+   for i = 0, yeLen(triggers) - 1 do
+      local ret = exit_trigger_check(triggers[i], colRect, cur_time)
 
-	    if this_door_is_lock_msg < 1 then
-	       this_door_is_lock_msg = TIME_RESET
-	       printMessage(main, nil, "It's close !")
-	    else
-	       print(this_door_is_lock_msg)
-	       this_door_is_lock_msg = this_door_is_lock_msg - ywidGetTurnTimer()
-	    end
-	 end
-      end
-      i = i + 1
+      if ret ~= NO_COLISION then return ret end
+   end
+
+   for i = 0, yeLen(exites) - 1 do
+      local ret = exit_trigger_check(exites[i], colRect, cur_time)
+
+      if ret ~= NO_COLISION then return ret end
    end
 
    local cur_scene = main.cur_scene
@@ -991,6 +1015,9 @@ function phq_action(entity, eve)
        return YEVE_ACTION
     end
     --print("MV: ", ywPosToString(mvPos:cent()))
+    print("col_rel == NORMAL_COLISION: ", col_rel, NORMAL_COLISION,
+	  col_rel == NORMAL_COLISION, mvPos.ent)
+
     if col_rel == NORMAL_COLISION then
        mvPos:opposite()
        ylpcsHandlerMove(entity.pj, mvPos.ent)
@@ -1113,16 +1140,18 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    -- Pj info:
 
    local objects = ent.mainScreen.objects
-   local i = 0
    local npc_idx = 0
+   local i = 0
    local j = 0
    local k = 0
    local l = 0
+   local m = 0
    local generic_npc_id = 0
    ent.npcs = {}
    ent.enemies = {}
    ent.exits = {}
    ent.actionables = {}
+   ent.triggers = {}
    ent.misc = {}
    ent.ai_point = {}
    ent.npc_act = {}
@@ -1131,6 +1160,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    local e_exits = ent.exits
    local e_actionables = ent.actionables
    local e_misc = ent.misc
+   local e_triggers = ent.triggers
 
    while i < yeLen(objects) do
       local obj = objects[i]
@@ -1237,6 +1267,10 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       elseif layer_name:to_string() == "MISC" then
 	 yeAttach(e_misc, obj, l, obj.name:to_string(), 0)
 	 l = l + 1
+      elseif layer_name:to_string() == "Triggers" and
+      checkObjTime(obj, phq.env.time:to_string()) then
+	 e_triggers[m] = obj
+	 m = m + 1
       end
       :: next_obj ::
       i = i + 1
