@@ -97,10 +97,9 @@
          "name":"Entries",
          "objects":[
                 {
-                 "height":0,
-                 "id":1,
+                 "height":68.75,
+                 "id":10,
                  "name":"TownHall",
-                 "point":true,
                  "properties":[
                         {
                          "name":"Time",
@@ -123,11 +122,11 @@
                          "value":"down"
                         }],
                  "rotation":0,
-                 "type":"EntryPoint",
+                 "type":"",
                  "visible":true,
-                 "width":0,
-                 "x":720,
-                 "y":592
+                 "width":33.0357142857143,
+                 "x":701.785714285714,
+                 "y":549.107142857143
                 }, 
                 {
                  "height":14,
@@ -266,10 +265,10 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":10,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.6.0",
+ "tiledversion":"1.7.1",
  "tileheight":32,
  "tilesets":[
         {
