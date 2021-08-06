@@ -16,6 +16,12 @@
 	"pong_game": 23,
 	"tetris_game": 25,
     },
+    "roger_super_store": {
+	"Guriko": 2,
+	"Water": 1,
+	"beer": 4,
+	"Super Premium Beer": 3
+    },
     "bar": {
 	"beer": 5,
 	"distiled_wheat_shoot": 4,

@@ -26,6 +26,12 @@
 			    "phq.backToGame"]
                     },
                     {
+			"text": "here's a premium beer, can you sign now",
+			"condition":  ["and", ["=", "phq.quests.school_sub", 2],
+				       "phq.pj.inventory.Super Premium Beer"],
+			"action":[ "Dialogue:goto", 4 ]
+                    },
+                    {
 			"text": [
 			    "so I need a certifica that prove I live here\n",
 			    "and another signature"
@@ -70,6 +76,18 @@
 			"phq.backToGame"
 		    ]
 		}
+	    },
+	    {
+		"text": [
+		    "What ! A premium beer, they're shit !",
+		    "(she take it trow it to to ground)",
+		    "You're as useless as you father was",
+		    "Now clean that shit before I make you eat it"
+		],
+		"actions": [
+		    "phq.advance_time",
+		    "phq.backToGame"
+		]
 	    }
 	]
     },

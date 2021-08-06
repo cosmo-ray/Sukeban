@@ -1,4 +1,11 @@
 {
+    "Super Premium Beer": {
+	"type": "usable",
+	"stats+" : {
+	    "life": 1,
+	    "drunk": 1
+	}
+    },
     "beer" : {
 	"type": "usable",
 	"func": "phq.DrinkBeer"

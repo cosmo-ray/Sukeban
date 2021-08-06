@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":30,
  "infinite":false,
  "layers":[
@@ -204,6 +197,33 @@
                  "width":51,
                  "x":198,
                  "y":545
+                }, 
+                {
+                 "height":48.130081300813,
+                 "id":8,
+                 "name":"Roger_Super_store",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.openStore"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"roger_super_store"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":61.1382113821138,
+                 "x":352.520325203252,
+                 "y":535.934959349593
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -241,10 +261,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":8,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.2",
+ "tiledversion":"1.7.1",
  "tileheight":32,
  "tilesets":[
         {
@@ -277,6 +297,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":1.4,
+ "version":"1.6",
  "width":30
 }
