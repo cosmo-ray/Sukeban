@@ -504,7 +504,7 @@ local function gen_school()
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed", "Jean",
        "Mohamed", "Michelle", "Arthur", "Romain", "Benjamin", "Akira", "Mars",
        "Bill", "Charle", "Romain", "Thomas", "Mehdi", "Olivie", "Gerome",
-       "Jean Pierre", "Jean Charle", "Pascale"}
+       "Jean Pierre", "Jean Charle", "Pascale", "Rogger"}
    }
 
    local last_name = {
@@ -518,7 +518,7 @@ local function gen_school()
       "Kanzaki", "Le Francais", "Coucou", "Mars", "Szabo", "Bookseller",
       "Manualreader", "Mac Ross", "Squirel", "Backdoor", "Adlez", "Harissa",
       "Anako", "Geromine", "Gwenegann", "Noir", "Katyusha", "Poireau",
-      "Articho", "Ananas", "Anko", "Polenarefu"
+      "Articho", "Ananas", "Anko", "Polenarefu", "Hopson"
    }
 
    local types = {
