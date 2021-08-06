@@ -310,6 +310,7 @@ function StartFight(wid, eve, enemy_type, script)
 
    local player_array = Entity.new_array()
    local allies = phq.pj.allies
+   phq.pj._combots = nil
 
    player_array[0] = phq.pj
    if allies[0] then
