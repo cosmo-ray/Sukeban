@@ -146,6 +146,7 @@ function pushSTatusTextScreen(container)
    local trait = phq.pj.trait
    local cmb_str = "-[Currrent Combot: {phq.pj.attack}]-\n"
    local school_club = ""
+   local follower = ""
 
    local i = 0
    while i < yeLen(knowledge) do
@@ -181,7 +182,7 @@ function pushSTatusTextScreen(container)
    end
 
    local pj_orgas = phq.pj.organisations
-   if pj_orgas then
+   if yeLen(pj_orgas) > 0 then
       school_club = "club:"
 
       for j = 0, yeLen(pj_orgas) - 1 do
@@ -191,6 +192,17 @@ function pushSTatusTextScreen(container)
 	 school_club = school_club .. " " .. pj_orgas[j]:to_string()
       end
       school_club = school_club .. "\n"
+   end
+
+   local allies = phq.pj.allies
+   if yeLen(allies) > 0 then
+      follower = "follower: "
+      for i = 0, yeLen(allies) - 1 do
+	 if i > 0 then
+	    follower = follower .. ", "
+	 end
+	 follower = follower .. yeGetKeyAt(allies, i)
+      end
    end
 
    txt_screen["<type>"] = "text-screen"
@@ -207,7 +219,8 @@ function pushSTatusTextScreen(container)
       knowledge_str ..
       stats_str ..
       cmb_str ..
-      school_club
+      school_club ..
+      follower
    txt_screen.background = "rgba: 155 155 255 190"
    ywPushNewWidget(container, txt_screen)
 end
