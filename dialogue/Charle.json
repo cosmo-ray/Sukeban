@@ -18,7 +18,7 @@
 		"condition":  ["=", "phq.events.beat_up_charle", 1],
 		"action": "phq.backToGame"
 	    },
-	    "been beat up": {
+	    "have negociate": {
 		"text": ["Hej hej {phq.pj.name}"],
 		"condition":  ["=", "phq.events.negociate_with_charle", 1],
 		"action": "phq.backToGame"

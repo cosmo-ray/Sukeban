@@ -45,7 +45,7 @@
 	    "sensitivity": -2
 	},
 	"image": {
-	    "dst-threshold": [-100,-300],
+	    "dst-threshold": [100,-300],
 	    "src" : "./imgs/charle.png"
 	},
 	"equipement": {
