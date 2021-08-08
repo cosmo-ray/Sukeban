@@ -29,8 +29,17 @@
 		    ["phq.tacticalFight",
 		     {
 			 "add-enemies": [
-			     [700, 420, "Thrug", "down"]
+			     [800, 900, "Thrug", "up"],
+			     [900, 910, "Thrug", "up"],
+			     [1000, 900, "Thrug", "up"],
+			     [800, 1000, "Thrug", "up"],
+			     [900, 1010, "Thrug", "up"],
+			     [1000, 1000, "Thrug", "up"]
 			 ],
+			 "add-ally": [
+			     ["Saki Miya"],
+			     ["Baffy"]
+			 ]
 		     }
 		    ]
 		]

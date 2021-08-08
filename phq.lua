@@ -3,7 +3,7 @@ local jrpg_fight = Entity.wrapp(ygGet("jrpg-fight"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 lpcs = Entity.wrapp(ygGet("lpcs"))
 sprite_man = Entity.wrapp(ygGet("sprite-man"))
-local phq = Entity.wrapp(ygGet("phq"))
+phq = Entity.wrapp(ygGet("phq"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 npcs = nil
 scenes = Entity.wrapp(ygGet("phq.scenes"))
@@ -97,16 +97,18 @@ function dressUp(caracter)
    local objs = phq.objects
    local clothes = nil
 
-   if (yIsNil(caracter.clothes)) then
-      clothes = Entity.new_array(caracter, "clothes")
-   else
-      clothes = caracter.clothes
-   end
 
    if caracter.equipement == nil then
+      if (yIsNil(caracter.clothes)) then
+	 clothes = Entity.new_array(caracter, "clothes")
+      else
+	 clothes = caracter.clothes
+      end
       goto hair;
    end
 
+   caracter.clothes = {}
+   clothes = caracter.clothes
    if e.feet then
       local cur_o = objs[yeGetString(e.feet)]
       if (yIsNil(cur_o)) then

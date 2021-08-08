@@ -910,8 +910,11 @@ function playSnake(wid, eve, version)
    main.current = 2
 end
 
-function push_npc(pos, name, dir)
-   local npc = npcs[name]
+function push_npc(pos, name, dir, npc)
+   -- let's say that for now on, we can pass the npc directly to this function
+   if npc == nil then
+      npc = npcs[name]
+   end
    local c = main_widget.mainScreen
 
    dressUp(npc)
@@ -920,6 +923,7 @@ function push_npc(pos, name, dir)
    lpcs.handlerMove(npc, pos.ent)
    lpcs.handlerSetOrigXY(npc, 0, dir)
    generic_handlerRefresh(npc)
+   return npc
 end
 
 function tacticalFight(wid, eve, args)
