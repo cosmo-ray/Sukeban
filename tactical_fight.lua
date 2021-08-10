@@ -42,15 +42,14 @@ function do_tactical_fight(eve)
 	       local npcd = lpcsStrToDir(yeGetStringAt(npc, 3))
 	       local npc_desc = npcs[npcn]
 
-	       local h = push_npc(npcp, npcn, npcd, npc)
 	       if npc.is_generic then
-		  npc = Entity.new_copy(npc)
+		  npc_desc = Entity.new_copy(npc_desc)
 	       end
+	       local h = push_npc(npcp, npcn, npcd, npc_desc)
 
 	       tdata.bads[j] = {}
-	       tdata.bads[j][0] = npc
+	       tdata.bads[j][0] = npc_desc
 	       tdata.bads[j][1] = h
-	       print("add enemy: ", npc_desc)
 	    end
 	 elseif k == "add-ally" then
 	    for j = 0, yeLen(a) - 1 do
@@ -71,7 +70,6 @@ function do_tactical_fight(eve)
       for i = 1, #tmp_allies do
 
 	 local npcn = tmp_allies[i]
-	 print("npcn: ", npcn)
 	 local npc = npcs[npcn]
 	 if npc.is_generic then
 	    npc = Entity.new_copy(npc)

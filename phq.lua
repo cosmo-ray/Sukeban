@@ -755,7 +755,6 @@ function phq_action(entity, eve)
       if ret == BLOCK_EVE_NO_UNSET then
 	 return 0
       end
-      print("do: ", action_eve)
       yeUnsetFirst(school_events)
       return ret
    end
@@ -768,12 +767,10 @@ function phq_action(entity, eve)
 
    if yevMouseDown(eve) then
       should_track_mouse = true
-      print("MOUSE DOWN: !!!!!")
    end
 
    if yevMouseUp(eve) then
       should_track_mouse = false
-      print("MOUSE UP: !!!!!")
       is_rightkey_up = true
       is_leftkey_up = true
       is_downkey_up = true
@@ -979,8 +976,6 @@ function phq_action(entity, eve)
 
 	    act_cnt = yeGetInt(act_cnt) + 1
 	    actioned[e_actionables[i].name:to_string()] = act_cnt
-	    print("ACTION: ", phq.actioned, e_actionables[i].usable_once,
-		  e_actionables[i].Arg0)
 	    -- save here the number of time this object have been actioned
 	    phq_do_action(entity, e_actionables[i])
 	    if yeGetInt(entity.require_ret) == 1 then

@@ -742,7 +742,6 @@ function startDialogue(main, obj, dialogue)
       local obj = Entity.wrapp(obj)
       local condition = obj.dialogue_condition
 
-      print("CONDITON", condition, phq.pj.equipement.torso)
       if yIsNNil(condition) and yeCheckCondition(condition) == false then
 	 goto out
       end
@@ -909,12 +908,26 @@ function push_npc(pos, name, dir, npc)
       npc = npcs[name]
    end
    local c = main_widget.mainScreen
+   local npch = nil
 
-   dressUp(npc)
-   npc = lpcs.createCaracterHandler(npc, c, main_widget.npcs, name)
+   if yIsNil(npc.is_generic) then
+      npch = yeGet(main_widget.npcs, name)
+   end
+
+   if yIsNNil(npch) then
+      npc = npch
+   elseif yeGetString(npc.type) == "sprite" then
+      npc = sprite_man.createHandler(npc, c, main_widget.npcs, name)
+      npc = Entity.wrapp(npc)
+      generic_handlerRefresh(npc)
+   else
+      dressUp(npc)
+      npc = lpcs.createCaracterHandler(npc, c, main_widget.npcs, name)
+   end
+
    npc = Entity.wrapp(npc)
-   lpcs.handlerMove(npc, pos.ent)
-   lpcs.handlerSetOrigXY(npc, 0, dir)
+   generic_setPos(npc, pos.ent)
+   generic_setDir(npc, dir)
    generic_handlerRefresh(npc)
    return npc
 end
