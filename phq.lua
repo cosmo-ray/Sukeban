@@ -65,6 +65,20 @@ function lpcsStrToDir(sdir)
    return LPCS_UP
 end
 
+function lpcsDirToStr(sdir)
+   if sdir == LPCS_LEFT then
+      return "left"
+   elseif sdir == LPCS_RIGHT then
+      return "right"
+   elseif sdir == LPCS_DOWN then
+      return "down"
+   elseif sdir == LPCS_UP then
+      return "up"
+   end
+   return "unknow"
+end
+
+
 function generic_handlerRefresh(npc)
    if yeGetString(npc.char.type) == "sprite" then
       sprite_man.handlerRefresh(npc)
@@ -89,6 +103,33 @@ function generic_handlerPos(npc)
       return sprite_man.handlerPos(npc)
    else
       return ylpcsHandePos(npc)
+   end
+end
+
+function generic_setDir(npc, dir)
+   if yeGetString(npc.char.type) == "sprite" then
+      print("dir to string: ", dir, lpcsDirToStr(dir))
+
+      if dir == LPCS_LEFT then
+	 yeSetAt(npc, "y_offset", 32)
+      elseif dir == LPCS_RIGHT then
+	 yeSetAt(npc, "y_offset", 96)
+      elseif dir == LPCS_DOWN then
+	 yeSetAt(npc, "y_offset", 64)
+      else -- y offset is 0 for "up"
+      end
+   else
+      lpcs.handlerSetOrigXY(npc, 0, dir)
+   end
+
+   generic_handlerRefresh(npc)
+end
+
+function generic_setPos(npc, pos)
+   if yeGetString(npc.char.type) == "sprite" then
+      sprite_man.handlerSetPos(npc, pos)
+   else
+      ylpcsHandlerSetPos(npc, pos)
    end
 end
 
