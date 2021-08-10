@@ -2,15 +2,22 @@ MODE_NO_TACTICAL_FIGHT = 0
 MODE_TACTICAL_FIGHT_INIT = 1
 local MODE_PLAYER_TURN = 2
 
+local BAR_H = 100
+local bar_y = 0
+
 TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
 
 local function end_fight()
+   local t = main_widget.tactical
+   ywRemoveEntryByEntity(main_widget, t.screen)
    main_widget.tactical = nil
    TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
+   
 end
 
 function do_tactical_fight(eve)
    local tdata = main_widget.tactical
+
    if TACTICAL_FIGHT_MODE == MODE_TACTICAL_FIGHT_INIT then
       printMessage(main_widget, nil,
 		   "TACTICAL FIGHT MODE START, unimlemented press 'ESC' to quit")
@@ -66,6 +73,7 @@ function do_tactical_fight(eve)
       tdata.goods[0] = {}
       tdata.goods[0][0] = phq.pj
       tdata.goods[0][1] = main_widget.pj
+      tdata.goods[0][2] = phq.pj.name
 
       for i = 1, #tmp_allies do
 
@@ -88,11 +96,29 @@ function do_tactical_fight(eve)
 	 tdata.goods[i][0] = npc
 	 tdata.goods[i][1] = push_npc(npcp, npcn, main_widget.pj.y:to_int(),
 				      npc)
-
-
+	 tdata.goods[i][2] = npcn
       end
-      
-   end
+
+      print(wid_rect)
+      local tatcical_can = Canvas.new_entity(tdata, "screen").ent
+      local wid_rect = main_widget["wid-pix"]
+      local wid_h = ywRectH(wid_rect)
+
+      ywPushNewWidget(main_widget, tatcical_can)
+
+      local sz = Size.new(ywRectW(wid_rect), BAR_H).ent
+      --local sz = ywSizeCreate(100, 100)
+      bar_y = wid_h - BAR_H - 10
+      tdata.bar_background = ywCanvasNewRectangle(tatcical_can, 0, bar_y,
+						  ywSizeW(sz), ywSizeH(sz),
+						  "rgba: 0 0 0 200")
+      tdata.bar_forground = ywCanvasNewRectangle(tatcical_can,
+						 2, bar_y + 2,
+						 ywSizeW(sz) - 4, ywSizeH(sz) - 4,
+						 "rgba: 255 255 255 80")
+      main_widget.current = 0
+      print("c and txt: ", c, Entity.wrapp(bar_texture))
+   end -- init out
 
    if yevIsKeyDown(eve, Y_ESC_KEY) then
       return end_fight()
