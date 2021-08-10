@@ -2,6 +2,10 @@ MODE_NO_TACTICAL_FIGHT = 0
 MODE_TACTICAL_FIGHT_INIT = 1
 local MODE_PLAYER_TURN = 2
 
+local PIX_MV_PER_MS = 5
+local mouse_mv = 0
+local pix_mouse_floor_left = 0
+
 local BAR_H = 100
 local bar_y = 0
 
@@ -12,13 +16,17 @@ local function end_fight()
    ywRemoveEntryByEntity(main_widget, t.screen)
    main_widget.tactical = nil
    TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
-   
+   main_widget.cam_offset = nil
 end
 
 function do_tactical_fight(eve)
    local tdata = main_widget.tactical
+   local wid_rect = main_widget["wid-pix"]
+   local wid_w = ywRectW(wid_rect)
+   local wid_h = ywRectH(wid_rect)
 
    if TACTICAL_FIGHT_MODE == MODE_TACTICAL_FIGHT_INIT then
+      main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
       printMessage(main_widget, nil,
 		   "TACTICAL FIGHT MODE START, unimlemented press 'ESC' to quit")
       TACTICAL_FIGHT_MODE = MODE_PLAYER_TURN
@@ -101,27 +109,45 @@ function do_tactical_fight(eve)
 
       print(wid_rect)
       local tatcical_can = Canvas.new_entity(tdata, "screen").ent
-      local wid_rect = main_widget["wid-pix"]
-      local wid_h = ywRectH(wid_rect)
 
       ywPushNewWidget(main_widget, tatcical_can)
 
-      local sz = Size.new(ywRectW(wid_rect), BAR_H).ent
+      local sz = Size.new(wid_w, BAR_H).ent
       --local sz = ywSizeCreate(100, 100)
       bar_y = wid_h - BAR_H - 10
-      tdata.bar_background = ywCanvasNewRectangle(tatcical_can, 0, bar_y,
+      tdata.ibar_background = ywCanvasNewRectangle(tatcical_can, 0, bar_y,
 						  ywSizeW(sz), ywSizeH(sz),
 						  "rgba: 0 0 0 200")
-      tdata.bar_forground = ywCanvasNewRectangle(tatcical_can,
+      tdata.ibar_forground = ywCanvasNewRectangle(tatcical_can,
 						 2, bar_y + 2,
 						 ywSizeW(sz) - 4, ywSizeH(sz) - 4,
 						 "rgba: 255 255 255 80")
+
       main_widget.current = 0
-      print("c and txt: ", c, Entity.wrapp(bar_texture))
    end -- init out
+
+   print("mouse: ", yeveMouseX(), yeveMouseY())
 
    if yevIsKeyDown(eve, Y_ESC_KEY) then
       return end_fight()
+   end
+   local mx = yeveMouseX()
+   local my = yeveMouseY()
+   local turn_timer = ywidTurnTimer() / 10000
+
+   mouse_mv = turn_timer * PIX_MV_PER_MS + pix_mouse_floor_left
+   pix_mouse_floor_left = mouse_mv - math.floor(mouse_mv)
+
+
+   if mx > wid_w - 5 then
+      yeAddAt(main_widget.cam_offset, 0, mouse_mv)
+   elseif mx < 5 then
+      yeAddAt(main_widget.cam_offset, 0, -mouse_mv)
+   end
+   if my > wid_h - 5 then
+      yeAddAt(main_widget.cam_offset, 1, mouse_mv)
+   elseif my < 5 then
+      yeAddAt(main_widget.cam_offset, 1, -mouse_mv)
    end
 
    reposeCam(main_widget)

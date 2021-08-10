@@ -222,9 +222,15 @@ end
 function reposeCam(main, xadd, yadd)
    local canvas = main.mainScreen
    local upCanvas = main.upCanvas
+   local offset = main.cam_offset
    local pjPos = Pos.wrapp(ylpcsHandePos(main.pj))
    local x0 = pjPos:x() - window_width / 2
    local y0 = pjPos:y() - window_height / 2
+
+   if yIsNNil(offset) then
+      x0 = x0 + ywPosX(offset)
+      y0 = y0 + ywPosY(offset)
+   end
 
    if yIsNNil(xadd) then
       x0 = x0 + xadd
