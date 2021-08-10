@@ -209,8 +209,6 @@ end
 
 local function reposScreenInfo(ent, x0, y0)
    ywCanvasObjSetPos(ent.night_r, x0, y0)
-   ywCanvasObjSetPos(ent.life_txt, x0 + 460, y0 + 10)
-   ywCanvasObjSetPos(ent.life_nb, x0 + 510, y0 + 10)
    dialogue_box.set_pos(ent.box, 40 + x0, 40 + y0)
    for i = 0, yeLen(ent.rain_a) - 1 do
       local r = ent.rain_a[i]
@@ -1388,14 +1386,6 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       end
    end
 
-   ent.life_txt = ywCanvasNewTextExt(upCanvas.ent, 360, 10,
-				     Entity.new_string("life: "),
-				     "rgba: 255 255 255 255")
-   upCanvas:remove(ent.life_nb )
-   ent.life_nb = ywCanvasNewTextExt(upCanvas.ent, 410, 10,
-				    Entity.new_string(
-				       math.floor(phq.pj.life:to_int())),
-				    "rgba: 255 255 255 255")
    reposeCam(ent)
    if (c.enter_script) then scripts[c.enter_script:to_string()](ent) end
 end
