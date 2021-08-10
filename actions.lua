@@ -102,8 +102,6 @@ function quest_update(original, copy, arg)
    local reward = yeGetIntAt(rewards, r_idx)
    local qi_scripts = quest.scripts
 
-   print("changed:", Entity.wrapp(original), Entity.wrapp(copy), quest_name)
-   print("reward:", reward)
    quest_try_Call_script(main_widget, qi_scripts, r_idx)
 
    if reward ~= 0 then
@@ -349,7 +347,6 @@ function StartFight(wid, eve, enemy_type, script)
 	 obj.dead = 1
       end
       if yIsNNil(obj.victory_action) then
-	 print("va !!!", obj.victory_action, obj.vapath)
 	 npc.victory_action = obj.victory_action
 	 if yIsNNil(obj.vapath) then
 	    npc.vapath = obj.vapath
@@ -372,7 +369,6 @@ function StartFight(wid, eve, enemy_type, script)
    else
       backToGame(wid, eve)
    end
-   print("NEW WID !", main:cent(), fWid:cent())
    ywPushNewWidget(main, fWid)
    return YEVE_ACTION
 end
@@ -564,7 +560,6 @@ function GetDrink(wid, eve)
 end
 
 function call_quest_script(wid, eve, script)
-   print(wid, eve, script)
    scripts[yeGetString(script)](main_widget, wid)
    return YEVE_ACTION
 end
@@ -725,7 +720,6 @@ function tmpObjsRemover(main)
 	 if yeGetIntAt(sti, 1) == TMP_OBJ_SMALL_TALK then
 	    dialogue_box.rm(uc, yeGet(sti, 2))
 	 elseif yeGetIntAt(sti, 1) == TMP_OBJ_CANVAS_OBJ then
-	    print("\nTRY REMOVE IMG:", yeGet(sti, 2))
 	    ywCanvasRemoveObj(uc, yeGet(sti, 2))
 	 else
 	    print("can't remove obj of type: ", yeGetIntAt(sti, 1))
@@ -743,7 +737,6 @@ function npc_handler_from_canva(c)
 end
 
 function startDialogue(main, obj, dialogue)
-   print("start dialogue ", dialogue)
    dialogue = Entity.wrapp(dialogue)
    if dialogue and dialogues[dialogue:to_string()] then
       local obj = Entity.wrapp(obj)

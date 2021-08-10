@@ -71,6 +71,7 @@ function do_tactical_fight(eve)
       for i = 1, #tmp_allies do
 
 	 local npcn = tmp_allies[i]
+	 print("npcn: ", npcn)
 	 local npc = npcs[npcn]
 	 if npc.is_generic then
 	    npc = Entity.new_copy(npc)
@@ -85,7 +86,6 @@ function do_tactical_fight(eve)
 	 end
 	 local npcp = Pos.new(px, py)
 
-	 print("add ally: ", npc, npcp.ent, npcn, main_widget.pj.y:to_int())
 	 tdata.goods[i] = {}
 	 tdata.goods[i][0] = npc
 	 tdata.goods[i][1] = push_npc(npcp, npcn, main_widget.pj.y:to_int(),
