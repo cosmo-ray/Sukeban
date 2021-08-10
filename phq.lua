@@ -108,21 +108,42 @@ end
 
 function generic_setDir(npc, dir)
    if yeGetString(npc.char.type) == "sprite" then
-      print("dir to string: ", dir, lpcsDirToStr(dir))
-
-      if dir == LPCS_LEFT then
-	 yeSetAt(npc, "y_offset", 32)
-      elseif dir == LPCS_RIGHT then
-	 yeSetAt(npc, "y_offset", 96)
-      elseif dir == LPCS_DOWN then
-	 yeSetAt(npc, "y_offset", 64)
-      else -- y offset is 0 for "up"
+      dir = yeGetInt(dir)
+      if yeGetString(npc.sp.disposition) == "uldr" then
+	 if dir == LPCS_LEFT then
+	    yeSetAt(npc, "y_offset", 32)
+	 elseif dir == LPCS_RIGHT then
+	    yeSetAt(npc, "y_offset", 96)
+	 elseif dir == LPCS_DOWN then
+	    yeSetAt(npc, "y_offset", 64)
+	 else
+	    yeSetAt(npc, "y_offset", 0)
+	 end
+      elseif yeGetString(npc.sp.disposition) == "urdl" then
+	 if dir == LPCS_LEFT then
+	    yeSetAt(npc, "y_offset", 96)
+	 elseif dir == LPCS_RIGHT then
+	    yeSetAt(npc, "y_offset", 32)
+	 elseif dir == LPCS_DOWN then
+	    yeSetAt(npc, "y_offset", 64)
+	 else
+	    yeSetAt(npc, "y_offset", 0)
+	 end
+      else
+	 if dir == LPCS_LEFT then
+	    yeSetAt(npc, "y_offset", 32)
+	 elseif dir == LPCS_RIGHT then
+	    yeSetAt(npc, "y_offset", 64)
+	 elseif dir == LPCS_UP then
+	    yeSetAt(npc, "y_offset", 96)
+	 else
+	    yeSetAt(npc, "y_offset", 0)
+	 end
       end
    else
       lpcs.handlerSetOrigXY(npc, 0, dir)
+      generic_handlerRefresh(npc)
    end
-
-   generic_handlerRefresh(npc)
 end
 
 function generic_setPos(npc, pos)

@@ -70,6 +70,7 @@
 	"ai": "wouaf_ai",
 	"sprite": {
 	    "path": "imgs/lpccatratdog.png",
+	    "disposition": "dlru",
 	    "src-pos": 128,
 	    "size": 32,
 	    "y": 160,

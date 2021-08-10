@@ -339,6 +339,7 @@
 	"sprite": {
 	    "path": "imgs/rat.png",
 	    "size": 32,
+	    "disposition": "urdl",
 	    "y": 32,
 	    "length": 3
 	}
@@ -350,6 +351,7 @@
 	"sprite": {
 	    "path": "imgs/rat.png",
 	    "enlarge": 200,
+	    "disposition": "urdl",
 	    "size": 32,
 	    "y": 32,
 	    "length": 3

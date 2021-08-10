@@ -295,16 +295,8 @@ function PjLeaveController(wid, action)
    local tmp = Entity.new_array()
    saveNpcCanvasMatadata(tmp, npc.canvas)
    if yeGetString(npc.char.type) == "sprite" then
+      generic_setDir(npc, npc.y)
       --print("npc.y: ", yeGetInt(npc.y), " - ", LPCS_LEFT, LPCS_UP, LPCS_RIGHT, LPCS_DOWN, yeGetInt(npc.y) == LPCS_DOWN)
-      if yeGetInt(npc.y) == LPCS_LEFT then
-	 yeSetAt(npc, "y_offset", 96)
-      elseif yeGetInt(npc.y) == LPCS_RIGHT then
-	 yeSetAt(npc, "y_offset", 32)
-      elseif yeGetInt(npc.y) == LPCS_DOWN then
-	 yeSetAt(npc, "y_offset", 64)
-      else -- y offset is 0 for "up"
-	 yeSetAt(npc, "y_offset", 0)
-      end
 
       sprite_man.handlerSetPos(npc, mvPos)
       sprite_man.handlerRefresh(npc)
