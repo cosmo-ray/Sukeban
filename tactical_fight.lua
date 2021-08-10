@@ -9,6 +9,8 @@ local pix_mouse_floor_left = 0
 local BAR_H = 100
 local bar_y = 0
 
+local HERO_TEAM = 0
+
 TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
 
 local function end_fight()
@@ -33,6 +35,7 @@ function do_tactical_fight(eve)
 
       tdata.bads = {}
       tdata.goods = {}
+      tdata.all = {}
 
       local pjPos = Pos.wrapp(ylpcsHandePos(main_widget.pj))
       local args = tdata.args
@@ -65,6 +68,9 @@ function do_tactical_fight(eve)
 	       tdata.bads[j] = {}
 	       tdata.bads[j][0] = npc_desc
 	       tdata.bads[j][1] = h
+	       tdata.bads[j][2] = npcn
+	       tdata.bads[j][3] = 1
+	       yePushBack(tdata.all, tdata.bads[j])
 	    end
 	 elseif k == "add-ally" then
 	    for j = 0, yeLen(a) - 1 do
@@ -82,6 +88,8 @@ function do_tactical_fight(eve)
       tdata.goods[0][0] = phq.pj
       tdata.goods[0][1] = main_widget.pj
       tdata.goods[0][2] = phq.pj.name
+      tdata.goods[0][3] = HERO_TEAM
+      yePushBack(tdata.all, tdata.goods[0])
 
       for i = 1, #tmp_allies do
 
@@ -105,9 +113,11 @@ function do_tactical_fight(eve)
 	 tdata.goods[i][1] = push_npc(npcp, npcn, main_widget.pj.y:to_int(),
 				      npc)
 	 tdata.goods[i][2] = npcn
-      end
+	 tdata.goods[i][3] = HERO_TEAM
+	 yePushBack(tdata.all, tdata.goods[i])
 
-      print(wid_rect)
+      end
+      yeShuffle(tdata.all)
       local tatcical_can = Canvas.new_entity(tdata, "screen").ent
 
       ywPushNewWidget(main_widget, tatcical_can)
@@ -126,8 +136,7 @@ function do_tactical_fight(eve)
       main_widget.current = 0
    end -- init out
 
-   print("mouse: ", yeveMouseX(), yeveMouseY())
-
+   local all_char = tdata.all
    if yevIsKeyDown(eve, Y_ESC_KEY) then
       return end_fight()
    end
@@ -149,6 +158,12 @@ function do_tactical_fight(eve)
    elseif my < 5 then
       yeAddAt(main_widget.cam_offset, 1, -mouse_mv)
    end
+
+   local turn_order_str = ""
+   for i = 0, yeLen(all_char) -1 do
+      turn_order_str = turn_order_str .. yeGetString(all_char[i][2]) .. "\n"
+   end
+   print(turn_order_str)
 
    reposeCam(main_widget)
    return YEVE_ACTION
