@@ -250,18 +250,6 @@ local function game_scene_do_timer(t)
    return BLOCK_EVE_NO_UNSET
 end
 
-function push_npc(pos, name, dir)
-   local npc = npcs[name]
-   local c = main_widget.mainScreen
-
-   dressUp(npc)
-   npc = lpcs.createCaracterHandler(npc, c, main_widget.npcs, name)
-   npc = Entity.wrapp(npc)
-   lpcs.handlerMove(npc, pos.ent)
-   lpcs.handlerSetOrigXY(npc, 0, dir)
-   generic_handlerRefresh(npc)
-end
-
 local function game_scene(wid, eve, scene)
    local scenes = ygGet("phq.game_senes")
    local scene = Entity.wrapp(yeGet(scenes, yeGetString(scene)))
