@@ -133,6 +133,7 @@ function do_tactical_fight(eve)
 						 ywSizeW(sz) - 4, ywSizeH(sz) - 4,
 						 "rgba: 255 255 255 80")
 
+      tdata.turn_o_str = ywCanvasNewTextByStr(tdata.screen, wid_w - 100, 10, "")
       main_widget.current = 0
    end -- init out
 
@@ -163,8 +164,8 @@ function do_tactical_fight(eve)
    for i = 0, yeLen(all_char) -1 do
       turn_order_str = turn_order_str .. yeGetString(all_char[i][2]) .. "\n"
    end
-   print(turn_order_str)
 
+   ywCanvasStringSet(tdata.turn_o_str, Entity.new_string(turn_order_str))
    reposeCam(main_widget)
    return YEVE_ACTION
 end
