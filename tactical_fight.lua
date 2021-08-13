@@ -16,12 +16,28 @@ TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
 
 local current_character = 0
 
+local IDX_MAX_ACTION_POINT = 0
+local IDX_CUR_ACTION_POINT = 1
+
+local cur_char = nil
+
+local function begin_turn_init(tdata)
+   cur_char = tdata.all[current_character]
+   cur_char[4][IDX_CUR_ACTION_POINT] = cur_char[4][IDX_MAX_ACTION_POINT]:to_int()
+end
+
 local function end_tun(tdata)
    tdata = Entity.wrapp(tdata)
 
    print("END TURN !!!!")
    current_character = current_character + 1
    current_character = current_character % yeLen(tdata.all)
+   begin_turn_init(tdata)
+end
+
+local function center_char(tdata)
+   print("click center !!!")
+   main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
 end
 
 local function end_fight()
@@ -68,6 +84,9 @@ function push_character(tdata, dst, char, h, name, team)
    dst[i][1] = h
    dst[i][2] = name
    dst[i][3] = team
+   dst[i][4] = {}
+   local tactical_info = dst[i][4]
+   tactical_info[IDX_MAX_ACTION_POINT] = 5
    yePushBack(tdata.all, dst[i])
 end
 
@@ -174,12 +193,17 @@ function do_tactical_fight(eve)
       tdata.turn_o_str = ywCanvasNewTextByStr(tdata.screen, wid_w - 100, 10, "")
       push_button(tdata, Rect.new(ywSizeW(sz) - 160, 4, 100, 30).ent,
 		  "end turn", Entity.new_func(end_tun))
+      push_button(tdata, Rect.new(ywSizeW(sz) - 160, 36, 100, 30).ent,
+		  "center", Entity.new_func(center_char))
+      tdata.ap_info = ywCanvasNewTextByStr(tdata.screen, bar_x + 10,
+					   bar_y + 10, "")
       main_widget.current = 0
 
+      begin_turn_init(tdata)
    end -- init out
 
    local all_char = tdata.all
-
+   local cur_char_t = cur_char[4]
 
    if TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then 
       if yevIsKeyDown(eve, Y_ESC_KEY) then
@@ -232,6 +256,13 @@ function do_tactical_fight(eve)
 
    ywCanvasStringSet(tdata.turn_o_str, Entity.new_string(turn_order_str))
 
-   reposeCam(main_widget)
+   local ap_str = "Action Points: "
+   local ap = cur_char_t[IDX_CUR_ACTION_POINT]
+   for i = 0, yeGetInt(ap) - 1 do
+      ap_str = ap_str .. "X"
+   end
+   ywCanvasStringSet(tdata.ap_info, Entity.new_string(ap_str))
+
+   reposeCam(main_widget, cur_char[1])
    return YEVE_ACTION
 end

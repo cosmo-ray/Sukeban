@@ -283,7 +283,7 @@ local function game_scene(wid, eve, scene)
 	 lpcs.handlerSetOrigXY(main_widget.pj, 0, lpcsStrToDir(yeGetString(dir)))
 	 generic_handlerRefresh(main_widget.pj)
       end
-      reposeCam(main_widget)
+      reposeCam(main_widget, main_widget.pj)
    elseif csa == "advance-time" then
       local s = yeGetString(cs.scene)
 
@@ -291,7 +291,7 @@ local function game_scene(wid, eve, scene)
    elseif csa == "timer" then
       return game_scene_do_timer(timer)
    elseif csa == "move-cam" then
-      reposeCam(main_widget, yeGetIntAt(cs.mov, 0), yeGetIntAt(cs.mov, 1))
+      reposeCam(main_widget, main_widget.pj, yeGetIntAt(cs.mov, 0), yeGetIntAt(cs.mov, 1))
    elseif csa == "place-students" then
       local studs = cs.students
       for i = 0, yeLen(studs) - 1 do

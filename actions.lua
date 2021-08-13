@@ -1083,7 +1083,7 @@ function doSleep(ent, upCanvas)
 	 changeScene(main_widget, nil, sl, Entity.new_int(0))
 	 if yIsNNil(slp) then
 	    ylpcsHandlerSetPos(main_widget.pj, slp)
-	    reposeCam(main_widget)
+	    reposeCam(main_widget, main_widget.pj)
 	 end
 	 main_widget.sleep_loc = nil
 	 main_widget.sleep_loc_pos = nil

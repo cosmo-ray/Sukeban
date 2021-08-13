@@ -219,11 +219,11 @@ local function reposScreenInfo(ent, x0, y0)
    end
 end
 
-function reposeCam(main, xadd, yadd)
+function reposeCam(main, dst_char, xadd, yadd)
    local canvas = main.mainScreen
    local upCanvas = main.upCanvas
    local offset = main.cam_offset
-   local pjPos = Pos.wrapp(ylpcsHandePos(main.pj))
+   local pjPos = Pos.wrapp(ylpcsHandePos(dst_char))
    local x0 = pjPos:x() - window_width / 2
    local y0 = pjPos:y() - window_height / 2
 
@@ -1086,7 +1086,7 @@ function phq_action(entity, eve)
        entity.pj.mv_pix = 0
        walkDoStep(entity, entity.pj)
     end
-    reposeCam(entity)
+    reposeCam(entity, main_widget.pj)
 
     if run_script then
        run_script(entity)
@@ -1392,7 +1392,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       end
    end
 
-   reposeCam(ent)
+   reposeCam(ent, ent.pj)
    if (c.enter_script) then scripts[c.enter_script:to_string()](ent) end
 end
 
