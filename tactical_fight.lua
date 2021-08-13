@@ -61,6 +61,16 @@ local function unlight_button(tdata, b)
    end
 end
 
+function push_character(tdata, dst, char, h, name, team)
+   local i = yeLen(dst)
+   dst[i] = {}
+   dst[i][0] = char
+   dst[i][1] = h
+   dst[i][2] = name
+   dst[i][3] = team
+   yePushBack(tdata.all, dst[i])
+end
+
 function do_tactical_fight(eve)
    local tdata = main_widget.tactical
    local wid_rect = main_widget["wid-pix"]
@@ -107,12 +117,7 @@ function do_tactical_fight(eve)
 	       end
 	       local h = push_npc(npcp, npcn, npcd, npc_desc)
 
-	       tdata.bads[j] = {}
-	       tdata.bads[j][0] = npc_desc
-	       tdata.bads[j][1] = h
-	       tdata.bads[j][2] = npcn
-	       tdata.bads[j][3] = 1
-	       yePushBack(tdata.all, tdata.bads[j])
+	       push_character(tdata, tdata.bads, npc_desc, h, npcn, 1)
 	    end
 	 elseif k == "add-ally" then
 	    for j = 0, yeLen(a) - 1 do
@@ -126,13 +131,8 @@ function do_tactical_fight(eve)
 	 end
       end
 
-      tdata.goods[0] = {}
-      tdata.goods[0][0] = phq.pj
-      tdata.goods[0][1] = main_widget.pj
-      tdata.goods[0][2] = phq.pj.name
-      tdata.goods[0][3] = HERO_TEAM
-      yePushBack(tdata.all, tdata.goods[0])
-
+      push_character(tdata, tdata.goods, phq.pj, main_widget.pj,
+		     phq.pj.name, HERO_TEAM)
       for i = 1, #tmp_allies do
 
 	 local npcn = tmp_allies[i]
@@ -150,13 +150,9 @@ function do_tactical_fight(eve)
 	 end
 	 local npcp = Pos.new(px, py)
 
-	 tdata.goods[i] = {}
-	 tdata.goods[i][0] = npc
-	 tdata.goods[i][1] = push_npc(npcp, npcn, main_widget.pj.y:to_int(),
-				      npc)
-	 tdata.goods[i][2] = npcn
-	 tdata.goods[i][3] = HERO_TEAM
-	 yePushBack(tdata.all, tdata.goods[i])
+	 push_character(tdata, tdata.goods, npc,
+			push_npc(npcp, npcn, main_widget.pj.y:to_int(), npc),
+			npcn, HERO_TEAM)
 
       end
       yeShuffle(tdata.all)
