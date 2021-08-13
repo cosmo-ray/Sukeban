@@ -1,6 +1,7 @@
 MODE_NO_TACTICAL_FIGHT = 0
 MODE_TACTICAL_FIGHT_INIT = 1
 local MODE_PLAYER_TURN = 2
+local MODE_ENEMY_TURN = 3
 
 local PIX_MV_PER_MS = 5
 local mouse_mv = 0
@@ -18,12 +19,18 @@ local current_character = 0
 
 local IDX_MAX_ACTION_POINT = 0
 local IDX_CUR_ACTION_POINT = 1
+local IDX_AI_STUFF = 10
 
 local cur_char = nil
 
 local function begin_turn_init(tdata)
    cur_char = tdata.all[current_character]
    cur_char[4][IDX_CUR_ACTION_POINT] = cur_char[4][IDX_MAX_ACTION_POINT]:to_int()
+   if yeGetInt(cur_char[3]) == HERO_TEAM then
+      TACTICAL_FIGHT_MODE = MODE_PLAYER_TURN
+   else
+      TACTICAL_FIGHT_MODE = MODE_ENEMY_TURN
+   end
 end
 
 local function end_tun(tdata)
@@ -244,8 +251,17 @@ function do_tactical_fight(eve)
 	 end
       end
 
-
-   end -- player turn
+   elseif TACTICAL_FIGHT_MODE then
+      if yIsNil(cur_char_t[IDX_AI_STUFF]) then
+	 cur_char_t[IDX_AI_STUFF] = 0
+      end
+      print("ai cur_char_t:", cur_char_t)
+      cur_char_t[IDX_AI_STUFF] = cur_char_t[IDX_AI_STUFF] + 1
+      if cur_char_t[IDX_AI_STUFF] > 10 then
+	 cur_char_t[IDX_AI_STUFF] = nil
+	 end_tun(tdata)
+      end
+   end
 
    local turn_order_str = ""
    for i = 0, yeLen(all_char) -1 do
@@ -256,11 +272,17 @@ function do_tactical_fight(eve)
 
    ywCanvasStringSet(tdata.turn_o_str, Entity.new_string(turn_order_str))
 
-   local ap_str = "Action Points: "
+   local ap_str = "Action Points: ["
+   local max_ap = cur_char_t[IDX_MAX_ACTION_POINT]
    local ap = cur_char_t[IDX_CUR_ACTION_POINT]
-   for i = 0, yeGetInt(ap) - 1 do
-      ap_str = ap_str .. "X"
+   for i = 0, yeGetInt(max_ap) - 1 do
+      if i < ap then
+	 ap_str = ap_str .. "o"
+      else
+	 ap_str = ap_str .. " "
+      end
    end
+   ap_str = ap_str .. "]"
    ywCanvasStringSet(tdata.ap_info, Entity.new_string(ap_str))
 
    reposeCam(main_widget, cur_char[1])
