@@ -102,6 +102,7 @@ function do_tactical_fight(eve)
    local wid_rect = main_widget["wid-pix"]
    local wid_w = ywRectW(wid_rect)
    local wid_h = ywRectH(wid_rect)
+   local ccam = main_widget.mainScreen.cam
 
    if TACTICAL_FIGHT_MODE == MODE_TACTICAL_FIGHT_INIT then
       main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
@@ -235,6 +236,11 @@ function do_tactical_fight(eve)
 	 yeAddAt(main_widget.cam_offset, 1, -mouse_mv)
       end
 
+      local mouse_real_pos = Pos.new(mx, my).ent
+      ywPosAdd(mouse_real_pos, ccam)
+      print("distance from mouse: ", ywPosDistance(ylpcsHandlerPos(cur_char[1]),
+						   mouse_real_pos),
+	    ccam)
       local buttons = tdata.buttons
       for i = 0, yeLen(buttons) - 1 do
 	 local b = buttons[i]
@@ -251,7 +257,7 @@ function do_tactical_fight(eve)
 	 end
       end
 
-   elseif TACTICAL_FIGHT_MODE then
+   elseif TACTICAL_FIGHT_MODE == MODE_ENEMY_TURN then
       if yIsNil(cur_char_t[IDX_AI_STUFF]) then
 	 cur_char_t[IDX_AI_STUFF] = 0
       end
