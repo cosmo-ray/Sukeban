@@ -40,6 +40,7 @@ local function end_tun(tdata)
    current_character = current_character + 1
    current_character = current_character % yeLen(tdata.all)
    begin_turn_init(tdata)
+   ywCanvasStringSet(tdata.movement_info, Entity.new_string(""))
 end
 
 local function center_char(tdata)
@@ -205,6 +206,9 @@ function do_tactical_fight(eve)
 		  "center", Entity.new_func(center_char))
       tdata.ap_info = ywCanvasNewTextByStr(tdata.screen, bar_x + 10,
 					   bar_y + 10, "")
+      tdata.movement_info = ywCanvasNewTextByStr(tdata.screen, 0,
+					   o, "")
+
       main_widget.current = 0
 
       begin_turn_init(tdata)
@@ -241,6 +245,11 @@ function do_tactical_fight(eve)
       print("distance from mouse: ", ywPosDistance(ylpcsHandlerPos(cur_char[1]),
 						   mouse_real_pos),
 	    ccam)
+      local mov_cost = "(" .. (ywPosDistance(ylpcsHandlerPos(cur_char[1]),
+					     mouse_real_pos)  / 100) .. ")"
+      ywCanvasStringSet(tdata.movement_info, Entity.new_string(mov_cost))
+      ywCanvasObjSetPos(tdata.movement_info, mx, my)
+      
       local buttons = tdata.buttons
       for i = 0, yeLen(buttons) - 1 do
 	 local b = buttons[i]
