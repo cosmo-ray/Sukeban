@@ -216,6 +216,7 @@ function do_tactical_fight(eve)
 
    local all_char = tdata.all
    local cur_char_t = cur_char[4]
+   local ap = cur_char_t[IDX_CUR_ACTION_POINT]
 
    if TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then 
       if yevIsKeyDown(eve, Y_ESC_KEY) then
@@ -228,7 +229,6 @@ function do_tactical_fight(eve)
 
       mouse_mv = turn_timer * PIX_MV_PER_MS + pix_mouse_floor_left
       pix_mouse_floor_left = mouse_mv - math.floor(mouse_mv)
-
 
       if mx > wid_w - 5 then
 	 yeAddAt(main_widget.cam_offset, 0, mouse_mv)
@@ -259,12 +259,19 @@ function do_tactical_fight(eve)
 	    end
 	 end
       else -- on game map
+	 local mv_info = tdata.movement_info
 	 local mouse_real_pos = Pos.new(mx, my).ent
 	 ywPosAdd(mouse_real_pos, ccam)
-	 local mov_cost = "(" .. (ywPosDistance(ylpcsHandlerPos(cur_char[1]),
-						mouse_real_pos)  / 100) .. ")"
-	 ywCanvasStringSet(tdata.movement_info, Entity.new_string(mov_cost))
-	 ywCanvasObjSetPos(tdata.movement_info, mx, my)
+	 local dist_ap_cost = (ywPosDistance(ylpcsHandlerPos(cur_char[1]),
+					     mouse_real_pos)  / 100)
+	 local mov_cost = "(" .. dist_ap_cost .. ")"
+	 ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
+	 ywCanvasObjSetPos(mv_info, mx, my)
+	 if dist_ap_cost > yeGetInt(ap) then
+	    ywCanvasSetStrColor(mv_info, "rgba: 230 20 20 255")
+	 else
+	    ywCanvasSetStrColor(mv_info, "rgba: 255 255 255 255")
+	 end
 	 if yevMouseDown(eve) then
 	    print("click !")
 	 end
@@ -293,7 +300,6 @@ function do_tactical_fight(eve)
 
    local ap_str = "Action Points: ["
    local max_ap = cur_char_t[IDX_MAX_ACTION_POINT]
-   local ap = cur_char_t[IDX_CUR_ACTION_POINT]
    for i = 0, yeGetInt(max_ap) - 1 do
       if i < ap then
 	 ap_str = ap_str .. "o"
