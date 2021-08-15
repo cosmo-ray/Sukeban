@@ -86,6 +86,10 @@ local function unlight_button(tdata, b)
 end
 
 function push_character(tdata, dst, char, h, name, team)
+   -- recenter char
+   local s = generic_handlerSize(h)
+   generic_handlerMoveXY(h, -(ywSizeW(s) / 2), -(ywSizeH(s) / 3 * 2))
+
    local i = yeLen(dst)
    dst[i] = {}
    dst[i][0] = char
@@ -117,7 +121,6 @@ function do_tactical_fight(eve)
       tdata.buttons = {}
       current_character = 0
 
-      local pjPos = Pos.wrapp(ylpcsHandePos(main_widget.pj))
       local args = tdata.args
       local tmp_allies = {}
       local tmp_allies_idx = 1
@@ -131,7 +134,28 @@ function do_tactical_fight(eve)
 	 local k = yeGetKeyAt(args, i)
 	 local a = args[i]
 
-	 if k == "add-enemies" then
+	 if k == "move" then
+	    for j = 0, yeLen(a) - 1 do
+	       local name = yeCreateYirlFmtString(a[j][0])
+	       print("move: ", a[j], yeGetString(name),
+		     yeGetString(name) == yeGetString(phq.pj.name))
+	       if yeGetString(name) == yeGetString(phq.pj.name) then
+		  generic_handlerMoveXY(main_widget.pj,
+					yeGetInt(a[j][1]),
+					yeGetInt(a[j][2]))
+	       else
+		  local goods = tdata.goods
+		  for k = 0, yeLen(goods) - 1 do
+		     if yeGetString(name) == yeGetString(goods[2]) then
+			generic_handlerMoveXY(goods[1],
+					      yeGetInt(a[j][1]),
+					      yeGetInt(a[j][2]))
+		     end
+		  end
+	       end
+	       yeDestroy(name)
+	    end
+	 elseif k == "add-enemies" then
 	    for j = 0, yeLen(a) - 1 do
 	       npc = a[j]
 
@@ -144,7 +168,6 @@ function do_tactical_fight(eve)
 		  npc_desc = Entity.new_copy(npc_desc)
 	       end
 	       local h = push_npc(npcp, npcn, npcd, npc_desc)
-
 	       push_character(tdata, tdata.bads, npc_desc, h, npcn, 1)
 	    end
 	 elseif k == "add-ally" then
@@ -158,6 +181,7 @@ function do_tactical_fight(eve)
 	    end
 	 end
       end
+      local pjPos = Pos.wrapp(Entity.new_copy(ylpcsHandePos(main_widget.pj)))
 
       push_character(tdata, tdata.goods, phq.pj, main_widget.pj,
 		     phq.pj.name, HERO_TEAM)

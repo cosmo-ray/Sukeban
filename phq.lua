@@ -165,6 +165,14 @@ function generic_setPos(npc, pos)
    end
 end
 
+function generic_handlerMove(npc, add)
+   ywPosAdd(generic_handlerPos(npc), add)
+end
+
+function generic_handlerMoveXY(npc, x, y)
+   ywPosAddXY(generic_handlerPos(npc), x, y)
+end
+
 function dressUp(caracter)
    local e = caracter.equipement
    local objs = phq.objects

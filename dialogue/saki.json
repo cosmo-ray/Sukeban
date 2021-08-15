@@ -28,6 +28,9 @@
 		    ["phq.changeScene", "street3", 1],
 		    ["phq.tacticalFight",
 		     {
+			 "move": [
+			     ["{phq.pj.name}", 0, 100]
+			 ],
 			 "add-enemies": [
 			     [800, 900, "Thrug", "up"],
 			     [900, 910, "Thrug", "up"],
