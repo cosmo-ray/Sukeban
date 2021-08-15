@@ -223,6 +223,7 @@ function do_tactical_fight(eve)
       end
       local mx = yeveMouseX()
       local my = yeveMouseY()
+      local bar_rect = Rect.new(bar_x, bar_y, wid_w, BAR_H).ent
       local turn_timer = ywidTurnTimer() / 10000
 
       mouse_mv = turn_timer * PIX_MV_PER_MS + pix_mouse_floor_left
@@ -240,29 +241,32 @@ function do_tactical_fight(eve)
 	 yeAddAt(main_widget.cam_offset, 1, -mouse_mv)
       end
 
-      local mouse_real_pos = Pos.new(mx, my).ent
-      ywPosAdd(mouse_real_pos, ccam)
-      print("distance from mouse: ", ywPosDistance(ylpcsHandlerPos(cur_char[1]),
-						   mouse_real_pos),
-	    ccam)
-      local mov_cost = "(" .. (ywPosDistance(ylpcsHandlerPos(cur_char[1]),
-					     mouse_real_pos)  / 100) .. ")"
-      ywCanvasStringSet(tdata.movement_info, Entity.new_string(mov_cost))
-      ywCanvasObjSetPos(tdata.movement_info, mx, my)
-      
-      local buttons = tdata.buttons
-      for i = 0, yeLen(buttons) - 1 do
-	 local b = buttons[i]
-	 local isOver = ywRectContain(b[0], mx, my, 1) > 0
-	 if isOver then
-	    highlight_button(tdata, b)
-	    if yevMouseDown(eve) then
-	       if yIsNNil(b[1]) then
-		  b[1](tdata)
+      if (ywRectContain(bar_rect, mx, my, 0) > 0) then
+	 local buttons = tdata.buttons
+	 ywCanvasStringSet(tdata.movement_info, Entity.new_string(""))
+	 for i = 0, yeLen(buttons) - 1 do
+	    local b = buttons[i]
+	    local isOver = ywRectContain(b[0], mx, my, 1) > 0
+	    if isOver then
+	       highlight_button(tdata, b)
+	       if yevMouseDown(eve) then
+		  if yIsNNil(b[1]) then
+		     b[1](tdata)
+		  end
 	       end
+	    else
+	       unlight_button(tdata, b)
 	    end
-	 else
-	    unlight_button(tdata, b)
+	 end
+      else -- on game map
+	 local mouse_real_pos = Pos.new(mx, my).ent
+	 ywPosAdd(mouse_real_pos, ccam)
+	 local mov_cost = "(" .. (ywPosDistance(ylpcsHandlerPos(cur_char[1]),
+						mouse_real_pos)  / 100) .. ")"
+	 ywCanvasStringSet(tdata.movement_info, Entity.new_string(mov_cost))
+	 ywCanvasObjSetPos(tdata.movement_info, mx, my)
+	 if yevMouseDown(eve) then
+	    print("click !")
 	 end
       end
 
