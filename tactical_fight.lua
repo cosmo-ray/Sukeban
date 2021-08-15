@@ -262,9 +262,13 @@ function do_tactical_fight(eve)
 	 local mv_info = tdata.movement_info
 	 local mouse_real_pos = Pos.new(mx, my).ent
 	 ywPosAdd(mouse_real_pos, ccam)
-	 local dist_ap_cost = (ywPosDistance(ylpcsHandlerPos(cur_char[1]),
-					     mouse_real_pos)  / 100)
+	 -- ylpcsHandlerPos return top left, we need center
+	 local char_pos = Entity.new_copy(generic_handlerPos(cur_char[1]))
+	 local char_size = generic_handlerSize(cur_char[1])
+	 ywPosAddXY(char_pos, ywSizeW(char_size) / 2, ywSizeH(char_size) / 3 * 2)
+	 local dist_ap_cost = (ywPosDistance(char_pos, mouse_real_pos)  / 100)
 	 local mov_cost = "(" .. dist_ap_cost .. ")"
+
 	 ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
 	 ywCanvasObjSetPos(mv_info, mx, my)
 	 if dist_ap_cost > yeGetInt(ap) then

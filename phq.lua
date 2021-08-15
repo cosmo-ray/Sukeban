@@ -102,7 +102,18 @@ function generic_handlerPos(npc)
    if yeGetString(npc.char.type) == "sprite" then
       return sprite_man.handlerPos(npc)
    else
-      return ylpcsHandePos(npc)
+      return ylpcsHandlerPos(npc)
+   end
+end
+
+function generic_handlerSize(npc)
+   if yIsNil(npc) or npc.char == nil then
+      return
+   end
+   if yeGetString(npc.char.type) == "sprite" then
+      return sprite_man.handlerSize(npc)
+   else
+      return ylpcsHandlerSize(npc)
    end
 end
 
