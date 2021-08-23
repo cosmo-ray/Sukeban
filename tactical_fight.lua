@@ -107,7 +107,8 @@ function do_tactical_fight(eve)
    local wid_rect = main_widget["wid-pix"]
    local wid_w = ywRectW(wid_rect)
    local wid_h = ywRectH(wid_rect)
-   local ccam = main_widget.mainScreen.cam
+   local main_canvas = main_widget.mainScreen
+   local ccam = main_canvas.cam
 
    if TACTICAL_FIGHT_MODE == MODE_TACTICAL_FIGHT_INIT then
       main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
@@ -293,9 +294,28 @@ function do_tactical_fight(eve)
 	 local dist_ap_cost = (ywPosDistance(char_pos, mouse_real_pos)  / 100)
 	 local mov_cost = "(" .. dist_ap_cost .. ")"
 
+	 local intersect_array = ywCanvasNewIntersectArray(main_canvas,
+							   char_pos, mouse_real_pos)
+	 local block = (dist_ap_cost > yeGetInt(ap))
+	 local cur_char_canva = cur_char[1].canvas
+	 print("intersect array  !!")
+	 for i = 0, yeLen(intersect_array) - 1 do
+	    local col_o = yeGet(intersect_array, i)
+
+	    if yeGetIntAt(col_o, 9) < 1 then
+	       goto loop_next
+	    end
+
+	    col_o = Entity.wrapp(col_o)
+	    print(col_o, "is same: ",
+		  cur_char_canva == col_o)
+	    block = true
+	    :: loop_next ::
+	 end
+	 yeDestroy(intersect_array)
 	 ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
 	 ywCanvasObjSetPos(mv_info, mx, my)
-	 if dist_ap_cost > yeGetInt(ap) then
+	 if block then
 	    ywCanvasSetStrColor(mv_info, "rgba: 230 20 20 255")
 	 else
 	    ywCanvasSetStrColor(mv_info, "rgba: 255 255 255 255")

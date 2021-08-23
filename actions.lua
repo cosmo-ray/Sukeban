@@ -929,6 +929,7 @@ function push_npc(pos, name, dir, npc)
    generic_setPos(npc, pos.ent)
    generic_setDir(npc, dir)
    generic_handlerRefresh(npc)
+   npc.canvas.Collision = 1
    return npc
 end
 
