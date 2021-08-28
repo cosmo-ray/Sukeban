@@ -2,6 +2,7 @@ MODE_NO_TACTICAL_FIGHT = 0
 MODE_TACTICAL_FIGHT_INIT = 1
 local MODE_PLAYER_TURN = 2
 local MODE_ENEMY_TURN = 3
+local MODE_CHAR_MOVE = 4
 
 local PIX_MV_PER_MS = 5
 local mouse_mv = 0
@@ -14,6 +15,7 @@ local bar_x = 0
 local HERO_TEAM = 0
 
 TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
+EX_MODE = 0
 
 local current_character = 0
 
@@ -23,9 +25,11 @@ local IDX_AI_STUFF = 10
 
 local cur_char = nil
 
+local move_dst = nil
+
 local function begin_turn_init(tdata)
    cur_char = tdata.all[current_character]
-   cur_char[4][IDX_CUR_ACTION_POINT] = cur_char[4][IDX_MAX_ACTION_POINT]:to_int()
+   cur_char[4][IDX_CUR_ACTION_POINT] = Entity.new_float(cur_char[4][IDX_MAX_ACTION_POINT]:to_int())
    if yeGetInt(cur_char[3]) == HERO_TEAM then
       TACTICAL_FIGHT_MODE = MODE_PLAYER_TURN
    else
@@ -48,12 +52,29 @@ local function center_char(tdata)
    main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
 end
 
+-- take a canvas pos and translate it to real char pos
+local function canvas_to_char_pos(cpos)
+   local char_pos = Entity.new_copy(cpos)
+   local char_size = generic_handlerSize(cur_char[1])
+   ywPosAddXY(char_pos, ywSizeW(char_size) / 2, ywSizeH(char_size) / 3 * 2)
+   return char_pos
+end
+
+local function char_to_canvas_pos(cpos)
+   local can_pos = Entity.new_copy(cpos)
+   local can_size = generic_handlerSize(cur_char[1])
+   ywPosAddXY(can_pos, -(ywSizeW(can_size) / 2), -(ywSizeH(can_size) / 3 * 2))
+   return can_pos
+end
+
 local function end_fight()
    local t = main_widget.tactical
    ywRemoveEntryByEntity(main_widget, t.screen)
    main_widget.tactical = nil
    TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
    main_widget.cam_offset = nil
+   move_dst = nil
+   cur_char = nil
 end
 
 local function push_button(tdata, rect, txt, callback)
@@ -85,7 +106,7 @@ local function unlight_button(tdata, b)
    end
 end
 
-function push_character(tdata, dst, char, h, name, team)
+local function push_character(tdata, dst, char, h, name, team)
    -- recenter char
    local s = generic_handlerSize(h)
    generic_handlerMoveXY(h, -(ywSizeW(s) / 2), -(ywSizeH(s) / 3 * 2))
@@ -100,6 +121,12 @@ function push_character(tdata, dst, char, h, name, team)
    local tactical_info = dst[i][4]
    tactical_info[IDX_MAX_ACTION_POINT] = 5
    yePushBack(tdata.all, dst[i])
+end
+
+local function switch_to_move_mode(dst)
+   EX_MODE = TACTICAL_FIGHT_MODE
+   TACTICAL_FIGHT_MODE = MODE_CHAR_MOVE
+   move_dst = dst
 end
 
 function do_tactical_fight(eve)
@@ -288,9 +315,7 @@ function do_tactical_fight(eve)
 	 local mouse_real_pos = Pos.new(mx, my).ent
 	 ywPosAdd(mouse_real_pos, ccam)
 	 -- ylpcsHandlerPos return top left, we need center
-	 local char_pos = Entity.new_copy(generic_handlerPos(cur_char[1]))
-	 local char_size = generic_handlerSize(cur_char[1])
-	 ywPosAddXY(char_pos, ywSizeW(char_size) / 2, ywSizeH(char_size) / 3 * 2)
+	 local char_pos = canvas_to_char_pos(generic_handlerPos(cur_char[1]))
 	 local dist_ap_cost = (ywPosDistance(char_pos, mouse_real_pos)  / 100)
 	 local mov_cost = "(" .. dist_ap_cost .. ")"
 
@@ -302,7 +327,8 @@ function do_tactical_fight(eve)
 	 for i = 0, yeLen(intersect_array) - 1 do
 	    local col_o = yeGet(intersect_array, i)
 
-	    if yeGetIntAt(col_o, 9) < 1 or cur_char_canva == Entity.wrapp(col_o) then
+	    if yeGetIntAt(col_o, 9) < 1 or
+	       cur_char_canva == Entity.wrapp(col_o) then
 	       goto loop_next
 	    end
 
@@ -322,6 +348,11 @@ function do_tactical_fight(eve)
 	 end
 	 if yevMouseDown(eve) then
 	    print("click !")
+	    if block then
+	       print("block")
+	    else
+	       switch_to_move_mode(char_to_canvas_pos(mouse_real_pos))
+	    end
 	 end
       end
 
@@ -335,6 +366,9 @@ function do_tactical_fight(eve)
 	 cur_char_t[IDX_AI_STUFF] = nil
 	 end_tun(tdata)
       end
+   elseif TACTICAL_FIGHT_MODE == MODE_CHAR_MOVE then
+      generic_setPos(cur_char[1], move_dst)
+      TACTICAL_FIGHT_MODE = EX_MODE
    end
 
    local turn_order_str = ""
