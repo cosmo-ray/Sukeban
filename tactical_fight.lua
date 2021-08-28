@@ -302,7 +302,7 @@ function do_tactical_fight(eve)
 	 for i = 0, yeLen(intersect_array) - 1 do
 	    local col_o = yeGet(intersect_array, i)
 
-	    if yeGetIntAt(col_o, 9) < 1 then
+	    if yeGetIntAt(col_o, 9) < 1 or cur_char_canva == Entity.wrapp(col_o) then
 	       goto loop_next
 	    end
 
