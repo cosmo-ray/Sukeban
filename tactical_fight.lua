@@ -123,9 +123,11 @@ local function push_character(tdata, dst, char, h, name, team)
    yePushBack(tdata.all, dst[i])
 end
 
-local function switch_to_move_mode(dst)
+local function switch_to_move_mode(dst, ap_cost)
    EX_MODE = TACTICAL_FIGHT_MODE
    TACTICAL_FIGHT_MODE = MODE_CHAR_MOVE
+   local ap = yeGetFloat(cur_char[4][IDX_CUR_ACTION_POINT])
+   yeSetFloat(cur_char[4][IDX_CUR_ACTION_POINT], ap - ap_cost)
    move_dst = dst
 end
 
@@ -351,7 +353,7 @@ function do_tactical_fight(eve)
 	    if block then
 	       print("block")
 	    else
-	       switch_to_move_mode(char_to_canvas_pos(mouse_real_pos))
+	       switch_to_move_mode(char_to_canvas_pos(mouse_real_pos), dist_ap_cost)
 	    end
 	 end
       end
