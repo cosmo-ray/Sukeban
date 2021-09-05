@@ -270,7 +270,7 @@ function do_tactical_fight(eve)
 
    local all_char = tdata.all
    local cur_char_t = cur_char[4]
-   local ap = cur_char_t[IDX_CUR_ACTION_POINT]
+   local ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
 
    if TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then 
       if yevIsKeyDown(eve, Y_ESC_KEY) then
@@ -321,26 +321,29 @@ function do_tactical_fight(eve)
 	 local dist_ap_cost = (ywPosDistance(char_pos, mouse_real_pos)  / 100)
 	 local mov_cost = "(" .. dist_ap_cost .. ")"
 
-	 local intersect_array = ywCanvasNewIntersectArray(main_canvas,
-							   char_pos, mouse_real_pos)
-	 local block = (dist_ap_cost > yeGetInt(ap))
+	 local block = (dist_ap_cost > ap)
 	 local cur_char_canva = cur_char[1].canvas
-	 print("intersect array  !!")
-	 for i = 0, yeLen(intersect_array) - 1 do
-	    local col_o = yeGet(intersect_array, i)
 
-	    if yeGetIntAt(col_o, 9) < 1 or
-	       cur_char_canva == Entity.wrapp(col_o) then
-	       goto loop_next
+	 if block == false then
+	    local intersect_array = ywCanvasNewIntersectArray(main_canvas,
+							      char_pos, mouse_real_pos)
+	    for i = 0, yeLen(intersect_array) - 1 do
+	       local col_o = yeGet(intersect_array, i)
+
+	       if yeGetIntAt(col_o, 9) < 1 or
+		  cur_char_canva == Entity.wrapp(col_o) then
+		  goto loop_next
+	       end
+
+	       col_o = Entity.wrapp(col_o)
+	       print(col_o, "is same: ",
+		     cur_char_canva == col_o)
+	       block = true
+	       :: loop_next ::
 	    end
+	    yeDestroy(intersect_array)
 
-	    col_o = Entity.wrapp(col_o)
-	    print(col_o, "is same: ",
-		  cur_char_canva == col_o)
-	    block = true
-	    :: loop_next ::
 	 end
-	 yeDestroy(intersect_array)
 	 ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
 	 ywCanvasObjSetPos(mv_info, mx, my)
 	 if block then
@@ -385,8 +388,12 @@ function do_tactical_fight(eve)
    local ap_str = "Action Points: ["
    local max_ap = cur_char_t[IDX_MAX_ACTION_POINT]
    for i = 0, yeGetInt(max_ap) - 1 do
-      if i < ap then
-	 ap_str = ap_str .. "o"
+      if i < ap and ap - i < 0.12 then
+	 ap_str = ap_str .. " "	 
+      elseif i < ap and ap - i < 1 then
+	 ap_str = ap_str .. "o"	 
+      elseif i < ap then
+	 ap_str = ap_str .. "O"
       else
 	 ap_str = ap_str .. " "
       end
