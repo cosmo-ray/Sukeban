@@ -121,7 +121,7 @@ local function push_character(tdata, dst, char, h, name, team)
    local tactical_info = dst[i][4]
    tactical_info[IDX_MAX_ACTION_POINT] = 5
    local tdata_all = tdata.all
-   h.canvas.all_idx = yeLen(tdata_all)
+   h.canvas.idx = yeLen(tdata_all)
    yePushBack(tdata_all, dst[i])
 end
 
@@ -339,8 +339,8 @@ function do_tactical_fight(eve)
 	       end
 
 	       col_o = Entity.wrapp(col_o)
-	       print(col_o, "is same: ",
-		     cur_char_canva == col_o)
+	       local col_char = tdata.all[yeGetInt(col_o.idx)]
+	       print("all: ", col_char[2])
 	       block = true
 	       :: loop_next ::
 	    end
