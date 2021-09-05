@@ -120,7 +120,9 @@ local function push_character(tdata, dst, char, h, name, team)
    dst[i][4] = {}
    local tactical_info = dst[i][4]
    tactical_info[IDX_MAX_ACTION_POINT] = 5
-   yePushBack(tdata.all, dst[i])
+   local tdata_all = tdata.all
+   h.canvas.all_idx = yeLen(tdata_all)
+   yePushBack(tdata_all, dst[i])
 end
 
 local function switch_to_move_mode(dst, ap_cost)
@@ -323,6 +325,7 @@ function do_tactical_fight(eve)
 
 	 local block = (dist_ap_cost > ap)
 	 local cur_char_canva = cur_char[1].canvas
+	 local nearest_target = nil
 
 	 if block == false then
 	    local intersect_array = ywCanvasNewIntersectArray(main_canvas,
