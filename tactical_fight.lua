@@ -125,6 +125,13 @@ local function push_character(tdata, dst, char, h, name, team)
    yePushBack(tdata_all, dst[i])
 end
 
+local function repush_idx(all)
+   for i = 0, yeLen(all) - 1 do
+      local h = all[i][1]
+      h.canvas.idx = i
+   end
+end
+
 local function switch_to_move_mode(dst, ap_cost)
    EX_MODE = TACTICAL_FIGHT_MODE
    TACTICAL_FIGHT_MODE = MODE_CHAR_MOVE
@@ -240,6 +247,7 @@ function do_tactical_fight(eve)
 
       end
       yeShuffle(tdata.all)
+      repush_idx(tdata.all)
       local tatcical_can = Canvas.new_entity(tdata, "screen").ent
 
       ywPushNewWidget(main_widget, tatcical_can)
@@ -341,6 +349,21 @@ function do_tactical_fight(eve)
 	       col_o = Entity.wrapp(col_o)
 	       local col_char = tdata.all[yeGetInt(col_o.idx)]
 	       print("all: ", col_char[2])
+
+	       if nearest_target == nil then
+		  nearest_target = col_char
+	       else
+		  local p0 = generic_handlerPos(nearest_target[1])
+		  p0 = canvas_to_char_pos(p0)
+		  local p1 = generic_handlerPos(col_char[1])
+		  local d0 = ywPosDistance(char_pos, p0)
+		  local d1 = ywPosDistance(char_pos, p1)
+		  if d0 > d1 then
+		     nearest_target = col_char
+		  end
+	       end
+
+	       print("nearest_target: ", nearest_target[2])
 	       block = true
 	       :: loop_next ::
 	    end
