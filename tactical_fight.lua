@@ -27,6 +27,8 @@ local cur_char = nil
 
 local move_dst = nil
 
+local block_square = nil
+
 local function begin_turn_init(tdata)
    cur_char = tdata.all[current_character]
    cur_char[4][IDX_CUR_ACTION_POINT] = Entity.new_float(cur_char[4][IDX_MAX_ACTION_POINT]:to_int())
@@ -148,6 +150,10 @@ function do_tactical_fight(eve)
    local main_canvas = main_widget.mainScreen
    local ccam = main_canvas.cam
 
+   if block_square then
+      ywCanvasRemoveObj(main_canvas, block_square)
+      block_square = nil
+   end
    if TACTICAL_FIGHT_MODE == MODE_TACTICAL_FIGHT_INIT then
       main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
       printMessage(main_widget, nil,
@@ -369,6 +375,14 @@ function do_tactical_fight(eve)
 	    end
 	    yeDestroy(intersect_array)
 
+	    if nearest_target then
+	       local p = generic_handlerPos(nearest_target[1])
+
+	       block_square = ywCanvasNewRectangle(main_canvas,
+						   ywPosX(p), ywPosY(p),
+						   30, 30,
+						   "rgba: 255 155 50 130")
+	    end
 	 end
 	 ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
 	 ywCanvasObjSetPos(mv_info, mx, my)
