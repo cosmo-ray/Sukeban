@@ -70,7 +70,9 @@ local function char_to_canvas_pos(cpos)
 end
 
 local function end_fight()
+   local main_canvas = main_widget.mainScreen
    local t = main_widget.tactical
+   ywCanvasRemoveObj(main_canvas, t.cur_ch_square)
    ywRemoveEntryByEntity(main_widget, t.screen)
    main_widget.tactical = nil
    TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
@@ -281,6 +283,9 @@ function do_tactical_fight(eve)
 
       main_widget.current = 0
 
+      tdata.cur_ch_square = ywCanvasNewRectangle(main_canvas, 0, 0, 34, 34,
+						 "rgba: 127 127 127 120")
+
       begin_turn_init(tdata)
    end -- init out
 
@@ -381,6 +386,7 @@ function do_tactical_fight(eve)
 
 	    if nearest_target then
 	       local p = generic_handlerPos(nearest_target[1])
+	       local s = generic_handlerSize(nearest_target[1])
 	       local col = nil
 
 	       if yeGetInt(nearest_target[3]) == HERO_TEAM then
@@ -389,10 +395,12 @@ function do_tactical_fight(eve)
 		  col = "rgba: 255 105 50 130"
 	       end
 	       block_square = ywCanvasNewRectangle(main_canvas,
-						   ywPosX(p), ywPosY(p),
-						   30, 30, col)
+						   ywPosX(p) + 2,
+						   ywPosY(p) + ywSizeH(s) - 34,
+						   34, 34, col)
 	    end
 	 end
+
 	 ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
 	 ywCanvasObjSetPos(mv_info, mx, my)
 	 if block then
@@ -425,6 +433,15 @@ function do_tactical_fight(eve)
       TACTICAL_FIGHT_MODE = EX_MODE
    end
 
+
+
+   -- print all stuf
+   local cur_ch_pos = generic_handlerPos(cur_char[1])
+   local cur_ch_size = generic_handlerSize(cur_char[1])
+   ywCanvasObjSetPos(tdata.cur_ch_square, ywPosX(cur_ch_pos),
+		     ywPosY(cur_ch_pos) + ywSizeH(cur_ch_size) - 34)
+
+   ywCanvasObjSetPos(mv_info, mx, my)
    local turn_order_str = ""
    for i = 0, yeLen(all_char) -1 do
       local idx = (i + current_character) % yeLen(all_char)
