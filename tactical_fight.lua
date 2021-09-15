@@ -381,11 +381,16 @@ function do_tactical_fight(eve)
 
 	    if nearest_target then
 	       local p = generic_handlerPos(nearest_target[1])
+	       local col = nil
 
+	       if yeGetInt(nearest_target[3]) == HERO_TEAM then
+		  col = "rgba: 55 255 50 130"
+	       else
+		  col = "rgba: 255 105 50 130"
+	       end
 	       block_square = ywCanvasNewRectangle(main_canvas,
 						   ywPosX(p), ywPosY(p),
-						   30, 30,
-						   "rgba: 255 155 50 130")
+						   30, 30, col)
 	    end
 	 end
 	 ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
