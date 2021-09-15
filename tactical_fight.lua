@@ -353,6 +353,10 @@ function do_tactical_fight(eve)
 	       end
 
 	       col_o = Entity.wrapp(col_o)
+	       if yIsNil(col_o.idx) then
+		  block = true
+		  goto loop_next
+	       end
 	       local col_char = tdata.all[yeGetInt(col_o.idx)]
 	       print("all: ", col_char[2])
 
