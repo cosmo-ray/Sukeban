@@ -411,6 +411,9 @@ function do_tactical_fight(eve)
 	 if yevMouseDown(eve) then
 	    print("click !")
 	    if block then
+	       if nearest_target then
+		  print("attack on", nearest_target[2])
+	       end
 	       print("block")
 	    else
 	       switch_to_move_mode(char_to_canvas_pos(mouse_real_pos), dist_ap_cost)
