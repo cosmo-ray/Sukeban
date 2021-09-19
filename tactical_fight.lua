@@ -29,6 +29,11 @@ local move_dst = nil
 
 local block_square = nil
 
+local COL_FAR_ALLY = "rgba: 55 155 50 130"
+local COL_NEAR_ALLY = "rgba: 55 255 50 130"
+local COL_FAR_ENEMY = "rgba: 155 105 50 130"
+local COL_NEAR_ENEMY = "rgba: 255 105 50 130"
+
 local function begin_turn_init(tdata)
    cur_char = tdata.all[current_character]
    cur_char[4][IDX_CUR_ACTION_POINT] = Entity.new_float(cur_char[4][IDX_MAX_ACTION_POINT]:to_int())
@@ -151,6 +156,7 @@ function do_tactical_fight(eve)
    local wid_h = ywRectH(wid_rect)
    local main_canvas = main_widget.mainScreen
    local ccam = main_canvas.cam
+   local reach_distance = 50
 
    if block_square then
       ywCanvasRemoveObj(main_canvas, block_square)
@@ -345,6 +351,7 @@ function do_tactical_fight(eve)
 	 local block = (dist_ap_cost > ap)
 	 local cur_char_canva = cur_char[1].canvas
 	 local nearest_target = nil
+	 local target_distance = 0
 
 	 if block == false then
 	    local intersect_array = ywCanvasNewIntersectArray(main_canvas,
@@ -367,18 +374,21 @@ function do_tactical_fight(eve)
 
 	       if nearest_target == nil then
 		  nearest_target = col_char
+		  target_distance = ywPosDistance(char_pos, generic_handlerPos(col_char[1]))
 	       else
 		  local p0 = generic_handlerPos(nearest_target[1])
 		  p0 = canvas_to_char_pos(p0)
 		  local p1 = generic_handlerPos(col_char[1])
 		  local d0 = ywPosDistance(char_pos, p0)
 		  local d1 = ywPosDistance(char_pos, p1)
+		  
 		  if d0 > d1 then
 		     nearest_target = col_char
+		     target_distance = d1
 		  end
 	       end
 
-	       print("nearest_target: ", nearest_target[2])
+	       print("nearest_target: ", nearest_target[2], target_distance)
 	       block = true
 	       :: loop_next ::
 	    end
@@ -390,9 +400,17 @@ function do_tactical_fight(eve)
 	       local col = nil
 
 	       if yeGetInt(nearest_target[3]) == HERO_TEAM then
-		  col = "rgba: 55 255 50 130"
+		  if target_distance < reach_distance then
+		     col = COL_NEAR_ALLY
+		  else
+		     col = COL_FAR_ALLY
+		  end
 	       else
-		  col = "rgba: 255 105 50 130"
+		  if target_distance < reach_distance then
+		     col = COL_NEAR_ENEMY
+		  else
+		     col = COL_FAR_ENEMY
+		  end
 	       end
 	       block_square = ywCanvasNewRectangle(main_canvas,
 						   ywPosX(p) + 4,
