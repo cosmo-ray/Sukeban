@@ -3,6 +3,7 @@ MODE_TACTICAL_FIGHT_INIT = 1
 local MODE_PLAYER_TURN = 2
 local MODE_ENEMY_TURN = 3
 local MODE_CHAR_MOVE = 4
+local MODE_CHAR_ATTACK = 5
 
 local PIX_MV_PER_MS = 5
 local mouse_mv = 0
@@ -26,6 +27,7 @@ local IDX_AI_STUFF = 10
 local cur_char = nil
 
 local move_dst = nil
+local atk_target = nil
 
 local block_square = nil
 
@@ -84,6 +86,7 @@ local function end_fight()
    main_widget.cam_offset = nil
    move_dst = nil
    cur_char = nil
+   atk_target = nil
 end
 
 local function push_button(tdata, rect, txt, callback)
@@ -149,6 +152,14 @@ local function switch_to_move_mode(dst, ap_cost)
    move_dst = dst
 end
 
+local function switch_to_attack_mode(target, ap_cost)
+   EX_MODE = TACTICAL_FIGHT_MODE
+   TACTICAL_FIGHT_MODE = MODE_CHAR_ATTACK
+   local ap = yeGetFloat(cur_char[4][IDX_CUR_ACTION_POINT])
+   yeSetFloat(cur_char[4][IDX_CUR_ACTION_POINT], ap - ap_cost)
+   atk_target = target
+end
+
 function do_tactical_fight(eve)
    local tdata = main_widget.tactical
    local wid_rect = main_widget["wid-pix"]
@@ -156,7 +167,11 @@ function do_tactical_fight(eve)
    local wid_h = ywRectH(wid_rect)
    local main_canvas = main_widget.mainScreen
    local ccam = main_canvas.cam
+
+   -- get weapon stats here
    local reach_distance = 80
+   local attack_strengh = 5
+   local attack_cost = 1
 
    if block_square then
       ywCanvasRemoveObj(main_canvas, block_square)
@@ -434,6 +449,11 @@ function do_tactical_fight(eve)
 		  if target_distance >= reach_distance then
 		     printMessage(main_widget, nil,
 				  "target is out of reac (distance: " .. target_distance .. ") !")
+		  elseif nearest_target[3]:to_int() == HERO_TEAM then
+		     printMessage(main_widget, nil, "can't attack allies")
+		  else
+		     printMessage(main_widget, nil, cur_char[2]:to_string() .. " attack: " .. nearest_target[2]:to_string())
+		     switch_to_attack_mode(nearest_target, attack_cost)
 		  end
 		  print("attack on", nearest_target[2])
 	       end
@@ -457,6 +477,9 @@ function do_tactical_fight(eve)
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_MOVE then
       generic_setPos(cur_char[1], move_dst)
       TACTICAL_FIGHT_MODE = EX_MODE
+   elseif TACTICAL_FIGHT_MODE == MODE_CHAR_ATTACK then
+      print("ATL MODE :", atk_target)
+      TACTICAL_FIGHT_MODE = EX_MODE      
    end
 
 
