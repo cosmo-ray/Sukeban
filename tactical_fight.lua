@@ -29,9 +29,9 @@ local move_dst = nil
 
 local block_square = nil
 
-local COL_FAR_ALLY = "rgba: 55 155 50 130"
+local COL_FAR_ALLY = "rgba: 100 155 100 130"
 local COL_NEAR_ALLY = "rgba: 55 255 50 130"
-local COL_FAR_ENEMY = "rgba: 155 105 50 130"
+local COL_FAR_ENEMY = "rgba: 155 100 100 130"
 local COL_NEAR_ENEMY = "rgba: 255 105 50 130"
 
 local function begin_turn_init(tdata)
@@ -156,7 +156,7 @@ function do_tactical_fight(eve)
    local wid_h = ywRectH(wid_rect)
    local main_canvas = main_widget.mainScreen
    local ccam = main_canvas.cam
-   local reach_distance = 50
+   local reach_distance = 80
 
    if block_square then
       ywCanvasRemoveObj(main_canvas, block_square)
@@ -373,12 +373,13 @@ function do_tactical_fight(eve)
 	       print("all: ", col_char[2])
 
 	       if nearest_target == nil then
+		  local p = canvas_to_char_pos(generic_handlerPos(col_char[1]))
 		  nearest_target = col_char
-		  target_distance = ywPosDistance(char_pos, generic_handlerPos(col_char[1]))
+		  target_distance = ywPosDistance(char_pos, p)
 	       else
-		  local p0 = generic_handlerPos(nearest_target[1])
+		  local p0 = canvas_to_char_pos(generic_handlerPos(nearest_target[1]))
 		  p0 = canvas_to_char_pos(p0)
-		  local p1 = generic_handlerPos(col_char[1])
+		  local p1 = canvas_to_char_pos(generic_handlerPos(col_char[1]))
 		  local d0 = ywPosDistance(char_pos, p0)
 		  local d1 = ywPosDistance(char_pos, p1)
 		  
@@ -430,6 +431,10 @@ function do_tactical_fight(eve)
 	    print("click !")
 	    if block then
 	       if nearest_target then
+		  if target_distance >= reach_distance then
+		     printMessage(main_widget, nil,
+				  "target is out of reac (distance: " .. target_distance .. ") !")
+		  end
 		  print("attack on", nearest_target[2])
 	       end
 	       print("block")
