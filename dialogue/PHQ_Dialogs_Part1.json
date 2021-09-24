@@ -137,7 +137,7 @@
 		    "actions": [
 			["recreateInt", "phq.quests.no_rats", 0],
 			"phq.backToGame"]
-		},
+		}
 	    },
 	    {
 		"text": "nice, here's your 2 bucks",
