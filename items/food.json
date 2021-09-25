@@ -3,21 +3,21 @@
 	"type": "usable",
 	"stats+": {
 	    "life": 3,
-	    "drunk": -1,
+	    "drunk": -1
 	}
     },
     "Pink Guriko": {
 	"type": "usable",
 	"stats+": {
 	    "life": 3,
-	    "drunk": -1,
+	    "drunk": -1
 	}
     },
     "Matcha Guriko": {
 	"type": "usable",
 	"stats+": {
 	    "life": 3,
-	    "drunk": -1,
+	    "drunk": -1
 	}
     }
 }
