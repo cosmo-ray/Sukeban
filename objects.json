@@ -5,12 +5,12 @@
 		  "./items/clothes.json",
 		  "./items/m_clothes.json"],
     "snake_game": {
-	"name": "Snake The Game(sunix/1EBG)",
+	"name": "Snake The Game(sunix/1EBG)"
     },
     "tetris_game": {
-	"name": "Tetris(sunix/1EBG)",
+	"name": "Tetris(sunix/1EBG)"
     },
     "pong_game": {
-	"name": "Pong(sunix/1EBG)",
+	"name": "Pong(sunix/1EBG)"
     }
 }
