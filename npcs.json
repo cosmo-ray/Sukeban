@@ -92,7 +92,7 @@
             "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
-        ],
+        ]
     },
     "Wasted guy": {
         "sex": "male",
@@ -117,7 +117,7 @@
             "torso/robes_female_no_th-sh/black.png",
             "hair/female/shoulderr/pink.png"
         ],
-	"image": "./Portrait_02.png",
+	"image": "./Portrait_02.png"
     },
     "Strangely familiar guy": {
         "sex": "male",
@@ -130,7 +130,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
-	"image": "./Portrait_03.png",
+	"image": "./Portrait_03.png"
     },
     "Robert": {
         "sex": "male",
@@ -143,7 +143,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
-	"image": "./Portrait_04.png",
+	"image": "./Portrait_04.png"
     },
     "Serious guy": {
         "sex": "male",
@@ -156,7 +156,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
-	"image": "./Portrait_05.png",
+	"image": "./Portrait_05.png"
     },
     "Playful guy": {
         "sex": "male",
@@ -169,7 +169,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
-	"image": "./Portrait_06.png",
+	"image": "./Portrait_06.png"
     },
     "Typical finnish guy": {
         "sex": "male",
@@ -181,7 +181,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
-	"image": "./Portrait_07.png",
+	"image": "./Portrait_07.png"
     },
     "John": {
         "sex": "male",
@@ -195,7 +195,7 @@
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
-	"image": "./Portrait_08.png",
+	"image": "./Portrait_08.png"
     },
     "Way too sober guy": {
         "sex": "male",
@@ -209,7 +209,7 @@
             "hair/male/plain/raven.png"
         ],
 	"image_rotate": -90,
-	"image": "./Portrait_09.png",
+	"image": "./Portrait_09.png"
     },
     "Creepy guy in the corner": {
         "sex": "male",
@@ -224,7 +224,7 @@
         ],
 	"loot": ["beer", "auto"],
 	"calendar": { "everyday": { "night" : "bar" } },
-	"image": "./Portrait_10.png",
+	"image": "./Portrait_10.png"
     },
     "Typical swedish boy": {
         "sex": "female",
