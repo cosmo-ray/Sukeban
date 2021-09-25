@@ -440,7 +440,7 @@
 			"condition": ["!=", "phq.events.meet_barman", 1]
 		    },
 		    {
-			"text": "hola !\nwhat can i do for ya ?",
+			"text": "hola !\nwhat can i do for ya ?"
 		    }
 		],
 		"answers": [
@@ -468,7 +468,7 @@
 		    {
 			"text": "Here's a simple rule:\ntake my money and give me beer",
 			"actions": [
-			    [ "phq.openStore", "bar" ],
+			    [ "phq.openStore", "bar" ]
 			]
 		    }
 		]
@@ -487,7 +487,7 @@
 			    [
 				"Dialogue:block",
 				"phq.backToGame",
-				"You fan of eve, why does it always end with destruction",
+				"You fan of eve, why does it always end with destruction"
 			    ],
 			    "phq.StartFight"
 			]
@@ -499,7 +499,7 @@
 			    [
 				"Dialogue:block",
 				"phq.backToGame",
-				"You want a 2nd beer, but that's like Mocross 2, it's doesn't existe",
+				"You want a 2nd beer, but that's like Mocross 2, it's doesn't existe"
 			    ],
 			    "phq.GetDrink"
 			]
