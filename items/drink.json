@@ -14,6 +14,13 @@
 	"type": "usable",
 	"func": "phq.DrinkBeer"
     },
+    "high ballu": {
+	"type": "usable",
+	"stats+" : {
+	    "life": 4,
+	    "drunk": 4
+	}
+    },
     "distiled_wheat_shoot": {
 	"type": "usable",
 	"name": "Distiled Wheat Shoot",
