@@ -13,6 +13,20 @@
 	    "drunk": -1
 	}
     },
+    "Tonkatsu Bento": {
+	"type": "usable",
+	"stats+": {
+	    "life": 20,
+	    "drunk": -4
+	}
+    },
+    "Karaage Bento": {
+	"type": "usable",
+	"stats+": {
+	    "life": 20,
+	    "drunk": -4
+	}
+    },
     "Matcha Guriko": {
 	"type": "usable",
 	"stats+": {
