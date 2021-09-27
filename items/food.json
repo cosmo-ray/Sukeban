@@ -13,6 +13,13 @@
 	    "drunk": -1
 	}
     },
+    "Potato chip": {
+        "type": "usable",
+	"stats+": {
+	    "life": 1,
+	    "drunk": -1
+	}
+    },
     "Tonkatsu Bento": {
 	"type": "usable",
 	"stats+": {
