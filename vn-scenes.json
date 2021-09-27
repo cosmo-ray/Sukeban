@@ -119,6 +119,10 @@ but reality awaking her from hope",
 		    ]
 		},
 		{
+		    "text": "Premiumu Bento",
+		    "action": [ "phq.openStore", "Premium Bento" ]
+		},
+		{
 		    "text": "go to 'the shoes !",
 		    "action":
 		    [ "phq.openStore", "the shoes !" ]
