@@ -23,7 +23,16 @@
 		]
 	    },
 	    "mission_0": {
-		"text": "mission explication !(TODO)",
+		"text": 		    
+		    [ "Yeah,",
+		      "some trash from Nontoise East High are extorking some students from our School",
+		      "Problem is students here, are paying us protection money",
+		      "So we need to protect them",
+		      "Also they need to understand, that no one fuck with us",
+		      "So we're going to wait for them, and teach then that peoples that cross me",
+	  	      "ARE UNFORGIVABLE !!",
+		     "also this will be a good test for your skills (she smile)"
+         	    ],
 		"actions": [
 		    ["phq.changeScene", "street3", 1],
 		    ["phq.tacticalFight",
