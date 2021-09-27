@@ -16,6 +16,10 @@
 	"pong_game": 23,
 	"tetris_game": 25
     },
+    "Premium Bento": {
+	"Tonkatsu Bento": 5,
+	"Karaage Bento": 5
+    },
     "roger_super_store": {
 	"Guriko": 2,
 	"Water": 1,
