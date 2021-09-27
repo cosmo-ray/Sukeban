@@ -77,6 +77,21 @@
 	    "length": 3
 	}
     },
+    "Kaline": {
+	"type": "sprite",
+	"small talk": "Miaou !",
+	"attack" : "unarmed0",
+        "max_life": 4,
+	"sprite": {
+	    "path": "imgs/lpccatratdog.png",
+	    "disposition": "dlru",
+	    "size": 32,
+            "src-pos": 0,
+	    "y": 0,
+	    "x": 126,
+	    "length": 3
+	}
+    },
     "Madao": {
 	"sex": "male",
         "type": "light",
