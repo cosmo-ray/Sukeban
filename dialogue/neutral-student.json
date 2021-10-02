@@ -5,6 +5,10 @@
 		"condition": ["<", "phq_wid.dialogue_npc.relation.affection", -5],
 		"pre-action": ["Dialogue.swap", "phq_wid.dialogues.hate-student"]
 	    },
+	    "like": {
+		"condition": [">", "phq_wid.dialogue_npc.relation.affection", 10],
+		"pre-action": ["Dialogue.swap", "phq_wid.dialogues.friendly-student"]
+	    },
 	    "greeting": {
 		"text": "hello",
 		"answers": [
