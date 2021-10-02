@@ -9,6 +9,7 @@
 	"./dialogue/Leika_Ryusaki.json",
 	"./dialogue/Lufa.json",
 	"./dialogue/neutral-student.json",
+	"./dialogue/friendly-student.json",
 	"./dialogue/saki.json",
 	"./dialogue/willo.json"
     ],
