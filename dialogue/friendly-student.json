@@ -2,7 +2,19 @@
   "friendly-student": {
     "dialogue": {
       "yo": {
-          "text": "yo !!!",
+         "texts" : [
+            {
+		          "text": "Hi Kyu !",
+		          "condition": [">", "phq_wid.dialogue_npc.knowledge.boys_bands", 4]
+        		},
+		        {
+		          "text": "yo !!!",
+		          "condition": [">", "phq_wid.dialogue_npc.knowledge.slang", 2]
+        		},
+		        {
+		          "text": "hello"
+        		}
+	        ],
           "answers": "(chat)"
       }
     }
