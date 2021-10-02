@@ -1,7 +1,10 @@
 {
   "friendly-student": {
     "dialogue": {
-      "yo": "yo !!!"
+      "yo": {
+          "text": "yo !!!",
+          "answers": "(chat)"
+      }
     }
   }
 }
