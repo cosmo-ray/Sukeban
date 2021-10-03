@@ -123,6 +123,10 @@ local function push_character(tdata, dst, char, h, name, team)
    local s = generic_handlerSize(h)
    generic_handlerMoveXY(h, -(ywSizeW(s) / 2), -(ywSizeH(s) / 3 * 2))
 
+   if yIsNil(char.life) then
+      char.life = yeGetInt(char.max_life)
+   end
+
    local i = yeLen(dst)
    dst[i] = {}
    dst[i][0] = char
@@ -385,7 +389,6 @@ function do_tactical_fight(eve)
 		  goto loop_next
 	       end
 	       local col_char = tdata.all[yeGetInt(col_o.idx)]
-	       print("all: ", col_char[2])
 
 	       if nearest_target == nil then
 		  local p = canvas_to_char_pos(generic_handlerPos(col_char[1]))
@@ -404,7 +407,6 @@ function do_tactical_fight(eve)
 		  end
 	       end
 
-	       print("nearest_target: ", nearest_target[2], target_distance)
 	       block = true
 	       :: loop_next ::
 	    end
@@ -478,11 +480,11 @@ function do_tactical_fight(eve)
       generic_setPos(cur_char[1], move_dst)
       TACTICAL_FIGHT_MODE = EX_MODE
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_ATTACK then
-      print("ATL MODE :", atk_target)
-      TACTICAL_FIGHT_MODE = EX_MODE      
+      print("ATL MODE :", atk_target[2])
+      atk_target[0].life = atk_target[0].life - attack_strengh
+      print(atk_target[0].max_life, atk_target[0].life)
+      TACTICAL_FIGHT_MODE = EX_MODE
    end
-
-
 
    -- print all stuf
    local cur_ch_pos = generic_handlerPos(cur_char[1])
