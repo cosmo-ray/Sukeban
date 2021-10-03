@@ -66,7 +66,8 @@ function chk_affection(wid)
    local pj = phq.pj
    local roll = yuiRand() % 100
    local charm = phq.pj.stats.charm:to_int()
-   local base = (charm * 2) + 4
+   local base_affect = math.floor(yeGetInt(dialogue_npc.relation.affection) / 4)
+   local base = (charm * 2) + 4 + base_affect
    local n_traits = dialogue_npc.trait
 
    if charm > 2 and n_traits.female_atraction > 0 then
