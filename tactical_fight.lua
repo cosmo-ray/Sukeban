@@ -141,15 +141,19 @@ local function push_character(tdata, dst, char, h, name, team)
    yePushBack(tdata_all, dst[i])
 end
 
-local function remove_character(tdata, target)
-   print("remove: ", target[2])
-end
-
 local function repush_idx(all)
    for i = 0, yeLen(all) - 1 do
       local h = all[i][1]
       h.canvas.idx = i
    end
+end
+
+local function remove_character(tdata, target)
+   print("remove: ", target[2], yeLen(tdata.all))
+   yeEraseByE(tdata.all, target)
+   print("af rm: ", yeLen(tdata.all))
+   yeEraseByE(tdata.bads, target)
+   repush_idx(tdata.all)
 end
 
 local function switch_to_move_mode(dst, ap_cost)
@@ -487,13 +491,12 @@ function do_tactical_fight(eve)
       printMessage(main_widget, nil,
 		   yeGetString(atk_target[2]) .. " take " ..
 		   attack_strengh .. " damages")
-      print("ATL MODE :", atk_target[2])
       atk_target[0].life = atk_target[0].life - attack_strengh
       if atk_target[0].life < 1 then
 	 print("He's DEAD !")
 	 remove_character(tdata, atk_target)
+	 atk_target = nil
       end
-      print(atk_target[0].max_life, atk_target[0].life)
       TACTICAL_FIGHT_MODE = EX_MODE
    end
 
