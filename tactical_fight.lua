@@ -240,7 +240,7 @@ function do_tactical_fight(eve)
 	       local npcd = lpcsStrToDir(yeGetStringAt(npc, 3))
 	       local npc_desc = npcs[npcn]
 
-	       if npc.is_generic then
+	       if npc_desc.is_generic then
 		  npc_desc = Entity.new_copy(npc_desc)
 	       end
 	       local h = push_npc(npcp, npcn, npcd, npc_desc)
