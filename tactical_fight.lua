@@ -150,6 +150,7 @@ end
 
 local function remove_character(tdata, target)
    print("remove: ", target[2], yeLen(tdata.all))
+   generic_handlerNullify(target[1])
    yeEraseByE(tdata.all, target)
    print("af rm: ", yeLen(tdata.all))
    yeEraseByE(tdata.bads, target)
