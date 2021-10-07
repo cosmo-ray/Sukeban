@@ -1,10 +1,26 @@
 {
     "Harri": {
 	"dialogue" : {
+           "base-student-swap": {
+		"condition":
+		["or",
+		 ["or",
+		  [ "S=", "phq_wid.cur_scene_str", "school1"],
+		  [ "S=", "phq_wid.cur_scene_str", "school0"]
+		 ],
+		 [ "S=", "phq_wid.cur_scene_str", "street3"]
+		],
+		"pre-action": ["Dialogue.swap", "phq_wid.dialogues.neutral-student"]
+	    },
+	    "friend": {
+                "text": "hej friend",
+                 "condition": [ ">", "phq.env.ha_bring_banana", 1],
+                 "action": ["phq.PjLeave", 0]
+	    },
 	    "end": {
 		"text": "Dude, I went to the shop, buy alcohol\nand buy Bananas too, and the party was awosome, we've made a lot of cocktel\nseriously it was a wonderful advice\n'always take a banana to a party'",
 		"condition": "phq.env.ha_bring_banana",
-		"actions": [ ["phq.PjLeave", 0] ]
+		"actions": [ [ "setInt", "phq.env.ha_bring_banana", 2 ], ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 10], ["phq.PjLeave", 0] ]
 	    },
 	    "base": {
 		"text": "I'm drinkning with my friend, and on the next update\nI'll ask the the player what I should bring to a party",
