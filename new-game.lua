@@ -4,15 +4,15 @@ local geekDescription = "\"I do undersatdn this \"mouse magic\" that make me thi
    "Like any responsable persones\nyou've spend all your free time watching animu, and playing games\nyou got a lot of knowledges about that\n" ..
    "luckily we live in a computer world"
 
-local idoleDescription = "\"You need a new tailor,  your clothes are absolutely dreadful!\"\n" .. "description:\n" .. "there's 10 kind of boys:\nthe one that love you\nthe gay"
+local idoleDescription = "\"You need a new tailor,  your clothes are absolutely dreadful!\"\n" .. "description:\n" .. "~~<3~~<3~ Besuto waifuu materialuu ~~~~uwu~~~~~"
 
 local bruteDescription = "\"So I kicked him in the head 'til he was dead. Mahahahahaha!\"\n" .. "description:\n" ..
    "some peoples are smart, you have muscles\nsome peoples are beautiful you have muscles\nsome peoples think they're strong than you\nYOU BEAT'EM UP\nThe legendary giant's power will tear though the galaxy !"
 
 local wormsCoinoisseurDescription = "\"Surface-dwellers can be so stupid !\"\n" .. "description:\n" ..
-   "Most peoples spend they childhoud playing game, thinking about boys or girl, fighting\n" ..
-   "You've learn everything you clould about worms, spend a lot of times observing them\n" ..
-   "Speaking with your friends about them... your friends are worms\n" ..
+   "Most peoples spend they childhoud playing game,\nthinking about boys or girl, fighting\n" ..
+   "You've learn everything you clould about worms,\n spend a lot of times observing them\n" ..
+   "Speaking with your friends about them...\n your friends are worms\n" ..
    "you gather the kind of knowledge you don't really need in an RPG"
 
 local descArray = {geekDescription, idoleDescription,
