@@ -54,6 +54,22 @@ local AGRESIVE_TALKER = 2
 local AGRESIVE_ATTACKER = 1
 local NOT_AGRESIVE = 0
 
+function distanceToDir(x, y)
+   if math.abs(x) > math.abs(y) then
+      if x > 0 then
+	 return LPCS_RIGHT
+      else
+	 return LPCS_LEFT
+      end
+   else
+      if y > 0 then
+	 return LPCS_DOWN
+      else
+	 return LPCS_UP
+      end
+   end
+end
+
 function lpcsStrToDir(sdir)
    if sdir == "left" then
       return LPCS_LEFT

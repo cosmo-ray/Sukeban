@@ -503,25 +503,34 @@ function do_tactical_fight(eve)
       local x_tot_dist = ywPosXDistance(char_pos, move_dst)
       local y_tot_dist = ywPosYDistance(char_pos, move_dst)
       local tot_dist = math.sqrt(x_tot_dist * x_tot_dist + y_tot_dist * y_tot_dist)
+      local x_mv = x_tot_dist * pix_mv / tot_dist
+      local y_mv = y_tot_dist * pix_mv / tot_dist
 
       print(pix_mv, tot_dist)
       print(x_tot_dist, y_tot_dist, "\n",
-	    x_tot_dist * pix_mv / tot_dist,
-	    y_tot_dist * pix_mv / tot_dist)
+	    x_mv,
+	    y_mv)
       --local mvPos = Pos.new(pix_mv * ),
       --pix_mv * )
       if (math.abs(tot_dist) < 30) then
 	 generic_setPos(cur_char[1], move_dst)
 	 TACTICAL_FIGHT_MODE = EX_MODE
       else
-	 generic_handlerMoveXY(cur_char[1],
-			       x_tot_dist * pix_mv / tot_dist,
-			       y_tot_dist * pix_mv / tot_dist)
+	 generic_handlerMoveXY(cur_char[1], x_mv, y_mv)
       end
+
+      local aimed_dir = distanceToDir(x_mv, y_mv)
+      if yeGetInt(cur_char[4][IDX_NPC_DIR]) ~= aimed_dir then
+	 generic_setDir(cur_char[1], aimed_dir)
+	 cur_char[4][IDX_NPC_DIR] = aimed_dir
+      end
+
       if cur_char[4][IDX_PIX_MV] > 20 then
+
 	 if yeGetString(cur_char[1].char.type) ~= "sprite" then
 	    ylpcsHandlerNextStep(cur_char[1])
 	 end
+
 	 generic_handlerRefresh(cur_char[1])
 	 cur_char[4][IDX_PIX_MV] = 0
       end
