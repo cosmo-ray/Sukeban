@@ -22,6 +22,8 @@ local current_character = 0
 
 local IDX_MAX_ACTION_POINT = 0
 local IDX_CUR_ACTION_POINT = 1
+local IDX_PIX_MV = 2
+
 local IDX_AI_STUFF = 10
 
 local cur_char = nil
@@ -35,6 +37,8 @@ local COL_FAR_ALLY = "rgba: 100 155 100 130"
 local COL_NEAR_ALLY = "rgba: 55 255 50 130"
 local COL_FAR_ENEMY = "rgba: 155 100 100 130"
 local COL_NEAR_ENEMY = "rgba: 255 105 50 130"
+
+local pix_floor_left = 0
 
 local function begin_turn_init(tdata)
    cur_char = tdata.all[current_character]
@@ -136,6 +140,7 @@ local function push_character(tdata, dst, char, h, name, team)
    dst[i][4] = {}
    local tactical_info = dst[i][4]
    tactical_info[IDX_MAX_ACTION_POINT] = 5
+   tactical_info[IDX_PIX_MV] = 0
    local tdata_all = tdata.all
    h.canvas.idx = yeLen(tdata_all)
    yePushBack(tdata_all, dst[i])
@@ -486,8 +491,31 @@ function do_tactical_fight(eve)
 	 end_tun(tdata)
       end
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_MOVE then
-      generic_setPos(cur_char[1], move_dst)
-      TACTICAL_FIGHT_MODE = EX_MODE
+      local char_pos = generic_handlerPos(cur_char[1])
+      local PIX_MV_PER_MS = 5
+      local turn_timer = ywidTurnTimer() / 10000
+      local pix_mv = turn_timer * PIX_MV_PER_MS + pix_floor_left
+      pix_floor_left = pix_mv - math.floor(pix_mv)
+      cur_char[4][IDX_PIX_MV] = cur_char[4][IDX_PIX_MV] + pix_mv
+      local x_tot_dist = ywPosXDistance(char_pos, move_dst)
+      local y_tot_dist = ywPosYDistance(char_pos, move_dst)
+      local tot_dist = math.sqrt(x_tot_dist * x_tot_dist + y_tot_dist * y_tot_dist)
+
+      print(pix_mv, tot_dist)
+      print(x_tot_dist, y_tot_dist, "\n",
+	    x_tot_dist * pix_mv / tot_dist,
+	    y_tot_dist * pix_mv / tot_dist)
+      --local mvPos = Pos.new(pix_mv * ),
+      --pix_mv * )
+      if (math.abs(tot_dist) < 30) then
+	 generic_setPos(cur_char[1], move_dst)
+	 TACTICAL_FIGHT_MODE = EX_MODE
+      else
+	 generic_handlerMoveXY(cur_char[1],
+			       x_tot_dist * pix_mv / tot_dist,
+			       y_tot_dist * pix_mv / tot_dist)
+      end
+
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_ATTACK then
       printMessage(main_widget, nil,
 		   yeGetString(atk_target[2]) .. " take " ..
