@@ -23,6 +23,7 @@ local current_character = 0
 local IDX_MAX_ACTION_POINT = 0
 local IDX_CUR_ACTION_POINT = 1
 local IDX_PIX_MV = 2
+local IDX_NPC_DIR = 3
 
 local IDX_AI_STUFF = 10
 
@@ -122,7 +123,7 @@ local function unlight_button(tdata, b)
    end
 end
 
-local function push_character(tdata, dst, char, h, name, team)
+local function push_character(tdata, dst, char, h, name, team, dir)
    -- recenter char
    local s = generic_handlerSize(h)
    generic_handlerMoveXY(h, -(ywSizeW(s) / 2), -(ywSizeH(s) / 3 * 2))
@@ -141,6 +142,7 @@ local function push_character(tdata, dst, char, h, name, team)
    local tactical_info = dst[i][4]
    tactical_info[IDX_MAX_ACTION_POINT] = 5
    tactical_info[IDX_PIX_MV] = 0
+   tactical_info[IDX_NPC_DIR] = dir
    local tdata_all = tdata.all
    h.canvas.idx = yeLen(tdata_all)
    yePushBack(tdata_all, dst[i])
@@ -254,7 +256,7 @@ function do_tactical_fight(eve)
 		  npc_desc = Entity.new_copy(npc_desc)
 	       end
 	       local h = push_npc(npcp, npcn, npcd, npc_desc)
-	       push_character(tdata, tdata.bads, npc_desc, h, npcn, 1)
+	       push_character(tdata, tdata.bads, npc_desc, h, npcn, 1, npcd)
 	    end
 	 elseif k == "add-ally" then
 	    for j = 0, yeLen(a) - 1 do
@@ -268,9 +270,10 @@ function do_tactical_fight(eve)
 	 end
       end
       local pjPos = Pos.wrapp(Entity.new_copy(ylpcsHandePos(main_widget.pj)))
+      local pj_dir = main_widget.pj.y:to_int()
 
       push_character(tdata, tdata.goods, phq.pj, main_widget.pj,
-		     phq.pj.name, HERO_TEAM)
+		     phq.pj.name, HERO_TEAM, pj_dir)
       for i = 1, #tmp_allies do
 
 	 local npcn = tmp_allies[i]
@@ -290,7 +293,7 @@ function do_tactical_fight(eve)
 
 	 push_character(tdata, tdata.goods, npc,
 			push_npc(npcp, npcn, main_widget.pj.y:to_int(), npc),
-			npcn, HERO_TEAM)
+			npcn, HERO_TEAM, pj_dir)
 
       end
       yeShuffle(tdata.all)
@@ -514,6 +517,13 @@ function do_tactical_fight(eve)
 	 generic_handlerMoveXY(cur_char[1],
 			       x_tot_dist * pix_mv / tot_dist,
 			       y_tot_dist * pix_mv / tot_dist)
+      end
+      if cur_char[4][IDX_PIX_MV] > 20 then
+	 if yeGetString(cur_char[1].char.type) ~= "sprite" then
+	    ylpcsHandlerNextStep(cur_char[1])
+	 end
+	 generic_handlerRefresh(cur_char[1])
+	 cur_char[4][IDX_PIX_MV] = 0
       end
 
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_ATTACK then
