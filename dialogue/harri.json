@@ -23,7 +23,9 @@
 		"actions": [ [ "setInt", "phq.env.ha_bring_banana", 2 ], ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 10], ["phq.PjLeave", 0] ]
 	    },
 	    "base": {
-		"text": "I'm drinkning with my friend, and on the next update\nI'll ask the the player what I should bring to a party",
+		"text": ["Hejjjjj, Britney ? no Roberta ? Friends !",
+			 "What would you bring to a party, if you had to go to a party, like",
+			"now ?"],
 		"answers": [
 		    {
 			"text": "Just take picon and beer",
