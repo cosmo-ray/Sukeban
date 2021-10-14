@@ -86,9 +86,7 @@
 	    "path": "imgs/lpccatratdog.png",
 	    "disposition": "dlru",
 	    "size": 32,
-            "src-pos": 0,
-	    "y": 0,
-	    "x": 126,
+            "src-pos": [126, 0],
 	    "length": 3
 	}
     },
