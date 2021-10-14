@@ -23,7 +23,8 @@
 		"actions": [ [ "setInt", "phq.env.ha_bring_banana", 2 ], ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 10], ["phq.PjLeave", 0] ]
 	    },
 	    "base": {
-		"text": ["Hejjjjj, Britney ? no Roberta ? Friends !",
+		"text": ["Hejjjjj, Britney ? Roberta ? Friends !",
+			 "Or whatever your name is",
 			 "What would you bring to a party, if you had to go to a party, like",
 			"now ?"],
 		"answers": [
