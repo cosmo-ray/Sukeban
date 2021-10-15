@@ -677,6 +677,19 @@ function pushSmallTalk(txt, x, y, start_time)
    if type(txt) == "string" then
       txt = Entity.new_string(txt)
    end
+
+   if yeType(txt) == YARRAY then
+      if yeGetStringAt(txt, 0) == "rand" then
+	 txt = yeGet(txt, yuiRand() % (yeLen(txt) - 1) + 1)
+	 print(txt,
+	       yuiRand() % yeLen(txt) + 1,
+	       yuiRand() % yeLen(txt) + 1,
+	       yuiRand() % yeLen(txt) + 1)
+      else
+	 txt = yeGet(txt, 0)
+      end
+   end
+
    local main = main_widget
    local uc = main.upCanvas
    local small_texts = yeTryCreateArray(uc, "tmp-objs")
@@ -696,16 +709,9 @@ end
 function smallTalk(main, c)
    --local n = npcs[yeGetInt(c.current)]
    local p = ywCanvasObjPos(c)
-   local uc = main.upCanvas
-   local small_texts = yeTryCreateArray(uc, "tmp-objs")
-   local txt_box = Entity.new_array(small_texts)
    local txt = c.small_talk
-   local nb_nl = yeCountCharacters(txt, "\n", -1) + 1
 
-   yeCreateInt(0, txt_box)
-   yeCreateInt(TMP_OBJ_SMALL_TALK, txt_box)
-   dialogue_box.new_text(uc, ywPosX(p) - 40, ywPosY(p) - (40 * nb_nl),
-			 yeGetString(txt), txt_box)
+   pushSmallTalk(txt, ywPosX(p), ywPosY(p))
 end
 
 function tmpObjsRemover(main)

@@ -79,7 +79,7 @@
     },
     "Kaline": {
 	"type": "sprite",
-	"small talk": "Miaou !",
+	"small talk": ["rand", "Miaou !", "Nyaa !"],
 	"attack" : "unarmed0",
         "max_life": 4,
 	"sprite": {
