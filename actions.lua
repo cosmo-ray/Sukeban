@@ -681,10 +681,6 @@ function pushSmallTalk(txt, x, y, start_time)
    if yeType(txt) == YARRAY then
       if yeGetStringAt(txt, 0) == "rand" then
 	 txt = yeGet(txt, yuiRand() % (yeLen(txt) - 1) + 1)
-	 print(txt,
-	       yuiRand() % yeLen(txt) + 1,
-	       yuiRand() % yeLen(txt) + 1,
-	       yuiRand() % yeLen(txt) + 1)
       else
 	 txt = yeGet(txt, 0)
       end
