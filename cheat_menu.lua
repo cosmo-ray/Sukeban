@@ -42,6 +42,12 @@ local function mk_main_mn()
 
    menu:push("give 50$", money_action)
 
+   local xp_action = Entity.new_array()
+   xp_action[0] = "phq.increase"
+   xp_action[1] = "xp"
+   xp_action[2] = 50
+   menu:push("give 50 xp", xp_action)
+
    local m_actions = Entity.new_array()
    m_actions[0] = {"phq.openGlobMenu", 3}
 
