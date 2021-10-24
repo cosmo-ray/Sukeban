@@ -1,22 +1,55 @@
 {
-  "friendly-student": {
-    "dialogue": {
-      "yo": {
-         "texts" : [
-            {
-		          "text": "Hi Kyu !",
-		          "condition": [">", "phq_wid.dialogue_npc.knowledge.boys_bands", 4]
-        		},
-		        {
-		          "text": "yo !!!",
-		          "condition": [">", "phq_wid.dialogue_npc.knowledge.slang", 2]
-        		},
-		        {
-		          "text": "hello"
-        		}
+    "friendly-student": {
+	"dialogue": {
+	    "yo": {
+		"texts" : [
+		    {
+		        "text": "Hi Kyu !",
+		        "condition": [">", "phq_wid.dialogue_npc.knowledge.boys_bands", 4]
+        	    },
+		    {
+		        "text": "yo !!!",
+		        "condition": [">", "phq_wid.dialogue_npc.knowledge.slang", 2]
+        	    },
+		    {
+		        "text": "hello"
+        	    }
 	        ],
-          "answers": "(chat)"
-      }
+		"answers":
+		[
+		    {
+			"text": "(deep talk)",
+			"actions": [
+			    ["setInt", "phq_wid.dialogue_npc.have_talk", 1],
+			    [
+				"Dialogue.condition_switch", ["chkInfD100", 10],
+				"bad", "good"
+			    ]
+			],
+			"condition":  ["<", "phq_wid.dialogue_npc.have_talk", 1]
+		    },
+		    {
+			"text": "(chat)",
+			"condition":  [">", "phq_wid.dialogue_npc.have_talk", 0],
+			"action": "phq.backToGame"
+		    }
+		]
+	    },
+	    "good": {
+		"text": ["{phq_wid.dialogue_npc.name} enjoy talking with you",
+			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
+		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
+	        "action": "phq.backToGame"
+
+	    },
+	    "bad": {
+		"text": ["Ouch !!!",
+			 "{phq_wid.dialogue_npc.name} like you a little less",
+			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
+		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
+	        "action": "phq.backToGame"
+	    }
+
+	}
     }
-  }
 }
