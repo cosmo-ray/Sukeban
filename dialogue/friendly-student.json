@@ -22,7 +22,7 @@
 			"actions": [
 			    ["setInt", "phq_wid.dialogue_npc.have_talk", 1],
 			    [
-				"Dialogue.condition_switch", ["chkInfD100", 10],
+				"Dialogue.condition_switch", ["chkInfD100", 15],
 				"bad", "good"
 			    ]
 			],
@@ -46,7 +46,7 @@
 		"text": ["Ouch !!!",
 			 "{phq_wid.dialogue_npc.name} like you a little less",
 			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
-		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 1],
+		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", -1],
 	        "action": "phq.backToGame"
 	    }
 
