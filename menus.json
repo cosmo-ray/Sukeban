@@ -141,6 +141,11 @@ We love you anyway",
 		"action" : "phq:continue"
 	    },
 	    {
+		"text" : "Eternal Fight Mode",
+		"next" : [ "phq:menus.new-game-ef", 1],
+		"action" : "menuNext"
+	    },
+	    {
 		"text" : "Load Game",
 		"action" : "phq:load_slot"
 	    },
@@ -174,6 +179,12 @@ We love you anyway",
     },
     "new-game" : {
         "<type>" : "phq-new-game",
+	"next" : "phq:menus.main",
+	"next-lose" : "phq:menus.game over"
+    },
+    "new-game-ef" : {
+        "<type>" : "phq-new-game",
+	"only-fight": true,
 	"next" : "phq:menus.main",
 	"next-lose" : "phq:menus.game over"
     },
