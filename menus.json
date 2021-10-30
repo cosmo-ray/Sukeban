@@ -142,7 +142,7 @@ We love you anyway",
 	    },
 	    {
 		"text" : "Eternal Fight Mode",
-		"next" : [ "phq:menus.new-game-ef", 1],
+		"next" : "phq:menus.new-game-ef",
 		"action" : "menuNext"
 	    },
 	    {

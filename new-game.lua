@@ -140,6 +140,14 @@ function create_new_game(entity)
    entity.entries = {}
    entity.entries[0] = {}
    local mn = entity.entries[0]
+   if entity["only-fight"] > 0 then
+      print("eternal fight mode not yet implemented !!!! !!!!")
+      print("eternal fight mode not yet implemented !!!! !!!!")
+      print("eternal fight mode not yet implemented !!!! !!!!")
+      print("eternal fight mode not yet implemented !!!! !!!!")
+      print("eternal fight mode not yet implemented !!!! !!!!")
+      print("eternal fight mode not yet implemented !!!! !!!!")
+   end
    mn.size = 20
    mn["<type>"] = "menu"
    mn.next = "phq:menus.game"
