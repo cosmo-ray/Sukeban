@@ -20,6 +20,8 @@ local run_script = nil
 window_width = 800
 window_height = 600
 
+phq_only_fight = 0
+
 -- set as global so can be use by ai
 pix_mv = 0
 pix_floor_left = 0
@@ -474,6 +476,7 @@ function load_game(save_dir)
 
       yeAttach(allies, npcs[k], i, k, 0)
    end
+   phq_only_fight = 0
    ywidNext(ygGet("phq:menus.game"))
    --yCallNextWidget(entity);
 end
@@ -1438,11 +1441,12 @@ function add_stat_hook(entity, stat, hook, val, comp_type)
    entity.st_hooks[stat].comp_type = comp_type
 end
 
-function create_phq(entity)
+function create_phq(entity, eve, menu)
    -- keep saved data
    local sav_dir = yeGetStringAt(entity, "saved_dir")
    local sav_data = yeGet(entity, "saved_data")
    local pj_pos = nil
+
 
    yeIncrRef(sav_data)
    yeClearArray(entity)
@@ -1558,6 +1562,20 @@ function create_phq(entity)
       quest_try_Call_script(ent, qi_scripts, cur)
       :: next_loop ::
       i = i + 1
+   end
+   if phq_only_fight == 1 then
+      print("ONLY FIGHT MODE")
+      local vnGameWid = Entity.new_array()
+      local vnWid = Entity.new_array()
+
+      vnGameWid[0] = {}
+      vnGameWid[0].text = "test"
+      vnGameWid[0].answer = {}
+      vnGameWid[0].answer.text = "end"
+      vnGameWid[0].answer.action = {"callNext"}
+      vnGameWid[0].answer.action[1] =  main_widget
+      vnScene(main_widget, nil, vnGameWid, vnWid)
+      vnWid.next = main_widget.next
    end
    return ret
 end

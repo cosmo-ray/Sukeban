@@ -753,7 +753,6 @@ function howtoplay(mn)
 end
 
 function fillMiscMenu(mn)
-   print("fill time !")
    mn = Menu.wrapp(mn)
    mn.ent.entries = {}
    mn:push("quick save", Entity.new_func("saveGameCallback"))

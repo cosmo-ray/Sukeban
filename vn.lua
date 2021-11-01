@@ -1,6 +1,6 @@
 local vn_scenes = ygGet("phq.vn-scenes")
 
-function vnScene(wid, eve, scene)
+function vnScene(wid, eve, scene, dialogueWid)
    wid = Entity.wrapp(wid)
    if yeGetInt(wid.in_subcontained) == 1 then
       wid = Entity.wrapp(ywCntWidgetFather(wid))
@@ -11,7 +11,9 @@ function vnScene(wid, eve, scene)
       scene = Entity.wrapp(yeGet(vn_scenes, yeGetString(scene)))
    end
    backToGame(wid)
-   local dialogueWid = Entity.new_array()
+   if yIsNil(dialogueWid) then
+      dialogueWid = Entity.new_array()
+   end
    dialogueWid["<type>"] = "dialogue"
    dialogueWid.dialogue = scene
    dialogueWid["text-speed"] = 30000
