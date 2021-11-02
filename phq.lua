@@ -1564,17 +1564,11 @@ function create_phq(entity, eve, menu)
       i = i + 1
    end
    if phq_only_fight == 1 then
-      print("ONLY FIGHT MODE")
-      local vnGameWid = Entity.new_array()
+      local vnGameWid = ygFileToEnt(YJSON, "./fight_mode.json")
       local vnWid = Entity.new_array()
 
-      vnGameWid[0] = {}
-      vnGameWid[0].text = "test"
-      vnGameWid[0].answer = {}
-      vnGameWid[0].answer.text = "end"
-      vnGameWid[0].answer.action = {"callNext"}
-      vnGameWid[0].answer.action[1] =  main_widget
       vnScene(main_widget, nil, vnGameWid, vnWid)
+      yeDestroy(vnGameWid) -- ygFileToEnt still need manual destroy
       vnWid.next = main_widget.next
    end
    return ret

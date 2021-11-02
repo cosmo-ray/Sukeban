@@ -1,0 +1,12 @@
+[
+    {
+	"text": "test fight mode",
+	"answers": [
+	    {
+		"text": "end",
+		"action": ["callNext", "phq_wid"]
+	    }
+	]
+	
+    }
+]
