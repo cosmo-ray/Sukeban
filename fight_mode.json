@@ -5,7 +5,11 @@
 	    {
 		"text": "end",
 		"action": ["callNext", "phq_wid"]
-	    }
+	    },
+	    {
+		"text": "easy fight",
+		"action": ["phq.StartFight", "rat", "CombatDialogueStay"]
+	    },
 	]
 	
     }

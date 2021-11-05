@@ -238,7 +238,9 @@ function CombatEnd(wid, main, winner_id)
 				     "rgba: 255 255 255 255")
 
    local fsstr = fight_script
-   if fsstr == "CombatDialogueNext" or fsstr == "CombatDialogueGoto" then
+
+   if fsstr == "CombatDialogueNext" or fsstr == "CombatDialogueGoto"
+      or fsstr ==  "CombatDialogueStay" then
       ywCntPopLastEntry(main)
    else
       backToGame(wid)
@@ -366,7 +368,7 @@ function StartFight(wid, eve, enemy_type, script)
       end
    elseif fight_script == "CombatDialogueGoto" then
       dialogue["goto"](wid, eve, script[1])
-   else
+   elseif fight_script ~= "CombatDialogueStay" then
       backToGame(wid, eve)
    end
    ywPushNewWidget(main, fWid)
