@@ -433,6 +433,8 @@ function init_phq(mod)
    mod.tacticalFight = Entity.new_func(tacticalFight)
    mod.misc_fnc = {}
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
+   mod.misc_fnc.save_fight_mode = Entity.new_func("save_fight_mode")
+   mod.misc_fnc.load_fight_mode = Entity.new_func("load_fight_mode")
    mod.triggers = {}
    mod.triggers.block_message = Entity.new_func(trigger_block_message)
 end
@@ -479,13 +481,18 @@ function load_game(save_dir)
 
       yeAttach(allies, npcs[k], i, k, 0)
    end
-   phq_only_fight = 0
+   phq_only_fight = yeGetInt(phq.env.phq_only_fight)
    ywidNext(ygGet("phq:menus.game"))
    --yCallNextWidget(entity);
 end
 
 function continue(entity)
    return load_game(ygUserDir() .. "saved/cur")
+end
+
+function load_fight_mode(entity)
+   print("load_fight_mode !!!!")
+   return load_game(ygUserDir() .. "saved/fight_mode")
 end
 
 function mnLoadSlot(mn)
@@ -544,6 +551,12 @@ function saveGame(main, saveDir)
    ygEntToFile(YJSON, destDir .. "/actioned.json", phq.actioned)
    ygEntToFile(YJSON, destDir .. "/quests.json", phq.quests)
    ygEntToFile(YJSON, destDir .. "/npcs.json", npcs)
+   print("save in: " .. destDir)
+end
+
+function save_fight_mode()
+   phq.env.phq_only_fight = 1
+   saveGame(main_widget, "fight_mode")
 end
 
 function saveGameCallback(wid)

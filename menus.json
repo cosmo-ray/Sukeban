@@ -141,13 +141,17 @@ We love you anyway",
 		"action" : "phq:continue"
 	    },
 	    {
+		"text" : "Load Game",
+		"action" : "phq:load_slot"
+	    },
+	    {
 		"text" : "Eternal Fight Mode",
 		"next" : "phq:menus.new-game-ef",
 		"action" : "menuNext"
 	    },
 	    {
-		"text" : "Load Game",
-		"action" : "phq:load_slot"
+		"text" : "Eternal Fight Load",
+		"action" : "phq:misc_fnc.load_fight_mode"
 	    },
             {
                 "text" : "How to play",

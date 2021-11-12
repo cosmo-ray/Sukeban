@@ -11,6 +11,10 @@
 		"action": "phq.openGLobalMenu"
 	    },
 	    {
+		"text": "save",
+		"action": "phq.misc_fnc.save_fight_mode"
+	    },
+	    {
 		"text": "end",
 		"action": ["callNext", "phq_wid"]
 	    }
