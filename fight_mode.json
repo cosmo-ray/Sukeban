@@ -3,13 +3,17 @@
 	"text": "test fight mode",
 	"answers": [
 	    {
-		"text": "end",
-		"action": ["callNext", "phq_wid"]
-	    },
-	    {
 		"text": "easy fight",
 		"action": ["phq.StartFight", "rat", "CombatDialogueStay"]
 	    },
+	    {
+		"text": "statue",
+		"action": "phq.openGLobalMenu"
+	    },
+	    {
+		"text": "end",
+		"action": ["callNext", "phq_wid"]
+	    }
 	]
 	
     }

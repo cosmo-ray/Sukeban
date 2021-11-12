@@ -420,6 +420,9 @@ function init_phq(mod)
    mod.use_time_point = Entity.new_func("use_time_point")
    mod.changeScene = Entity.new_func("changeScene")
    mod.gotoJail = Entity.new_func("gotoJail")
+   -- this one is simpler to use
+   mod.openGLobalMenu = Entity.new_func("openGlobalMenu")
+   -- this one take "main", idx, and a arg in parametter
    mod.openGlobMenu = Entity.new_func("openGlobMenu")
    mod.setCurStation = Entity.new_func("setCurStation")
    mod.join_team = Entity.new_func("join_team")

@@ -51,6 +51,10 @@ function gmGetBackFocus(mn)
    return YEVE_NOACTION;
 end
 
+function openGlobalMenu()
+   return openGlobMenu(main_widget, 0)
+end
+
 function openGlobMenu(main, on_idx, arg0)
    local mn = Container.new_entity("horizontal")
    --mn.ent.action = Entity.new_func("backToGameOnEnter")

@@ -163,12 +163,19 @@ end
 
 function backToGame2()
    local main = main_widget
+   local target = 2
+   local c_t = 0
 
-   while yeLen(main.entries)  > 2 do
+   if phq_only_fight > 0 then
+      target = 3
+      c_t = 2
+   end
+
+   while yeLen(main.entries)  > target do
       ywCntPopLastEntry(main)
    end
 
-   main.current = 0
+   main.current = c_t
    backToGameReset(main)
    return YEVE_ACTION
 end
