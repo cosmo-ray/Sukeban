@@ -59,7 +59,7 @@ function openGlobalMenu(useless0, usless1, pos)
    if pos == "stats" then
       idx = GM_STATS_IDX
    end
-   return openGlobMenu(main_widget, idx)
+   return openGlobMenu(main_widget, idx, true)
 end
 
 function openGlobMenu(main, on_idx, arg0)
@@ -279,7 +279,7 @@ function spendXpLvlUpStat(mn)
    print("spendXpLvlUpStat", ywMenuGetCurrentEntry(mn))
    print(Entity.wrapp(ywMenuGetCurrentEntry(mn)).arg,
 	 st_val, cost, cost < phq.pj.xp)
-   if cost < phq.pj.xp then
+   if math.floor(cost) <= phq.pj.xp then
       phq.pj.xp = phq.pj.xp - cost
       yeSetInt(st_val_ent, st_val + 1)
    else
@@ -298,7 +298,7 @@ function sendXpLvlUpXp(mn)
    local life = player.life
    local cost = computeXpCost(player)
 
-   if cost < player.xp then
+   if math.floor(cost) <= player.xp then
       player.xp = player.xp - cost
       yeSetInt(life, life + 1)
       yeSetInt(ml, ml + 1)
