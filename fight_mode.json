@@ -7,6 +7,10 @@
 		"action": ["phq.StartFight", "rat", "CombatDialogueStay"]
 	    },
 	    {
+		"text": "store",
+		"action": [ "phq.openStore", "the after pit"]
+	    },
+	    {
 		"text": "statue",
 		"action": ["phq.openGLobalMenu", "stats"]
 	    },

@@ -26,6 +26,10 @@
 	"beer": 4,
 	"Super Premium Beer": 3
     },
+    "the after pit": {
+	"Guriko": 2,
+	"Water": 1	
+    },
     "bar": {
 	"beer": 5,
 	"distiled_wheat_shoot": 4,

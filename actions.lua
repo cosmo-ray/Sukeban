@@ -181,7 +181,7 @@ function backToGame2()
 end
 
 function backToGame(wid)
-   if yIsNil(wid) then
+   if yIsNil(wid) or phq_only_fight > 0 then
       return backToGame2()
    end
 

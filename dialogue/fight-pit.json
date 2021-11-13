@@ -10,6 +10,10 @@
 			"action": "phq.backToGame"
 		    },
 		    {
+			"text": "I'd like to buy snack",
+			"action": [ "phq.openStore", "the after pit"]
+		    },
+		    {
 			"text": "I came to fight"
 		    }
 		]

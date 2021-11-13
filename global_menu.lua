@@ -711,6 +711,9 @@ function storeMoveOn(mn, current)
 end
 
 function openStore(main, obj_or_eve, storeName)
+   if phq_only_fight == 1 then
+      main = main_widget
+   end
    main = Entity.wrapp(main)
    print(main.isDialogue)
    if main.isDialogue then
