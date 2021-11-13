@@ -315,7 +315,9 @@ function spendXpGenMenu(statsMenu)
 
    statsMenu.ent["pre-text"] = "current xp: " .. yeGetInt(phq.pj.xp)
    statsMenu.ent.entries = {}
-   statsMenu:push("<----", Entity.new_func("spendXpBack"))
+   local spendXpBack = Entity.new_func("spendXpBack")
+   statsMenu:push("<----", spendXpBack)
+   statsMenu.ent.onEsc = spendXpBack
    local i = 0
    while i < yeLen(stats) do
       if stats[i] then
@@ -357,7 +359,10 @@ local function genLearnableSkill(nmn)
    nmn.ent["pre-text"] = "current xp: " .. yeGetInt(phq.pj.xp)
    nmn.ent.entries = {}
 
-   nmn:push( "<----", Entity.new_func("spendXpBack"))
+   local spendXpBack = Entity.new_func("spendXpBack")
+   nmn:push( "<----", spendXpBack)
+   nmn.ent.onEsc = spendXpBack
+
    while i < yeLen(leanable_cmbs) do
       local ccmb = leanable_cmbs[i]
       local cmb_name = yeGetKeyAt(leanable_cmbs, i)
@@ -405,6 +410,7 @@ function pushSpendXpWid(mn)
 
    local menu = Menu.new_entity()
    menu:push("finish", Entity.new_func("popGlobMnOtherMenu"))
+   menu.ent.onEsc = Entity.new_func("popGlobMnOtherMenu")
    menu:push("improve stats", Entity.new_func("spendXpOnStats"))
    menu:push("learn skills", Entity.new_func("learnableSkill"))
    lvlUp.ent.entries[0] = menu.ent
