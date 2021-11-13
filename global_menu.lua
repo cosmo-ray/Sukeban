@@ -51,8 +51,15 @@ function gmGetBackFocus(mn)
    return YEVE_NOACTION;
 end
 
-function openGlobalMenu()
-   return openGlobMenu(main_widget, 0)
+function openGlobalMenu(useless0, usless1, pos)
+   local idx = 0
+
+   pos = yeGetString(pos)
+
+   if pos == "stats" then
+      idx = GM_STATS_IDX
+   end
+   return openGlobMenu(main_widget, idx)
 end
 
 function openGlobMenu(main, on_idx, arg0)
