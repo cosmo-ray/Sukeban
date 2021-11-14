@@ -1,13 +1,26 @@
 [
     {
-	"text": "test fight mode",
+	"text": "fight mode:",
 	"answers": [
 	    {
 		"text": "easy fight",
-		"action": ["phq.StartFight", "rat", "CombatDialogueStay"]
+		"condition": ["not", "phq.env.easy_cnt"],
+		"actions": [
+		    ["setInt", "phq.env.easy_cnt", 1],
+		    ["phq.StartFight", "rat", "CombatDialogueStay"]
+		]
+	    },
+	    {
+		"text": "easy fight",
+		"condition": [">", "phq.env.easy_cnt", 0],
+		"actions": [
+		    ["increaseInt", "phq.env.easy_cnt", 1],
+		    ["phq.StartFight", ["rat", "rat"], "CombatDialogueStay"]
+		]
 	    },
 	    {
 		"text": "store",
+		"condition": [">", "phq.env.easy_cnt", 2],
 		"action": [ "phq.openStore", "the after pit"]
 	    },
 	    {
