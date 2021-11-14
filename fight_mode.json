@@ -1,6 +1,6 @@
 [
     {
-	"text": "fight mode:",
+	"text": "fight mode\neasy fight: {phq.env.easy_cnt}",
 	"answers": [
 	    {
 		"text": "easy fight",
