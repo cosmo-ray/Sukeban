@@ -92,6 +92,9 @@ local function end_fight()
    move_dst = nil
    cur_char = nil
    atk_target = nil
+   if phq_only_fight > 0 then
+      fight_mode_wid()
+   end
 end
 
 local function push_button(tdata, rect, txt, callback)

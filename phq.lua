@@ -1457,6 +1457,15 @@ function add_stat_hook(entity, stat, hook, val, comp_type)
    entity.st_hooks[stat].comp_type = comp_type
 end
 
+function fight_mode_wid()
+   local vnGameWid = ygFileToEnt(YJSON, "./fight_mode.json")
+   local vnWid = Entity.new_array()
+
+   vnScene(main_widget, nil, vnGameWid, vnWid)
+   yeDestroy(vnGameWid) -- ygFileToEnt still need manual destroy
+   vnWid.next = main_widget.next
+end
+
 function create_phq(entity, eve, menu)
    -- keep saved data
    local sav_dir = yeGetStringAt(entity, "saved_dir")
@@ -1580,12 +1589,7 @@ function create_phq(entity, eve, menu)
       i = i + 1
    end
    if phq_only_fight == 1 then
-      local vnGameWid = ygFileToEnt(YJSON, "./fight_mode.json")
-      local vnWid = Entity.new_array()
-
-      vnScene(main_widget, nil, vnGameWid, vnWid)
-      yeDestroy(vnGameWid) -- ygFileToEnt still need manual destroy
-      vnWid.next = main_widget.next
+      fight_mode_wid()
    end
    return ret
 end

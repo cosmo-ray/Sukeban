@@ -19,6 +19,32 @@
 		]
 	    },
 	    {
+		"text": "tactical fight",
+		"actions":
+		[
+		    ["phq.changeScene", "street3", 1],
+		    ["phq.tacticalFight",
+		     {
+			 "move": [
+			     ["{phq.pj.name}", 0, 100]
+			 ],
+			 "add-enemies": [
+			     [800, 900, "Thrug", "up"],
+			     [900, 910, "Thrug", "up"],
+			     [1000, 900, "Thrug", "up"],
+			     [800, 1000, "Thrug", "up"],
+			     [900, 1010, "Thrug", "up"],
+			     [1000, 1000, "Thrug", "up"]
+			 ],
+			 "add-ally": [
+			     ["Saki Miya"],
+			     ["Baffy"]
+			 ]
+		     }
+		    ]
+		]
+	    },
+	    {
 		"text": "store",
 		"condition": [">", "phq.env.easy_cnt", 2],
 		"action": [ "phq.openStore", "the after pit"]

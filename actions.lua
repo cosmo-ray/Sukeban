@@ -947,7 +947,12 @@ end
 function tacticalFight(wid, eve, args)
    TACTICAL_FIGHT_MODE = MODE_TACTICAL_FIGHT_INIT
    main_widget.tactical = {}
-   main_widget.tactical.args = args
+   main_widget.tactical.args = argsi
+   if phq_only_fight > 0 then
+      phq_only_fight = 0
+      backToGame2()
+      phq_only_fight = 1
+   end
 end
 
 function changeScene(wid, eve, scene, entry)
