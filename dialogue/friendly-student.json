@@ -32,7 +32,20 @@
 			"text": "(chat)",
 			"condition":  [">", "phq_wid.dialogue_npc.have_talk", 0],
 			"action": "phq.backToGame"
-		    }
+		    },
+		    {
+			"text": "(ask pers to join your team)",
+			"condition":  [">", "phq_wid.dialogue_npc.trait.violance", 6],
+			"actions": [
+			    "phq.join_team",
+			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": "(ask pers to join your team)",
+			"condition":  ["<", "phq_wid.dialogue_npc.trait.violance", 7],
+			"action": ["Dialogue:change-text", "no sorry, I don't like violance"]
+		    },
 		]
 	    },
 	    "good": {
