@@ -45,7 +45,7 @@
 			"text": "(ask pers to join your team)",
 			"condition":  ["<", "phq_wid.dialogue_npc.trait.violance", 7],
 			"action": ["Dialogue:change-text", "no sorry, I don't like violance"]
-		    },
+		    }
 		]
 	    },
 	    "good": {
