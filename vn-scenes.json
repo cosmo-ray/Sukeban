@@ -145,7 +145,22 @@ but reality awaking her from hope",
 	}
     }, "Horsez Pariez": {
 	    "in": {
-		    "text": "Hrose Race Bet Center..."
+		    "text": "Hrose Race Bet Center...",
+		    "answers": [
+			    {
+	    			"text": "(leave)",
+	    			"action": "phq.backToGame"
+			    },
+			    {
+				   "text": "bet 5$ on Switchu",
+				   "condition": [">", "phq.pj.inventory.money", 5],
+				   "actions":
+					[
+						["Dialogue:change-text", "you lose"],
+					    ["phq.remove", "money", 5]
+					]
+			    }
+		]
 	    }
     }
 }
