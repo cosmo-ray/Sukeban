@@ -86,7 +86,6 @@ local function end_fight()
    local t = main_widget.tactical
    ywCanvasRemoveObj(main_canvas, t.cur_ch_square)
    ywRemoveEntryByEntity(main_widget, t.screen)
-   main_widget.tactical = nil
    TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
    main_widget.cam_offset = nil
    move_dst = nil
@@ -95,6 +94,17 @@ local function end_fight()
    if phq_only_fight > 0 then
       fight_mode_wid()
    end
+   if yIsNNil(t.bak_npcs) then
+      local npcs = t.bak_npcs
+      main_widget.npcs = npcs
+      for i = 0, yeLen(npcs) - 1 do
+	 generic_handlerRefresh(npcs[i])
+	 restoreNpcCanvasMatadata(npcs[i].canvas, npcs[i].mdt_bak)
+	 npcs[i].mdt_bak = nil
+      end
+   end
+
+   main_widget.tactical = nil
 end
 
 local function push_button(tdata, rect, txt, callback)
@@ -225,7 +235,15 @@ function do_tactical_fight(eve)
 	 local k = yeGetKeyAt(args, i)
 	 local a = args[i]
 
-	 if k == "move" then
+	 if k == "backup-npc" then
+	    local npcs = main_widget.npcs
+	    tdata.bak_npcs = npcs
+	    for i = 0, yeLen(npcs) - 1 do
+	       saveNpcCanvasMatadata(npcs[i].canvas, npcs[i].mdt_bak)
+	       generic_handlerRmCanva(npcs[i])
+	    end
+	    main_widget.npcs = {}
+	 elseif k == "move" then
 	    for j = 0, yeLen(a) - 1 do
 	       local name = yeCreateYirlFmtString(a[j][0])
 	       print("move: ", a[j], yeGetString(name),

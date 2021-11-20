@@ -96,6 +96,13 @@ function lpcsDirToStr(sdir)
    return "unknow"
 end
 
+function generic_handlerRmCanva(npc)
+   if yeGetString(npc.char.type) == "sprite" then
+      sprite_man.handlerRemoveCanva(npc)
+   else
+      lpcs.handlerRemoveCanva(npc)
+   end
+end
 
 function generic_handlerRefresh(npc)
    if yeGetString(npc.char.type) == "sprite" then

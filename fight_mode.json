@@ -25,6 +25,7 @@
 		    ["phq.changeScene", "street3", 1],
 		    ["phq.tacticalFight",
 		     {
+			 "backup-npc": true,
 			 "move": [
 			     ["{phq.pj.name}", 0, 100]
 			 ],
