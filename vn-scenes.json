@@ -152,7 +152,16 @@ but reality awaking her from hope",
 	    			"action": "phq.backToGame"
 			    },
 			    {
-				   "text": "bet 5$ on Switchu",
+				   "text": "bet 5$ on CHeap Impact",
+				   "condition": [">", "phq.pj.inventory.money", 5],
+				   "actions":
+					[
+					    ["Dialogue:change-text", "you lose"],
+					    ["phq.remove", "money", 5]
+					]
+			    },
+			    {
+				   "text": "bet 5$ on Switchu Away",
 				   "condition": [">", "phq.pj.inventory.money", 5],
 				   "actions":
 					[
