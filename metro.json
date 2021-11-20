@@ -6,7 +6,7 @@
 	    [437, 352], [474, 365], [520, 352, "Dock"]],
 	[
 	    [545, 443], [500, 440], [435, 432], [388, 406],
-	    [352, 366], [349, 331], [345, 270], [353, 212],
+	    [352, 366], [349, 331], [345, 270, "Horsez Pariez"], [353, 212],
 	    [383, 175], [423, 153], [451, 138], [539, 132]
 	],
 	[
@@ -47,6 +47,7 @@
     },
     "actions" : {
 	"Nontoise": ["phq:changeScene", "street0", 3],
+	"Horsez Pariez": ["phq:vnScene", "Horsez Pariez"],
 	"Nontoise Gate": ["phq:changeScene", "street4", 1],
 	"test_zone": ["phq:changeScene", "test_zone"],
 	"fighting pit": ["phq:changeScene", "fighting pit"],
