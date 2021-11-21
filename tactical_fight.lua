@@ -27,6 +27,12 @@ local IDX_NPC_DIR = 3
 
 local IDX_AI_STUFF = 10
 
+local TC_IXD_CHAR = 0
+local TC_IDX_HDLR = 1
+local TC_IDX_NAME = 2
+local TC_IDX_TEAM = 3
+local TC_IDX_TDTA = 4
+
 local cur_char = nil
 
 local move_dst = nil
@@ -43,8 +49,9 @@ local pix_floor_left = 0
 
 local function begin_turn_init(tdata)
    cur_char = tdata.all[current_character]
-   cur_char[4][IDX_CUR_ACTION_POINT] = Entity.new_float(cur_char[4][IDX_MAX_ACTION_POINT]:to_int())
-   if yeGetInt(cur_char[3]) == HERO_TEAM then
+   cur_char[TC_IDX_TDTA][IDX_CUR_ACTION_POINT] =
+      Entity.new_float(cur_char[TC_IDX_TDTA][IDX_MAX_ACTION_POINT]:to_int())
+   if yeGetInt(cur_char[TC_IDX_TEAM]) == HERO_TEAM then
       TACTICAL_FIGHT_MODE = MODE_PLAYER_TURN
    else
       TACTICAL_FIGHT_MODE = MODE_ENEMY_TURN
@@ -147,12 +154,12 @@ local function push_character(tdata, dst, char, h, name, team, dir)
 
    local i = yeLen(dst)
    dst[i] = {}
-   dst[i][0] = char
-   dst[i][1] = h
-   dst[i][2] = name
-   dst[i][3] = team
-   dst[i][4] = {}
-   local tactical_info = dst[i][4]
+   dst[i][TC_IXD_CHAR] = char
+   dst[i][TC_IDX_HDLR] = h
+   dst[i][TC_IDX_NAME] = name
+   dst[i][TC_IDX_TEAM] = team
+   dst[i][TC_IDX_TDTA] = {}
+   local tactical_info = dst[i][TC_IDX_TDTA]
    tactical_info[IDX_MAX_ACTION_POINT] = 5
    tactical_info[IDX_PIX_MV] = 0
    tactical_info[IDX_NPC_DIR] = dir
@@ -169,7 +176,7 @@ local function repush_idx(all)
 end
 
 local function remove_character(tdata, target)
-   print("remove: ", target[2], yeLen(tdata.all))
+   print("remove: ", target[TC_IDX_NAME], yeLen(tdata.all))
    generic_handlerNullify(target[1])
    yeEraseByE(tdata.all, target)
    print("af rm: ", yeLen(tdata.all))
@@ -180,16 +187,16 @@ end
 local function switch_to_move_mode(dst, ap_cost)
    EX_MODE = TACTICAL_FIGHT_MODE
    TACTICAL_FIGHT_MODE = MODE_CHAR_MOVE
-   local ap = yeGetFloat(cur_char[4][IDX_CUR_ACTION_POINT])
-   yeSetFloat(cur_char[4][IDX_CUR_ACTION_POINT], ap - ap_cost)
+   local ap = yeGetFloat(cur_char[TC_IDX_TDTA][IDX_CUR_ACTION_POINT])
+   yeSetFloat(cur_char[TC_IDX_TDTA][IDX_CUR_ACTION_POINT], ap - ap_cost)
    move_dst = dst
 end
 
 local function switch_to_attack_mode(target, ap_cost)
    EX_MODE = TACTICAL_FIGHT_MODE
    TACTICAL_FIGHT_MODE = MODE_CHAR_ATTACK
-   local ap = yeGetFloat(cur_char[4][IDX_CUR_ACTION_POINT])
-   yeSetFloat(cur_char[4][IDX_CUR_ACTION_POINT], ap - ap_cost)
+   local ap = yeGetFloat(cur_char[TC_IDX_TDTA][IDX_CUR_ACTION_POINT])
+   yeSetFloat(cur_char[TC_IDX_TDTA][IDX_CUR_ACTION_POINT], ap - ap_cost)
    atk_target = target
 end
 
@@ -353,7 +360,7 @@ function do_tactical_fight(eve)
    end -- init out
 
    local all_char = tdata.all
-   local cur_char_t = cur_char[4]
+   local cur_char_t = cur_char[TC_IDX_TDTA]
    local ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
 
    if TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then 
@@ -455,7 +462,7 @@ function do_tactical_fight(eve)
 	       local s = generic_handlerSize(nearest_target[1])
 	       local col = nil
 
-	       if yeGetInt(nearest_target[3]) == HERO_TEAM then
+	       if yeGetInt(nearest_target[TC_IDX_TEAM]) == HERO_TEAM then
 		  if target_distance < reach_distance then
 		     col = COL_NEAR_ALLY
 		  else
@@ -489,13 +496,13 @@ function do_tactical_fight(eve)
 		  if target_distance >= reach_distance then
 		     printMessage(main_widget, nil,
 				  "target is out of reac (distance: " .. target_distance .. ") !")
-		  elseif nearest_target[3]:to_int() == HERO_TEAM then
+		  elseif nearest_target[TC_IDX_TEAM]:to_int() == HERO_TEAM then
 		     printMessage(main_widget, nil, "can't attack allies")
 		  else
-		     printMessage(main_widget, nil, cur_char[2]:to_string() .. " attack: " .. nearest_target[2]:to_string())
+		     printMessage(main_widget, nil, cur_char[TC_IDX_NAME]:to_string() .. " attack: " .. nearest_target[TC_IDX_NAME]:to_string())
 		     switch_to_attack_mode(nearest_target, attack_cost)
 		  end
-		  print("attack on", nearest_target[2])
+		  print("attack on", nearest_target[TC_IDX_NAME])
 	       end
 	       print("block")
 	    else
@@ -506,11 +513,22 @@ function do_tactical_fight(eve)
 
    elseif TACTICAL_FIGHT_MODE == MODE_ENEMY_TURN then
       if yIsNil(cur_char_t[IDX_AI_STUFF]) then
-	 cur_char_t[IDX_AI_STUFF] = 0
+	 cur_char_t[IDX_AI_STUFF] = {}
+	 cur_char_t[IDX_AI_STUFF].timer = 0
       end
+      local ai_stuff = cur_char_t[IDX_AI_STUFF]
       print("ai cur_char_t:", cur_char_t)
-      cur_char_t[IDX_AI_STUFF] = cur_char_t[IDX_AI_STUFF] + 1
-      if cur_char_t[IDX_AI_STUFF] > 10 then
+      if yIsNil(ai_stuff.target) then
+	 local goods = tdata.goods
+	 print("look for target")
+	 for i = 0, yeLen(goods) - 1 do
+	    print(goods[i][TC_IDX_NAME])
+	 end
+      end
+
+      ai_stuff.timer = ai_stuff.timer + 1
+
+      if ai_stuff.timer > 10 then
 	 cur_char_t[IDX_AI_STUFF] = nil
 	 end_tun(tdata)
       end
@@ -520,7 +538,7 @@ function do_tactical_fight(eve)
       local turn_timer = ywidTurnTimer() / 10000
       local pix_mv = turn_timer * PIX_MV_PER_MS + pix_floor_left
       pix_floor_left = pix_mv - math.floor(pix_mv)
-      cur_char[4][IDX_PIX_MV] = cur_char[4][IDX_PIX_MV] + pix_mv
+      cur_char[TC_IDX_TDTA][IDX_PIX_MV] = cur_char[TC_IDX_TDTA][IDX_PIX_MV] + pix_mv
       local x_tot_dist = ywPosXDistance(char_pos, move_dst)
       local y_tot_dist = ywPosYDistance(char_pos, move_dst)
       local tot_dist = math.sqrt(x_tot_dist * x_tot_dist + y_tot_dist * y_tot_dist)
@@ -541,27 +559,27 @@ function do_tactical_fight(eve)
       end
 
       local aimed_dir = distanceToDir(x_mv, y_mv)
-      if yeGetInt(cur_char[4][IDX_NPC_DIR]) ~= aimed_dir then
+      if yeGetInt(cur_char[TC_IDX_TDTA][IDX_NPC_DIR]) ~= aimed_dir then
 	 generic_setDir(cur_char[1], aimed_dir)
-	 cur_char[4][IDX_NPC_DIR] = aimed_dir
+	 cur_char[TC_IDX_TDTA][IDX_NPC_DIR] = aimed_dir
       end
 
-      if cur_char[4][IDX_PIX_MV] > 20 then
+      if cur_char[TC_IDX_TDTA][IDX_PIX_MV] > 20 then
 
 	 if yeGetString(cur_char[1].char.type) ~= "sprite" then
 	    ylpcsHandlerNextStep(cur_char[1])
 	 end
 
 	 generic_handlerRefresh(cur_char[1])
-	 cur_char[4][IDX_PIX_MV] = 0
+	 cur_char[TC_IDX_TDTA][IDX_PIX_MV] = 0
       end
 
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_ATTACK then
       printMessage(main_widget, nil,
-		   yeGetString(atk_target[2]) .. " take " ..
+		   yeGetString(atk_target[TC_IDX_NAME]) .. " take " ..
 		   attack_strengh .. " damages")
-      atk_target[0].life = atk_target[0].life - attack_strengh
-      if atk_target[0].life < 1 then
+      atk_target[TC_IXD_CHAR].life = atk_target[TC_IXD_CHAR].life - attack_strengh
+      if atk_target[TC_IXD_CHAR].life < 1 then
 	 print("He's DEAD !")
 	 remove_character(tdata, atk_target)
 	 atk_target = nil
@@ -580,7 +598,7 @@ function do_tactical_fight(eve)
    for i = 0, yeLen(all_char) -1 do
       local idx = (i + current_character) % yeLen(all_char)
 
-      turn_order_str = turn_order_str .. yeGetString(all_char[idx][2]) .. "\n"
+      turn_order_str = turn_order_str .. yeGetString(all_char[idx][TC_IDX_NAME]) .. "\n"
    end
 
    ywCanvasStringSet(tdata.turn_o_str, Entity.new_string(turn_order_str))
