@@ -509,7 +509,8 @@ function do_tactical_fight(eve)
 	       end
 	       print("block")
 	    else
-	       switch_to_move_mode(char_to_canvas_pos(mouse_real_pos), dist_ap_cost)
+	       switch_to_move_mode(char_to_canvas_pos(mouse_real_pos),
+				   dist_ap_cost)
 	    end
 	 end
       end
@@ -520,12 +521,37 @@ function do_tactical_fight(eve)
 	 cur_char_t[IDX_AI_STUFF].timer = 0
       end
       local ai_stuff = cur_char_t[IDX_AI_STUFF]
+      local target = nil
       print("ai cur_char_t:", cur_char_t)
       if yIsNil(ai_stuff.target) then
 	 local goods = tdata.goods
+	 local cur_ch = cur_char[TC_IXD_CHAR]
+	 local o_ch = goods[TC_IXD_CHAR]
 	 print("look for target")
 	 for i = 0, yeLen(goods) - 1 do
-	    print(goods[i][TC_IDX_NAME])
+	    local cc = tchar_ch_pos(cur_char_t)
+	    local oc = tchar_ch_pos(goods[i])
+	    local dist = ywPosDistance(cc, po)
+	    local intersect_array = ywCanvasNewIntersectArray(main_canvas, cc, oc)
+	    local block = false
+
+	    for j = 0, yeLen(intersect_array) - 1 do
+	       local col_o = Entity.wrapp(yeGet(intersect_array, i))
+
+	       if yeGetIntAt(col_o, 9) < 1 or
+		  cur_ch == col_o or
+		  o_ch == col_o
+	       then
+		  goto _continue_
+	       end
+
+	       block = true
+	       break
+	       :: _continue_ ::
+	    end
+
+	    print(goods[i][TC_IDX_NAME], dist, block)
+	    yeDestroy(intersect_array)
 	 end
       end
 
