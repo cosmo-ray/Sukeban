@@ -88,6 +88,10 @@ local function char_to_canvas_pos(cpos)
    return can_pos
 end
 
+local function tchar_ch_pos(tchar)
+   return canvas_to_char_pos(generic_handlerPos(tchar[TC_IDX_HDLR]))
+end
+
 local function end_fight()
    local main_canvas = main_widget.mainScreen
    local t = main_widget.tactical
@@ -408,7 +412,7 @@ function do_tactical_fight(eve)
 	 local mouse_real_pos = Pos.new(mx, my).ent
 	 ywPosAdd(mouse_real_pos, ccam)
 	 -- ylpcsHandlerPos return top left, we need center
-	 local char_pos = canvas_to_char_pos(generic_handlerPos(cur_char[1]))
+	 local char_pos = tchar_ch_pos(cur_char)
 	 local dist_ap_cost = (ywPosDistance(char_pos, mouse_real_pos)  / 100)
 	 local mov_cost = "(" .. dist_ap_cost .. ")"
 
@@ -436,13 +440,12 @@ function do_tactical_fight(eve)
 	       local col_char = tdata.all[yeGetInt(col_o.idx)]
 
 	       if nearest_target == nil then
-		  local p = canvas_to_char_pos(generic_handlerPos(col_char[1]))
+		  local p = tchar_ch_pos(col_char)
 		  nearest_target = col_char
 		  target_distance = ywPosDistance(char_pos, p)
 	       else
-		  local p0 = canvas_to_char_pos(generic_handlerPos(nearest_target[1]))
-		  p0 = canvas_to_char_pos(p0)
-		  local p1 = canvas_to_char_pos(generic_handlerPos(col_char[1]))
+		  local p0 = tchar_ch_pos(nearest_target)
+		  local p1 = tchar_ch_pos(col_char)
 		  local d0 = ywPosDistance(char_pos, p0)
 		  local d1 = ywPosDistance(char_pos, p1)
 		  
