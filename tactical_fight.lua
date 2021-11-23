@@ -527,7 +527,8 @@ function do_tactical_fight(eve)
 	 local goods = tdata.goods
 	 local cur_ch = cur_char[TC_IXD_CHAR]
 	 local o_ch = goods[TC_IXD_CHAR]
-	 print("look for target")
+	 local target_dist = 4000
+
 	 for i = 0, yeLen(goods) - 1 do
 	    local cc = tchar_ch_pos(cur_char_t)
 	    local oc = tchar_ch_pos(goods[i])
@@ -550,8 +551,17 @@ function do_tactical_fight(eve)
 	       :: _continue_ ::
 	    end
 
+	    if block == false and dist < target_dist then
+	       target = goods[i]
+	       target_dist = dist
+	    end
 	    print(goods[i][TC_IDX_NAME], dist, block)
 	    yeDestroy(intersect_array)
+	 end
+	 if target == nil then
+	    print("NO TARGET !")
+	 else
+	    print("TARGET: ", target[TC_IDX_NAME])
 	 end
       end
 
