@@ -1,15 +1,15 @@
 local phq = Entity.wrapp(ygGet("phq"))
 
-local geekDescription = "\"I do undersatdn this \"mouse magic\" that make me thine bidding\"\n" .. "description:\n" ..
+local geekDescription = "\n\n\"I do undersatdn this \"mouse magic\" that make me thine bidding\"\n" .. "description:\n" ..
    "Like any responsable persones\nyou've spend all your free time watching animu, and playing games\nyou got a lot of knowledges about that\n" ..
    "luckily we live in a computer world"
 
-local idoleDescription = "\"You need a new tailor,  your clothes are absolutely dreadful!\"\n" .. "description:\n" .. "~~<3~~<3~ Besuto waifuu materialuu ~~~~uwu~~~~~"
+local idoleDescription = "\n\n\"You need a new tailor,  your clothes are absolutely dreadful!\"\n" .. "description:\n" .. "~~<3~~<3~ Besuto waifuu materialuu ~~~~uwu~~~~~"
 
-local bruteDescription = "\"So I kicked him in the head 'til he was dead. Mahahahahaha!\"\n" .. "description:\n" ..
+local bruteDescription = "\n\n\"So I kicked him in the head 'til he was dead. Mahahahahaha!\"\n" .. "description:\n" ..
    "some peoples are smart, you have muscles\nsome peoples are beautiful you have muscles\nsome peoples think they're strong than you\nYOU BEAT'EM UP\nThe legendary giant's power will tear though the galaxy !"
 
-local wormsCoinoisseurDescription = "\"Surface-dwellers can be so stupid !\"\n" .. "description:\n" ..
+local wormsCoinoisseurDescription = "\n\n\"Surface-dwellers can be so stupid !\"\n" .. "description:\n" ..
    "Most peoples spend they childhoud playing game,\nthinking about boys or girl, fighting\n" ..
    "You've learn everything you clould about worms,\n spend a lot of times observing them\n" ..
    "Speaking with your friends about them...\n your friends are worms\n" ..
@@ -146,6 +146,7 @@ function create_new_game(entity)
    mn.next_target = "main"
    phq_only_fight = yeGetInt(entity["only-fight"])
    mn.moveOn = Entity.new_func("newGameMoveOn")
+   mn["text-color"] = "rgba: 235 235 235 255"
    mn.entries = {}
    mn.entries[0] = {}
    mn.entries[0].text = "Geek"
@@ -164,6 +165,7 @@ function create_new_game(entity)
    txt["<type>"] = "text-screen"
    txt.text = geekDescription
    txt["text-color"] = "rgba: 255 255 255 255"
+   txt["text-align"] = "center"
    local ret = container:new_wid()
    return ret
 end
