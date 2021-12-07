@@ -136,7 +136,7 @@ end
 function create_new_game(entity)
    local container = Container.init_entity(entity, "vertical")
    entity = Entity.wrapp(entity)
-   entity.background = "rgba: 127 127 127 255"
+   entity.background = "rgba: 77 77 77 255"
    entity.entries = {}
    entity.entries[0] = {}
    local mn = entity.entries[0]
@@ -163,6 +163,7 @@ function create_new_game(entity)
    local txt = entity.entries[1]
    txt["<type>"] = "text-screen"
    txt.text = geekDescription
+   txt["text-color"] = "rgba: 255 255 255 255"
    local ret = container:new_wid()
    return ret
 end
