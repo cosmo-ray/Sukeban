@@ -38,15 +38,32 @@
 		    },
 		    {
 			"text": "Let's play Polis at War",
+			"condition": ["contain_string", "phq.pj.organisations", "Board Game and Roleplay Club"],
 			"action": ["phq.play", "polis-at-war"]
 		    },
 		    {
 			"text": "Do you tabletop role play too",
+			"condition": ["contain_string", "phq.pj.organisations", "Board Game and Roleplay Club"],
 			"action": ["phq.play", "dungeon-story"]
+		    },
+		    {
+			"text": "Can I join the club",
+			"condition": ["not", ["contain_string", "phq.pj.organisations", "Board Game and Roleplay Club"]],
+			"action": ["Dialogue:goto", "join"]
 		    }
 	        ]
 	    },
-	    "Hello": "Hello Human"
+	    "Hello": "Hello Human",
+	    "join": {
+		    "text": "so here's the papper",
+		    "answer": {
+		      "text": "({phq.pj.name} join the den)",
+		      "actions": [[ "recreateString",
+				    "phq.pj.organisations.rp_club",
+				    "Board Game and Roleplay Club"],
+				 "phq.backToGame"]
+		}
+	    }
 	}
     }
 }
