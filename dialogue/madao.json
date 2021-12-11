@@ -1,7 +1,15 @@
 {
     "Madao": {
 	"dialogue" : [
-	    "Hej kid, I've lost my sunglass, did you saw them ?"
+		{
+		  "rand-texts": [
+		      "Hej kid, I've lost my sunglass, did you saw them ?",
+			  "I use to work for Customs Agency you know ?"
+		  ],
+		"answer": {
+		    "text": "(leave)"
+		  }
+	    }
 	]
     }
 }
