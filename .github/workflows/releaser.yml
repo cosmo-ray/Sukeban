@@ -24,7 +24,7 @@ jobs:
           cp -rf * ../sukeban_I_use_Arch_BTW/
           mv ../sukeban_I_use_Arch_BTW .
           cp -rf sukeban_I_use_Arch_BTW sukeban_windows
-          wget -q https://github.com/cosmo-ray/yirl/releases/download/latest/yirl.tar.gz
+          wget -q https://github.com/cosmo-ray/yirl/releases/download/latest/yirl-mods.tar.gz
           wget -q https://github.com/cosmo-ray/yirl/releases/download/latest_win/yirl.zip
           mv yirl.tar.gz sukeban_I_use_Arch_BTW
           cd sukeban_I_use_Arch_BTW
