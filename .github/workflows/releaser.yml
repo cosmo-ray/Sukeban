@@ -33,9 +33,9 @@ jobs:
           cd ..
           mv yirl.zip sukeban_windows
           cd sukeban_windows
-          echo sukeban_windows
-          unzip yirl.zip
-          rm yirl.zip
+          echo sukeban_windows skip
+          #unzip yirl.zip
+          #rm yirl.zip
           cd ..
           tar cvfz  sukeban_I_use_Arch_BTW.tar.gz ./sukeban_I_use_Arch_BTW/
           #zip -r sukeban_windows.zip ./sukeban_windows/
