@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: releaser
 
 # Controls when the workflow will run
 on:
@@ -22,7 +22,7 @@ jobs:
           cp -rvf sukeban_I_use_Arch_BTW sukeban_windows
           wget https://github.com/cosmo-ray/yirl/releases/download/latest/yirl.tar.gz
           wget https://github.com/cosmo-ray/yirl/releases/download/latest_win/yirl.zip
-          mv yirl.tar.gz sukeban_I_use_Arch_BTW/
+          mv yirl.tar.gz sukeban_I_use_Arch_BTW
           cd sukeban_I_use_Arch_BTW
           tar -xvf yirl.tar.gz
           rm yirl.tar.gz
