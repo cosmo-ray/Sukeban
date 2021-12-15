@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+      
       - name: Run a multi-line script
         run: |
           mkdir ../sukeban_I_use_Arch_BTW
