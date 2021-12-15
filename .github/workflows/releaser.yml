@@ -21,12 +21,10 @@ jobs:
           rm -rvf .git
           mkdir ../sukeban_I_use_Arch_BTW
           cp -rvf * ../sukeban_I_use_Arch_BTW/
-          ls -ls ../sukeban_I_use_Arch_BTW
           mv ../sukeban_I_use_Arch_BTW .
           cp -rvf sukeban_I_use_Arch_BTW sukeban_windows
-          ls -la
-          wget https://github.com/cosmo-ray/yirl/releases/download/latest/yirl.tar.gz
-          wget https://github.com/cosmo-ray/yirl/releases/download/latest_win/yirl.zip
+          wget -q https://github.com/cosmo-ray/yirl/releases/download/latest/yirl.tar.gz
+          wget -q https://github.com/cosmo-ray/yirl/releases/download/latest_win/yirl.zip
           mv yirl.tar.gz sukeban_I_use_Arch_BTW
           cd sukeban_I_use_Arch_BTW
           tar -xvf yirl.tar.gz
