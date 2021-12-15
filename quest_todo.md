@@ -1,5 +1,3 @@
-
-
 # Quests Idea here:
 
 ## Club Quests:
