@@ -16,9 +16,8 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
-          rm -rvf .git
           mkdir ../sukeban_I_use_Arch_BTW
-          cp -rvf * ../sukeban_I_use_Arch_BTW/
+          cp -rvf . ../sukeban_I_use_Arch_BTW/
           mv ../sukeban_I_use_Arch_BTW .
           cp -rvf sukeban_I_use_Arch_BTW sukeban_windows
           wget https://github.com/cosmo-ray/yirl/releases/download/latest/yirl.tar.gz
@@ -27,13 +26,13 @@ jobs:
           cd sukeban_I_use_Arch_BTW
           tar -xvf yirl.tar.gz
           rm yirl.tar.gz
-          ls
+          ls -la
           cd ..
           mv yirl.zip sukeban_windows
           cd sukeban_windows
           unzip yirl.zip
           rm yirl.zip
-          ls
+          ls -la
           cd ..
           tar cvfz  sukeban_I_use_Arch_BTW.tar.gz ./sukeban_I_use_Arch_BTW/
           zip -r sukeban_windows.zip ./sukeban_windows/
