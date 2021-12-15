@@ -34,9 +34,9 @@ jobs:
           rm yirl.zip
           ls -la
           cd ..
-          tar cvfz  sukeban_I_use_Arch_BTW.tar.gz ./sukeban_I_use_Arch_BTW/
-          zip -r sukeban_I_use_Arch_BTW.zip ./sukeban_I_use_Arch_BTW/
-          zip -r sukeban_windows.zip ./sukeban_windows/
+          #tar cvfz  sukeban_I_use_Arch_BTW.tar.gz ./sukeban_I_use_Arch_BTW/
+          #zip -r sukeban_I_use_Arch_BTW.zip ./sukeban_I_use_Arch_BTW/
+          #zip -r sukeban_windows.zip ./sukeban_windows/
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
