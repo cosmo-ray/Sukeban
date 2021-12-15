@@ -20,9 +20,9 @@ jobs:
         run: |
           rm -rvf .git
           mkdir ../sukeban_I_use_Arch_BTW
-          cp -rvf * ../sukeban_I_use_Arch_BTW/
+          cp -rf * ../sukeban_I_use_Arch_BTW/
           mv ../sukeban_I_use_Arch_BTW .
-          cp -rvf sukeban_I_use_Arch_BTW sukeban_windows
+          cp -rf sukeban_I_use_Arch_BTW sukeban_windows
           wget -q https://github.com/cosmo-ray/yirl/releases/download/latest/yirl.tar.gz
           wget -q https://github.com/cosmo-ray/yirl/releases/download/latest_win/yirl.zip
           mv yirl.tar.gz sukeban_I_use_Arch_BTW
@@ -30,17 +30,15 @@ jobs:
           tar -xvf yirl.tar.gz
           rm yirl.tar.gz
           echo sukeban_I_use_Arch_BTW
-          ls -la
           cd ..
           mv yirl.zip sukeban_windows
           cd sukeban_windows
           echo sukeban_windows
           unzip yirl.zip
           rm yirl.zip
-          ls -la
           cd ..
           tar cvfz  sukeban_I_use_Arch_BTW.tar.gz ./sukeban_I_use_Arch_BTW/
-          zip -r sukeban_windows.zip ./sukeban_windows/
+          #zip -r sukeban_windows.zip ./sukeban_windows/
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
