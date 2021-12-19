@@ -235,7 +235,15 @@
 		]
 	    },
 	    {
-		"text": "nothing you will ever reach",
+		"texts" : [
+		   {
+		     "text": "nothing you will ever reach",
+		     "condition": ["<", "phq.quests.hightscores.lvl", 1]
+		   },
+		   {
+		     "text": "We give you 100$ if you beat an Hightscore"
+		   }
+	        ],
 		"answers": [
 		    { "text": "We'll see", "action": "phq.backToGame" },
 		    { "text": "Ok bye", "action": "phq.backToGame" }
