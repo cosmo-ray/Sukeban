@@ -46,6 +46,7 @@ jobs:
           rm -rvf tmp/modules
           mv tmp/* .
           rm -rvf tmp
+          mv yirl-loader.exe Sukeban.exe
           rm yirl.zip
           cd ..
           tar cfz  sukeban_I_use_Arch_BTW.tar.gz ./sukeban_I_use_Arch_BTW/
