@@ -7,7 +7,7 @@ Otherwise for glorious Arch user, ``` yay -Sy sukeban-git ``` should work.
 
 # Goal
 Game that might one day have 3 chapters
-It will be a mix of RPG, Dating Sim, gang management, and whatever contributor want
+It will be a mix of RPG, Dating Sim, Delinquante's Gang management, and whatever contributor want
 
 I don't want this RPG to be my RPG but an RPG made by a community
 An RPG that no one could really know, because it will be in constant evolution.
