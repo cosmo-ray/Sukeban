@@ -555,13 +555,32 @@ function do_tactical_fight(eve)
 	       target = goods[i]
 	       target_dist = dist
 	    end
-	    print(goods[i][TC_IDX_NAME], dist, block)
 	    yeDestroy(intersect_array)
 	 end
 	 if target == nil then
 	    print("NO TARGET !")
 	 else
-	    print("TARGET: ", target[TC_IDX_NAME])
+	    local cpos = tchar_ch_pos(cur_char)
+	    local tpos = tchar_ch_pos(target)
+	    local distance = ywPosDistance(cpos, tpos)
+	    local xdist = ywPosXDistance(cpos, tpos)
+	    local ydist = ywPosYDistance(cpos, tpos)
+	    local targeted_pos = Entity.new_copy(tpos)
+	    ywPosAddXY(targeted_pos,
+		       -(reach_distance * xdist / distance),
+		       -(reach_distance * ydist / distance))
+	    print("TARGET: ",
+		  target[TC_IDX_NAME], tpos,
+		  cpos, cur_char[TC_IDX_TDTA],
+		  "distances:\n", distance, xdist, ydist,
+		  "\nreach distances:\n",
+		  reach_distance * xdist / distance,
+		  reach_distance * ydist / distance,
+		  "\ntargeted pos:\n", targeted_pos
+	    )
+	    print("SWITCH MOVE MIDE")
+	    local dist_ap_cost = (ywPosDistance(cpos, targeted_pos)  / 100)
+	    switch_to_move_mode(targeted_pos, dist_ap_cost)
 	 end
       end
 
