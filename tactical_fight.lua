@@ -502,7 +502,10 @@ function do_tactical_fight(eve)
 		  elseif nearest_target[TC_IDX_TEAM]:to_int() == HERO_TEAM then
 		     printMessage(main_widget, nil, "can't attack allies")
 		  else
-		     printMessage(main_widget, nil, cur_char[TC_IDX_NAME]:to_string() .. " attack: " .. nearest_target[TC_IDX_NAME]:to_string())
+		     printMessage(main_widget, nil,
+				  cur_char[TC_IDX_NAME]:to_string() ..
+				  " attack: " ..
+				  nearest_target[TC_IDX_NAME]:to_string())
 		     switch_to_attack_mode(nearest_target, attack_cost)
 		  end
 		  print("attack on", nearest_target[TC_IDX_NAME])
@@ -569,18 +572,20 @@ function do_tactical_fight(eve)
 	    ywPosAddXY(targeted_pos,
 		       -(reach_distance * xdist / distance),
 		       -(reach_distance * ydist / distance))
+	    local dist_ap_cost = (ywPosDistance(cpos, targeted_pos)  / 100)
 	    print("TARGET: ",
 		  target[TC_IDX_NAME], tpos,
 		  cpos, cur_char[TC_IDX_TDTA],
 		  "distances:\n", distance, xdist, ydist,
-		  "\nreach distances:\n",
-		  reach_distance * xdist / distance,
-		  reach_distance * ydist / distance,
+		  "\nreach distances in:\n",
+		  reach_distance,
+		  "\nreach distances out:\n",
+		  (reach_distance * xdist / distance),
+		  (reach_distance * ydist / distance),
 		  "\ntargeted pos:\n", targeted_pos
 	    )
-	    print("SWITCH MOVE MIDE")
-	    local dist_ap_cost = (ywPosDistance(cpos, targeted_pos)  / 100)
-	    switch_to_move_mode(targeted_pos, dist_ap_cost)
+	    print("SWITCH MOVE MODE")
+	    switch_to_move_mode(char_to_canvas_pos(targeted_pos), dist_ap_cost)
 	 end
       end
 
@@ -656,7 +661,8 @@ function do_tactical_fight(eve)
    for i = 0, yeLen(all_char) -1 do
       local idx = (i + current_character) % yeLen(all_char)
 
-      turn_order_str = turn_order_str .. yeGetString(all_char[idx][TC_IDX_NAME]) .. "\n"
+      turn_order_str = turn_order_str ..
+	 yeGetString(all_char[idx][TC_IDX_NAME]) .. "\n"
    end
 
    ywCanvasStringSet(tdata.turn_o_str, Entity.new_string(turn_order_str))
