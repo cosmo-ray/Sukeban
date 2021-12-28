@@ -19,3 +19,5 @@ After an undecided number of time, some peoples will look for her, and it might 
 
 add a character, that is a super stalker, and can stalk for you.
 will be useful as a ingame way to debug characters AI. (maybe implement this in god mod first)
+
+have kaline move position
