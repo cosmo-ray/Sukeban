@@ -30,7 +30,25 @@
          "draworder":"topdown",
          "id":5,
          "name":"NPC",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"Elise Barelmaker",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":270.766969780472,
+                 "y":128.387985670984
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -88,10 +106,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":2,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.1",
+ "tiledversion":"1.7.2",
  "tileheight":32,
  "tilesets":[
         {

@@ -276,6 +276,35 @@
             "hair/male/plain/raven.png"
         ]
     },
+    "Elise Barelmaker": {
+	"sex": "female",
+        "type": "light",
+	"student_year": 3,
+	"class": 2,
+        "max_life": 100,
+	"hair": ["unkempt", "raven"],
+	"attack" : "sukeban boxe",
+	"ai": "elise",
+	"stats": {
+	    "charm": 4,
+	    "strength": 12,
+	    "smart": 4
+	},
+	"organisations": "Students Protection Group",
+	"trait": {
+	    "violance": 8,
+	    "perv": 4,
+	    "sensitivity": -3,
+	    "male_atraction": 1,
+	    "female_atraction": -1
+
+	},
+	"equipement": {
+	    "torso": "white_pirate",
+	    "legs": "teal pants female",
+	    "feet": "maroon longboot"
+	}
+    },
     "Saki Miya": {
 	"sex": "female",
         "type": "light",
