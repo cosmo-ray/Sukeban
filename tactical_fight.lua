@@ -538,57 +538,54 @@ function do_tactical_fight(eve)
       local ai_stuff = cur_char_t[IDX_AI_STUFF]
       local target = nil
       print("ai cur_char_t:", cur_char_t)
-      if yIsNil(ai_stuff.target) then
-	 local goods = tdata.goods
-	 local cur_ch = cur_char[TC_IXD_CHAR]
-	 local o_ch = goods[TC_IXD_CHAR]
-	 local target_dist = 4000
+      local goods = tdata.goods
+      local cur_ch = cur_char[TC_IXD_CHAR]
+      local o_ch = goods[TC_IXD_CHAR]
+      local target_dist = 4000
+      local target_pos = nil
+      local cpos = tchar_ch_pos(cur_char)
 
-	 for i = 0, yeLen(goods) - 1 do
-	    local cc = tchar_ch_pos(cur_char_t)
-	    local oc = tchar_ch_pos(goods[i])
-	    local dist = ywPosDistance(cc, po)
-	    local intersect_array = ywCanvasNewIntersectArray(main_canvas, cc, oc)
-	    local block = false
+      for i = 0, yeLen(goods) - 1 do
+	 local cc = cpos
+	 local oc = tchar_ch_pos(goods[i])
+	 local dist = ywPosDistance(cc, oc)
+	 local intersect_array = ywCanvasNewIntersectArray(main_canvas, cc, oc)
+	 local block = false
 
-	    for j = 0, yeLen(intersect_array) - 1 do
-	       local col_o = Entity.wrapp(yeGet(intersect_array, i))
+	 for j = 0, yeLen(intersect_array) - 1 do
+	    local col_o = Entity.wrapp(yeGet(intersect_array, i))
 
-	       if yeGetIntAt(col_o, 9) < 1 or
-		  cur_ch == col_o or
-		  o_ch == col_o
-	       then
-		  goto _continue_
-	       end
-
-	       block = true
-	       break
-	       :: _continue_ ::
+	    if yeGetIntAt(col_o, 9) < 1 or
+	       cur_ch == col_o or
+	       o_ch == col_o
+	    then
+	       goto _continue_
 	    end
 
-	    if block == false and dist < target_dist then
-	       target = goods[i]
-	       target_dist = dist
-	    end
-	    yeDestroy(intersect_array)
-	 end
-	 if target == nil then
-	    print("NO TARGET !")
-	 else
-	    local cpos = tchar_ch_pos(cur_char)
-	    local tpos = tchar_ch_pos(target)
-	    local distance = ywPosDistance(cpos, tpos)
+	    block = true
+	    break
+	    :: _continue_ ::
+	 end -- for inersect
+	 yeDestroy(intersect_array)
+
+	 if block == false and dist < target_dist then
+	    target = goods[i]
+	    target_dist = dist
+	    local tpos = oc
+	    local distance = dist
+	    print("dist, distance: ", dist, distance, target_dist)
 	    local xdist = ywPosXDistance(cpos, tpos)
 	    local ydist = ywPosYDistance(cpos, tpos)
-	    local targeted_pos = Entity.new_copy(tpos)
+	    targeted_pos = Entity.new_copy(tpos)
 	    ywPosAddXY(targeted_pos,
 		       -(reach_distance * xdist / distance),
 		       -(reach_distance * ydist / distance))
-	    local dist_ap_cost = (ywPosDistance(cpos, targeted_pos)  / 100)
-	    print("TARGET: ",
-		  target[TC_IDX_NAME], tpos,
-		  cpos, cur_char[TC_IDX_TDTA],
-		  "distances:\n", distance, xdist, ydist,
+	    print("TARGET:\n",
+		  tpos,
+		  cpos,
+		  tchar_ch_pos(target),
+		  tchar_ch_pos(cur_char),
+		  "\ndistances:\n", distance, xdist, ydist,
 		  "\nreach distances in:\n",
 		  reach_distance,
 		  "\nreach distances out:\n",
@@ -596,14 +593,22 @@ function do_tactical_fight(eve)
 		  (reach_distance * ydist / distance),
 		  "\ntargeted pos:\n", targeted_pos
 	    )
+	 end -- if target
+
+      end -- for goods
+
+      if targeted_pos == nil then
+	 print("NO TARGET !")
+      else
+	 if target_dist > reach_distance then
+	    local dist_ap_cost = (ywPosDistance(cpos, targeted_pos)  / 100)
+
+	    switch_to_move_mode(char_to_canvas_pos(targeted_pos), dist_ap_cost)
 	    print("SWITCH MOVE MODE")
-	    if distance > reach_distance then
-	       switch_to_move_mode(char_to_canvas_pos(targeted_pos), dist_ap_cost)
-	    else
-	       print("CAN ATTACK: ", target[TC_IDX_NAME])
-	    end
+	 else
+	    print("CAN ATTACK: ", target[TC_IDX_NAME])
 	 end
-      end
+      end -- target_pos not nil
 
       ai_stuff.timer = ai_stuff.timer + 1
 
