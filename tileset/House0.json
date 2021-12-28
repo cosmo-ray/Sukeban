@@ -270,6 +270,29 @@
                  "width":0,
                  "x":204.706499868778,
                  "y":100.603621730382
+                }, 
+                {
+                 "height":0,
+                 "id":20,
+                 "name":"Kaline",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"up"
+                        }, 
+                        {
+                         "name":"Time",
+                         "type":"string",
+                         "value":"Day"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":395.290788207506,
+                 "y":430.284839471612
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -338,7 +361,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -347,7 +370,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.7.1",
+ "tiledversion":"1.7.2",
  "tileheight":32,
  "tilesets":[
         {

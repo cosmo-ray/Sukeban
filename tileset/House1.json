@@ -484,12 +484,36 @@
                  "id":29,
                  "name":"Kaline",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"Time",
+                         "type":"string",
+                         "value":"Morning"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
                  "x":323.707059267648,
                  "y":470.932427331068
+                }, 
+                {
+                 "height":0,
+                 "id":30,
+                 "name":"Kaline",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Time",
+                         "type":"string",
+                         "value":"Night"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":650.245375613439,
+                 "y":107.587768969422
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -606,7 +630,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":30,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -615,7 +639,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.7.1",
+ "tiledversion":"1.7.2",
  "tileheight":32,
  "tilesets":[
         {
