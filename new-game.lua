@@ -1,6 +1,6 @@
 local phq = Entity.wrapp(ygGet("phq"))
 
-local geekDescription = "\n\n\"I do undersatdn this \"mouse magic\" that make me thine bidding\"\n" .. "description:\n" ..
+local geekDescription = "\n\n\"I do understand this \"mouse magic\" that make me thine bidding\"\n" .. "description:\n" ..
    "Like any responsable persones\nyou've spend all your free time watching animu, and playing games\nyou got a lot of knowledges about that\n" ..
    "luckily we live in a computer world"
 
