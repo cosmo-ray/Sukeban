@@ -58,6 +58,13 @@ local function begin_turn_init(tdata)
    end
 end
 
+local function repush_idx(all)
+   for i = 0, yeLen(all) - 1 do
+      local h = all[i][1]
+      h.canvas.idx = i
+   end
+end
+
 local function end_tun(tdata)
    tdata = Entity.wrapp(tdata)
 
@@ -66,6 +73,7 @@ local function end_tun(tdata)
    current_character = current_character % yeLen(tdata.all)
    begin_turn_init(tdata)
    ywCanvasStringSet(tdata.movement_info, Entity.new_string(""))
+   repush_idx(tdata.all)
 end
 
 local function center_char(tdata)
@@ -172,12 +180,11 @@ local function push_character(tdata, dst, char, h, name, team, dir)
    yePushBack(tdata_all, dst[i])
 end
 
-local function repush_idx(all)
-   for i = 0, yeLen(all) - 1 do
-      local h = all[i][1]
-      h.canvas.idx = i
-   end
+local function bad_guy_end_turn(cur_char_t, tdata)
+   	 cur_char_t[IDX_AI_STUFF] = nil
+	 end_tun(tdata)
 end
+
 
 local function remove_character(tdata, target)
    print("remove: ", target[TC_IDX_NAME], yeLen(tdata.all))
@@ -521,8 +528,7 @@ function do_tactical_fight(eve)
    elseif TACTICAL_FIGHT_MODE == MODE_ENEMY_TURN then
 
       if cur_char_t[IDX_MAX_ACTION_POINT] < 0.12 then
-	 cur_char_t[IDX_AI_STUFF] = nil
-	 end_tun(tdata)
+	 bad_guy_end_turn(cur_char_t, tdata)
       end
 
       if yIsNil(cur_char_t[IDX_AI_STUFF]) then
@@ -602,8 +608,7 @@ function do_tactical_fight(eve)
       ai_stuff.timer = ai_stuff.timer + 1
 
       if ai_stuff.timer > 10 then
-	 cur_char_t[IDX_AI_STUFF] = nil
-	 end_tun(tdata)
+	 bad_guy_end_turn(cur_char_t, tdata)
       end
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_MOVE then
       local char_pos = generic_handlerPos(cur_char[1])
