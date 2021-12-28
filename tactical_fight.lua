@@ -519,6 +519,12 @@ function do_tactical_fight(eve)
       end
 
    elseif TACTICAL_FIGHT_MODE == MODE_ENEMY_TURN then
+
+      if cur_char_t[IDX_MAX_ACTION_POINT] < 0.12 then
+	 cur_char_t[IDX_AI_STUFF] = nil
+	 end_tun(tdata)
+      end
+
       if yIsNil(cur_char_t[IDX_AI_STUFF]) then
 	 cur_char_t[IDX_AI_STUFF] = {}
 	 cur_char_t[IDX_AI_STUFF].timer = 0
@@ -585,7 +591,11 @@ function do_tactical_fight(eve)
 		  "\ntargeted pos:\n", targeted_pos
 	    )
 	    print("SWITCH MOVE MODE")
-	    switch_to_move_mode(char_to_canvas_pos(targeted_pos), dist_ap_cost)
+	    if distance > reach_distance then
+	       switch_to_move_mode(char_to_canvas_pos(targeted_pos), dist_ap_cost)
+	    else
+	       print("CAN ATTACK: ", target[TC_IDX_NAME])
+	    end
 	 end
       end
 
