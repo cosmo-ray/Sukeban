@@ -429,8 +429,8 @@ function do_tactical_fight(eve)
 	 local target_distance = 0
 
 	 if block == false then
-	    local intersect_array = ywCanvasNewIntersectArray(main_canvas,
-							      char_pos, mouse_real_pos)
+	    local intersect_array = ylaCanvasIntersectArray(main_canvas,
+							    char_pos, mouse_real_pos)
 	    for i = 0, yeLen(intersect_array) - 1 do
 	       local col_o = yeGet(intersect_array, i)
 
@@ -465,7 +465,6 @@ function do_tactical_fight(eve)
 	       block = true
 	       :: loop_next ::
 	    end
-	    yeDestroy(intersect_array)
 
 	    if nearest_target then
 	       local p = generic_handlerPos(nearest_target[1])
@@ -549,7 +548,7 @@ function do_tactical_fight(eve)
 	 local cc = cpos
 	 local oc = tchar_ch_pos(goods[i])
 	 local dist = ywPosDistance(cc, oc)
-	 local intersect_array = ywCanvasNewIntersectArray(main_canvas, cc, oc)
+	 local intersect_array = ylaCanvasIntersectArray(main_canvas, cc, oc)
 	 local block = false
 
 	 for j = 0, yeLen(intersect_array) - 1 do
@@ -566,7 +565,6 @@ function do_tactical_fight(eve)
 	    break
 	    :: _continue_ ::
 	 end -- for inersect
-	 yeDestroy(intersect_array)
 
 	 if block == false and dist < target_dist then
 	    target = goods[i]
