@@ -237,6 +237,15 @@ function do_tactical_fight(eve)
    local reach_distance = 80
    local attack_strengh = 5
    local attack_cost = 1
+   local all_char = nil
+   local cur_char_t = nil
+   local ap = nil
+
+   if TACTICAL_FIGHT_MODE ~= MODE_TACTICAL_FIGHT_INIT then
+      all_char = tdata.all
+      cur_char_t = cur_char[TC_IDX_TDTA]
+      ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
+   end
 
    if block_square then
       ywCanvasRemoveObj(main_canvas, block_square)
@@ -381,13 +390,12 @@ function do_tactical_fight(eve)
 						 "rgba: 127 127 127 120")
 
       begin_turn_init(tdata)
-   end -- init out
 
-   local all_char = tdata.all
-   local cur_char_t = cur_char[TC_IDX_TDTA]
-   local ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
+      all_char = tdata.all
+      cur_char_t = cur_char[TC_IDX_TDTA]
+      ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
 
-   if TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then 
+   elseif TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then 
       if yevIsKeyDown(eve, Y_ESC_KEY) then
 	 return end_fight()
       end
@@ -695,7 +703,7 @@ function do_tactical_fight(eve)
 	 TACTICAL_FIGHT_MODE = EX_MODE
 	 cur_char_t[IDX_TIMER] = nil
       end
-   end
+   end -- end MODE_CHAR_ATTACK
 
    -- print all stuf
    local cur_ch_pos = generic_handlerPos(cur_char[1])
