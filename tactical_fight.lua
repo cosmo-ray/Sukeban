@@ -648,6 +648,13 @@ function do_tactical_fight(eve)
       local x_mv = x_tot_dist * pix_mv / tot_dist
       local y_mv = y_tot_dist * pix_mv / tot_dist
 
+      if (math.abs(x_mv) > math.abs(x_tot_dist)) then
+	 x_mv = x_tot_dist
+      end
+
+      if (math.abs(y_mv) > math.abs(y_tot_dist)) then
+	 y_mv = y_tot_dist
+      end
       print(pix_mv, tot_dist)
       print(x_tot_dist, y_tot_dist, "\n",
 	    x_mv,
