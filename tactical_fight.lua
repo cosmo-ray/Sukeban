@@ -25,6 +25,8 @@ local IDX_CUR_ACTION_POINT = 1
 local IDX_PIX_MV = 2
 local IDX_NPC_DIR = 3
 
+local IDX_TMP_DATA = 8
+local IDX_TIMER = 9
 local IDX_AI_STUFF = 10
 
 local TC_IXD_CHAR = 0
@@ -98,6 +100,18 @@ end
 
 local function tchar_ch_pos(tchar)
    return canvas_to_char_pos(generic_handlerPos(tchar[TC_IDX_HDLR]))
+end
+
+local function tchar_can_pos(tchar)
+   return Entity.new_copy(generic_handlerPos(tchar[TC_IDX_HDLR]))
+end
+
+local function tchar_can_pos_x(tchar)
+   return ywPosX(generic_handlerPos(tchar[TC_IDX_HDLR]))
+end
+
+local function tchar_can_pos_y(tchar)
+   return ywPosY(generic_handlerPos(tchar[TC_IDX_HDLR]))
 end
 
 local function end_fight()
@@ -656,16 +670,31 @@ function do_tactical_fight(eve)
       end
 
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_ATTACK then
-      printMessage(main_widget, nil,
-		   yeGetString(atk_target[TC_IDX_NAME]) .. " take " ..
-		   attack_strengh .. " damages")
-      atk_target[TC_IXD_CHAR].life = atk_target[TC_IXD_CHAR].life - attack_strengh
-      if atk_target[TC_IXD_CHAR].life < 1 then
-	 print("He's DEAD !")
-	 remove_character(tdata, atk_target)
-	 atk_target = nil
+      if yIsNil(cur_char_t[IDX_TIMER]) then
+	 cur_char_t[IDX_TIMER] = 1
+	 printMessage(main_widget, nil,
+		      yeGetString(atk_target[TC_IDX_NAME]) .. " take " ..
+		      attack_strengh .. " damages")
+
+	 atk_target[TC_IXD_CHAR].life = atk_target[TC_IXD_CHAR].life -
+	    attack_strengh
+
+	 cur_char_t[IDX_TMP_DATA] = ywCanvasNewImgByPath(main_widget.upCanvas,
+							 tchar_can_pos_x(atk_target),
+							 tchar_can_pos_y(atk_target),
+							 "imgs/explosion.png")
+      elseif cur_char_t[IDX_TIMER] < 10 then
+	 cur_char_t[IDX_TIMER] = cur_char_t[IDX_TIMER] + ywidTurnTimer() / 10000
+      else
+	 if atk_target[TC_IXD_CHAR].life < 1 then
+	    print("He's DEAD !")
+	    remove_character(tdata, atk_target)
+	    atk_target = nil
+	 end
+	 ywCanvasRemoveObj(main_widget.upCanvas, cur_char_t[IDX_TMP_DATA])
+	 TACTICAL_FIGHT_MODE = EX_MODE
+	 cur_char_t[IDX_TIMER] = nil
       end
-      TACTICAL_FIGHT_MODE = EX_MODE
    end
 
    -- print all stuf
