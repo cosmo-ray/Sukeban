@@ -263,7 +263,7 @@ function do_tactical_fight(eve)
 	    main_widget.npcs = {}
 	 elseif k == "move" then
 	    for j = 0, yeLen(a) - 1 do
-	       local name = yeCreateYirlFmtString(a[j][0])
+	       local name = ylaCreateYirlFmtString(a[j][0])
 	       print("move: ", a[j], yeGetString(name),
 		     yeGetString(name) == yeGetString(phq.pj.name))
 	       if yeGetString(name) == yeGetString(phq.pj.name) then
@@ -280,7 +280,6 @@ function do_tactical_fight(eve)
 		     end
 		  end
 	       end
-	       yeDestroy(name)
 	    end
 	 elseif k == "add-enemies" then
 	    for j = 0, yeLen(a) - 1 do
@@ -430,7 +429,8 @@ function do_tactical_fight(eve)
 
 	 if block == false then
 	    local intersect_array = ylaCanvasIntersectArray(main_canvas,
-							    char_pos, mouse_real_pos)
+							    char_pos,
+							    mouse_real_pos)
 	    for i = 0, yeLen(intersect_array) - 1 do
 	       local col_o = yeGet(intersect_array, i)
 
