@@ -73,9 +73,9 @@ local function end_tun(tdata)
    print("END TURN !!!!")
    current_character = current_character + 1
    current_character = current_character % yeLen(tdata.all)
+   repush_idx(tdata.all)
    begin_turn_init(tdata)
    ywCanvasStringSet(tdata.movement_info, Entity.new_string(""))
-   repush_idx(tdata.all)
 end
 
 local function center_char(tdata)
