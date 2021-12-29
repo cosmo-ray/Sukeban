@@ -21,6 +21,7 @@ window_width = 800
 window_height = 600
 
 phq_only_fight = 0
+phq_turn_cnt = 0
 
 -- set as global so can be use by ai
 pix_mv = 0
@@ -745,6 +746,7 @@ function phq_action(entity, eve)
       return NOTHANDLE
    end
 
+   phq_turn_cnt = phq_turn_cnt + 1
    local turn_timer = ywidTurnTimer() / 10000
    entity = Entity.wrapp(entity)
    local st_hooks = entity.st_hooks
@@ -1468,6 +1470,7 @@ function create_phq(entity, eve, menu)
    local pj_pos = nil
 
 
+   phq_turn_cnt = 0
    yeIncrRef(sav_data)
    yeClearArray(entity)
    yePushBack(entity, sav_data, "saved_data")
