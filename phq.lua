@@ -452,18 +452,15 @@ function load_game(save_dir)
    local game = ygGet("phq:menus.game")
    game = Entity.wrapp(game)
    game.saved_dir = save_dir
-   game.saved_data = ygFileToEnt(YJSON, save_dir.."/misc.json")
-   yeDestroy(game.saved_data)
-   local pj = ygFileToEnt(YJSON, save_dir.."/pj.json")
+   game.saved_data = ylaFileToEnt(YJSON, save_dir.."/misc.json")
+   local pj = ylaFileToEnt(YJSON, save_dir.."/pj.json")
    phq.pj = pj
-   yeDestroy(pj)
-   local env = ygFileToEnt(YJSON, save_dir.."/env.json")
+   local env = ylaFileToEnt(YJSON, save_dir.."/env.json")
    game.saved_data.pj_pos = ygFileToEnt(YJSON, save_dir.."/pj-pos.json")
    saved_scenes = Entity._wrapp_(ygFileToEnt(YJSON,
 					       save_dir.."/saved-scenes.json"),
 				   true)
    phq.env = env
-   yeDestroy(env)
    phq.hightscores = File.jsonToEnt(save_dir.."/Arcade_score.json")
    local actioned = File.jsonToEnt(save_dir.."/actioned.json")
    if yeType(actioned) == YARRAY then
@@ -535,9 +532,8 @@ end
 function saveCurDialogue(main)
    saved_scenes[main.cur_scene_str:to_string()] = {}
    saved_scenes[main.cur_scene_str:to_string()].o = main.mainScreen.objects
-   local p = yePatchCreate(o_dialogues, dialogues)
+   local p = ylaPatchCreate(o_dialogues, dialogues)
    saved_scenes[main.cur_scene_str:to_string()].d = Entity.wrapp(p)
-   yeDestroy(p)
 end
 
 function saveGame(main, saveDir)
@@ -602,11 +598,6 @@ function CheckColisionTryChangeScene(main, cur_scene, direction)
       return true
    end
    return false
-end
-
-local function CheckColisionExit(col, ret, obj)
-   yeDestroy(col)
-   return ret, obj
 end
 
 local this_door_is_lock_msg = 0
@@ -693,7 +684,7 @@ function CheckColision(main, canvasWid, pj)
       end
    end
 
-   local col = ywCanvasNewCollisionsArrayWithRectangle(canvasWid, colRect)
+   local col = ylaCanvasCollisionsArrayWithRectangle(canvasWid, colRect)
 
    col = Entity.wrapp(col)
    i = 0
@@ -706,7 +697,7 @@ function CheckColision(main, canvasWid, pj)
 
 	 if agresivity > 0 then
 	    if agresivity == AGRESIVE_ATTACKER then
-	       return CheckColisionExit(col, FIGHT_COLISION, obj)
+	       return FIGHT_COLISION, obj
 	    elseif agresivity == AGRESIVE_TALKER then
 	       local dialogue = obj.dialogue
 
@@ -717,11 +708,11 @@ function CheckColision(main, canvasWid, pj)
 	       return YEVE_ACTION
 	    end
 	 end
-	 return CheckColisionExit(col, NORMAL_COLISION)
+	 return NORMAL_COLISION, nil
       end
       i = i + 1
    end
-   return CheckColisionExit(col, NO_COLISION)
+   return NO_COLISION, nil
 end
 
 function pushMainMenu(main)
@@ -1050,8 +1041,8 @@ function phq_action(entity, eve)
 	 i = i + 1
       end
 
-      local col = ywCanvasNewCollisionsArrayWithRectangle(entity.mainScreen,
-							  r:cent())
+      local col = ylaCanvasCollisionsArrayWithRectangle(entity.mainScreen,
+							r:cent())
       col = Entity.wrapp(col)
       --print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
       i = 0
@@ -1060,7 +1051,6 @@ function phq_action(entity, eve)
 	 if yeGetInt(c.is_npc) > 0 then
 	    local dialogue = col[i].dialogue
 	    if startDialogue(entity, c, dialogue) == YEVE_ACTION then
-	       yeDestroy(col)
 	       return YEVE_ACTION
 	    elseif c.small_talk then
 	       smallTalk(entity, c)
@@ -1068,7 +1058,6 @@ function phq_action(entity, eve)
 	 end
 	 i = i + 1
       end
-      yeDestroy(col)
    end
 
    if is_upkey_up or is_downkey_up then
@@ -1465,11 +1454,10 @@ function add_stat_hook(entity, stat, hook, val, comp_type)
 end
 
 function fight_mode_wid()
-   local vnGameWid = ygFileToEnt(YJSON, "./fight_mode.json")
+   local vnGameWid = ylaFileToEnt(YJSON, "./fight_mode.json")
    local vnWid = Entity.new_array()
 
    vnScene(main_widget, nil, vnGameWid, vnWid)
-   yeDestroy(vnGameWid) -- ygFileToEnt still need manual destroy
    vnWid.next = main_widget.next
 end
 
