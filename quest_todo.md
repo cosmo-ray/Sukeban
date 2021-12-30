@@ -8,6 +8,12 @@
 
 ## Character Specefic:
 
+### Lemie
+#### touch the twins
+- 2 twin must be randmly generated, 1 must be love by everyone and the other a "looser", Lemie in one of her psycopath sceme, try to have the hated one murder his brother, and then push him to suicide.
+the player could play the role of been a fake love pretender to the losser then date the loved one. maybe see some interation between the twins too, of course per will be able to prevent Lemie plan, and help her.
+
+
 ### Ashley: 
 Work Replacement quest:
 Under certains conditions (yet to decide), she will ask you to replace her at work so she can go see her boyfriend. (she will pay you, a small part of her shift, and this will end you day)
