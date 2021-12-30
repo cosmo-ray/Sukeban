@@ -698,6 +698,7 @@ function do_tactical_fight(eve)
 							 tchar_can_pos_x(atk_target),
 							 tchar_can_pos_y(atk_target),
 							 "imgs/explosion.png")
+	 ywCanvasPercentReduce(cur_char_t[IDX_TMP_DATA], 70)
       elseif cur_char_t[IDX_TIMER] < 10 then
 	 cur_char_t[IDX_TIMER] = cur_char_t[IDX_TIMER] + ywidTurnTimer() / 10000
       else
