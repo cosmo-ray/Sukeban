@@ -140,7 +140,7 @@ We love you anyway",
     },
     "title": {
 	"<type>": "text-screen",
-	"text": "SUKEBAN !",
+	"txt-file": "./title.txt",
 	"margin": {
 	    "color": "rgba: 220 10 100 55",
 	    "size": 3
