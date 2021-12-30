@@ -197,8 +197,10 @@ We love you anyway",
 	"text-align": "center",
 	"action" : "nextOnKeyDown",
 	"background" : "rgba: 255 255 255 255",
-	"text" : ["I lose, under enemy attack, bleeding everywhere",
-		  "Buy my tear will stop, I'm a Girl After all !"],
+	"text" : ["I lose,",
+		  "punch after punch",
+		  "hurting like an thousand balls would have been trow at my face",
+		  "Sometime I cry, I'm a Girl After all !"],
 	"next" : "phq:menus.main"
     },
     "game" : {
