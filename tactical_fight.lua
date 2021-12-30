@@ -225,6 +225,17 @@ local function switch_to_attack_mode(target, ap_cost)
    atk_target = target
 end
 
+function have_loose(team)
+   for i = 0, yeLen(team) - 1 do
+      print(team[i][TC_IDX_NAME], " have ",
+	    team[i][TC_IXD_CHAR].life, " life !")
+      if team[i][TC_IXD_CHAR].life > 0 then
+	 return false
+      end
+   end
+   return true
+end
+
 function do_tactical_fight(eve)
    local tdata = main_widget.tactical
    local wid_rect = main_widget["wid-pix"]
@@ -240,11 +251,13 @@ function do_tactical_fight(eve)
    local all_char = nil
    local cur_char_t = nil
    local ap = nil
+   local goods = nil
 
    if TACTICAL_FIGHT_MODE ~= MODE_TACTICAL_FIGHT_INIT then
       all_char = tdata.all
       cur_char_t = cur_char[TC_IDX_TDTA]
       ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
+      goods = tdata.goods
    end
 
    if block_square then
@@ -394,6 +407,7 @@ function do_tactical_fight(eve)
       all_char = tdata.all
       cur_char_t = cur_char[TC_IDX_TDTA]
       ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
+      goods = tdata.goods
 
    elseif TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then 
       if yevIsKeyDown(eve, Y_ESC_KEY) then
@@ -558,7 +572,6 @@ function do_tactical_fight(eve)
       end
       local ai_stuff = cur_char_t[IDX_AI_STUFF]
       local target = nil
-      local goods = tdata.goods
       local cur_can = cur_char[TC_IDX_HDLR].canvas
       local target_dist = 4000
       local target_pos = nil
@@ -760,7 +773,17 @@ function do_tactical_fight(eve)
    end
    ap_str = ap_str .. "]"
    ywCanvasStringSet(tdata.ap_info, Entity.new_string(ap_str))
-
    reposeCam(main_widget, cur_char[1])
+
+   -- check victory / ending
+   if have_loose(tdata.bads) then
+      print("goods win !!!!")
+      end_fight()
+   elseif have_loose(goods) then
+      print("LOOSER !!!!!!")
+      end_fight()
+      yNextLose(main_widget)
+   end
+
    return YEVE_ACTION
 end
