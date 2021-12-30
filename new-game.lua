@@ -144,6 +144,9 @@ function create_new_game(entity)
    mn["<type>"] = "menu"
    mn.next = "phq:menus.game"
    mn.next_target = "main"
+   mn.margin = {}
+   mn.margin.size = 5
+   mn.margin.color = "rgba: 220 10 100 55"
    phq_only_fight = yeGetInt(entity["only-fight"])
    mn.moveOn = Entity.new_func("newGameMoveOn")
    mn["text-color"] = "rgba: 235 235 235 255"
