@@ -129,12 +129,35 @@ We love you anyway",
 	"next" : "phq:menus.main"
     },
     "main" : {
+	"<type>": "container",
+	"entries" : [
+	    {"path" : "phq:menus.title", "size" : 20},
+	    {"path" : "phq:menus.main_menu"}
+	],
+	"current": 1,
+	"next" : "phq:menus.game",
+	"background" : "rgba: 255 255 255 255"
+    },
+    "title": {
+	"<type>": "text-screen",
+	"text": "SUKEBAN !",
+	"margin": {
+	    "color": "rgba: 220 10 100 55",
+	    "size": 3
+	},
+	"text-align": "center"
+    },
+    "main_menu" : {
         "<type>" : "menu",
+	"margin": {
+	    "color": "rgba: 120 240 100 55",
+	    "size": 3
+	},
 	"entries" : [
 	    {
 		"text" : "New Game",
 		"next" : "phq:menus.start_txt",
-		"action" : "menuNext"
+		"action" : "menuMainWidNext"
 	    },
 	    {
 		"text" : "Continue",
@@ -147,7 +170,7 @@ We love you anyway",
 	    {
 		"text" : "Eternal Fight Mode",
 		"next" : "phq:menus.new-game-ef",
-		"action" : "menuNext"
+		"action" : "menuMainWidNext"
 	    },
 	    {
 		"text" : "Eternal Fight Load",
@@ -156,12 +179,12 @@ We love you anyway",
             {
                 "text" : "How to play",
                 "next" : "phq:menus.bagare",
-		"action" : "menuNext"
+		"action" : "menuMainWidNext"
 	    },
             {
                 "text" : "game Info",
                 "next" : "phq:menus.game Info",
-		"action" : "menuNext"
+		"action" : "menuMainWidNext"
 	    },
 	    {
 		"text" : "Full Screen",
@@ -170,7 +193,7 @@ We love you anyway",
 	    {
 		"text" : "credit",
 		"next" : "phq:menus.credit",
-		"action" : "menuNext"
+		"action" : "menuMainWidNext"
 	    },
 	    {
 		"text" : "Quit",
