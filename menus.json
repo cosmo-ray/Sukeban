@@ -141,6 +141,8 @@ We love you anyway",
     "title": {
 	"<type>": "text-screen",
 	"txt-file": "./title.txt",
+	"background" : "rgba: 0 0 0 155",
+	"text-color": "rgba: 255 255 255 255",
 	"margin": {
 	    "color": "rgba: 220 10 100 55",
 	    "size": 3
