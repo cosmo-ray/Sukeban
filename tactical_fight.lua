@@ -456,7 +456,7 @@ function do_tactical_fight(eve)
 	    for i = 0, yeLen(intersect_array) - 1 do
 	       local col_o = yeGet(intersect_array, i)
 
-	       if yeGetIntAt(col_o, 9) < 1 or
+	       if yeType(yeGet(col_o, 9)) ~= YINT or
 		  cur_char_canva == Entity.wrapp(col_o) then
 		  goto loop_next
 	       end
@@ -558,10 +558,8 @@ function do_tactical_fight(eve)
       end
       local ai_stuff = cur_char_t[IDX_AI_STUFF]
       local target = nil
-      print("ai cur_char_t:", cur_char_t)
       local goods = tdata.goods
-      local cur_ch = cur_char[TC_IXD_CHAR]
-      local o_ch = goods[TC_IXD_CHAR]
+      local cur_can = cur_char[TC_IDX_HDLR].canvas
       local target_dist = 4000
       local target_pos = nil
       local cpos = tchar_ch_pos(cur_char)
@@ -570,49 +568,62 @@ function do_tactical_fight(eve)
 	 local cc = cpos
 	 local oc = tchar_ch_pos(goods[i])
 	 local dist = ywPosDistance(cc, oc)
+	 local o_can = goods[i][TC_IDX_HDLR].canvas
 	 local intersect_array = ylaCanvasIntersectArray(main_canvas, cc, oc)
 	 local block = false
 
 	 for j = 0, yeLen(intersect_array) - 1 do
-	    local col_o = Entity.wrapp(yeGet(intersect_array, i))
+	    local col_o = Entity.wrapp(yeGet(intersect_array, j))
 
-	    if yeGetIntAt(col_o, 9) < 1 or
-	       cur_ch == col_o or
-	       o_ch == col_o
+	    if yeType(yeGet(col_o, 9)) ~= YINT or
+	       cur_can == col_o or
+	       o_can == col_o
 	    then
 	       goto _continue_
 	    end
 
+	    print("BLOCK by: !", cur_can, col_o)
 	    block = true
 	    break
 	    :: _continue_ ::
 	 end -- for inersect
 
 	 if block == false and dist < target_dist then
-	    target = goods[i]
-	    target_dist = dist
 	    local tpos = oc
 	    local distance = dist
-	    print("dist, distance: ", dist, distance, target_dist)
 	    local xdist = ywPosXDistance(cpos, tpos)
 	    local ydist = ywPosYDistance(cpos, tpos)
 	    targeted_pos = Entity.new_copy(tpos)
 	    ywPosAddXY(targeted_pos,
 		       -(reach_distance * xdist / distance),
 		       -(reach_distance * ydist / distance))
-	    print("TARGET:\n",
-		  tpos,
-		  cpos,
-		  tchar_ch_pos(target),
-		  tchar_ch_pos(cur_char),
-		  "\ndistances:\n", distance, xdist, ydist,
-		  "\nreach distances in:\n",
-		  reach_distance,
-		  "\nreach distances out:\n",
-		  (reach_distance * xdist / distance),
-		  (reach_distance * ydist / distance),
-		  "\ntargeted pos:\n", targeted_pos
-	    )
+	    if target_dist > reach_distance then
+	       local r = Rect.new(ywPosX(targeted_pos) - 20,
+				  ywPosY(targeted_pos) - 20, 40, 40)
+	       col_array = ylaCanvasCollisionsArrayWithRectangle(main_canvas,
+								 r:cent())
+	       for j = 0, yeLen(col_array) - 1 do
+		  local col_o = Entity.wrapp(yeGet(col_array, j))
+
+		  if yeType(yeGet(col_o, 9)) ~= YINT or
+		     cur_can == col_o or
+		     o_can == col_o
+		  then
+		     goto _continue_
+		  end
+
+		  print("BLOCK !!!!")
+		  block = true
+		  targeted_pos = nil
+		  break
+		  :: _continue_ ::
+	       end -- for colision array
+
+	       if block == false then
+		  target = goods[i]
+		  target_dist = dist
+	       end
+	    end
 	 end -- if target
 
       end -- for goods
@@ -636,6 +647,7 @@ function do_tactical_fight(eve)
 	 bad_guy_end_turn(cur_char_t, tdata)
       end
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_MOVE then
+
       local char_pos = generic_handlerPos(cur_char[1])
       local PIX_MV_PER_MS = 5
       local turn_timer = ywidTurnTimer() / 10000
@@ -655,6 +667,8 @@ function do_tactical_fight(eve)
       if (math.abs(y_mv) > math.abs(y_tot_dist)) then
 	 y_mv = y_tot_dist
       end
+
+      print("move: ", Entity.wrapp(char_pos))
       print(pix_mv, tot_dist)
       print(x_tot_dist, y_tot_dist, "\n",
 	    x_mv,
