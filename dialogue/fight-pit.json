@@ -36,6 +36,10 @@
 		    {
 			"text": "A Basic Thrug will regret comming here",
 			"action": [ "phq.StartFight", "Thrug"]
+		    },
+		    {
+			"text": "You know, one partner is not enough for me, show me what you've got",
+			"action": [ "phq.StartFight", ["std_nerd", "std_nerd", "std_nerd", "Thrug"]]
 		    }
 		]
 
