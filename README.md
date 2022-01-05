@@ -3,6 +3,8 @@ Small RPG filled with pints and tavern brawls
 # Download
 Sometime I make a new release on itch: https://uso.itch.io/sukeban
 
+Otherwise I have a Devlopement build here: https://github.com/cosmo-ray/Sukeban/releases/tag/latest (but it can be unstable)
+
 Otherwise for glorious Arch user, ``` yay -Sy sukeban-git ``` should work.
 
 # Goal
