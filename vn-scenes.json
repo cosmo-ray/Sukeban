@@ -21,6 +21,7 @@ And you gazing at those floating monster wondering what was inside them",
 		[ "setInt", "phq.events.harbour_walking", 1 ],
 		"Dialogue:gotoNext"
 	    ],
+	    "text_background": "rgba: 255 255 255 120",
 	    "speaker_background": "imgs/hamburg.jpg"
 	},
 	"advancing on your way walking along dark alley, and street
