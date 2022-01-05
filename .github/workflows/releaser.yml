@@ -47,6 +47,9 @@ jobs:
           mv tmp/* .
           rm -rvf tmp
           mv yirl-loader.exe Sukeban.exe
+          # it seems sazanami is out on windows, so no japanese for its users.
+          rm sazanami-mincho.ttf
+          cp DejaVuSansMono.ttf sazanami-mincho.ttf
           rm yirl.zip
           cd ..
           tar cfz  sukeban_I_use_Arch_BTW.tar.gz ./sukeban_I_use_Arch_BTW/
