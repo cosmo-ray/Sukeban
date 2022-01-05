@@ -581,6 +581,8 @@ function pushStatus(mn)
 
    menu.ent.size = 30
    menu.ent.onEsc = Entity.new_func("gmGetBackFocus")
+   menu.ent.margin = {}
+   menu.ent.margin.size = 8
    stat_menu.ent.entries[0] = menu.ent
    ywCntConstructChilds(gm_cnt)
    pushSTatusTextScreen(stat_menu.ent)
@@ -664,6 +666,10 @@ function invList(mn)
    doItemsListening(mn)
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent.onEsc = Entity.new_func("gmGetBackFocus")
+   mn.ent["text-align"] = "center"
+   mn.ent.margin = {}
+   mn.ent.margin.size = 8
+
    ywPushNewWidget(main, mn.ent)
    return YEVE_ACTION
 end
