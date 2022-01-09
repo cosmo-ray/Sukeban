@@ -490,12 +490,12 @@ local function gen_school()
        "Kim", "Agustina", "Codel", "Lisette", "Athena", "Georette", "Isis",
        "Charlotte", "Carole", "Caroline", "Linette", "Caterine", "Olivia",
        "Yuki", "Anako", "Geromine", "Gwenegann", "Katyusha", "Olya",
-       "Pascaline", "Olga", "Veronic", "Cassandre", "Rose"},
+       "Pascaline", "Olga", "Veronic", "Cassandre", "Rose", "Emilie"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed", "Jean",
        "Mohamed", "Michelle", "Arthur", "Romain", "Benjamin", "Akira", "Mars",
-       "Bill", "Charle", "Romain", "Thomas", "Mehdi", "Olivie", "Gerome",
+       "Bill", "Charle", "Romain", "Thomas", "Mehdi", "Olivie", "Gerome", "Caradoc",
        "Jean Pierre", "Jean Charle", "Pascale", "Rogger", "Dany", "Raz", "Cassandre"}
    }
 
@@ -510,7 +510,8 @@ local function gen_school()
       "Kanzaki", "Le Francais", "Coucou", "Mars", "Szabo", "Bookseller",
       "Manualreader", "Mac Ross", "Squirel", "Backdoor", "Adlez", "Harissa",
       "Anako", "Geromine", "Gwenegann", "Noir", "Katyusha", "Poireau",
-      "Articho", "Ananas", "Anko", "Polenarefu", "Hopson", "Who", "Rose"
+      "Articho", "Ananas", "Anko", "Polenarefu", "Hopson", "Who", "Rose",
+      "De Paname", "De la Tour"
    }
 
    local types = {
