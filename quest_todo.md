@@ -29,6 +29,9 @@ After an undecided number of time, some peoples will look for her, and it might 
 (angry ex/current boyfriend/girlfriend ?) (stalker ?) (peoples to who she own money ?)
 
 
+## Under Town
+Add under town, it's a mix of sewer with rats and shit, Catacombs with cults, scientifics bases. and old temples.
+
 ## other
 
 add a character, that is a super stalker, and can stalk for you.
