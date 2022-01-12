@@ -5,6 +5,8 @@
 
 ## Random Character Quest:
 (0 for now too)
+give love letter to pretender when a NPC is in love.
+give back pencil/cisor... when talk to a random, with some chance per can ask you to give back an item a random student give pers (give affection and few(1?) xp as reward).
 
 ## Character Specefic:
 
