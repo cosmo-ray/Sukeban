@@ -37,3 +37,6 @@
 [submodule "modules/le-temps-des-escargots"]
 	path = modules/le-temps-des-escargots
 	url = http://github.com/cosmo-ray/mggj-3
+[submodule "modules/underground"]
+	path = modules/underground
+	url = https://github.com/cosmo-ray/y_simple_3d_labyrinthe

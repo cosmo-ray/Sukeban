@@ -32,6 +32,7 @@
 	{ "file" : "modules/polis-at-war/", "type" : "module" },
 	{ "file" : "modules/le-temps-des-escargots/", "type" : "module" },
 	{ "file" : "modules/clash-of-iron-and-bronze/", "type" : "module" },
+        { "file" : "modules/underground/", "type" : "module" },
         { "file" : "pathfinding/", "type" : "module"},
 
 	{ "file" : "Arcade_score.json", "type" : "json", "as" : "hightscores"},

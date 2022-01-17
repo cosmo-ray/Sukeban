@@ -479,6 +479,31 @@ function join_team(wid, eves, who)
    end
 end
 
+function go_under(wid, eve, entry)
+   local wid = Entity.new_array()
+
+   wid["<type>"] = "raycasting"
+   wid.background = "rgba: 140 150 155 255";
+   local map = Entity.from_lua_arrray({
+	 "#########",
+	 "#......##",
+	 "#..#...##",
+	 "#..#...##",
+	 "#.#.....#",
+	 "#.#....##",
+	 "#.#.....#",
+	 "#.#....##",
+	 "#.#.....#",
+	 "###.##..#",
+	 "#....##.#",
+	 "####.#..#",
+	 "#########"
+   }, wid, "map")
+   wid.quit = Entity.new_func("backToGame")
+   ywPushNewWidget(main_widget, wid)
+   return YEVE_ACTION
+end
+
 function pay(wid, eve, cost, okAction, noDialogue)
    cost = yeGetInt(cost)
    if phq.pj.inventory.money >= cost then
