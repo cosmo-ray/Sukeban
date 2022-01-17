@@ -130,17 +130,17 @@
                         {
                          "name":"Condition",
                          "type":"string",
-                         "value":">"
+                         "value":"S="
                         }, 
                         {
                          "name":"ConditionArg0",
                          "type":"string",
-                         "value":"phq.events.computer_club_mb"
+                         "value":"phq.pj.organisations.computer_club"
                         }, 
                         {
                          "name":"ConditionArg1",
-                         "type":"int",
-                         "value":0
+                         "type":"string",
+                         "value":"Computer club"
                         }],
                  "rotation":0,
                  "type":"",
@@ -221,7 +221,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.6.0",
+ "tiledversion":"1.7.2",
  "tileheight":32,
  "tilesets":[
         {
