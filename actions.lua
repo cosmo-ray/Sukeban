@@ -479,7 +479,7 @@ function join_team(wid, eves, who)
    end
 end
 
-function go_under(wid, eve, entry)
+function go_under(unused_wid, unused_eve, entry)
    local wid = Entity.new_array()
 
    wid["<type>"] = "raycasting"
@@ -490,9 +490,9 @@ function go_under(wid, eve, entry)
 	 "#..#...##",
 	 "#..#...##",
 	 "#.#.....#",
-	 "#.#....##",
-	 "#.#.....#",
-	 "#.#....##",
+	 "#.#..#.##",
+	 "#.#..#..#",
+	 "#.#..#.##",
 	 "#.#.....#",
 	 "###.##..#",
 	 "#....##.#",
@@ -500,6 +500,11 @@ function go_under(wid, eve, entry)
 	 "#########"
    }, wid, "map")
    wid.quit = Entity.new_func("backToGame")
+   wid.exits = {}
+   wid.exits[0] = {1300, 8500, "up", "st_1"}
+   wid.exits[1] = {1300, 10500, "up", "st_1_b"}
+   wid.entry = entry
+   print(wid)
    ywPushNewWidget(main_widget, wid)
    return YEVE_ACTION
 end
