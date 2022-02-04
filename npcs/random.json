@@ -113,6 +113,17 @@
 	    "feet": "black_slippers"
 	}
     },
+    "Anita Kira": {
+	"sex": "female",
+        "type": "light",
+        "max_life": 10,
+	"hair": ["shortknot", "brown"],
+        "clothes": [
+            "feet/shoes/Female_sandals.png",
+            "torso/shirts/sleeveless/sleeveless_black.png",
+	    "torso/dress_female/commune_dress.png"
+        ]
+    },
     "Fighter-bartender": {
 	"sex": "male",
 	"type": "light",
