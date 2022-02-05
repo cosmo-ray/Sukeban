@@ -3,7 +3,24 @@
 	"dialogue": {
 	    "firendly in": {
 		"text": "Hej !",
-		"action": "phq.backToGame",
+		"answers": [
+		    {
+			"text": "Greeting and salutations",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": [
+			    "So learning about class struggle was super intresting",
+			    "can you tel me more ?"
+			],
+			"condition": ["not", "phq.events.wut_bourge_history"],
+			"actions": [
+			    ["setInt", "phq.events.wut_bourge_history", 1],
+			    ["phq.increase", "knowledge", "class_struggle", 1],
+			    ["Dialogue.goto", "Bill Ore"]
+			]
+		    }
+		],
 		"condition": "phq.events.wut_history"
 	    },
 	    "in": {
@@ -33,10 +50,25 @@
 		]
 	    },
 	    "wut_history": {
-		"text": "(Alise tell you the concept of class struggle)",
+		"text": [
+		    "(Anita tell you the concept of class struggle",
+		    "It was very interesting, take quite some time though,",
+		    "so you return home and sleep on it...",
+		    "and just sleep too)"
+		],
 		"actions": [
 		    ["phq.increase", "knowledge", "class_struggle", 1],
-		    "phq.backToGame"
+		    "phq.sleep",
+		    ["phq.changeScene", "house1", 0]
+		]
+	    },
+	    "Bill Ore": {
+		"text": [
+		    "well, I have some anecdotal story about how much bourgeoisie",
+		    "Can be nasty in they way to protect themself...",
+		    "(Anita tell you the story of a very cynical guy call Bill Ore",
+		    "Who was a Bourgoie, and use Media to promote xenophobia in order",
+		    "to protect his own interest)"
 		]
 	    }
 	}
