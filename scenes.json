@@ -70,6 +70,7 @@
 	"tiled": "./tileset/Street4.json"
     },
     "wut" : {
+	"dialogues" : "dialogue/Anita.json",
 	"tiled": "./tileset/WUT.json"
     },
     "police" : {

@@ -1,7 +1,44 @@
 {
     "Anita Kira" : {
 	"dialogue": {
-	    "in": "Aren't you too youg to be here ?"
+	    "firendly in": {
+		"text": "Hej !",
+		"action": "phq.backToGame",
+		"condition": "phq.events.wut_history"
+	    },
+	    "in": {
+		"text": ["Aren't you too youg to be here ?",
+			 "I mean syndicat are not really for hight school student"],
+		"answers": [
+		    {
+			"text": "Yes, wong door sorry",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": [
+			    "Yes, but peoples always say that this place is",
+                            "for envious lazy shit",
+                            "that only want to go on strike, and they should work instead",
+                            "of ruining our society and good gent's life",
+                            "Sadly my misanthropy make me dubious about they tale",
+                            "So I'd like to know more who are you",
+                            "why does evey one hate you?"
+			],
+			"condition": ["not", "phq.events.wut_history"],
+			"actions": [
+			    ["setInt", "phq.events.wut_history", 1],
+			    "Dialogue:gotoNext"
+			]
+		    }
+		]
+	    },
+	    "wut_history": {
+		"text": "(Alise tell you the concept of class struggle)",
+		"actions": [
+		    ["phq.increase", "knowledge", "class_struggle", 1],
+		    "phq.backToGame"
+		]
+	    }
 	}
     }
 }
