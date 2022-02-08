@@ -17,6 +17,11 @@
 			"actions": [
 			    ["setInt", "phq.events.wut_bourge_history", 1],
 			    ["phq.increase", "knowledge", "class_struggle", 1],
+			    ["phq.push_dream",
+			     {
+				 "action": [ "phq.play", "z-shooter" ]
+			     }
+			    ],
 			    ["Dialogue.goto", "Bill Ore"]
 			]
 		    }

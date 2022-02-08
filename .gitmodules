@@ -40,3 +40,6 @@
 [submodule "modules/underground"]
 	path = modules/underground
 	url = https://github.com/cosmo-ray/y_simple_3d_labyrinthe
+[submodule "modules/z-skull-breaker"]
+	path = modules/z-skull-breaker
+	url = https://github.com/cosmo-ray/z-skull-breaker.git

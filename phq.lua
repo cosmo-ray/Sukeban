@@ -457,6 +457,7 @@ function init_phq(mod)
    mod.chk_affection = Entity.new_func(chk_affection)
    mod.advance_time = Entity.new_func(advance_time)
    mod.tacticalFight = Entity.new_func(tacticalFight)
+   mod.push_dream = Entity.new_func(push_dream)
    mod.misc_fnc = {}
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
    mod.misc_fnc.save_fight_mode = Entity.new_func("save_fight_mode")

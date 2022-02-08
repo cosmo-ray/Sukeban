@@ -1080,7 +1080,14 @@ function play(wid, eve, game, timer, end_f_str)
    print("play !!!!", eve, game, yeGetInt(timer),
 	 " - ", yeLen(main.entries))
 
-   ywCntPopLastEntry(main)
+   -- kind of weird, but as I don't use backToGame here, when
+   -- call from dialog (as generally use) current is 2, and play widget replace it
+   -- if call from sleep (or nor dialogue), we need to force current
+   if main.current < 2 then
+      main.current = 2
+   else
+      ywCntPopLastEntry(main)
+   end
    local t = Entity.new_array()
 
    t["<type>"] = game
@@ -1122,6 +1129,15 @@ function playVapp(wid)
    return YEVE_ACTION
 end
 
+function push_dream(unused_wid, unused_eves, dream)
+   print("push_dream !", Entity.wrapp(dream))
+   if yIsNil(phq.env.dreams) then
+      phq.env.dreams = {}
+   end
+   yePushBack(phq.env.dreams, dream)
+   print("dreams are now:", phq.env.dreams)
+end
+
 function doSleep(ent, upCanvas)
    ywCanvasRemoveObj(upCanvas.ent, ent.sleep_r)
 
@@ -1144,6 +1160,7 @@ function doSleep(ent, upCanvas)
    if sleep_time == 100 then
       if yIsNNil(sl) then
 	 local slp = main_widget.sleep_loc_pos
+
 	 changeScene(main_widget, nil, sl, Entity.new_int(0))
 	 if yIsNNil(slp) then
 	    ylpcsHandlerSetPos(main_widget.pj, slp)
@@ -1156,6 +1173,18 @@ function doSleep(ent, upCanvas)
 	 yeIncrRef(pj_pos)
 	 load_scene(main_widget, main_widget.cur_scene_str:to_string(), -1, pj_pos)
 	 yeDestroy(pj_pos)
+      end
+   elseif sleep_time == 50 then
+      if yIsNNil(phq.env.dreams) then
+	 print("loop over dreams")
+	 local dreams = phq.env.dreams
+	 for i = 0, yeLen(dreams) - 1 do
+	    print("Action on:", dreams[i])
+	    if yIsNNil(dreams[i]) then
+	       ywidActions(main_widget, dreams[i],  nil)
+	       dreams[i] = nil
+	    end
+	 end
       end
    end
 
