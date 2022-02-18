@@ -1107,13 +1107,7 @@ function play(wid, eve, game, timer, end_f_str)
 end
 
 function playVapp(wid)
-   local wid = Entity.wrapp(wid)
-   local main = nil
-
-   if wid.isDialogue then
-      wid = Entity.wrapp(yDialogueGetMain(wid))
-   end
-   main = Entity.wrapp(ywCntWidgetFather(wid))
+   main = main_widget
 
    ywCntPopLastEntry(main)
    local vapp = Entity.new_array()
