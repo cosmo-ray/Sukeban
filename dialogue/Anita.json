@@ -19,7 +19,7 @@
 			    ["phq.increase", "knowledge", "class_struggle", 1],
 			    ["phq.push_dream",
 			     {
-				 "action": [ "phq.play", "z-shooter" ]
+				 "action": [ "phq.play", "z-shooter", 0, "dream_z_shooter_xp"]
 			     }
 			    ],
 			    ["Dialogue.goto", "Bill Ore"]

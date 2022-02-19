@@ -1073,11 +1073,18 @@ function ascii_end(wid)
    backToGame(wid)
 end
 
+function dream_z_shooter_xp(wid)
+   local wid = Entity.wrapp(wid)
+   local xp = yeGetInt(wid.score) / 10 + 1
+   backToGame2()
+   increaseStat(main_widget, phq.pj, "xp", xp)
+end
+
 function play(wid, eve, game, timer, end_f_str)
    local wid = Entity.wrapp(wid)
    local main = getMainWid(wid)
 
-   print("play !!!!", eve, game, yeGetInt(timer),
+   print("play !!!!", eve, game, yeGetInt(timer), end_f_str, yeGetString(end_f_str),
 	 " - ", yeLen(main.entries))
 
    -- kind of weird, but as I don't use backToGame here, when
@@ -1124,12 +1131,10 @@ function playVapp(wid)
 end
 
 function push_dream(unused_wid, unused_eves, dream)
-   print("push_dream !", Entity.wrapp(dream))
    if yIsNil(phq.env.dreams) then
       phq.env.dreams = {}
    end
    yePushBack(phq.env.dreams, dream)
-   print("dreams are now:", phq.env.dreams)
 end
 
 function doSleep(ent, upCanvas)
