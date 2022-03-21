@@ -1082,7 +1082,7 @@ end
 
 function play(wid, eve, game, timer, end_f_str)
    local wid = Entity.wrapp(wid)
-   local main = getMainWid(wid)
+   local main = main_widget
 
    print("play !!!!", eve, game, yeGetInt(timer), end_f_str, yeGetString(end_f_str),
 	 " - ", yeLen(main.entries))
