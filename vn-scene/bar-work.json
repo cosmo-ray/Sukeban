@@ -3,7 +3,15 @@
 	"in": {
 	    "text": "Work...",
 	    "answers": [
-		"(continue)"
+		{
+		    "text": "(continue)",
+		    "actions": [
+			"phq.backToGame",
+			"phq.sleep",
+			["phq.recive", "money", 10],
+			["phq.changeScene", "house1", 0]
+		    ]
+		}
 	    ]
 	}
     }
