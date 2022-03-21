@@ -1,0 +1,10 @@
+{
+    "bar-work": {
+	"in": {
+	    "text": "Work...",
+	    "answers": [
+		"(continue)"
+	    ]
+	}
+    }
+}

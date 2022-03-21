@@ -98,6 +98,15 @@
 			"action": ["Dialogue:goto", 1]
 		    },
 		    {
+			"text": [
+			    "come'on, it' chapter 1, dev can't be that lazy, tell me",
+			    "there is a decent job for me now"
+			],			
+			"condition": ["and", [">", "phq.env.chapter", 0],
+				      ["=", "phq.quests.no_rats", 2]],
+			"action": ["Dialogue:goto", 3]
+		    },
+		    {
 			"text": "Aye, I kill all y'ur rats",
 			"condition": ["=", "phq.quests.no_rats", 1],
 			"action": ["Dialogue:goto", 2]
@@ -150,6 +159,33 @@
 			"phq.backToGame"
 		    ]
 		}
+	    },
+	    {
+		"text": "Well, let me see",
+		"answers": [
+		    {
+			"text": "so ?",
+			"condition": ["<", "phq.pj.stats.charm", 4]
+		    },
+		    {
+			"text": "so ?",
+			"action": ["Dialogue:goto", 5],
+			"condition": [">", "phq.pj.stats.charm", 3]
+		    }
+		]
+	    },
+	    {
+		"text": [
+		    "in fact, yes, there is still a small problem left",
+		    "YOU STILL UGLY, and we require quality here"
+		],
+		"action": "phq.backToGame"
+	    },
+	    {
+		"text": [
+		    "well, why not, your hire"
+		],
+		"actions": ["phq.backToGame", ["phq:vnScene", "bar-work"]]
 	    }
 	]
     },

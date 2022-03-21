@@ -2,6 +2,10 @@ local vn_scenes = ygGet("phq.vn-scenes")
 
 function vnScene(wid, eve, scene, dialogueWid)
    wid = Entity.wrapp(wid)
+   if wid.isDialogue then
+      wid = main_widget
+   end
+
    if yeGetInt(wid.in_subcontained) == 1 then
       wid = Entity.wrapp(ywCntWidgetFather(wid))
    end
