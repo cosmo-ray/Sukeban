@@ -102,9 +102,16 @@
 			    "come'on, it' chapter 1, dev can't be that lazy, tell me",
 			    "there is a decent job for me now"
 			],			
-			"condition": ["and", [">", "phq.env.chapter", 0],
+			"condition": ["and",
+				      ["and", ["not", "phq.events.can_work"],
+					      [">", "phq.env.chapter", 0]],
 				      ["=", "phq.quests.no_rats", 2]],
 			"action": ["Dialogue:goto", 3]
+		    },
+		    {
+			"text": "(work)",
+			"actions": ["phq.backToGame", ["phq:vnScene", "bar-work"]],
+			"condition": "phq.events.can_work"
 		    },
 		    {
 			"text": "Aye, I kill all y'ur rats",
@@ -182,10 +189,8 @@
 		"action": "phq.backToGame"
 	    },
 	    {
-		"text": [
-		    "well, why not, your hire"
-		],
-		"actions": ["phq.backToGame", ["phq:vnScene", "bar-work"]]
+		"text": [ "well, why not, your hire" ],
+		"actions": ["phq.backToGame", ["setInt", "phq.events.can_work", 1]]
 	    }
 	]
     },
