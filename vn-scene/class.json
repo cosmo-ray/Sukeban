@@ -5,7 +5,7 @@
 	    "answer": {
 		"text": "class, class, class, class, wonderful class, beautiful class...",
 		"action": [
-		    "Dialogue.condition_switch", ["chkInfD100", 99],
+		    "Dialogue.condition_switch", ["chkInfD100", 11],
 		    "event", "nothing"
 		]
             }

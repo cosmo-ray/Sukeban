@@ -423,5 +423,15 @@ function calsses_event_dialog_gen(wid, cur_dialogue)
 
    local target_i = yuiRand() % whos_nb + 1
    local target = whos[target_i]
-   cur_dialogue["text"] = "an interaction happpend with " .. whos_names[target_i];
+
+   if yIsNil(target.relation) then
+      target.relation = {}
+   end
+
+   if yIsNil(target.relation.affection) then
+      target.relation.affection = 0
+   end
+   target.relation.affection = target.relation.affection + 1
+   cur_dialogue["text"] = "you chat with " .. whos_names[target_i] ..
+      "\n(current affection: " .. yeGetInt(target.relation.affection) .. ")";
 end
