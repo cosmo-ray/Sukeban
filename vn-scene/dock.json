@@ -32,7 +32,7 @@
 	    "text" : [
 		"Generic Racist Talk"
 	    ],
-	    "actions": [["Dialogue:goto", "in"]],
+	    "actions": [["Dialogue:goto", "in"]]
 	},
 	"zan boys 3": {
 	    "text": [
