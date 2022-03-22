@@ -8,7 +8,7 @@
 		    "actions": [
 			"phq.backToGame",
 			"phq.sleep",
-			["phq.recive", "money", 10],
+			["phq.recive", "money", ["+", 6, "phq.pj.stats.charm"]],
 			["phq.changeScene", "house1", 0]
 		    ]
 		}

@@ -403,6 +403,31 @@ function addObject(main, character, objStr, nb)
    local obj = character.inventory[objStr]
    local msg = "get "
 
+   if yIsLuaNum(nb) == false and yeType(nb) == YARRAY then
+      nb = Entity.wrapp(nb)
+      local operation = yeGetString(nb[0]);
+      local el0 = nb[1];
+      local el1 = nb[2];
+
+      if yeType(el0) == YSTRING then
+	 el0 = ygGetInt(ygGet(yeGetString(el0)))
+      end
+      if yeType(el1) == YSTRING then
+	 el1 = ygGet(yeGetString(el1))
+      end
+      el0 = yeGetInt(el0)
+      el1 = yeGetInt(el1)
+      if operation == "+" then
+	 nb = el0 + el1
+      elseif operation == "-" then
+	 nb = el0 - el1
+      elseif operation == "*" then
+	 nb = el0 * el1
+      elseif operation == "/" then
+	 nb = el0 / el1
+      end
+   end
+
    if obj then
       local nb = yeGetInt(obj) + nb
       if nb == 0 then
@@ -423,9 +448,11 @@ function addObject(main, character, objStr, nb)
 end
 
 function recive(wid, eve, objStr, nb)
-   nb = yeGetInt(nb)
-   if nb == 0 then
-      nb = 1
+   if yeType(nb) ~= YARRAY then
+      nb = yeGetInt(nb)
+      if nb == 0 then
+	 nb = 1
+      end
    end
    addObject(main_widget, phq.pj, yeGetString(objStr), nb)
 end
