@@ -459,6 +459,7 @@ function init_phq(mod)
    mod.tacticalFight = Entity.new_func(tacticalFight)
    mod.push_dream = Entity.new_func(push_dream)
    mod.misc_fnc = {}
+   mod.misc_fnc.class_even = Entity.new_func(calsses_event_dialog_gen)
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
    mod.misc_fnc.save_fight_mode = Entity.new_func("save_fight_mode")
    mod.misc_fnc.load_fight_mode = Entity.new_func("load_fight_mode")

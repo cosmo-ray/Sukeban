@@ -401,3 +401,27 @@ function PjLeave(owid, eve, entryPoint)
    action.controller = Entity.new_func("PjLeaveController")
    backToGame(owid, eve, arg)
 end
+
+function calsses_event_dialog_gen(wid, cur_dialogue)
+   local pj = phq.pj
+
+   cur_dialogue = Entity.wrapp(cur_dialogue)
+   local whos = {}
+   local whos_names = {}
+   local whos_nb = 1
+   local ph_year = yeGetIntAt(pj, "student_year")
+   for i = 0, yeLen(npcs) - 1 do
+      local npc = yeGet(npcs, i)
+      local npc_names = yeGetKeyAt(npcs, i)
+      if yeGetIntAt(npc, "student_year") == yeGetIntAt(pj, "student_year") and
+	 yeGetIntAt(npc, "class") == yeGetIntAt(pj, "class") then
+	 whos[whos_nb] = Entity.wrapp(npc)
+	 whos_names[whos_nb] = npc_names
+	 whos_nb = whos_nb + 1
+      end
+   end
+
+   local target_i = yuiRand() % whos_nb + 1
+   local target = whos[target_i]
+   cur_dialogue["text"] = "an interaction happpend with " .. whos_names[target_i];
+end

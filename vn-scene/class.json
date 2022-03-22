@@ -5,7 +5,7 @@
 	    "answer": {
 		"text": "class, class, class, class, wonderful class, beautiful class...",
 		"action": [
-		    "Dialogue.condition_switch", ["chkInfD100", 10],
+		    "Dialogue.condition_switch", ["chkInfD100", 99],
 		    "event", "nothing"
 		]
             }
@@ -19,8 +19,8 @@
 		}
 	    ]
 	},
-	"event": 
-        ["something happend....",
-         "(But still in devlopement)"]
+	"event": {
+	    "gen-callback": "phq.misc_fnc.class_even"
+	}
     }
 }
