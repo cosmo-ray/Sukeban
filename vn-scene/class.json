@@ -3,24 +3,24 @@
 	"in" : {
 	    "text": "classes start",
 	    "answer": {
-            "text": "class, class, class, class\nwonderful class, beautiful class...",
-		    "action": [
-				"Dialogue.condition_switch", ["chkInfD100", 10],
-				"event", "nothing"
-			    ]
-        }
+		"text": "class, class, class, class, wonderful class, beautiful class...",
+		"action": [
+		    "Dialogue.condition_switch", ["chkInfD100", 10],
+		    "event", "nothing"
+		]
+            }
 	},
 	"nothing": {
 	    "text": "Boring Class...",
 	    "answers": [
-            {
-                "text": "Listen then leave",
-                "action": "phq.backToGame"
-            }
+		{
+                    "text": "Listen then leave",
+                    "action": "phq.backToGame"
+		}
 	    ]
 	},
-    "event": {
+	"event": 
         ["something happend....",
-        "(But still in devlopement)"]
+         "(But still in devlopement)"]
     }
 }
