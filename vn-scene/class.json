@@ -1,10 +1,26 @@
 {
     "class": {
-	"0": {
+	"in" : {
+	    "text": "classes start",
+	    "answer": {
+            "text": "class, class, class, class\nwonderful class, beautiful class...",
+		    "action": [
+				"Dialogue.condition_switch", ["chkInfD100", 10],
+				"event", "nothing"
+			    ]
+        }
+	},
+	"nothing": {
 	    "text": "Boring Class...",
 	    "answers": [
-		"Listen then leave"
+            {
+                "text": "Listen then leave",
+                "action": "phq.backToGame"
+            }
 	    ]
-	}
+	},
+    "event": {
+        ["something happend....",
+        "(But still in devlopement)"]
     }
 }
