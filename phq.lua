@@ -1526,7 +1526,6 @@ function create_phq(entity, eve, menu)
    ent.dialogues = dialogues
 
    add_stat_hook(ent, "life", "FinishGame", 0, PHQ_INF)
-   yJrpgFightSetCombots("phq.combots")
    if ent.saved_data then
       scenePath = ent.saved_data.cur_scene_str
       pj_pos = ent.saved_data.pj_pos

@@ -288,6 +288,11 @@ function npcDefaultInit(npc, enemy_type)
       npc.max_life = 1
    end
    npc.life = npc.max_life
+   if yIsNil(npc.attack) then
+      npc.attack = "unarmed0"
+   end
+   npc.weapon = phq.combots[yeGetString(npc.attack)]
+   print("NPC", npc.name, " WEAPON !!!!: ", npc.attack, npc.weapon, phq.combots )
    return npc
 end
 
@@ -306,6 +311,8 @@ function StartFight(wid, eve, enemy_type, script)
       end
    end
 
+
+   phq.pj.weapon = phq.combots[yeGetString(phq.pj.attack)]
 
    if (yIsNil(enemy_type)) then
       local wid = yDialogueGetMain(wid)
@@ -334,7 +341,6 @@ function StartFight(wid, eve, enemy_type, script)
 
    local player_array = Entity.new_array()
    local allies = phq.pj.allies
-   phq.pj._combots = nil
 
    player_array[0] = phq.pj
    if allies[0] then

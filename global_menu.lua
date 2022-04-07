@@ -172,7 +172,7 @@ function pushSTatusTextScreen(container)
    local stats = phq.pj.stats
    local trait_str = "----- Trait -----\n"
    local trait = phq.pj.trait
-   local cmb_str = "-[Currrent Combot: {phq.pj.attack}]-\n"
+   local cmb_str = "-[Currrent Fighting Skill: {phq.pj.attack}]-\n"
    local school_club = ""
    local follower = ""
 
