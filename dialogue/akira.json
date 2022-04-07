@@ -1,0 +1,9 @@
+{
+    "Akira Gentelman": {
+	"dialogue" : {
+	    "generic-school": {
+		"pre-action": ["Dialogue.swap", "phq_wid.dialogues.neutral-student"]
+	    }
+	}
+    }
+}

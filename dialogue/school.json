@@ -3,6 +3,8 @@
 	"./dialogue/ashley.json",
 	"./dialogue/baffy.json",
 	"./dialogue/bob.json",
+	"./dialogue/akira.json",
+	"./dialogue/harri.json",
 	"./dialogue/Charle.json",
 	"./dialogue/computer_club.json",
 	"./dialogue/hate-student.json",
@@ -22,6 +24,13 @@
 	    },
 	    "Sorry we're out of food"
 	]
+    },
+    "Will": {
+	"dialogue" : {
+	    "generic-school": {
+		"pre-action": ["Dialogue.swap", "phq_wid.dialogues.neutral-student"]
+	    }
+	}	
     },
     "akira_fight": {
 	"dialogue": [
