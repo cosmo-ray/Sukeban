@@ -66,6 +66,18 @@ local COL_NEAR_ENEMY = "rgba: 255 105 50 130"
 
 local pix_floor_left = 0
 
+local function stat(c, st)
+   local g_st = c.stats
+   if yIsNil(g_st) then
+      return 0
+   end
+   return yeGetIntAt(g_st, st)
+end
+
+function weapon_st(g, st)
+   return yeGetIntAt(g.weapon, st)
+end
+
 local function begin_turn_init(tdata)
    cur_char = tdata.all[current_character]
    cur_char[TC_IDX_TDTA][IDX_CUR_ACTION_POINT] =
@@ -194,6 +206,7 @@ local function push_character(tdata, dst, char, h, name, team, dir)
    if yIsNil(char.life) then
       char.life = yeGetInt(char.max_life)
    end
+   char.weapon = phq.combots[yeGetString(char.attack)]
 
    local i = yeLen(dst)
    dst[i] = {}
@@ -244,8 +257,6 @@ end
 
 function have_loose(team)
    for i = 0, yeLen(team) - 1 do
-      print(team[i][TC_IDX_NAME], " have ",
-	    team[i][TC_IXD_CHAR].life, " life !")
       if team[i][TC_IXD_CHAR].life > 0 then
 	 return false
       end
@@ -263,7 +274,6 @@ function do_tactical_fight(eve)
 
    -- get weapon stats here
    local reach_distance = 80
-   local attack_strengh = 5
    local attack_cost = 1
    local all_char = nil
    local cur_char_t = nil
@@ -733,6 +743,15 @@ function do_tactical_fight(eve)
 
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_ATTACK then
       if yIsNil(cur_char_t[IDX_TIMER]) then
+	 local good_char = cur_char[TC_IXD_CHAR]
+
+	 print("Good Char Atk: ", stat(good_char, "strength"),
+	       stat(good_char, "agility"), weapon_st(good_char, "power"))
+	 local base_mod = (yuiMin(stat(good_char, "strength") - weapon_st(good_char, "maniability") / 2, -9) + 10) * 0.1
+	 local attack_strengh = yuiMin(weapon_st(good_char, "power") * base_mod, 1)
+
+	 print("attack_strengh:", attack_strengh)
+
 	 cur_char_t[IDX_TIMER] = 1
 	 printMessage(main_widget, nil,
 		      yeGetString(atk_target[TC_IDX_NAME]) .. " take " ..

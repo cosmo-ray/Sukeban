@@ -3,10 +3,11 @@
 	"maniability": 8,
 	"power": 1,
 	"range": 0
+
     },
     "unarmed1" : {
-	"maniability": 8,
-	"power": 1,
+	"maniability": 3,
+	"power": 2,
 	"range": 0
     },
     "yoyo3" : {
