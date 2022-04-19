@@ -115,6 +115,7 @@ function newGameAction(menu, eve, arg)
       phq.pj.knowledge.idoles = 2
       phq.pj.trait.shy = 1
       phq.pj.stats.smart = 3
+      phq.pj.stats.agility = 1 -- got some skills from playing DDR
       phq.env.mean_name = "losser"
       phq.env.mean_name2 = "nerd"
    elseif archetype == IDOLE_ARCHETYPE then
@@ -124,6 +125,7 @@ function newGameAction(menu, eve, arg)
       phq.pj.knowledge.idoles = 1
       phq.pj.stats.charm = 5
       phq.pj.stats.strength = 1
+      phq.pj.stats.agility = 3
       addObject(main_widget, phq.pj, "robe_white", 1)
       phq.env.mean_name = "whore"
       phq.env.mean_name2 = "slut"
@@ -131,6 +133,7 @@ function newGameAction(menu, eve, arg)
       phq.pj.knowledge.slang = 5
       phq.pj.trait.violance = 1
       phq.pj.stats.strength = 3
+      phq.pj.stats.agility = 4
       learn_combot("unarmed1")
       phq.env.mean_name = "dumdass"
       phq.env.mean_name2 = "rat brain"

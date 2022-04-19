@@ -216,7 +216,7 @@ local function push_character(tdata, dst, char, h, name, team, dir)
    dst[i][TC_IDX_TEAM] = team
    dst[i][TC_IDX_TDTA] = {}
    local tactical_info = dst[i][TC_IDX_TDTA]
-   tactical_info[IDX_MAX_ACTION_POINT] = 5
+   tactical_info[IDX_MAX_ACTION_POINT] = 2 + yuiMax(stat(char, "agility"), 12)
    tactical_info[IDX_PIX_MV] = 0
    tactical_info[IDX_NPC_DIR] = dir
    local tdata_all = tdata.all
@@ -745,8 +745,6 @@ function do_tactical_fight(eve)
       if yIsNil(cur_char_t[IDX_TIMER]) then
 	 local good_char = cur_char[TC_IXD_CHAR]
 
-	 print("Good Char Atk: ", stat(good_char, "strength"),
-	       stat(good_char, "agility"), weapon_st(good_char, "power"))
 	 local base_mod = (yuiMin(stat(good_char, "strength") - weapon_st(good_char, "maniability") / 2, -9) + 10) * 0.1
 	 local attack_strengh = yuiMin(weapon_st(good_char, "power") * base_mod, 1)
 

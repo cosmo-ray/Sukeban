@@ -9,6 +9,7 @@
 	"stats": {
 	    "charm": 0,
 	    "strength": 0,
+	    "agility": 2,
 	    "smart": 1
 	},
 	"trait": {
@@ -35,6 +36,7 @@
 	"stats": {
 	    "charm": 9,
 	    "strength": 5,
+	    "agility": 4,
 	    "smart": 3
 	},
 	"trait": {
@@ -70,6 +72,7 @@
 	"stats": {
 	    "charm": -1,
 	    "strength": 1,
+	    "agility": 2,
 	    "smart": 4
 	},
 	"trait": {
@@ -93,6 +96,7 @@
 	},
 	"stats": {
 	    "charm": 7,
+	    "agility": 5,
 	    "strength": 1,
 	    "smart": 5
 	},
@@ -120,6 +124,7 @@
 	"stats": {
 	    "charm": 9,
 	    "strength": 4,
+	    "agility": 6,
 	    "smart": 2
 	},
 	"trait": {
@@ -150,6 +155,7 @@
 	},
 	"stats": {
 	    "charm": 6,
+	    "agility": 4,
 	    "strength": 5,
 	    "smart": 1
 	},
@@ -181,6 +187,7 @@
 	"stats": {
 	    "charm": 3,
 	    "strength": 0,
+	    "agility": 3,
 	    "smart": 6
 	},
 	"trait": {
@@ -212,6 +219,7 @@
 	"stats": {
 	    "charm": 5,
 	    "strength": 4,
+	    "agility": 2,
 	    "smart": 2
 	},
 	"trait": {
@@ -233,6 +241,7 @@
 	"attack" : "unarmed0",
 	"stats": {
 	    "charm": 4,
+	    "agility": 9,
 	    "strength": 2,
 	    "smart": 5
 	},
@@ -287,6 +296,7 @@
 	"ai": "elise",
 	"stats": {
 	    "charm": 4,
+	    "agility": 4,
 	    "strength": 12,
 	    "smart": 4
 	},
@@ -321,6 +331,7 @@
 	},
 	"stats": {
 	    "charm": 9,
+	    "agility": 8,
 	    "strength": 12,
 	    "smart": 6
 	},
@@ -347,6 +358,7 @@
 	"hair": ["unkempt", "blonde"],
 	"stats": {
 	    "charm": 4,
+	    "agility": 4,
 	    "strength": 1,
 	    "smart": 3
 	},
@@ -372,6 +384,7 @@
 	"hair": ["unkempt", "blonde"],
 	"stats": {
 	    "charm": 6,
+	    "agility": 6,
 	    "strength": 3,
 	    "smart": 3
 	},
