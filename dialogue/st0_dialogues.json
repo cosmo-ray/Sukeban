@@ -114,8 +114,20 @@
 	    {
 		"text": "please, would you be nice to give a piece to someone in need",
 		"answers": [
+		    {
+			"text": "Sure, here's 1$",
+			"condition":  ["not", "phq.events.give_money_raoul"],
+			"actions": [
+			    [ "setInt", "phq.events.give_money_raoul", 1],
+			    [ "phq.increase", "trait", "sensitivity", 1],
+			    [ "phq.pay", 1, "phq.backToGame",
+			      "Thanks, but I think you need money, in order to give me money :)"
+			    ]
+			]
+		    },
 	  	    {
 			"text": "Sure, here's 1$",
+			"condition":  [">", "phq.events.give_money_raoul", 0],
 			"action": [ "phq.pay", 1, "phq.backToGame",
 				   "Thanks, but I think you need money, in order to give me money :)"
 				  ]
