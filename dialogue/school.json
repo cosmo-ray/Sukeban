@@ -2,6 +2,7 @@
     "_include": [
 	"./dialogue/ashley.json",
 	"./dialogue/baffy.json",
+	"./dialogue/elise.json",
 	"./dialogue/bob.json",
 	"./dialogue/akira.json",
 	"./dialogue/harri.json",
