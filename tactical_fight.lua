@@ -91,7 +91,7 @@ end
 
 local function repush_idx(all)
    for i = 0, yeLen(all) - 1 do
-      local h = all[i][1]
+      local h = all[i][TC_IDX_HDLR]
       h.canvas.idx = i
    end
 end
@@ -115,14 +115,14 @@ end
 -- take a canvas pos and translate it to real char pos
 local function canvas_to_char_pos(cpos)
    local char_pos = Entity.new_copy(cpos)
-   local char_size = generic_handlerSize(cur_char[1])
+   local char_size = generic_handlerSize(cur_char[TC_IDX_HDLR])
    ywPosAddXY(char_pos, ywSizeW(char_size) / 2, ywSizeH(char_size) / 3 * 2)
    return char_pos
 end
 
 local function char_to_canvas_pos(cpos)
    local can_pos = Entity.new_copy(cpos)
-   local can_size = generic_handlerSize(cur_char[1])
+   local can_size = generic_handlerSize(cur_char[TC_IDX_HDLR])
    ywPosAddXY(can_pos, -(ywSizeW(can_size) / 2), -(ywSizeH(can_size) / 3 * 2))
    return can_pos
 end
@@ -153,6 +153,11 @@ local function end_fight()
    move_dst = nil
    cur_char = nil
    atk_target = nil
+   for i = 0, yeLen(t.all) - 1 do
+      if (phq.pj.name ~= t.all[i][TC_IDX_NAME]) then
+	 generic_handlerNullify(t.all[i][TC_IDX_HDLR])
+      end
+   end
    if phq_only_fight > 0 then
       fight_mode_wid()
    end
