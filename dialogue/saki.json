@@ -35,6 +35,7 @@
          	    ],
 		"actions": [
 		    ["phq.changeScene", "street3", 1],
+		    ["setInt", "phq.quests.prot_club_m0", 1],
 		    ["phq.tacticalFight",
 		     {
 			 "move": [
