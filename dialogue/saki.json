@@ -16,10 +16,22 @@
 			"action": ["Dialogue:goto", "mission_0"]
 		    },
 		    {
+			"text": "So, was the fight enough to test my skills",
+			"condition": ["=", "phq.quests.prot_club_m0", 1],
+			"action": ["Dialogue:goto", "mission_0_1"]
+		    },
+		    {
 			"text": "Nothing :)",
 			"action": "phq.backToGame"
 		    }
 
+		]
+	    },
+	    "mission_0_1": {
+		"text": ["It was okay, I might give you some other task soons"],
+		"actions": [
+		    ["setInt", "phq.quests.prot_club_m0", 2],
+		    "phq.backToGame"
 		]
 	    },
 	    "mission_0": {

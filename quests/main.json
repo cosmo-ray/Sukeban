@@ -84,9 +84,10 @@
 	"stalk_sart": -1,
 	"descriptions": [
 	    "Talk to Saki",
+	    "Talk to Saki for debrif",
 	],
 	"rewards": [
-	    4
+	    0, 0, 4
 	]
     },
     "Aligator 427": {
