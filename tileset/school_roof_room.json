@@ -48,6 +48,24 @@
                  "width":0,
                  "x":270.766969780472,
                  "y":128.387985670984
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"Saki Miya",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":148.404755795056,
+                 "y":123.599349927294
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -106,10 +124,10 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":3,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -122,6 +140,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":14
 }

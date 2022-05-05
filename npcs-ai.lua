@@ -205,7 +205,11 @@ end
 function sakai(main, npc, name)
    npc = Entity.wrapp(npc)
 
-   push_to_ai_point("street3", "Runner_0", name)
+   if (yuiRand() % 100 > 50) then
+      c_place = "street3"
+      npc._place = c_place
+      push_to_ai_point("street3", "Runner_0", name)
+   end
 end
 
 

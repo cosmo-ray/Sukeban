@@ -31,7 +31,7 @@
 		      "Also they need to understand, that no one fuck with us",
 		      "So we're going to wait for them, and teach then that peoples that cross me",
 	  	      "ARE UNFORGIVABLE !!",
-		     "also this will be a good test for your skills (she smile)"
+		      "also this will be a good test for your skills (she smile)"
          	    ],
 		"actions": [
 		    ["phq.changeScene", "street3", 1],
