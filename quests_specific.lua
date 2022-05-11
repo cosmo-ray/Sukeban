@@ -256,6 +256,9 @@ local function end_morning_class()
    print("WESH !!!!!!")
    advance_time(main_widget, "school0", true)
    phq.env.school_day = phq.env.school_day + 1
+   if phq.env.school_day > 15 then
+      main_widget.sleep_script = "end_chapter_1"
+   end
 end
 
 local game_scene_state = 0
@@ -761,6 +764,19 @@ local function gen_school()
    end
 end
 
+function end_chapter_1(main)
+   print("end_chapter_1")
+   main.sleep_script = nil
+   phq.env.chapter = 2
+end
+
+function end_chapter_2(main)
+   print("end_chapter_2")
+   main.sleep_script = nil
+   phq.env.chapter = 3
+   phq.quests.school_1_semestre = 2
+end
+
 function end_chapter_0(main)
    print("end_chapter_0")
    if yIsNil(main.sleep_script) then
@@ -771,7 +787,7 @@ function end_chapter_0(main)
 
    print("then ?")
    if phq.env.day:to_int() == 7 and
-   phq.env.time:to_string() == "night" then
+      phq.env.time:to_string() == "night" then
       is_end_of_chapter = false
       main.sleep_script = nil
       phq.env.chapter = 1
@@ -829,6 +845,8 @@ scripts["inter_bar_out"] = inter_bar_out
 scripts["inter_bar_running"] = inter_bar_running
 scripts["charle_body_guard_leave"] = charle_body_guard_leave
 scripts["end_chapter_0"] = end_chapter_0
+scripts["end_chapter_1"] = end_chapter_1
+scripts["end_chapter_2"] = end_chapter_2
 scripts["chapter_1"] = chapter_1
 scripts["chapter_1_sleep"] = chapter_1_sleep
 
