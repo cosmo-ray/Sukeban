@@ -557,9 +557,13 @@ function doAdvanceTime(mn)
    advance_time(main_widget)
 end
 
-function gotoEndChapter(mn)
+local function gotoEndChapter(mn)
    local f_mn = ywCntWidgetFather(mn)
 
+   if yeGetInt(phq.env.chapter) == 1 then
+      print("GOTO CHATPER 2")
+      main_widget.sleep_script = "end_chapter_1"
+   end
    backToGame(f_mn)
    phq.env.day = 7
    phq.env.time = "night"
@@ -583,8 +587,8 @@ function pushStatus(mn)
    menu:push("God Mode", Entity.new_func("god_window"))
    menu:push("advence time", Entity.new_func("doAdvanceTime"))
    menu:push("Allies", Entity.new_func("allies_mn"))
-   if is_end_of_chapter then
-      menu:push("end chapter", Entity.new_func("gotoEndChapter"))
+   if yeGetInt(phq.env.is_end_of_chapter) > 0 then
+      menu:push("end chapter", Entity.new_func(gotoEndChapter))
    end
    local i = 0
    while  i < yeLen(hooks) do

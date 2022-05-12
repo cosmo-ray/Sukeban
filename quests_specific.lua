@@ -26,7 +26,6 @@ local SKIP_CLASS_SCENE = false
 
 BLOCK_EVE_NO_UNSET = 10
 
-is_end_of_chapter = false
 school_events = Entity.new_array()
 
 school_students_organisation = {
@@ -256,8 +255,9 @@ local function end_morning_class()
    print("WESH !!!!!!")
    advance_time(main_widget, "school0", true)
    phq.env.school_day = phq.env.school_day + 1
-   if phq.env.school_day > 15 then
-      main_widget.sleep_script = "end_chapter_1"
+   if yeGetInt(phq.env.chapter) == 1 and
+      phq.env.school_day > 0 then -- MODIFY THIS FOR TRUE CHAPTER CHANGE
+      phq.env.is_end_of_chapter = 1
    end
 end
 
@@ -767,12 +767,27 @@ end
 function end_chapter_1(main)
    print("end_chapter_1")
    main.sleep_script = nil
+   phq.env.is_end_of_chapter = 0
    phq.env.chapter = 2
+   local vn_chapter = Entity.new_array()
+   vn_chapter[0] = Entity.new_array()
+   local dial = vn_chapter[0]
+   dial.text = "End of chapter 1, school vacation, lot of 2nddary quest\n" ..
+      "to explore side character, and discover new bad guys  outsides of school" ..
+      "also aligator 427 quest"
+
+   dial.answer = {}
+   dial.answer.text = "(goto unimplemented chapter)"
+   dial.answer.action = "phq.backToGame"
+
+   vnScene(main, nil, vn_chapter)
+
 end
 
 function end_chapter_2(main)
    print("end_chapter_2")
    main.sleep_script = nil
+   phq.env.is_end_of_chapter = 0
    phq.env.chapter = 3
    phq.quests.school_1_semestre = 2
 end
@@ -781,14 +796,14 @@ function end_chapter_0(main)
    print("end_chapter_0")
    if yIsNil(main.sleep_script) then
       main.sleep_script = "end_chapter_0"
-      is_end_of_chapter = true
+      phq.env.is_end_of_chapter = 1
       return
    end
 
    print("then ?")
    if phq.env.day:to_int() == 7 and
       phq.env.time:to_string() == "night" then
-      is_end_of_chapter = false
+      phq.env.is_end_of_chapter = 0
       main.sleep_script = nil
       phq.env.chapter = 1
       phq.quests.school_1_semestre = 1
