@@ -1251,6 +1251,9 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       local npc = npcs[npc_name]
       local is_ai_point = false
 
+      local ai = yeGetStringAt(obj, "ai")
+      local walkTalker = yIsNNil(yeGet(obj, "WalkTalk"))
+
       if obj.ai_point then
 	 ent.ai_point[npc_name] = Entity.new_copy(obj)
 
@@ -1261,17 +1264,18 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	    npc = npcs[npc_name]
 	 end
       end
-      local npc_dialogue = yeGet(npc, "dialogue")
-
-      if yeType(npc_dialogue) ~= YSTRING then
-	 yeRemoveChild(npc, "dialogue")
-	 npc_dialogue = nil
-      else
-	 npc_dialogue = yeGetString(npc_dialogue)
-      end
 
       local is_here = checkNpcPresence(obj, npc, sceneTxt, is_ai_point)
       if layer_name:to_string() == "NPC" and is_here then
+
+	 local npc_dialogue = yeGet(npc, "dialogue")
+
+	 if yeType(npc_dialogue) ~= YSTRING then
+	    yeRemoveChild(npc, "dialogue")
+	    npc_dialogue = nil
+	 else
+	    npc_dialogue = yeGetString(npc_dialogue)
+	 end
 
 	 local pos = Pos.new_copy(obj.rect)
 	 if yeGetString(npc.type) == "sprite" then
@@ -1300,8 +1304,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 end
 	 npc = Entity.wrapp(npc)
 	 generic_handlerRefresh(npc)
-	 local ai = yeGetStringAt(obj, "ai")
-	 local walkTalker = yIsNNil(yeGet(obj, "WalkTalk"))
+
 	 if yeGetIntAt(obj, "Agresive") == 1 or walkTalker then
 	    if yIsNil(ai) then
 	       yePushBack(ent.enemies, npc)
