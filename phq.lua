@@ -21,6 +21,7 @@ local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 lpcs = Entity.wrapp(ygGet("lpcs"))
 sprite_man = Entity.wrapp(ygGet("sprite-man"))
 phq = Entity.wrapp(ygGet("phq"))
+dressup = Entity.wrapp(ygGet("dressup"))
 local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 npcs = nil
 scenes = Entity.wrapp(ygGet("phq.scenes"))
@@ -214,59 +215,6 @@ end
 
 function generic_handlerMoveXY(npc, x, y)
    ywPosAddXY(generic_handlerPos(npc), x, y)
-end
-
-function dressUp(caracter)
-   local e = caracter.equipement
-   local objs = phq.objects
-   local clothes = nil
-
-
-   if caracter.equipement == nil then
-      if (yIsNil(caracter.clothes)) then
-	 clothes = Entity.new_array(caracter, "clothes")
-      else
-	 clothes = caracter.clothes
-      end
-      goto hair;
-   end
-
-   caracter.clothes = {}
-   clothes = caracter.clothes
-   if e.feet then
-      local cur_o = objs[yeGetString(e.feet)]
-      if (yIsNil(cur_o)) then
-	 print("can't find ", yeGetString(e.feet))
-      end
-      if (cur_o.path) then
-	 yeCreateString(cur_o.path:to_string(), clothes)
-      end
-   end
-
-   if e.legs then
-      local cur_o = objs[yeGetString(e.legs)]
-      if (yIsNil(cur_o)) then
-	 print("can't find ", yeGetString(e.legs))
-      end
-      if (cur_o.path) then
-	 yeCreateString(cur_o.path:to_string(), clothes)
-      end
-   end
-
-   if e.torso then
-      local cur_o = objs[yeGetString(e.torso)]
-      if (cur_o.path) then
-	 yeCreateString(cur_o.path:to_string(), clothes)
-      end
-   end
-
-   :: hair ::
-   if caracter.hair then
-      yeCreateString("hair/" .. caracter.sex:to_string() .. "/" ..
-		     caracter.hair[0]:to_string() .. "/" ..
-		     caracter.hair[1]:to_string() .. ".png",
-		     clothes)
-   end
 end
 
 local function reposScreenInfo(ent, x0, y0)
@@ -1256,7 +1204,9 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       run_script = scripts[c.tile_script:to_string()]
    end
 
-   o_dialogues = File.jsonToEnt(yeGetString(scene.dialogues))
+   if yIsNNil(scene.dialogues) then
+      o_dialogues = File.jsonToEnt(yeGetString(scene.dialogues))
+   end
    dialogue_include(o_dialogues, o_dialogues)
    yeCopy(o_dialogues, dialogues)
 
@@ -1340,7 +1290,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	    else -- y offset is 0 for "up"
 	    end
 	 else
-	    dressUp(npc)
+	    dressup.dressUp(npc)
 	    npc = lpcs.createCaracterHandler(npc, c, e_npcs, npc_name)
 	    --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
 	    local pos = Pos.new_copy(obj.rect)
@@ -1489,8 +1439,8 @@ function create_phq(entity, eve, menu)
    local sav_data = yeGet(entity, "saved_data")
    local pj_pos = nil
 
-
    phq_turn_cnt = 0
+   dressup.setObjects("phq.objects")
    yeIncrRef(sav_data)
    yeClearArray(entity)
    yePushBack(entity, sav_data, "saved_data")
@@ -1551,7 +1501,7 @@ function create_phq(entity, eve, menu)
    --ySoundPlayLoop(ent.soundtatata)
 
    ent.pj = nil
-   dressUp(phq.pj)
+   dressup.dressUp(phq.pj)
    lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
    local wid_size = yeGet(entity, "wid-pix");
 

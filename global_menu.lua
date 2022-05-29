@@ -479,7 +479,7 @@ function wear_cloth(mn)
       eq.legs = nil
    end
    eq[where] = yeGetString(desc.key_name)
-   dressUp(phq.pj)
+   dressup.dressUp(phq.pj)
    lpcs.handlerReload(yeGet(main_widget, "pj"))
    lpcs.handlerReload(mn.pj)
    return YEVE_ACTION

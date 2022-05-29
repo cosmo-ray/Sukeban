@@ -726,7 +726,7 @@ local function gen_school()
       eq.torso = rand_array_elem(torso[gender])
       eq.legs = rand_array_elem(legs[gender])
       eq.feet = rand_array_elem(feet[gender])
-      dressUp(n)
+      dressup.dressUp(n)
       n.class_id = class_members[year][class + 1]
       local school_club = (yuiRand() % #school_students_organisation) + 1
       n.knowledge = {}

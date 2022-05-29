@@ -279,7 +279,7 @@ function npcDefaultInit(npc, enemy_type)
       npc = Entity.new_copy(npc)
    end
    if yIsNil(npc.clothes) and yIsNNil(npc.equipement) then
-      dressUp(npc)
+      dressup.dressUp(npc)
    end
    if yIsNil(npc.name) then
       npc.name = enemy_type
@@ -1012,7 +1012,7 @@ function push_npc(pos, name, dir, npc)
       npc = Entity.wrapp(npc)
       generic_handlerRefresh(npc)
    else
-      dressUp(npc)
+      dressup.dressUp(npc)
       npc = lpcs.createCaracterHandler(npc, c, main_widget.npcs, name)
    end
 

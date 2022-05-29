@@ -35,6 +35,7 @@
         { "file" : "modules/underground/", "type" : "module" },
         { "file" : "modules/z-skull-breaker/", "type" : "module"},
         { "file" : "pathfinding/", "type" : "module"},
+        { "file" : "dress/", "type" : "module"},
 
 	{ "file" : "Arcade_score.json", "type" : "json", "as" : "hightscores"},
         { "file" : "scenes.json", "type" : "json", "as" : "scenes"},

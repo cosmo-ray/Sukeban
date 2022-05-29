@@ -1,0 +1,14 @@
+{
+    "name": "dressup",
+    "init-scripts" : [
+	[ "lua", "dressup_helpers" ],
+	[ "ph7", "mod_init" ]
+    ],
+    "starting widget": "test_dressup",
+    "pre-load" : [
+	{ "file" : "init.lua", "type" : "lua" },
+	{ "path" : "YIRL_MODULES_PATH/Universal-LPC-spritesheet/", "type" : "module" },
+	{ "file" : "init.php", "type" : "ph7" }
+
+    ]
+}
