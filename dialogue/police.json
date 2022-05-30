@@ -59,7 +59,7 @@
     "Jeanne Machette": {
 	"dialogue": {
 	    "main": {
-		"text": "you speak to me blanca?",
+		"text": "you speak to me ?",
 		"answers": [
 		    {
 			"text": "eh, nope\n",
