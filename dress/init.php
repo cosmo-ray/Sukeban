@@ -23,6 +23,11 @@ function clothe_mn_setup($mn, $where)
     }
 }
 
+function back_menu($mn)
+{
+    yeSetIntAt(yeGet($mn, '_main_'), 'cur_mn', $GLOBALS['MAIN_MENU']);
+}
+
 function menu_setup($wid, $mn, $mn_type) {
     ywMenuClear($mn);
     if ($mn_type == $GLOBALS['MAIN_MENU']) {
@@ -30,14 +35,17 @@ function menu_setup($wid, $mn, $mn_type) {
         ywMenuPushEntry($mn, 'torso/robe');
         ywMenuPushEntry($mn, 'pants/skirt');
         ywMenuPushEntry($mn, 'shoes');
+        ywMenuPushEntry($mn, 'quit', ygGet('FinishGame'));
     } else if ($mn_type == $GLOBALS['TORSO_MENU']) {
         clothe_mn_setup($mn, 'torso');
+        ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     } else if ($mn_type == $GLOBALS['PANTS_MENU']) {
         clothe_mn_setup($mn, 'legs');
+        ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     } else if ($mn_type == $GLOBALS['SHOES_MENU']) {
         clothe_mn_setup($mn, 'feet');
+        ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     }
-    ywMenuPushEntry($mn, 'quit', ygGet('FinishGame'));
 }
 
 function reset_character($cwid, $mod, $cw) {
@@ -62,6 +70,7 @@ function action($wid, $eves) {
     $menu = ywCntGetEntry($wid, 0);
     yeRemoveChildByStr($menu, '_ch_');
     yePushBack($menu, yeGet($wid, 'character'), "_ch_");
+    yePushBack($menu, $wid, "_main_");
     $cur_mn = yeGetIntAt($wid, "cur_mn");
     menu_setup($wid, $menu, $cur_mn);
 
@@ -92,6 +101,7 @@ function action($wid, $eves) {
     ywMenuMove($menu, $mn_pos);
     $mod = ygGet("dressup");
     reset_character($wid, $mod, ywCntGetEntry($wid, 1));
+    yeRemoveChildByStr($menu, "_main_");
     return $YEVE_ACTION;
 }
 
@@ -147,6 +157,9 @@ function mod_init($mod) {
     mk_test_char($start);
 
     ywidAddSubType($wid_type);
+
+    yeCreateFunction("back_menu", $mod, "back_menu");
+
     yirl_return($mod);
 }
 

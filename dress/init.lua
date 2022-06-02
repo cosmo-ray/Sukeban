@@ -16,10 +16,8 @@
 --
 
 --
---  This file is here because PHP scripting is still in early devlopement,
--- And we can't call a PHP script the yirl way from another PHP script
--- Also I've move some code from sukeban, to this module, and was lazy
--- to port the code
+-- This file is here because PHP scripting I've move some code from sukeban,
+-- to this module, and was lazy to port the code to PHP
 -- also lua is still faster than PHP
 --
 
