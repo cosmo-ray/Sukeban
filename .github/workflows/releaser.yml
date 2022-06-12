@@ -30,9 +30,6 @@ jobs:
           cd sukeban_I_use_Arch_BTW
           tar -xf yirl-mods.tar.gz
           rm yirl-mods.tar.gz
-          echo '#!/bin/sh' > auto-update.sh
-          echo 'curl -o updated-sukeban.tar.gz -LJ https://github.com/cosmo-ray/Sukeban/releases/download/latest/sukeban_I_use_Arch_BTW.tar.gz' >> auto-update.sh
-          chmod +x auto-update.sh
           echo sukeban_I_use_Arch_BTW
           echo '#!/bin/bash' > sukeban.sh
           chmod +x sukeban.sh
