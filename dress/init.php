@@ -1,8 +1,25 @@
 <?php
 
+  /*
+    --Copyright (C) 2022 Matthias Gatto
+    --
+    --This program is free software: you can redistribute it and/or modify
+    --it under the terms of the GNU Lesser General Public License as published by
+    --the Free Software Foundation, either version 3 of the License, or
+    --(at your option) any later version.
+    --
+    --This program is distributed in the hope that it will be useful,
+    --but WITHOUT ANY WARRANTY; without even the implied warranty of
+    --MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    --GNU General Public License for more details.
+    --
+    --You should have received a copy of the GNU Lesser General Public License
+    --along with this program.  If not, see <http://www.gnu.org/licenses/>.   
+  */
+
+
 $MAIN_MENU = 0;
-$HAIR_MENU_TYPE = 1;
-$MAIN_MENU_COLOR = 10;
+$HAIR_MENU = 1;
 $TORSO_MENU = 2;
 $PANTS_MENU = 3;
 $SHOES_MENU = 4;
@@ -28,7 +45,22 @@ function back_menu($mn)
     yeSetIntAt(yeGet($mn, '_main_'), 'cur_mn', $GLOBALS['MAIN_MENU']);
 }
 
+function change_hair($mn)
+{
+    echo '================================', "\n";
+    echo '================================', "\n";
+    echo '========= Change Hair ! ========', "\n";
+    echo '================================', "\n";
+    echo '================================', "\n";
+}
+
 function menu_setup($wid, $mn, $mn_type) {
+    $cu = ywMenuGetCurrentEntry($mn);
+    $si = yeGet($cu, "slider_idx");
+    if ($si) {
+        yePush($si, $mn, '_csi_');
+    }
+
     ywMenuClear($mn);
     if ($mn_type == $GLOBALS['MAIN_MENU']) {
         ywMenuPushEntry($mn, 'hairs');
@@ -36,6 +68,24 @@ function menu_setup($wid, $mn, $mn_type) {
         ywMenuPushEntry($mn, 'pants/skirt');
         ywMenuPushEntry($mn, 'shoes');
         ywMenuPushEntry($mn, 'quit', ygGet('FinishGame'));
+    } else if ($mn_type == $GLOBALS['HAIR_MENU']) {
+        $colors = yeCreateArray();
+        $c = yeCreateArray($colors);
+        // black.png           blonde.png          blonde2.png         blue.png
+        yeCreateString('blonde', $c, "text");
+        yeCreateString('dressup.change_hair', $c, 'action');
+
+        $c = yeCreateArray($colors);
+        yeCreateString('black', $c, "text");
+        yeCreateString('dressup.change_hair', $c, 'action');
+
+        $c = yeCreateArray($colors);
+        yeCreateString('blue', $c, "text");
+        yeCreateString('dressup.change_hair', $c, 'action');
+
+        $s = ywMenuPushSlider($mn, 'test-hair', $colors);
+	yeReplaceBack($s, $si, 'slider_idx');
+        ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     } else if ($mn_type == $GLOBALS['TORSO_MENU']) {
         clothe_mn_setup($mn, 'torso');
         ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
@@ -46,6 +96,7 @@ function menu_setup($wid, $mn, $mn_type) {
         clothe_mn_setup($mn, 'feet');
         ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     }
+    yeRemoveChildByStr($mn, '_csi_');
 }
 
 function reset_character($cwid, $mod, $cw) {
@@ -73,6 +124,7 @@ function action($wid, $eves) {
     yePushBack($menu, $wid, "_main_");
     $cur_mn = yeGetIntAt($wid, "cur_mn");
     menu_setup($wid, $menu, $cur_mn);
+    $ret = $YEVE_ACTION;
 
     yeIntRoundBound(yeGet($wid, 'mn_pos'), 0, ywMenuNbEntries($menu) - 1);
     if (yevIsKeyDown($eves, $Y_DOWN_KEY)) {
@@ -84,25 +136,31 @@ function action($wid, $eves) {
         if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['TORSO_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['TORSO_MENU']);
             return action($wid, NULL);
-        } else  if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['PANTS_MENU_POS']) {
+        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['PANTS_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['PANTS_MENU']);
             return action($wid, NULL); 
-        } else  if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['SHOES_MENU_POS']) {
+        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['SHOES_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['SHOES_MENU']);
+            return action($wid, NULL); 
+        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['HAIR_MENU_POS']) {
+            yeSetIntAt($wid, 'cur_mn', $GLOBALS['HAIR_MENU']);
             return action($wid, NULL); 
         } else {
             ywMenuCallActionOnByEntity($menu, $eves, yeGetIntAt($wid, 'mn_pos'));
         }
+    } else {
+        $ret =  $YEVE_NOTHANDLE;
     }
 
     yeIntRoundBound(yeGet($wid, 'mn_pos'), 0, ywMenuNbEntries($menu) - 1);
     $mn_pos = yeGetIntAt($wid, 'mn_pos');
 
     ywMenuMove($menu, $mn_pos);
+
     $mod = ygGet("dressup");
     reset_character($wid, $mod, ywCntGetEntry($wid, 1));
     yeRemoveChildByStr($menu, "_main_");
-    return $YEVE_ACTION;
+    yirl_return($ret);
 }
 
 function init_wid($cwid) {
@@ -159,6 +217,7 @@ function mod_init($mod) {
     ywidAddSubType($wid_type);
 
     yeCreateFunction("back_menu", $mod, "back_menu");
+    yeCreateFunction("change_hair", $mod, "change_hair");
 
     yirl_return($mod);
 }
