@@ -50,7 +50,7 @@
 	"Horsez Pariez": ["phq:vnScene", "Horsez Pariez"],
 	"Nontoise Gate": ["phq:changeScene", "street4", 1],
 	"test_zone": ["phq:changeScene", "test_zone"],
-	"Port City": ["phq:changeScene", "Port City"],
+	"Port City": ["phq:vnScene", "Port City"],
 	"nyuniversity": ["phq:vnScene", "Intro UwU"],
 	"international_bar": ["phq:changeScene", "international_bar"],
 	"Dock": ["phq:vnScene", "la Jetee"]
