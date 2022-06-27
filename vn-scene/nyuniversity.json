@@ -1,0 +1,16 @@
+{
+    "Intro UwU": {
+        "UwU 0": {
+            "text": ["(A group a persones approach you)\nHello UwU",
+                     "you look like you're not from our Catpus UwU",
+                     "I would advise you to go elsewhere UwU",
+                     "Or we might scratch your nice face UwU"],
+            "answers": [
+                {
+                    "text": "Ok, have a nice day, U...U",
+		            "action": "phq.backToGame"
+                }
+            ]
+        }
+     }
+}
