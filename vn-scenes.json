@@ -2,6 +2,7 @@
     "_include": [
 	"vn-scene/class.json",
 	"vn-scene/bar-work.json",
+	"vn-scene/nyuniversity.json",
 	"vn-scene/dock.json"
     ],
     "la Jetee" : [
