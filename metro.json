@@ -11,7 +11,7 @@
 	],
 	[
 	    [312, 189], [352, 209], [400, 225], [450, 234],
-	    [507, 236, "fighting pit"]
+	    [507, 236, "Port City"]
 	],
 	[
 	    [401, 129], [422, 152], [445, 198], [450, 231],
@@ -19,7 +19,7 @@
 	    [390, 406], [381, 456]
 	],
 	[
-	    [538, 136], [516, 174], [505, 236, "fighting pit"], [501, 289, "nyuniversity"],
+	    [538, 136], [516, 174], [505, 236, "Port City"], [501, 289, "nyuniversity"],
 	    [517, 354, "Dock"], [523, 397], [546, 443]
 	]
     ],
@@ -50,7 +50,7 @@
 	"Horsez Pariez": ["phq:vnScene", "Horsez Pariez"],
 	"Nontoise Gate": ["phq:changeScene", "street4", 1],
 	"test_zone": ["phq:changeScene", "test_zone"],
-	"fighting pit": ["phq:changeScene", "fighting pit"],
+	"Port City": ["phq:changeScene", "Port City"],
 	"nyuniversity": ["phq:vnScene", "Intro UwU"],
 	"international_bar": ["phq:changeScene", "international_bar"],
 	"Dock": ["phq:vnScene", "la Jetee"]
