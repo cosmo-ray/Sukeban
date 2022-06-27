@@ -5,6 +5,21 @@
 	"vn-scene/nyuniversity.json",
 	"vn-scene/dock.json"
     ],
+    "Port City": [
+	    {
+		    "text": "Not the best place in town, that's for sure",
+		    "answers": [
+			    {
+				    "text": "leave",
+				    "action": "phq.backToGame"
+			    },
+			    {
+				    "text": "Go to this shaddy place, call the bloody fist",
+				    "action": ["phq.changeScene", "fighting pit"]
+			    }
+		    ]
+	    }
+    ],
     "la Jetee" : [
 	{
 	    "condition": "phq.events.harbour_walking",
