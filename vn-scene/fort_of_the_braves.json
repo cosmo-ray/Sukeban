@@ -5,11 +5,11 @@
                      "a shield up the front door with a Coat of arms you've never seen before",
                      "2 stuffed wolf head on each side of the door",
                      "A strong looking yong on the front is very well dree,",
-                     "with a suit that give the impresion he's parent where not stressful about giving him his everyday meat"]
+                     "with a suit that give the impresion he's parent where not stressful about giving him his everyday meat"],
             "answers": [
                 {
                     "text": "just leave",
-		                "action": "phq.backToGame"
+		    "action": "phq.backToGame"
                 }
             ]
         }
