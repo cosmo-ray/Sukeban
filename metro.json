@@ -19,7 +19,7 @@
 	    [390, 406], [381, 456]
 	],
 	[
-	    [538, 136], [516, 174], [505, 236, "Port City"], [501, 289, "nyuniversity"],
+	    [538, 136], [516, 174, "New Port City"], [505, 236, "Port City"], [501, 289, "nyuniversity"],
 	    [517, 354, "Dock"], [523, 397], [546, 443]
 	]
     ],
@@ -53,6 +53,7 @@
 	"test_zone": ["phq:changeScene", "test_zone"],
 	"Port City": ["phq:vnScene", "Port City"],
 	"nyuniversity": ["phq:vnScene", "Intro UwU"],
+	"New Port City": ["phq:vnScene", "The Local Place <3"],
 	"international_bar": ["phq:changeScene", "international_bar"],
 	"Dock": ["phq:vnScene", "la Jetee"]
     }
