@@ -16,11 +16,12 @@
 	        }
             ]
         },
-	    "no english": {
-		"text": [
-			"Hello my dear,",
-			"I'm sorry, but no we accept only person who speak english",
-			"I mean proper english"
-		]
-     }
+	"no english": {
+	    "text": [
+		"Hello my dear,",
+		"I'm sorry, but no we accept only person who speak english",
+		"I mean proper english"
+	      ]
+        }
+    }
 }
