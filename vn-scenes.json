@@ -29,13 +29,13 @@
 	    "action": "phq.backToGame"
 	},
 	{
- 	    "text": "you're in a shadowy narrow street of the port
-you can sees docked charging and discharging containers
-tier sailor searching for a place to spend time
-while you're here wasting your time,
-an image from the past came into your head:
-you and your father, where watching boat coming in and out
-And you gazing at those floating monster wondering what was inside them",
+ 	    "text": ["you're in a shadowy narrow street of the port",
+		     "you can sees docked charging and discharging containers",
+		     "tier sailor searching for a place to spend time",
+		     "while you're here wasting your time,",
+		     "an image from the past came into your head:",
+		     "you and your father, where watching boat coming in and out",
+		     "And you gazing at those floating monster wondering what was inside them"],
 	    "actions": [
 		[ "setInt", "phq.events.harbour_walking", 1 ],
 		"Dialogue:gotoNext"
@@ -50,12 +50,12 @@ but something that seems to be a mix of colors,
 and as you go that direction
 noise seems to confirm you suspicion",
 	{
-	    "text": "you finally reach the source of this unusual meeting,
-a lot of peoples on the seafront, surrounding a 'jetee' of the port,
-in the middle of these peoples: a dead man lying on the street
-and among the faces, one seems particularly expressive:
-an horrified sad woman watching him, hoping to wake up from a dream
-but reality awaking her from hope",
+	    "text": ["you finally reach the source of this unusual meeting,",
+		     "a lot of peoples on the seafront, surrounding a 'jetee' of the port,",
+		     "in the middle of these peoples: a dead man lying on the street",
+		     "and among the faces, one seems particularly expressive:",
+		     "an horrified sad woman watching him, hoping to wake up from a dream",
+		     "but reality awaking her from hope"],
 	    "answers": [
 		{
 		    "text": "move on, nothing to see here",
