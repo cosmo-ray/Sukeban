@@ -21,7 +21,14 @@
 		"Hello my dear,",
 		"I'm sorry, but no we accept only person who speak english",
 		"I mean proper english"
-	      ]
+	      ],
+	    "answers":
+		[
+		    {
+	       		"text": "Watever.... cuck",
+			"answer": "phq.backToGame"
+		    }
+		]
         }
     }
 }
