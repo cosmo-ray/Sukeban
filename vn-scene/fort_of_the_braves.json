@@ -9,18 +9,18 @@
             "answers": [
                 {
                     "text": "just leave",
-				    "action": "phq.backToGame"
+		    "action": "phq.backToGame"
                 },
-				{
-					"text": "Yo, can I come in guy",
-	        	}
+		{
+		    "text": "Yo, can I come in guy"
+	        }
             ]
         },
-		"no english": {
-			"text": [
-				"Hello my dear,",
-				"I'm sorry, but no we accept only person who speak english",
-				"I mean proper english"
-			]
+	    "no english": {
+		"text": [
+			"Hello my dear,",
+			"I'm sorry, but no we accept only person who speak english",
+			"I mean proper english"
+		]
      }
 }
