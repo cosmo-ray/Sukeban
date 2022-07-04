@@ -27,8 +27,20 @@
 		    {
 	       		"text": "Watever.... cuck",
 			"answer": "phq.backToGame"
+		    },
+		    {
+			"text": "Ok, it's just some Nazi club, that pretent to be superior to your peer\nby talking a boring english",
 		    }
 		]
-        }
+        },
+	"NAZI ME": {
+		"text": [
+			"Look at her, impling peoples speeking politely, using formal english, are Nazi",
+			"You're kind never desapoint me."
+		],
+		"answers": [
+			"Ok, have a nive day... cunt"
+		]
+	}
     }
 }
