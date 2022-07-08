@@ -39,7 +39,14 @@
 			"You're kind never desapoint me."
 		],
 		"answers": [
-			"Ok, have a nive day... cunt"
+			{
+				"text": "Ok, have a nive day... cunt",
+				"answer": "phq.backToGame"
+			},
+			{
+				"text": "(explain that been polite is indea a nazi thing (TODO with real dialogue))"
+				"condition": [">", "phq.pj.stats.smart", 4]
+			}
 		]
 	}
     }
