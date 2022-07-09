@@ -7,7 +7,8 @@
                   "barber making they place near vegan food",
                   "As much as you would like to stay here, some guys above his kick scooter",
                   "with a very  weird and long mustach, is watchig you with eyes that say",
-                  "that you should not be here"]
+                   "that you should not be here"],
+	    "action": "phq.backToGame"
         }
     }
 }
