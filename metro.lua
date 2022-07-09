@@ -224,13 +224,17 @@ function metroAction(metroMap, eve)
 	       if station_name:to_string() == "Nontoise" or
 	       station_name:to_string() == "Nontoise Gate" then
 		  goto goto_station
-	       elseif (condition == nil or  yeCheckCondition(condition)) and
+	       elseif (condition == nil or yeCheckCondition(condition)) and
 	       use_time_point() == Y_TRUE then
 		  goto goto_station
 	       else
 		  local str = Entity.new_string("NOT ENOUTH TIME POINT")
+		  if phq.env.time_point > 0 then
+		     str = Entity.new_string("CONDITION NOT MEET")
+		  end
 		  print("NOT ENOUTH TIME POINT")
 		  ywCanvasStringSet(metroMap.info_txt, str)
+		  return YEVE_ACTION
 	       end
 	       :: goto_station ::
 	       usable_metro = false

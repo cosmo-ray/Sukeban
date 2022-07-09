@@ -302,7 +302,7 @@ function StartFight(wid, eve, enemy_type, script)
    local npc = nil
    --ySoundPlayLoop(main.soundcallgirl:to_int())
 
-   if yIsNil(script) == false then
+   if yIsNNil(script) then
       if (yeType(script)) == YARRAY then
 	 script = Entity.wrapp(script)
 	 fight_script = yeGetString(script[0])
@@ -373,6 +373,10 @@ function StartFight(wid, eve, enemy_type, script)
       dialogue.gotoNext(wid, eve)
    elseif fight_script == "RemoveEnemy" then
       local npc_a = main_widget.npc_act
+      print("=dbg=")
+      print(script)
+      print(Entity.wrapp(script))
+      print("-\\dbg-")
       local obj = main_widget.mainScreen.objects[script[1].obj_idx]
 
       if obj.no_respawn then
