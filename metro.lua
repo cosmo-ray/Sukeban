@@ -230,7 +230,7 @@ function metroAction(metroMap, eve)
 	       else
 		  local str = Entity.new_string("NOT ENOUTH TIME POINT")
 		  if phq.env.time_point > 0 then
-		     str = Entity.new_string("CONDITION NOT MEET")
+		     str = Entity.new_string("I have no reasons to go there !")
 		  end
 		  print("NOT ENOUTH TIME POINT")
 		  ywCanvasStringSet(metroMap.info_txt, str)
