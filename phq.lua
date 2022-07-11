@@ -406,6 +406,8 @@ function init_phq(mod)
    mod.advance_time = Entity.new_func(advance_time)
    mod.tacticalFight = Entity.new_func(tacticalFight)
    mod.push_dream = Entity.new_func(push_dream)
+   mod.DressUp = {}
+   mod.DressUp.Menu = Entity.new_func(open_dressup_menu)
    mod.misc_fnc = {}
    mod.misc_fnc.class_even = Entity.new_func(calsses_event_dialog_gen)
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)

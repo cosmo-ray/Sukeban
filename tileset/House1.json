@@ -385,17 +385,7 @@
                         {
                          "name":"Action",
                          "type":"string",
-                         "value":"phq.printMessage"
-                        }, 
-                        {
-                         "name":"ActionNbArgs",
-                         "type":"int",
-                         "value":1
-                        }, 
-                        {
-                         "name":"Arg0",
-                         "type":"string",
-                         "value":"Not yet Implemented"
+                         "value":"phq.DressUp.Menu"
                         }],
                  "rotation":0,
                  "type":"",

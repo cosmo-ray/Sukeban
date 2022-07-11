@@ -997,6 +997,20 @@ function playSnake(wid, eve, version)
    main.current = 2
 end
 
+function open_dressup_menu()
+   local wid = Entity.new_array()
+
+   print("open_dressup_menu !!!!!!")
+   wid["<type>"] = "dressup"
+
+   wid.background = "rgba: 140 150 155 255";
+   wid.quit = Entity.new_func("backToGame")
+   wid.character = phq.pj
+
+   ywPushNewWidget(main_widget, wid)
+   return YEVE_ACTION
+end
+
 function push_npc(pos, name, dir, npc)
    -- let's say that for now on, we can pass the npc directly to this function
    if npc == nil then
