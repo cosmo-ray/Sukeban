@@ -46,7 +46,19 @@
 			    "action": "phq.backToGame"
 			},
 			{
-			    "text": "(explain that been polite is indea a nazi thing (TODO with real dialogue))",
+			    "text": ["(explain that been polite is indead a nazi thing (TODO with real dialogue)):",
+				     "Oh, but my reuf, you are so wrong\n",
+				     "because here's the thing:",
+				     "- Nazi were very polite",
+				     "- Esentialisme of someone on how he speak",
+				     "- politeness is define by non marginalized peoples,",
+				     "  if non-marginalized peoples use commonly a non polite work, it became polite",
+				     "- maybe your can fing some group, where you can marginalize for been too polite,",
+				     "  but this group is alerady marginalize",
+				     "- At the end juging someone for not been polite, is just esentialising someone based on his was of speaking",
+				     "  and not his idea, or skill, and using a standard impose by thoses who pipe the journalist",
+				     "  so you are seeing some peoples, as bad citizen, on someone who should be as legitime as you",
+				     "  But can your small Nazi brain even understand that ?"],
 			    "condition": [">", "phq.pj.stats.smart", 4],
 			    "action": "phq.backToGame"
 			}
