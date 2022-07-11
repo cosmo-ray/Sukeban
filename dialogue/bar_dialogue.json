@@ -19,9 +19,11 @@
 		    },
 		    {
 			"text": "well it's not like I have something else to do...",
+			"condition":  ["<", "phq_wid.dialogue_npc.first_talk", 1],
 			"action": ["Dialogue:goto", 3]
 		    },
 		    {
+			"condition":  ["<", "phq_wid.dialogue_npc.first_talk", 1],
 			"text": "listen I need to leave"
 		    }
 		]
@@ -43,7 +45,13 @@
 	    ],
 	    {
 		"text": "I was young too, you know what was my dream at your age ?",
-		"answer": "be a dentist ?"
+		"answer": {
+		    "text": "be a dentist ?",
+		    "actions": [
+			["setInt", "phq_wid.dialogue_npc.first_talk", 1],
+			"Dialogue:gotoNext"
+		    ]
+		}
 	    },
 	    [
 		"be realisator, I've learn story writing, I've watch a shitton of movies",
@@ -52,10 +60,12 @@
 	    ],
 	    {
 		"text": "I've learn to film, how sound work, do you know to what it lead me ?",
-		"answers": [
-		    "be a dentist ?",
-		    "Also the movie is not Brobi the Brobo,\nbut 'not Allowed planet'"
-		]
+		"answer": {
+		    "text": [
+			"be a dentist ?",
+			"Also the movie is not Brobi the Brobo,\nbut 'not Allowed planet'"
+		    ]
+		}
 	    },
 	    {
 		"text": "vendor in a camera shop !",
@@ -86,14 +96,24 @@
 		"the less you'll dream about tomorrow",
 		"the present absorb you in an infernal spiral, and all of your dream"
 	    ],
-	    [
-		"are postbone to a tomorrows that never come, and you go to work",
-		"and you go to vacation, bring your child to school",
-		"but someday you'll will continue your project",
-		"and when you finally get time, all your imagination have fade away",
-		"so here's my advice girl:",
-		"enjoy your present, because it is awesome !"
-	    ]
+	    {
+		"text": [
+		    "are postbone to a tomorrows that never come, and you go to work",
+		    "and you go to vacation, bring your child to school",
+		    "but someday you'll will continue your project",
+		    "and when you finally get time, all your imagination have fade away",
+		    "so here's my advice girl:",
+		    "enjoy your present, because it is awesome !"
+		],
+		"answer": {
+		    "text": "well, could be easuer without your breath in me face, but I'll try, thanks",
+		    "actions": [
+			["phq.increase", "xp", 1],
+			["phq.printMessage", "you listen to jean story"],
+			["phq.backToGame"]
+		    ]
+		}
+	    }
 	]
     },
     "Herru": {
