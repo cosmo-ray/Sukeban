@@ -67,7 +67,11 @@ function menu_setup($wid, $mn, $mn_type) {
         ywMenuPushEntry($mn, 'torso/robe');
         ywMenuPushEntry($mn, 'pants/skirt');
         ywMenuPushEntry($mn, 'shoes');
-        ywMenuPushEntry($mn, 'quit', ygGet('FinishGame'));
+        echo 'yeGet($wid, "quit"): ', yeGet($wid, "quit"), "\n";
+        if (yeGet($wid, "quit"))
+            ywMenuPushEntry($mn, "quit", yeGet($wid, "quit"));
+        else
+            ywMenuPushEntry($mn, 'quit', ygGet('FinishGame'));
     } else if ($mn_type == $GLOBALS['HAIR_MENU']) {
         $colors = yeCreateArray();
         $c = yeCreateArray($colors);
@@ -133,16 +137,20 @@ function action($wid, $eves) {
         yeAddAt($wid, 'mn_pos', -1);
     } else if (yevIsKeyDown($eves, $Y_ENTER_KEY)) {
         $pos = yeGetIntAt($wid, 'mn_pos');
-        if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['TORSO_MENU_POS']) {
+        if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
+            $pos == $GLOBALS['TORSO_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['TORSO_MENU']);
             return action($wid, NULL);
-        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['PANTS_MENU_POS']) {
+        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
+                   $pos == $GLOBALS['PANTS_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['PANTS_MENU']);
             return action($wid, NULL); 
-        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['SHOES_MENU_POS']) {
+        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
+                   $pos == $GLOBALS['SHOES_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['SHOES_MENU']);
             return action($wid, NULL); 
-        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] && $pos == $GLOBALS['HAIR_MENU_POS']) {
+        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
+                   $pos == $GLOBALS['HAIR_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['HAIR_MENU']);
             return action($wid, NULL); 
         } else {
@@ -219,6 +227,7 @@ function mod_init($mod) {
     yeCreateFunction("back_menu", $mod, "back_menu");
     yeCreateFunction("change_hair", $mod, "change_hair");
 
+    print("INIT MOD !!!!!!\n!!!!!\n!!\n!\n");
     yirl_return($mod);
 }
 
