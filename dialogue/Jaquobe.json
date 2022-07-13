@@ -15,6 +15,12 @@
 			    "phq.join_team",
 			    "phq.backToGame"
 			]
+		    },
+		    {
+			"text": "I want to play, leave",
+			"action": [
+			    "phq.PjLeave", 0
+			]
 		    }
 		]
 	    },
