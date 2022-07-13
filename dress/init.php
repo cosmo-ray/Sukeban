@@ -45,6 +45,19 @@ function back_menu($mn)
     yeSetIntAt(yeGet($mn, '_main_'), 'cur_mn', $GLOBALS['MAIN_MENU']);
 }
 
+function to_file($mn)
+{
+    echo '================================', "\n";
+    echo '================================', "\n";
+    echo '=========== to file ! ==========', "\n";
+    echo '================================', "\n";
+    echo '================================', "\n";
+
+    $ch = yeGet($mn, "_ch_");
+    yeRemoveChildByStr($ch, "clothes");
+    ygEntToFile2($JSON, $ch, ygGetBinaryRootPath() . "/out.json");
+}
+
 function change_hair($mn)
 {
     echo '================================', "\n";
@@ -67,6 +80,9 @@ function menu_setup($wid, $mn, $mn_type) {
         ywMenuPushEntry($mn, 'torso/robe');
         ywMenuPushEntry($mn, 'pants/skirt');
         ywMenuPushEntry($mn, 'shoes');
+        if (yeGetStringAt($wid, "type") == "maker")
+            ywMenuPushEntry($mn, "save", ygGet('dressup.to_file'));
+
         echo 'yeGet($wid, "quit"): ', yeGet($wid, "quit"), "\n";
         if (yeGet($wid, "quit"))
             ywMenuPushEntry($mn, "quit", yeGet($wid, "quit"));
@@ -88,7 +104,7 @@ function menu_setup($wid, $mn, $mn_type) {
         yeCreateString('dressup.change_hair', $c, 'action');
 
         $s = ywMenuPushSlider($mn, 'test-hair', $colors);
-	yeReplaceBack($s, $si, 'slider_idx');
+        yeReplaceBack($s, $si, 'slider_idx');
         ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     } else if ($mn_type == $GLOBALS['TORSO_MENU']) {
         clothe_mn_setup($mn, 'torso');
@@ -220,12 +236,14 @@ function mod_init($mod) {
     $str = yeCreateString("dressup", $start, "<type>");
     yeCreateInt(1, $start, "is_test_wid");
     yeCreateString("rgba: 255 255 255 255", $start, "background");
+    yeCreateString("maker", $start, "type");
     mk_test_char($start);
 
     ywidAddSubType($wid_type);
 
     yeCreateFunction("back_menu", $mod, "back_menu");
     yeCreateFunction("change_hair", $mod, "change_hair");
+    yeCreateFunction("to_file", $mod, "to_file");
 
     print("INIT MOD !!!!!!\n!!!!!\n!!\n!\n");
     yirl_return($mod);
