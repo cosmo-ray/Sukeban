@@ -65,6 +65,13 @@ function change_hair($mn)
     echo '========= Change Hair ! ========', "\n";
     echo '================================', "\n";
     echo '================================', "\n";
+    echo '    ( ONLY COLOR SUPPORTED )    ', "\n";
+    $ch = yeGet($mn, "_ch_");
+    $hair = yeGet($ch, "hair");
+    $hair_mn = ywMenuGetCurSliderSlide($mn);
+    $dst_color = yeGetStringAt($hair_mn, "text");
+    echo $dst_color, "\n";
+    yeSetStringAt($hair, 1, $dst_color);
 }
 
 function menu_setup($wid, $mn, $mn_type) {
