@@ -74,6 +74,13 @@ function change_hair($mn)
     yeSetStringAt($hair, 1, $dst_color);
 }
 
+function add_sld_color($slider, $color) {
+    $c = yeCreateArray($slider);
+    yeCreateString($color, $c, "text");
+    yeCreateString('dressup.change_hair', $c, 'action');
+
+}
+
 function menu_setup($wid, $mn, $mn_type) {
     $cu = ywMenuGetCurrentEntry($mn);
     $si = yeGet($cu, "slider_idx");
@@ -97,18 +104,26 @@ function menu_setup($wid, $mn, $mn_type) {
             ywMenuPushEntry($mn, 'quit', ygGet('FinishGame'));
     } else if ($mn_type == $GLOBALS['HAIR_MENU']) {
         $colors = yeCreateArray();
-        $c = yeCreateArray($colors);
-        // black.png           blonde.png          blonde2.png         blue.png
-        yeCreateString('blonde', $c, "text");
-        yeCreateString('dressup.change_hair', $c, 'action');
-
-        $c = yeCreateArray($colors);
-        yeCreateString('black', $c, "text");
-        yeCreateString('dressup.change_hair', $c, 'action');
-
-        $c = yeCreateArray($colors);
-        yeCreateString('blue', $c, "text");
-        yeCreateString('dressup.change_hair', $c, 'action');
+        add_sld_color($colors, "white-blonde");
+        add_sld_color($colors, "white-blonde2");
+        add_sld_color($colors, "light-blonde");
+        add_sld_color($colors, "white-cyan");
+        add_sld_color($colors, "white");
+        add_sld_color($colors, "gray");
+        add_sld_color($colors, "gray2");
+        add_sld_color($colors, "blonde");
+        add_sld_color($colors, "brunette");
+        add_sld_color($colors, "blonde2");
+        add_sld_color($colors, "black");
+        add_sld_color($colors, "blue");
+        add_sld_color($colors, "blue2");
+        add_sld_color($colors, "pink");
+        add_sld_color($colors, "pink2");
+        add_sld_color($colors, "gold");
+        add_sld_color($colors, "green");
+        add_sld_color($colors, "raven");
+        add_sld_color($colors, "raven2");
+        add_sld_color($colors, "redhead2");
 
         $s = ywMenuPushSlider($mn, 'test-hair', $colors);
         yeReplaceBack($s, $si, 'slider_idx');
