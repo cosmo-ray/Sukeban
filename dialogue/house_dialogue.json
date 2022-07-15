@@ -95,6 +95,16 @@
     "TV": {
 	"dialogue" : [
 	    {
+		"condition":  ["and", ["S=", "phq.env.time", "morning"], ['=', 'phq.env.day', 6]],
+		"rand-texts": [
+		    "(some teleshooping)Yes Jack, with the new autocooking 2009, you will be able to cook patatoes in only 25mn !\nWoww !",
+		],
+		"answer": {
+		    "text": "leave",
+		    "action": "phq.backToGame"
+		}
+	    },
+	    {
 		"condition":  ["S=", "phq.env.time", "morning"],
 		"rand-texts": [
 		    "News about why meupporpg player should be internate",

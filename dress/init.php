@@ -125,8 +125,11 @@ function menu_setup($wid, $mn, $mn_type) {
         add_sld_color($colors, "raven2");
         add_sld_color($colors, "redhead2");
 
-        $s = ywMenuPushSlider($mn, 'test-hair', $colors);
+        $s = ywMenuPushSlider($mn, 'color', $colors);
         yeReplaceBack($s, $si, 'slider_idx');
+        $style = yeCreateArray();
+        $s = ywMenuPushSlider($mn, 'style', $style);
+        
         ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     } else if ($mn_type == $GLOBALS['TORSO_MENU']) {
         clothe_mn_setup($mn, 'torso');
