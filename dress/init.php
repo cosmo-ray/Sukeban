@@ -66,15 +66,16 @@ function change_hair($mn)
     echo '================================', "\n";
     echo '================================', "\n";
     echo '    ( ONLY COLOR SUPPORTED )    ', "\n";
+    $idx = (ywMenuGetCurrentByEntity($mn) - 1) * -1; // 0 is 1, and 1 is 0
     $ch = yeGet($mn, "_ch_");
     $hair = yeGet($ch, "hair");
     $hair_mn = ywMenuGetCurSliderSlide($mn);
     $dst_color = yeGetStringAt($hair_mn, "text");
-    echo $dst_color, "\n";
-    yeSetStringAt($hair, 1, $dst_color);
+    echo $idx, $dst_color, "\n";
+    yeSetStringAt($hair, $idx, $dst_color);
 }
 
-function add_sld_color($slider, $color) {
+function add_sld($slider, $color) {
     $c = yeCreateArray($slider);
     yeCreateString($color, $c, "text");
     yeCreateString('dressup.change_hair', $c, 'action');
@@ -84,11 +85,15 @@ function add_sld_color($slider, $color) {
 function menu_setup($wid, $mn, $mn_type) {
     $cu = ywMenuGetCurrentEntry($mn);
     $si = yeGet($cu, "slider_idx");
+    $mn_pos = yeGetIntAt($wid, 'mn_pos');
     if ($si) {
+        yeIncrRef($si);
         yePush($si, $mn, '_csi_');
+        echo '$si bef refcount: ', yeRefCount($si), "\n";
     }
 
     ywMenuClear($mn);
+    echo '$si bef 1 refcount: ', yeRefCount($si), "\n";
     if ($mn_type == $GLOBALS['MAIN_MENU']) {
         ywMenuPushEntry($mn, 'hairs');
         ywMenuPushEntry($mn, 'torso/robe');
@@ -97,39 +102,43 @@ function menu_setup($wid, $mn, $mn_type) {
         if (yeGetStringAt($wid, "type") == "maker")
             ywMenuPushEntry($mn, "save", ygGet('dressup.to_file'));
 
-        echo 'yeGet($wid, "quit"): ', yeGet($wid, "quit"), "\n";
         if (yeGet($wid, "quit"))
             ywMenuPushEntry($mn, "quit", yeGet($wid, "quit"));
         else
             ywMenuPushEntry($mn, 'quit', ygGet('FinishGame'));
     } else if ($mn_type == $GLOBALS['HAIR_MENU']) {
         $colors = yeCreateArray();
-        add_sld_color($colors, "white-blonde");
-        add_sld_color($colors, "white-blonde2");
-        add_sld_color($colors, "light-blonde");
-        add_sld_color($colors, "white-cyan");
-        add_sld_color($colors, "white");
-        add_sld_color($colors, "gray");
-        add_sld_color($colors, "gray2");
-        add_sld_color($colors, "blonde");
-        add_sld_color($colors, "brunette");
-        add_sld_color($colors, "blonde2");
-        add_sld_color($colors, "black");
-        add_sld_color($colors, "blue");
-        add_sld_color($colors, "blue2");
-        add_sld_color($colors, "pink");
-        add_sld_color($colors, "pink2");
-        add_sld_color($colors, "gold");
-        add_sld_color($colors, "green");
-        add_sld_color($colors, "raven");
-        add_sld_color($colors, "raven2");
-        add_sld_color($colors, "redhead2");
+        add_sld($colors, "white-blonde");
+        add_sld($colors, "white-blonde2");
+        add_sld($colors, "light-blonde");
+        add_sld($colors, "white-cyan");
+        add_sld($colors, "white");
+        add_sld($colors, "gray");
+        add_sld($colors, "gray2");
+        add_sld($colors, "blonde");
+        add_sld($colors, "brunette");
+        add_sld($colors, "blonde2");
+        add_sld($colors, "black");
+        add_sld($colors, "blue");
+        add_sld($colors, "blue2");
+        add_sld($colors, "pink");
+        add_sld($colors, "pink2");
+        add_sld($colors, "gold");
+        add_sld($colors, "green");
+        add_sld($colors, "raven");
+        add_sld($colors, "raven2");
+        add_sld($colors, "redhead2");
 
         $s = ywMenuPushSlider($mn, 'color', $colors);
-        yeReplaceBack($s, $si, 'slider_idx');
+        if ($mn_pos == 0)
+            yeReplaceBack($s, $si, 'slider_idx');
         $style = yeCreateArray();
+        add_sld($style, "loose");
+        add_sld($style, "princess");
         $s = ywMenuPushSlider($mn, 'style', $style);
-        
+        if ($mn_pos == 1)
+            yeReplaceBack($s, $si, 'slider_idx');
+        echo '$si aff refcount: ', yeRefCount($si), "\n";
         ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     } else if ($mn_type == $GLOBALS['TORSO_MENU']) {
         clothe_mn_setup($mn, 'torso');
@@ -142,6 +151,7 @@ function menu_setup($wid, $mn, $mn_type) {
         ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     }
     yeRemoveChildByStr($mn, '_csi_');
+    yeDestroy($si); // dec ref
 }
 
 function reset_character($cwid, $mod, $cw) {
