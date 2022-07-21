@@ -537,9 +537,10 @@ function go_under(unused_wid, unused_eve, entry)
 	 "#########"
    }, wid, "map")
    wid.quit = Entity.new_func("backToGame")
+   wid.exit_action = Entity.new_func(changeScene)
    wid.exits = {}
-   wid.exits[0] = {1300, 8500, "up", "st_1"}
-   wid.exits[1] = {1300, 10500, "up", "st_1_b"}
+   wid.exits[0] = {1300, 8500, "up", "st_1", "street1", 2}
+   wid.exits[1] = {1300, 10500, "up", "st_1_b", "street1", 0}
    wid.entry = entry
    print(wid)
    ywPushNewWidget(main_widget, wid)
@@ -1054,8 +1055,15 @@ function tacticalFight(wid, eve, args)
 end
 
 function changeScene(wid, eve, scene, entry)
-   local main = getMainWid(wid)
-   load_scene(main, yeGetString(scene), yeGetInt(entry))
+   if type(entry) ~= "number" then
+      entry = yeGetInt(entry)
+   end
+
+   if type(scene) ~= "string" then
+      scene = yeGetString(scene)
+   end
+
+   load_scene(main_widget, scene, entry)
    backToGame2()
 end
 
