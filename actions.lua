@@ -1005,6 +1005,7 @@ function open_dressup_menu()
    wid["<type>"] = "dressup"
 
    wid.background = "rgba: 140 150 155 255";
+   wid.char_clothes = phq.pj.inventory;
    wid.quit = Entity.new_func("backToGame")
    wid.character = phq.pj
 

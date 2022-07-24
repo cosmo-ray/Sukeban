@@ -31,11 +31,15 @@ $SHOES_MENU_POS = 3;
 function clothe_mn_setup($mn, $where)
 {
     $objs = ygGet('dressup.objects');
+    $inv = yeGet($mn, '_inv_');
     for ($i = 0; $i < yeLen($objs); $i++) {
         $o = yeGet($objs, $i);
+        $k = yeGetKeyAt($objs, $i);
         if (yeGetStringAt($o, 'where') == $where) {
-            $entry = ywMenuPushEntry($mn, yeGetKeyAt($objs, $i), ygGet('dressup.equip'));
-            yeCreateString($where, $entry, 'where');
+            if (!$inv || yeGet($inv, $k)) {
+                $entry = ywMenuPushEntry($mn, $k, ygGet('dressup.equip'));
+                yeCreateString($where, $entry, 'where');
+            }
         }
     }
 }
@@ -227,7 +231,10 @@ function init_wid($cwid) {
     $mod = ygGet("dressup");
     $entries = yeCreateArray($cwid, "entries");
     $menu = yeCreateArray($entries);
+    $inv = yeGet($cwid, "char_clothes");
     yeCreateString("menu", $menu, "<type>");
+    if ($inv)
+        yePushBack($menu, $inv, "_inv_");
     $cw = yeCreateArray($entries);
     yeCreateString("canvas", $cw, "<type>");
 
