@@ -540,7 +540,8 @@ function go_under(unused_wid, unused_eve, entry)
    wid.exit_action = Entity.new_func(changeScene)
    wid.exits = {}
    wid.exits[0] = {1300, 8500, "up", "st_1", "street1", 7}
-   wid.exits[1] = {1300, 10500, "up", "st_1_b", "street1", 3}
+   wid.exits[1] = {1300, 10500, "up", "st_1_b", "hiden_house", 0}
+   --wid.exits[1] = {1300, 6500, "up", "st_1_b", "hiden_house", 0}
    wid.entry = entry
    print(wid)
    ywPushNewWidget(main_widget, wid)

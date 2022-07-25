@@ -98,6 +98,9 @@
     "house2" : {
 	"tiled": "./tileset/House2.json"
     },
+    "hiden_house" : {
+	"tiled": "./tileset/hiden_house.json"
+    },
 
     "townhall" : { "tiled": "./tileset/Town_Hall.json" ,
 		   "dialogues" : "dialogue/TH_dialogue.json"},
