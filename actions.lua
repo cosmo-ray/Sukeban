@@ -998,6 +998,11 @@ function playSnake(wid, eve, version)
    main.current = 2
 end
 
+local function back_and_reload_mc()
+   lpcs.handlerReload(yeGet(main_widget, "pj"))
+   backToGame2()
+end
+
 function open_dressup_menu()
    local wid = Entity.new_array()
 
@@ -1006,7 +1011,7 @@ function open_dressup_menu()
 
    wid.background = "rgba: 140 150 155 255";
    wid.char_clothes = phq.pj.inventory;
-   wid.quit = Entity.new_func("backToGame")
+   wid.quit = Entity.new_func(back_and_reload_mc)
    wid.character = phq.pj
 
    ywPushNewWidget(main_widget, wid)
