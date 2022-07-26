@@ -238,6 +238,10 @@ function init_wid($cwid) {
     $cw = yeCreateArray($entries);
     yeCreateString("canvas", $cw, "<type>");
 
+    $margin = yeCreateArray($cw, "margin");
+    yeCreateString('rgba: 220 10 100 55', $margin, 'color');
+    yeCreateInt(3, $margin, 'size');
+
     yeCreateInt(0, $cwid, 'mn_pos');
     yeCreateInt($MAIN_MENU, $cwid, 'cur_mn');
     yeCreateInt(20, $cwid, 'size');
