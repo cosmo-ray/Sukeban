@@ -79,7 +79,7 @@ Good luck and good drinks!
 ",
 	"next" : "phq:menus.main"
     },
-    "game Info" : {
+    "Game Info" : {
 	"<type>" : "text-screen",
 	"text-align": "center",
 	"action" : "nextOnKeyDown",
@@ -108,7 +108,7 @@ Good luck and good drinks!
 		  "Not by killing the main character so We could make a sequel"],
 	"next" : "phq:menus.main"
     },
-    "credit" : {
+    "Credit" : {
 	"<type>" : "text-screen",
 	"text-align": "center",
 	"action" : "nextOnKeyDown",
@@ -117,10 +117,10 @@ Good luck and good drinks!
 sprites from www.opengameart.org
 music from www.rengoku-teihen.com
 portrait-1-14 by andre tran CC-BY-3
-to copy past website, use a terminal and do:
 Ther's also a imgs/credit.txt that try to resence all art author
 If I've forgot an artwork, thank to create an issue, Pull Request
 or notice me :)
+to copy past website, use a terminal and do:
 grep www menus.json imgs/credit.txt
 yes that's a little geeky,
 but to compensate for peoples who dont know how to use a terminal
