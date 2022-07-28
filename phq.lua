@@ -977,22 +977,30 @@ function phq_action(entity, eve)
       local pjPos = ylpcsHandePos(entity.pj)
       local x_add = 0
       local y_add = 0
+      local h = 30
+      local w = 30
 
       pjPos = Pos.wrapp(pjPos)
       if entity.pj.y:to_int() == LPCS_UP then
-	 y_add = -25
-	 x_add = lpcs.w_sprite / 2
+	 y_add = -40
+	 x_add = 5
+	 h = 60
       elseif entity.pj.y:to_int() == LPCS_LEFT then
-	 x_add = -25
-	 y_add = lpcs.h_sprite / 2
+	 x_add = -40
+	 y_add = 20
+	 w = 40
       elseif entity.pj.y:to_int() == LPCS_DOWN then
-	 y_add = lpcs.h_sprite + 20
-	 x_add = lpcs.w_sprite / 2
+	 y_add = lpcs.h_sprite
+	 x_add = 5
+	 h = 40
       else
-	 y_add = lpcs.h_sprite / 2
-	 x_add = lpcs.w_sprite + 20
+	 y_add = 20
+	 x_add = lpcs.w_sprite
+	 w = 40
       end
-      local r = Rect.new(pjPos:x() + x_add, pjPos:y() + y_add, 10, 10)
+      local r = Rect.new(pjPos:x() + x_add, pjPos:y() + y_add, w, h)
+      --ywCanvasNewRectangle(entity.upCanvas, ywRectX(r.ent), ywRectY(r.ent),
+      --ywRectW(r.ent), ywRectH(r.ent), "rgba: 10 10 255 127")
       local e_actionables = entity.actionables
       local i = 0
 
