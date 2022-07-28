@@ -868,6 +868,7 @@ function startDialogue(main, obj, dialogue)
       dialogueWid.name = npc.name
       dialogueWid.endAction = "phq.backToGame"
       main_widget.dialogue_npc = npc
+      main_widget.require_ret = 1
       ywPushNewWidget(main_widget, dialogueWid)
       return YEVE_ACTION
    end
