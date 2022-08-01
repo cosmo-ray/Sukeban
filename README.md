@@ -17,11 +17,14 @@ So if you like this game, just a slightest, please, contribute :)
 Yeap now you think I'm a f****** hipi, that true, but hey, it work for Arch Linux Kernel, it work for Arch Linux distro, It work for Wesnoth (on Arch), maybe it can work with this game too :)
 
 # Cat of Conduct
-~~~~~~~~~~~ UwU ~~~~~~~~~~~~
+
+=========== UwU ~~~~~~~~~~~~
+
 Be Nice to each other, whoever they are UwU
 or be an Ass to each other whoever they are Nyaaaa,
 I don't care as long as you try to tread every one the same way, desu ne ???.
-~~~~~~~~~~~ /UwU ~~~~~~~~~~~~
+
+=========== UwU ~~~~~~~~~~~~
 
 # Contributions
 See the chat with us section, and we will be more than happy to help you :)
