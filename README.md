@@ -20,8 +20,8 @@ Yeap now you think I'm a f****** hipi, that true, but hey, it work for Arch Linu
 
 =========== UwU ~~~~~~~~~~~~
 
-Be Nice to each other, whoever they are UwU
-or be an Ass to each other whoever they are Nyaaaa,
+Be Mice to each other, whoever they are UwU  
+or be an Ass to each other whatever they are Nyaaaa,  
 I don't care as long as you try to tread every one the same way, desu ne ???.
 
 =========== UwU ~~~~~~~~~~~~
