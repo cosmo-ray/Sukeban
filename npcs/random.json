@@ -81,6 +81,8 @@
 	"type": "sprite",
 	"small talk": ["rand", "Miaou !", "Nyaa !", "Meow !", "Miau !", "Miao !"],
 	"attack" : "unarmed0",
+	"scene_ai": "phq.scene_ai.random_movements",
+	"scene_ai_condition": ["S=", "phq.env.time", "morning"],
         "max_life": 4,
 	"sprite": {
 	    "path": "imgs/lpccatratdog.png",

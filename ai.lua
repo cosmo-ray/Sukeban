@@ -18,11 +18,6 @@
 PIX_PER_FRAME = 6
 local ACTION_MOVE = 1
 
-local LPCS_LEFT = 9
-local LPCS_DOWN = 10
-local LPCS_RIGHT = 11
-local LPCS_UP = 8
-
 ACTION_NPC = 0
 local ACTION_MV_TBL = 1
 local ACTION_MV_TBL_IDX = 2
@@ -31,6 +26,34 @@ local ENEMY_IDLE = 0
 local ENEMY_ATTACKING = 1
 
 local phq = Entity.wrapp(ygGet("phq"))
+
+function randomMovements(osef, action)
+   action = Entity.wrapp(action)
+   directions = {LPCS_LEFT, LPCS_DOWN,
+		 LPCS_RIGHT, LPCS_UP}
+   local h = action.hdl
+
+   if (yIsNil(action.timer_add)) or action.timer_add > 2000 then
+      if yIsNil(action.timer_add) then
+	 action.hdl = main_widget.npcs[action[0]]
+	 h = action.hdl
+      end
+      action.timer_add = 0
+      local tmp = Entity.new_array()
+      local dir = rand_array_elem(directions)
+      saveNpcCanvasMatadata(tmp, h.canvas)
+      generic_setDir(h, dir)
+      action._d = dir
+      generic_handlerRefresh(h)
+      restoreNpcCanvasMatadata(h.canvas, tmp)
+   end
+   action.timer_add = action.timer_add + ywidGetTurnTimer() / 100
+   add_x, add_y = lpcsDirToXY(action._d);
+
+   generic_handlerMoveXY(h, add_x, add_y)
+   print("move to: ", action._d, add_x, add_y)
+   --print("random movements !!!", action, ywidGetTurnTimer() / 100)
+end
 
 function npcAdvenceTime()
    main_widget.npc_act = {}

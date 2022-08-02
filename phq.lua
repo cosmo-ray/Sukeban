@@ -91,6 +91,19 @@ function distanceToDir(x, y)
    end
 end
 
+function lpcsDirToXY(dir)
+   if yIsLuaNum(dir) == false then
+      dir = yeGetInt(dir)
+   end
+   if dir == LPCS_LEFT then
+      return -1,0
+   elseif dir == LPCS_RIGHT then
+      return 1,0
+   elseif dir == LPCS_UP then
+      return 0,-1
+   end
+   return 0,1
+end
 function lpcsStrToDir(sdir)
    if sdir == "left" then
       return LPCS_LEFT
@@ -163,7 +176,11 @@ end
 
 function generic_setDir(npc, dir)
    if yeGetString(npc.char.type) == "sprite" then
-      dir = yeGetInt(dir)
+
+      if (yIsLuaNum(dir) == false) then
+	 dir = yeGetInt(dir)
+      end
+
       if yeGetString(npc.sp.disposition) == "uldr" then
 	 if dir == LPCS_LEFT then
 	    yeSetAt(npc, "y_offset", 32)
@@ -194,6 +211,7 @@ function generic_setDir(npc, dir)
 	 else
 	    yeSetAt(npc, "y_offset", 0)
 	 end
+	 print("set offset: ", dir, npc.y_offset);
       end
    else
       lpcs.handlerSetOrigXY(npc, 0, dir)
@@ -408,6 +426,8 @@ function init_phq(mod)
    mod.push_dream = Entity.new_func(push_dream)
    mod.DressUp = {}
    mod.DressUp.Menu = Entity.new_func(open_dressup_menu)
+   mod.scene_ai = {}
+   mod.scene_ai.random_movements = Entity.new_func(randomMovements)
    mod.misc_fnc = {}
    mod.misc_fnc.class_even = Entity.new_func(calsses_event_dialog_gen)
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
@@ -416,8 +436,6 @@ function init_phq(mod)
    mod.triggers = {}
    mod.triggers.block_message = Entity.new_func(trigger_block_message)
 end
-
-
 
 function load_game(save_dir)
    local game = ygGet("phq:menus.game")
@@ -1259,6 +1277,8 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       local layer_name = obj.layer_name
       local npc_name = yeGetString(yeGet(obj, "name"))
       local npc = npcs[npc_name]
+      local npc_scene_ai = yeGetStringAt(npc, "scene_ai");
+      local npc_scene_ai_condition = yeGet(npc, "scene_ai_condition")
       local is_ai_point = false
 
       local ai = yeGetStringAt(obj, "ai")
@@ -1344,13 +1364,25 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 npc.canvas.current = npc_idx
 	 npc.obj_idx = i
 	 npc_idx = npc_idx + 1
+	 if yIsNil(ai) and yIsNNil(npc_scene_ai) then
+	    if (yIsNil(npc_scene_ai_condition) or
+		yeCheckCondition(npc_scene_ai_condition)) then
+	       ai = npc_scene_ai
+	    end
+	 end
 	 if yIsNNil(ai) then
 	    local action = Entity.new_array(ent.npc_act)
 	    action[0] = npc_name
 	    if yIsNNil(npc.generic_id) then
 	       action.generic_id = generic_npc_id
 	    end
-	    action.controller = Entity.new_func(ai)
+	    local ai_func_glob = ygGet(ai)
+	    print("new ai controller: ", ai, Entity.new_func(ai))
+	    if yIsNNil(ai_func_glob) then
+	       action.controller = ai_func_glob
+	    else
+	       action.controller = Entity.new_func(ai)
+	    end
 	 end
       elseif layer_name:to_string() == "Entries" then
 	 yeAttach(e_exits, obj, j, obj.name:to_string(), 0)
