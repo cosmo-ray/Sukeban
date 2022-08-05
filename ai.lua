@@ -27,6 +27,24 @@ local ENEMY_ATTACKING = 1
 
 local phq = Entity.wrapp(ygGet("phq"))
 
+local function npc_check_col(canvas, col_r, pos_add)
+   local ret = false
+   local cols = ywCanvasProjectedArColisionArray(canvas, col_r, pos_add)
+   local i = 0
+   while i < yeLen(cols) do
+      local col = yeGet(cols, i)
+
+      if yIsNil(yeGet(col, "is_npc")) and yeGetIntAt(col, "Collision") ~= 0 then
+	 ret = true
+	 break
+      end
+
+      i = i + 1
+   end
+   yeDestroy(cols)
+   return ret
+end
+
 function randomMovements(osef, action)
    action = Entity.wrapp(action)
    directions = {LPCS_LEFT, LPCS_DOWN,
@@ -49,8 +67,18 @@ function randomMovements(osef, action)
    end
    action.timer_add = action.timer_add + ywidGetTurnTimer() / 100
    add_x, add_y = lpcsDirToXY(action._d);
+   -- do correct movement coputing here
+   --add_x = add_x * (MOVE_PIX_PER_SEC / TURN_LENGTH)
+   --add_y = add_y * (MOVE_PIX_PER_SEC / TURN_LENGTH)
 
-   generic_handlerMoveXY(h, add_x, add_y)
+   add_pos = Pos.new(add_x, add_y)
+
+   if npc_check_col(main_widget_screen,
+		    Rect.new_ps(generic_handlerPos(h),
+				generic_handlerSize(h)).ent,
+		    add_pos.ent) == false then
+      generic_handlerMoveXY(h, add_x, add_y)
+   end
    print("move to: ", action._d, add_x, add_y)
    --print("random movements !!!", action, ywidGetTurnTimer() / 100)
 end
@@ -74,24 +102,6 @@ function npcAdvenceTime()
       end
       :: skip ::
    end
-end
-
-local function npc_check_col(canvas, col_r, pos_add)
-   local ret = false
-   local cols = ywCanvasProjectedArColisionArray(canvas, col_r, pos_add)
-   local i = 0
-   while i < yeLen(cols) do
-      local col = yeGet(cols, i)
-
-      if yIsNil(yeGet(col, "is_npc")) and yeGetIntAt(col, "Collision") ~= 0 then
-	 ret = true
-	 break
-      end
-
-      i = i + 1
-   end
-   yeDestroy(cols)
-   return ret
 end
 
 local function searching(wid, enemy)
@@ -160,31 +170,31 @@ local function searching(wid, enemy)
 	 mvy = y_dist
       end
       local ret = Pos.new(mvx * left_right, mvy * up_down).ent
-      if npc_check_col(wid.mainScreen, colRect, ret) then
+      if npc_check_col(main_widget_screen, colRect, ret) then
 	 if x_dist > y_dist then
 	    ret = Pos.new(mvx * left_right, 0).ent
-	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
+	    if npc_check_col(main_widget_screen, colRect, ret) == false then
 	       return ret
 	    end
 	    ret = Pos.new(mvx * left_right, -mvy * up_down).ent
-	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
+	    if npc_check_col(main_widget_screen, colRect, ret) == false then
 	       return ret
 	    end
 	    ret = Pos.new(0, mvy * up_down).ent
-	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
+	    if npc_check_col(main_widget_screen, colRect, ret) == false then
 	       return ret
 	    end
 	 else
 	    ret = Pos.new(0, mvy * up_down).ent
-	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
+	    if npc_check_col(main_widget_screen, colRect, ret) == false then
 	       return ret
 	    end
 	    ret = Pos.new(-mvx * left_right, mvy * up_down).ent
-	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
+	    if npc_check_col(main_widget_screen, colRect, ret) == false then
 	       return ret
 	    end
 	    ret = Pos.new(mvx * left_right, 0).ent
-	    if npc_check_col(wid.mainScreen, colRect, ret) == false then
+	    if npc_check_col(main_widget_screen, colRect, ret) == false then
 	       return ret
 	    end
 	 end
@@ -379,7 +389,7 @@ function NpcGoTo(npc, dest_pos, speed, end_f)
    if speed == nil then
       speed = 1
    end
-   ywCanvasDoPathfinding(main_widget.mainScreen, ywCanvasObjPos(npc.canvas),
+   ywCanvasDoPathfinding(main_widget_screen, ywCanvasObjPos(npc.canvas),
 			 dest_pos,
 			 Pos.new(PIX_PER_FRAME * speed, PIX_PER_FRAME * speed).ent,
 			 tbl)
@@ -398,7 +408,8 @@ function pushPjLeave(npc, entryPoint)
    action[ACTION_NPC] = npc
    action[ACTION_MV_TBL] = {}
    action[ACTION_MV_TBL_IDX] = 0
-   ywCanvasDoPathfinding(main.mainScreen, ywCanvasObjPos(npc.canvas), exit.rect,
+   ywCanvasDoPathfinding(main_widget_screen, ywCanvasObjPos(npc.canvas),
+			 exit.rect,
 			 Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
 			 action[ACTION_MV_TBL])
    action.controller = Entity.new_func("PjLeaveController")
@@ -418,9 +429,10 @@ function PjLeave(owid, eve, entryPoint)
    action[ACTION_NPC] = npc
    action[ACTION_MV_TBL] = {}
    action[ACTION_MV_TBL_IDX] = 0
-   ywCanvasDoPathfinding(main.mainScreen, ywCanvasObjPos(npc.canvas), exit.rect,
-		      Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
-		      action[ACTION_MV_TBL])
+   ywCanvasDoPathfinding(main_widget_screen, ywCanvasObjPos(npc.canvas),
+			 exit.rect,
+			 Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
+			 action[ACTION_MV_TBL])
    action.controller = Entity.new_func("PjLeaveController")
    backToGame(owid, eve, arg)
 end

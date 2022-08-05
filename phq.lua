@@ -33,6 +33,8 @@ quests_info = File.jsonToEnt("quests/main.json")
 
 main_widget = nil
 
+main_widget_screen = nil
+
 local run_script = nil
 
 window_width = 800
@@ -248,7 +250,7 @@ local function reposScreenInfo(ent, x0, y0)
 end
 
 function reposeCam(main, dst_char, xadd, yadd)
-   local canvas = main.mainScreen
+   local canvas = main_widget_screen
    local upCanvas = main.upCanvas
    local offset = main.cam_offset
    local pjPos = Pos.wrapp(ylpcsHandePos(dst_char))
@@ -520,7 +522,7 @@ end
 
 function saveCurDialogue(main)
    saved_scenes[main.cur_scene_str:to_string()] = {}
-   saved_scenes[main.cur_scene_str:to_string()].o = main.mainScreen.objects
+   saved_scenes[main.cur_scene_str:to_string()].o = main_widget_screen.objects
    local p = ylaPatchCreate(o_dialogues, dialogues)
    saved_scenes[main.cur_scene_str:to_string()].d = Entity.wrapp(p)
 end
@@ -825,7 +827,7 @@ function phq_action(entity, eve)
 
    if should_track_mouse and yIsNNil(yevMousePos(eve)) then
       local mouse_pos = Entity.new_copy(yevMousePos(eve))
-      local cam = entity.mainScreen.cam
+      local cam = main_widget_screen.cam
       ywPosAdd(mouse_pos, cam)
       local pjpos = Entity.wrapp(ylpcsHandePos(entity.pj))
       local x_dist = ywPosX(mouse_pos) - ywPosX(pjpos);
@@ -940,7 +942,7 @@ function phq_action(entity, eve)
 	    i = i  + 1
 	 end
 	 local cur_scene = entity.cur_scene
-	 local canvasWid = entity.mainScreen
+	 local canvasWid = main_widget_screen
 	 if cur_scene.out and cur_scene.out["left"] then
 	    show_act[i] = ywCanvasNewRectangle(entity.upCanvas,
 					       0, 0,
@@ -1039,7 +1041,7 @@ function phq_action(entity, eve)
 	 i = i + 1
       end
 
-      local col = ylaCanvasCollisionsArrayWithRectangle(entity.mainScreen,
+      local col = ylaCanvasCollisionsArrayWithRectangle(main_widget_screen,
 							r:cent())
       col = Entity.wrapp(col)
       --print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
@@ -1093,7 +1095,7 @@ function phq_action(entity, eve)
    local mvPos = Pos.new(pix_mv * yeGetFloat(entity.pj.move.left_right),
 			 pix_mv * yeGetFloat(entity.pj.move.up_down))
    ylpcsHandlerMove(entity.pj, mvPos.ent)
-    local col_rel, col_obj = CheckColision(entity, entity.mainScreen, entity.pj)
+    local col_rel, col_obj = CheckColision(entity, main_widget_screen, entity.pj)
     --local col_rel = NO_COLISION
 
     if col_rel == FIGHT_COLISION then
@@ -1150,6 +1152,7 @@ function destroy_phq(entity)
    run_script = nil
    tiled.deinit()
    ent.mainScreen = nil
+   main_widget_screen = nil
    ent.upCanvas = nil
    ent.current = 0
    local i = 0
@@ -1239,7 +1242,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    yeCopy(o_dialogues, dialogues)
 
    if saved_scenes[ent.cur_scene_str:to_string()] then
-      ent.mainScreen.objects = saved_scenes[ent.cur_scene_str:to_string()].o
+      main_widget_screen.objects = saved_scenes[ent.cur_scene_str:to_string()].o
       local patch = saved_scenes[ent.cur_scene_str:to_string()].d
       if (yeType(patch) == YARRAY) then
 	 yePatchAply(dialogues, patch)
@@ -1249,7 +1252,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    c.cam = Pos.new(0, 0).ent
    -- Pj info:
 
-   local objects = ent.mainScreen.objects
+   local objects = main_widget_screen.objects
    local npc_idx = 0
    local i = 0
    local j = 0
@@ -1530,6 +1533,7 @@ function create_phq(entity, eve, menu)
    Entity.new_func("phq_action", ent, "action")
 
    local mainCanvas = Canvas.new_entity(entity, "mainScreen")
+   main_widget_screen = mainCanvas.ent
    local upCanvas = Canvas.new_entity(entity, "upCanvas")
    ent["turn-length"] = TURN_LENGTH
    ent.entries = {}

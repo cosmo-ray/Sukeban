@@ -1215,7 +1215,7 @@ function doSleep(ent, upCanvas)
    end
 
    local pjPos = Pos.wrapp(ylpcsHandePos(ent.pj))
-   local cam = main_widget.mainScreen.cam
+   local cam = main_widget_screen.cam
    local x0 = ywPosX(cam)
    local y0 = ywPosY(cam)
    local sl = main_widget.sleep_loc
