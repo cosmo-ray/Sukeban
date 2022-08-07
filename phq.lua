@@ -97,6 +97,7 @@ function lpcsDirToXY(dir)
    if yIsLuaNum(dir) == false then
       dir = yeGetInt(dir)
    end
+
    if dir == LPCS_LEFT then
       return -1,0
    elseif dir == LPCS_RIGHT then

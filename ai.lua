@@ -50,13 +50,16 @@ function randomMovements(osef, action)
    directions = {LPCS_LEFT, LPCS_DOWN,
 		 LPCS_RIGHT, LPCS_UP}
    local h = action.hdl
+   local pix_mv = ywidGetTurnTimer() / 10000
 
    if (yIsNil(action.timer_add)) or action.timer_add > 2000 then
       if yIsNil(action.timer_add) then
 	 action.hdl = main_widget.npcs[action[0]]
 	 h = action.hdl
+	 pix_mv = 1
       end
       action.timer_add = 0
+      action.timer_left = 0
       local tmp = Entity.new_array()
       local dir = rand_array_elem(directions)
       saveNpcCanvasMatadata(tmp, h.canvas)
@@ -70,6 +73,16 @@ function randomMovements(osef, action)
    -- do correct movement coputing here
    --add_x = add_x * (MOVE_PIX_PER_SEC / TURN_LENGTH)
    --add_y = add_y * (MOVE_PIX_PER_SEC / TURN_LENGTH)
+   local PIX_MV_PER_MS = 4
+   local sav = pix_mv - math.floor(pix_mv)
+   pix_mv = math.floor(pix_mv)
+   action.timer_left = action.timer_left + sav
+   if (action.timer_left > 1) then
+      pix_mv = pix_mv + 1
+      action.timer_left = action.timer_left - 1
+   end
+   add_x = add_x * pix_mv
+   add_y = add_y * pix_mv
 
    add_pos = Pos.new(add_x, add_y)
 
@@ -79,7 +92,6 @@ function randomMovements(osef, action)
 		    add_pos.ent) == false then
       generic_handlerMoveXY(h, add_x, add_y)
    end
-   print("move to: ", action._d, add_x, add_y)
    --print("random movements !!!", action, ywidGetTurnTimer() / 100)
 end
 
