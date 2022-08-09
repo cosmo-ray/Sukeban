@@ -15,6 +15,10 @@ saki_normal.png, miu_neutral.png reina_normal.png:
 https://liah0227.itch.io/
 Open Source Permison Without explicit licence
 
+199.png:
+CC BY 3.0
+made by: Frances Calceta
+
 Willo-Default-Default-Default.png , charle.png , ashley-Clothing_Preset_2-Default-Default.png, ashley-Default-Default-0.png:
 Generated With mannequin: https://ar14.itch.io/mannequin
 
