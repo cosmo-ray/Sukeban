@@ -1,3 +1,5 @@
+IMAGES HERE:
+
 agustina.png:
 MIT license: https://dejinyucu.itch.io/agustina-visual-novel-sprite
 
@@ -15,3 +17,11 @@ Open Source Permison Without explicit licence
 
 Willo-Default-Default-Default.png , charle.png , ashley-Clothing_Preset_2-Default-Default.png, ashley-Default-Default-0.png:
 Generated With mannequin: https://ar14.itch.io/mannequin
+
+
+SPRITESSHEET IN TILESET:
+
+Ukulele : 
+- Creative Commons Zero (CCO).
+- based on this https://openclipart.org/detail/65887
+- came from Stendhal source: https://github.com/arianne/stendhal/blob/7ee9d25/tiled/tileset/item/instrument/ukulele.png
