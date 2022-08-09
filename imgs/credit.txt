@@ -25,3 +25,6 @@ Ukulele :
 - Creative Commons Zero (CCO).
 - based on this https://openclipart.org/detail/65887
 - came from Stendhal source: https://github.com/arianne/stendhal/blob/7ee9d25/tiled/tileset/item/instrument/ukulele.png
+
+Also see 
+Sukeban/imgs/licences-imgs 
