@@ -12,6 +12,8 @@ give back pencil/cisor... when talk to a random, with some chance per can ask yo
 
 ### Lemie
 
+I need to have a diologue, on which, at some point you could slap Lemie, she would be angry and say "You hit me, even my father didn't hit me"
+
 #### Bye Bye old love, you weren't enough for me.
 when the game start, Lenie is the girlfriend of the most famous guy at shool, at some point this guy do shit, and won't be the most famous anymore.
 thefore Lenie will dump her boyfriend to date the new most famous.
