@@ -98,7 +98,8 @@
 		"condition":  ["and", ["S=", "phq.env.time", "morning"], ["=", "phq.env.day", 6]],
 		"rand-texts": [
 		    "(some teleshooping)\n-Yes Jack, with the new autocooking 2009, you will be able to cook patatoes in only 25mn !\nWoww !\n\nCall 011 8 999 881 990 199 725 3",
-		    "(TV shoping)\n-So dexter, do it happen a lot to have your pocket too full\n-Yes Nanine, I always have at last 4 wallet in my pockets, they are so big, it's a real annoyance\n-Don't worry with the new Fanny pack bag: banana mk2 you will be able to carry them\nno questions ask !\n\nCall 011 8 999 881 990 199 725 3"
+		    "(infomercial)Wow.\nthose candies are so good, they don't even stick to the Tooth, are made at 4% of real natural aroma, and sell in a 1KG packet\ncall 011 8 999 881 990 199 725 "
+		    "(TV shopping)\n-So dexter, do it happen a lot to have your pocket too full\n-Yes Nanine, I always have at last 4 wallet in my pockets, they are so big, it's a real annoyance\n-Don't worry with the new Fanny pack bag: banana mk2 you will be able to carry them\nno questions ask !\n\nCall 011 8 999 881 990 199 725 3"
 		],
 		"answer": {
 		    "text": "leave",
