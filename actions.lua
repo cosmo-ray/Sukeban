@@ -688,6 +688,7 @@ function advance_time(main, next_loc, force_skip_time, next_pos)
    yeClearArray(tmp_stats)
    if phq.env.time:to_string() == "night" then
       phq.env.time = "morning"
+      phq.env.dayrand = yuiRand()
       phq.env.day = phq.env.day + 1
       if phq.env.day > 6 then
 	 phq.env.day = 0
