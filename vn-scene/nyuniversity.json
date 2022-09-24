@@ -6,11 +6,31 @@
                      "I would advise you to go elsewhere UwU",
                      "Or we might scratch your nice face UwU"],
             "answers": [
+		{
+		    "text": "So, are you the guy who tag a cathedral ?",
+		    "condition": [">", "phq.events.nya_news", 0],
+		    "actions": [
+			"Dialogue:gotoNext"
+		    ]
+		},
                 {
                     "text": "Ok, have a nice day, U...U",
-		            "action": "phq.backToGame"
+		    "action": "phq.backToGame"
                 }
             ]
-        }
-     }
+        },
+	"UwU 1": {
+            "text": ["Mayybeee UwU",
+		     "Listen, as nyanachiste, we don't like religions UwU",
+		     "they serve only to dominate peoples UwU",
+		     "So we write some peace message on they builing of hate UwU",
+		     "Now leave before we scratch your joly face Uwu"],
+	    "answers": [
+		{
+		    "text": "Ok, have a nice day, U...U",
+		    "action": "phq.backToGame"
+		}
+	    ]
+	}
+    }
 }
