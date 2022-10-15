@@ -1,10 +1,47 @@
 {
     "bar-work": {
 	"in": {
+	    "text": "Shift Start",
+	    "answers": [
+		{
+		    "text": "(Start workin)",
+		    "action": [
+		    	"Dialogue.condition_switch", ["chkInfD100", 11],
+		    	"talk-wotagei", "nothing"
+		    ]
+		}
+	    ]
+	},
+	"nothing": {
 	    "text": "Work...",
 	    "answers": [
 		{
-		    "text": "(continue)",
+                    "text": "Nothing inresting happen",
+                    "action": [ "Dialogue:goto", "end" ]
+		}
+	    ]
+	},
+	"talk-wotagei": {
+	    "text": [
+		    "Some weid c... guy, who seems completely drunk, talk to you about his favorit idoles band",
+		    "after 10 mn taking about how much he's in love, he realise, that you are a girl",
+		    "He have just talk to a girl for 10mn, doing so he betray his idol, he's no true fan",
+		    "should commit seppuku",
+		    "He leave the bar crying"
+	    "answer":
+		{
+                    "text": "(continue working)",
+                    "actions": [
+		    	    [ "increase", "phq.pj.knowledge.idoles", 1],
+			    [ "Dialogue:goto", "end" ]
+		      ]
+		}
+	    ],
+	},
+	"end": {
+	    "text": "Finnal your shift end !",
+	    "answers": {
+		    "text": "(go home)",
 		    "actions": [
 			"phq.backToGame",
 			"phq.sleep",
@@ -12,7 +49,6 @@
 			["phq.changeScene", "house1", 0]
 		    ]
 		}
-	    ]
 	}
     }
 }
