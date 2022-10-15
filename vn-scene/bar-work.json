@@ -37,7 +37,6 @@
 			    [ "Dialogue:goto", "end" ]
 		      ]
 		}
-	    ],
 	},
 	"end": {
 	    "text": "Finnal your shift end !",
