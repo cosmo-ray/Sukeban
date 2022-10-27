@@ -869,7 +869,11 @@ function rd_tps_ds_escgt()
    if yIsNil(phq.pj.knowledge.history) then
       phq.pj.knowledge.history = 0
    end
+   if yIsNil(phq.pj.knowledge.class_struggle) then
+      phq.pj.knowledge.class_struggle = 0
+   end
    phq.pj.knowledge.history = phq.pj.knowledge.history + 1
+   phq.pj.knowledge.class_struggle = phq.pj.knowledge.class_struggle + 1
 
    ywCntPopLastEntry(main_widget)
    local lteb = Entity.wrapp(ygGet("redwall.story.begin"))
