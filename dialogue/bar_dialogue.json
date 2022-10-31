@@ -4,6 +4,19 @@
 	"./dialogue/willo.json",
 	"./dialogue/baffy.json"
     ],
+    "bar_random": {
+	"dialogue": {
+	    "in": {
+		"rand-texts": [
+		    "(non interesting alcoholic conversation)",
+		    "-Yeah the first seasons where rad, but when nainewish got her flying rat,\n  and got mad, it was shit, in fact the whole last season was scrap.\n-and now the show wipe all his viewver, and not one there to watch\n(they seems to be talking about the serie 'Chair Play')"
+
+		],
+		
+	    }
+	}
+    },
+	
     "Jean": {
 	"dialogue" : [
 	    {

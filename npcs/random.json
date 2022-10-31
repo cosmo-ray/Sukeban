@@ -12,6 +12,34 @@
 	    "feet": "brown_shoes m"
 	}
     },
+    "random_boy_bar": {
+	"sex": "male",
+	"type": "light",
+        "max_life": 13,
+	"dialogue": "bar_random",
+	"is_generic": true,
+	"attack" : "unarmed0",
+	"hair": ["plain", "raven"],
+	"equipement": {
+	    "torso": "white longsleeve m",
+	    "legs": "teal pants m",
+	    "feet": "brown_shoes m"
+	}
+    },
+    "random_girl_bar": {
+	"sex": "female",
+	"type": "light",
+        "max_life": 13,
+	"dialogue": "bar_random",
+	"is_generic": true,
+	"attack" : "unarmed0",
+	"hair": ["plain", "raven"],
+	"equipement": {
+	    "torso": "white_sleeveless",
+	    "legs": "short skirt",
+	    "feet": "black_slippers"
+	}
+    },
     "Thrug 0": {
         "sex": "male",
         "type": "light",
