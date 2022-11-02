@@ -107,7 +107,7 @@ local function end_tun(tdata)
    ywCanvasStringSet(tdata.movement_info, Entity.new_string(""))
 end
 
-local function center_char(tdata)
+local function center_char(_tdata)
    print("click center !!!")
    main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
 end
@@ -129,10 +129,6 @@ end
 
 local function tchar_ch_pos(tchar)
    return canvas_to_char_pos(generic_handlerPos(tchar[TC_IDX_HDLR]))
-end
-
-local function tchar_can_pos(tchar)
-   return Entity.new_copy(generic_handlerPos(tchar[TC_IDX_HDLR]))
 end
 
 local function tchar_can_pos_x(tchar)
@@ -230,10 +226,9 @@ local function push_character(tdata, dst, char, h, name, team, dir)
 end
 
 local function bad_guy_end_turn(cur_char_t, tdata)
-   	 cur_char_t[IDX_AI_STUFF] = nil
-	 end_tun(tdata)
+   cur_char_t[IDX_AI_STUFF] = nil
+   end_tun(tdata)
 end
-
 
 local function remove_character(tdata, target)
    print("remove: ", target[TC_IDX_NAME], yeLen(tdata.all))
@@ -324,9 +319,9 @@ function do_tactical_fight(eve)
 	 if k == "backup-npc" then
 	    local npcs = main_widget.npcs
 	    tdata.bak_npcs = npcs
-	    for i = 0, yeLen(npcs) - 1 do
-	       saveNpcCanvasMatadata(npcs[i].canvas, npcs[i].mdt_bak)
-	       generic_handlerRmCanva(npcs[i])
+	    for j = 0, yeLen(npcs) - 1 do
+	       saveNpcCanvasMatadata(npcs[j].canvas, npcs[j].mdt_bak)
+	       generic_handlerRmCanva(npcs[j])
 	    end
 	    main_widget.npcs = {}
 	 elseif k == "move" then
@@ -339,10 +334,11 @@ function do_tactical_fight(eve)
 					yeGetInt(a[j][1]),
 					yeGetInt(a[j][2]))
 	       else
-		  local goods = tdata.goods
-		  for k = 0, yeLen(goods) - 1 do
-		     if yeGetString(name) == yeGetString(goods[2]) then
-			generic_handlerMoveXY(goods[1],
+		  goods = tdata.goods
+		  -- I'm very unsure of thoses lines :(
+		  for j2 = 0, yeLen(goods) - 1 do
+		     if yeGetString(name) == yeGetString(goods[j2][2]) then
+			generic_handlerMoveXY(goods[j2][1],
 					      yeGetInt(a[j][1]),
 					      yeGetInt(a[j][2]))
 		     end
