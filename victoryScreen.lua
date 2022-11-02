@@ -36,7 +36,7 @@ function victoryScreenAction(vs, eve)
    return YEVE_NOTHANDLE
 end
 
-function autoLoot(main, pj, txt)
+local function autoLoot(main, pj, txt)
    local nb = yuiRand() % 15
    addObject(main, pj, "money", nb)
    return txt .. math.floor(nb) .. ": " .. "money" .. "\n"
