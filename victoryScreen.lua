@@ -71,23 +71,23 @@ function pushNewVictoryScreen(main, _unused, loosers)
 	       addObject(main, phq.pj, loot:to_string(), 1)
 	    end
 	 elseif yeType(loot) == YARRAY then
-	    local i = 0
-	    while i < yeLen(loot) do
-	       if yeGetKeyAt(loot, i) then
-		  print(yeGetKeyAt(loot, i))
-		  txt = txt .. math.floor(yeGetIntAt(loot, i)) .. ": " ..
-		     yeGetKeyAt(loot, i) .. "\n"
-		  addObject(main, phq.pj, yeGetKeyAt(loot, i),
-			    yeGetIntAt(loot, i))
+	    local j = 0
+	    while j < yeLen(loot) do
+	       if yeGetKeyAt(loot, j) then
+		  print(yeGetKeyAt(loot, j))
+		  txt = txt .. math.floor(yeGetIntAt(loot, j)) .. ": " ..
+		     yeGetKeyAt(loot, j) .. "\n"
+		  addObject(main, phq.pj, yeGetKeyAt(loot, j),
+			    yeGetIntAt(loot, j))
 	       else
-		  if yeGetStringAt(loot, i) == "auto" then
+		  if yeGetStringAt(loot, j) == "auto" then
 		     txt = autoLoot(main, phq.pj, txt)
 		  else
-		     txt = txt .. "1: " .. yeGetStringAt(loot, i) .. "\n"
-		     addObject(main, phq.phq, yeGetStringAt(loot, i), 1)
+		     txt = txt .. "1: " .. yeGetStringAt(loot, j) .. "\n"
+		     addObject(main, phq.phq, yeGetStringAt(loot, j), 1)
 		  end
 	       end
-	       i = i + 1
+	       j = j + 1
 	    end
 	 end
       else
