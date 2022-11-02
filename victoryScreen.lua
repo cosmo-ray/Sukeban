@@ -17,7 +17,7 @@
 
 local phq = Entity.wrapp(ygGet("phq"))
 
-function victoryScreenAction(vs, eve)
+local function victoryScreenAction(vs, eve)
    eve = Event.wrapp(eve)
 
    while eve:is_end() == false do
@@ -42,7 +42,7 @@ local function autoLoot(main, pj, txt)
    return txt .. math.floor(nb) .. ": " .. "money" .. "\n"
 end
 
-function pushNewVictoryScreen(main, unused, loosers)
+function pushNewVictoryScreen(main, _unused, loosers)
    local victoryScreen = Entity.new_array()
    local txt = "tatatata ta ta ta tata\nloot:\n"
    local i = 0
@@ -103,6 +103,6 @@ function pushNewVictoryScreen(main, unused, loosers)
    victoryScreen["text-align"] = "center"
    victoryScreen.text = txt
    victoryScreen.background = "rgba: 155 155 255 190"
-   victoryScreen.action = Entity.new_func("victoryScreenAction")
+   victoryScreen.action = Entity.new_func(victoryScreenAction)
    ywPushNewWidget(main, victoryScreen)
 end

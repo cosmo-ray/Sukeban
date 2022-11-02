@@ -803,13 +803,13 @@ function do_tactical_fight(eve)
    local max_ap = cur_char_t[IDX_MAX_ACTION_POINT]
    for i = 0, yeGetInt(max_ap) - 1 do
       if i < ap and ap - i < 0.12 then
-	 ap_str = ap_str .. " "	 
+	 ap_str = ap_str .. " "
       elseif i < ap and ap - i < 0.2 then
-	 ap_str = ap_str .. "."	 
+	 ap_str = ap_str .. "."
       elseif i < ap and ap - i < 0.5 then
-	 ap_str = ap_str .. "-"	 
+	 ap_str = ap_str .. "-"
       elseif i < ap and ap - i < 1 then
-	 ap_str = ap_str .. "o"	 
+	 ap_str = ap_str .. "o"
       elseif i < ap then
 	 ap_str = ap_str .. "O"
       else

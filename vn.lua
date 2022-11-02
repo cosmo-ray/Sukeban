@@ -1,6 +1,6 @@
 local vn_scenes = ygGet("phq.vn-scenes")
 
-function vnScene(wid, eve, scene, dialogueWid)
+function vnScene(wid, _eve, scene, dialogueWid)
    wid = Entity.wrapp(wid)
    if wid.isDialogue then
       wid = main_widget
