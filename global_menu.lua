@@ -802,10 +802,10 @@ end
 function fillMiscMenu(mn)
    mn = Menu.wrapp(mn)
    mn.ent.entries = {}
-   mn:push("quick save", Entity.new_func("saveGameCallback"))
-   mn:push("save", Entity.new_func("saveGameMenu"))
+   mn:push("quick save", Entity.new_func(saveGameCallback))
+   mn:push("save", Entity.new_func(saveGameMenu))
    mn:push("main menu", "callNext")
-   mn:push("How to Play", Entity.new_func("howtoplay"))
+   mn:push("How to Play", Entity.new_func(howtoplay))
    mn:push("Back To Game", "phq.backToGame")
    mn.ent.background = "rgba: 255 255 255 190"
    mn.ent["text-align"] = "center"

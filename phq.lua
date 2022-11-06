@@ -22,7 +22,7 @@ lpcs = Entity.wrapp(ygGet("lpcs"))
 sprite_man = Entity.wrapp(ygGet("sprite-man"))
 phq = Entity.wrapp(ygGet("phq"))
 dressup = Entity.wrapp(ygGet("dressup"))
-local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
+--local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
 npcs = nil
 scenes = Entity.wrapp(ygGet("phq.scenes"))
 saved_scenes = nil
@@ -53,7 +53,7 @@ NO_COLISION = 0
 NORMAL_COLISION = 1
 CHANGE_SCENE_COLISION = 2
 FIGHT_COLISION = 3
-local PHQ_SUP = 0
+--local PHQ_SUP = 0
 local PHQ_INF = 1
 
 
@@ -390,8 +390,8 @@ function init_phq(mod)
    mod.openStore = Entity.new_func("openStore")
    mod.go_under = Entity.new_func(go_under)
    mod.GetDrink = Entity.new_func("GetDrink")
-   mod.continue = Entity.new_func("continue")
-   mod.load_slot = Entity.new_func("load_slot")
+   mod.continue = Entity.new_func(continue)
+   mod.load_slot = Entity.new_func(load_slot)
    mod.newGame = Entity.new_func("newGame")
    mod.printMessage = Entity.new_func("printMessage")
    mod.sleep = Entity.new_func("sleep")
@@ -434,8 +434,8 @@ function init_phq(mod)
    mod.misc_fnc = {}
    mod.misc_fnc.class_even = Entity.new_func(calsses_event_dialog_gen)
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
-   mod.misc_fnc.save_fight_mode = Entity.new_func("save_fight_mode")
-   mod.misc_fnc.load_fight_mode = Entity.new_func("load_fight_mode")
+   mod.misc_fnc.save_fight_mode = Entity.new_func(save_fight_mode)
+   mod.misc_fnc.load_fight_mode = Entity.new_func(load_fight_mode)
    mod.triggers = {}
    mod.triggers.block_message = Entity.new_func(trigger_block_message)
 end
@@ -475,18 +475,18 @@ function load_game(save_dir)
       local k = yeGetKeyAt(allies, i)
       local npc = npcs[k]
 
-      yeAttach(allies, npcs[k], i, k, 0)
+      yeAttach(allies, npc, i, k, 0)
    end
    phq_only_fight = yeGetInt(phq.env.phq_only_fight)
    ywidNext(ygGet("phq:menus.game"))
    --yCallNextWidget(entity);
 end
 
-function continue(entity)
+function continue()
    return load_game(ygUserDir() .. "saved/cur")
 end
 
-function load_fight_mode(entity)
+function load_fight_mode()
    print("load_fight_mode !!!!")
    return load_game(ygUserDir() .. "saved/fight_mode")
 end
@@ -509,7 +509,7 @@ function load_slot(entity)
    m:push("back", "callNext")
    for k,slot in pairs(slots) do
       if yuiFileExist(ygUserDir() .. "/saved/slot_" .. slot) == 0 then
-	 local e = m:push("slot " .. slot, Entity.new_func("mnLoadSlot"))
+	 local e = m:push("slot " .. slot, Entity.new_func(mnLoadSlot))
 	 e.s = "saved/slot_" .. slot
       end
    end
@@ -580,7 +580,7 @@ end
 function CheckColisionTryChangeScene(main, cur_scene, direction)
    if cur_scene.out and cur_scene.out[direction] then
       local dir_info = cur_scene.out[direction]
-      local nextSceneTxt = nil
+      local nextSceneTxt
       if dir_info.to then
 	 nextSceneTxt = yeGetString(yeToLower(dir_info.to))
       else
@@ -742,7 +742,6 @@ function phq_action(entity, eve)
    entity = Entity.wrapp(entity)
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
-   local dir_change = false
    local isNewlyLoad = newly_loaded
 
    newly_loaded = false
@@ -751,8 +750,7 @@ function phq_action(entity, eve)
    if isNewlyLoad then
       turn_timer = 1
    end
-   local i = 0
-   while i < st_hooks_len do
+   for i = 0, st_hooks_len - 1 do
       local st_hook = st_hooks[i]
       local stat_name = yeGetKeyAt(st_hooks, i)
       local stat = phq.pj[stat_name]
@@ -766,7 +764,6 @@ function phq_action(entity, eve)
 	    st_hook.hook(ent)
 	 end
       end
-      i = i + 1
    end
 
    if entity.no_chktime_t > 0 then
@@ -906,7 +903,7 @@ function phq_action(entity, eve)
 	 local show_act = entity.show_actionable
 	 local i = 0
 
-	 while  i < yeLen(e_actionables) do
+	 while i < yeLen(e_actionables) do
 	    local a = e_actionables[i]
 	    local cr = a.rect
 
@@ -996,8 +993,8 @@ function phq_action(entity, eve)
 
    if yevIsGrpDown(eve, actionKeys) then
       local pjPos = ylpcsHandePos(entity.pj)
-      local x_add = 0
-      local y_add = 0
+      local x_add
+      local y_add
       local h = 30
       local w = 30
 
@@ -1023,23 +1020,21 @@ function phq_action(entity, eve)
       --ywCanvasNewRectangle(entity.upCanvas, ywRectX(r.ent), ywRectY(r.ent),
       --ywRectW(r.ent), ywRectH(r.ent), "rgba: 10 10 255 127")
       local e_actionables = entity.actionables
-      local i = 0
 
-      while  i < yeLen(e_actionables) do
-	 if ywRectCollision(r.ent, e_actionables[i].rect) and
-	 checkTiledCondition(e_actionables[i]) then
+      for j = 0, yeLen(e_actionables) - 1 do
+	 if ywRectCollision(r.ent, e_actionables[j].rect) and
+	 checkTiledCondition(e_actionables[j]) then
 	    local actioned = phq.actioned[entity.cur_scene_str:to_string()]
-	    local act_cnt = actioned[e_actionables[i].name:to_string()]
+	    local act_cnt = actioned[e_actionables[j].name:to_string()]
 
 	    act_cnt = yeGetInt(act_cnt) + 1
-	    actioned[e_actionables[i].name:to_string()] = act_cnt
+	    actioned[e_actionables[j].name:to_string()] = act_cnt
 	    -- save here the number of time this object have been actioned
-	    phq_do_action(entity, e_actionables[i])
+	    phq_do_action(entity, e_actionables[j])
 	    if yeGetInt(entity.require_ret) == 1 then
 	       return YEVE_ACTION
 	    end
 	 end
-	 i = i + 1
       end
 
       local col = ylaCanvasCollisionsArrayWithRectangle(main_widget_screen,
@@ -1103,17 +1098,15 @@ function phq_action(entity, eve)
        local bye_guy = Entity.new_array()
        local wid_npcs = entity.npcs
        local npc_handler = nil
-       local i = 0
 
-       while i < yeLen(wid_npcs) do
-	  local cur_handler = wid_npcs[i]
+       for j = 0, yeLen(wid_npcs) - 1 do
+	  local cur_handler = wid_npcs[j]
 	  if cur_handler and
 	     cur_handler.canvas and
 	  cur_handler.canvas:cent() == col_obj:cent() then
 	     npc_handler = cur_handler
 	     break
 	  end
-	  i =  i + 1
        end
        if npc_handler == nil then
 	  print("CAN'T FIND NPC HANDLER FOR ", col_obj)
@@ -1529,7 +1522,7 @@ function create_phq(entity, _eve, _menu)
    else
       scenePath = Entity.new_string("house1")
    end
-   Entity.new_func("phq_action", ent, "action")
+   Entity.new_func(phq_action, ent, "action")
 
    local mainCanvas = Canvas.new_entity(entity, "mainScreen")
    main_widget_screen = mainCanvas.ent
