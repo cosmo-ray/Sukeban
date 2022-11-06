@@ -15,7 +15,7 @@
 --along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
 
-function trigger_block_message(wid, trigger, msg)
+function trigger_block_message(_wid, trigger, msg)
    local t = Entity.wrapp(trigger)
    if yIsNil(t.print_timer) or
       os.time() - yeGetInt(t.print_timer) > 2 then

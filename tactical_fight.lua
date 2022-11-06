@@ -437,7 +437,7 @@ function do_tactical_fight(eve)
       ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
       goods = tdata.goods
 
-   elseif TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then 
+   elseif TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then
       if yevIsKeyDown(eve, Y_ESC_KEY) then
 	 return end_fight()
       end
@@ -519,7 +519,7 @@ function do_tactical_fight(eve)
 		  local p1 = tchar_ch_pos(col_char)
 		  local d0 = ywPosDistance(char_pos, p0)
 		  local d1 = ywPosDistance(char_pos, p1)
-		  
+
 		  if d0 > d1 then
 		     nearest_target = col_char
 		     target_distance = d1
@@ -533,7 +533,7 @@ function do_tactical_fight(eve)
 	    if nearest_target then
 	       local p = generic_handlerPos(nearest_target[1])
 	       local s = generic_handlerSize(nearest_target[1])
-	       local col = nil
+	       local col
 
 	       if yeGetInt(nearest_target[TC_IDX_TEAM]) == HERO_TEAM then
 		  if target_distance < reach_distance then
@@ -602,7 +602,7 @@ function do_tactical_fight(eve)
       local target = nil
       local cur_can = cur_char[TC_IDX_HDLR].canvas
       local target_dist = 4000
-      local target_pos = nil
+      local targeted_pos = nil
       local cpos = tchar_ch_pos(cur_char)
 
       for i = 0, yeLen(goods) - 1 do
@@ -693,7 +693,6 @@ function do_tactical_fight(eve)
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_MOVE then
 
       local char_pos = generic_handlerPos(cur_char[1])
-      local PIX_MV_PER_MS = 5
       local turn_timer = ywidTurnTimer() / 10000
       local pix_mv = turn_timer * PIX_MV_PER_MS + pix_floor_left
       pix_floor_left = pix_mv - math.floor(pix_mv)
