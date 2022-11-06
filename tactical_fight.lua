@@ -679,8 +679,8 @@ function do_tactical_fight(eve)
 	    print("SWITCH MOVE MODE")
 	 else
 	    print("CAN ATTACK: ", target[TC_IDX_NAME])
-	    if cur_char[TC_IDX_TDTA][IDX_CUR_ACTION_POINT] > 2 then
-	       switch_to_attack_mode(target, 2)
+	    if cur_char[TC_IDX_TDTA][IDX_CUR_ACTION_POINT] >= 2 then
+	       switch_to_attack_mode(target, 1.5)
 	    end
 	 end
       end -- target_pos not nil
