@@ -1171,7 +1171,7 @@ local function dialogue_include(dial, c_dial)
    _include(dial, c_dial)
 end
 
-function ai_point_remove(useless0, useless1, name_path)
+function ai_point_remove(_useless0, _useless1, name_path)
    local name = yeGetString(ygGet(yeGetString(name_path)))
    local sname = yeGetString(main_widget.cur_scene_str)
    local e_ai_point = main_widget.ai_point
@@ -1188,8 +1188,8 @@ end
 function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    local mainCanvas = Canvas.wrapp(ent.mainScreen)
    local upCanvas = Canvas.wrapp(ent.upCanvas)
-   local x = 0
-   local y = 0
+   local x
+   local y
    local c = mainCanvas.ent
 
    ent.no_chktime_t = 0
@@ -1540,7 +1540,7 @@ function create_phq(entity, _eve, _menu)
    ent.entries[0] = mainCanvas.ent
    ent.entries[1] = upCanvas.ent
    local ret = container:new_wid()
-   ent.destroy = Entity.new_func("destroy_phq")
+   ent.destroy = Entity.new_func(destroy_phq)
 
    ent.soundcallgirl = ySoundMusicLoad("./callgirl.mp3")
    ent.soundhouse = ySoundMusicLoad("./house_music.mp3")
