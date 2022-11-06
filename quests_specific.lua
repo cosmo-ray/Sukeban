@@ -171,7 +171,7 @@ function inter_bar_running(main)
       -- at last here you have everything you need to know about puke quest ending
 
       local vn_quest_end = Entity.new_array()
-      local dial = nil
+      local dial
 
       vn_quest_end[0] = Entity.new_array()
       -- 1rst dialogue
@@ -247,7 +247,7 @@ function chapter_1(main)
    main.sleep_script = "chapter_1_sleep"
    local s = Entity.new_array()
    s[0] = GM_STATS_IDX
-   s[1] = Entity.new_func("chapter_1_menu")
+   s[1] = Entity.new_func(chapter_1_menu)
    yePushBack(main.gmenu_hook, s)
 end
 
@@ -274,9 +274,9 @@ local function game_scene_do_timer(t)
    return BLOCK_EVE_NO_UNSET
 end
 
-local function game_scene(wid, eve, scene)
+local function game_scene(_wid, _eve, scene_str)
    local scenes = ygGet("phq.game_senes")
-   local scene = Entity.wrapp(yeGet(scenes, yeGetString(scene)))
+   local scene = Entity.wrapp(yeGet(scenes, yeGetString(scene_str)))
 
    if yIsNil(scene) or yIsNil(scene[game_scene_state]) then
       game_scene_state = 0
@@ -455,9 +455,9 @@ function morning_class(mn)
 end
 
 function chapter_1_menu(main, mn)
-   local mn = Menu.wrapp(mn)
+   mn = Menu.wrapp(mn)
    if phq.env.time:to_string() == "morning" and phq.env.day < 6 then
-      mn:push("go to morning class", Entity.new_func("morning_class"))
+      mn:push("go to morning class", Entity.new_func(morning_class))
    end
    print("\nchapter_1_menu!!!!!\n", main, mn)
 end
@@ -654,7 +654,7 @@ local function gen_school()
       end
    end
 
-   for i = 0, 45 do
+   for _i = 0, 45 do
       :: again ::
       local gender =  yuiRand() % 2 + 1
       local name_table = array_name[gender]
@@ -704,16 +704,16 @@ local function gen_school()
 	 uii[2] == t and check_img_cndition(uii[5], n) then
 	    uii[4] = true
 	    local i_array = Entity.new_array()
-	    local t = nil
+	    local threshold = nil
 	    if type(uii[3]) == "string" then
 	       i_array.src = uii[3]
 	    else
-	       t = uii[3].threshold
+	       threshold = uii[3].threshold
 	       i_array.src = uii[3].src
 	       i_array.reduce = uii[3].reduce
 	    end
-	    if t then
-	       ywPosCreate(t[1], t[2], i_array, "dst-threshold")
+	    if threshold then
+	       ywPosCreate(threshold[1], threshold[2], i_array, "dst-threshold")
 	    else
 	       ywPosCreate(-100, -300, i_array, "dst-threshold")
 	    end
