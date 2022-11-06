@@ -378,7 +378,7 @@ local function _include(target, file)
 end
 
 function init_phq(mod)
-   Widget.new_subtype("phq", "create_phq")
+   Widget.new_subtype("phq", create_phq)
    Widget.new_subtype("phq-new-game", "create_new_game")
 
    mod = Entity.wrapp(mod)
@@ -1248,7 +1248,6 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       if (yeType(patch) == YARRAY) then
 	 yePatchAply(dialogues, patch)
       end
-      tmpp = yePatchCreate(o_dialogues, dialogues)
    end
    c.cam = Pos.new(0, 0).ent
    -- Pj info:
@@ -1325,13 +1324,13 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	       yeSetAt(npc, "y_offset", 96)
 	    elseif yeGetString(obj.Rotation) == "down" then
 	       yeSetAt(npc, "y_offset", 64)
-	    else -- y offset is 0 for "up"
+	    -- else -- y offset is 0 for "up", nothing happen
 	    end
 	 else
 	    dressup.dressUp(npc)
 	    npc = lpcs.createCaracterHandler(npc, c, e_npcs, npc_name)
 	    --print("obj (", i, "):", obj, npcs[obj.name:to_string()], obj.rect)
-	    local pos = Pos.new_copy(obj.rect)
+	    pos = Pos.new_copy(obj.rect)
 	    pos:sub(20, 50)
 	    lpcs.handlerMove(npc, pos.ent)
 	    lpcs.handlerSetOrigXY(npc, 0, lpcsStrToDir(yeGetString(obj.Rotation)))
@@ -1403,7 +1402,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 e_triggers[m] = obj
 	 m = m + 1
       end
-      :: next_obj ::
+      --:: next_obj ::
       i = i + 1
    end
 
@@ -1448,13 +1447,13 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    end
    local is_raining = phq.env.is_raining
    if scene.exterior and  is_raining and is_raining > 0 then
-      local i = 0
+      local ri = 0
       ent.rain_a = {}
 
-      while i < 25 do
+      while ri < 25 do
 	 ent.rain_a[i] = upCanvas:new_rect(0, 0, "rgba: 200 200 200 255",
 					   Pos.new(1, 20).ent).ent
-	 i = i + 1
+	 ri = ri + 1
       end
       if (is_raining > 1) then
 	 local pjPos = Pos.wrapp(ylpcsHandePos(main_widget.pj))
@@ -1482,7 +1481,7 @@ function fight_mode_wid()
    vnWid.next = main_widget.next
 end
 
-function create_phq(entity, eve, menu)
+function create_phq(entity, _eve, _menu)
    -- keep saved data
    local sav_dir = yeGetStringAt(entity, "saved_dir")
    local sav_data = yeGet(entity, "saved_data")
@@ -1500,7 +1499,7 @@ function create_phq(entity, eve, menu)
 
    local container = Container.init_entity(entity, "stacking")
    local ent = container.ent
-   local scenePath = nil
+   local scenePath
 
    main_widget = Entity.wrapp(entity)
    ygPushToGlobalScope(entity, "phq_wid");
@@ -1512,7 +1511,6 @@ function create_phq(entity, eve, menu)
    ent.cur_scene_str = nil
    tiled.setAssetPath("./tileset")
    jrpg_fight.objects = phq.objects
-   is_end_of_chapter = false
 
    _include(phq.objects, phq.objects)
    _include(npcs, npcs)
@@ -1590,9 +1588,8 @@ function create_phq(entity, eve, menu)
 
    while i < yeLen(quests_info) do
       local qi_scripts = quests_info[i].scripts
-      local j = 0
-      local stalk_path = nil
-      local cur = nil
+      local stalk_path
+      local cur
 
       if yIsNil(qi_scripts) then
 	 goto next_loop
