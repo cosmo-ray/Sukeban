@@ -17,7 +17,7 @@
 
 local sleep_time = 0
 local phq = Entity.wrapp(ygGet("phq"))
-local dialogue = Entity.wrapp(ygGet("Dialogue"))
+local dialogue_mod = Entity.wrapp(ygGet("Dialogue"))
 local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 fight_script = nil
 dialogue_npc = nil
@@ -400,7 +400,7 @@ function StartFight(wid, eve, enemy_type, script)
 	 yeRemoveChild(main.enemies, script[1])
       end
    elseif fight_script == "CombatDialogueGoto" then
-      dialogue["goto"](wid, eve, script[1])
+      dialogue_mod["goto"](wid, eve, script[1])
    elseif fight_script ~= "CombatDialogueStay" then
       backToGame(wid, eve)
    end
@@ -438,11 +438,11 @@ function addObject(main, character, objStr, nb)
    end
 
    if obj then
-      local nb = yeGetInt(obj) + nb
-      if nb == 0 then
+      local o_nb = yeGetInt(obj) + nb
+      if o_nb == 0 then
 	 character.inventory[objStr] = nil
       else
-	 yeSetInt(obj, nb)
+	 yeSetInt(obj, o_nb)
       end
    elseif nb > 0 then
       character.inventory[objStr] = nb
@@ -456,7 +456,7 @@ function addObject(main, character, objStr, nb)
    return printMessage(main, obj, msg .. math.floor(nb) .. " " .. objStr)
 end
 
-function recive(wid, eve, objStr, nb)
+function recive(_wid, _eve, objStr, nb)
    if yeType(nb) ~= YARRAY then
       nb = yeGetInt(nb)
       if nb == 0 then
@@ -466,7 +466,7 @@ function recive(wid, eve, objStr, nb)
    addObject(main_widget, phq.pj, yeGetString(objStr), nb)
 end
 
-function remove(wid, eve, objStr, nb)
+function remove(_wid, _eve, objStr, nb)
    wid = main_widget
    nb = yeGetInt(nb)
    if nb == 0 then
@@ -492,11 +492,11 @@ function leave_team(who)
    yeRemoveChild(phq.pj.allies, who)
 end
 
-function leave_team_callback(wid, eves, who)
+function leave_team_callback(_wid, _eves, who)
    leave_team(yeGetString(who))
 end
 
-function join_team(wid, eves, who)
+function join_team(wid, _eves, who)
    local npcname = yeGetString(who)
    local npcidx = nil
 
@@ -515,12 +515,12 @@ function join_team(wid, eves, who)
    end
 end
 
-function go_under(unused_wid, unused_eve, entry)
+function go_under(_unused_wid, _unused_eve, entry)
    local wid = Entity.new_array()
 
    wid["<type>"] = "raycasting"
    wid.background = "rgba: 140 150 155 255";
-   local map = Entity.from_lua_arrray({
+   Entity.from_lua_arrray({
 	 "#########",
 	 "#......##",
 	 "#..#...##",
@@ -554,7 +554,7 @@ function pay(wid, eve, cost, okAction, noDialogue)
       yeSetInt(money, money:to_int() - cost)
       return ywidAction(okAction, wid, eve)
    end
-   return dialogue["change-text"](wid, eve, noDialogue)
+   return dialogue_mod["change-text"](wid, eve, noDialogue)
 end
 
 function increaseStat(wid, stats_container, stat, nb, max_min)
@@ -577,22 +577,22 @@ function increaseStat(wid, stats_container, stat, nb, max_min)
 					    math.floor(yeGetInt(s))))
 end
 
-function increase(wid, eve, whatType, what, val)
-   wid = main_widget
+function increase(_wid, _eve, whatType, what, val)
+   local wid = main_widget
    if yeType(what) == YINT then
       val = what
       what = whatType
       return increaseStat(wid, phq.pj, yeGetString(what), yeGetInt(val))
    end
    local stat_container = phq.pj[yeGetString(whatType)]
-   local what = yeGetString(what)
+   what = yeGetString(what)
    if stat_container[what] == nil then
       stat_container[what] = 0
    end
    return increaseStat(wid, stat_container, what, yeGetInt(val))
 end
 
-function tmp_increase(wid, actionable_obj, what, val)
+function tmp_increase(_wid, actionable_obj, what, val)
    actionable_obj = Entity.wrapp(actionable_obj)
 
    if actionable_obj.t and
@@ -603,7 +603,7 @@ function tmp_increase(wid, actionable_obj, what, val)
       return YEVE_ACTION
    end
 
-   local val = yeGetInt(val)
+   val = yeGetInt(val)
    if yIsNil(phq.pj.tmp_stats) then
       phq.pj.tmp_stats = {}
    end
@@ -653,7 +653,7 @@ function GetDrink(wid, eve)
    return backToGame(wid, eve)
 end
 
-function call_quest_script(wid, eve, script)
+function call_quest_script(wid, _eve, script)
    scripts[yeGetString(script)](main_widget, wid)
    return YEVE_ACTION
 end
@@ -661,7 +661,7 @@ end
 cant_skip_time_reason = nil
 
 -- in fact, this function do 2 things: adancing time and start sleep animation
-function advance_time(main, next_loc, force_skip_time, next_pos)
+function advance_time(_main, next_loc, force_skip_time, next_pos)
    main = main_widget
    if main.sleep_script then
       scripts[main.sleep_script:to_string()](main)
@@ -715,15 +715,16 @@ function advance_time(main, next_loc, force_skip_time, next_pos)
    main.require_ret = 1
 end
 
-function sleep(main, obj)
+function sleep(_main, _obj)
    advance_time(main_widget)
    phq.pj.life = phq.pj.max_life
    phq.pj.drunk = 0
 end
 
-function printMessage(main, obj, msg)
+function printMessage(_main, _obj, msg)
    local txt = yLuaString(msg)
    local TIME_RESET = 1000000
+
    main = main_widget
 
    if (#txt > 30) then
@@ -797,7 +798,7 @@ function pushSmallTalk(txt, x, y, start_time)
 			 yeGetString(txt), txt_box)
 end
 
-function smallTalk(main, c)
+function smallTalk(_main, c)
    --local n = npcs[yeGetInt(c.current)]
    local p = ywCanvasObjPos(c)
    local txt = c.small_talk
@@ -833,17 +834,17 @@ function npc_handler_from_canva(c)
    return main_widget.npcs[c.current:to_int()]
 end
 
-function startDialogue(main, obj, dialogue)
+function startDialogue(_main, obj, dialogue)
    dialogue = Entity.wrapp(dialogue)
    if dialogue and dialogues[dialogue:to_string()] then
-      local obj = Entity.wrapp(obj)
+      obj = Entity.wrapp(obj)
       local condition = obj.dialogue_condition
 
       if yIsNNil(condition) and yeCheckCondition(condition) == false then
 	 goto out
       end
       local dialogueWid = Entity.new_array()
-      local npc = nil
+      local npc
       local npc_nb = -1
 
       if obj.current then
@@ -852,7 +853,7 @@ function startDialogue(main, obj, dialogue)
       else
 	 npc = obj
       end
-      local dialogue = dialogues[dialogue:to_string()]
+      dialogue = dialogues[dialogue:to_string()]
       dialogue_npc = npc
 
       if dialogue.dialogue then
@@ -911,7 +912,6 @@ function checkHightScore(lvl)
    while i < lvl_check do
       local j = 0
       while j < yeLen(hs) do
-	 chs = yeGet(hs, j)
 	 if phq.pj.name:to_string() == yeGetKeyAt(hs[j], i) then
 	    phq.quests.hightscores = {}
 	    if lvl_check < 3 then
@@ -957,9 +957,9 @@ function showHightScore(wid, score)
    return YEVE_ACTION
 end
 
-function playSnake(wid, eve, version)
-   local wid = Entity.wrapp(wid)
-   local main = nil
+function playSnake(wid, _eve, version)
+   wid = Entity.wrapp(wid)
+   local main
 
    if wid.isDialogue then
       wid = Entity.wrapp(yDialogueGetMain(wid))
@@ -976,8 +976,8 @@ function playSnake(wid, eve, version)
    if version > 0 then
       snake.hightscore_path = "phq.hightscores.snake"
       snake.score_path = "snake.score"
-      snake.die = Entity.new_func("showHightScore")
-      snake.quit = Entity.new_func("showHightScore")
+      snake.die = Entity.new_func(showHightScore)
+      snake.quit = Entity.new_func(showHightScore)
       snake.nb_layers = 2
       snake.resources = File.jsonToEnt("snake/resources.json")
       snake.eat = ygGet("snake.showScore")
@@ -1051,7 +1051,7 @@ function push_npc(pos, name, dir, npc)
    return npc
 end
 
-function tacticalFight(wid, eve, args)
+function tacticalFight(_wid, _eve, args)
    TACTICAL_FIGHT_MODE = MODE_TACTICAL_FIGHT_INIT
    main_widget.tactical = {}
    main_widget.tactical.args = args
@@ -1062,7 +1062,7 @@ function tacticalFight(wid, eve, args)
    end
 end
 
-function changeScene(wid, eve, scene, entry)
+function changeScene(_wid, _eve, scene, entry)
    if type(entry) ~= "number" then
       entry = yeGetInt(entry)
    end
@@ -1085,8 +1085,8 @@ function gotoJail(wid)
 end
 
 function playAstShoot(wid)
-   local wid = Entity.wrapp(wid)
-   local main = nil
+   wid = Entity.wrapp(wid)
+   local main
 
    if wid.isDialogue then
       wid = Entity.wrapp(yDialogueGetMain(wid))
@@ -1098,7 +1098,7 @@ function playAstShoot(wid)
 
    ast_shoot["<type>"] = "asteroide-shooter"
    ast_shoot.hightscore_path = "phq.hightscores.ast-shoot"
-   ast_shoot.die = Entity.new_func("showHightScore")
+   ast_shoot.die = Entity.new_func(showHightScore)
    ast_shoot.quit = Entity.new_func("backToGame")
    ast_shoot.oldTimer = main["turn-length"]
    main["turn-length"] = 40000
@@ -1107,8 +1107,8 @@ function playAstShoot(wid)
 end
 
 function playTetris(wid)
-   local wid = Entity.wrapp(wid)
-   local main = nil
+   wid = Entity.wrapp(wid)
+   local main
 
    if wid.isDialogue then
       wid = Entity.wrapp(yDialogueGetMain(wid))
@@ -1125,7 +1125,7 @@ function playTetris(wid)
    return YEVE_ACTION
 end
 
-function phs_start(wid)
+function phs_start(_wid)
    local m = main_widget
 
    local t = Entity.new_array()
@@ -1141,14 +1141,13 @@ function ascii_end(wid)
 end
 
 function dream_z_shooter_xp(wid)
-   local wid = Entity.wrapp(wid)
+   wid = Entity.wrapp(wid)
    local xp = yeGetInt(wid.score) / 10 + 1
    backToGame2()
    increaseStat(main_widget, phq.pj, "xp", xp)
 end
 
-function play(wid, eve, game, timer, end_f_str)
-   local wid = Entity.wrapp(wid)
+function play(_wid, eve, game, timer, end_f_str)
    local main = main_widget
 
    print("play !!!!", eve, game, yeGetInt(timer), end_f_str, yeGetString(end_f_str),
@@ -1180,7 +1179,7 @@ function play(wid, eve, game, timer, end_f_str)
    return YEVE_ACTION
 end
 
-function playVapp(wid)
+function playVapp(_wid)
    main = main_widget
 
    ywCntPopLastEntry(main)
@@ -1188,7 +1187,7 @@ function playVapp(wid)
 
    vapp["<type>"] = "vapz"
    vapp.resources = "vapp:resources.map"
-   vapp.die = Entity.new_func("showHightScore")
+   vapp.die = Entity.new_func(showHightScore)
    vapp.quit = Entity.new_func("backToGame")
    vapp.hightscore_path = "phq.hightscores.vapp"
    vapp.oldTimer = main["turn-length"]
@@ -1197,7 +1196,7 @@ function playVapp(wid)
    return YEVE_ACTION
 end
 
-function push_dream(unused_wid, unused_eves, dream)
+function push_dream(_unused_wid, _unused_eves, dream)
    if yIsNil(phq.env.dreams) then
       phq.env.dreams = {}
    end
@@ -1207,14 +1206,12 @@ end
 function doSleep(ent, upCanvas)
    ywCanvasRemoveObj(upCanvas.ent, ent.sleep_r)
 
-   local up = main_widget.upCanvas
    if sleep_time > 200 then
       ent.sleep = nil
       sleep_time = 0
       return true
    end
 
-   local pjPos = Pos.wrapp(ylpcsHandePos(ent.pj))
    local cam = main_widget_screen.cam
    local x0 = ywPosX(cam)
    local y0 = ywPosY(cam)
