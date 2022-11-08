@@ -1568,7 +1568,7 @@ function create_phq(entity, _eve, _menu)
       local arg = Entity.new_array()
       yePushBack(arg, ent)
       yeCreateString(name, arg)
-      ygStalk(stalk, Entity.new_func("quest_update"), arg)
+      ygStalk(stalk, Entity.new_func(quest_update), arg)
       i = i + 1
    end
    if ent.saved_data == nil then

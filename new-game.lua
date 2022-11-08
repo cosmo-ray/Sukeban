@@ -45,7 +45,7 @@ function learn_combot(cmb)
    cmbs[yeLen(cmbs)] = cmb
 end
 
-function newGameAction(menu, eve, arg)
+function newGameAction(menu, _eve, _arg)
    local game = Entity.wrapp(ygGet("phq:menus.game"))
    game.saved_data = nil
    game.saved_dir = nil
@@ -148,7 +148,7 @@ function newGameAction(menu, eve, arg)
    yesCall((ygGet("callNext")), menu);
 end
 
-function newGameMoveOn(menu, current, cur_entry)
+function newGameMoveOn(menu, current)
    local tx = ywCntGetEntry(ywCntWidgetFather(menu), 1)
    current = yLovePtrToNumber(current)
    yeSetString(yeGet(tx, "text"), descArray[current + 1])

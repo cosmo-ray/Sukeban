@@ -37,7 +37,7 @@ local function push_to_ai_point(map, p, name)
    return push_to_ai_point_(map, p, name, false)
 end
 
-function wouaf_ai(main, npc, name)
+function wouaf_ai(_main, _npc, name)
    local t = ygGetString("phq.env.time")
 
    if is_npc_ally(phq.pj, name) then
@@ -78,7 +78,7 @@ local ai_points = {
    }
 }
 
-function student_ai(main, npc, name)
+function student_ai(_main, npc, name)
    local t = ygGetString("phq.env.time")
    local c = ygGetInt("phq.env.chapter")
    local d = ygGetInt("phq.env.day")
@@ -167,8 +167,8 @@ local runner_lpos = nil
 local runner0_pos = 0
 local runner0_tbl = nil
 
-function runner_0_mk_tbl(npc, point_prefix, nb_pos, start_p)
-   local pos = nil
+function runner_0_mk_tbl(_npc, point_prefix, nb_pos, start_p)
+   local pos
 
    if runner0_pos < nb_pos - 2 then
       pos = main_widget.misc[point_prefix .. runner0_pos].rect
@@ -185,11 +185,11 @@ function runner_0_mk_tbl(npc, point_prefix, nb_pos, start_p)
    runner_lpos = pos
 end
 
-function runner_0_loop(main, npc)
+function runner_0_loop(_main, npc)
    NpcGoToTbl(npc, runner0_tbl, Entity.new_func("runner_0_loop"))
 end
 
-function runner_0(main, action)
+function runner_0(_main, action)
    runner0_tbl = Entity.new_array()
    action = Entity.wrapp(action)
    local npc = main_widget.npcs[action[0]]
@@ -202,7 +202,7 @@ function runner_0(main, action)
    yeRemoveChild(main_widget.npc_act, action)
 end
 
-function sakai(main, npc, name)
+function sakai(_main, npc, name)
    npc = Entity.wrapp(npc)
 
    if (yuiRand() % 100 > 50) then
@@ -213,7 +213,7 @@ function sakai(main, npc, name)
 end
 
 
-function run_rat0(main, action)
+function run_rat0(_main, action)
    runner0_tbl = Entity.new_array()
    action = Entity.wrapp(action)
    local npc = main_widget.npcs[action[0]]
@@ -227,6 +227,6 @@ function run_rat0(main, action)
    yeRemoveChild(main_widget.npc_act, action)
 end
 
-function run_rat1(main, action)
+function run_rat1(_main, _action)
    --print("run_rat1", action)
 end

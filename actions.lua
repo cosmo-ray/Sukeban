@@ -55,7 +55,7 @@ function read_book(b, b_key)
    ts["<type>"] = "text-screen"
    ts.text = "BOOK: " .. yeGetString(b_key) .. "\n" .. b.summary:to_string()
    ts.background = "rgba: 255 255 200 255"
-   ts.actions = Entity.new_func("backToGameOnEnter")
+   ts.actions = Entity.new_func(backToGameOnEnter)
    ywPushNewWidget(main_widget, ts)
    if yIsNNil(b.action) then
       if b.usable_once > 0 then
@@ -108,12 +108,11 @@ function quest_try_Call_script(main, qi_scripts, cur)
    end
 end
 
-function quest_update(original, copy, arg)
+function quest_update(original, _copy, arg)
    local main = yeGet(arg, 0)
    local quest_name = yeGet(arg, 1)
    quest_name = yeGetString(quest_name)
    local quest = quests_info[quest_name]
-   local stalk_sart = yeGetIntAt(quest, "stalk_sart")
    local rewards = quest.rewards
    local r_idx = yeGetInt(original)
    local reward = yeGetIntAt(rewards, r_idx)
@@ -126,7 +125,7 @@ function quest_update(original, copy, arg)
    end
 end
 
-function walkDoStep(wid, character)
+function walkDoStep(_wid, character)
    if (math.abs(yeGetFloat(character.move.left_right)) > 0 or
        math.abs(yeGetFloat(character.move.up_down)) > 0)  then
       ylpcsHandlerNextStep(character)
@@ -241,9 +240,9 @@ function backToGame(wid)
    return YEVE_ACTION
 end
 
-function CombatEnd(wid, main, winner_id)
+function CombatEnd(wid, _main, winner_id)
    local main = main_widget
-   local wid = Entity.wrapp(wid)
+   wid = Entity.wrapp(wid)
    local upcanvas = Canvas.wrapp(main.upCanvas)
    local winner = Entity.wrapp(yJrpgGetWinner(wid, winner_id))
    local looser = Entity.wrapp(yJrpgGetLooser(wid, winner_id))
@@ -299,7 +298,7 @@ end
 function StartFight(wid, eve, enemy_type, script)
    local main = getMainWid(wid)
    local fWid = Entity.new_array()
-   local npc = nil
+   local npc
    --ySoundPlayLoop(main.soundcallgirl:to_int())
 
    if yIsNNil(script) then
@@ -315,18 +314,18 @@ function StartFight(wid, eve, enemy_type, script)
    phq.pj.weapon = phq.combots[yeGetString(phq.pj.attack)]
 
    if (yIsNil(enemy_type)) then
-      local wid = yDialogueGetMain(wid)
-      wid = Entity.wrapp(wid)
-      npc = main.npcs[wid.npc_nb:to_int()].char
+      local swid = yDialogueGetMain(wid)
+      swid = Entity.wrapp(swid)
+      npc = main.npcs[swid.npc_nb:to_int()].char
       npc = npcDefaultInit(npc, "???")
    else
       if yeType(enemy_type) == YARRAY then
 	 local i = 0
 	 npc = Entity.new_array()
 	 while i < yeLen(enemy_type) do
-	    local enemy_type = yeGet(enemy_type, i)
-	    npc[i] = npcs[yeGetString(enemy_type)]
-	    npc[i] = npcDefaultInit(npc[i], enemy_type)
+	    local enemy_type_i = yeGet(enemy_type, i)
+	    npc[i] = npcs[yeGetString(enemy_type_i)]
+	    npc[i] = npcDefaultInit(npc[i], enemy_type_i)
 	    i = i + 1
 	 end
       else
@@ -352,7 +351,7 @@ function StartFight(wid, eve, enemy_type, script)
       end
    end
    fWid["<type>"] = "jrpg-fight"
-   fWid.endCallback = Entity.new_func("CombatEnd")
+   fWid.endCallback = Entity.new_func(CombatEnd)
    fWid.ychar_start = 80
    fWid.endCallbackArg = main
    fWid.player = player_array
@@ -953,7 +952,7 @@ function showHightScore(wid, score)
    hgw["text-align"] = "center"
    hgw.text = str
    hgw.background = "rgba: 155 155 255 190"
-   hgw.action = Entity.new_func("backToGameOnEnter")
+   hgw.action = Entity.new_func(backToGameOnEnter)
    ywPushNewWidget(main, hgw)
    return YEVE_ACTION
 end
