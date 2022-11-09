@@ -4,27 +4,49 @@
 	    "hej" : {
 		"text": ["you <3 <3 <3",
 			 "I was waiting for you"],
-		"condition": ["<", "phq.env.chapter", 1],
+		"condition": ["and", ["<", "phq.env.chapter", 1],
+			      ["<", "phq_wid.dialogue_npc.first_talk_ch0", 1]],
 		"answers": [
 		    {
-			"text": "But, how I don't know you"
+			"text": "But, how I don't know you",
+			"actions": [
+			    "Dialogue:gotoNext"
+			]
 		    }
 		]
 	    },
 	    "try my game": {
-		"text" : ["me neither, but it doesn't matter",
-			  "I got this new game call mediaval battle",
-			  "And you're gonna play with me",
-			  "Let's have fun <3 <3 <3"],
+		"texts" : [
+		    {
+			"text": [
+			    "me neither, but it doesn't matter",
+			    "I got this new game call mediaval battle",
+			    "And you're gonna play with me",
+			    "Let's have fun <3 <3 <3"
+			],
+			"condition": ["<", "phq_wid.dialogue_npc.first_talk_ch0", 1]
+		    },
+		    {
+			"text": [
+			    "SO, you pLaY with my neW gAmEE ? please ? please ? neeeee ?"
+			]
+		    }
+		],
 		"condition": ["<", "phq.env.chapter", 1],
 		"answers": [
 		    {
 			"text": "Naa, games are for kids",
-			"action": "phq.backToGame"
+			"actions": [
+			    ["setInt", "phq_wid.dialogue_npc.first_talk_ch0", 1],
+			    "phq.backToGame"
+			]
 		    },
 		    {
 			"text": "Ok, why not",
-			"action": ["phq.play", "medieval_dbattle"]
+			"actions": [
+			    ["setInt", "phq_wid.dialogue_npc.first_talk_ch0", 1],
+			    ["phq.play", "medieval_dbattle"]
+			]
 		    }
 		]
 	    },
