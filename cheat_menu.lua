@@ -16,10 +16,6 @@
 --
 
 local phq = Entity.wrapp(ygGet("phq"))
-local LPCS_LEFT = 9
-local LPCS_DOWN = 10
-local LPCS_RIGHT = 11
-local LPCS_UP = 8
 
 local function mk_main_mn()
    local menu = Menu.new_entity()
@@ -48,9 +44,9 @@ local function mk_main_mn()
    slider[1].actions[0] = {"recreateInt", "phq.env.day", 1}
    slider[1].actions[1] = {"recreateString", "phq.env.time", "night"}
    slider[1].actions[2] = {"phq:quest_script", "end_chapter_0"}
-   slider[1].actions[3] = Entity.new_func("popGlobMnOtherMenu")
+   slider[1].actions[3] = Entity.new_func(popGlobMnOtherMenu)
    ywMenuPushSlider(menu.ent, "Chapter Select: ", slider)
-   menu:push("Quests", Entity.new_func("cheat_quest_select_mn"))
+   menu:push("Quests", Entity.new_func(cheat_quest_select_mn))
 
    local money_action = Entity.new_array()
    money_action[0] = "phq.recive"
@@ -70,8 +66,8 @@ local function mk_main_mn()
 
    local e = menu:push("Metro")
    e.actions = m_actions
-   menu:push("NPCs", Entity.new_func("cheat_npcs_mn"))
-   menu:push("Students", Entity.new_func("cheat_students_mn"))
+   menu:push("NPCs", Entity.new_func(cheat_npcs_mn))
+   menu:push("Students", Entity.new_func(cheat_students_mn))
 
    menu.ent.in_subcontained = 1
    return menu.ent
@@ -99,10 +95,10 @@ function cheat_quest_select_mn(main_mn)
    local qmn = Menu.new_entity()
 
    qmn.ent["pre-text"] = "Quest Cheat Menu"
-   qmn.ent.onEsc = Entity.new_func("cheat_main_mn")
-   qmn:push("Back", Entity.new_func("cheat_main_mn"))
+   qmn.ent.onEsc = Entity.new_func(cheat_main_mn)
+   qmn:push("Back", Entity.new_func(cheat_main_mn))
    for i = 0, yeLen(phq.quests) - 1 do
-      qmn:push(yeGetKeyAt(phq.quests, i), Entity.new_func("cheat_quest_action"))
+      qmn:push(yeGetKeyAt(phq.quests, i), Entity.new_func(cheat_quest_action))
    end
    qmn.ent.size = 30
    ywReplaceEntry(cnt, 0, qmn.ent)
@@ -114,9 +110,9 @@ function cheat_students_mn(main_mn)
    local nmn = Menu.new_entity()
 
    nmn.ent["pre-text"] = "Quest Cheat Menu"
-   nmn.ent.onEsc = Entity.new_func("cheat_main_mn")
-   nmn.ent.moveOn = Entity.new_func("cheat_show_npc")
-   nmn:push("Back", Entity.new_func("cheat_main_mn"))
+   nmn.ent.onEsc = Entity.new_func(cheat_main_mn)
+   nmn.ent.moveOn = Entity.new_func(cheat_show_npc)
+   nmn:push("Back", Entity.new_func(cheat_main_mn))
    for i = 0, yeLen(npcs) - 1 do
       local npc = yeGet(npcs, i)
       local npc_key = yeGetKeyAt(npcs, i)
@@ -131,12 +127,12 @@ function cheat_students_mn(main_mn)
    return YEVE_ACTION
 end
 
-function cheat_show_npc(mn, current)
+function cheat_show_npc(mn, _current)
    local cur = Entity.wrapp(ywMenuGetCurrentEntry(mn))
    local cnt = ywCntWidgetFather(mn)
    local canvas = Entity.wrapp(ywCntGetEntry(cnt, 1))
    local npc = npcs[cur.text]
-   local handler = nil
+   local handler
 
    canvas.h = nil
    ywCanvasClear(canvas)
@@ -173,9 +169,9 @@ function cheat_npcs_mn(main_mn)
 
    nmn.ent["pre-text"] = "Quest Cheat Menu"
 
-   nmn.ent.moveOn = Entity.new_func("cheat_show_npc")
-   nmn:push("Back", Entity.new_func("cheat_main_mn"))
-   nmn.ent.onEsc = Entity.new_func("cheat_main_mn")
+   nmn.ent.moveOn = Entity.new_func(cheat_show_npc)
+   nmn:push("Back", Entity.new_func(cheat_main_mn))
+   nmn.ent.onEsc = Entity.new_func(cheat_main_mn)
 
    for i = 0, yeLen(npcs) - 1 do
       local npc_key = yeGetKeyAt(npcs, i)
@@ -191,7 +187,7 @@ function cheat_npcs_mn(main_mn)
    return YEVE_ACTION
 end
 
-function god_window(mn)
+function god_window(_mn)
    local m = main_widget
    local ccw = Container.new_entity("vertical")
    ccw.ent.background = "rgba: 255 255 255 255"

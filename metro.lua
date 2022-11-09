@@ -84,22 +84,21 @@ local function gotoStation(metroMap, station_idx, line_idx)
    return YEVE_ACTION
 end
 
-function setCurStation(main, useless, line, station)
+function setCurStation(_main, _useless, line, station)
    phq.env.station[0] = line
    phq.env.station[1] = station
 end
 
 local function do_encounter(metroMap, enc, next_enc, action)
    local encounter_wid = Entity.new_array()
-   local dial = nil
    local enemies = enc.enemies
    encounter_wid[0] = {}
-   dial = encounter_wid[0]
+   local dial = encounter_wid[0]
 
    -- see if we avoid the attack
    if yuiRand() % 100 > yeGetIntAt(enc, "%") then
       if next_enc and next_enc ~= true then
-   	 return do_encounter(metroMap, next_enc, nil, action)
+	 return do_encounter(metroMap, next_enc, nil, action)
       end
       show_sl()
       return ywidAction(action, metroMap, eve)
@@ -112,7 +111,7 @@ local function do_encounter(metroMap, enc, next_enc, action)
 	    "and on the begining of your trip\n" ..
 	    "you have an encounter in metro\n"
       else
-   	 dial.text = "you go to the metro, and BOUM\nENEMIES"
+	 dial.text = "you go to the metro, and BOUM\nENEMIES"
       end
    end
 
@@ -166,7 +165,6 @@ function metroAction(metroMap, eve)
       if eve:type() == YKEY_DOWN then
 	 if eve:is_key_left() then
 	    local station_idx = metroMap.station_info[1]:to_int()
-	    local line = metroMap.line
 
 	    if station_idx > 0 then
 	       station_idx = station_idx - 1
@@ -263,7 +261,6 @@ end
 
 function pushMetroMenu(main)
    local lines = metro_file.lines
-   local intersections = metro_file.intersections
    local station_info = Entity.new_copy(phq.env.station)
    local l_idx = station_info[0]:to_int()
    local line = lines[l_idx]
@@ -297,7 +294,7 @@ function pushMetroMenu(main)
    can:new_img(20, 520, arrow_path, Rect.new(0, 0, 25, 20).ent)
 
    can:new_text(500, 500, "left/right: change station\n\nup/down: change line")
-   can.ent.action = Entity.new_func("metroAction")
+   can.ent.action = Entity.new_func(metroAction)
    can.ent.line = line
    can.ent.station_info = station_info
    can.ent.station = station

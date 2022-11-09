@@ -16,7 +16,7 @@
 --
 
 PIX_PER_FRAME = 6
-local ACTION_MOVE = 1
+--local ACTION_MOVE = 1
 
 ACTION_NPC = 0
 local ACTION_MV_TBL = 1
@@ -45,7 +45,7 @@ local function npc_check_col(canvas, col_r, pos_add)
    return ret
 end
 
-function randomMovements(osef, action)
+function randomMovements(_osef, action)
    action = Entity.wrapp(action)
    directions = {LPCS_LEFT, LPCS_DOWN,
 		 LPCS_RIGHT, LPCS_UP}
@@ -71,9 +71,9 @@ function randomMovements(osef, action)
    action.timer_add = action.timer_add + ywidGetTurnTimer() / 100
    add_x, add_y = lpcsDirToXY(action._d);
    -- do correct movement coputing here
-   --add_x = add_x * (MOVE_PIX_PER_SEC / TURN_LENGTH)
-   --add_y = add_y * (MOVE_PIX_PER_SEC / TURN_LENGTH)
-   local PIX_MV_PER_MS = 4
+   --local PIX_MV_PER_MS = 4
+   --add_x = add_x * (PIX_MV_PER_MS / TURN_LENGTH)
+   --add_y = add_y * (PIX_MV_PER_MS / TURN_LENGTH)
    local sav = pix_mv - math.floor(pix_mv)
    pix_mv = math.floor(pix_mv)
    action.timer_left = action.timer_left + sav
@@ -118,7 +118,6 @@ end
 
 local function searching(wid, enemy)
       local pos = ylpcsHandePos(enemy)
-      local orig_pos = enemy.orig_pos
       local pj_pos = ylpcsHandePos(wid.pj)
       local pj_dist = ywPosDistance(pos, pj_pos)
       local up_down = 0
@@ -158,21 +157,6 @@ local function searching(wid, enemy)
 
       local y_dist = math.abs(ywPosY(pos) - ywPosY(pj_pos))
       local x_dist = math.abs(ywPosX(pos) - ywPosX(pj_pos))
-      if false then
-	 local x_acc = 0
-	 local y_acc = 0
-
-	 while x_acc + 10 < x_dist and y_acc + 10 < y_dist do
-	    x_acc = x_acc + 10
-	    y_acc = y_acc + 10
-	 end
-	 while x_acc + 10 < x_dist do
-	    x_acc = x_acc + 10
-	 end
-	 while y_acc + 10 < y_dist do
-	    y_acc = y_acc + 10
-	 end
-      end
       local mvx = pix_mv
       local mvy = pix_mv
       if x_dist < mvx then
@@ -255,7 +239,7 @@ function NpcTurn(wid)
    i = 0
    while i < yeLen(wid.enemies) do
       local enemy = wid.enemies[i]
-      local mv_pos = nil
+      local mv_pos
 
       if yIsNil(enemy) then
 	 goto loop_next;
@@ -358,8 +342,6 @@ function PjLeaveController(wid, action)
    saveNpcCanvasMatadata(tmp, npc.canvas)
    if yeGetString(npc.char.type) == "sprite" then
       generic_setDir(npc, npc.y)
-      --print("npc.y: ", yeGetInt(npc.y), " - ", LPCS_LEFT, LPCS_UP, LPCS_RIGHT, LPCS_DOWN, yeGetInt(npc.y) == LPCS_DOWN)
-
       sprite_man.handlerSetPos(npc, mvPos)
       sprite_man.handlerRefresh(npc)
    else
@@ -372,7 +354,6 @@ end
 function NpcGoToTbl(npc, tbl, end_f)
    local main = main_widget
    local action = Entity.new_array()
-   local rdst = Rect.new(ywPosX(dest_pos), ywPosY(dest_pos), 1, 1)
    npc = Entity.wrapp(npc)
 
    if speed == nil then
@@ -388,7 +369,7 @@ function NpcGoToTbl(npc, tbl, end_f)
       action.end_f = end_f
    end
 
-   action.controller = Entity.new_func("PjLeaveController")
+   action.controller = Entity.new_func(PjLeaveController)
    if main.npc_act == nil then
       main.npc_act = {}
    end
@@ -424,7 +405,7 @@ function pushPjLeave(npc, entryPoint)
 			 exit.rect,
 			 Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
 			 action[ACTION_MV_TBL])
-   action.controller = Entity.new_func("PjLeaveController")
+   action.controller = Entity.new_func(PjLeaveController)
 end
 
 function PjLeave(owid, eve, entryPoint)
@@ -445,18 +426,18 @@ function PjLeave(owid, eve, entryPoint)
 			 exit.rect,
 			 Pos.new(PIX_PER_FRAME, PIX_PER_FRAME).ent,
 			 action[ACTION_MV_TBL])
-   action.controller = Entity.new_func("PjLeaveController")
+   action.controller = Entity.new_func(PjLeaveController)
    backToGame(owid, eve, arg)
 end
 
-function calsses_event_dialog_gen(wid, cur_dialogue)
+function calsses_event_dialog_gen(_wid, cur_dialogue)
    local pj = phq.pj
 
    cur_dialogue = Entity.wrapp(cur_dialogue)
    local whos = {}
    local whos_names = {}
    local whos_nb = 1
-   local ph_year = yeGetIntAt(pj, "student_year")
+   --local ph_year = yeGetIntAt(pj, "student_year")
    for i = 0, yeLen(npcs) - 1 do
       local npc = yeGet(npcs, i)
       local npc_names = yeGetKeyAt(npcs, i)

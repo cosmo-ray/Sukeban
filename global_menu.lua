@@ -15,12 +15,8 @@
 --along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
 
-local tiled = Entity.wrapp(ygGet("tiled"))
 local lpcs = Entity.wrapp(ygGet("lpcs"))
 local phq = Entity.wrapp(ygGet("phq"))
-local modPath = Entity.wrapp(ygGet("phq.$path")):to_string()
-local npcs = Entity.wrapp(ygGet("phq.npcs"))
-local scenes = Entity.wrapp(ygGet("phq.scenes"))
 local stores = Entity.wrapp(ygGet("phq.stores"))
 
 GM_INV_IDX = 0
@@ -68,7 +64,7 @@ function gmGetBackFocus(mn)
    return YEVE_NOACTION;
 end
 
-function openGlobalMenu(useless0, usless1, pos)
+function openGlobalMenu(_useless0, _usless1, pos)
    local idx = 0
 
    pos = yeGetString(pos)
@@ -96,7 +92,7 @@ function openGlobMenu(main, on_idx, arg0)
       force_in = true
    end
    local panel = Menu.new_entity()
-   local lf = Entity.new_func("gmLooseFocus")
+   local lf = Entity.new_func(gmLooseFocus)
    panel.ent["mn-type"] = "panel"
    panel:push("Inventory", lf)
    panel:push("Status", lf)
@@ -105,8 +101,8 @@ function openGlobMenu(main, on_idx, arg0)
    panel:push("MISC (and boo)", lf)
    panel.ent.in_subcontained = 1
    panel.ent.size = 5
-   panel.ent.moveOn = Entity.new_func("globMnMoveOn")
-   panel.ent.onEsc = Entity.new_func("backToGame2")
+   panel.ent.moveOn = Entity.new_func(globMnMoveOn)
+   panel.ent.onEsc = Entity.new_func(backToGame2)
    local on_down = Entity.new_array()
    on_down[0] = Y_DOWN_KEY
    on_down[1] = lf
@@ -184,7 +180,7 @@ function pushSTatusTextScreen(container)
       end
       i = i + 1
    end
-   local i = 0
+   i = 0
    while i < yeLen(stats) do
       if stats[i] then
 	 stats_str = stats_str .. yeGetKeyAt(stats, i) ..
@@ -192,7 +188,7 @@ function pushSTatusTextScreen(container)
       end
       i = i + 1
    end
-   local i = 0
+   i = 0
    while i < yeLen(trait) do
       if trait[i] then
 	 trait_str = trait_str ..
@@ -225,11 +221,11 @@ function pushSTatusTextScreen(container)
    local allies = phq.pj.allies
    if yeLen(allies) > 0 then
       follower = "follower: "
-      for i = 0, yeLen(allies) - 1 do
-	 if i > 0 then
+      for j = 0, yeLen(allies) - 1 do
+	 if j > 0 then
 	    follower = follower .. ", "
 	 end
-	 follower = follower .. yeGetKeyAt(allies, i)
+	 follower = follower .. yeGetKeyAt(allies, j)
       end
    end
 
@@ -332,7 +328,7 @@ function spendXpGenMenu(statsMenu)
 
    statsMenu.ent["pre-text"] = "current xp: " .. yeGetInt(phq.pj.xp)
    statsMenu.ent.entries = {}
-   local spendXpBack = Entity.new_func("spendXpBack")
+   local spendXpBack = Entity.new_func(spendXpBack)
    statsMenu:push("<----", spendXpBack)
    statsMenu.ent.onEsc = spendXpBack
    local i = 0
@@ -342,13 +338,13 @@ function spendXpGenMenu(statsMenu)
 	 local stats_str = yeGetKeyAt(stats, i) .. "(" ..
 	    math.floor(st_val) .. "): " ..
 	    math.floor(computeStatCost(st_val)) .. " xp"
-	 statsMenu:push(stats_str, Entity.new_func("spendXpLvlUpStat"), i)
+	 statsMenu:push(stats_str, Entity.new_func(spendXpLvlUpStat), i)
       end
       i = i + 1
    end
    local xp_cost = math.floor(computeXpCost(phq.pj))
    statsMenu:push("max life: (" .. phq.pj.max_life:to_int() .. "): "
-		     .. xp_cost .. " xp", Entity.new_func("sendXpLvlUpXp"))
+		     .. xp_cost .. " xp", Entity.new_func(sendXpLvlUpXp))
 end
 
 function spendXpOnStats(mn)
@@ -360,7 +356,7 @@ function spendXpOnStats(mn)
    return YEVE_ACTION
 end
 
-function increase_recover_lvl(mn)
+function increase_recover_lvl(_mn)
    phq.pj.recover_level = yeGetIntAt(phq.pj, "recover_level") + 1
    return YEVE_ACTION
 end
@@ -388,7 +384,7 @@ local function genLearnableSkill(nmn)
 	 goto next
       end
       nmn:push(cmb_name .. " : " .. ccmb.cost:to_int(),
-	       Entity.new_func("learnSkillCombot"), cmb_name)
+	       Entity.new_func(learnSkillCombot), cmb_name)
       :: next ::
       i = i + 1
    end
@@ -397,7 +393,7 @@ local function genLearnableSkill(nmn)
    local r_skill = recover_improvement[r_level]
 
    nmn:push(r_name .. " : " .. r_skill.cost:to_int(),
-	    Entity.new_func("increase_recover_lvl"))
+	    Entity.new_func(increase_recover_lvl))
 end
 
 function learnSkillCombot(mn)
@@ -426,10 +422,10 @@ function pushSpendXpWid(mn)
    lvlUp.ent.background = "rgba: 255 255 255 255"
 
    local menu = Menu.new_entity()
-   menu:push("finish", Entity.new_func("popGlobMnOtherMenu"))
-   menu.ent.onEsc = Entity.new_func("popGlobMnOtherMenu")
-   menu:push("improve stats", Entity.new_func("spendXpOnStats"))
-   menu:push("learn skills", Entity.new_func("learnableSkill"))
+   menu:push("finish", Entity.new_func(popGlobMnOtherMenu))
+   menu.ent.onEsc = Entity.new_func(popGlobMnOtherMenu)
+   menu:push("improve stats", Entity.new_func(spendXpOnStats))
+   menu:push("learn skills", Entity.new_func(learnableSkill))
    lvlUp.ent.entries[0] = menu.ent
    menu.ent.size = 20
    ywPushNewWidget(main, lvlUp.ent)
@@ -444,7 +440,7 @@ function setCmbAsAttack(mn)
    yeSetAt(mn, "pre-text", "current: " .. phq.pj.attack:to_string())
 end
 
-function chooseCombot(mn)
+function chooseCombot(_mn)
    print("choose combot")
    local cmbs = phq.pj.combots
    local m = main_widget
@@ -458,7 +454,7 @@ function chooseCombot(mn)
    menu.ent.onEsc = Entity.new_func("popGlobMnOtherMenu")
    while i < yeLen(cmbs) do
       local cmb = cmbs[i]
-      menu:push(cmb:to_string(), Entity.new_func("setCmbAsAttack"))
+      menu:push(cmb:to_string(), Entity.new_func(setCmbAsAttack))
       i = i +  1
    end
    ccw.ent.entries[0] = menu.ent
@@ -485,7 +481,7 @@ function wear_cloth(mn)
    return YEVE_ACTION
  end
 
-function wear_clothes_mn(mn)
+function wear_clothes_mn(_mn)
    local m = main_widget
    local ccw = Container.new_entity("vertical")
    ccw.ent.background = "rgba: 255 255 255 255"
@@ -516,7 +512,7 @@ function wear_clothes_mn(mn)
 	 name = ob_desc.name:to_string()
       end
 
-      menu:push(name, Entity.new_func("wear_cloth"), ob_desc)
+      menu:push(name, Entity.new_func(wear_cloth), ob_desc)
       :: next ::
       i = i +  1
    end
@@ -527,11 +523,11 @@ function wear_clothes_mn(mn)
    return YEVE_ACTION
 end
 
-function alliesMoveOn(mn)
+function alliesMoveOn(_mn)
    print("allies move on !\n")
 end
 
-function allies_mn(mn)
+function allies_mn(_mn)
    local m = main_widget
    local ccw = Container.new_entity("vertical")
    ccw.ent.background = "rgba: 255 255 255 255"
@@ -540,13 +536,13 @@ function allies_mn(mn)
    -- TODO ALLIES SCREEN
 
    ccw.ent.entries[0] = menu.ent
-   menu:push("back", Entity.new_func("popGlobMnOtherMenu"))
-   menu.ent.onEsc = Entity.new_func("popGlobMnOtherMenu")
+   menu:push("back", Entity.new_func(popGlobMnOtherMenu))
+   menu.ent.onEsc = Entity.new_func(popGlobMnOtherMenu)
    for i = 0, yeLen(allies) do
       menu:push(yeGetKeyAt(allies, i))
    end
    ywPushNewWidget(m, ccw.ent)
-   menu.ent.moveOn = Entity.new_func("alliesMoveOn")
+   menu.ent.moveOn = Entity.new_func(alliesMoveOn)
    return YEVE_ACTION
 end
 
@@ -581,12 +577,12 @@ function pushStatus(mn)
    stat_menu.ent.isChildContainer = true
 
    local menu = Menu.new_entity()
-   menu:push("Spend XP", Entity.new_func("pushSpendXpWid"))
-   menu:push("Choose Combot", Entity.new_func("chooseCombot"))
-   menu:push("wear clothes", Entity.new_func("wear_clothes_mn"))
-   menu:push("God Mode", Entity.new_func("god_window"))
-   menu:push("advence time", Entity.new_func("doAdvanceTime"))
-   menu:push("Allies", Entity.new_func("allies_mn"))
+   menu:push("Spend XP", Entity.new_func(pushSpendXpWid))
+   menu:push("Choose Combot", Entity.new_func(chooseCombot))
+   menu:push("wear clothes", Entity.new_func(wear_clothes_mn))
+   menu:push("God Mode", Entity.new_func(god_window))
+   menu:push("advence time", Entity.new_func(doAdvanceTime))
+   menu:push("Allies", Entity.new_func(allies_mn))
    if yeGetInt(phq.env.is_end_of_chapter) > 0 then
       menu:push("end chapter", Entity.new_func(gotoEndChapter))
    end
@@ -626,7 +622,7 @@ local function doItemsListening(mn)
 	 end
 	 local cur = mn:push(name .. ": " ..
 			     math.floor(yeGetInt(inv[i])),
-			     Entity.new_func("gmUseItem"))
+			     Entity.new_func(gmUseItem))
 	 cur.obName = yeGetKeyAt(inv, i)
 	 cur.inv_o = inv[i]
 	 cur.inv = inv
@@ -711,7 +707,7 @@ function gmBuyItem(mn)
    end
 end
 
-function storeMoveOn(mn, current)
+function storeMoveOn(mn, _current)
    local cur = Entity.wrapp(ywMenuGetCurrentEntry(mn))
    local img_p = cur.path
    local cnt = ywCntWidgetFather(mn)
@@ -737,7 +733,7 @@ function storeMoveOn(mn, current)
    return YEVE_ACTION;
 end
 
-function openStore(main, obj_or_eve, storeName)
+function openStore(main, _obj_or_eve, storeName)
    if phq_only_fight == 1 then
       main = main_widget
    end
@@ -772,7 +768,7 @@ function openStore(main, obj_or_eve, storeName)
 	 local cost = yeGetInt(store[i])
 	 local cur = mn:push(name .. ": " ..
 			     math.floor(cost) .. "$",
-			     Entity.new_func("gmBuyItem"))
+			     Entity.new_func(gmBuyItem))
 	 cur.obName = yeGetKeyAt(store, i)
 	 if yIsNil(yeGet(ob_desc, "path")) then
 	    cur.path = nil
@@ -783,7 +779,7 @@ function openStore(main, obj_or_eve, storeName)
       end
       i = i + 1
    end
-   mn.ent.moveOn = Entity.new_func("storeMoveOn")
+   mn.ent.moveOn = Entity.new_func(storeMoveOn)
    mn.ent.size = 40
    cnt.ent.background = "rgba: 255 255 255 190"
    cnt.ent.entries[0] = mn.ent
@@ -792,7 +788,7 @@ function openStore(main, obj_or_eve, storeName)
    return YEVE_ACTION
 end
 
-function howtoplay(mn)
+function howtoplay(_mn)
    local mncp = Entity.new_copy(ygGet("phq:menus.bagare"))
 
    mncp.action = Entity.new_func("backToGameOnEnter")
@@ -820,43 +816,43 @@ end
 
 function saveGameMenu(mn)
    print("push save game menu ?")
-   local e = nil
+   local e
    mn = Entity.wrapp(mn)
    mn.entries = {}
    mn = Menu.wrapp(mn)
-   mn:push("back", Entity.new_func("fillMiscMenu"))
-   e = mn:push("slot 0", Entity.new_func("saveSlot"))
+   mn:push("back", Entity.new_func(fillMiscMenu))
+   e = mn:push("slot 0", Entity.new_func(saveSlot))
    e.slot = "slot_0"
-   e = mn:push("slot 1", Entity.new_func("saveSlot"))
+   e = mn:push("slot 1", Entity.new_func(saveSlot))
    e.slot = "slot_1"
-   e = mn:push("slot 2", Entity.new_func("saveSlot"))
+   e = mn:push("slot 2", Entity.new_func(saveSlot))
    e.slot = "slot_2"
-   e = mn:push("slot 3", Entity.new_func("saveSlot"))
+   e = mn:push("slot 3", Entity.new_func(saveSlot))
    e.slot = "slot_3"
-   e = mn:push("slot 4", Entity.new_func("saveSlot"))
+   e = mn:push("slot 4", Entity.new_func(saveSlot))
    e.slot = "slot_4"
-   e = mn:push("slot 5", Entity.new_func("saveSlot"))
+   e = mn:push("slot 5", Entity.new_func(saveSlot))
    e.slot = "slot_5"
-   e = mn:push("slot 6", Entity.new_func("saveSlot"))
+   e = mn:push("slot 6", Entity.new_func(saveSlot))
    e.slot = "slot_6"
-   e = mn:push("slot 7", Entity.new_func("saveSlot"))
+   e = mn:push("slot 7", Entity.new_func(saveSlot))
    e.slot = "slot_7"
-   e = mn:push("slot 8", Entity.new_func("saveSlot"))
+   e = mn:push("slot 8", Entity.new_func(saveSlot))
    e.slot = "slot_8"
-   e = mn:push("slot 9", Entity.new_func("saveSlot"))
+   e = mn:push("slot 9", Entity.new_func(saveSlot))
    e.slot = "slot_9"
-   e = mn:push("slot A", Entity.new_func("saveSlot"))
+   e = mn:push("slot A", Entity.new_func(saveSlot))
    e.slot = "slot_A"
-   e = mn:push("slot B", Entity.new_func("saveSlot"))
+   e = mn:push("slot B", Entity.new_func(saveSlot))
    e.slot = "slot_B"
-   e = mn:push("slot C", Entity.new_func("saveSlot"))
+   e = mn:push("slot C", Entity.new_func(saveSlot))
    e.slot = "slot_C"
-   e = mn:push("slot D", Entity.new_func("saveSlot"))
+   e = mn:push("slot D", Entity.new_func(saveSlot))
    e.slot = "slot_D"
-   e = mn:push("slot E", Entity.new_func("saveSlot"))
+   e = mn:push("slot E", Entity.new_func(saveSlot))
    e.slot = "slot_E"
-   e = mn:push("slot F", Entity.new_func("saveSlot"))
+   e = mn:push("slot F", Entity.new_func(saveSlot))
    e.slot = "slot_F"
-   e = mn:push("slot 10", Entity.new_func("saveSlot"))
+   e = mn:push("slot 10", Entity.new_func(saveSlot))
    e.slot = "slot_10"
 end
