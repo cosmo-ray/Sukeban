@@ -360,6 +360,10 @@ function checkNpcPresence(obj, npc, scene, is_ai_point)
 end
 
 local function _include(target, file)
+   if (file == nil) then
+      ysTraceCurrentScript()
+      abort()
+   end
    local includes = file._include
    local i = 0
 
@@ -1230,9 +1234,9 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 
    if yIsNNil(scene.dialogues) then
       o_dialogues = File.jsonToEnt(yeGetString(scene.dialogues))
+      dialogue_include(o_dialogues, o_dialogues)
+      yeCopy(o_dialogues, dialogues)
    end
-   dialogue_include(o_dialogues, o_dialogues)
-   yeCopy(o_dialogues, dialogues)
 
    if saved_scenes[ent.cur_scene_str:to_string()] then
       main_widget_screen.objects = saved_scenes[ent.cur_scene_str:to_string()].o
