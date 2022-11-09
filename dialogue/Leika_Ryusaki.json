@@ -7,14 +7,14 @@
 			 "But it seems there's no court here",
 			 "I feel alone, give me a racquet, and I could",
 			 "Put butterfly in your eyes with my skill"],
+		"condition":  ["<", "phq_wid.dialogue_npc.first_talk", 1],
 		"answers": [
 		    {
 			    "text": "sure, I'm very sad you can't trow moth in my head\n, good luck with your life problem",
 			    "actions": [
 			    	["setInt", "phq_wid.dialogue_npc.first_talk", 1],
 			    	"phq.backToGame"
-			    ],
-			    "condition":  ["<", "phq_wid.dialogue_npc.first_talk", 1]
+			    ]
 		    }
 		]
 	    },
