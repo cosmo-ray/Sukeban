@@ -77,6 +77,13 @@
 	},
 	{
 	    "action": "small-talk",
+	    "condition": [">", "phq.pj.stats.strength", 3],
+	    "txt": "By The Way, you should join our whellball club",
+	    "timer": 2000,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
 	    "txt": "Have a Nice Day",
 	    "timer": 1500,
 	    "npc-pos": "Saki Miya"
