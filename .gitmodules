@@ -43,3 +43,6 @@
 [submodule "modules/z-skull-breaker"]
 	path = modules/z-skull-breaker
 	url = https://github.com/cosmo-ray/z-skull-breaker.git
+[submodule "modules/nyanarchiste"]
+	path = modules/nyanarchiste
+	url = https://github.com/cosmo-ray/nyanarchiste.git
