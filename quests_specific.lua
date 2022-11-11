@@ -885,3 +885,9 @@ function rd_tps_ds_escgt()
    ltew.action = Entity.new_func(backToGameDirOut)
    ywPushNewWidget(main_widget, lteb)
 end
+
+function nyanarchist_end(wid)
+   print('nyanarchist_end')
+   yePrint(wid)
+   backToGame2()
+end

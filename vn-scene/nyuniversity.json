@@ -51,7 +51,7 @@
 	    "text": "It's in memory of an old anarchist, let me tell you her story",
 	    "answer": {
 		'text': 'nice, do tell',
-		"action": ["phq.play", "nyanarchist"]
+		"action": ["phq.play", "nyanarchist", -1, "nyanarchist_end"]
 	    }
 	}
     }

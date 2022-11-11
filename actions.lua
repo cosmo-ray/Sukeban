@@ -1164,6 +1164,7 @@ function play(_wid, eve, game, timer, end_f_str)
    local t = Entity.new_array()
 
    t["<type>"] = game
+   t["parent-rect"] = main_widget['wid-pix'];
    if yIsNNil(end_f_str) then
       t.die = Entity.new_func(yeGetString(end_f_str))
       t.win = Entity.new_func(yeGetString(end_f_str))
