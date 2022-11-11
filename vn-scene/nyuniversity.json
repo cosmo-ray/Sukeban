@@ -13,6 +13,18 @@
 			"Dialogue:gotoNext"
 		    ]
 		},
+		{
+                    "text": "So, are you some kind of anarchist ?",
+		    "actions": [
+			["Dialogue:change-text", "Of, course we're nyanarchist, UwU"],
+			["setInt", "phq.env.nyan_are_anar", 1],
+		    ]
+                },
+		{
+		    "text": "So, I get that you are anarchist but why the cat and U...U struff it just make you cringy as hell",
+		    "condition":  "phq.env.nyan_are_anar",
+		    "action":[ "Dialogue:goto", "nyanarchist" ]
+		},
                 {
                     "text": "Ok, have a nice day, U...U",
 		    "action": "phq.backToGame"
@@ -24,13 +36,17 @@
 		     "Listen, as nyanachiste, we don't like religions UwU",
 		     "they serve only to dominate peoples UwU",
 		     "So we write some peace message on they builing of hate UwU",
-		     "Now leave before we scratch your joly face Uwu"],
+		     "Now leave before we scratch your joly face UwU"],
 	    "answers": [
 		{
 		    "text": "Ok, have a nice day, U...U",
 		    "action": "phq.backToGame"
 		}
 	    ]
+	},
+	"nyanarchist": {
+	    "text": "It's in memory of an old anarchist, let me tell you a story(Still WIP)",
+	    "action": "phq.backToGame"	    
 	}
     }
 }
