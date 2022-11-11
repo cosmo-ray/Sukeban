@@ -369,7 +369,7 @@ function StartFight(wid, eve, enemy_type, script)
    fWid.enemy = npc
 
    if fight_script == "CombatDialogueNext" then
-      dialogue.gotoNext(wid, eve)
+      dialogue_mod.gotoNext(wid, eve)
    elseif fight_script == "RemoveEnemy" then
       local npc_a = main_widget.npc_act
       print("=dbg=")
