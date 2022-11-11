@@ -124,6 +124,10 @@
 		    "It seems a Toys Factory, was bombed by terrorist, and blow just away",
 		    "News about this new thing call internet chat\nwhere peoples recive indecent propositions",
 		    "News about a new cool band call 'les Cowboy Baguette'",
+		    {
+			"text": "Anoncement about soon TV Broadcasting of Regional Junior's Whellball Championship",
+			"condition": ["<", "phq.env.chapter", 1]
+		    },
 		    "News about a pack of dogs living in the mountains, who hunt bears",
 		    "A new Sparkling Water brand should be commercialize soon",
 		    {
