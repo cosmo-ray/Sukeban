@@ -1,7 +1,11 @@
 # Quests Idea here:
 
 ## Club Quests:
-(we have 0 for noew)
+(we have 0 for now)
+### Whellball
+Create a whellball club.
+Whellball gameplay
+Championship
 
 ## Random Character Quest:
 (0 for now too)
