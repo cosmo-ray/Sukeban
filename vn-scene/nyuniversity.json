@@ -17,7 +17,7 @@
                     "text": "So, are you some kind of anarchist ?",
 		    "actions": [
 			["Dialogue:change-text", "Of, course we're nyanarchist, UwU"],
-			["setInt", "phq.env.nyan_are_anar", 1],
+			["setInt", "phq.env.nyan_are_anar", 1]
 		    ]
                 },
 		{
