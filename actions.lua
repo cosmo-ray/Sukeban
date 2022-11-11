@@ -1166,9 +1166,13 @@ function play(_wid, eve, game, timer, end_f_str)
    t["<type>"] = game
    if yIsNNil(end_f_str) then
       t.die = Entity.new_func(yeGetString(end_f_str))
+      t.win = Entity.new_func(yeGetString(end_f_str))
+      t.lose = Entity.new_func(yeGetString(end_f_str))
       t.quit = Entity.new_func(yeGetString(end_f_str))
    else
+      t.win = Entity.new_func("backToGame")
       t.die = Entity.new_func("backToGame")
+      t.lose = Entity.new_func("backToGame")
       t.quit = Entity.new_func("backToGame")
    end
    t.oldTimer = main["turn-length"]

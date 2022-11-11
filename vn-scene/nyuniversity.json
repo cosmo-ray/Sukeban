@@ -22,7 +22,10 @@
                 },
 		{
 		    "text": "So, I get that you are anarchist but why the cat and U...U struff it just make you cringy as hell",
-		    "condition":  "phq.env.nyan_are_anar",
+		    "condition":  [
+			"and", "phq.env.nyan_are_anar",
+			[  ">", "phq.pj.knowledge.class_struggle", 0]
+		    ],
 		    "action":[ "Dialogue:goto", "nyanarchist" ]
 		},
                 {
@@ -45,8 +48,11 @@
 	    ]
 	},
 	"nyanarchist": {
-	    "text": "It's in memory of an old anarchist, let me tell you a story(Still WIP)",
-	    "action": "phq.backToGame"	    
+	    "text": "It's in memory of an old anarchist, let me tell you her story",
+	    "answer": {
+		'text': 'nice, do tell',
+		"action": ["phq.play", "nyanarchist"]
+	    }
 	}
     }
 }
