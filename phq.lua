@@ -17,7 +17,8 @@
 
 tiled = Entity.wrapp(ygGet("tiled"))
 local jrpg_fight = Entity.wrapp(ygGet("jrpg-fight"))
-local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
+dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
+dialogue_mod = Entity.wrapp(ygGet("Dialogue"))
 lpcs = Entity.wrapp(ygGet("lpcs"))
 sprite_man = Entity.wrapp(ygGet("sprite-man"))
 phq = Entity.wrapp(ygGet("phq"))

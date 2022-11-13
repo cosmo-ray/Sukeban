@@ -51,8 +51,30 @@
 	    "text": "It's in memory of an old anarchist, let me tell you her story",
 	    "answer": {
 		'text': 'nice, do tell',
-		"action": ["phq.play", "nyanarchist", -1, "nyanarchist_end"]
+		"action": ["phq.play", "nyanarchist", -1, "nyanarchist_end", 1]
 	    }
+	},
+	"lose": {
+	    "text": "(it seems the cat person mess up they story-telling\nyou did not understand any of it (Sad UwU))",
+	    "action": "phq.backToGame"
+	},
+	"win": {
+	    "text": [
+		"So you been cringe talking like retard thinking themself as cat",
+		"is in homage to a yong cat-anarchist girl, who made a rampage",
+		"smatching fashist, and billionaire like 50 years ago",
+		"End up dead, and gouvernement using her action as propagande",
+		"to target anarchist as terrorist, and forbid every anarchist",
+		"organisation in the country...",
+		"Now no one take anarchisme seriously, and most few that",
+		"know a little of anar-history, know them only as terrorist",
+		"and sure she was couragous and all that shit, I mean...",
+		"I'll be clear story was nice... but maybe re-tinking",
+		"the aesthetic of anarchisme you show to peoples whould help...",
+		"nee ?",
+		"(reward and crap stil TODO for this quest ?)"
+	    ],
+	    "action": "phq.backToGame"
 	}
     }
 }

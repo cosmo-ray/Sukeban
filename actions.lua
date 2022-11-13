@@ -16,9 +16,6 @@
 --
 
 local sleep_time = 0
-local phq = Entity.wrapp(ygGet("phq"))
-local dialogue_mod = Entity.wrapp(ygGet("Dialogue"))
-local dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 fight_script = nil
 dialogue_npc = nil
 
@@ -1147,7 +1144,7 @@ function dream_z_shooter_xp(wid)
    increaseStat(main_widget, phq.pj, "xp", xp)
 end
 
-function play(_wid, eve, game, timer, end_f_str)
+function play(_wid, eve, game, timer, end_f_str, keep_dialogue)
    local main = main_widget
 
    print("play !!!!", eve, game, yeGetInt(timer), end_f_str, yeGetString(end_f_str),
@@ -1158,7 +1155,7 @@ function play(_wid, eve, game, timer, end_f_str)
    -- if call from sleep (or nor dialogue), we need to force current
    if main.current < 2 then
       main.current = 2
-   else
+   elseif yeGetInt(keep_dialogue) < 1 then
       ywCntPopLastEntry(main)
    end
    local t = Entity.new_array()

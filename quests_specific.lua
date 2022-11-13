@@ -887,7 +887,17 @@ function rd_tps_ds_escgt()
 end
 
 function nyanarchist_end(wid)
-   print('nyanarchist_end')
-   yePrint(wid)
-   backToGame2()
+   wid = Entity.wrapp(wid)
+   --yePrint(wid)
+   local dwid = ywCntGetEntry(main_widget, -2)
+   local dmenu = dialogue_mod.get_menu(dwid)
+   if (wid.end_state:to_string() == "win") then
+      print("NYANARCHUST BEATEN, PLEAYER NEED REWARD !!!!!")
+      dialogue_mod['goto'](dmenu, eve, Entity.new_string("win"))
+   else
+      print("LOSE BRANCH !")
+      dialogue_mod['goto'](dmenu, eve, Entity.new_string("lose"))
+   end
+   print("ywCntPopLastEntry now")
+   ywCntPopLastEntry(main_widget)
 end
