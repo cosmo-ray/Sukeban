@@ -26,7 +26,9 @@
 			"and", "phq.env.nyan_are_anar",
 			[  ">", "phq.pj.knowledge.class_struggle", 0]
 		    ],
-		    "action":[ "Dialogue:goto", "nyanarchist" ]
+		    "actions":[
+			    [ "Dialogue:goto", "nyanarchist" ]
+		    ]
 		},
                 {
                     "text": "Ok, have a nice day, U...U",
@@ -50,7 +52,7 @@
 	"nyanarchist": {
 	    "text": "It's in memory of an old anarchist, let me tell you her story",
 	    "answer": {
-		'text': 'nice, do tell',
+		"text": "nice, do tell",
 		"action": ["phq.play", "nyanarchist", -1, "nyanarchist_end", 1]
 	    }
 	},
