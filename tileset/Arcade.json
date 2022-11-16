@@ -137,7 +137,7 @@
                         {
                          "name":"Action",
                          "type":"string",
-                         "value":"setInt"
+                         "value":"trySetInt"
                         }, 
                         {
                          "name":"Arg0",

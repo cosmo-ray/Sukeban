@@ -895,6 +895,7 @@ function checkHightScore(lvl)
    local lvl_check = 3
    local hs = phq.hightscores
 
+   -- if quest done, skip
    if (yeGetInt(ygGet("phq.quests.hightscores.lvl"))) > 1 then
       return 0
    end
@@ -906,17 +907,17 @@ function checkHightScore(lvl)
       lvl_check = 1
    end
 
+   -- foreach game highscore in 'Arcade_score.json', check first 3 levels
    while i < lvl_check do
       local j = 0
       while j < yeLen(hs) do
 	 if phq.pj.name:to_string() == yeGetKeyAt(hs[j], i) then
 	    phq.quests.hightscores = {}
-	    if lvl_check < 3 then
+	    if lvl_check == 1 then
 	       phq.quests.hightscores.lvl = 2
 	    else
 	       phq.quests.hightscores.lvl = 1
 	    end
-	    --["setInt", "phq.quests.hightscore.lvl", 1],
 	    return 1
 	 end
 	 j = j + 1
