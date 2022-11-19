@@ -23,9 +23,19 @@
 		{
 		    "text": "So, I get that you are anarchist but why the cat and U...U struff it just make you cringy as hell",
 		    "condition":  [
-			"and", "phq.env.nyan_are_anar",
-			[  ">", "phq.pj.knowledge.class_struggle", 0]
+			"and" [
+				"and", "phq.env.nyan_are_anar",
+				[  ">", "phq.pj.knowledge.class_struggle", 0]
+			], ["not", "phq.quests.nya-story"]
 		    ],
+		    "actions":[
+			    ["setInt", "phq.quests.nya-story", 1],
+			    [ "Dialogue:goto", "nyanarchist" ]
+		    ]
+		},
+		{
+		    "text": "So last time you try to explain your cat stuff it was hard to understand, could you try again UwU?",
+		    "condition": [">", "phq.quests.nya-story", 0],
 		    "actions":[
 			    [ "Dialogue:goto", "nyanarchist" ]
 		    ]
@@ -50,7 +60,7 @@
 	    ]
 	},
 	"nyanarchist": {
-	    "text": "It's in memory of an old anarchist, let me tell you her story",
+	    "text": "The cat stuff, It's in memory of an old anarchist, let me tell you her story",
 	    "answer": {
 		"text": "nice, do tell",
 		"action": ["phq.play", "nyanarchist", -1, "nyanarchist_end", 1]
@@ -76,7 +86,10 @@
 		"nee ?",
 		"(reward and crap stil TODO for this quest ?)"
 	    ],
-	    "action": "phq.backToGame"
+	    "actions": [
+		    ["setInt", "phq.quests.nya-story", 2],
+		    "phq.backToGame"
+	    ]
 	}
     }
 }
