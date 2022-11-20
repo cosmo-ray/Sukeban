@@ -90,6 +90,16 @@
 	    0, 0, 4
 	]
     },
+    "Nyistory": {
+	"stalk": "phq.quests.nya-story",
+	"stalk_sart": 0,
+	"descriptions": [
+	    "Try to understand nyanarchist story",
+	],
+        "rewards": [
+	    3, 30
+	]
+    },
     "Aligator 427": {
 	"stalk": "phq.quests.aligator_427",
 	"stalk_sart": -1,
