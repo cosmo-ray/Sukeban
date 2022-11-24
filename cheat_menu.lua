@@ -47,6 +47,7 @@ local function mk_main_mn()
    slider[1].actions[3] = Entity.new_func(popGlobMnOtherMenu)
    ywMenuPushSlider(menu.ent, "Chapter Select: ", slider)
    menu:push("Quests", Entity.new_func(cheat_quest_select_mn))
+   menu:push("next chapter", Entity.new_func(gotoEndChapter))
 
    local money_action = Entity.new_array()
    money_action[0] = "phq.recive"

@@ -767,6 +767,7 @@ end
 function end_chapter_1(main)
    print("end_chapter_1")
    main.sleep_script = nil
+   main.gmenu_hook = {}
    phq.env.is_end_of_chapter = 0
    phq.env.chapter = 2
    local vn_chapter = Entity.new_array()

@@ -57,7 +57,6 @@ FIGHT_COLISION = 3
 --local PHQ_SUP = 0
 local PHQ_INF = 1
 
-
 LPCS_LEFT = ygGetInt("lpcs.LEFT")
 LPCS_DOWN = ygGetInt("lpcs.DOWN")
 LPCS_RIGHT = ygGetInt("lpcs.RIGHT")
@@ -65,7 +64,6 @@ LPCS_UP = ygGetInt("lpcs.UP")
 
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
-
 
 local newly_loaded = true
 local upKeys = Event.CreateGrp(Y_UP_KEY, Y_W_KEY)

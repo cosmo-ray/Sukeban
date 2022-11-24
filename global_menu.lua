@@ -553,14 +553,17 @@ function doAdvanceTime(mn)
    advance_time(main_widget)
 end
 
-local function gotoEndChapter(mn)
-   local f_mn = ywCntWidgetFather(mn)
-
-   if yeGetInt(phq.env.chapter) == 1 then
+function gotoEndChapter(mn)
+   local cur_chapter = yeGetInt(phq.env.chapter)
+   if cur_chapter == 1 then
       print("GOTO CHATPER 2")
       main_widget.sleep_script = "end_chapter_1"
+   elseif cur_chapter == 0 then
+      main_widget.sleep_script = "end_chapter_0"
+   elseif cur_chapter == 2 then
+      main_widget.sleep_script = "end_chapter_2"
    end
-   backToGame(f_mn)
+   backToGame2()
    phq.env.day = 7
    phq.env.time = "night"
    sleep(main_widget)
