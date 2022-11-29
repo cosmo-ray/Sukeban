@@ -1,6 +1,11 @@
 {
     "Elise Barelmaker": {
 	"dialogue" : {
+	    "scary-ally": {
+		    "condition": ["contain_string", "phq.pj.organisations", "Students Protection Group"],
+		    "text": "(Even if your are part of the same group, Elise is still scary as hell)",
+		    "action": "phq.backToGame"
+	    },
 	    "elise":  "(sometime a look can tell you not to speak)"
 	}
     }
