@@ -235,6 +235,7 @@ function pushSTatusTextScreen(container)
    txt_screen.text = chap_txt .. "\nDay: " ..
       DAY_STR[phq.env.day:to_int() + 1] .. ", {phq.env.time}\n" ..
       "week: {phq.env.week}\n" ..
+      "days spend at school: {phq.env.school_day}\n" ..
       "time point: {phq.env.time_point}\n" ..
       "Status:\n" ..
       "life: {phq.pj.life}\n" ..
@@ -563,9 +564,9 @@ function gotoEndChapter(mn)
    elseif cur_chapter == 2 then
       main_widget.sleep_script = "end_chapter_2"
    end
-   backToGame2()
    phq.env.day = 7
    phq.env.time = "night"
+   backToGame2()
    sleep(main_widget)
 end
 

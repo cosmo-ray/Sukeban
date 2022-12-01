@@ -255,10 +255,6 @@ local function end_morning_class()
    print("WESH !!!!!!")
    advance_time(main_widget, "school0", true)
    phq.env.school_day = phq.env.school_day + 1
-   if yeGetInt(phq.env.chapter) == 1 and
-      phq.env.school_day > 0 then -- MODIFY THIS FOR TRUE CHAPTER CHANGE
-      phq.env.is_end_of_chapter = 1
-   end
 end
 
 local game_scene_state = 0
@@ -447,6 +443,12 @@ function morning_class(mn)
       Entity.new_string("prot_club_mission_0", a)
    end
    :: finalize ::
+
+   if school_day > 10 and phq.env.chapter < 2 then
+      phq.env.is_end_of_chapter = 1
+   elseif school_day > 35 then
+      phq.env.is_end_of_chapter = 1
+   end
 
    Entity.new_func(end_morning_class, school_events)
 
@@ -767,8 +769,8 @@ end
 function end_chapter_1(main)
    print("end_chapter_1")
    main.sleep_script = nil
-   main.gmenu_hook = {}
    phq.env.is_end_of_chapter = 0
+   main.gmenu_hook = {}
    phq.env.chapter = 2
    local vn_chapter = Entity.new_array()
    vn_chapter[0] = Entity.new_array()
