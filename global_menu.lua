@@ -202,7 +202,7 @@ function pushSTatusTextScreen(container)
    if yeGetInt(phq.env.chapter) < 1 then
       chap_txt = chap_txt .. "Prologue"
    else
-      chap_txt = chap_txt .. yeGetInt(phq.env.chapter)
+      chap_txt = chap_txt .. math.floor(yeGetInt(phq.env.chapter))
    end
 
    local pj_orgas = phq.pj.organisations
