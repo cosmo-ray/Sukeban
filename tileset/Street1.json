@@ -496,7 +496,7 @@
                         {
                          "name":"ConditionArg1",
                          "type":"int",
-                         "value":0
+                         "value":3
                         }],
                  "rotation":0,
                  "visible":true,
@@ -656,6 +656,179 @@
                  "width":31.7712470214457,
                  "x":543.082605242256,
                  "y":390.505162827641
+                }, 
+                {
+                 "class":"",
+                 "height":41,
+                 "id":33,
+                 "name":"Stop ! Stop ! 6077",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.printMessage"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Don't Miss Stop ! Stop !, 6077 at the Old Port Arena !"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.env.chapter"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":2
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":25,
+                 "x":961.867537780746,
+                 "y":320.152918093012
+                }, 
+                {
+                 "class":"",
+                 "height":41,
+                 "id":34,
+                 "name":"Seaship Scorpius !",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.printMessage"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Seaship Scorpius now on laserdisk in any Video Shop"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.env.chapter"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":2
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":25,
+                 "x":1027.82729398013,
+                 "y":322.657718961343
+                }, 
+                {
+                 "class":"",
+                 "height":41,
+                 "id":35,
+                 "name":"Skiclout",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.printMessage"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Son't miss Skiclout, A semblance of Deja Vu album ! If your pockets are not full of Emptiness, this is for you !"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.env.chapter"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":3
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":25,
+                 "x":1026.99236035735,
+                 "y":326.832387075228
+                }, 
+                {
+                 "class":"",
+                 "height":41,
+                 "id":36,
+                 "name":"Vacation",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.printMessage"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Discover Bacu, the island of Cigar, rome and... stuff. Travel starting price at 300$"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.env.chapter"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"Remember",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":25,
+                 "x":962.702471403523,
+                 "y":321.822785338566
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -664,10 +837,10 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":33,
+ "nextobjectid":37,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.9.0",
+ "tiledversion":"1.9.2",
  "tileheight":32,
  "tilesets":[
         {
