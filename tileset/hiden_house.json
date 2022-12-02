@@ -149,6 +149,60 @@
                  "width":29.670029997273,
                  "x":161.439869102809,
                  "y":93.3733296973002
+                }, 
+                {
+                 "class":"",
+                 "height":64.5614944095991,
+                 "id":11,
+                 "name":"bed",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.printMessage"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"Nice bed"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":62.5238614671394,
+                 "x":222.242296154895,
+                 "y":62.4015544041451
+                }, 
+                {
+                 "class":"",
+                 "height":20.0709026452141,
+                 "id":12,
+                 "name":"Hiden Money",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.takeObject"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"money"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":30
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":22.6888464685029,
+                 "x":97.7365694027816,
+                 "y":36.6512135260431
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -212,10 +266,10 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":11,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.9.0",
+ "tiledversion":"1.9.2",
  "tileheight":32,
  "tilesets":[
         {
