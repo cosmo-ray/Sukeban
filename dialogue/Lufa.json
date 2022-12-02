@@ -75,7 +75,10 @@
 		    }
 	        ]
 	    },
-	    "Hello": "Hello Human",
+	    "Hello": {
+		"text": "Hello Human",
+		"action": "phq.backToGame"
+	    },
 	    "join": {
 		    "text": "so here's the papper",
 		    "answer": {
