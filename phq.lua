@@ -438,6 +438,7 @@ function init_phq(mod)
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
    mod.misc_fnc.save_fight_mode = Entity.new_func(save_fight_mode)
    mod.misc_fnc.load_fight_mode = Entity.new_func(load_fight_mode)
+   mod.misc_fnc.chapter_2_vacation = Entity.new_func(chapter_2_vacation)
    mod.triggers = {}
    mod.triggers.block_message = Entity.new_func(trigger_block_message)
 end
@@ -1593,7 +1594,7 @@ function create_phq(entity, _eve, _menu)
       stalk_path = yeGetStringAt(quests_info[i], "stalk")
       cur = yeGetInt(ygGet(stalk_path))
 
-      quest_try_Call_script(ent, qi_scripts, cur)
+      quest_try_Call_script(quests_info[i], qi_scripts, cur)
       :: next_loop ::
       i = i + 1
    end

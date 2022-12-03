@@ -90,16 +90,28 @@ function use_time_point(box)
    return Y_TRUE
 end
 
-function quest_try_Call_script(main, qi_scripts, cur)
+function quest_try_Call_script(quest, qi_scripts, cur)
    local j = 0
 
    while j < yeLen(qi_scripts) do
       local at = yeGet(qi_scripts[j], "at")
+      local callable = yeGetStringAt(qi_scripts[j], "call")
+
       if yIsNNil(at) and cur == yeGetInt(at) then
-	 scripts[yeGetStringAt(qi_scripts[j], "script")](main)
+	 if (yIsNNil(callable)) then
+	    yesCall(ygGet(callable))
+	 else
+	    scripts[yeGetStringAt(qi_scripts[j], "script")](main_widget)
+	 end
       elseif yIsNNil(qi_scripts[j].after) and
-      cur > yeGetIntAt(qi_scripts[j], "after") then
-	 scripts[yeGetStringAt(qi_scripts[j], "script")](main)
+	 cur > yeGetIntAt(qi_scripts[j], "after") and
+	 cur < yeLenAt(quest, "descriptions") then
+
+	 if (yIsNNil(callable)) then
+	    yesCall(ygGet(callable))
+	 else
+	    scripts[yeGetStringAt(qi_scripts[j], "script")](main_widget)
+	 end
       end
       j = j + 1
    end
@@ -115,7 +127,7 @@ function quest_update(original, _copy, arg)
    local reward = yeGetIntAt(rewards, r_idx)
    local qi_scripts = quest.scripts
 
-   quest_try_Call_script(main_widget, qi_scripts, r_idx)
+   quest_try_Call_script(quest, qi_scripts, r_idx)
 
    if reward ~= 0 then
       increaseStat(main, phq.pj, "xp", reward)

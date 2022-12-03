@@ -1,4 +1,18 @@
 {
+    "school winter vacation": {
+	"stalk": "phq.quests.school_wvacation",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "Spend winter vacation with someone or alone"
+	],
+	"scripts": [
+	    {
+		"at": 0,
+		"call": "phq.misc_fnc.chapter_2_vacation"
+	    }
+	],
+	"rewards": [2]
+    },
     "school 1rst semester": {
 	"stalk": "phq.quests.school_1_semestre",
 	"stalk_sart": -1,
@@ -16,7 +30,7 @@
 		"script": "chapter_1"
 	    }
 	],
-	"rewards": [0, 0]
+	"rewards": [0, 2]
     },
     "school subscription": {
 	"stalk": "phq.quests.school_sub",

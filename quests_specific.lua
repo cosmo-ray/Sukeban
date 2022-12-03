@@ -243,6 +243,14 @@ function chapter_1_sleep(main)
    end
 end
 
+function chapter_2_vacation()
+   print("Vacation ALONE !!!")
+   local s = Entity.new_array()
+   s[0] = GM_STATS_IDX
+   s[1] = Entity.new_func(chapter_2_menu)
+   yePushBack(main.gmenu_hook, s)
+end
+
 function chapter_1(main)
    main.sleep_script = "chapter_1_sleep"
    local s = Entity.new_array()
@@ -454,6 +462,12 @@ function morning_class(mn)
 
    backToGame(f_mn)
    main_widget.cant_skip_time = 0
+end
+
+function chapter_2_menu(main, mn)
+   mn = Menu.wrapp(mn)
+   -- this could be improved a lot
+   mn:push("spend winter vacation alone", Entity.new_func(gotoEndChapter))
 end
 
 function chapter_1_menu(main, mn)
@@ -775,13 +789,15 @@ function end_chapter_1(main)
    local vn_chapter = Entity.new_array()
    vn_chapter[0] = Entity.new_array()
    local dial = vn_chapter[0]
-   dial.text = "End of chapter 1, school vacation, lot of 2nddary quest\n" ..
-      "to explore side character, and discover new bad guys  outsides of school" ..
+   dial.text = "End of chapter 1\nchapter 2 TODO: school vacation, lot of 2nddary quest\n" ..
+      "to explore side character, and discover new bad guys outsides of school" ..
       "also aligator 427 quest"
 
    dial.answer = {}
    dial.answer.text = "(goto unimplemented chapter)"
    dial.answer.action = "phq.backToGame"
+   phq.quests.school_1_semestre = 2
+   phq.quests.school_wvacation = 0
 
    vnScene(main, nil, vn_chapter)
 
@@ -790,9 +806,11 @@ end
 function end_chapter_2(main)
    print("end_chapter_2")
    main.sleep_script = nil
+   main.gmenu_hook = {}
    phq.env.is_end_of_chapter = 0
    phq.env.chapter = 3
-   phq.quests.school_1_semestre = 2
+   phq.quests.school_wvacation = 1
+   phq.quests.school_2_semestre = 0
 end
 
 function end_chapter_0(main)
