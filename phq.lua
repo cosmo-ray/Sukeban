@@ -76,6 +76,11 @@ local AGRESIVE_TALKER = 2
 local AGRESIVE_ATTACKER = 1
 local NOT_AGRESIVE = 0
 
+local MV_MODE_FAST = 0
+local MV_MODE_SLOW = 1
+
+local MV_MODE_DEFAULT = MV_MODE_FAST
+
 function distanceToDir(x, y)
    if math.abs(x) > math.abs(y) then
       if x > 0 then
@@ -899,6 +904,9 @@ function phq_action(entity, eve)
       return openGlobMenu(entity, GM_QUEST_IDX)
    end
 
+   if yevIsKeyDown(eve, Y_LCTRL_KEY) then
+      main_widget.mv_mode = MV_MODE_SLOW
+   end
    if yevIsKeyDown(eve, Y_LSHIFT_KEY) then
       if (yeLen(main_widget.show_actionable) < 1) then
 	 local e_actionables = entity.actionables
@@ -980,6 +988,9 @@ function phq_action(entity, eve)
       end
    end
 
+   if yevIsKeyUp(eve, Y_LCTRL_KEY) then
+      main_widget.mv_mode = MV_MODE_DEFAULT
+   end
    if yevIsKeyUp(eve, Y_LSHIFT_KEY) then
       if (yeLen(main_widget.show_actionable) > 0) then
 	 local show_act = main_widget.show_actionable
@@ -1077,8 +1088,11 @@ function phq_action(entity, eve)
       entity.pj.move.left_right = 0
    end
 
-
-   pix_mv = turn_timer * PIX_MV_PER_MS + pix_floor_left
+   local pix_mv_per_ms = PIX_MV_PER_MS
+   if yeGetInt(main_widget.mv_mode) == MV_MODE_SLOW then
+      pix_mv_per_ms = pix_mv_per_ms / 2
+   end
+   pix_mv = turn_timer * pix_mv_per_ms + pix_floor_left
    pix_floor_left = pix_mv - math.floor(pix_mv)
 
    entity.pj.mv_pix = entity.pj.mv_pix + pix_mv
@@ -1601,5 +1615,6 @@ function create_phq(entity, _eve, _menu)
    if phq_only_fight == 1 then
       fight_mode_wid()
    end
+   main_widget.mv_mode = MV_MODE_DEFAULT
    return ret
 end
