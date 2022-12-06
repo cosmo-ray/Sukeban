@@ -40,6 +40,10 @@
 	"type": "usable",
 	"stats+" : { "life": 3 }
     },
+    "Energizer Drink+++": {
+	"type": "usable",
+	"stats+" : { "life": 8 }
+    },
     "Naka Cola": {
 	"type": "usable",
 	"stats+" : { "life": 1 }

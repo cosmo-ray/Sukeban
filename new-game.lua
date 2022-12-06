@@ -105,6 +105,7 @@ function newGameAction(menu, _eve, _arg)
    phq.pj.life = phq.pj.max_life
    phq.pj.allies = {}
    phq.pj.trait.shy = 0
+   phq.pj.trait.grumpy = 0
    phq.pj.trait.violance = 0
    phq.pj.trait.perv = 0
    phq.pj.trait.sensitivity = 0

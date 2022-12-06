@@ -1,0 +1,36 @@
+{
+    "center": {
+	"dialogue" : {
+	    "texts": [
+		{
+		    "text": [
+			"The most popular part of the City",
+			"lot of peoples who, doesn't seems to speak my languages",
+			"It's super clean", "Peoples seems happilly looking at shop Windows",
+			"The thing I can't understad is that this part of the town very similar",
+			"to any big city center I see on TV, If you want to see the same shop as you have at home",
+			"Why don't you stay home ?",
+			"I mean this town if full of beautifull odity",
+			"and you're here comtemplating common crap"],
+		    "condition": [">", "phq.pj.trait.grumpy", 2]
+		},
+		{
+		    "text": [
+			"The most popular part of the City",
+			"lot of peoples who, doesn't seems to speak my languages",
+			"It's super clean", "Peoples seems happilly looking at shop Windows"
+		    ]
+		}
+	    ],
+	    "answers": [
+		{
+		    "text": "go to 'Over 9000 Power Shop'(it's sport stuff)",
+		    "action": [ "phq.openStore", "Over 9000 Power" ]
+		},
+		{
+		    "text": "(go home)"
+		}
+	    ]
+	}
+    }
+}

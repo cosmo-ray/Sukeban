@@ -10,11 +10,11 @@
 	    [383, 175], [423, 153], [451, 138], [539, 132]
 	],
 	[
-	    [312, 189], [352, 209], [400, 225, "The Fort of the Braves"], [450, 234],
+	    [312, 189], [352, 209], [400, 225, "The Fort of the Braves"], [450, 234, "center"],
 	    [507, 236, "Port City"]
 	],
 	[
-	    [401, 129], [422, 152], [445, 198], [450, 231],
+	    [401, 129], [422, 152], [445, 198], [450, 231, "center"],
 	    [421, 270], [465, 310, "international_bar"], [437, 355], [423, 396],
 	    [390, 406], [381, 456]
 	],
@@ -55,6 +55,7 @@
 	"nyuniversity": ["phq:vnScene", "Intro UwU"],
 	"New Port City": ["phq:vnScene", "The Local Place <3"],
 	"international_bar": ["phq:changeScene", "international_bar"],
+	"center": ["phq:vnScene", "center"],
 	"Dock": ["phq:vnScene", "la Jetee"]
     }
 }
