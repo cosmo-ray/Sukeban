@@ -1,6 +1,6 @@
 {
     "center": {
-	"dialogue" : {
+	"in" : {
 	    "texts": [
 		{
 		    "text": [
@@ -28,8 +28,33 @@
 		    "action": [ "phq.openStore", "Over 9000 Power" ]
 		},
 		{
-		    "text": "(go home)"
+		    "text": "go to the big school",
+		    "action": [ "Dialogue:goto", "Center High" ]
+		},
+		{
+		    "text": "(go home)",
+		    "action": "phq.backToGame"
 		}
+	    ]
+	},
+	"Center High": {
+	    "text": [
+		"Center High, the bigger school in the city",
+		"The school is so big they even have 2 Whellball team"
+	    ],
+	    "conditional-texts-append": [
+		[
+		    [">", "phq.pj.trait.grumpy", 2],
+		    "Mostly Rich kids that where just lucky to have rich parents living here"
+		],
+		[
+		    [">", "phq.pj.trait.perv", 3],
+		    "So much peoples I would eat... (isn't that one super cute <3)"
+		],
+		[
+		    [">", "phq.pj.trait.violance", 3],
+		    "Peoples been so rich here\nI'm sure they wouldn't mind us poor peasant from the Suburb borrowing some of they whealth\nworst case 2,3 punche might help they generosity"
+		]
 	    ]
 	}
     }
