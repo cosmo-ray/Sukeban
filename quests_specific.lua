@@ -752,9 +752,11 @@ local function gen_school()
       if school_club == "Computer club" then
 	 n.knowledge.computer = yuiRand() % 8 + 1
 	 n.knowledge.animu = yuiRand() % 4
+	 n.knowledge.video_game = yuiRand() % 4
       elseif school_club == "Animu Club" then
 	 n.knowledge.animu = yuiRand() % 8 + 1
 	 n.knowledge.computer = yuiRand() % 4
+	 n.knowledge.video_game = yuiRand() % 4
       elseif school_club == "Student Club" or
       school_club == "Beautification Club" then
 	 n.knowledge.fashion = yuiRand() % 6 + 1

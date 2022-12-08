@@ -105,6 +105,7 @@ function newGameAction(menu, _eve, _arg)
    phq.pj.life = phq.pj.max_life
    phq.pj.allies = {}
    phq.pj.trait.shy = 0
+   phq.pj.trait.lazy = 0
    phq.pj.trait.grumpy = 0
    phq.pj.trait.violance = 0
    phq.pj.trait.perv = 0
@@ -115,6 +116,8 @@ function newGameAction(menu, _eve, _arg)
       phq.pj.knowledge.computer = 3
       phq.pj.knowledge.animu = 5
       phq.pj.knowledge.idoles = 2
+      phq.pj.knowledge.video_game = 1
+      phq.pj.knowledge.boardgames = 1
       phq.pj.trait.shy = 1
       phq.pj.stats.smart = 3
       phq.pj.stats.agility = 1 -- got some skills from playing DDR
