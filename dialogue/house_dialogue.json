@@ -70,13 +70,24 @@
 		    "next time try do to your shit correctly and bring my all",
 		    "shit to sign once... usless brat"
 		],
-		"answer": {
-		    "text": "suporting mother is the thing that warm my heart",
-		    "actions": [
-			[ "setInt", "phq.quests.school_sub", 6 ],
-			"phq.backToGame"
-		    ]
-		}
+		"answers": [
+		    {
+			"text": "(lower your head, and leave saying nothing)",
+			"actions": [
+			    [ "phq.increase", "trait", "shy", 1],
+			    [ "setInt", "phq.quests.school_sub", 6 ],
+			    "phq.backToGame"
+			]
+
+		    },
+		    {
+			"text": "suporting mother is the thing that warm my heart",
+			"actions": [
+			    [ "setInt", "phq.quests.school_sub", 6 ],
+			    "phq.backToGame"
+			]
+		    }
+		]
 	    },
 	    {
 		"text": [

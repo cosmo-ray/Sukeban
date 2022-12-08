@@ -49,6 +49,14 @@
 			"text": "(leave)",
 			"action": "phq.backToGame"
 		    },
+		    {
+			"text": "(mutter)grrr peoples here always the same, everyone treating me like shit.... (leave)",
+			"actions": [
+			    [ "setInt", "phq.events.greta_insult", 1],
+			    ["phq.increase", "trait", "grumpy", 1],
+			    "phq.backToGame"
+			]
+		    },
 		    "no, you're doing crosswork, can you help me please\nI'm trying to have a school"
 		]
 	    },
@@ -192,13 +200,25 @@
 			 "and a paper from the police don't you know that ?",
 			 "anyway go to the police station they have the habit",
 			 "in the meantime I'll keep the document you've bring"],
-		"answer": {
-		    "text": "thanks, I guess",
-		    "actions": [
-			[ "setInt", "phq.quests.school_sub", 4 ],
-			"phq.backToGame"
-		    ]
-		}
+		"answers": [
+		    {
+			"text": "thanks, I guess",
+			"actions": [
+			    [ "setInt", "phq.quests.school_sub", 4 ],
+			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": ["And of course, you counldn't tell me early",
+				 "I don't know whatever it's the peoples working here",
+				 "Or the guy making tis game, but I HATE YOU"],
+			"actions": [
+			    ["phq.increase", "trait", "grumpy", 1],
+			    [ "setInt", "phq.quests.school_sub", 4 ],
+			    "phq.backToGame"
+			]
+		    }
+		]
 	    },
 	    {
 		"text": ["what you all all the necesary paper",

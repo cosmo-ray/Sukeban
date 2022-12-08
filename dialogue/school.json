@@ -23,7 +23,26 @@
 		"text": "Sorry canteen is only for students",
 		"action": "phq.backToGame"
 	    },
-	    "Sorry we're out of food"
+	    {
+		"text": "Sorry we're out of food",
+		"answers": [
+		    {
+			"text": "What, your always out of food\nis it like a shit joke, where you preten I could have food, but can't\nlike the bagels in FF",
+			"condition":  ["not",
+				       ["exist", "phq.events.complain_not_bagle"]
+				      ],
+			"actions": [
+			    [ "setInt", "phq.events.complain_not_bagle", 1],
+			    ["phq.increase", "trait", "grumpy", 1],
+			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    }
+		]
+	    }
 	]
     },
     "Will": {
