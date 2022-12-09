@@ -65,6 +65,8 @@ function newGameAction(menu, _eve, _arg)
    -- if you do something bad, but no one know it, it will afect your trait
    phq.pj.organisations = {}
    phq.pj.reputation = {}
+   -- so I might use english word once I remember what it is
+   phq.pj.reputation.glandeur = 0
    phq.pj.reputation.insane = 0
    phq.pj.reputation.bully = 0
    phq.pj.reputation.weak = 0

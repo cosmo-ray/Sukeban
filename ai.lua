@@ -432,8 +432,13 @@ end
 
 function calsses_event_dialog_gen(_wid, cur_dialogue)
    local pj = phq.pj
-
    cur_dialogue = Entity.wrapp(cur_dialogue)
+
+   if phq.pc.trait.lazy > 3 and yuiRand() % 2 == 0 then
+      cur_dialogue["text"] = "You slack off durring class"
+      increaseStat(nil, phq.pj.reputation, "glandeur", 1)
+      return
+   end
    local whos = {}
    local whos_names = {}
    local whos_nb = 1
