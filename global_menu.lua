@@ -586,6 +586,9 @@ function pushStatus(mn)
    menu:push("wear clothes", Entity.new_func(wear_clothes_mn))
    menu:push("God Mode", Entity.new_func(god_window))
    menu:push("advence time", Entity.new_func(doAdvanceTime))
+   if phq.env.time:to_string() == "morning" then
+      menu:push("slack off the whole day", Entity.new_func(slack_off))
+   end
    menu:push("Allies", Entity.new_func(allies_mn))
    if yeGetInt(phq.env.is_end_of_chapter) > 0 then
       menu:push("end chapter", Entity.new_func(gotoEndChapter))

@@ -667,8 +667,18 @@ function call_quest_script(wid, _eve, script)
    return YEVE_ACTION
 end
 
-cant_skip_time_reason = nil
+function slack_off()
+   if advance_time() == false then
+      backToGame2()
+      return
+   end
+   advance_time()
+   advance_time()
+   increaseStat(nil, phq.pj.trait, "lazy", 1)
+   backToGame2()
+end
 
+cant_skip_time_reason = nil
 -- in fact, this function do 2 things: adancing time and start sleep animation
 function advance_time(_main, next_loc, force_skip_time, next_pos)
    main = main_widget
@@ -680,7 +690,7 @@ function advance_time(_main, next_loc, force_skip_time, next_pos)
    end
    if main.cant_skip_time and main.cant_skip_time > 0 then
       printMessage(main, nil, "Can't skip time: " .. cant_skip_time_reason)
-      return
+      return false
    end
 
    if yeType(next_loc) == YSTRING or type(next_loc) == "string" then
@@ -722,6 +732,7 @@ function advance_time(_main, next_loc, force_skip_time, next_pos)
    phq.env.time_point = 1
    main.sleep = 1
    main.require_ret = 1
+   return true
 end
 
 function sleep(_main, _obj)
