@@ -20,6 +20,7 @@
 	"tiled": "./tileset/international_bar.json"
     },
     "park": {
+	"dialogues" : "dialogue/park.json",
 	"tiled": "./tileset/park.json",
 	"exterior": 1
     },

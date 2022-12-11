@@ -21,6 +21,10 @@
 	    "force-pos": [570, 120]
 	},
 	{
+	    "action": "yirl-action",
+	    "yaction": ["phq.startDialogue", "sunglass-battle"]
+	},
+	{
 	    "action": "remove-npc",
 	    "id": 0
 	}

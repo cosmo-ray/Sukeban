@@ -364,7 +364,7 @@ local function game_scene(_wid, _eve, scene_str)
    elseif csa == "yirl-action" then
       local a = cs.yaction
 
-      ywidAction(a, main_widget, nil)
+      ywidAction(a, main_widget, arg)
    elseif csa == "tmp-image" then
       local path = yeGetString(cs.path)
       local img = ywCanvasNewImgByPath(main_widget.upCanvas, ywPosX(pos),

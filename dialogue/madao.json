@@ -1,14 +1,40 @@
 {
     "Madao": {
 	"dialogue" : [
-		{
-		  "rand-texts": [
-		      "Hej kid, I've lost my sunglass, did you saw them ?",
-		      "I use to work for Customs Agency you know ?"
-		  ],
-		  "answer": {
-		      "text": "(leave)"
-		  }
+	    {
+		"rand-texts": [
+		    "Hej kid, I've lost my sunglass, did you saw them ?",
+		    "I use to work for Customs Agency you know ?"
+		],
+		"answers": [
+		    {
+			"text": "(leave)",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "I've found those sunglass are they yours ?",
+			"condition": ["=", "phq.quests.mad_sunglass", 0],
+		    }
+		]
+	    },
+	    {
+		"text": ["YES they're mine, I've lost them",
+			 "while peeing in the park ,after having a little too much drinks",
+			 "Would you give them back to me, I'm not myself without them",
+			 "I might have stope drinking, find a job, uninstall Arch Linux",
+			 "But I was more happy with they, so can you give them ?"],
+		"answers": [
+		    "Yeahh, sory I'd like to keep them, also you seems more happy wihtout'em",
+		    {
+			"text": "Sure, they're not mine (give the sunglass)",
+			"actions": [
+			    ["phq.remove", "nice sunglass"],
+			    ["setInt", "phq.quests.mad_sunglass", 1],
+			    ["phq.increase", "xp", 10],
+			    "phq.backToGame"
+			]
+		    }
+		]
 	    }
 	]
     }

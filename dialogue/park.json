@@ -1,0 +1,31 @@
+{
+    "sunglass-battle": {
+	"in": {
+	    "text": "So give it, give it, I want'em, please ??",
+	    "answers": [
+		{
+		    "text": "eh, sure... (give the sunglass)",
+		    "actions": [
+			["setInt", "phq.quests.mad_sunglass", 1],
+			"phq.backToGame"
+		    ]
+		},
+		{
+		    "text": "sorry, but I think you lie, are akward as fuck, and I'd like to keep th sunglass"
+		}
+	    ]
+	},
+	"battle": {
+	    "text": ["You don't give me ?",
+		     "THEY'RE MINE, THEY'RE MINE, THEY'RE MINE,",
+		     "THEY'RE MINE, THEY'RE MINE, THEY'RE MINE,",
+		     "THEY'RE MINE, THEY'RE MINE, THEY'RE MINE",
+		     "THEY'RE.....",
+		     "KILL YOUU"],
+	    "actions": [
+		["phq.recive", "nice sunglass"],
+		["phq.StartFight", "Thrug"]
+	    ]
+	}
+    }
+}
