@@ -114,6 +114,16 @@
 	    3, 30
 	]
     },
+    "mad_sunglas": {
+	"stalk": "phq.quests.mad_sunglass",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "I got some sunglass, I have no idea what to do with it",
+	],
+        "rewards": [
+	    1, 3
+	]
+    },
     "Aligator 427": {
 	"stalk": "phq.quests.aligator_427",
 	"stalk_sart": -1,

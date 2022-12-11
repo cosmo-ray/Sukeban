@@ -26,7 +26,7 @@ local SKIP_CLASS_SCENE = false
 
 BLOCK_EVE_NO_UNSET = 10
 
-school_events = Entity.new_array()
+block_events = Entity.new_array()
 
 school_students_organisation = {
    "Computer club",
@@ -267,6 +267,7 @@ end
 
 local game_scene_state = 0
 local game_scene_timer = 0
+local game_scene_npcs = Entity.new_array() -- this will never be free :(
 
 local function game_scene_do_timer(t)
    if game_scene_timer < t then
@@ -283,6 +284,8 @@ local function game_scene(_wid, _eve, scene_str)
    local scene = Entity.wrapp(yeGet(scenes, yeGetString(scene_str)))
 
    if yIsNil(scene) or yIsNil(scene[game_scene_state]) then
+      yeClearArray(game_scene_npcs)
+      game_scene_timer = 0
       game_scene_state = 0
       return 0
    end
@@ -331,11 +334,16 @@ local function game_scene(_wid, _eve, scene_str)
 	 local npcn, s = find_student(sy, sc, scid)
 	 if s ~= nil then
 	    local npcd = lpcsStrToDir(yeGetStringAt(npc, 5))
+	    local n = push_npc(npcp, npcn, npcd)
 
-	    push_npc(npcp, npcn, npcd)
+	    yePushBack(game_scene_npcs, n)
 	 end
       end
+   elseif csa == "remove-npc" then
+      local id = yeGetInt(cs.id)
 
+      generic_handlerNullify(game_scene_npcs[id])
+      game_scene_npcs[id] = nil
    elseif csa == "place-npcs" then
       local npcs = cs.npcs
 
@@ -344,12 +352,14 @@ local function game_scene(_wid, _eve, scene_str)
 	 local npcp = Pos.new(yeGetIntAt(npc, 0), yeGetIntAt(npc, 1))
 	 local npcn = yeGetStringAt(npc, 2)
 	 local npcd = lpcsStrToDir(yeGetStringAt(npc, 3))
+	 local n = push_npc(npcp, npcn, npcd)
 
-	 push_npc(npcp, npcn, npcd)
+	 yePushBack(game_scene_npcs, n)
       end
    elseif csa == "small-talk" then
       local txt = yeGetString(cs.txt)
 
+      print("small-talk:", txt)
       pushSmallTalk(txt, yeGetIntAt(pos, 0), yeGetIntAt(pos, 1), start)
    elseif csa == "yirl-action" then
       local a = cs.yaction
@@ -372,7 +382,11 @@ local function game_scene(_wid, _eve, scene_str)
       pushTmpCanvasObj(img, start)
    elseif csa == "set" then
       -- I should check for other types
+      print("b set at:", yeGetStringAt(cs, "variable"))
+      yePrint(ygGet(yeGetStringAt(cs, "variable")))
       ygReCreateInt(yeGetStringAt(cs, "variable"), yeGetIntAt(cs, "value"))
+      print("set at:", yeGetStringAt(cs, "variable"))
+      yePrint(ygGet(yeGetStringAt(cs, "variable")))
    elseif csa == "recreate-string" then
       -- I should check for other types
       ygReCreateString(yeGetStringAt(cs, "variable"), yeGetStringAt(cs, "value"))
@@ -386,12 +400,20 @@ local function game_scene(_wid, _eve, scene_str)
    return BLOCK_EVE_NO_UNSET
 end
 
+function start_game_scene(_wid, _eve, scene_str)
+   yeClearArray(block_events)
+   local a = Entity.new_array(block_events)
+
+   Entity.new_func(game_scene, a)
+   yePushBack(a, scene_str)
+end
+
 function morning_class(mn)
    print("I'm at school, yayyyyyy", phq.env.school_day)
    local f_mn = ywCntWidgetFather(mn)
    local school_day = phq.env.school_day:to_int()
 
-   yeClearArray(school_events)
+   yeClearArray(block_events)
 
    if SKIP_CLASS_SCENE == true then
       goto mid_skip
@@ -399,19 +421,19 @@ function morning_class(mn)
 
    -- this block is for events before class
    if school_day == 0 then
-      local a = Entity.new_array(school_events)
+      local a = Entity.new_array(block_events)
 
       Entity.new_string("phq.vnScene", a)
       Entity.new_string("school_presentation", a)
 
-      a = Entity.new_array(school_events)
+      a = Entity.new_array(block_events)
       Entity.new_func(game_scene, a)
       Entity.new_string("school_intro", a)
    end
 
    :: mid_skip ::
 
-   local class_a = Entity.new_array(school_events)
+   local class_a = Entity.new_array(block_events)
 
    if SKIP_CLASS_SCENE == true then
       goto finalize
@@ -423,29 +445,29 @@ function morning_class(mn)
    print("HUM HUM: ", school_day)
    -- this block is for events after class
    if school_day == 1 then
-      local a = Entity.new_array(school_events)
+      local a = Entity.new_array(block_events)
 
       Entity.new_func(game_scene, a)
       Entity.new_string("baffy_talk", a)
    elseif school_day == 2 then
-      local a = Entity.new_array(school_events)
+      local a = Entity.new_array(block_events)
 
       Entity.new_func(game_scene, a)
       -- Fight you can't win !
       -- Akira show his super skill
       Entity.new_string("akira_fight", a)
    elseif school_day == 5 then
-      local a = Entity.new_array(school_events)
+      local a = Entity.new_array(block_events)
 
       Entity.new_func(game_scene, a)
       Entity.new_string("saki intro", a)
    elseif school_day == 7 then
-      local a = Entity.new_array(school_events)
+      local a = Entity.new_array(block_events)
 
       Entity.new_func(game_scene, a)
       Entity.new_string("saki 1rst meeting", a)
    elseif school_day == 8 then
-      local a = Entity.new_array(school_events)
+      local a = Entity.new_array(block_events)
 
       Entity.new_func(game_scene, a)
       Entity.new_string("prot_club_mission_0", a)
@@ -458,7 +480,7 @@ function morning_class(mn)
       phq.env.is_end_of_chapter = 1
    end
 
-   Entity.new_func(end_morning_class, school_events)
+   Entity.new_func(end_morning_class, block_events)
 
    backToGame(f_mn)
    main_widget.cant_skip_time = 0

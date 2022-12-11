@@ -1,0 +1,28 @@
+{
+    "it's my sunglass": [
+	{
+	    "action": "set",
+	    "variable": "phq.events.findable_mad_sunglass",
+	    "value": 0
+	},
+	{
+	    "action": "set",
+	    "variable": "phq.quests.mad_sunglass",
+	    "value": 0
+	},
+	{
+	    "action": "place-npcs",
+	    "npcs": [[600, 135, "Thrug", "up"]]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "HEY !, I SAW THOSES SUNGALSS BEFORE YOU, THEY'RE MINE",
+	    "timer": 1000,
+	    "force-pos": [570, 120]
+	},
+	{
+	    "action": "remove-npc",
+	    "id": 0
+	}
+    ]
+}

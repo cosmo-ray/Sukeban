@@ -421,6 +421,7 @@ function init_phq(mod)
    mod.quest_script = Entity.new_func(call_quest_script)
    mod.use_time_point = Entity.new_func(use_time_point)
    mod.changeScene = Entity.new_func(changeScene)
+   mod.start_game_scene = Entity.new_func(start_game_scene)
    mod.gotoJail = Entity.new_func(gotoJail)
    -- this one is simpler to use
    mod.openGLobalMenu = Entity.new_func(openGlobalMenu)
@@ -802,14 +803,14 @@ function phq_action(entity, eve)
 
    tmpObjsRemover(entity)
 
-   -- I might make school_events a more generic array
-   local action_eve = yeFirst(school_events)
+   -- I might make block_events a more generic array
+   local action_eve = yeFirst(block_events)
    if yIsNNil(action_eve) then
       local ret = ywidAction(action_eve, wid, nil)
       if ret == BLOCK_EVE_NO_UNSET then
 	 return 0
       end
-      yeUnsetFirst(school_events)
+      yeUnsetFirst(block_events)
       return ret
    end
 
