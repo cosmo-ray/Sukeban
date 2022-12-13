@@ -1,4 +1,14 @@
 {
+    "sunglass" : {
+	"type": "equipement",
+	"where": "head",
+	"path": "facial/3.png"
+    },
+    "monocle" : {
+	"type": "equipement",
+	"where": "head",
+	"path": "facial/formal_monocle.png"
+    },
     "pure red" : {
 	"type": "equipement",
 	"where": "torso",
@@ -74,6 +84,11 @@
 	"type": "equipement",
 	"path": "feet/shoes/female/brown_shoes_female.png",
 	"where": "feet"
+    },
+    "quad skate" : {
+	"type": "equipement",
+	"where": "feet",
+	"path": "feet/skate-quad.png"
     },
     "black_slippers" : {
 	"type": "equipement",

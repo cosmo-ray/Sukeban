@@ -1,6 +1,8 @@
 {
     "Over 9000 Power": {
+	"sunglass": 10,
 	"Water": 1,
+	"quad skate": 120,
 	"Energizer Drink+++": 5
     },
     "VendingMachineArcade": {
@@ -50,6 +52,8 @@
 	"black_slippers" : 30
     },
     "clothes": {
+	"monocle": 40,
+	"sunglass": 15,
 	"robe_purple": 20,
 	"robe_black": 20,
 	"robe_white": 15,

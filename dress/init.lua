@@ -79,6 +79,16 @@ function dressUp(caracter)
       end
    end
 
+   if e.head then
+      local cur_o = objs[yeGetString(e.head)]
+      if (yIsNil(cur_o)) then
+	 print("can't find ", yeGetString(e.head))
+      end
+      if (cur_o.path) then
+	 yeCreateString(cur_o.path:to_string(), clothes)
+      end
+   end
+
    :: hair ::
    if caracter.hair then
       yeCreateString("hair/" .. caracter.sex:to_string() .. "/" ..
