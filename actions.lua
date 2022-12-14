@@ -486,6 +486,10 @@ function remove(_wid, _eve, objStr, nb)
    addObject(wid, phq.pj, yeGetString(objStr), nb)
 end
 
+function equip_skate()
+   main_widget.pj['skate_acel'] = Pos.new(0, 0).ent
+end
+
 function takeObject(main, actionable_obj, what, nb)
    actionable_obj = Entity.wrapp(actionable_obj)
 

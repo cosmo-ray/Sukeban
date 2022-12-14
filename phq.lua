@@ -29,6 +29,7 @@ scenes = Entity.wrapp(ygGet("phq.scenes"))
 saved_scenes = nil
 dialogues = Entity.new_array()
 o_dialogues = nil
+phq_pc = nil
 
 quests_info = File.jsonToEnt("quests/main.json")
 
@@ -78,6 +79,7 @@ local NOT_AGRESIVE = 0
 
 local MV_MODE_FAST = 0
 local MV_MODE_SLOW = 1
+local MV_MODE_SKATE = 2
 
 local MV_MODE_DEFAULT = MV_MODE_FAST
 
@@ -349,7 +351,7 @@ function checkNpcPresence(obj, npc, scene, is_ai_point)
    end
 
    local nname = yeGetString(npc.name)
-   if is_npc_ally(phq.pj, nname) then
+   if is_npc_ally(phq_pc, nname) then
       return false
    end
 
@@ -445,6 +447,7 @@ function init_phq(mod)
    mod.misc_fnc.save_fight_mode = Entity.new_func(save_fight_mode)
    mod.misc_fnc.load_fight_mode = Entity.new_func(load_fight_mode)
    mod.misc_fnc.chapter_2_vacation = Entity.new_func(chapter_2_vacation)
+   mod.misc_fnc.equip_skate = Entity.new_func(equip_skate)
    mod.triggers = {}
    mod.triggers.block_message = Entity.new_func(trigger_block_message)
 end
@@ -752,6 +755,8 @@ function phq_action(entity, eve)
    local st_hooks = entity.st_hooks
    local st_hooks_len = yeLen(entity.st_hooks)
    local isNewlyLoad = newly_loaded
+   local equipement_effect = phq_pc.eq_effect
+   local cur_mv_mode = yeGetInt(main_widget.mv_mode)
 
    newly_loaded = false
    entity.require_ret = 0
@@ -762,7 +767,7 @@ function phq_action(entity, eve)
    for i = 0, st_hooks_len - 1 do
       local st_hook = st_hooks[i]
       local stat_name = yeGetKeyAt(st_hooks, i)
-      local stat = phq.pj[stat_name]
+      local stat = phq_pc[stat_name]
 
       if stat then
 	 local cmp_t = st_hook.comp_type
@@ -788,6 +793,12 @@ function phq_action(entity, eve)
 	 entity.box_t = 0
       elseif isNewlyLoad == false then
 	    entity.box_t = entity.box_t - ywidGetTurnTimer()
+      end
+   end
+
+   for i = 0, yeLen(equipement_effect) - 1 do
+      if yeGetString(equipement_effect[i].move_style) == "skate" then
+	 cur_mv_mode = MV_MODE_SKATE
       end
    end
 
@@ -907,6 +918,7 @@ function phq_action(entity, eve)
 
    if yevIsKeyDown(eve, Y_LCTRL_KEY) then
       main_widget.mv_mode = MV_MODE_SLOW
+      cur_mv_mode = MV_MODE_SLOW
    end
    if yevIsKeyDown(eve, Y_LSHIFT_KEY) then
       if (yeLen(main_widget.show_actionable) < 1) then
@@ -1090,7 +1102,7 @@ function phq_action(entity, eve)
    end
 
    local pix_mv_per_ms = PIX_MV_PER_MS
-   if yeGetInt(main_widget.mv_mode) == MV_MODE_SLOW then
+   if cur_mv_mode == MV_MODE_SLOW then
       pix_mv_per_ms = pix_mv_per_ms / 2
    end
    pix_mv = turn_timer * pix_mv_per_ms + pix_floor_left
@@ -1108,6 +1120,13 @@ function phq_action(entity, eve)
 
    local mvPos = Pos.new(pix_mv * yeGetFloat(entity.pj.move.left_right),
 			 pix_mv * yeGetFloat(entity.pj.move.up_down))
+   if cur_mv_mode == MV_MODE_SKATE then
+      ywPosAddXYAbsMax(entity.pj['skate_acel'],
+		       pix_mv * yeGetFloat(entity.pj.move.left_right) / 2,
+		       pix_mv * yeGetFloat(entity.pj.move.up_down) / 2,
+		       pix_mv * 4)
+      mvPos = Pos.new_copy(entity.pj['skate_acel'])
+   end
    ylpcsHandlerMove(entity.pj, mvPos.ent)
     local col_rel, col_obj = CheckColision(entity, main_widget_screen, entity.pj)
     --local col_rel = NO_COLISION
@@ -1141,6 +1160,10 @@ function phq_action(entity, eve)
     end
     --print("MV: ", ywPosToString(mvPos:cent()))
     if col_rel == NORMAL_COLISION then
+       if cur_mv_mode == MV_MODE_SKATE then
+	  -- reset speed
+	  main_widget.pj['skate_acel'] = Pos.new(0, 0).ent
+       end
        mvPos:opposite()
        ylpcsHandlerMove(entity.pj, mvPos.ent)
     end
@@ -1513,6 +1536,7 @@ function create_phq(entity, _eve, _menu)
    local scenePath
 
    main_widget = Entity.wrapp(entity)
+   phq_pc = phq.pj
    ygPushToGlobalScope(entity, "phq_wid");
    main_widget["<type>"] = "phq"
    main_widget.next = "phq:menus.main"
@@ -1560,8 +1584,8 @@ function create_phq(entity, _eve, _menu)
    --ySoundPlayLoop(ent.soundtatata)
 
    ent.pj = nil
-   dressup.dressUp(phq.pj)
-   lpcs.createCaracterHandler(phq.pj, mainCanvas.ent, ent, "pj")
+   dressup.dressUp(phq_pc)
+   lpcs.createCaracterHandler(phq_pc, mainCanvas.ent, ent, "pj")
    local wid_size = yeGet(entity, "wid-pix");
 
    window_width = ywRectW(wid_size);

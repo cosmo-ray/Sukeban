@@ -38,6 +38,7 @@ function dressUp(caracter)
    local e = caracter.equipement
    local objs = objects
    local clothes = nil
+   caracter.eq_effect = Entity.new_array()
 
    if caracter.equipement == nil then
       if (yIsNil(caracter.clothes)) then
@@ -58,6 +59,12 @@ function dressUp(caracter)
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
       end
+      if cur_o.equipement_effect then
+	 yePushBack(caracter.eq_effect, cur_o.equipement_effect)
+      end      
+      if cur_o.equipement_callback then
+	 yesCall(ygGet(yeGetString(cur_o.equipement_callback)));
+      end
    end
 
    if e.legs then
@@ -68,6 +75,12 @@ function dressUp(caracter)
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
       end
+      if cur_o.equipement_effect then
+	 yePushBack(caracter.eq_effect, cur_o.equipement_effect)
+      end
+      if cur_o.equipement_callback then
+	 yesCall(ygGet(yeGetString(cur_o.equipement_callback)));
+      end
    end
 
    if e.torso then
@@ -76,6 +89,12 @@ function dressUp(caracter)
       local cur_o = objs[yeGetString(e.torso)]
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
+      end
+      if cur_o.equipement_effect then
+	 yePushBack(caracter.eq_effect, cur_o.equipement_effect)
+      end
+      if cur_o.equipement_callback then
+	 yesCall(ygGet(yeGetString(cur_o.equipement_callback)));
       end
    end
 
@@ -86,6 +105,12 @@ function dressUp(caracter)
       end
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
+      end
+      if cur_o.equipement_effect then
+	 yePushBack(caracter.eq_effect, cur_o.equipement_effect)
+      end
+      if cur_o.equipement_callback then
+	 yesCall(ygGet(yeGetString(cur_o.equipement_callback)));
       end
    end
 

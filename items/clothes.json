@@ -88,6 +88,10 @@
     "quad skate" : {
 	"type": "equipement",
 	"where": "feet",
+	"equipement_effect": {
+	    "move_style": "skate"
+	},
+	"equipement_callback": "phq.misc_fnc.equip_skate",
 	"path": "feet/skate-quad.png"
     },
     "black_slippers" : {
