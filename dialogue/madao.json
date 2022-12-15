@@ -13,7 +13,7 @@
 		    },
 		    {
 			"text": "I've found those sunglass are they yours ?",
-			"condition": ["=", "phq.quests.mad_sunglass", 0],
+			"condition": ["=", "phq.quests.mad_sunglass", 0]
 		    }
 		]
 	    },
