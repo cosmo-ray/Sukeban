@@ -134,12 +134,20 @@
 		    "It seems a new computer game call 'Alwaysummer Days'\nthat will enable hundreads of player to play together using this thing\ncall the Internet is in Devlopement",
 		    "It seems a Toys Factory, was bombed by terrorist, and blow just away",
 		    "News about this new thing call internet chat\nwhere peoples recive indecent propositions",
+		    {
+			"text": "For the first time this year, and ever, the flower park will be illuminated with winter decoration\ncome with your family, your lover, your lover boyfriend\n and see the park as you've never saw it before",
+			"condition": ["=", "phq.env.chapter", 2]
+		    },
 		    "News about a new cool band call 'les Cowboy Baguette'",
 		    {
 			"text": "Anoncement about soon TV Broadcasting of Regional Junior's Whellball Championship",
 			"condition": ["<", "phq.env.chapter", 1]
 		    },
 		    "News about a pack of dogs living in the mountains, who hunt bears",
+		    "TV report about how a volleyball coatch, that use to be a general in the national navy, train his team to win the olympic game 20 years ago",
+		    "television report about how winemaker are switching to organic and natural wine",
+		    "reportage about the broken career of an old tenis women, who use to have some of the stronger server ever, but end up breaking her wrist beyong repair",
+		    "News about our country making some giant robots real, they say it's for military purpose, with a big add telling us to join the army now",
 		    "A new Sparkling Water brand should be commercialize soon",
 		    {
 			"condition": ["not", "phq.events.nya_news"],
@@ -149,6 +157,10 @@
 		    "A crazy guy think in the futur, human will have maigc-like tech\nbut some alien will invade earth\nwhich will change the worl in an hight fantasy world where no one remember todays tech\nand think magic rule they world",
 		    "A new game call crime lord girl boss has been release on the game console 'vapor deck'\nOur expert fear this kind of products will increase juvenile delinquency",
 		    "A small 'debate' between a scientist trying to explain that meat consuption is bad for global warming, and a journalist turning all his arguments in ridicule",
+		    {
+			"condition": ["<", "phq.pj.stats.strength", 1],
+			"text": "Some whellball match happend somewhwere in the world, some random team win, wow...."
+		    },
 		    "A Golf was ransack but a group of Ecologist activist\nwho put Boars in the golf\nthe Boars cause terror amongh the players, and staff.\nlucklly they where no Fire !",
 		    "News about a super cool cats fan club"
 		],
