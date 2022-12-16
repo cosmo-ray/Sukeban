@@ -152,9 +152,10 @@
 		    {
 			"condition": ["not", "phq.events.nya_news"],
 			"action": ["setInt", "phq.events.nya_news", 1],
-			"text": "Some delinquent tag a criptic messase on a cathedral\nwe assume to be a hate call agaisnt religion\nthey write 'UwU'"
+			"text": "Some delinquent tag a criptic message on a cathedral\nwe assume to be a hate call agaisnt religion\nthey write 'UwU'"
 		    },
 		    "A crazy guy think in the futur, human will have maigc-like tech\nbut some alien will invade earth\nwhich will change the worl in an hight fantasy world where no one remember todays tech\nand think magic rule they world",
+		    "It seems fisherman are talking about changing Tuna quota in some sea",
 		    "A new game call crime lord girl boss has been release on the game console 'vapor deck'\nOur expert fear this kind of products will increase juvenile delinquency",
 		    "A small 'debate' between a scientist trying to explain that meat consuption is bad for global warming, and a journalist turning all his arguments in ridicule",
 		    {
@@ -188,6 +189,7 @@
 		    "ATTACK ATTACK ATTACK, I am the wariorrrrrrr (charming telling of a small cute fey)",
 		    "Ai ga kurushimi nara ikura demo kurushimou\nsore ga kimi no kokoro ni itsu ka todoku made(This anime got an oscar)",
 		    "Sakamaku nami to hirameku sora ga, COURAGE to nakama wo uchinomesu(white death in fur)",
+		    "RUN Kosoku no teikoku ga denki nannn, unare syougeki no teikokukageki dannnnn (Cherry blossom wars)",
 		    "Ahh nantee kawaii babyyy, aishitaku naru wa(the kind of stuff you watch lock in your own space)",
 		    "Blown by the wind, I look at the stars, then the journey continues(I've hear this animu is very kino)",
 		    "anata ga sora wo yuku nara watashi wa tsubasa ni naritai (what if the magazone was exile ?)",
