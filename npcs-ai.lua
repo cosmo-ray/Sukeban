@@ -18,6 +18,9 @@
 local phq = Entity.wrapp(ygGet("phq"))
 
 local function push_to_ai_point_(map, p, name, check)
+   if yIsNil(map) then
+      return false
+   end
    print("? ", map, p, name, check, " ?")
    if phq.env.ai_point == nil then
       phq.env.ai_point = {}
@@ -30,6 +33,7 @@ local function push_to_ai_point_(map, p, name, check)
       return false
    end
    phq.env.ai_point[map][p] = name
+   print("sucess")
    return true
 end
 
@@ -46,6 +50,15 @@ function wouaf_ai(_main, _npc, name)
       end
    end
 end
+
+local orga_to_scene = {
+   ["Computer club"] = "school_computer_club",
+   ["Animu Club"] = "school_animu_club",
+   ["Board Game and Roleplay Club"] = "school_boardgame_club",
+   ["Students Protection Group"] = "school_roof_room",
+   ["Wheelball Team"] = "team_sport_clubs",
+   ["Music club"] = "music_club"
+}
 
 local ai_points = {
    ["school_under"] = {
@@ -73,6 +86,10 @@ local ai_points = {
       { ["p"] = "p_3" },
       { ["p"] = "p_4" }
    },
+   ["club"] = {
+      { ["p"] = "p0" },
+      { ["p"] = "p1" },
+   },
    ["house"] = {
       { ["p"] = "npc_bed" }
    }
@@ -91,13 +108,15 @@ function student_ai(_main, npc, name)
    local cur_pos = name .. " House"
 
    if t == "morning" and d < 6 then
-      local r = yuiRand() % 4
+      local r = yuiRand() % 5
       if r == 0 then
 	 cur_pos = "school0"
       elseif r == 1 then
 	 cur_pos = "street3"
       elseif r == 2 then
 	 cur_pos = "school_under"
+      elseif r == 3 then
+	 cur_pos = "club"
       else
 	 cur_pos = "class"
 	 print("IN CLASS: ", npc.class_id)
@@ -121,6 +140,11 @@ function student_ai(_main, npc, name)
       local idx = 1
       if cur_pos == "house" then
 	 cur_pos = yeGetStringAt(npc, "house")
+      elseif cur_pos == "club" then
+	 local orga = yeGetString(yeGetRandomElem(npc.organisations));
+
+	 cur_pos = orga_to_scene[orga]
+	 print("target orga:", orga, cur_pos, csap);
       elseif cur_pos == "class" then
 	 local class_id = yeGetIntAt(npc, "class_id")
 	 if class_id > 5 then

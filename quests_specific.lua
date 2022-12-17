@@ -34,6 +34,7 @@ school_students_organisation = {
    "Student Club",
    "Beautification Club",
    "Students Protection Group",
+   "Music club",
    "Board Game and Roleplay Club"
 }
 
@@ -364,7 +365,7 @@ local function game_scene(_wid, _eve, scene_str)
    elseif csa == "yirl-action" then
       local a = cs.yaction
 
-      ywidAction(a, main_widget, arg)
+      ywidAction(a, main_widget, nil)
    elseif csa == "tmp-image" then
       local path = yeGetString(cs.path)
       local img = ywCanvasNewImgByPath(main_widget.upCanvas, ywPosX(pos),
@@ -789,7 +790,9 @@ local function gen_school()
 	 n.knowledge.boardgames = yuiRand() % 6 + 1
 	 n.knowledge.roleplay = yuiRand() % 6 + 1
       end
-      n.organisations = school_students_organisation[school_club]
+      n.organisations = Entity.new_array()
+      n.organisations[0] = school_students_organisation[school_club]
+	 
       if avaible_house_idx <= #avaible_house then
 	 n.house = avaible_house[avaible_house_idx]
 	 avaible_house_idx = avaible_house_idx + 1
