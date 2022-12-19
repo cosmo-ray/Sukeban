@@ -380,6 +380,28 @@
                  "width":0,
                  "x":389.08984260436,
                  "y":6.84328868902141
+                }, 
+                {
+                 "class":"",
+                 "height":11.8943779240345,
+                 "id":26,
+                 "name":"Wellball",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"whellball-noitoise-satdium"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":344.144001268734,
+                 "x":197.446673538974,
+                 "y":756.482435968599
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -637,7 +659,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":26,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

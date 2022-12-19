@@ -51,6 +51,10 @@
 	"exterior": 1,
 	"tiled": "./tileset/Street2.json"
     },
+    "whellball-noitoise-satdium" : {
+	"exterior": 1,
+	"tiled": "./tileset/whellball-noitoise-stade.tmj"
+    },
     "street3" : {
 	"exterior": 1,
 	"out": {
