@@ -124,6 +124,16 @@
 	    1, 3
 	]
     },
+    "Give Letter": {
+	"stalk": "phq.quests.give_letter",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "{phq.quests._give_letter.from} want me to give a letter to {phq.quests._give_letter.to}",
+	],
+        "rewards": [
+	    0, 4
+	]	
+    },
     "Aligator 427": {
 	"stalk": "phq.quests.aligator_427",
 	"stalk_sart": -1,

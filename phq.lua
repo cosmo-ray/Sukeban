@@ -31,6 +31,25 @@ dialogues = Entity.new_array()
 o_dialogues = nil
 phq_pc = nil
 
+students = nil
+
+-- make students an array containing all students npcs
+function construct_students()
+   students = Entity.new_array()
+   for i = 0, yeLen(npcs) - 1 do
+      local npc = Entity.wrapp(yeGet(npcs, i))
+      local key = yeGetKeyAt(npcs, i)
+      local npc_key = yeGetKeyAt(npcs, i)
+      if yIsNNil(yeGet(npc, "student_year")) then
+	 yePushBack(students, npc)
+	 if yIsNil(npc.name) then
+	    npc.name = npc_key
+	 end
+      end
+   end
+end
+
+
 quests_info = File.jsonToEnt("quests/main.json")
 
 main_widget = nil
@@ -442,6 +461,7 @@ function init_phq(mod)
    mod.scene_ai = {}
    mod.scene_ai.random_movements = Entity.new_func(randomMovements)
    mod.misc_fnc = {}
+   mod.misc_fnc.give_neutral_quest = Entity.new_func(give_neutral_quest)
    mod.misc_fnc.class_even = Entity.new_func(calsses_event_dialog_gen)
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
    mod.misc_fnc.save_fight_mode = Entity.new_func(save_fight_mode)
@@ -1198,6 +1218,7 @@ function destroy_phq(entity)
       ygUnstalk(stalk)
       i = i + 1
    end
+   students = nil
 end
 
 -- push all caracters to dial, but read c_dial
@@ -1224,6 +1245,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    local upCanvas = Canvas.wrapp(ent.upCanvas)
    local x
    local y
+
    local c = mainCanvas.ent
 
    ent.no_chktime_t = 0
@@ -1543,6 +1565,7 @@ function create_phq(entity, _eve, _menu)
    main_widget["next-lose"] = "phq:menus.game over"
    main_widget.show_actionable = {}
    npcs = Entity.wrapp(ygGet("phq.npcs"))
+   construct_students()
    ent.cur_scene_str = nil
    tiled.setAssetPath("./tileset")
    jrpg_fight.objects = phq.objects

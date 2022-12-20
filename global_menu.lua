@@ -145,7 +145,9 @@ function pushQuests(panel)
 	 if cur >= yeLen(descs) then
 	    txt = txt .. "completed !\n"
 	 else
-	    txt = txt .. yeGetStringAt(descs, cur) .. "\n"
+	    local gc = Entity.new_array()
+	    local desc_txt = yeCreateYirlFmtString(yeGet(descs, cur), gc)
+	    txt = txt .. yeGetString(desc_txt) .. "\n"
 	 end
       end
       i = i + 1
