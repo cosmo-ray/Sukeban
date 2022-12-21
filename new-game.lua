@@ -112,6 +112,7 @@ function newGameAction(menu, _eve, _arg)
    phq.pj.trait.violance = 0
    phq.pj.trait.perv = 0
    phq.pj.trait.sensitivity = 0
+   phq.pj.knowledge.music = yuiRand() % 8
    phq.events = {}
    saved_scenes = Entity.new_array()
    if archetype == GEEK_ARCHETYPE then

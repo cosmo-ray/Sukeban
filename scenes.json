@@ -104,6 +104,7 @@
 	"tiled": "./tileset/House2.json"
     },
     "hiden_house" : {
+	"dialogues" : "dialogue/school.json",
 	"tiled": "./tileset/hiden_house.json"
     },
 

@@ -54,6 +54,7 @@ end
 local orga_to_scene = {
    ["Computer club"] = "school_computer_club",
    ["Animu Club"] = "school_animu_club",
+   ["Mystical Neet Go-under"] = "hiden_house",
    ["Board Game and Roleplay Club"] = "school_boardgame_club",
    ["Students Protection Group"] = "school_roof_room",
    ["Wheelball Team"] = "team_sport_clubs",

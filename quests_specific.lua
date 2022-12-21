@@ -35,6 +35,7 @@ school_students_organisation = {
    "Beautification Club",
    "Students Protection Group",
    "Music club",
+   "Mystical Neet Go-under",
    "Board Game and Roleplay Club"
 }
 
@@ -799,26 +800,45 @@ local function gen_school()
       eq.feet = rand_array_elem(feet[gender])
       dressup.dressUp(n)
       n.class_id = class_members[year][class + 1]
-      local school_club = (yuiRand() % #school_students_organisation) + 1
+      local school_club
+      local school_club_not_good = false
+      while school_club_not_good == false do
+	 school_club = (yuiRand() % #school_students_organisation) + 1
+	 school_club_str = school_students_organisation[school_club]
+	 if school_club_str == "Computer club" and gender == FEMALE then
+	    school_club_not_good = false
+	 else
+	    school_club_not_good = true
+	 end
+      end
+
       n.knowledge = {}
       n.knowledge.slang = yuiRand() % 5
       n.knowledge.boys_bands = yuiRand() % 4
       n.knowledge.idoles = yuiRand() % 4
-      if school_club == "Computer club" then
+      if school_club_str == "Computer club" then
 	 n.knowledge.computer = yuiRand() % 8 + 1
 	 n.knowledge.animu = yuiRand() % 4
 	 n.knowledge.video_game = yuiRand() % 4
-      elseif school_club == "Animu Club" then
+      elseif school_club_str == "Mystical Neet Go-under" then
+	 n.knowledge.mystical = yuiRand() % 10 + 3
+      elseif school_club_str == "Music club" then
+	 n.knowledge.boys_bands = yuiRand() % 8
+	 n.knowledge.idoles = yuiRand() % 8
+	 n.knowledge.guitar = yuiRand() % 8
+	 n.knowledge.drum = yuiRand() % 8
+	 n.knowledge.music = yuiRand() % 8 + 1
+      elseif school_club_str == "Animu Club" then
 	 n.knowledge.animu = yuiRand() % 8 + 1
 	 n.knowledge.computer = yuiRand() % 4
 	 n.knowledge.video_game = yuiRand() % 4
-      elseif school_club == "Student Club" or
-      school_club == "Beautification Club" then
+      elseif school_club_str == "Student Club" or
+      school_club_str == "Beautification Club" then
 	 n.knowledge.fashion = yuiRand() % 6 + 1
 	 n.knowledge.makeup = yuiRand() % 6 + 1
-      elseif school_club == "Students Protection Group" then
+      elseif school_club_str == "Students Protection Group" then
 	 n.knowledge.weapon = yuiRand() % 6
-      elseif school_club == "Board Game and Roleplay Club" then
+      elseif school_club_str == "Board Game and Roleplay Club" then
 	 n.knowledge.boardgames = yuiRand() % 6 + 1
 	 n.knowledge.roleplay = yuiRand() % 6 + 1
       end
