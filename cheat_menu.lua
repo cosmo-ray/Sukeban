@@ -161,6 +161,16 @@ function cheat_show_npc(mn, _current)
 			 Entity.new_string(npc.trait:to_string()),
 			 "rgba: 0 0 0 255")
    end
+   if npc.organisations then
+      ywCanvasNewTextExt(canvas, 200, 300,
+			 Entity.new_string(npc.organisations:to_string()),
+			 "rgba: 0 0 0 255")
+   end
+   if npc.knowledge then
+      ywCanvasNewTextExt(canvas, 200, 360,
+			 Entity.new_string(npc.knowledge:to_string()),
+			 "rgba: 0 0 0 255")
+   end
    return YEVE_ACTION;
 end
 
