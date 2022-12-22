@@ -184,9 +184,57 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":9,
+         "name":"Actionable",
+         "objects":[
+                {
+                 "class":"",
+                 "height":22.6798070874397,
+                 "id":17,
+                 "name":"TV",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.startDialogue"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"tv_animu"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"S="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.pj.organisations.animu_club"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"string",
+                         "value":"Animu Club"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":27.3320752079402,
+                 "x":66.2948207171315,
+                 "y":27.9136087230027
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":9,
- "nextobjectid":17,
+ "nextlayerid":10,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

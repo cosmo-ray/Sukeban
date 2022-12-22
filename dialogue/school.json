@@ -79,5 +79,31 @@
 		]
 	    }
 	]
+    },
+    "tv_animu": {
+	"dialogue": [
+	    {
+		"text": "Watch animu",
+		"answers": [
+		    {
+			"text": "leave",
+			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "watch",
+			"condition": [
+			    "and",
+			    [ ">", "phq.pj.knowledge.animu", 4 ],
+			    "phq.env.time_point"
+			],
+			"actions": [
+			    "phq.use_time_point",
+			    [ "phq.increase", "knowledge", "animu", 1],
+			    "phq.backToGame"
+			]
+		    }
+		]
+	    }
+	]
     }
 }

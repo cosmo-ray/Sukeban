@@ -29,6 +29,17 @@
 			"condition":  ["<", "phq_wid.dialogue_npc.have_talk", 1]
 		    },
 		    {
+			"text": "(give {phq.quests._give_letter.from} letter)",
+			"condition": [
+			    "and", ['=', 'phq.quests.give_letter', 0],
+			    ['=', 'phq.quests._give_letter.to', 'phq_wid.dialogue_npc.name']
+			],
+			"actions": [
+			    ['setInt', "phq.quests.give_letter", 1],
+			    "phq.backToGame"
+			]
+		    },
+		    {
 			"text": "(chat)",
 			"condition":  [">", "phq_wid.dialogue_npc.have_talk", 0],
 			"action": "phq.backToGame"

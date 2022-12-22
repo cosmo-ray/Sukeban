@@ -17,6 +17,29 @@
 			"action": "phq.backToGame"
 		    },
 		    {
+			"text": "Ohayo, can I join this club please :)",
+			"condition": [
+			    "and",
+			    [
+				"S=", "phq_wid.cur_scene_str", "school_animu_club"
+			    ],
+			    [
+				"not",
+				[
+				    "contain_string",
+				    "phq.pj.organisations",
+				    "Animu Club"
+				]
+			    ]
+			],
+			"actions": [
+			    ["phq.printMessage", "Join Animu Club !"],
+			    [ "recreateString",
+			      "phq.pj.organisations.animu_club",
+			      "Animu Club"],
+			    "phq.backToGame"]
+		    },
+		    {
 			"text": "(give {phq.quests._give_letter.from} letter)",
 			"condition": [
 			    "and", ['=', 'phq.quests.give_letter', 0],
