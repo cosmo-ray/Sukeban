@@ -188,6 +188,15 @@ function bob_ai(main, npc, name)
    return student_ai(main, npc, name)
 end
 
+function mom_ai(main, npc, name)
+   npc = Entity.wrapp(npc)
+   npc._place = nil
+   if phq.env.chapter > 1 and yeGetString(phq.env.time) == "day" then
+      npc._place = "gambling_hall"
+   end
+end
+
+
 local runner_lpos = nil
 local runner0_pos = 0
 local runner0_tbl = nil

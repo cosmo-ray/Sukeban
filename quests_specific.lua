@@ -282,7 +282,7 @@ function chapter_2_vacation()
    local s = Entity.new_array()
    s[0] = GM_STATS_IDX
    s[1] = Entity.new_func(chapter_2_menu)
-   yePushBack(main.gmenu_hook, s)
+   yePushBack(main_widget.gmenu_hook, s)
 end
 
 function chapter_1(main)

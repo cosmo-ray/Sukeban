@@ -272,6 +272,7 @@
     "Mom": {
         "sex": "female",
         "type": "light",
+	"ai": "mom_ai",
 	"attack" : "unarmed0",
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
