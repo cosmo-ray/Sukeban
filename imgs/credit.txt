@@ -28,6 +28,7 @@ Special thanks to Markeus Brumfield and Frank Ni
 Willo-Default-Default-Default.png , charle.png , ashley-Clothing_Preset_2-Default-Default.png, ashley-Default-Default-0.png:
 Generated With mannequin: https://ar14.itch.io/mannequin
 
+portrait-1-14 by andre tran CC-BY-3
 
 SPRITESSHEET IN TILESET:
 
@@ -38,3 +39,4 @@ Ukulele :
 
 Also see 
 Sukeban/imgs/licences-imgs 
+

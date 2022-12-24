@@ -7,5 +7,35 @@
     	"game_senes/saki_1rst_meeting.json",
 	"game_senes/mission_0.json",
     	"game_senes/sunglass_story.json"
+    ],
+    "end_events": [
+	{
+	    "action": "change-scene",
+	    "scene": "street3",
+	    "force-pos": [1000, 750]
+	},
+	{
+	    "action": "place-npcs",
+	    "npcs": [
+		[1000, 900, "Saki Miya", "up"]
+	    ]
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "Wait {phq.pj.name} !",
+	    "timer": 1000,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "small-talk",
+	    "txt": "We have a problem, can you came see me when yo have time\nbut soon",
+	    "timer": 1000,
+	    "npc-pos": "Saki Miya"
+	},
+	{
+	    "action": "set",
+	    "variable": "phq.quests.the_end",
+	    "value": 0
+	}
     ]
 }

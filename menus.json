@@ -116,8 +116,7 @@ Good luck and good drinks!
 	"text" : "todo
 sprites from www.opengameart.org
 music from www.rengoku-teihen.com
-portrait-1-14 by andre tran CC-BY-3
-Ther's also a imgs/credit.txt that try to resence all art author
+Ther's an imgs/credit.txt that try to resence all art author
 If I've forgot an artwork, thank to create an issue, Pull Request
 or notice me :)
 to copy past website, use a terminal and do:
@@ -194,7 +193,7 @@ We love you anyway",
 	    },
 	    {
 		"text" : "credit",
-		"next" : "phq:menus.credit",
+		"next" : "phq:menus.Credit",
 		"action" : "menuMainWidNext"
 	    },
 	    {
@@ -227,6 +226,19 @@ We love you anyway",
 		  "hurting like an thousand balls would have been trow at my face",
 		  "Sometime I cry, I'm a Girl After all !"],
 	"next" : "phq:menus.main"
+    },
+    "the end": {
+	"<type>" : "text-screen",
+	"text-align": "center",
+	"action" : "nextOnKeyDown",
+	"text-color": "rgba: 255 255 255 255",
+	"background" : "rgba: 0 0 0 255",
+	"text" : ["","","","","","","",
+		  "#########################################################",
+		  "#########                THE END                #########",
+		  "#########################################################"],
+	"next" : "phq:menus.Credit"
+	
     },
     "game" : {
         "<type>" : "phq",

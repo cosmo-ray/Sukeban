@@ -249,6 +249,16 @@ function backToGame(wid)
    return YEVE_ACTION
 end
 
+function end_game()
+   print("end_game !!!!!")
+   print("end_game !!!!!")
+   print("end_game !!!!!")
+   print("end_game !!!!!")
+   backToGame2()
+   main_widget.next = "phq:menus.the end"
+   yesCall(ygGet("callNext"), main_widget);
+end
+
 function CombatEnd(wid, _main, winner_id)
    local main = main_widget
    wid = Entity.wrapp(wid)

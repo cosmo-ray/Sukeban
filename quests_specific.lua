@@ -285,6 +285,15 @@ function chapter_2_vacation()
    yePushBack(main_widget.gmenu_hook, s)
 end
 
+-- chapter is school stuff again, like in chapter 1
+function chapter_3()
+   main_widget.sleep_script = "chapter_1_sleep"
+   local s = Entity.new_array()
+   s[0] = GM_STATS_IDX
+   s[1] = Entity.new_func(chapter_1_menu)
+   yePushBack(main_widget.gmenu_hook, s)
+end
+
 function chapter_1(main)
    main.sleep_script = "chapter_1_sleep"
    local s = Entity.new_array()
@@ -444,6 +453,10 @@ end
 
 function morning_class(mn)
    print("I'm at school, yayyyyyy", phq.env.school_day)
+   if phq.env.school_day < 30 and phq.env.chapter > 2 then
+      phq.events.saki_presentaion = 1 -- this is to ensure we can end the game
+      phq.env.school_day = 30
+   end
    local f_mn = ywCntWidgetFather(mn)
    local school_day = phq.env.school_day:to_int()
 
@@ -505,6 +518,12 @@ function morning_class(mn)
 
       Entity.new_func(game_scene, a)
       Entity.new_string("prot_club_mission_0", a)
+   elseif school_day == 35 then
+      local a = Entity.new_array(block_events)
+      print("HELLLLOOOO !!!!!!!!")
+
+      Entity.new_func(game_scene, a)
+      Entity.new_string("end_events", a)
    end
    :: finalize ::
 
@@ -890,7 +909,7 @@ function end_chapter_2(main)
    phq.env.is_end_of_chapter = 0
    phq.env.chapter = 3
    phq.quests.school_wvacation = 1
-   phq.quests.school_2_semestre = 0
+   phq.quests.school_last_semestre = 0
 end
 
 function end_chapter_0(main)

@@ -15,6 +15,11 @@
 			"condition": ["=", "phq.quests.prot_club_m0", 0],
 			"action": ["Dialogue:goto", "mission_0"]
 		    },
+		    {			
+			"text": "SO you want to talk to me",
+			"condition": ["=", "phq.quests.the_end", 0],
+			"action": ["Dialogue:goto", "end_talk"]
+		    },
 		    {
 			"text": "So, was the fight enough to test my skills",
 			"condition": ["=", "phq.quests.prot_club_m0", 1],
@@ -68,6 +73,35 @@
 		     }
 		    ]
 		]
+	    },
+	    "end_talk": {
+		"text": [
+		    "(mumble) so, it's time... I hate my life sometime",
+		    "From what I have understand your mom have spend too much time gambling",
+		    "and is now completely broke"
+		],
+		"answer": "(now you think about it, you didn't see her that much recently)"
+	    },
+	    "end_talk1": {
+		"text": [
+		    "Worst than that, she's borrow money to the wrong peoples",
+		    "and she have an enormous debt to peoples you don't want to be in-debp",
+		    "So let's go the the point directly, she sell you",
+		    "You need to come with me",
+		    "I'm sorry, if I don't follow they order",
+		    "They kill me, my familly..."
+		],
+		"action": [ "phq.StartFight",
+			    ["Saki Miya"],
+			    "CombatDialogueNext"
+			  ]
+	    },
+	    "The end 1": {
+		"text": "what's now ?",
+		"answer": {
+		    "text": "What now ?",
+		    "action": "phq.misc_fnc.end_game"
+		}
 	    }
 	}
     }

@@ -149,7 +149,7 @@
 		    "TV report about how a volleyball coatch, that use to be a general in the national navy, train his team to win the olympic game 20 years ago",
 		    "television report about how winemaker are switching to organic and natural wine",
 		    "reportage about the broken career of an old tenis women, who use to have some of the stronger server ever, but end up breaking her wrist beyong repair",
-		    "News about our country making some giant robots real, they say it's for military purpose, with a big add telling us to join the army now",
+		    "News about our country making some giant robots real\nthey say it's for military purpose\nwith a big add telling us to join the army now",
 		    "A new Sparkling Water brand should be commercialize soon",
 		    {
 			"condition": ["not", "phq.events.nya_news"],

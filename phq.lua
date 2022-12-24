@@ -467,7 +467,9 @@ function init_phq(mod)
    mod.misc_fnc.save_fight_mode = Entity.new_func(save_fight_mode)
    mod.misc_fnc.load_fight_mode = Entity.new_func(load_fight_mode)
    mod.misc_fnc.chapter_2_vacation = Entity.new_func(chapter_2_vacation)
+   mod.misc_fnc.chapter_3 = Entity.new_func(chapter_3)
    mod.misc_fnc.equip_skate = Entity.new_func(equip_skate)
+   mod.misc_fnc.end_game = Entity.new_func(end_game)
    mod.triggers = {}
    mod.triggers.block_message = Entity.new_func(trigger_block_message)
 end
