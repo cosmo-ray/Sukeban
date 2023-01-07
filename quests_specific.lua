@@ -603,7 +603,7 @@ local function gen_school()
        "Yuki", "Anako", "Geromine", "Gwenegann", "Katyusha", "Olya",
        "Pascaline", "Olga", "Veronic", "Cassandre", "Rose", "Emilie", "Kira",
        "Alise", "Alita", "Oka", "Lea", "Leah", "Jacky", "Claudia", "Cesar", "Ulis",
-       "Alexandra", "Matilde", "Matilda", "Alex", "Alix"},
+       "Alexandra", "Matilde", "Matilda", "Alex", "Alix", "France", "Francine"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed", "Jean",
@@ -611,7 +611,7 @@ local function gen_school()
        "Bill", "Charle", "Romain", "Thomas", "Mehdi", "Olivie", "Gerome", "Caradoc",
        "Jean Pierre", "Jean Charle", "Pascale", "Rogger", "Dany", "Raz", "Cassandre",
        "Kira", "Lee", "Jacky", "Didier", "Claud", "Axel", "Mickael", "Mathias",
-       "Mattias", "Alex", "Alexie"}
+       "Mattias", "Alex", "Alexie", "Francky", "Vincent", "Pierre"}
    }
 
    local last_name = {
@@ -626,7 +626,8 @@ local function gen_school()
       "Manualreader", "Mac Ross", "Squirel", "Backdoor", "Adlez", "Harissa",
       "Anako", "Geromine", "Gwenegann", "Noir", "Katyusha", "Poireau",
       "Articho", "Ananas", "Anko", "Polenarefu", "Hopson", "Who", "Rose",
-      "De Paname", "De la Tour", "Kira", "Yamato",  "Trentehein"
+      "De Paname", "De la Tour", "Kira", "Yamato",  "Trentehein", "compute",
+      "Ordinateur", "Robots", "Robie", "Vincent", "Pierre", "Metal"
    }
 
    local types = {
