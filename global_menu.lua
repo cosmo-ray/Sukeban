@@ -193,8 +193,14 @@ function pushSTatusTextScreen(container)
    i = 0
    while i < yeLen(trait) do
       if trait[i] then
+	 local trait_k = yeGetKeyAt(trait, i)
+	 local trait_v = math.floor(yeGetInt(trait[i]))
+	 if trait_k == 'grumpy' then
+	    trait_k = "positiveness"
+	    trait_v = -trait_v
+	 end
 	 trait_str = trait_str ..
-	    yeGetKeyAt(trait, i) .. ": " .. yeGetInt(trait[i]) .. "\n"
+	    trait_k .. ": " .. trait_v .. "\n"
       end
       i = i + 1
    end
@@ -245,6 +251,7 @@ function pushSTatusTextScreen(container)
       alcohol_lvl_str() ..
       knowledge_str ..
       stats_str ..
+      trait_str ..
       cmb_str ..
       school_club ..
       follower

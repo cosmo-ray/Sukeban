@@ -777,6 +777,8 @@ local function gen_school()
       n.trait = {}
       n.trait.shy = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.trait.violance = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
+      n.trait.lazy = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
+      n.trait.grumpy = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.trait.sensitivity = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       n.trait.perv = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
       -- maybe a male should have less chances to be attrated by male
