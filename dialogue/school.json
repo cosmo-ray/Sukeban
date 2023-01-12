@@ -64,6 +64,7 @@
 		    {
 			"text": "Yes, help him",
 			"actions": [
+			    ["setInt", "phq.npcs.Akira Gentelman.have_help", 1],
 			    ["phq.join_team", "Akira Gentelman"],
 			    ["phq.StartFight", ["Thrug", "Thrug"],
 			     "CombatDialogueNext"]
@@ -75,6 +76,7 @@
 		"text": "Akira seems very angry...",
 		"actions": [
 		    ["phq.leave_team", "Akira Gentelman"],
+		    [ "increaseInt", "phq.npcs.Akira Gentelman.relation.affection", 10],
 		    "phq.backToGame"
 		]
 	    }
