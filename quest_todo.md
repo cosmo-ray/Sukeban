@@ -29,6 +29,11 @@ as this quest will sevrve to present Lemie crazyness.
 2 twin must be randmly generated, 1 must be love by everyone and the other a "looser", Lemie in one of her psycopath sceme, try to have the hated one murder his brother, and then push him to suicide.
 the player could play the role of been a fake love pretender to the losser then date the loved one. maybe see some interation between the twins too, of course per will be able to prevent Lemie plan, and help her.
 
+### Akira
+
+When talk with relation > 9, he can invite you to hang with him,
+this start a vn-scene screen, which should create relation.
+that so I can start aligator 427 quest durring winter vacation.
 
 ### Ashley: 
 Work Replacement quest:

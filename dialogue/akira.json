@@ -6,7 +6,7 @@
 		"condition":
 		[
 		    "and",
-		    [">", "phq_wid.dialogue_npc.relation.affection", 10],
+		    [">", "phq_wid.dialogue_npc.relation.affection", 9],
 		    ["=", "phq.env.day", 4]
 		],
 		"conditional-texts-append": [
