@@ -1,6 +1,27 @@
 {
     "Akira Gentelman": {
 	"dialogue" : {
+	    "date-0": {
+		"text": "Say... would you like to hang with, now ?",
+		"condition":
+		[
+		    "and",
+		    [">", "phq_wid.dialogue_npc.relation.affection", 10],
+		    ["=", "phq.env.day", 4]
+		],
+		"conditional-texts-append": [
+		    [
+			[">", "phq_wid.dialogue_npc.have_help", 0],
+			"(mumble)you help me back then, it was very nice of you"
+		    ]
+		],
+		"answers": [
+		    {
+			"text":	"No sorry, I'm kind of bussy right now",
+			"action": "phq.backToGame"
+		    }
+		]
+	    },
 	    "generic-school": {
 		"pre-action": ["Dialogue.swap", "phq_wid.dialogues.neutral-student"]
 	    }
