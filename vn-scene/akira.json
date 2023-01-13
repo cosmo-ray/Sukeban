@@ -1,0 +1,17 @@
+{
+    "akira-after-school": {
+	"in": {
+	    "text": "You speed time with akira",
+	    "answers": [
+		{
+		    "text": "Yayy....",
+		    "actions": [
+			[ "increaseInt", "phq.npcs.Akira Gentelman.relation.affection", 1],
+			"phq.advance_time",
+			"phq.backToGame"
+		    ]
+		}
+	    ]
+	}
+    }
+}

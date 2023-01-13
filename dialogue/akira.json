@@ -19,6 +19,10 @@
 		    {
 			"text":	"No sorry, I'm kind of bussy right now",
 			"action": "phq.backToGame"
+		    },
+		    {
+			"text":	"Sure what do you want to do ?",
+			"actions": ["phq.backToGame", ["phq:vnScene", "akira-after-school"]]
 		    }
 		]
 	    },
