@@ -2,7 +2,7 @@
     "Akira Gentelman": {
 	"dialogue" : {
 	    "date-0": {
-		"text": "Say... would you like to hang with, now ?",
+		"text": "Say... would you like to hang with me, now ?",
 		"condition":
 		[
 		    "and",
