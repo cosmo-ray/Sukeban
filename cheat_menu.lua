@@ -156,6 +156,19 @@ function cheat_show_npc(mn, _current)
 			 Entity.new_string(npc.stats:to_string()),
 			 "rgba: 0 0 0 255")
    end
+   if yIsNNil(npc._place) or yIsNNil(npc._cur_pos) then
+      local localtion = "localtion: "
+
+      if yIsNNil(npc._cur_pos) then
+	 localtion = localtion .. yeGetString(npc._cur_pos)
+      elseif yIsNNil(npc._place) then
+	 localtion = localtion .. yeGetString(npc._place)
+      end
+      ywCanvasNewTextExt(canvas, 460, 20,
+			 Entity.new_string(localtion),
+			 "rgba: 0 0 0 255")
+   end
+
    if npc.relation then
       ywCanvasNewTextExt(canvas, 460, 120,
 			 Entity.new_string(npc.relation:to_string()),

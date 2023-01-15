@@ -154,6 +154,7 @@ function student_ai(_main, npc, name)
 	 cur_pos = "school_class_0" .. math.floor(class_id)
 	 print("new cur pos: ", cur_pos)
       end
+      npc._cur_pos = cur_pos
       :: again ::
       if idx <= #csap
 	 and push_to_ai_point_(cur_pos,
