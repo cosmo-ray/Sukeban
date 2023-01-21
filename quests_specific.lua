@@ -39,6 +39,16 @@ school_students_organisation = {
    "Board Game and Roleplay Club"
 }
 
+function is_concert_at_wheelball()
+   print("is_concert_at_whellball !\n", phq.env.day
+	 phq.env.time:to_string())
+   if phq.env.day > 5 and phq.env.time:to_string() == "night" then
+      return Y_TRUE
+   end
+   return Y_FALSE
+
+end
+
 function chk_affection_subchar(pj_char, npc_char, multipliyer)
    local base = 0
    for i = 0, yeLen(npc_char) - 1 do

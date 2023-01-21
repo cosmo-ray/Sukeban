@@ -470,6 +470,7 @@ function init_phq(mod)
    mod.misc_fnc.chapter_3 = Entity.new_func(chapter_3)
    mod.misc_fnc.equip_skate = Entity.new_func(equip_skate)
    mod.misc_fnc.end_game = Entity.new_func(end_game)
+   mod.misc_fnc.is_concert_at_wheelball = Entity.new_func(is_concert_at_wheelball)
    mod.triggers = {}
    mod.triggers.block_message = Entity.new_func(trigger_block_message)
 end
