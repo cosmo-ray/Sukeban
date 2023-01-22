@@ -7,3 +7,6 @@ A lot of game data, are write in json, so if you want for examples modify a dial
 The game code is mostly in lua.
 
 The game engine is [here](https://github.com/cosmo-ray/yirl)
+
+
+Issue, and PR are of course open, to write whatever you want in it that concern the game.
