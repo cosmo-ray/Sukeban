@@ -40,7 +40,7 @@ school_students_organisation = {
 }
 
 function is_concert_at_wheelball()
-   print("is_concert_at_whellball !\n", phq.env.day
+   print("is_concert_at_whellball !\n", phq.env.day,
 	 phq.env.time:to_string())
    if phq.env.day > 5 and phq.env.time:to_string() == "night" then
       return Y_TRUE
