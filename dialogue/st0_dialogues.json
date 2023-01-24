@@ -49,8 +49,24 @@
 		]
 	    },
 	    {
-		"text": "Hello, I don't have a lot of money, Would you like to buy a Daikon of mine",
-		"answers": [
+		  "text": "(Joe look desperate)Can you help me, I'm fucked, can you help me ?",
+		  "condition": [">", "phq.pj.trait.sensitivity", 2],
+		  "answers": [
+			  {
+				  "text": "I'm really sory, I can't"
+		  	  }
+		  ]
+            },
+	    {
+		"texts": [
+	 	  {
+		        "text": "Ok, then, do you want to buy some daicon ?",
+			"condition": [">", "phq.pj.trait.sensitivity", 2]
+		  },
+		  {
+			"text": "Hello, I don't have a lot of money, Would you like to buy a Daikon of mine"
+		  }
+    		"answers": [
                     {
 			"text": "Why not, all girl need a Daicon, show me your please",
 			"action": [ "phq.openStore", "DaiconGuy" ],
