@@ -143,7 +143,7 @@
 		    ]
 	    },
             {
-		"text" "well, they say, they come back, so maybe you can stay with me, and help me then",
+		"text": "well, they say, they come back, so maybe you can stay with me, and help me then",
 		"answers": [
 		    {
 			"text": "okay, then",
