@@ -135,7 +135,7 @@
 		    "answers": [
 			{
 				"text": "Sorry, I really can't",
-				"action" ["Dialogue:goto", 2]
+				"action": ["Dialogue:goto", 2]
 		    	},
 		        {
 				"text": "I'd like but how can I help you\nI can't ask random peoples if they steal your money ?"
@@ -148,7 +148,7 @@
 			"text": "okay, then",
 			"actions": [
 				"phq.advance_time",
-				[ "phq.StartFight", ["Thrug", "Thrug", "Thrug", "Thrug"]],
+				[ "phq.StartFight", ["Thrug", "Thrug", "Thrug", "Thrug"]]
 			]
 		}]
 	    }
