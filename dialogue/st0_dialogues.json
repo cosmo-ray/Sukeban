@@ -53,6 +53,10 @@
 		  "condition": [">", "phq.pj.trait.sensitivity", 2],
 		  "answers": [
 			  {
+				  "text": "ehhh, how can I help you ?",
+				  "action": ["Dialogue:goto", 4]
+			  },
+			  {
 				  "text": "I'm really sory, I can't"
 		  	  }
 		  ]
@@ -123,6 +127,30 @@
 			]
 		    }
 		]
+	    },
+	    {
+		    "text": ["Some guy steal the few money I've made with Daicon",
+			     "they said I should be lucky to still ave those",
+			    "Please, help me get the money back"],
+		    "answers": [
+			{
+				"text": "Sorry, I really can't",
+				"action" ["Dialogue:goto", 2]
+		    	},
+		        {
+				"text": "I'd like but how can I help you\nI can't ask random peoples if they steal your money ?"
+			}
+		    ]
+	    },
+            {
+		"text" "well, they say, they come back, so maybe you can stay with me, and help me then",
+		"answers": [{
+			"text": "okay, then",
+			"actions": [
+				"phq.advance_time",
+				[ "phq.StartFight", ["Thrug", "Thrug", "Thrug", "Thrug"]],
+			]
+		}]
 	    }
 	]
     },
