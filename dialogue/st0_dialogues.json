@@ -144,13 +144,15 @@
 	    },
             {
 		"text" "well, they say, they come back, so maybe you can stay with me, and help me then",
-		"answers": [{
+		"answers": [
+		    {
 			"text": "okay, then",
 			"actions": [
 				"phq.advance_time",
 				[ "phq.StartFight", ["Thrug", "Thrug", "Thrug", "Thrug"]]
 			]
-		}]
+		    }
+		]
 	    }
 	]
     },
