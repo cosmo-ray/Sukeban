@@ -50,7 +50,10 @@
 	    },
 	    {
 		  "text": "(Joe look desperate)Can you help me, I'm fucked, can you help me ?",
-		  "condition": [">", "phq.pj.trait.sensitivity", 2],
+		"condition": ["and",
+			      [">", "phq.pj.trait.sensitivity", 0],
+			      ["!=", "phq_wid.dialogue_npc.have_help_daicon", 1]
+			     ],
 		  "answers": [
 			  {
 				  "text": "ehhh, how can I help you ?",
@@ -63,13 +66,16 @@
             },
 	    {
 		"texts": [
-	 	  {
+	 	    {
 		        "text": "Ok, then, do you want to buy some daicon ?",
-			"condition": [">", "phq.pj.trait.sensitivity", 2]
-		  },
-		  {
+			"condition": ["and",
+				      [">", "phq.pj.trait.sensitivity", 0],
+				      ["!=", "phq_wid.dialogue_npc.have_help_daicon", 1]
+				     ]
+		    },
+		    {
 			"text": "Hello, I don't have a lot of money, Would you like to buy a Daikon of mine"
-		  }
+		    }
 		],
     		"answers": [
                     {
@@ -120,6 +126,7 @@
 		    },
 		    {
 			"text": "I don't like you, I Dont't like your face\nyou are nothing but garbage in the street\nthe pineapple on the pizza leave before I call the cops",
+			"condition": ["<", "phq.pj.trait.sensitivity", 1],
 			"actions": [
 			    [ "setInt", "phq.events.has_bullie_daicon_guy", 1],
 			    [ "phq.increase", "trait", "sensitivity", -1],
@@ -148,8 +155,11 @@
 		    {
 			"text": "okay, then",
 			"actions": [
-				"phq.advance_time",
-				[ "phq.StartFight", ["Thrug", "Thrug", "Thrug", "Thrug"]]
+			    ["setInt", "phq_wid.dialogue_npc.have_help_daicon", 1],
+			    [ "phq.increase", "trait", "sensitivity", 1],
+			    ["phq.recive", "Small Daicon"],
+			    "phq.advance_time",
+			    [ "phq.StartFight", ["Thrug", "Thrug", "Thrug", "Thrug"]]
 			]
 		    }
 		]
