@@ -49,22 +49,27 @@
 		]
 	    },
 	    {
-		  "text": "(Joe look desperate)Can you help me, I'm fucked, can you help me ?",
-		"condition": ["and",
-			      [">", "phq.pj.trait.sensitivity", 0],
-			      ["!=", "phq_wid.dialogue_npc.have_help_daicon", 1]
-			     ],
-		  "answers": [
-			  {
-				  "text": "ehhh, how can I help you ?",
-				  "action": ["Dialogue:goto", 4]
-			  },
-			  {
-				  "text": "I'm really sory, I can't"
-		  	  }
-		  ]
+		"text": "(Joe look desperate)Can you help me, I'm fucked, can you help me ?",
+		"condition":
+		["and",
+		 ["and",
+		  [">", "phq.pj.trait.sensitivity", 0],
+		  ["!=", "phq_wid.dialogue_npc.have_help_daicon", 1]
+		 ],
+		 [">", "phq_wid.dialogue_npc.nb_talks", 3]
+		],
+		"answers": [
+		    {
+			"text": "ehhh, how can I help you ?",
+			"action": ["Dialogue:goto", 4]
+		    },
+		    {
+			"text": "I'm really sory, I can't"
+		    }
+		]
             },
 	    {
+		"pre-action": [ "increaseInt", "phq_wid.dialogue_npc.nb_talks", 1],
 		"texts": [
 	 	    {
 		        "text": "Ok, then, do you want to buy some daicon ?",
@@ -157,6 +162,7 @@
 			"actions": [
 			    ["setInt", "phq_wid.dialogue_npc.have_help_daicon", 1],
 			    [ "phq.increase", "trait", "sensitivity", 1],
+			    [ "phq.increase", "xp", 15],
 			    ["phq.recive", "Small Daicon"],
 			    "phq.advance_time",
 			    [ "phq.StartFight", ["Thrug", "Thrug", "Thrug", "Thrug"]]
