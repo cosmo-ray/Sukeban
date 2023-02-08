@@ -12,7 +12,7 @@
 		"conditional-texts-append": [
 		    [
 			[">", "phq_wid.dialogue_npc.have_help", 0],
-			"(mumble)you help me back then, it was very nice of you"
+			"(mumble)you help me back then, it was nice of you"
 		    ]
 		],
 		"answers": [
