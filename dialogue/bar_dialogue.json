@@ -74,10 +74,15 @@
 		"text": "I've learn to film, how sound work, do you know to what it lead me ?",
 		"answer": {
 		    "text": [
-			"be a dentist ?",
-			"Also the movie is not Brobi the Brobo,\nbut 'not Allowed planet'"
+			"be a dentist ?"
+		    ],
+		    "conditional-texts-append": [
+			[
+			    [">", "phq.pj.knowledge.movies", 1],
+			    "Also the movie is not Brobi the Brobo,\nbut 'not Allowed planet'"
+			]
 		    ]
-		}
+		    }
 	    },
 	    {
 		"text": "vendor in a camera shop !",
