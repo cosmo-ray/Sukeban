@@ -850,6 +850,7 @@ local function gen_school()
       n.knowledge.slang = yuiRand() % 5
       n.knowledge.boys_bands = yuiRand() % 4
       n.knowledge.idoles = yuiRand() % 4
+      n.knowledge.movies = yuiRand() % 6
       if school_club_str == "Computer club" then
 	 n.knowledge.computer = yuiRand() % 8 + 1
 	 n.knowledge.animu = yuiRand() % 4
