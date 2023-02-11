@@ -99,7 +99,7 @@
 		    },
 		    {
 			"text": [
-			    "come'on, it' chapter 1, dev can't be that lazy, tell me",
+			    "come'on, it' chapter {phq.env.chapter}, dev can't be that lazy, tell me",
 			    "there is a decent job for me now"
 			],			
 			"condition": ["and",
