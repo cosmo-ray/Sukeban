@@ -121,6 +121,7 @@ function newGameAction(menu, _eve, _arg)
       phq.pj.knowledge.idoles = 2
       phq.pj.knowledge.video_game = 1
       phq.pj.knowledge.boardgames = 1
+      phq.pj.knowledge.movies = 1 -- i juste prefer animUwU
       phq.pj.trait.shy = 1
       phq.pj.stats.smart = 3
       phq.pj.stats.agility = 1 -- got some skills from playing DDR
@@ -129,6 +130,8 @@ function newGameAction(menu, _eve, _arg)
    elseif archetype == IDOLE_ARCHETYPE then
       phq.pj.knowledge.fashion = 5
       phq.pj.knowledge.makeup = 3
+      phq.pj.knowledge.movies = 0
+      phq.pj.knowledge.movies = 2
       phq.pj.knowledge.boys_bands = 3
       phq.pj.knowledge.idoles = 1
       phq.pj.stats.charm = 5
@@ -139,6 +142,7 @@ function newGameAction(menu, _eve, _arg)
       phq.env.mean_name2 = "slut"
    elseif archetype == BRUTE_ARCHETYPE then
       phq.pj.knowledge.slang = 5
+      phq.pj.knowledge.movies = 3 -- all thoses karate movies <3, and old zatoichi
       phq.pj.trait.violance = 1
       phq.pj.stats.strength = 3
       phq.pj.stats.agility = 4
@@ -148,6 +152,7 @@ function newGameAction(menu, _eve, _arg)
    elseif archetype == WORMS_COINOISSEUR_ARCHETYPE then
       phq.pj.knowledge.worms = 5
       phq.pj.stats.smart = 1
+      phq.pj.knowledge.movies = 0 -- not interesting
       phq.pj.trait.shy = 2
       phq.env.mean_name = "trash"
       phq.env.mean_name2 = "slug"
