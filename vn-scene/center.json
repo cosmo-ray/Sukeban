@@ -28,6 +28,10 @@
 		    "action": [ "phq.openStore", "Over 9000 Power" ]
 		},
 		{
+		    "text": "go to the beauty salon called 'to 美 or not to 美'",
+		    "action": [ "Dialogue:change-text", "it's close :(" ]
+		},
+		{
 		    "text": "go to the big school",
 		    "action": [ "Dialogue:goto", "Center High" ]
 		},
