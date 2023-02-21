@@ -1,6 +1,18 @@
 {
     "Baffy": {
 	"dialogue" : {
+	    "base-student-swap": {
+		"condition":
+		["or",
+		 ["or",
+		  [ "S=", "phq_wid.cur_scene_str", "school1"],
+		  [ "S=", "phq_wid.cur_scene_str", "school0"]
+		 ],
+		 [ "S=", "phq_wid.cur_scene_str", "street3"]
+		],
+		"pre-action": ["Dialogue.swap",
+			       "phq_wid.dialogues.neutral-student"]
+	    },
 	    "protection_club": {
 		"text": "hej fellow club member",
 		"condition": ["contain_string", "phq.pj.organisations",
@@ -13,8 +25,13 @@
 		"action": "phq.backToGame"
 	    },
 	    "base": {
-		"text": ["Sorry, {phq.env.mean_name} I'm talking with my friend",
-			 "And I don't think you're one of them"],
+		"text": ["Sorry, {phq.env.mean_name} I'm talking with my friend"],
+		 "conditional-texts-append": [
+			[
+			    ["<", "phq_wid.dialogue_npc.relation.affection", 2],
+			    "And I don't think you're one of them"
+			]
+		],
 		"answers": [
 		    {
 		    	"condition": [">", "phq.pj.stats.charm", 1],
@@ -23,7 +40,10 @@
 		    },
 		    {
 			"text": "(continue)",
-			"condition": ["<", "phq.pj.stats.charm", 2]
+			"condition": ["and",
+				      ["<", "phq.pj.stats.charm", 2],
+				      ["<", "phq_wid.dialogue_npc.relation.affection", 2]
+				     ]
 		    }
 		]
 	    },
