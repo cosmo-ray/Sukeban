@@ -46,3 +46,6 @@
 [submodule "modules/nyanarchiste"]
 	path = modules/nyanarchiste
 	url = https://github.com/cosmo-ray/nyanarchiste.git
+[submodule "modules/croco-427"]
+	path = modules/croco-427
+	url = https://github.com/cosmo-ray/croco-427/
