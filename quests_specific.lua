@@ -909,7 +909,7 @@ function end_chapter_1(main)
       "also aligator 427 quest"
 
    dial.answer = {}
-   dial.answer.text = "(goto unimplemented chapter)"
+   dial.answer.text = "(goto barly implemented chapter)"
    dial.answer.action = "phq.backToGame"
    phq.quests.school_1_semestre = 2
    phq.quests.school_wvacation = 0
