@@ -21,6 +21,7 @@
         { "path" : "YIRL_MODULES_PATH/sprite-manager/", "type" : "module" },
 
 	{ "file" : "modules/tetris", "type" : "module" },
+	{ "file" : "modules/croco-427/", "type" : "module" },
         { "file" : "modules/little-space/", "type" : "module" },
         { "file" : "modules/little-mage/", "type" : "module" },
         { "file" : "modules/AscII", "type" : "module" },

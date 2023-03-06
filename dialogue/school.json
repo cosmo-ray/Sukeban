@@ -50,7 +50,7 @@
 	    "generic-school": {
 		"pre-action": ["Dialogue.swap", "phq_wid.dialogues.neutral-student"]
 	    }
-	}	
+	}
     },
     "akira_fight": {
 	"dialogue": [

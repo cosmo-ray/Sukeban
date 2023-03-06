@@ -1,6 +1,16 @@
 {
     "Akira Gentelman": {
 	"dialogue" : {
+	    "croco": {
+		"text": "So... I have a big service to ask you",
+		"condition":
+		[
+		    "and",
+		    [">", "phq_wid.dialogue_npc.relation.affection", 15],
+		    ["=", "phq.env.chapter", 2]
+		],
+		"action": ["phq.play", "croco-427", -1]
+	    },
 	    "date-0": {
 		"text": "Say... would you like to hang with me, now ?",
 		"condition":
