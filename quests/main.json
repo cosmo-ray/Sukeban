@@ -146,7 +146,7 @@
 	],
         "rewards": [
 	    0, 4
-	]	
+	]
     },
     "The End": {
 	"stalk": "phq.quests.the_end",
@@ -155,12 +155,11 @@
 	    "Saki wanna talk to U"
 	]
     },
-    "Aligator 427": {
-	"stalk": "phq.quests.aligator_427",
+    "Croco 427": {
+	"stalk": "phq.quests.croco",
 	"stalk_sart": -1,
 	"descriptions": [
-	    "Explore The Lab",
-	    "Kill the aligator 427"
+	    "talk to akira to explore The Lab"
 	]
     }
 }
