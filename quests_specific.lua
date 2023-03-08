@@ -1046,8 +1046,10 @@ function croco_start()
 
    t["<type>"] = "croco-427"
    t.pc = phq.pj
-   t.die = Entity.new_func("backToGame")
-   t.quit = Entity.new_func("backToGame")
+   t.quit = Entity.new_func("backToGame2")
+   t.die = ygGet("callNextLose")
+   --t.die = Entity.new_func("backToGame2")
+   t["next-lose"] = main_widget["next-lose"]
    ywPushNewWidget(main, t)
    return YEVE_ACTION
 end
