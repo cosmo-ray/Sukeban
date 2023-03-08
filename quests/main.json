@@ -170,6 +170,9 @@
 	"stalk_sart": -1,
 	"descriptions": [
 	    "talk to akira to explore The Lab"
+	],
+	"rewards": [
+	    0, 8
 	]
     }
 }

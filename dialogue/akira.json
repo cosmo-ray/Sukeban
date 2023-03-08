@@ -32,6 +32,7 @@
 			"text": "sure let's go",
 			"actions": [
 			    [ "setInt", "phq.quests.croco", 1],
+			    [ "increaseInt", "phq_wid.dialogue_npc.relation.affection", 10],
 			    "phq.misc_fnc.croco_start"
 			]
 		    }
