@@ -1037,3 +1037,17 @@ function nyanarchist_end(wid)
    print("ywCntPopLastEntry now")
    ywCntPopLastEntry(main_widget)
 end
+
+function croco_start()
+   local main = main_widget
+
+   ywCntPopLastEntry(main)
+   local t = Entity.new_array()
+
+   t["<type>"] = "croco-427"
+   t.pc = phq.pj
+   t.die = Entity.new_func("backToGame")
+   t.quit = Entity.new_func("backToGame")
+   ywPushNewWidget(main, t)
+   return YEVE_ACTION
+end

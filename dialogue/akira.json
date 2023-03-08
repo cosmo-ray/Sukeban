@@ -32,7 +32,7 @@
 			"text": "sure let's go",
 			"actions": [
 			    [ "setInt", "phq.quests.croco", 1],
-			    ["phq.play", "croco-427", -1]
+			    "phq.misc_fnc.croco_start"
 			]
 		    }
 		]
