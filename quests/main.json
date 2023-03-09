@@ -139,6 +139,16 @@
 	]
     },
     "Give Letter": {
+	"stalk": "phq.quests.find_stuff",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "{phq.quests._find_stuff.from} want me to help him find his {phq.quests._find_stuff.what}, per lose",
+	],
+        "rewards": [
+	    0, 5
+	]
+    },
+    "Give Letter": {
 	"stalk": "phq.quests.give_letter",
 	"stalk_sart": -1,
 	"descriptions": [
