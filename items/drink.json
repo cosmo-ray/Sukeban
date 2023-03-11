@@ -44,6 +44,11 @@
 	"type": "usable",
 	"stats+" : { "life": 8 }
     },
+    "Go Muscu Chocolat Bar": {
+	"type": "usable",
+	"stats+" : { "life": 6 },
+	"tmp_increase_once": { "stats.strength": 1 }
+    },
     "Naka Cola": {
 	"type": "usable",
 	"stats+" : { "life": 1 }
