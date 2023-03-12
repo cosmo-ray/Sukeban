@@ -817,6 +817,22 @@ local function gen_school()
       local hair = Entity.new_array(n, "hair")
       n.max_life = 3 + yuiRand() % 20
       n.is_random_student = 1
+      n.reputation = {}
+      for _j = 1, year do
+	 local rep_rand = yuiRand() % 5
+
+	 if rep_rand == 0 then
+	    n.reputation.glandeur = 1 + yuiRand() % 3
+	 elseif rep_rand == 1 then
+	    n.reputation.slut = 1 + yuiRand() % 3
+	 elseif rep_rand == 2 then
+	    n.reputation.insane = 1 + yuiRand() % 3
+	 elseif rep_rand == 3 then
+	    n.reputation.bully = 1 + yuiRand() % 3
+	 else
+	    n.reputation.weak = 1 + yuiRand() % 3
+	 end
+      end
       n.stats = {}
       -- charm can be negative...
       n.stats.charm = yuiRand() % 10 * (1 + (yuiRand() % 2 * -2))
