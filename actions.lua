@@ -91,9 +91,7 @@ function use_time_point(box)
 end
 
 function quest_try_Call_script(quest, qi_scripts, cur)
-   local j = 0
-
-   while j < yeLen(qi_scripts) do
+   for j = 0, yeLen(qi_scripts) - 1 do
       local at = yeGet(qi_scripts[j], "at")
       local callable = yeGetStringAt(qi_scripts[j], "call")
 
@@ -113,7 +111,6 @@ function quest_try_Call_script(quest, qi_scripts, cur)
 	    scripts[yeGetStringAt(qi_scripts[j], "script")](main_widget)
 	 end
       end
-      j = j + 1
    end
 end
 
@@ -126,6 +123,18 @@ function quest_update(original, _copy, arg)
    local r_idx = yeGetInt(original)
    local reward = yeGetIntAt(rewards, r_idx)
    local qi_scripts = quest.scripts
+   local set_at = quest["set-at"]
+
+   for j = 0, yeLen(set_at) - 1 do
+      setter_at = yeGet(set_at[j])
+      local at = yeGet(setter_at, "at")
+
+      if yIsNNil(at) and cur == yeGetInt(at) then
+	 local what = yeGetStringAt(setter_at, "what")
+
+	 yeSetInt(ygGet(what), yeGetIntAt(setter_at, "val"));
+      end
+   end
 
    quest_try_Call_script(quest, qi_scripts, r_idx)
 
