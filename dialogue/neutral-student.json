@@ -51,6 +51,17 @@
 			]
 		    },
 		    {
+			"text": "(give {phq.quests._find_stuff.what} back to {phq.quests._find_stuff.from})",
+			"condition": [
+			    "and", ['=', 'phq.quests.find_stuff', 1],
+			    ['=', 'phq.quests._find_stuff.from', 'phq_wid.dialogue_npc.name']
+			],
+			"actions": [
+			    ['setInt', "phq.quests.find_stuff", 2],
+			    "phq.backToGame"
+			]
+		    },
+		    {
 			"text": "(Talk with {phq_wid.dialogue_npc.name})",
 			"actions": [
 			    ["setInt", "phq_wid.dialogue_npc.have_talk", 1],

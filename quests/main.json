@@ -142,17 +142,19 @@
 	"stalk": "phq.quests.find_stuff",
 	"stalk_sart": -1,
 	"descriptions": [
-	    "{phq.quests._find_stuff.from} want me to help him find his {phq.quests._find_stuff.what}, per lose",
+	    "{phq.quests._find_stuff.from} want me to help per find pers {phq.quests._find_stuff.what}, per lose",
 	    "bring {phq.quests._find_stuff.what} back to {phq.quests._find_stuff.from}"
 	],
         "rewards": [
 	    0, 1, 4
 	],
-	"set-ag": {
-	    "at": 1,
-	    "what": "phq.quests._give_letter.where",
-	    "val": 0
-	}
+	"set-at": [
+	    {
+		"at": 1,
+		"what": "phq.quests._find_stuff.where",
+		"val": 0
+	    }
+	]
     },
     "Give Letter": {
 	"stalk": "phq.quests.give_letter",

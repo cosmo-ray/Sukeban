@@ -193,6 +193,8 @@ function chk_affection(wid)
    end
 
    print("end base:" , base, " roll: ", roll)
+   -- uncomment V to tests quests system
+   -- if 1 then return 4 end
    if roll == 0 then
       print("critical sucess")
       return 2
@@ -933,7 +935,7 @@ local function gen_school()
       end
       n.organisations = Entity.new_array()
       n.organisations[0] = school_students_organisation[school_club]
-	 
+
       if avaible_house_idx <= #avaible_house then
 	 n.house = avaible_house[avaible_house_idx]
 	 avaible_house_idx = avaible_house_idx + 1

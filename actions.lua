@@ -126,13 +126,17 @@ function quest_update(original, _copy, arg)
    local set_at = quest["set-at"]
 
    for j = 0, yeLen(set_at) - 1 do
-      setter_at = yeGet(set_at[j])
+      local setter_at = set_at[j]
       local at = yeGet(setter_at, "at")
 
-      if yIsNNil(at) and cur == yeGetInt(at) then
+      if yIsNNil(at) and r_idx == yeGetInt(at) then
 	 local what = yeGetStringAt(setter_at, "what")
 
-	 yeSetInt(ygGet(what), yeGetIntAt(setter_at, "val"));
+	 if (yIsNil(ygGet(what))) then
+	    print(what, " is not a valide path to ygGet")
+	 else
+	    yeSetInt(ygGet(what), yeGetIntAt(setter_at, "val"))
+	 end
       end
    end
 
