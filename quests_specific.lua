@@ -155,6 +155,30 @@ function chk_affection(wid)
    local pj_traits = pj.trait
    base = base + chk_affection_subchar(pj_traits, n_traits, 1)
    base = base + chk_affection_subchar(pj.knowledge, dialogue_npc.knowledge, 2)
+
+   local n_rep = dialogue_npc.reputation
+   local pj_rep = pj.reputation
+
+   if yIsNil(n_rep) then
+      n_rep = Entity.new_array()
+   end
+
+   if (n_rep.glandeur and n_rep.glandeur > 0 and pj_traits.lazy > 0) or
+      (pj_rep.glandeur > 0 and n_traits.lazy and n_traits.lazy > 0) then
+      base = base + 2
+   end
+
+   -- to be honest this one is slitghly more complex, because a lot of peoples tend to hate
+   -- what they are atracted to. if they considere this sameful.
+   if pj_rep.slut > 0 and n_traits.perv and n_traits.perv > 0 then
+      base = base + 2
+   end
+
+   if (n_rep.bully and n_rep.bully > 0 and pj_traits.violance > 0) or
+      (pj_rep.bully > 0 and n_traits.violance and n_traits.violance > 0) then
+      base = base + 2
+   end
+
    local organisations = dialogue_npc.organisations
    local pj_o = pj.organisations
    for i = 0, yeLen(organisations) - 1 do
