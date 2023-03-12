@@ -195,9 +195,67 @@
          "width":48,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":6,
+         "name":"Actionable",
+         "objects":[
+                {
+                 "class":"",
+                 "height":24.3481,
+                 "id":2,
+                 "name":"lost_2",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"increaseInt"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"phq.quests.find_stuff"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.quests._find_stuff.where"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":2
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":29.0606,
+                 "x":1482.35750932139,
+                 "y":176.075532511007
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":6,
- "nextobjectid":2,
+ "nextlayerid":7,
+ "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

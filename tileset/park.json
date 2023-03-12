@@ -396,6 +396,53 @@
                  "width":41.6273955387999,
                  "x":526.233113415017,
                  "y":14.1376060320452
+                }, 
+                {
+                 "class":"",
+                 "height":24.3480992774112,
+                 "id":26,
+                 "name":"lost_4",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"increaseInt"
+                        }, 
+                        {
+                         "name":"ActionNbArgs",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"phq.quests.find_stuff"
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":"="
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.quests._find_stuff.where"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":4
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":29.0606346214263,
+                 "x":159.440779139177,
+                 "y":611.058749607289
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -415,7 +462,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":26,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

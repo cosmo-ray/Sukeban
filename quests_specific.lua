@@ -85,18 +85,34 @@ end
 -- "{phq.quests._give_letter.from} want me to give a letter to {phq.quests._give_letter.to}",
 
 function give_neutral_quest(a0, a1, box)
+   local TOT_NEUTRAL_QST = 2
+   local which_quest = yuiRand() % TOT_NEUTRAL_QST
    local dial = Entity.wrapp(yDialogueCur(a0))
    local src = Entity.wrapp(ygGet("phq_wid.dialogue_npc"))
-   local target = students[yuiRand() % yeLen(students)]
-   while yeGetString(target.name) == yeGetString(src.name) do
-      target = students[yuiRand() % yeLen(students)]
-   end
 
-   phq.quests._give_letter = {}
-   phq.quests._give_letter.from = src.name
-   phq.quests._give_letter.to = target.name
-   print(src.name, target.name)
-   dial.text = "{phq.quests._give_letter.from} ask you to give letter to {phq.quests._give_letter.to}!"
+   if which_quest == 0 then
+      local target = students[yuiRand() % yeLen(students)]
+      while yeGetString(target.name) == yeGetString(src.name) do
+	 target = students[yuiRand() % yeLen(students)]
+      end
+
+      phq.quests._give_letter = {}
+      phq.quests._give_letter.from = src.name
+      phq.quests._give_letter.to = target.name
+      print(src.name, target.name)
+      dial.text = "{phq.quests._give_letter.from} ask you to give letter to {phq.quests._give_letter.to}!"
+      phq.quests.give_letter = 0
+      yePrint(dial)
+   else
+      local what = "wristband" -- need to be choose depending on src persnality
+
+      phq.quests._find_stuff = {}
+      phq.quests._find_stuff.from = src.name
+      phq.quests._find_stuff.what = what
+      phq.quests._find_stuff.where = (yuiRand() % 4 + 1)
+      phq.quests.find_stuff = 0
+      dial.text = "{phq.quests._find_stuff.from} ask you to help per find pers {phq.quests._find_stuff.what}!"
+   end
    dial.answers = {}
    local answers = dial.answers
    answers[0] = {}
@@ -104,8 +120,6 @@ function give_neutral_quest(a0, a1, box)
    local actions = answers[0].actions
    actions[yeLen(actions)] = "phq.backToGame"
    answers[0].text = "(accept {phq_wid.dialogue_npc.name} task)"
-   phq.quests.give_letter = 0
-   yePrint(dial)
 end
 
 function chk_affection(wid)
