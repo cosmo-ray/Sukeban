@@ -72,7 +72,7 @@ function newGameAction(menu, _eve, _arg)
    phq.pj.reputation.weak = 0
    -- I don't have polite way for this one, sorry
    -- I as a personal note I think it's never okay to considering someone as a
-   -- "slut", but I don't want this game to be dark.
+   -- "slut", but reputation is about what peoples think, and peoples think.
    phq.pj.reputation.slut = 0
    phq.pj.used_items = {}
    phq.pj.equipement = {}

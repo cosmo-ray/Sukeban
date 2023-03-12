@@ -169,11 +169,26 @@ function cheat_show_npc(mn, _current)
 			 "rgba: 0 0 0 255")
    end
 
+   ywCanvasNewTextExt(canvas, 460, 35,
+		      Entity.new_string("year " .. yeGetIntAt(npc, "student_year")),
+		      "rgba: 0 0 0 255")
+   ywCanvasNewTextExt(canvas, 460, 50,
+		      Entity.new_string("class " .. yeGetIntAt(npc, "class")),
+		      "rgba: 0 0 0 255")
+
+
    if npc.relation then
       ywCanvasNewTextExt(canvas, 460, 120,
 			 Entity.new_string(npc.relation:to_string()),
 			 "rgba: 0 0 0 255")
    end
+
+   if npc.reputation then
+      ywCanvasNewTextExt(canvas, 460, 340,
+			 Entity.new_string(npc.reputation:to_string()),
+			 "rgba: 0 0 0 255")
+   end
+
    if npc.trait then
       ywCanvasNewTextExt(canvas, 200, 120,
 			 Entity.new_string(npc.trait:to_string()),
