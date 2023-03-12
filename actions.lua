@@ -329,6 +329,7 @@ function StartFight(wid, eve, enemy_type, script)
    local npc
    --ySoundPlayLoop(main.soundcallgirl:to_int())
 
+   fight_script = nil
    if yIsNNil(script) then
       if (yeType(script)) == YARRAY then
 	 script = Entity.wrapp(script)
