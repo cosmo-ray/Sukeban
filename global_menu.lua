@@ -677,8 +677,12 @@ function gmUseItem(mn)
       been_used = true
       local i = 0
       while i < yeLen(stats_p) do
-	 increaseStat(mn, phq.pj, yeGetKeyAt(stats_p, i),
-		      yeGetIntAt(stats_p, i))
+	 local k = yeGetKeyAt(stats_p, i)
+	 increaseStat(mn, phq.pj, k, yeGetIntAt(stats_p, i))
+	 if k == "life" and phq.pj.life > phq.pj.max_life then
+	    printMessage(main_widget, nil, "life over max, set it to ", phq.pj.max_life)
+	    phq.pj.life = yeGetInt(phq.pj.max_life)
+	 end
 	 i = i + 1
       end
    end
