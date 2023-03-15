@@ -798,7 +798,7 @@ function printMessage(_main, _obj, msg)
    dialogue_box.new_text(main.upCanvas, 0, 0,
 			 txt, main, "box")
 
-   if main.box_t and main.box < 700000 then
+   if main.box_t and main.box < 1500000 then
       main.box_t = main.box_t + TIME_RESET
    else
       main.box_t = TIME_RESET
