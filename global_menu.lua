@@ -697,6 +697,7 @@ function gmUseItem(mn)
 
 	 tsts[0] = what
 	 tsts[1] = -val
+	 printMessage(main_widget, nil, "temporary increase ", what, "of ", val)
 	 ygIncreaseInt(what, val)
       end
    end
