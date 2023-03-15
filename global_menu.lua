@@ -682,6 +682,20 @@ function gmUseItem(mn)
 	 i = i + 1
       end
    end
+
+   if o["tmp_increase_once"] and yIsNil(yeGet(phq.pj.tmp_stats, yeGetString(o_str))) then
+      local tio = o["tmp_increase_once"]
+
+      for j = 0, yeLen(tio) - 1 do
+	 local what = 'phq.pj.' .. yeGetKeyAt(tio, j)
+	 local val = yeGetIntAt(tio, j)
+	 local tsts = new_pj_tmp_stat(yeGetString(o_str))
+
+	 tsts[0] = what
+	 tsts[1] = -val
+	 ygIncreaseInt(what, val)
+      end
+   end
    if been_used then
       remove(mn, nil, o_str)
    end

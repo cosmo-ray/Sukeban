@@ -629,6 +629,13 @@ function increase(_wid, _eve, whatType, what, val)
    return increaseStat(wid, stat_container, what, yeGetInt(val))
 end
 
+function new_pj_tmp_stat(name)
+   if yIsNil(phq.pj.tmp_stats) then
+      phq.pj.tmp_stats = {}
+   end
+   return Entity.new_array(phq.pj.tmp_stats, name)
+end
+
 function tmp_increase(_wid, actionable_obj, what, val)
    actionable_obj = Entity.wrapp(actionable_obj)
 
@@ -641,10 +648,7 @@ function tmp_increase(_wid, actionable_obj, what, val)
    end
 
    val = yeGetInt(val)
-   if yIsNil(phq.pj.tmp_stats) then
-      phq.pj.tmp_stats = {}
-   end
-   local tsts = Entity.new_array(phq.pj.tmp_stats)
+   local tsts = new_pj_tmp_stat()
    tsts[0] = what
    tsts[1] = -val
    local s = "Increase: " .. yeGetString(what) .. " temporary of: " .. val

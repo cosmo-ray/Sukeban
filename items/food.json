@@ -40,5 +40,10 @@
 	    "life": 3,
 	    "drunk": -1
 	}
+    },
+    "Go Muscu Chocolat Bar": {
+	"type": "usable",
+	"stats+" : { "life": 6 },
+	"tmp_increase_once": { "stats.strength": 1 }
     }
 }
