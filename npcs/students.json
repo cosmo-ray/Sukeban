@@ -5,7 +5,6 @@
 	"ai": "bob_ai",
 	"student_year": 1,
         "max_life": 10,
-	"attack" : "unarmed0",
 	"stats": {
 	    "charm": 0,
 	    "strength": 0,
@@ -31,7 +30,6 @@
         "type": "light",
 	"student_year": 1,
         "max_life": 10,
-	"attack" : "unarmed0",
 	"hair": ["princess", "white-blonde2"],
 	"stats": {
 	    "charm": 9,
@@ -59,7 +57,6 @@
     "Jaquobe": {
 	"sex": "male",
         "type": "light",
-	"attack" : "unarmed0",
         "max_life": 10,
 	"student_year": 1,
 	"organisations": ["Computer club", "Animu Club"],
@@ -118,7 +115,6 @@
 	"sex": "female",
         "type": "light",
 	"student_year": 3,
-	"attack" : "unarmed1",
         "max_life": 25,
 	"hair": ["", "LongHair_gold"],
 	"stats": {
@@ -145,7 +141,6 @@
 	"sex": "female",
         "type": "light",
 	"student_year": 2,
-	"attack" : "unarmed1",
         "max_life": 25,
 	"hair": ["loose", "redhead2"],
 	"image": {
@@ -208,7 +203,6 @@
         "type": "light",
 	"student_year": 2,
         "max_life": 10,
-	"attack" : "unarmed0",
 	"organisations": ["Students Protection Group"],
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
@@ -238,7 +232,6 @@
 	"student_year": 1,
 	"atk_mod": "berserker",
         "max_life": 10,
-	"attack" : "unarmed0",
 	"stats": {
 	    "charm": 4,
 	    "agility": 9,
@@ -264,7 +257,6 @@
         "type": "light",
 	"student_year": 1,
         "max_life": 10,
-	"attack" : "unarmed0",
 	"stats": {
 	    "charm": 4,
 	    "strength": 2,
@@ -292,7 +284,6 @@
 	"class": 2,
         "max_life": 100,
 	"hair": ["unkempt", "raven"],
-	"attack" : "sukeban boxe",
 	"ai": "elise",
 	"stats": {
 	    "charm": 4,
@@ -322,7 +313,6 @@
 	"class": 1,
         "max_life": 120,
 	"hair": ["unkempt", "raven"],
-	"attack" : "yoyo3",
 	"ai": "sakai",
 	"image": {
 	    "dst-threshold": [200,-300],
