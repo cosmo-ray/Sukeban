@@ -4,7 +4,6 @@
 	"type": "light",
         "max_life": 7,
 	"is_generic": true,
-	"attack" : "unarmed0",
 	"hair": ["plain", "raven"],
 	"equipement": {
 	    "torso": "white longsleeve m",
@@ -18,7 +17,6 @@
         "max_life": 13,
 	"dialogue": "bar_random",
 	"is_generic": true,
-	"attack" : "unarmed0",
 	"hair": ["plain", "raven"],
 	"equipement": {
 	    "torso": "white longsleeve m",
@@ -32,7 +30,6 @@
         "max_life": 13,
 	"dialogue": "bar_random",
 	"is_generic": true,
-	"attack" : "unarmed0",
 	"hair": ["plain", "raven"],
 	"equipement": {
 	    "torso": "white_sleeveless",
@@ -44,7 +41,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -56,7 +52,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -68,7 +63,6 @@
 	"sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -80,7 +74,6 @@
 	"sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -93,7 +86,6 @@
 	"small talk": "wouaf wouaf !\nwouaf",
 	"dialogue_condition": ["S=", "phq.pj.equipement.torso",
 			       "Black Leather blouse"],
-	"attack" : "unarmed0",
         "max_life": 7,
 	"ai": "wouaf_ai",
 	"sprite": {
@@ -108,7 +100,6 @@
     "Kaline": {
 	"type": "sprite",
 	"small talk": ["rand", "Miaou !", "Nyaa !", "Meow !", "Miau !", "Miao !"],
-	"attack" : "unarmed0",
 	"scene_ai": "phq.scene_ai.random_movements",
 	"scene_ai_condition": ["S=", "phq.env.time", "morning"],
         "max_life": 4,
@@ -124,7 +115,6 @@
 	"sex": "male",
         "type": "light",
 	"max_life": 10,
-	"attack" : "unarmed1",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -158,7 +148,6 @@
 	"sex": "male",
 	"type": "light",
 	"max_life": 35,
-	"attack" : "unarmed2",
 	"equipement": {
 	    "torso": "white longsleeve m",
 	    "legs": "teal pants m",
