@@ -7,7 +7,6 @@
 	"type": "light",
         "max_life": 13,
 	"is_generic": true,
-	"attack" : "unarmed0",
 	"hair": ["plain", "raven"],
 	"equipement": {
 	    "torso": "white longsleeve m",
@@ -19,7 +18,6 @@
 	"sex": "female",
 	"type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
             "torso/dress_female/dress_w_sash_female.png",
@@ -30,7 +28,6 @@
 	"sex": "female",
 	"type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
             "torso/dress_female/dress_w_sash_female.png",
@@ -41,7 +38,6 @@
 	"sex": "female",
 	"type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
             "torso/dress_female/dress_w_sash_female.png",
@@ -52,7 +48,6 @@
 	"sex": "female",
 	"type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
             "torso/dress_female/dress_w_sash_female.png",
@@ -63,7 +58,6 @@
 	"sex": "female",
 	"type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
             "torso/dress_female/dress_w_sash_female.png",
@@ -74,7 +68,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -86,7 +79,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -98,7 +90,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -111,7 +102,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
 	    "feet/shoes/male/brown_shoes_male.png",
             "torso/robes_female_no_th-sh/black.png",
@@ -123,7 +113,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -136,7 +125,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -149,7 +137,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -162,7 +149,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -175,7 +161,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "legs/pants/male/teal_pants_male.png",
@@ -187,7 +172,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 1,
-	"attack" : "unarmed0",
 	"loot": { "beer" : 1, "money": 10 },
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
@@ -201,7 +185,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -215,7 +198,6 @@
         "sex": "male",
         "type": "light",
         "max_life": 1,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/chain/tabard/jacket_male.png",
@@ -230,7 +212,6 @@
         "sex": "female",
         "type": "light",
         "max_life": 10,
-	"attack" : "unarmed0",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/sleeveless/female/white_sleeveless.png",
@@ -243,7 +224,6 @@
     "Jane": {
         "sex": "female",
         "type": "light",
-	"attack" : "unarmed0",
         "max_life": 1,
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
@@ -257,7 +237,6 @@
     "Short guy": {
         "sex": "male",
         "type": "light",
-	"attack" : "unarmed0",
         "max_life": 1,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
@@ -273,7 +252,6 @@
         "sex": "female",
         "type": "light",
 	"ai": "mom_ai",
-	"attack" : "unarmed0",
         "clothes": [
             "feet/ghillies_female_no_th-sh.png",
             "torso/dress_female/dress_w_sash_female.png",
@@ -294,7 +272,6 @@
     "Bouncer": {
 	"sex": "male",
         "type": "light",
-	"attack" : "unarmed1",
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
@@ -306,7 +283,6 @@
 	"sex": "male",
         "type": "light",
 	"max_life": 10,
-	"attack" : "unarmed1",
 	"calendar": { "everyday": { "night" : "street0" } },
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
