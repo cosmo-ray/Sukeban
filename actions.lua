@@ -319,9 +319,7 @@ function npcDefaultInit(npc, enemy_type)
       npc.max_life = 1
    end
    npc.life = npc.max_life
-   if yIsNil(npc.attack) then
-      npc.attack = "unarmed0"
-   end
+
    npc.weapon = phq.combots[yeGetString(npc.attack)]
    print("NPC", npc.name, " WEAPON !!!!: ", npc.attack, npc.weapon, phq.combots )
    return npc
