@@ -148,6 +148,18 @@
 		    "News about a pack of dogs living in the mountains, who hunt bears",
 		    "TV report about how a volleyball coatch, that use to be a general in the national navy, train his team to win the olympic game 20 years ago",
 		    "television report about how winemaker are switching to organic and natural wine",
+		    {
+			"text": "government want to introduce a new legislation, that will privatize most universities, syndicates threatens to go on strikes",
+			"condition": ["and", ["<", "phq.env.school_day", 26], [">", "phq.env.school_day", 19]]
+		    },
+		    {
+			"text": "Debate whatever privatization would be good for educations",
+			"condition": ["and", ["<", "phq.env.school_day", 26], [">", "phq.env.school_day", 19]]
+		    },
+		    {
+			"text": "Documentation, about how a school that was privatize at the other end of the work, end up increasin it's students grades",
+			"condition": ["and", ["<", "phq.env.school_day", 26], [">", "phq.env.school_day", 19]]
+		    },
 		    "reportage about the broken career of an old tenis women, who use to have some of the stronger server ever, but end up breaking her wrist beyong repair",
 		    "News about our country making some giant robots real\nthey say it's for military purpose\nwith a big add telling us to join the army now",
 		    "A new Sparkling Water brand should be commercialize soon",
