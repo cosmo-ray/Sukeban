@@ -503,9 +503,17 @@ end
 
 function morning_class(mn)
    print("I'm at school, yayyyyyy", phq.env.school_day)
-   if phq.env.school_day > 27 and phq.env.school_day % 2 == 1 and phq.env.chapter < 2 then
+   print(phq.env.school_day, phq.env.school_day > 26)
+   print(yeGetInt(phq.env.school_day), yeGetInt(phq.env.school_day) % 2)
+   print(phq.env.chapter < 2)
+   if phq.env.school_day > 26 and yeGetInt(phq.env.school_day) % 2 == 1 and
+      phq.env.chapter < 2 then
       phq.env.school_day = phq.env.school_day + 1
       phq.events.is_blockus = 1
+      advance_time(main_widget, "street3", true)
+      main_widget.cant_skip_time = 0
+      backToGame2()
+      return
    end
    if phq.env.school_day < 30 and phq.env.chapter > 2 then
       phq.events.saki_presentaion = 1 -- this is to ensure we can end the game

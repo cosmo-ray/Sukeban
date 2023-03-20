@@ -125,9 +125,9 @@
 	    },
 	    {
 		"condition":  ["and", ["S=", "phq.env.time", "morning"], ["=", "phq.env.school_day", 26]],
-		"text": "The gouvernement annonce they will privatize most National Universities, syndicates call for General strike, starting tommorow",
+		"text": "The gouvernement annonce they will privatize most National Universities\nsyndicates call for General strike, starting tommorow",
 		"answer": {
-		    "text": "Ok, will that concern my school too",
+		    "text": "Ok, will that concern my school too ?",
 		    "action": "phq.backToGame"
 		}
 	    },
