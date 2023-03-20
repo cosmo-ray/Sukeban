@@ -503,6 +503,10 @@ end
 
 function morning_class(mn)
    print("I'm at school, yayyyyyy", phq.env.school_day)
+   if phq.env.school_day > 27 and phq.env.school_day % 2 == 1 and phq.env.chapter < 2 then
+      phq.env.school_day = phq.env.school_day + 1
+      phq.events.is_blockus = 1
+   end
    if phq.env.school_day < 30 and phq.env.chapter > 2 then
       phq.events.saki_presentaion = 1 -- this is to ensure we can end the game
       phq.env.school_day = 30

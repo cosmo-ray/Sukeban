@@ -738,6 +738,9 @@ function advance_time(_main, next_loc, force_skip_time, next_pos)
       phq.env.time = "morning"
       phq.env.dayrand = yuiRand()
       phq.env.day = phq.env.day + 1
+      if phq.events.is_blockus > 0 then
+	 phq.events.is_blockus = nil
+      end
       if phq.env.day > 6 then
 	 phq.env.day = 0
 	 phq.env.week = phq.env.week + 1
