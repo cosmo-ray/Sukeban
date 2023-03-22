@@ -13,6 +13,8 @@ function vnScene(wid, _eve, scene, dialogueWid)
 
    if yeType(scene) == YSTRING then
       scene = Entity.wrapp(yeGet(vn_scenes, yeGetString(scene)))
+   elseif yIsLuaString(scene) then
+      scene = Entity.wrapp(yeGet(vn_scenes, scene))
    end
    backToGame(wid)
    if yIsNil(dialogueWid) then

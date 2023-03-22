@@ -513,6 +513,7 @@ function morning_class(mn)
       advance_time(main_widget, "street3", true)
       main_widget.cant_skip_time = 0
       backToGame2()
+      vnScene(main_widget, nil, "blockus")
       return
    end
    if phq.env.school_day < 30 and phq.env.chapter > 2 then

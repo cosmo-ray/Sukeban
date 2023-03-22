@@ -1,22 +1,21 @@
-
 {
     "blockus": {
-	    "in" : {
-	        "text": "It seems school is block due to social mouvement",
-	        "answers": [
-						{
-							"text": "Join the blockade",
-		          "action": "phq.backToGame"
-            },
-            {
-               "text": "go home studie",
-		           "action": "phq.backToGame"
-             },
-             {
-               "text": "go do something else",
-		           "action": "phq.backToGame"
-             }
-          ]
-			}
+	"in" : {
+	    "text": "It seems school is block due to social mouvement",
+	    "answers": [
+		{
+		    "text": "Join the blockade",
+		    "action": "phq.backToGame"
+		},
+		{
+		    "text": "go home studie",
+		    "action": "phq.backToGame"
+		},
+		{
+		    "text": "go do something else",
+		    "action": "phq.backToGame"
 		}
+            ]
+	}
+    }
 }
