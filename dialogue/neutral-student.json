@@ -9,6 +9,31 @@
 		"condition": [">", "phq_wid.dialogue_npc.relation.affection", 10],
 		"pre-action": ["Dialogue.swap", "phq_wid.dialogues.friendly-student"]
 	    },
+	    "hungry": {
+		 "text": "({phq.quests._give_letter.from} saw your guriko, and tell you with his eyes he want some)",
+		 "condition": ["and",
+			       ["and",
+				["<", "phq_wid.dialogue_npc.have_talk", 1],
+				[">", "phq.pj.inventory.Guriko", 1]
+			       ],
+			       ["d100_inf", 5]
+			      ],
+		 "answers": [
+			 {
+				 "text": "(keep your Guriko for yourself)",
+				 "action": "dialogue.gotoNext"
+ 			 },
+			 {
+				 "text": "(give per a Guriko)",
+				 "actions": [
+			   		 ["setInt", "phq_wid.dialogue_npc.have_talk", 1],
+					 ["phq.remove", "Guriko"],
+					 ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 3],
+					 "phq.backToGame"
+				]
+			 }
+		]
+	    },
 	    "greeting": {
 		"text": "hello",
 		"answers": [
