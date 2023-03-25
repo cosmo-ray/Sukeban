@@ -390,17 +390,27 @@ function do_tactical_fight(eve)
 	    npc = Entity.new_copy(npc)
 	 end
 
+	 local pc_dir = main_widget.pj.y:to_int()
 	 local px = pjPos:x()
 	 local py = pjPos:y()
-	 if (i - 1) % 2 == 0 then
-	    px = px - (i / 2 + 1) * 60 - 20
+
+	 if pc_dir == LPCS_UP or pc_dir == LPCS_DOWN then
+	    if (i - 1) % 2 == 0 then
+	       px = px - (i / 2 + 1) * 60 - 20
+	    else
+	       px = px + (i / 2 + 1) * 60
+	    end
 	 else
-	    px = px + (i / 2 + 1) * 60
+	    if (i - 1) % 2 == 0 then
+	       py = py - (i / 2 + 1) * 60 - 20
+	    else
+	       py = py + (i / 2 + 1) * 60
+	    end
 	 end
 	 local npcp = Pos.new(px, py)
 
 	 push_character(tdata, tdata.goods, npc,
-			push_npc(npcp, npcn, main_widget.pj.y:to_int(), npc),
+			push_npc(npcp, npcn, pc_dir, npc),
 			npcn, HERO_TEAM, pj_dir)
 
       end

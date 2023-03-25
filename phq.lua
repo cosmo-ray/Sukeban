@@ -213,6 +213,7 @@ function generic_setDir(npc, dir)
 	 dir = yeGetInt(dir)
       end
 
+      -- uldr = up left down right
       if yeGetString(npc.sp.disposition) == "uldr" then
 	 if dir == LPCS_LEFT then
 	    yeSetAt(npc, "y_offset", 32)
@@ -223,6 +224,7 @@ function generic_setDir(npc, dir)
 	 else
 	    yeSetAt(npc, "y_offset", 0)
 	 end
+      -- urdl = up right down left
       elseif yeGetString(npc.sp.disposition) == "urdl" then
 	 if dir == LPCS_LEFT then
 	    yeSetAt(npc, "y_offset", 96)
