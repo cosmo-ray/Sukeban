@@ -329,20 +329,26 @@ function do_tactical_fight(eve)
 	       local name = ylaCreateYirlFmtString(a[j][0])
 	       print("move: ", a[j], yeGetString(name),
 		     yeGetString(name) == yeGetString(phq.pj.name))
+	       local to_move = nil;
 	       if yeGetString(name) == yeGetString(phq.pj.name) then
 		  generic_handlerMoveXY(main_widget.pj,
 					yeGetInt(a[j][1]),
 					yeGetInt(a[j][2]))
+		  to_move = main_widget.pj
 	       else
 		  goods = tdata.goods
 		  -- I'm very unsure of thoses lines :(
 		  for j2 = 0, yeLen(goods) - 1 do
 		     if yeGetString(name) == yeGetString(goods[j2][2]) then
+			to_move = goods[j2][1]
 			generic_handlerMoveXY(goods[j2][1],
 					      yeGetInt(a[j][1]),
 					      yeGetInt(a[j][2]))
 		     end
 		  end
+	       end
+	       if yIsNNil(a[j][3]) then
+		  generic_setDir(main_widget.pj, yeGetString(a[j][3]))
 	       end
 	    end
 	 elseif k == "add-enemies" then

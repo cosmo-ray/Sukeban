@@ -313,6 +313,7 @@
     "rat": {
 	"type": "sprite",
 	"is_generic": true,
+	"max_life": 1,
 	"sprite": {
 	    "path": "imgs/rat.png",
 	    "size": 32,

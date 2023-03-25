@@ -22,12 +22,39 @@
 		"text": [
 		    "Ok here is the oponant that are willing to dance with you",
 		    "Standard Nerd",
-		    "Basic Thrug"
+		    "Basic Thrug",
+		    "Or the groupe dance with the rats ?"
 		],
 		"answers": [
 		    {
 			"text": "Na after some thinking, I'm in no dancing mood",
 			"action": "phq.backToGame"
+		    },
+		    {
+			"text": "Let's dance with rats",
+			"actions": [
+			    "phq.backToGame",
+			    [
+				"phq.tacticalFight",
+				{
+				    "move": [
+					["{phq.pj.name}", -1000, 900, "right"]
+				    ],
+				    "add-enemies": [
+					[800, 900, "rat", "left"],
+					[900, 910, "rat", "left"],
+					[1000, 900, "rat", "left"],
+					[800, 1000, "rat", "left"],
+					[900, 1010, "rat", "left"],
+					[1000, 1000, "rat", "left"]
+				    ],
+				    "add-ally": [
+					["Thrug"],
+					["Thrug"]
+				    ]
+				},
+			    ]
+			]
 		    },
 		    {
 			"text": "I need to warm up, a Standard Nerd to train my fist",

@@ -203,6 +203,10 @@ function generic_handlerSize(npc)
 end
 
 function generic_setDir(npc, dir)
+   if yIsLuaString(dir) then
+      dir = lpcsStrToDir(dir)
+   end
+
    if yeGetString(npc.char.type) == "sprite" then
 
       if (yIsLuaNum(dir) == false) then
