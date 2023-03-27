@@ -51,7 +51,13 @@
 				    "add-ally": [
 					["Thrug"],
 					["Thrug"]
-				    ]
+				    ],
+				    "at-end": {
+					"actions": [
+					    ["phq.recive", "money", 1],
+					    ["phq.increase", "xp", 3]
+					]
+				    }
 				}
 			    ]
 			]

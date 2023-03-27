@@ -169,6 +169,10 @@ local function end_fight()
       end
    end
 
+   if yIsNNil(t.args['at-end']) then
+      ywidActions(main_widget, t.args['at-end'],  nil)
+   end
+
    main_widget.tactical = nil
 end
 
