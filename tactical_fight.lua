@@ -145,6 +145,8 @@ local function end_fight()
    ywCanvasRemoveObj(main_canvas, t.cur_ch_square)
    ywRemoveEntryByEntity(main_widget, t.screen)
    TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
+   cur_char_t = cur_char[TC_IDX_TDTA]
+   ywCanvasRemoveObj(main_widget.upCanvas, cur_char_t[IDX_TMP_DATA])
    main_widget.cam_offset = nil
    move_dst = nil
    cur_char = nil
