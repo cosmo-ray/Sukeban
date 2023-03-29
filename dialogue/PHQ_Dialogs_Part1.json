@@ -101,7 +101,7 @@
 			"text": [
 			    "come'on, it' chapter {phq.env.chapter}, dev can't be that lazy, tell me",
 			    "there is a decent job for me now"
-			],			
+			],
 			"condition": ["and",
 				      ["and", ["not", "phq.events.can_work"],
 					      [">", "phq.env.chapter", 0]],
