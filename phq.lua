@@ -81,6 +81,7 @@ LPCS_LEFT = ygGetInt("lpcs.LEFT")
 LPCS_DOWN = ygGetInt("lpcs.DOWN")
 LPCS_RIGHT = ygGetInt("lpcs.RIGHT")
 LPCS_UP = ygGetInt("lpcs.UP")
+LPCS_DEAD = ygGetInt("lpcs.DEAD")
 
 DAY_STR = {"monday", "tuesday", "wensday", "thursday",
 	   "friday", "saturday", "sunday"}
@@ -207,13 +208,16 @@ function generic_handlerShowDead(npc)
 	 return false
       end
       local x_off_idx = yeGetIntAt(npc, "y_offset") / 32;
-      print(yeGetIntAt(npc, "y_offset"), yeGetIntAt(npc, "y_offset") / 32, yeGetIntAt(npc_c_sprite['dead-pos'], x_off_idx))
+
       npc.text_idx = dead_idx
       sprite_man.handlerSetAdvancement(npc, yeGetIntAt(npc_c_sprite['dead-pos'], x_off_idx))
       sprite_man.handlerRefresh(npc)
       return true
    end
-   return false
+   npc.y = LPCS_DEAD
+   npc.x = 5
+   lpcs.handlerRefresh(npc)
+   return true
 end
 
 function generic_handlerRefresh(npc)
