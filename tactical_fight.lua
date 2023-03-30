@@ -151,6 +151,12 @@ local function end_fight()
    move_dst = nil
    cur_char = nil
    atk_target = nil
+
+   for i = 0, yeLen(t.all_deads) - 1 do
+      generic_handlerNullify(t.all_deads[i])
+   end
+
+
    for i = 0, yeLen(t.all) - 1 do
       if (phq.pj.name ~= t.all[i][TC_IDX_NAME]) then
 	 generic_handlerNullify(t.all[i][TC_IDX_HDLR])
@@ -236,9 +242,14 @@ local function bad_guy_end_turn(cur_char_t, tdata)
    end_tun(tdata)
 end
 
-local function remove_character(tdata, target)
+local function remove_character(tdata, target, is_kill)
    print("remove: ", target[TC_IDX_NAME], yeLen(tdata.all))
-   generic_handlerNullify(target[1])
+   if is_kill and generic_handlerShowDead(target[TC_IDX_HDLR]) then
+      yePushBack(tdata.all_deads, target[TC_IDX_HDLR])
+      target[TC_IDX_HDLR].canvas.idx = nil
+   else
+      generic_handlerNullify(target[TC_IDX_HDLR])
+   end
    yeEraseByE(tdata.all, target)
    print("af rm: ", yeLen(tdata.all))
    yeEraseByE(tdata.bads, target)
@@ -306,6 +317,7 @@ function do_tactical_fight(eve)
       tdata.bads = {}
       tdata.goods = {}
       tdata.all = {}
+      tdata.all_deads = {}
       tdata.buttons = {}
       current_character = 0
 
@@ -790,7 +802,7 @@ function do_tactical_fight(eve)
       else
 	 if atk_target[TC_IXD_CHAR].life < 1 then
 	    print("He's DEAD !")
-	    remove_character(tdata, atk_target)
+	    remove_character(tdata, atk_target, true)
 	    atk_target = nil
 	 end
 	 ywCanvasRemoveObj(main_widget.upCanvas, cur_char_t[IDX_TMP_DATA])

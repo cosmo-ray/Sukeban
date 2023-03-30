@@ -164,6 +164,58 @@ function generic_handlerRmCanva(npc)
    end
 end
 
+function sprite_getdir(npc)
+   local sdispo = yeGetString(npc.sp.disposition)
+   local x_off_idx = yeGetIntAt(npc, "y_offset");
+
+   if yeGetString(npc.sp.disposition) == "uldr" then
+      if x_off_idx == 32 then
+	 return LPCS_LEFT
+      elseif x_off_idx == 96 then
+	 return LPCS_RIGHT
+      elseif x_off_idx == 64 then
+	 return LPCS_DOWN
+      end
+      return LPCS_UP
+   elseif yeGetString(npc.sp.disposition) == "urdl" then
+      if x_off_idx == 96 then
+	 return LPCS_LEFT
+      elseif x_off_idx == 32 then
+	 return LPCS_RIGHT
+      elseif x_off_idx == 64 then
+	 return LPCS_DOWN
+      end
+      return LPCS_UP
+   else
+      if x_off_idx == 32 then
+	 return LPCS_LEFT
+      elseif x_off_idx == 64 then
+	 return LPCS_RIGHT
+      elseif x_off_idx == 96 then
+	 return LPCS_UP
+      end
+      return LPCS_DOWN
+   end
+end
+
+function generic_handlerShowDead(npc)
+   local npc_char = npc.char
+   if yeGetString(npc_char.type) == "sprite" then
+      local npc_c_sprite = npc_char.sprite
+      local dead_idx = yeGetInt(npc_c_sprite['dead-txt-idx'])
+      if dead_idx < 1 then
+	 return false
+      end
+      local x_off_idx = yeGetIntAt(npc, "y_offset") / 32;
+      print(yeGetIntAt(npc, "y_offset"), yeGetIntAt(npc, "y_offset") / 32, yeGetIntAt(npc_c_sprite['dead-pos'], x_off_idx))
+      npc.text_idx = dead_idx
+      sprite_man.handlerSetAdvancement(npc, yeGetIntAt(npc_c_sprite['dead-pos'], x_off_idx))
+      sprite_man.handlerRefresh(npc)
+      return true
+   end
+   return false
+end
+
 function generic_handlerRefresh(npc)
    if yeGetString(npc.char.type) == "sprite" then
       sprite_man.handlerRefresh(npc)
