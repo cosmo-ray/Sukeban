@@ -50,6 +50,74 @@
 		    }
 		]
 	    },
+	    "Beatting The Drawf Traitor": {
+		"text": ["{phq.pj.name} !!!, I need you",
+			"That cute girl with who I've play Drongeon and Drogron",
+			"was very disrespectful of me, and refuse my kiss, so i want revenge"],
+		"condition":
+		    ["and",
+		      ["and",
+			["contain_string", "phq.pj.organisations", "Board Game and Roleplay Club"],
+			[">", "phq.env.school_day", 9]
+		      ],
+		     ["!exist", "phq.events.lufa-revenge"]
+		    ],
+		 "answer": {
+			 "text": "what ?",
+			 "actions": [
+				 [ "setInt", "phq.events.lufa-revenge", 1],
+				 "Dialogue:gotoNext"
+			 ]
+		 }
+	    },
+	    {
+		"text": ["I've play D&D with some girl from Center School",
+			"that whore play some very annoying paladin, and was very unRP",
+			"as someone who have a great respect for RP, I HATE WHORE WHO REFUSE MY ADVANCE",
+			"I mean who doesn't respect the lore while playing",
+			"So let's show her the wrath of the elven queen, and her bodyguard",
+		        "If that work well, I'll give you my most precious artifact !"],
+		"condition": ["=", "phq.events.lufa-revenge", 1],
+	        "answers": [
+	           {
+	              "text": "humm, I'm sorry but I really can't",
+	              "actions": [
+	                [ "setInt", "phq.events.lufa-revenge", -1],
+                        "phq.backToGame"
+                      ]
+                   },
+                   {
+		      "text": "everythin for you my queen",
+		      "actions": [
+			 [ "setInt", "phq.events.lufa-revenge", -1],
+			 ["phq.changeScene", "street3", 1],
+		         ["phq.tacticalFight",
+		          {
+			   "move": [
+			     ["{phq.pj.name}", 0, 100]
+			   ],
+			   "add-enemies": [
+			     [800, 900, "std_nerd", "up"],
+			     [900, 910, "std_nerd", "up"],
+			     [1000, 900, "std_nerd", "up"],
+			     [800, 1000, "std_nerd", "up"],
+			     [900, 1010, "std_nerd", "up"],
+			     [1000, 1000, "std_nerd", "up"]
+			   ],
+			   "add-ally": [
+			     ["Lufa Mig Saucer"]
+			   ],
+		           "at-end": {
+			      "actions": [
+				 ["phq.recive", "pink D20", 1],
+				 ["phq.increase", "xp", 10]
+			      ]
+			   }
+		        }
+		      ]
+                   }
+	        ]
+	    },
 	    "Elf Domain": {
 		"text": "Welcom to the eleven queen lair",
 		"condition": ["S=", "phq_wid.cur_scene_str", "school_boardgame_club"],
