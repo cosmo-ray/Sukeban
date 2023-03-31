@@ -113,9 +113,11 @@
 				 ["phq.increase", "xp", 10]
 			      ]
 			   }
-		        }
-		    ]
-	        ]
+		          }
+		       ]
+	             ]
+		  }
+	       ]
 	    },
 	    "Elf Domain": {
 		"text": "Welcom to the eleven queen lair",
