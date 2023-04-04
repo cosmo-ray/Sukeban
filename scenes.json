@@ -177,7 +177,7 @@
 		 "dialogues" : "dialogue/school.json"},
     "wc_boy" : {"tiled": "./tileset/wc_boy.json",
 		"dialogues" : "dialogue/school.json"},
-
+    "center-school-entrance" : {"tiled": "./tileset/center-school-entrance.tmj"},
     "test_zone" : {
 	"dialogues" : "dialogue/test_d.json",
 	"out": {

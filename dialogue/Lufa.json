@@ -90,19 +90,19 @@
 		      "text": "everythin for you my queen",
 		      "actions": [
 			 [ "setInt", "phq.events.lufa-revenge", -1],
-			 ["phq.changeScene", "street3", 1],
+			 ["phq.changeScene", "center-school-entrance", 1],
 		         ["phq.tacticalFight",
 		          {
 			   "move": [
-			     ["{phq.pj.name}", 0, 100]
+			     ["{phq.pj.name}", -100, 0]
 			   ],
 			   "add-enemies": [
-			     [800, 900, "std_nerd", "up"],
-			     [900, 910, "std_nerd", "up"],
-			     [1000, 900, "std_nerd", "up"],
-			     [800, 1000, "std_nerd", "up"],
-			     [900, 1010, "std_nerd", "up"],
-			     [1000, 1000, "std_nerd", "up"]
+			     [400, 500, "std_nerd", "up"],
+			     [500, 510, "std_nerd", "up"],
+			     [6000, 500, "std_nerd", "up"],
+			     [400, 600, "std_nerd", "up"],
+			     [500, 610, "std_nerd", "up"],
+			     [600, 600, "std_nerd", "up"]
 			   ],
 			   "add-ally": [
 			     ["Lufa Mig Saucer"]

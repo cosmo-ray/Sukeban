@@ -1348,7 +1348,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    c.tile_script = nil
    c.enter_script = nil
 
-   if (scene == nil) then
+   if yIsNil(scene) then
       print("Can not load scene: sceneTxt")
    end
 
