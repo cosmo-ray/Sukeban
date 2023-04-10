@@ -63,9 +63,9 @@ function randomMovements(_osef, action)
       local tmp = Entity.new_array()
       local dir = rand_array_elem(directions)
       saveNpcCanvasMatadata(tmp, h.canvas)
-      generic_setDir(h, dir)
+      yGenericSetDir(h, dir)
       action._d = dir
-      generic_handlerRefresh(h)
+      yGenericHandlerRefresh(h)
       restoreNpcCanvasMatadata(h.canvas, tmp)
    end
    action.timer_add = action.timer_add + ywidGetTurnTimer() / 100
@@ -87,10 +87,10 @@ function randomMovements(_osef, action)
    add_pos = Pos.new(add_x, add_y)
 
    if npc_check_col(main_widget_screen,
-		    Rect.new_ps(generic_handlerPos(h),
-				generic_handlerSize(h)).ent,
+		    Rect.new_ps(yGenericHandlerPos(h),
+				yGenericHandlerSize(h)).ent,
 		    add_pos.ent) == false then
-      generic_handlerMoveXY(h, add_x, add_y)
+      yGenericHandlerMoveXY(h, add_x, add_y)
    end
    --print("random movements !!!", action, ywidGetTurnTimer() / 100)
 end
@@ -306,7 +306,7 @@ function PjLeaveController(wid, action)
    if yIsNil(npc) or npc.char == nil then
       return
    end
-   local curPos = generic_handlerPos(npc)
+   local curPos = yGenericHandlerPos(npc)
    local dif_x = ywPosX(mvPos) - ywPosX(curPos)
    local dif_y = ywPosY(mvPos) - ywPosY(curPos)
    action[ACTION_MV_TBL_IDX] = action[ACTION_MV_TBL_IDX] + 1
@@ -341,7 +341,7 @@ function PjLeaveController(wid, action)
    local tmp = Entity.new_array()
    saveNpcCanvasMatadata(tmp, npc.canvas)
    if yeGetString(npc.char.type) == "sprite" then
-      generic_setDir(npc, npc.y)
+      yGenericSetDir(npc, npc.y)
       sprite_man.handlerSetPos(npc, mvPos)
       sprite_man.handlerRefresh(npc)
    else

@@ -425,9 +425,9 @@ function StartFight(wid, eve, enemy_type, script)
 	       break
 	    end
 	 end
-	 generic_handlerNullify(script[1])
+	 yGenericHandlerNullify(script[1])
       else
-	 generic_handlerNullify(script[1])
+	 yGenericHandlerNullify(script[1])
 	 yeRemoveChild(main.enemies, script[1])
       end
    elseif fight_script == "CombatDialogueGoto" then
@@ -1091,16 +1091,16 @@ function push_npc(pos, name, dir, npc)
    elseif yeGetString(npc.type) == "sprite" then
       npc = sprite_man.createHandler(npc, c, main_widget.npcs, name)
       npc = Entity.wrapp(npc)
-      generic_handlerRefresh(npc)
+      yGenericHandlerRefresh(npc)
    else
       dressup.dressUp(npc)
       npc = lpcs.createCaracterHandler(npc, c, main_widget.npcs, name)
    end
 
    npc = Entity.wrapp(npc)
-   generic_setPos(npc, pos.ent)
-   generic_setDir(npc, dir)
-   generic_handlerRefresh(npc)
+   yGenericSetPos(npc, pos.ent)
+   yGenericSetDir(npc, dir)
+   yGenericHandlerRefresh(npc)
    npc.canvas.Collision = 1
    return npc
 end

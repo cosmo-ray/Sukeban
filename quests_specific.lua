@@ -391,7 +391,7 @@ local function game_scene(_wid, _eve, scene_str)
    if cs["force-pos"] then
       pos = cs["force-pos"]
    elseif cs["npc-pos"] then
-      pos = generic_handlerPos(main_widget.npcs[cs["npc-pos"]])
+      pos = yGenericHandlerPos(main_widget.npcs[cs["npc-pos"]])
    end
 
    local start = 0
@@ -405,7 +405,7 @@ local function game_scene(_wid, _eve, scene_str)
       ylpcsHandlerSetPos(main_widget.pj, pos)
       if dir ~= nil then
 	 lpcs.handlerSetOrigXY(main_widget.pj, 0, lpcsStrToDir(yeGetString(dir)))
-	 generic_handlerRefresh(main_widget.pj)
+	 yGenericHandlerRefresh(main_widget.pj)
       end
       reposeCam(main_widget, main_widget.pj)
    elseif csa == "advance-time" then
@@ -435,7 +435,7 @@ local function game_scene(_wid, _eve, scene_str)
    elseif csa == "remove-npc" then
       local id = yeGetInt(cs.id)
 
-      generic_handlerNullify(game_scene_npcs[id])
+      yGenericHandlerNullify(game_scene_npcs[id])
       game_scene_npcs[id] = nil
    elseif csa == "place-npcs" then
       local npcs = cs.npcs

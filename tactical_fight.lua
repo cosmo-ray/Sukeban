@@ -115,28 +115,28 @@ end
 -- take a canvas pos and translate it to real char pos
 local function canvas_to_char_pos(cpos)
    local char_pos = Entity.new_copy(cpos)
-   local char_size = generic_handlerSize(cur_char[TC_IDX_HDLR])
+   local char_size = yGenericHandlerSize(cur_char[TC_IDX_HDLR])
    ywPosAddXY(char_pos, ywSizeW(char_size) / 2, ywSizeH(char_size) / 3 * 2)
    return char_pos
 end
 
 local function char_to_canvas_pos(cpos)
    local can_pos = Entity.new_copy(cpos)
-   local can_size = generic_handlerSize(cur_char[TC_IDX_HDLR])
+   local can_size = yGenericHandlerSize(cur_char[TC_IDX_HDLR])
    ywPosAddXY(can_pos, -(ywSizeW(can_size) / 2), -(ywSizeH(can_size) / 3 * 2))
    return can_pos
 end
 
 local function tchar_ch_pos(tchar)
-   return canvas_to_char_pos(generic_handlerPos(tchar[TC_IDX_HDLR]))
+   return canvas_to_char_pos(yGenericHandlerPos(tchar[TC_IDX_HDLR]))
 end
 
 local function tchar_can_pos_x(tchar)
-   return ywPosX(generic_handlerPos(tchar[TC_IDX_HDLR]))
+   return ywPosX(yGenericHandlerPos(tchar[TC_IDX_HDLR]))
 end
 
 local function tchar_can_pos_y(tchar)
-   return ywPosY(generic_handlerPos(tchar[TC_IDX_HDLR]))
+   return ywPosY(yGenericHandlerPos(tchar[TC_IDX_HDLR]))
 end
 
 local function end_fight()
@@ -153,13 +153,13 @@ local function end_fight()
    atk_target = nil
 
    for i = 0, yeLen(t.all_deads) - 1 do
-      generic_handlerNullify(t.all_deads[i])
+      yGenericHandlerNullify(t.all_deads[i])
    end
 
 
    for i = 0, yeLen(t.all) - 1 do
       if (phq.pj.name ~= t.all[i][TC_IDX_NAME]) then
-	 generic_handlerNullify(t.all[i][TC_IDX_HDLR])
+	 yGenericHandlerNullify(t.all[i][TC_IDX_HDLR])
       end
    end
    if phq_only_fight > 0 then
@@ -169,7 +169,7 @@ local function end_fight()
       local npcs = t.bak_npcs
       main_widget.npcs = npcs
       for i = 0, yeLen(npcs) - 1 do
-	 generic_handlerRefresh(npcs[i])
+	 yGenericHandlerRefresh(npcs[i])
 	 restoreNpcCanvasMatadata(npcs[i].canvas, npcs[i].mdt_bak)
 	 npcs[i].mdt_bak = nil
       end
@@ -213,8 +213,8 @@ end
 
 local function push_character(tdata, dst, char, h, name, team, dir)
    -- recenter char
-   local s = generic_handlerSize(h)
-   generic_handlerMoveXY(h, -(ywSizeW(s) / 2), -(ywSizeH(s) / 3 * 2))
+   local s = yGenericHandlerSize(h)
+   yGenericHandlerMoveXY(h, -(ywSizeW(s) / 2), -(ywSizeH(s) / 3 * 2))
 
    if yIsNil(char.life) then
       char.life = yeGetInt(char.max_life)
@@ -244,11 +244,11 @@ end
 
 local function remove_character(tdata, target, is_kill)
    print("remove: ", target[TC_IDX_NAME], yeLen(tdata.all))
-   if is_kill and generic_handlerShowDead(target[TC_IDX_HDLR]) then
+   if is_kill and yGenericHandlerShowDead(target[TC_IDX_HDLR]) then
       yePushBack(tdata.all_deads, target[TC_IDX_HDLR])
       target[TC_IDX_HDLR].canvas.idx = nil
    else
-      generic_handlerNullify(target[TC_IDX_HDLR])
+      yGenericHandlerNullify(target[TC_IDX_HDLR])
    end
    yeEraseByE(tdata.all, target)
    print("af rm: ", yeLen(tdata.all))
@@ -339,7 +339,7 @@ function do_tactical_fight(eve)
 	    tdata.bak_npcs = npcs
 	    for j = 0, yeLen(npcs) - 1 do
 	       saveNpcCanvasMatadata(npcs[j].canvas, npcs[j].mdt_bak)
-	       generic_handlerRmCanva(npcs[j])
+	       yGenericHandlerRmCanva(npcs[j])
 	    end
 	    main_widget.npcs = {}
 	 elseif k == "move" then
@@ -349,7 +349,7 @@ function do_tactical_fight(eve)
 		     yeGetString(name) == yeGetString(phq.pj.name))
 	       local to_move = nil;
 	       if yeGetString(name) == yeGetString(phq.pj.name) then
-		  generic_handlerMoveXY(main_widget.pj,
+		  yGenericHandlerMoveXY(main_widget.pj,
 					yeGetInt(a[j][1]),
 					yeGetInt(a[j][2]))
 		  to_move = main_widget.pj
@@ -359,14 +359,14 @@ function do_tactical_fight(eve)
 		  for j2 = 0, yeLen(goods) - 1 do
 		     if yeGetString(name) == yeGetString(goods[j2][2]) then
 			to_move = goods[j2][1]
-			generic_handlerMoveXY(goods[j2][1],
+			yGenericHandlerMoveXY(goods[j2][1],
 					      yeGetInt(a[j][1]),
 					      yeGetInt(a[j][2]))
 		     end
 		  end
 	       end
 	       if yIsNNil(a[j][3]) then
-		  generic_setDir(main_widget.pj, yeGetString(a[j][3]))
+		  yGenericSetDir(main_widget.pj, yeGetString(a[j][3]))
 	       end
 	    end
 	 elseif k == "add-enemies" then
@@ -565,8 +565,8 @@ function do_tactical_fight(eve)
 	    end
 
 	    if nearest_target then
-	       local p = generic_handlerPos(nearest_target[1])
-	       local s = generic_handlerSize(nearest_target[1])
+	       local p = yGenericHandlerPos(nearest_target[1])
+	       local s = yGenericHandlerSize(nearest_target[1])
 	       local col
 
 	       if yeGetInt(nearest_target[TC_IDX_TEAM]) == HERO_TEAM then
@@ -726,7 +726,7 @@ function do_tactical_fight(eve)
       end
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_MOVE then
 
-      local char_pos = generic_handlerPos(cur_char[1])
+      local char_pos = yGenericHandlerPos(cur_char[1])
       local turn_timer = ywidTurnTimer() / 10000
       local pix_mv = turn_timer * PIX_MV_PER_MS + pix_floor_left
       pix_floor_left = pix_mv - math.floor(pix_mv)
@@ -753,15 +753,15 @@ function do_tactical_fight(eve)
       --local mvPos = Pos.new(pix_mv * ),
       --pix_mv * )
       if (math.abs(tot_dist) < 30) then
-	 generic_setPos(cur_char[1], move_dst)
+	 yGenericSetPos(cur_char[1], move_dst)
 	 TACTICAL_FIGHT_MODE = EX_MODE
       else
-	 generic_handlerMoveXY(cur_char[1], x_mv, y_mv)
+	 yGenericHandlerMoveXY(cur_char[1], x_mv, y_mv)
       end
 
       local aimed_dir = distanceToDir(x_mv, y_mv)
       if yeGetInt(cur_char[TC_IDX_TDTA][IDX_NPC_DIR]) ~= aimed_dir then
-	 generic_setDir(cur_char[1], aimed_dir)
+	 yGenericSetDir(cur_char[1], aimed_dir)
 	 cur_char[TC_IDX_TDTA][IDX_NPC_DIR] = aimed_dir
       end
 
@@ -771,7 +771,7 @@ function do_tactical_fight(eve)
 	    ylpcsHandlerNextStep(cur_char[1])
 	 end
 
-	 generic_handlerRefresh(cur_char[1])
+	 yGenericHandlerRefresh(cur_char[1])
 	 cur_char[TC_IDX_TDTA][IDX_PIX_MV] = 0
       end
 
@@ -812,8 +812,8 @@ function do_tactical_fight(eve)
    end -- end MODE_CHAR_ATTACK
 
    -- print all stuf
-   local cur_ch_pos = generic_handlerPos(cur_char[1])
-   local cur_ch_size = generic_handlerSize(cur_char[1])
+   local cur_ch_pos = yGenericHandlerPos(cur_char[1])
+   local cur_ch_size = yGenericHandlerSize(cur_char[1])
    ywCanvasObjSetPos(tdata.cur_ch_square, ywPosX(cur_ch_pos) + 4,
 		     ywPosY(cur_ch_pos) + ywSizeH(cur_ch_size) - 32)
 
