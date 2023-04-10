@@ -99,7 +99,7 @@
 			   "add-enemies": [
 			     [400, 500, "std_nerd", "up"],
 			     [500, 510, "std_nerd", "up"],
-			     [6000, 500, "std_nerd", "up"],
+			     [600, 500, "std_nerd", "up"],
 			     [400, 600, "std_nerd", "up"],
 			     [500, 610, "std_nerd", "up"],
 			     [600, 600, "std_nerd", "up"]
