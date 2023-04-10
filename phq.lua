@@ -157,14 +157,6 @@ function lpcsDirToStr(sdir)
    return "unknow"
 end
 
-function generic_handlerRmCanva(npc)
-   if yeGetString(npc.char.type) == "sprite" then
-      sprite_man.handlerRemoveCanva(npc)
-   else
-      lpcs.handlerRemoveCanva(npc)
-   end
-end
-
 function sprite_getdir(npc)
    local sdispo = yeGetString(npc.sp.disposition)
    local x_off_idx = yeGetIntAt(npc, "y_offset");
@@ -197,132 +189,6 @@ function sprite_getdir(npc)
       end
       return LPCS_DOWN
    end
-end
-
-function generic_handlerShowDead(npc)
-   local npc_char = npc.char
-   if yeGetString(npc_char.type) == "sprite" then
-      local npc_c_sprite = npc_char.sprite
-      local dead_idx = yeGetInt(npc_c_sprite['dead-txt-idx'])
-      if dead_idx < 1 then
-	 return false
-      end
-      local x_off_idx = yeGetIntAt(npc, "y_offset") / 32;
-
-      npc.text_idx = dead_idx
-      sprite_man.handlerSetAdvancement(npc, yeGetIntAt(npc_c_sprite['dead-pos'], x_off_idx))
-      sprite_man.handlerRefresh(npc)
-      return true
-   end
-   npc.y = LPCS_DEAD
-   npc.x = 5
-   lpcs.handlerRefresh(npc)
-   return true
-end
-
-function generic_handlerRefresh(npc)
-   if yeGetString(npc.char.type) == "sprite" then
-      sprite_man.handlerRefresh(npc)
-   else
-      lpcs.handlerRefresh(npc)
-   end
-end
-
-function generic_handlerNullify(npc)
-   if yeGetString(npc.char.type) == "sprite" then
-      sprite_man.handlerNullify(npc)
-   else
-      lpcs.handlerNullify(npc)
-   end
-end
-
-function generic_handlerPos(npc)
-   if yIsNil(npc) or npc.char == nil then
-      return
-   end
-   if yeGetString(npc.char.type) == "sprite" then
-      return sprite_man.handlerPos(npc)
-   else
-      return ylpcsHandlerPos(npc)
-   end
-end
-
-function generic_handlerSize(npc)
-   if yIsNil(npc) or npc.char == nil then
-      return
-   end
-   if yeGetString(npc.char.type) == "sprite" then
-      return sprite_man.handlerSize(npc)
-   else
-      return ylpcsHandlerSize(npc)
-   end
-end
-
-function generic_setDir(npc, dir)
-   if yIsLuaString(dir) then
-      dir = lpcsStrToDir(dir)
-   end
-
-   if yeGetString(npc.char.type) == "sprite" then
-
-      if (yIsLuaNum(dir) == false) then
-	 dir = yeGetInt(dir)
-      end
-
-      -- uldr = up left down right
-      if yeGetString(npc.sp.disposition) == "uldr" then
-	 if dir == LPCS_LEFT then
-	    yeSetAt(npc, "y_offset", 32)
-	 elseif dir == LPCS_RIGHT then
-	    yeSetAt(npc, "y_offset", 96)
-	 elseif dir == LPCS_DOWN then
-	    yeSetAt(npc, "y_offset", 64)
-	 else
-	    yeSetAt(npc, "y_offset", 0)
-	 end
-      -- urdl = up right down left
-      elseif yeGetString(npc.sp.disposition) == "urdl" then
-	 if dir == LPCS_LEFT then
-	    yeSetAt(npc, "y_offset", 96)
-	 elseif dir == LPCS_RIGHT then
-	    yeSetAt(npc, "y_offset", 32)
-	 elseif dir == LPCS_DOWN then
-	    yeSetAt(npc, "y_offset", 64)
-	 else
-	    yeSetAt(npc, "y_offset", 0)
-	 end
-      else
-	 if dir == LPCS_LEFT then
-	    yeSetAt(npc, "y_offset", 32)
-	 elseif dir == LPCS_RIGHT then
-	    yeSetAt(npc, "y_offset", 64)
-	 elseif dir == LPCS_UP then
-	    yeSetAt(npc, "y_offset", 96)
-	 else
-	    yeSetAt(npc, "y_offset", 0)
-	 end
-	 print("set offset: ", dir, npc.y_offset);
-      end
-   else
-      lpcs.handlerSetOrigXY(npc, 0, dir)
-      generic_handlerRefresh(npc)
-   end
-end
-
-function generic_setPos(npc, pos)
-   if yeGetString(npc.char.type) == "sprite" then
-      sprite_man.handlerSetPos(npc, pos)
-   else
-      ylpcsHandlerSetPos(npc, pos)
-   end
-end
-
-function generic_handlerMove(npc, add)
-   ywPosAdd(generic_handlerPos(npc), add)
-end
-
-function generic_handlerMoveXY(npc, x, y)
-   ywPosAddXY(generic_handlerPos(npc), x, y)
 end
 
 local function reposScreenInfo(ent, x0, y0)
@@ -1458,7 +1324,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	    lpcs.handlerSetOrigXY(npc, 0, lpcsStrToDir(yeGetString(obj.Rotation)))
 	 end
 	 npc = Entity.wrapp(npc)
-	 generic_handlerRefresh(npc)
+	 yGenericHandlerRefresh(npc)
 
 	 if yeGetIntAt(obj, "Agresive") == 1 or walkTalker then
 	    if yIsNil(ai) then

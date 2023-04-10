@@ -148,7 +148,7 @@ function cheat_show_npc(mn, _current)
       canvas.h.y = LPCS_DOWN
    end
    handler = canvas.h
-   generic_handlerRefresh(handler)
+   yGenericHandlerRefresh(handler)
 
    yShowDialogueImage(canvas, npc)
    if npc.stats then
