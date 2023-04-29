@@ -65,6 +65,24 @@
 			    "phq.backToGame"]
 		    },
 		    {
+			"text": "Hey, let's play BOARD GAME !",
+			"condition": [
+			    "and",
+			    [ "S=", "phq_wid.cur_scene_str", "school_boardgame_club" ],
+			    [ "not",
+			      [ "contain_string",
+				"phq.pj.organisations",
+				"Board Game and Roleplay Club"
+			      ]
+			    ]
+			],
+			"actions": [
+			    ["phq.printMessage", "play GAME !"],
+			    ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 2],
+			    "phq.backToGame"]
+		    },
+
+		    {
 			"text": "(give {phq.quests._give_letter.from} letter)",
 			"condition": [
 			    "and", ['=', 'phq.quests.give_letter', 0],
