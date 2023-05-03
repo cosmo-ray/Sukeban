@@ -69,12 +69,7 @@
 			"condition": [
 			    "and",
 			    [ "S=", "phq_wid.cur_scene_str", "school_boardgame_club" ],
-			    [ "not",
-			      [ "contain_string",
-				"phq.pj.organisations",
-				"Board Game and Roleplay Club"
-			      ]
-			    ]
+			    [ "contain_string", "phq.pj.organisations", "Board Game and Roleplay Club" ]
 			],
 			"actions": [
 			    ["phq.printMessage", "play GAME !"],
@@ -87,12 +82,7 @@
 			"condition": [
 			    "and",
 			    [ "S=", "phq_wid.cur_scene_str", "school_animu_club" ],
-			    [ "not",
-			      [ "contain_string",
-				"phq.pj.organisations",
-				"Animu Club"
-			      ]
-			    ]
+			    [ "contain_string", "phq.pj.organisations", "Animu Club" ]
 			],
 			"actions": [
 			    ["phq.printMessage", "watch an anime with {phq_wid.dialogue_npc.name} !"],
