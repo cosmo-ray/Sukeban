@@ -49,3 +49,6 @@
 [submodule "modules/croco-427"]
 	path = modules/croco-427
 	url = https://github.com/cosmo-ray/croco-427/
+[submodule "modules/timest_dungeon"]
+	path = modules/timest_dungeon
+	url = https://github.com/ArthurRobein/timest_dungeon.git
