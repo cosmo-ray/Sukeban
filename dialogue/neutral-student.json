@@ -78,8 +78,27 @@
 			],
 			"actions": [
 			    ["phq.printMessage", "play GAME !"],
+			    "phq.advance_time",
 			    ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 2],
 			    ["phq.play", "timest_dungeon"]]
+		    },
+		    {
+			"text": "Let's watch anime !",
+			"condition": [
+			    "and",
+			    [ "S=", "phq_wid.cur_scene_str", "school_animu_club" ],
+			    [ "not",
+			      [ "contain_string",
+				"phq.pj.organisations",
+				"Animu Club"
+			      ]
+			    ]
+			],
+			"actions": [
+			    ["phq.printMessage", "watch an anime with {phq_wid.dialogue_npc.name} !"],
+			    ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 2],
+			    "phq.advance_time",
+			    "phq.backToGame"]
 		    },
 		    {
 			"text": "(give {phq.quests._give_letter.from} letter)",
