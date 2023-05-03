@@ -35,6 +35,7 @@
         { "file" : "modules/underground/", "type" : "module" },
         { "file" : "modules/z-skull-breaker/", "type" : "module"},
         { "file" : "modules/nyanarchiste/", "type" : "module"},
+        { "file" : "modules/timest_dungeon/", "type" : "module"},
         { "file" : "pathfinding/", "type" : "module"},
         { "file" : "dress/", "type" : "module"},
 

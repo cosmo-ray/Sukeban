@@ -79,9 +79,8 @@
 			"actions": [
 			    ["phq.printMessage", "play GAME !"],
 			    ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 2],
-			    "phq.backToGame"]
+			    ["phq.play", "timest_dungeon"]]
 		    },
-
 		    {
 			"text": "(give {phq.quests._give_letter.from} letter)",
 			"condition": [
