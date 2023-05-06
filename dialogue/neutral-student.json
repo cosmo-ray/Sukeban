@@ -20,8 +20,8 @@
 			      ],
 		 "answers": [
 			 {
-				 "text": "(keep your Guriko for yourself)",
-				 "action": "dialogue.gotoNext"
+			     "text": "(keep your Guriko for yourself)",
+			     "action": "Dialogue.gotoNext"
  			 },
 			 {
 				 "text": "(give per a Guriko)",
