@@ -96,6 +96,16 @@ local ai_points = {
    }
 }
 
+function increase_relation_2npc(src, dst_name, nb)
+   local orelations = Entity.wrapp(yeTryCreateArray(src, "onpc_relation"))
+   local orelation = Entity.wrapp(yeTryCreateArray(orelations, dst_name))
+   local oaffaction = yeTryCreateInt(0, orelation, "affection")
+
+   yeSetInt(oaffaction, yeGetInt(oaffaction) + nb)
+   print("nb: ", nb, yeGetInt(oaffaction) + nb)
+   yePrint(src)
+end
+
 function student_ai(_main, npc, name)
    local t = ygGetString("phq.env.time")
    local c = ygGetInt("phq.env.chapter")
@@ -103,6 +113,34 @@ function student_ai(_main, npc, name)
    npc = Entity.wrapp(npc)
 
    print("student_ai", name, c, d, t)
+   -- COULD BE SO MUCH IMPROVE:
+   if yuiRand() % 2 == 0 then -- 50% chances in teraction
+      local onpc_i = yuiRand() % yeLen(npcs)
+      local onpc = npcs[onpc_i]
+
+      print("random interaction: ", npc, "\n======\n", onpc)
+      if yIsNil(onpc) or onpc == npc then
+	 goto out
+      end
+
+      local oname = yeGetStringAt(onpc.name)
+
+      if yIsNil(oname) then
+	 oname = yeGetKeyAt(npcs, onpc_i)
+      end
+
+      if yuiRand() % 2 == 0 then -- good one
+	 print(name, "have a good interaction with", oname)
+	 increase_relation_2npc(npc, oname, yuiRand() % 5 + 1)
+	 increase_relation_2npc(onpc, name, yuiRand() % 5 + 1)
+      else -- bad one
+	 increase_relation_2npc(src, oname, -(yuiRand() % 5 + 1))
+	 increase_relation_2npc(oname, name, -(yuiRand() % 5 + 1))
+	 print(name, "have a bad interaction with", oname)
+      end
+      :: out ::
+   end
+
    if c ~= 1 then
       return
    end
