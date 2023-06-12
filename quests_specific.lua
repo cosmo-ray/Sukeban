@@ -692,7 +692,7 @@ local function gen_school()
       "Articho", "Ananas", "Anko", "Polenarefu", "Hopson", "Who", "Rose",
       "De Paname", "De la Tour", "Kira", "Yamato",  "Trentehein", "Compute",
       "Ordinateur", "Robots", "Robie", "Vincent", "Pierre", "Metal", "King",
-      "Queen"
+      "Queen", "Zuldo"
    }
 
    local types = {
