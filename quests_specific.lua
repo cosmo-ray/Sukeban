@@ -763,6 +763,7 @@ local function gen_school()
 	      }
       },
       {FEMALE, "dark", "imgs/agustina.png", false},
+      {FEMALE, "woman-olive", "imgs/random_brown.png", false},
       {FEMALE, "light", {
 	  ["src"] = "imgs/Codel4.png",
 	  ["reduce"] = 50},
