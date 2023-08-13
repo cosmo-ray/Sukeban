@@ -494,12 +494,12 @@ function do_tactical_fight(eve)
 	 yeAddAt(main_widget.cam_offset, 1, -mouse_mv)
       end
 
-      if (ywRectContain(bar_rect, mx, my, 0) > 0) then
+      if (ywRectContain(bar_rect, mx, my, 0) == true) then
 	 local buttons = tdata.buttons
 	 ywCanvasStringSet(tdata.movement_info, Entity.new_string(""))
 	 for i = 0, yeLen(buttons) - 1 do
 	    local b = buttons[i]
-	    local isOver = ywRectContain(b[0], mx, my, 1) > 0
+	    local isOver = ywRectContain(b[0], mx, my, 1) == true
 	    if isOver then
 	       highlight_button(tdata, b)
 	       if yevMouseDown(eve) then

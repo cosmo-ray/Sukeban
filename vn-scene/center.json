@@ -53,21 +53,21 @@
 		    "condition": [">", "phq.quests.prot_club_bb", -1]
 		},
 		{
-		    "text": "AFTER QUEST DIALOG TODO",
+		    "text": "AFTER QUEST DIALOG TODO"
 		}
 	    ],
-	    "answers": {
-		[
-		    {
-			"text": "DIALOG TODO, GOTO BASEMENT",
-			"condition": [">", "phq.quests.prot_club_bb", -1],
-			"action": ["phq.changeScene", "bar_basement", 1]
-		    },
-		    {
-			"text": "AFTER QUEST DIALOG TODO",
-		    }
-		]
-	    }
+	    "answers":
+	    [
+		{
+		    "text": "DIALOG TODO, GOTO BASEMENT",
+		    "condition": [">", "phq.quests.prot_club_bb", -1],
+		    "action": ["phq.changeScene", "bar_basement", 1]
+		},
+		{
+		    "text": "AFTER QUEST DIALOG TODO",
+		    "action": [ "Dialogue:goto", "in" ]
+		}
+	    ]
 	},
 	"Center High": {
 	    "text": [
