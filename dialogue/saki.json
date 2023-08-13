@@ -6,6 +6,29 @@
 		"condition": ["<", "phq.events.saki_presentaion", 1],
 		"action": "phq.backToGame"
 	    },
+	    "on time" : {
+		"text": [
+		    "ah, you here, right on time",
+		    "do you have time to help me for a small task ?"
+		],
+		"condition": ["and",
+			      ["and",
+			       [">", "phq.quests.prot_club_m0", 1],
+			       ["!exist", "phq.quests.prot_club_bb"]
+			      ],
+			      [">", "phq.env.school_day", 9]
+			     ],
+		"answers": [
+		    {
+			"text": "I'm sorry i'm bussy for the moment",
+			"action": "phq.gotoNext"
+		    },
+		    {
+			"text": "Sure, what do you want me do ?",
+			"action": ["Dialogue:goto", "mission_bar_b0"]
+		    }
+		]
+	    },
 	    "then_base": {
 		"text": "Yes ?",
 		"action": "phq.backToGame",
@@ -74,6 +97,24 @@
 		    ]
 		]
 	    },
+	    "mission_bar_b0": {
+		"text": [
+		    "ok, so some fucking smug from the anime club manage to piss off",
+		    "some peoples from Central High,\nit seems they beat the shit out of him",
+		    "and retain him in a bar, ask they club for money",
+		    "I shouldn't care about that guy, but it's not okay to attack",
+		    "out students without asking us first",
+		    "cloud you bring him back here ?"
+		],
+		"answers": [
+		    {
+			"text": "I'll see what I can do",
+			"actions" [
+			    ["setInt", "phq.quests.prot_club_bb", 0],
+			    "phq.backToGame"
+			]
+		    }
+		],
 	    "end_talk": {
 		"text": [
 		    "(mumble) so, it's time... I hate my life sometime",

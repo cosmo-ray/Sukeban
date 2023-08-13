@@ -11,6 +11,9 @@
 	"dialogues" : "dialogue/PHQ_Dialogs_Part1.json",
 	"tiled": "./tileset/bar1.json"
     },
+    "bar" : {
+	"tiled": "./tileset/bar_basement.tmj"
+    },
     "fighting pit": {
 	"dialogues" : "dialogue/fight-pit.json",
 	"tiled": "./tileset/battle-pit.json"

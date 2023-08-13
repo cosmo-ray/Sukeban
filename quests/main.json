@@ -118,6 +118,16 @@
 	    0, 0, 4
 	]
     },
+    "Protetion Club Bar Help": {
+	"stalk": "phq.quests.prot_club_bb",
+	"stalk_sart": -1,
+	"descriptions": [
+	    "go to the bar, where the guy is restrain",
+	],
+	"rewards": [
+	    0, 0, 4
+	]
+    },
     "Nyistory": {
 	"stalk": "phq.quests.nya-story",
 	"stalk_sart": 0,

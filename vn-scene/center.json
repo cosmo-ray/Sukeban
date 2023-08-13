@@ -36,10 +36,38 @@
 		    "action": [ "Dialogue:goto", "Center High" ]
 		},
 		{
+		    "text": "go to the bar, near the big school",
+		    "condition": [">", "phq.quests.prot_club_bb", -1],
+		    "action": [ "Dialogue:goto", "Center High bar" ]
+		},
+		{
 		    "text": "(go home)",
 		    "action": "phq.backToGame"
 		}
 	    ]
+	},
+	"Center High bar": {
+	    "texts": [
+		{
+		    "text": "DIALOG TODO",
+		    "condition": [">", "phq.quests.prot_club_bb", -1]
+		},
+		{
+		    "text": "AFTER QUEST DIALOG TODO",
+		}
+	    ],
+	    "answers": {
+		[
+		    {
+			"text": "DIALOG TODO, GOTO BASEMENT",
+			"condition": [">", "phq.quests.prot_club_bb", -1],
+			"action": ["phq.changeScene", "bar_basement", 1]
+		    },
+		    {
+			"text": "AFTER QUEST DIALOG TODO",
+		    }
+		]
+	    }
 	},
 	"Center High": {
 	    "text": [
