@@ -123,9 +123,10 @@
 	"stalk_sart": -1,
 	"descriptions": [
 	    "go to the bar, where the guy is restrain",
+	    "Free the guy"
 	],
 	"rewards": [
-	    0, 0, 4
+	    0, 2, 4
 	]
     },
     "Nyistory": {

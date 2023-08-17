@@ -65,6 +65,7 @@
 		},
 		{
 		    "text": "AFTER QUEST DIALOG TODO",
+		    "condition": [">", "phq.quests.prot_club_bb", 1],
 		    "action": [ "Dialogue:goto", "in" ]
 		}
 	    ]

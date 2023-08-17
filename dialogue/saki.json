@@ -14,7 +14,7 @@
 		"condition": ["and",
 			      ["and",
 			       [">", "phq.quests.prot_club_m0", 1],
-			       ["!exist", "phq.quests.prot_club_bb"]
+			       ["<", "phq.quests.prot_club_bb", 0]
 			      ],
 			      [">", "phq.env.school_day", 9]
 			     ],
