@@ -2,6 +2,11 @@
     "Madao": {
 	"dialogue" : [
 	    {
+		"text": "Thanks\nI feel so much more myself since\nyou give me my sunglass back",
+		"condition": [">", "phq.quests.mad_sunglass", 0]
+
+	    },
+	    {
 		"rand-texts": [
 		    "Hej kid, I've lost my sunglass, did you saw them ?",
 		    "I use to work for Customs Agency you know ?"
