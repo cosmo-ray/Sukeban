@@ -143,7 +143,6 @@
          "name":"Entries",
          "objects":[
                 {
-                 "class":"",
                  "height":331,
                  "id":1,
                  "name":"toStr1",
@@ -164,13 +163,13 @@
                          "value":"right"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":27,
                  "x":3.5,
                  "y":616.5
                 }, 
                 {
-                 "class":"",
                  "height":62,
                  "id":2,
                  "name":"UpMall",
@@ -191,13 +190,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":52,
                  "x":582,
                  "y":523
                 }, 
                 {
-                 "class":"",
                  "height":23,
                  "id":3,
                  "name":"DownMall",
@@ -218,13 +217,13 @@
                          "value":"right"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":30,
                  "x":512,
                  "y":262
                 }, 
                 {
-                 "class":"",
                  "height":63,
                  "id":4,
                  "name":"Arcade",
@@ -240,13 +239,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":60,
                  "x":834,
                  "y":529
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":5,
                  "name":"FromStr4",
@@ -258,13 +257,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":61,
                  "y":54
                 }, 
                 {
-                 "class":"",
                  "height":37,
                  "id":6,
                  "name":"police",
@@ -280,13 +279,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":51,
                  "x":198,
                  "y":545
                 }, 
                 {
-                 "class":"",
                  "height":48.130081300813,
                  "id":8,
                  "name":"Roger_Super_store",
@@ -307,6 +306,7 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":61.1382113821138,
                  "x":352.520325203252,
@@ -324,7 +324,6 @@
          "name":"NPC",
          "objects":[
                 {
-                 "class":"",
                  "height":0,
                  "id":7,
                  "name":"Madao",
@@ -336,6 +335,7 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":468,
@@ -353,7 +353,6 @@
          "name":"Actionable",
          "objects":[
                 {
-                 "class":"",
                  "height":24.3481,
                  "id":9,
                  "name":"lost_1",
@@ -394,13 +393,13 @@
                          "value":1
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":29.0606,
                  "x":633.471803049422,
                  "y":322.999451577287
                 }, 
                 {
-                 "class":"",
                  "height":24.3481,
                  "id":10,
                  "name":"lost_3",
@@ -441,6 +440,7 @@
                          "value":3
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":29.0606,
                  "x":640.676850368034,
@@ -456,7 +456,7 @@
  "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.9.2",
+ "tiledversion":"1.10.1",
  "tileheight":32,
  "tilesets":[
         {
@@ -493,6 +493,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.9",
+ "version":"1.10",
  "width":30
 }
