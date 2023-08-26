@@ -61,7 +61,7 @@
 		{
 		    "text": "DIALOG TODO, GOTO BASEMENT",
 		    "condition": [">", "phq.quests.prot_club_bb", -1],
-		    "action": ["phq.changeScene", "bar_basement", 1]
+		    "action": ["phq.changeScene", "bar_basement", 0]
 		},
 		{
 		    "text": "AFTER QUEST DIALOG TODO",
