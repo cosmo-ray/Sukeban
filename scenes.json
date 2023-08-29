@@ -12,6 +12,7 @@
 	"tiled": "./tileset/bar1.json"
     },
     "bar_basement" : {
+	"dialogues" : "dialogue/bar_basement.json",
 	"tiled": "./tileset/bar_basement.tmj"
     },
     "fighting pit": {
