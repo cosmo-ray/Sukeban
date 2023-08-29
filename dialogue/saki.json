@@ -110,6 +110,7 @@
 		    {
 			"text": "I'll see what I can do",
 			"actions": [
+			    ["phq.misc_fnc.move_npc", "Bob", "bar_basement", "guy_to_save"],
 			    ["setInt", "phq.quests.prot_club_bb", 0],
 			    "phq.backToGame"
 			]

@@ -389,6 +389,8 @@ function init_phq(mod)
    mod.scene_ai = {}
    mod.scene_ai.random_movements = Entity.new_func(randomMovements)
    mod.misc_fnc = {}
+   mod.misc_fnc.move_npc = Entity.new_func(move_npc)
+   mod.misc_fnc.unmove_npc = Entity.new_func(unmove_npc)
    mod.misc_fnc.give_neutral_quest = Entity.new_func(give_neutral_quest)
    mod.misc_fnc.class_even = Entity.new_func(calsses_event_dialog_gen)
    mod.misc_fnc.read_temps_des_escargots = Entity.new_func(rd_tps_ds_escgt)
@@ -1281,6 +1283,8 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 	 local ap = phq.env.ai_point
 	 if ap and ap[sceneTxt] then
 	    is_ai_point = true
+	    -- normally, position point contain npc name, in case of ai_point note
+	    -- so in this case, variable npc_name contain ai_point name
 	    npc_name = yeGetString(ap[sceneTxt][npc_name])
 	    npc = npcs[npc_name]
 	 end

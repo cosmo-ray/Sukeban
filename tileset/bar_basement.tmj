@@ -397,6 +397,29 @@
                  "width":0,
                  "x":85.138349818455,
                  "y":515.838237135345
+                }, 
+                {
+                 "height":0,
+                 "id":20,
+                 "name":"guy_to_save",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"Rotation",
+                         "type":"string",
+                         "value":"up"
+                        }, 
+                        {
+                         "name":"ai_point",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":80.13021159384,
+                 "y":610.99286340303
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -616,7 +639,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.1",

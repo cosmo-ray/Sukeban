@@ -98,6 +98,17 @@ end
 function npcAdvenceTime()
    main_widget.npc_act = {}
    phq.env.ai_point = {}
+   if yIsNNil(phq.env.const_ai_p) then
+      local caip = phq.env.const_ai_p
+      print("PUSH'EM ALLL !!!!!!!!!!!!")
+
+      for i = 0, yeLen(caip) - 1 do
+	 local info = caip[i]
+	 local who = yeGetKeyAt(caip, i)
+
+	 push_to_ai_point(info[0], info[1], who)
+      end
+   end
    local npcs_l = yeLen(npcs)
    local threshold = yuiRand()
    for i0 = 0, npcs_l - 1 do

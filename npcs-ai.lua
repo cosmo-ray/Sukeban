@@ -41,6 +41,21 @@ local function push_to_ai_point(map, p, name)
    return push_to_ai_point_(map, p, name, false)
 end
 
+local function push_to_const_ai_point(place, ai_point, who)
+   local caip = yeTryCreateArray(phq.env, "const_ai_p")
+   local caip_who = yeTryCreateArray(caip, who)
+   yeCreateString(place, caip_who)
+   yeCreateString(ai_point, caip_who)
+   push_to_ai_point(place, ai_point, who)
+end
+
+local function remove_const_ai_point(who)
+   local caip_info = phq.env.const_ai_p[who]
+
+   phq.env.ai_point[caip_info[0]][caip_info[1]] = nil
+   phq.env.const_ai_p[who] = nil
+end
+
 function wouaf_ai(_main, _npc, name)
    local t = ygGetString("phq.env.time")
 
@@ -111,6 +126,10 @@ function student_ai(_main, npc, name)
    local c = ygGetInt("phq.env.chapter")
    local d = ygGetInt("phq.env.day")
    npc = Entity.wrapp(npc)
+
+   if npc._holded > 0 then
+      return
+   end
 
    print("student_ai", name, c, d, t)
    -- COULD BE SO MUCH IMPROVE:
@@ -217,6 +236,10 @@ function bob_ai(main, npc, name)
    main = Entity.wrapp(main)
    npc = Entity.wrapp(npc)
 
+   if npc._holded > 0 then
+      return
+   end
+
    local c_place = "bob_house"
    local p = yuiRand() % 100
 
@@ -285,6 +308,20 @@ function sakai(_main, npc, name)
    end
 end
 
+function move_npc(_wid, _useless, who, place, ai_point, forced)
+   n = npcs[who]
+   print(who, yeGetString(who))
+   if forced then
+      n._holded = 1
+   end
+   push_to_const_ai_point(yeGetString(place), yeGetString(ai_point), yeGetString(who))
+end
+
+function unmove_npc(_wid, _useless, who)
+   n = npcs[who]
+   n._holded = 1
+   remove_const_ai_point(who)
+end
 
 function run_rat0(_main, action)
    runner0_tbl = Entity.new_array()
