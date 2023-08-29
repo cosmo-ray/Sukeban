@@ -313,6 +313,7 @@ function move_npc(_wid, _useless, who, place, ai_point, forced)
    print(who, yeGetString(who))
    if forced then
       n._holded = 1
+      n._place = nil
    end
    push_to_const_ai_point(yeGetString(place), yeGetString(ai_point), yeGetString(who))
 end
