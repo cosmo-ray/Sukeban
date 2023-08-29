@@ -1295,7 +1295,9 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 
 	 local npc_dialogue = yeGet(npc, "dialogue")
 
-	 if yeType(npc_dialogue) ~= YSTRING then
+	 if obj.keep_dialog then
+	    npc_dialogue = yeGetString(obj.name)
+	 elseif yeType(npc_dialogue) ~= YSTRING then
 	    yeRemoveChild(npc, "dialogue")
 	    npc_dialogue = nil
 	 else

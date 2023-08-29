@@ -413,6 +413,11 @@
                          "name":"ai_point",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"keep_dialog",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
