@@ -81,9 +81,9 @@
 				   "CombatDialogueNext"]
 		    },
 		    {
-			"text": "Ok",
+			"text": "Ok, here's the money, please, don't hurt me !",
 			"condition": [">", "phq.pj.inventory.money", 20],
-			"action": [ "phq.pay", 1, ["phq.backToGame", 1],
+			"action": [ "phq.pay", 20, ["phq.backToGame", 1],
 				    "not enouth money" ]
 		    }
 		]
