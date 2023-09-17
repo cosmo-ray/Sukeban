@@ -49,22 +49,22 @@
 	"Center High bar": {
 	    "texts": [
 		{
-		    "text": "DIALOG TODO",
+		    "text": "(ask questions about the missing guy from your school)",
 		    "condition": [">", "phq.quests.prot_club_bb", -1]
 		},
 		{
-		    "text": "AFTER QUEST DIALOG TODO"
+		    "text": "Central School Bar, nothing to do here"
 		}
 	    ],
 	    "answers":
 	    [
 		{
-		    "text": "DIALOG TODO, GOTO BASEMENT",
+		    "text": "(find out he might be in the bar basement, go there)",
 		    "condition": [">", "phq.quests.prot_club_bb", -1],
 		    "action": ["phq.changeScene", "bar_basement", 0]
 		},
 		{
-		    "text": "AFTER QUEST DIALOG TODO",
+		    "text": "leave",
 		    "condition": [">", "phq.quests.prot_club_bb", 1],
 		    "action": [ "Dialogue:goto", "in" ]
 		}
