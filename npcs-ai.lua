@@ -127,7 +127,7 @@ function student_ai(_main, npc, name)
    local d = ygGetInt("phq.env.day")
    npc = Entity.wrapp(npc)
 
-   if npc._holded > 0 then
+   if npc._holded and npc._holded > 0 then
       return
    end
 
@@ -236,7 +236,7 @@ function bob_ai(main, npc, name)
    main = Entity.wrapp(main)
    npc = Entity.wrapp(npc)
 
-   if npc._holded > 0 then
+   if npc._holded and npc._holded > 0 then
       return
    end
 
