@@ -75,7 +75,7 @@
 	"out": {
 	    "up" : "street3"
 	},
-	"dialogues" : "dialogue/madao.json",
+	"dialogues" : "dialogue/street4.json",
 	"tiled": "./tileset/Street4.json"
     },
     "wut" : {
