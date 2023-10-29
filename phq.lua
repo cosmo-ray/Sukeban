@@ -262,7 +262,8 @@ function checkNpcPresence(obj, npc, scene, is_ai_point)
    if pp > 0 and yuiRand() % 99 > pp then
       return false
    end
-   if yIsNNil(yeGet(obj, "Chapter")) and yeGetIntAt(obj, "Chapter") ~= yeGetInt(phq.env.chapter) then
+   if yIsNNil(yeGet(obj, "Chapter")) and
+      yeGetIntAt(obj, "Chapter") ~= yeGetInt(phq.env.chapter) then
       return false
    end
    if yeGetIntAt(obj, "dead") == 1 then
@@ -283,7 +284,7 @@ function checkNpcPresence(obj, npc, scene, is_ai_point)
       is_ai_point == false and
       yeGetInt(npc.out_time.day) == phq.env.day:to_int() and
       yeGetInt(npc.out_time.week) == phq.env.week:to_int() and
-   yeGetString(npc.out_time.time) == phq.env.time:to_string() then
+      yeGetString(npc.out_time.time) == phq.env.time:to_string() then
       return false
    end
 
@@ -312,7 +313,7 @@ function checkNpcPresence(obj, npc, scene, is_ai_point)
 	 return false
       end
    end
-   return true
+   return checkTiledCondition(Entity.wrapp(obj))
 end
 
 local function _include(target, file)
