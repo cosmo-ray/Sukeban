@@ -262,6 +262,9 @@ function checkNpcPresence(obj, npc, scene, is_ai_point)
    if pp > 0 and yuiRand() % 99 > pp then
       return false
    end
+   if yIsNNil(yeGet(obj, "Chapter")) and yeGetIntAt(obj, "Chapter") ~= yeGetInt(phq.env.chapter) then
+      return false
+   end
    if yeGetIntAt(obj, "dead") == 1 then
       return false
    end
