@@ -78,7 +78,6 @@
          "name":"Entries",
          "objects":[
                 {
-                 "class":"",
                  "height":30.2149912841371,
                  "id":1,
                  "name":"Street0",
@@ -99,6 +98,7 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":597.327135386403,
                  "x":466.008134805346,
@@ -139,6 +139,12 @@
          "id":3,
          "name":"Up Col",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"Collision",
+                 "type":"int",
+                 "value":1
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":48,
@@ -202,7 +208,6 @@
          "name":"Actionable",
          "objects":[
                 {
-                 "class":"",
                  "height":24.3481,
                  "id":2,
                  "name":"lost_2",
@@ -243,6 +248,7 @@
                          "value":2
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":29.0606,
                  "x":1482.35750932139,
@@ -258,7 +264,7 @@
  "nextobjectid":3,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.9.2",
+ "tiledversion":"1.10.1",
  "tileheight":32,
  "tilesets":[
         {
@@ -275,6 +281,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.9",
+ "version":"1.10",
  "width":48
 }
