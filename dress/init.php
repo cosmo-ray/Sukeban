@@ -176,7 +176,7 @@ function reset_character($cwid, $mod, $cw) {
 }
 
 function action($wid, $eves) {
-    print("wid action !!!\n");
+    print("dress action !!!". yeEntitiesUsed() . "\n");
     $menu = ywCntGetEntry($wid, 0);
     yeRemoveChildByStr($menu, '_ch_');
     yePushBack($menu, yeGet($wid, 'character'), "_ch_");
@@ -184,6 +184,7 @@ function action($wid, $eves) {
     $cur_mn = yeGetIntAt($wid, "cur_mn");
     menu_setup($wid, $menu, $cur_mn);
     $ret = $YEVE_ACTION;
+    print("dress action --- !!!" . yeEntitiesUsed() . " \n");
 
     yeIntRoundBound(yeGet($wid, 'mn_pos'), 0, ywMenuNbEntries($menu) - 1);
     if (yevIsKeyDown($eves, $Y_DOWN_KEY)) {
@@ -223,6 +224,7 @@ function action($wid, $eves) {
     $mod = ygGet("dressup");
     reset_character($wid, $mod, ywCntGetEntry($wid, 1));
     yeRemoveChildByStr($menu, "_main_");
+    print("dress action out !!!" . yeEntitiesUsed() . " \n");
     yirl_return($ret);
 }
 
