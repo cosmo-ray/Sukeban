@@ -14,7 +14,7 @@
     --GNU General Public License for more details.
     --
     --You should have received a copy of the GNU Lesser General Public License
-    --along with this program.  If not, see <http://www.gnu.org/licenses/>.   
+    --along with this program.  If not, see <http://www.gnu.org/licenses/>.
   */
 
 
@@ -199,15 +199,15 @@ function action($wid, $eves) {
         } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
                    $pos == $GLOBALS['PANTS_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['PANTS_MENU']);
-            return action($wid, NULL); 
+            return action($wid, NULL);
         } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
                    $pos == $GLOBALS['SHOES_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['SHOES_MENU']);
-            return action($wid, NULL); 
+            return action($wid, NULL);
         } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
                    $pos == $GLOBALS['HAIR_MENU_POS']) {
             yeSetIntAt($wid, 'cur_mn', $GLOBALS['HAIR_MENU']);
-            return action($wid, NULL); 
+            return action($wid, NULL);
         } else {
             ywMenuCallActionOnByEntity($menu, $eves, yeGetIntAt($wid, 'mn_pos'));
         }
