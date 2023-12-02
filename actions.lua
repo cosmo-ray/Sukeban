@@ -1059,12 +1059,15 @@ local function back_and_reload_mc()
    backToGame2()
 end
 
-function open_dressup_menu()
+function open_dressup_menu(arg0, arg1, arg2)
    local wid = Entity.new_array()
 
-   print("open_dressup_menu !!!!!!")
+   print("open_dressup_menu !!!!!!", Entity.wrapp(arg2))
    wid["<type>"] = "dressup"
 
+   if yIsNNil(Entity.wrapp(arg2)) then
+      wid.dress_type = yeGetString(arg2)
+   end
    wid.background = "rgba: 140 150 155 255";
    wid.char_clothes = phq.pj.inventory;
    wid.quit = Entity.new_func(back_and_reload_mc)

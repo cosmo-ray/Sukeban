@@ -90,6 +90,7 @@ function menu_setup($wid, $mn, $mn_type) {
     $cu = ywMenuGetCurrentEntry($mn);
     $si = yeGet($cu, "slider_idx");
     $mn_pos = yeGetIntAt($wid, 'mn_pos');
+    $dress_type = yeGetStringAt($wid, "dress_type");
     if ($si) {
         yeIncrRef($si);
         yePush($si, $mn, '_csi_');
@@ -99,10 +100,13 @@ function menu_setup($wid, $mn, $mn_type) {
     ywMenuClear($mn);
     echo '$si bef 1 refcount: ', yeRefCount($si), "\n";
     if ($mn_type == $GLOBALS['MAIN_MENU']) {
-        ywMenuPushEntry($mn, 'hairs');
-        ywMenuPushEntry($mn, 'torso/robe');
-        ywMenuPushEntry($mn, 'pants/skirt');
-        ywMenuPushEntry($mn, 'shoes');
+        if ($dress_type != "dress")
+            ywMenuPushEntry($mn, 'hairs');
+        if ($dress_type != "hair") {
+            ywMenuPushEntry($mn, 'torso/robe');
+            ywMenuPushEntry($mn, 'pants/skirt');
+            ywMenuPushEntry($mn, 'shoes');
+        }
         if (yeGetStringAt($wid, "type") == "maker")
             ywMenuPushEntry($mn, "save", ygGet('dressup.to_file'));
 
@@ -160,11 +164,13 @@ function menu_setup($wid, $mn, $mn_type) {
 
 function reset_character($cwid, $mod, $cw) {
     $char = yeGet($cwid, 'character');
+    print("reset c in !!!" . yeEntitiesUsed() . " \n");
     $_c_ = yeGet($cwid, '_c_');
     if ($_c_) {
         lpcsHandlerNullify($_c_);
         yeRemoveChildByEntity($cwid, $_c_);
         yeRemoveChildByStr($char, 'clothes');
+        print("reset c __c__ !!!" . yeEntitiesUsed() . " \n");
     }
     lpcsHandlerNullify();
     yesCall(yeGet($mod, "dressUp"), $char);
@@ -173,6 +179,7 @@ function reset_character($cwid, $mod, $cw) {
     ylpcsHandlerSetOrigXY($ch, 0, 2);
     ylpcsHandlerRefresh($ch);
     ywCanvasMultiplySize(yeGet($ch, "canvas"), 5);
+    print("reset c out !!!" . yeEntitiesUsed() . " \n");
 }
 
 function action($wid, $eves) {
@@ -184,6 +191,7 @@ function action($wid, $eves) {
     $cur_mn = yeGetIntAt($wid, "cur_mn");
     menu_setup($wid, $menu, $cur_mn);
     $ret = $YEVE_ACTION;
+    $dress_type = yeGetStringAt($wid, "dress_type");
     print("dress action --- !!!" . yeEntitiesUsed() . " \n");
 
     yeIntRoundBound(yeGet($wid, 'mn_pos'), 0, ywMenuNbEntries($menu) - 1);
@@ -193,24 +201,30 @@ function action($wid, $eves) {
         yeAddAt($wid, 'mn_pos', -1);
     } else if (yevIsKeyDown($eves, $Y_ENTER_KEY)) {
         $pos = yeGetIntAt($wid, 'mn_pos');
-        if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
-            $pos == $GLOBALS['TORSO_MENU_POS']) {
-            yeSetIntAt($wid, 'cur_mn', $GLOBALS['TORSO_MENU']);
-            return action($wid, NULL);
-        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
-                   $pos == $GLOBALS['PANTS_MENU_POS']) {
-            yeSetIntAt($wid, 'cur_mn', $GLOBALS['PANTS_MENU']);
-            return action($wid, NULL);
-        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
-                   $pos == $GLOBALS['SHOES_MENU_POS']) {
-            yeSetIntAt($wid, 'cur_mn', $GLOBALS['SHOES_MENU']);
-            return action($wid, NULL);
-        } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
-                   $pos == $GLOBALS['HAIR_MENU_POS']) {
-            yeSetIntAt($wid, 'cur_mn', $GLOBALS['HAIR_MENU']);
-            return action($wid, NULL);
-        } else {
+        if ($dress_type == "dress")
+            $pos = $pos + 1;
+        if ($dress_type == "hair" && $pos == 1)
             ywMenuCallActionOnByEntity($menu, $eves, yeGetIntAt($wid, 'mn_pos'));
+        else {
+            if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
+                $pos == $GLOBALS['TORSO_MENU_POS']) {
+                yeSetIntAt($wid, 'cur_mn', $GLOBALS['TORSO_MENU']);
+                return action($wid, NULL);
+            } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
+                       $pos == $GLOBALS['PANTS_MENU_POS']) {
+                yeSetIntAt($wid, 'cur_mn', $GLOBALS['PANTS_MENU']);
+                return action($wid, NULL);
+            } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
+                       $pos == $GLOBALS['SHOES_MENU_POS']) {
+                yeSetIntAt($wid, 'cur_mn', $GLOBALS['SHOES_MENU']);
+                return action($wid, NULL);
+            } else if ($cur_mn == $GLOBALS['MAIN_MENU'] &&
+                       $pos == $GLOBALS['HAIR_MENU_POS']) {
+                yeSetIntAt($wid, 'cur_mn', $GLOBALS['HAIR_MENU']);
+                return action($wid, NULL);
+            } else {
+                ywMenuCallActionOnByEntity($menu, $eves, yeGetIntAt($wid, 'mn_pos'));
+            }
         }
     } else {
         $ret =  $YEVE_NOTHANDLE;

@@ -34,6 +34,7 @@ function dressUp(caracter)
    if yIsNil(objects) then
       explosion("OBJECT MUST BE SET FIRST !!!!")
    end
+
    caracter = Entity.wrapp(caracter)
    local e = caracter.equipement
    local objs = objects
@@ -61,7 +62,7 @@ function dressUp(caracter)
       end
       if cur_o.equipement_effect then
 	 yePushBack(caracter.eq_effect, cur_o.equipement_effect)
-      end      
+      end
       if cur_o.equipement_callback then
 	 yesCall(ygGet(yeGetString(cur_o.equipement_callback)));
       end

@@ -45,7 +45,7 @@
 	    ],
 	    "text_background": "rgba: 255 255 255 120",
 	    "speaker_background": "imgs/hamburg.jpg"
-	}, 
+	},
 	[ "advancing on your way walking along dark alley, and street",
 	  "you saw a light in the distance,",
 	  "not a plain light as you can see from a building",
@@ -145,6 +145,11 @@
 		{
 		    "text": "Premiumu Bento",
 		    "action": [ "phq.openStore", "Premium Bento" ]
+		},
+		{
+		    "text": "Hairdresser (15$)",
+		    "action": [ "phq.pay", 15, ["phq.DressUp.Menu", "hair"],
+				"not enouth money" ]
 		},
 		{
 		    "text": "go to 'the shoes !",

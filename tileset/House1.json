@@ -386,6 +386,11 @@
                          "name":"Action",
                          "type":"string",
                          "value":"phq.DressUp.Menu"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"string",
+                         "value":"dress"
                         }],
                  "rotation":0,
                  "type":"",
