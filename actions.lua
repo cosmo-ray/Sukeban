@@ -571,7 +571,11 @@ function go_under(_unused_wid, _unused_eve, entry)
 	 "#########"
    }, wid, "map")
    wid.quit = Entity.new_func("backToGame")
+   wid.pc = phq.pj
    wid.exit_action = Entity.new_func(changeScene)
+   wid.enemies = {}
+   local e_pos = Pos.new(5200, 2200).ent
+   wid.enemies[0] = {e_pos, "rat"}
    wid.exits = {}
    wid.exits[0] = {1300, 8500, "up", "st_1", "street1", 7}
    wid.exits[1] = {1300, 10500, "up", "st_1_b", "hiden_house", 0}
