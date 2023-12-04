@@ -17,6 +17,10 @@
 
 local phq = Entity.wrapp(ygGet("phq"))
 
+local noobDescription = "\n\nNoob\n" ..
+   "description:\n" ..
+   "Noob mode, for noob, why are noobesque"
+
 local geekDescription = "\n\n\"I do understand this \"mouse magic\" that make me thine bidding\"\n" .. "description:\n" ..
    "Like any responsable persones\nyou've spend all your free time watching animu, and playing games\nyou got a lot of knowledges about that\n" ..
    "luckily we live in a computer world"
@@ -32,12 +36,14 @@ local wormsCoinoisseurDescription = "\n\n\"Surface-dwellers can be so stupid !\"
    "Speaking with your friends about them...\n your friends are worms\n" ..
    "you gather the kind of knowledge you don't really need in an RPG"
 
-local descArray = {geekDescription, idoleDescription,
+local descArray = {noobDescription,
+		   geekDescription, idoleDescription,
 		   bruteDescription, wormsCoinoisseurDescription}
-GEEK_ARCHETYPE = 0
-IDOLE_ARCHETYPE = 1
-BRUTE_ARCHETYPE = 2
-WORMS_COINOISSEUR_ARCHETYPE = 3
+NOOB_ARCHETYPE = 0
+GEEK_ARCHETYPE = 1
+IDOLE_ARCHETYPE = 2
+BRUTE_ARCHETYPE = 3
+WORMS_COINOISSEUR_ARCHETYPE = 4
 
 function learn_combot(cmb)
    local cmbs = phq.pj.combots
@@ -89,6 +95,9 @@ function newGameAction(menu, _eve, _arg)
    addObject(nil, phq.pj, "brown_shoes", 1)
    if archetype == IDOLE_ARCHETYPE then
       addObject(nil, phq.pj, "Pink Guriko", 2)
+   elseif archetype == NOOB_ARCHETYPE then
+      addObject(nil, phq.pj, "Guriko", 5)
+      addObject(nil, phq.pj, "money", 15)
    else
       addObject(nil, phq.pj, "Guriko", 2)
    end
@@ -156,6 +165,19 @@ function newGameAction(menu, _eve, _arg)
       phq.pj.trait.shy = 2
       phq.env.mean_name = "trash"
       phq.env.mean_name2 = "slug"
+   elseif archetype == NOOB_ARCHETYPE then
+      phq.pj.knowledge.computer = 5
+      phq.pj.knowledge.animu = 5
+      phq.pj.knowledge.idoles = 5
+      phq.pj.knowledge.video_game = 5
+      phq.pj.knowledge.boardgames = 5
+      phq.pj.knowledge.movies = 5
+      phq.pj.stats.smart = 5
+      phq.pj.stats.agility = 5 -- got some skills from playing DDR
+      phq.pj.stats.strength = 5
+      learn_combot("unarmed1")
+      phq.env.mean_name = "noob"
+      phq.env.mean_name2 = "easy mode player"
    end
    yesCall((ygGet("callNext")), menu);
 end
@@ -186,21 +208,24 @@ function create_new_game(entity)
    mn["text-color"] = "rgba: 235 235 235 255"
    mn.entries = {}
    mn.entries[0] = {}
-   mn.entries[0].text = "Geek"
+   mn.entries[0].text = "Noob"
    mn.entries[0].action = Entity.new_func("newGameAction")
    mn.entries[1] = {}
-   mn.entries[1].text = "Idole"
+   mn.entries[1].text = "Geek"
    mn.entries[1].action = Entity.new_func("newGameAction")
    mn.entries[2] = {}
-   mn.entries[2].text = "Brute"
+   mn.entries[2].text = "Idole"
    mn.entries[2].action = Entity.new_func("newGameAction")
    mn.entries[3] = {}
-   mn.entries[3].text = "Worms Conoisseur"
+   mn.entries[3].text = "Brute"
    mn.entries[3].action = Entity.new_func("newGameAction")
+   mn.entries[4] = {}
+   mn.entries[4].text = "Worms Conoisseur"
+   mn.entries[4].action = Entity.new_func("newGameAction")
    entity.entries[1] = {}
    local txt = entity.entries[1]
    txt["<type>"] = "text-screen"
-   txt.text = geekDescription
+   txt.text = noobDescription
    txt["text-color"] = "rgba: 255 255 255 255"
    txt["text-align"] = "center"
    local ret = container:new_wid()
