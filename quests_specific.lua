@@ -667,7 +667,10 @@ local function gen_school()
        "Pascaline", "Olga", "Veronic", "Cassandre", "Rose", "Emilie", "Kira",
        "Alise", "Alita", "Oka", "Lea", "Leah", "Jacky", "Claudia", "Cesar", "Ulis",
        "Alexandra", "Matilde", "Matilda", "Alex", "Alix", "France", "Francine",
-       "Chantalle", "Lucy", "Luciolla", "Marie", "Maël", "Makoto"},
+       "Chantalle", "Lucy", "Luciolla", "Marie", "Maël", "Makoto", "Julia", "Julie",
+       "Joséphine", "Jacqueline", "Nadia", "Anabelle", "Bouchra", "Dorcas", "Yseult",
+       "Inaya", "Nour", "Jasmine", "Fatma", "Djamila", "Meriem", "Rihanna", "Salma",
+       "Gabriel", "Eve", "Ada", "Artemis"},
       {"Raoul", "Asran", "Tibault", "Adrien", "George", "Linus", "Richard",
        "Geraldine", "Ragnar", "Sigure", "Nicolas", "Eric", "Francois",
        "Camille", "Matthias", "Perceval", "Harry", "Oscar", "Amed", "Jean",
@@ -676,7 +679,10 @@ local function gen_school()
        "Jean Pierre", "Jean Charle", "Pascale", "Rogger", "Dany", "Raz", "Cassandre",
        "Kira", "Lee", "Jacky", "Didier", "Claud", "Axel", "Mickael", "Mathias",
        "Mattias", "Alex", "Alexie", "Francky", "Vincent", "Pierre", "Ali", "Luc",
-       "Luciolla", "Marco", "Robert", "Lionel", "Cornelius", "Andreas", "Makoto"}
+       "Luciolla", "Marco", "Robert", "Lionel", "Cornelius", "Andreas", "Makoto", "Jule",
+       "Joseph", "Sanctifier", "Isle", "Cem", "Ismail", "Zakariya", "Sophiane", "Yousef",
+       "Adel", "Sami", "Ali", "Renaud", "Gabriel", "Hamza", "Karim", "Adam", "Leo",
+       "Raphael", "Maél", "Lucas", "Noa", "Liam", "Aaron", "Tom", "Martin"}
    }
 
    local last_name = {
@@ -694,7 +700,8 @@ local function gen_school()
       "De Paname", "De la Tour", "Kira", "Yamato",  "Trentehein", "Compute",
       "Ordinateur", "Robots", "Robie", "Vincent", "Pierre", "Metal", "King",
       "Queen", "Zuldo", "Alibaba", "Baba", "Bibi", "Chirac", "Chonson", "Lac",
-      "Luciolle", "Firefly", "Grave", "Cornelius"
+      "Luciolle", "Firefly", "Grave", "Cornelius", "Belle", "Yseult", "Mug",
+      "Venus", "Tamis", "Sapin", "Tron", "Hugo"
    }
 
    local types = {
