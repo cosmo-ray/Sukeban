@@ -701,7 +701,9 @@ local function gen_school()
       "Ordinateur", "Robots", "Robie", "Vincent", "Pierre", "Metal", "King",
       "Queen", "Zuldo", "Alibaba", "Baba", "Bibi", "Chirac", "Chonson", "Lac",
       "Luciolle", "Firefly", "Grave", "Cornelius", "Belle", "Yseult", "Mug",
-      "Venus", "Tamis", "Sapin", "Tron", "Hugo"
+      "Venus", "Tamis", "Sapin", "Tron", "Hugo", "Sore-Throat", "Le Brum", "Roux",
+      "Minus", "Le Gros", "Moche", "Durand", "Le poisonier", "Diamantaire",
+      "Argant", "Du Pied", "Du-Pont", "Blanc", "Moutarde", "Victime"
    }
 
    local types = {
