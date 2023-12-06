@@ -9,10 +9,16 @@
     },
     "bar" : {
 	"dialogues" : "dialogue/PHQ_Dialogs_Part1.json",
+	"fight_background": "./imgs/Tavern1024x768.png",
+	"fight_half_background": true,
+	"fight_fill_backgrounf": "#6b4721",
 	"tiled": "./tileset/bar1.json"
     },
     "bar_basement" : {
 	"dialogues" : "dialogue/bar_basement.json",
+	"fight_background": "./imgs/Tavern1024x768.png",
+	"fight_half_background": true,
+	"fight_fill_backgrounf": "#6b4721",
 	"tiled": "./tileset/bar_basement.tmj"
     },
     "fighting pit": {
@@ -21,6 +27,9 @@
     },
     "international_bar" : {
 	"dialogues" : "dialogue/PHQ_Dialogs_Part1.json",
+	"fight_background": "./imgs/Tavern1024x768.png",
+	"fight_half_background": true,
+	"fight_fill_backgrounf": "#6b4721",
 	"tiled": "./tileset/international_bar.json"
     },
     "park": {

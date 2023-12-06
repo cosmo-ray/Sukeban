@@ -386,6 +386,17 @@ function StartFight(wid, eve, enemy_type, script)
    fWid.ychar_start = 80
    fWid.endCallbackArg = main
    fWid.player = player_array
+
+   if yIsNNil(main_widget.cur_scene.fight_background) then
+      fWid.fight_background = main_widget.cur_scene.fight_background
+   end
+   if yIsNNil(main_widget.cur_scene.fight_half_background) then
+      fWid.half_background = main_widget.cur_scene.fight_half_background
+   end
+   if yIsNNil(main_widget.cur_scene.fight_fill_backgrounf) then
+      fWid.background = main_widget.cur_scene.fight_fill_backgrounf
+   end
+
    local usabel_items = Entity.new_array(phq.pj, "usable_items")
    local i = 0
    local inv = phq.pj.inventory
