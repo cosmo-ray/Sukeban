@@ -35,6 +35,9 @@
     "park": {
 	"dialogues" : "dialogue/park.json",
 	"tiled": "./tileset/park.json",
+	"fight_background": "./imgs/park_bg.png",
+	"fight_half_background": true,
+	"fight_fill_backgrounf": "#16502d",
 	"exterior": 1
     },
     "street0": {
