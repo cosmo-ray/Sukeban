@@ -31,6 +31,7 @@
 	"student_year": 1,
         "max_life": 10,
 	"hair": ["princess", "white-blonde2"],
+	"loot": "auto",
 	"stats": {
 	    "charm": 9,
 	    "strength": 5,

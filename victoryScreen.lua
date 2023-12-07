@@ -36,22 +36,23 @@ local function victoryScreenAction(vs, eve)
    return YEVE_NOTHANDLE
 end
 
-local function autoLoot(main, pj, txt)
-   local nb = yuiRand() % 15
+local function autoLoot(main, pj, looser, txt)
+   local max_life = yeGetInt(looser.max_life) + 3
+
+   local nb = yuiRand() % (max_life / 2)
    addObject(main, pj, "money", nb)
-   return txt .. math.floor(nb) .. ": " .. "money" .. "\n"
+   return txt .. math.floor(nb) .. "$\n"
 end
 
 function pushNewVictoryScreen(main, _unused, loosers)
    local victoryScreen = Entity.new_array()
-   local txt = "tatatata ta ta ta tata\nloot:\n"
+   local txt = "tatatata ta ta ta tata\n"
    local i = 0
 
    while i < yeLen(loosers) do
       local looser = loosers[i]
-      local loot = loosers.loot
+      local loot = looser.loot
 
-      print(loot)
       if looser.victory_action then
 	 print("cmp: ", looser.victory_action:to_string(), "increase_int",
 	       looser.victory_action:to_string() == "increase_int")
@@ -65,12 +66,15 @@ function pushNewVictoryScreen(main, _unused, loosers)
       if loot then
 	 if yeType(loot) == YSTRING then
 	    if loot:to_string() == "auto" then
-	       txt = autoLoot(main, phq.pj, txt)
+	       txt = txt .. "loot:\n"
+	       txt = autoLoot(main, phq.pj, looser, txt)
 	    elseif loot:to_string() ~= "none" then
 	       txt = txt .. "1: " .. loot:to_string() .. "\n"
 	       addObject(main, phq.pj, loot:to_string(), 1)
 	    end
 	 elseif yeType(loot) == YARRAY then
+	    txt = txt .. "loot:\n"
+
 	    local j = 0
 	    while j < yeLen(loot) do
 	       if yeGetKeyAt(loot, j) then
@@ -81,7 +85,7 @@ function pushNewVictoryScreen(main, _unused, loosers)
 			    yeGetIntAt(loot, j))
 	       else
 		  if yeGetStringAt(loot, j) == "auto" then
-		     txt = autoLoot(main, phq.pj, txt)
+		     txt = autoLoot(main, phq.pj, looser, txt)
 		  else
 		     txt = txt .. "1: " .. yeGetStringAt(loot, j) .. "\n"
 		     addObject(main, phq.phq, yeGetStringAt(loot, j), 1)
@@ -90,8 +94,6 @@ function pushNewVictoryScreen(main, _unused, loosers)
 	       j = j + 1
 	    end
 	 end
-      else
-	 txt = autoLoot(main, phq.pj, txt)
       end
       i = i + 1
    end

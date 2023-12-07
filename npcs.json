@@ -8,6 +8,7 @@
         "max_life": 13,
 	"is_generic": true,
 	"hair": ["plain", "raven"],
+	"loot": "auto",
 	"equipement": {
 	    "torso": "white longsleeve m",
 	    "legs": "teal pants m",

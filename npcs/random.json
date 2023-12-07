@@ -40,6 +40,7 @@
     "Thrug 0": {
         "sex": "male",
         "type": "light",
+	"loot": "auto",
         "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
@@ -51,6 +52,7 @@
     "Thrug 1": {
         "sex": "male",
         "type": "light",
+	"loot": "auto",
         "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
