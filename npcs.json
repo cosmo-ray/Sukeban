@@ -9,6 +9,10 @@
 	"is_generic": true,
 	"hair": ["plain", "raven"],
 	"loot": "auto",
+	"stats": {
+	    "agility": 1,
+	    "strength": 4
+	},
 	"equipement": {
 	    "torso": "white longsleeve m",
 	    "legs": "teal pants m",
@@ -326,6 +330,9 @@
 	"type": "sprite",
 	"is_generic": true,
 	"max_life": 1,
+	"stats": {
+	    "agility": 2
+	},
 	"sprite": {
 	    "paths": ["imgs/rat.png", "imgs/dead-rats.png"],
 	    "dead-pos": [0,2,2,2],
@@ -340,6 +347,10 @@
 	"type": "sprite",
 	"is_generic": true,
 	"max_life": 5,
+	"stats": {
+	    "agility": 3,
+	    "strength": 2
+	},
 	"sprite": {
 	    "path": "imgs/rat.png",
 	    "enlarge": 200,

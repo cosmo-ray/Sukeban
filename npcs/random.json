@@ -40,11 +40,15 @@
     "Thrug 0": {
         "sex": "male",
         "type": "light",
+	"stats": {
+	    "agility": 4,
+	    "strength": 1
+	},
 	"loot": "auto",
         "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "torso/shirts/longsleeve/male/male_shirt_red.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ]
@@ -53,10 +57,13 @@
         "sex": "male",
         "type": "light",
 	"loot": "auto",
+	"stats": {
+	    "agility": 1,
+	    "strength": 4
+	},
         "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ]
