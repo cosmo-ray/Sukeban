@@ -73,9 +73,10 @@
         "type": "light",
         "max_life": 10,
         "clothes": [
-            "feet/shoes/male/brown_shoes_male.png",
+            "feet/feet/boots/male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
-            "legs/pants/male/teal_pants_male.png",
+            "legs/pantaloons/male/brown.png",
+	    "torso/jacket/frock/male/black.png",
             "hair/male/plain/raven.png"
         ]
     },
@@ -86,8 +87,8 @@
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
-            "legs/pants/male/teal_pants_male.png",
-            "hair/male/plain/raven.png"
+            "legs/pantaloons/male.png",
+            "hair/afro/male.png"
         ]
     },
     "wouaf": {
@@ -126,9 +127,9 @@
 	"max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "torso/shirts/longsleeve/male/male_shirt_black.png",
             "legs/skirt/male/robe_skirt_male.png",
-            "hair/male/bedhead/black.png"
+            "hair/male/spiked/black.png"
         ]
     },
     "Canteen_Girl": {
