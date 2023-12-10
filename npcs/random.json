@@ -19,7 +19,7 @@
 	"is_generic": true,
 	"hair": ["plain", "raven"],
 	"equipement": {
-	    "torso": "white longsleeve m",
+	    "torso": "brown longsleeve m",
 	    "legs": "teal pants m",
 	    "feet": "brown_shoes m"
 	}
@@ -73,7 +73,7 @@
         "type": "light",
         "max_life": 10,
         "clothes": [
-            "feet/feet/boots/male.png",
+            "feet/boots/male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pantaloons/male/brown.png",
 	    "torso/jacket/frock/male/black.png",
@@ -88,7 +88,7 @@
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pantaloons/male.png",
-            "hair/afro/male.png"
+            "hair/male/afro/ginger.png"
         ]
     },
     "wouaf": {

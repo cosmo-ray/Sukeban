@@ -4,6 +4,11 @@
 	"path": "torso/shirts/longsleeve/male/white_longsleeve.png",
 	"where": "torso"
     },
+    "brown longsleeve m" : {
+	"type": "equipement",
+	"path": "torso/shirts/longsleeve/male/brown_longsleeve.png",
+	"where": "torso"
+    },
     "teal pants m": {
 	"type": "equipement",
 	"where": "legs",

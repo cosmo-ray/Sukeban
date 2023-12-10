@@ -108,9 +108,9 @@
         "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "torso/shirts/longsleeve/male/male_shirt_green.png",
             "legs/pants/male/teal_pants_male.png",
-            "hair/male/plain/raven.png"
+            "hair/male/plain/blonde.png"
         ],
 	"image": "./Portrait_01.png"
     },
@@ -119,9 +119,10 @@
         "type": "light",
         "max_life": 10,
         "clothes": [
-	    "feet/shoes/male/brown_shoes_male.png",
-            "torso/robes_female_no_th-sh/black.png",
-            "hair/female/shoulderr/pink.png"
+            "feet/shoes/male/brown_shoes_male.png",
+            "torso/shirts/longsleeve/male/male_shirt_blue.png",
+            "legs/pants/male/teal_pants_male.png",
+            "hair/male/plain/redhead.png"
         ],
 	"image": "./Portrait_02.png"
     },
@@ -131,9 +132,9 @@
         "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "torso/shirts/longsleeve/male/brown_longsleeve.png",
             "legs/pants/male/teal_pants_male.png",
-            "hair/male/plain/raven.png"
+            "hair/male/plain/brown.png"
         ],
 	"image": "./Portrait_03.png"
     },
@@ -145,7 +146,7 @@
             "feet/shoes/male/brown_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pants/male/teal_pants_male.png",
-            "hair/male/plain/raven.png"
+            "hair/male/plain/blonde.png"
         ],
 	"image": "./Portrait_04.png"
     },
@@ -155,7 +156,7 @@
         "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "torso/shirts/longsleeve/male/male_shirt_blue.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
@@ -167,7 +168,7 @@
         "max_life": 10,
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "torso/shirts/longsleeve/male/male_shirt_black.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
@@ -191,7 +192,7 @@
 	"loot": { "beer" : 1, "money": 10 },
         "clothes": [
             "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
+            "torso/shirts/longsleeve/male/male_shirt_green.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
         ],
@@ -202,10 +203,9 @@
         "type": "light",
         "max_life": 10,
         "clothes": [
-            "feet/shoes/male/brown_shoes_male.png",
-            "torso/shirts/longsleeve/male/white_longsleeve.png",
-            "legs/pants/male/teal_pants_male.png",
-            "hair/male/plain/raven.png"
+	    "feet/shoes/male/brown_shoes_male.png",
+            "torso/robes_female_no_th-sh/black.png",
+            "hair/female/shoulderr/pink.png"
         ],
 	"image_rotate": -90,
 	"image": "./Portrait_09.png"
@@ -289,7 +289,7 @@
 	"sex": "male",
         "type": "light",
         "clothes": [
-            "feet/shoes/male/brown_shoes_male.png",
+            "feet/shoes/male/black_shoes_male.png",
             "torso/shirts/longsleeve/male/white_longsleeve.png",
             "legs/pants/male/teal_pants_male.png",
             "hair/male/plain/raven.png"
