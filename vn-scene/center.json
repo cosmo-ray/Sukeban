@@ -24,6 +24,10 @@
 	    ],
 	    "answers": [
 		{
+		    "text": "go to 'My best Pet is my Friend !'",
+		    "action": [ "phq.openStore", "My best Pet is my Friend !" ]
+		},
+		{
 		    "text": "go to 'Over 9000 Power Shop'(it's sport stuff)",
 		    "action": [ "phq.openStore", "Over 9000 Power" ]
 		},

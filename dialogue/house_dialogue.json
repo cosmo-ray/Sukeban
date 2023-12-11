@@ -1,4 +1,12 @@
 {
+    "Kaline": {
+	"dialogue" : [
+	    {
+		"text": "Kaline love your candy, eat it, and rub herself against your leg",
+		"actions": [[ "phq:remove", "candy for cat" ], "phq.backToGame"]
+	    }
+	]
+    },
     "Mom": {
 	"dialogue" : [
 	    {
