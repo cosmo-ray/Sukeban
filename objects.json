@@ -1,5 +1,6 @@
 {
     "_include": [ "./items/food.json",
+		  "./items/weapons.json",
 		  "./items/drink.json",
 		  "./items/books.json",
 		  "./items/clothes.json",

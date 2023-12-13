@@ -1,0 +1,7 @@
+{
+    "tear gas": {
+	"type": "usable",
+	"dmg": 4,
+	"area": "enemies"
+    }
+}
