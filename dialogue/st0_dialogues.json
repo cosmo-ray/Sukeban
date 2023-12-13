@@ -172,6 +172,20 @@
 	    }
 	]
     },
+    "shaddy girl": {
+	"dialogue" : [
+	    {
+		"text": "Want some weapon ?",
+		"answers": [
+		    {
+			"text": "yes please",
+			"action": [ "phq.openStore", "Shaddy Weapon" ]
+		    },
+		    "No ... Thanks ?"
+		]
+	    }
+	]
+    },
     "Raoul": {
 	"dialogue" : [
 	    {

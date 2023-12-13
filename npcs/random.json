@@ -159,10 +159,31 @@
 	"sex": "male",
 	"type": "light",
 	"max_life": 35,
+	"stats": {
+	    "agility": 3,
+	    "strength": 8
+	},
 	"equipement": {
 	    "torso": "white longsleeve m",
 	    "legs": "teal pants m",
 	    "feet": "brown_shoes m"
+	}
+    },
+    "shaddy girl": {
+	"sex": "female",
+	"type": "light",
+        "max_life": 33,
+	"calendar": { "everyday": { "night" : "whellball-noitoise-satdium" } },
+	"stats": {
+	    "agility": 6,
+	    "strength": 5
+	},
+	"is_generic": true,
+	"hair": ["plain", "raven"],
+	"equipement": {
+	    "torso": "black_sleeveless",
+	    "legs": "leggins",
+	    "feet": "brown_shoes"
 	}
     }
 }

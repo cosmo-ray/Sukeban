@@ -75,6 +75,11 @@
 	"path": "torso/shirts/sleeveless/sleeveless_white.png",
 	"where": "torso"
     },
+    "black_sleeveless" : {
+	"type": "equipement",
+	"path": "torso/shirts/sleeveless/sleeveless_black.png",
+	"where": "torso"
+    },
     "white_tunic" : {
 	"type": "equipement",
 	"path": "torso/tunics/female/white_tunic.png",
@@ -128,6 +133,11 @@
 	"type": "equipement",
 	"where": "legs",
 	"path": "legs/pants/female/teal_pants_female.png"
+    },
+    "leggins": {
+	"type": "equipement",
+	"where": "legs",
+	"path": "legs/pants/female/SaraLeggings.png"
     },
     "white pants female": {
 	"type": "equipement",

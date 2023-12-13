@@ -56,6 +56,9 @@
 	"candy for cat" : 10,
 	"candy for dog": 13
     },
+    "Shaddy Weapon": {
+	"tear gas" : 20,
+    },
     "clothes": {
 	"monocle": 40,
 	"sunglass": 15,

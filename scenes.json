@@ -69,6 +69,7 @@
     },
     "whellball-noitoise-satdium" : {
 	"exterior": 1,
+	"dialogues" : "dialogue/st0_dialogues.json",
 	"tiled": "./tileset/whellball-noitoise-stade.tmj"
     },
     "street3" : {
