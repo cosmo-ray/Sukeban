@@ -203,6 +203,171 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "id":6,
+         "name":"Entries",
+         "objects":[
+                {
+                 "height":7,
+                 "id":1,
+                 "name":"Street1 entry",
+                 "properties":[
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"left"
+                        }],
+                 "rotation":0,
+                 "type":"EntryPoint",
+                 "visible":true,
+                 "width":4,
+                 "x":634,
+                 "y":452
+                }, 
+                {
+                 "height":47.5775116961383,
+                 "id":27,
+                 "name":"House2 entry",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"house2"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30.9253826024899,
+                 "x":321.148203948933,
+                 "y":368.725715645072
+                }, 
+                {
+                 "height":30,
+                 "id":14,
+                 "name":"toWUT",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"WUT"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":133,
+                 "y":393
+                }, 
+                {
+                 "height":337,
+                 "id":20,
+                 "name":"metro",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.setCurStation"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"Arg1",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":38,
+                 "x":1.5,
+                 "y":419.5
+                }, 
+                {
+                 "height":337,
+                 "id":19,
+                 "name":"metro",
+                 "properties":[
+                        {
+                         "name":"Action",
+                         "type":"string",
+                         "value":"phq.openGlobMenu"
+                        }, 
+                        {
+                         "name":"Arg0",
+                         "type":"int",
+                         "value":3
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":27,
+                 "x":1,
+                 "y":419
+                }, 
+                {
+                 "height":0,
+                 "id":23,
+                 "name":"park",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":389.08984260436,
+                 "y":6.84328868902141
+                }, 
+                {
+                 "height":11.8943779240345,
+                 "id":26,
+                 "name":"Wellball",
+                 "properties":[
+                        {
+                         "name":"nextScene",
+                         "type":"string",
+                         "value":"whellball-noitoise-satdium"
+                        }, 
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":344.144001268734,
+                 "x":197.446673538974,
+                 "y":756.482435968599
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 3851, 3851, 3851, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 2451, 2452, 2453, 2454, 2455, 0, 0, 0, 0, 0, 0, 0, 1870, 1871, 1870, 1871, 0, 0, 0,
@@ -245,177 +410,10 @@
         }, 
         {
          "draworder":"topdown",
-         "id":6,
-         "name":"Entries",
-         "objects":[
-                {
-                 "class":"EntryPoint",
-                 "height":7,
-                 "id":1,
-                 "name":"Street1 entry",
-                 "properties":[
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"left"
-                        }],
-                 "rotation":0,
-                 "visible":true,
-                 "width":4,
-                 "x":634,
-                 "y":452
-                }, 
-                {
-                 "class":"EntryPoint",
-                 "height":0,
-                 "id":5,
-                 "name":"House2 entry",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"nextScene",
-                         "type":"string",
-                         "value":"house2"
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "visible":true,
-                 "width":0,
-                 "x":335,
-                 "y":402
-                }, 
-                {
-                 "class":"",
-                 "height":30,
-                 "id":14,
-                 "name":"toWUT",
-                 "properties":[
-                        {
-                         "name":"nextScene",
-                         "type":"string",
-                         "value":"WUT"
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "visible":true,
-                 "width":24,
-                 "x":133,
-                 "y":393
-                }, 
-                {
-                 "class":"",
-                 "height":337,
-                 "id":20,
-                 "name":"metro",
-                 "properties":[
-                        {
-                         "name":"Action",
-                         "type":"string",
-                         "value":"phq.setCurStation"
-                        }, 
-                        {
-                         "name":"Arg0",
-                         "type":"int",
-                         "value":0
-                        }, 
-                        {
-                         "name":"Arg1",
-                         "type":"int",
-                         "value":0
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"right"
-                        }],
-                 "rotation":0,
-                 "visible":true,
-                 "width":38,
-                 "x":1.5,
-                 "y":419.5
-                }, 
-                {
-                 "class":"",
-                 "height":337,
-                 "id":19,
-                 "name":"metro",
-                 "properties":[
-                        {
-                         "name":"Action",
-                         "type":"string",
-                         "value":"phq.openGlobMenu"
-                        }, 
-                        {
-                         "name":"Arg0",
-                         "type":"int",
-                         "value":3
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"right"
-                        }],
-                 "rotation":0,
-                 "visible":true,
-                 "width":27,
-                 "x":1,
-                 "y":419
-                }, 
-                {
-                 "class":"",
-                 "height":0,
-                 "id":23,
-                 "name":"park",
-                 "point":true,
-                 "rotation":0,
-                 "visible":true,
-                 "width":0,
-                 "x":389.08984260436,
-                 "y":6.84328868902141
-                }, 
-                {
-                 "class":"",
-                 "height":11.8943779240345,
-                 "id":26,
-                 "name":"Wellball",
-                 "properties":[
-                        {
-                         "name":"nextScene",
-                         "type":"string",
-                         "value":"whellball-noitoise-satdium"
-                        }, 
-                        {
-                         "name":"side",
-                         "type":"string",
-                         "value":"up"
-                        }],
-                 "rotation":0,
-                 "visible":true,
-                 "width":344.144001268734,
-                 "x":197.446673538974,
-                 "y":756.482435968599
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
          "id":7,
          "name":"Actionable",
          "objects":[
                 {
-                 "class":"",
                  "height":41,
                  "id":8,
                  "name":"JoinTheUnion",
@@ -436,13 +434,13 @@
                          "value":"Don't let your BOSS controll you\nJoin the WUT Worker Union\nThey are the minority, WE ARE THE NATION !"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":25,
                  "x":165,
                  "y":351
                 }, 
                 {
-                 "class":"",
                  "height":45,
                  "id":13,
                  "name":"solid",
@@ -463,13 +461,13 @@
                          "value":"SOLID !!!"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":34,
                  "x":481,
                  "y":181
                 }, 
                 {
-                 "class":"",
                  "height":61.8507652049798,
                  "id":25,
                  "name":"Dump Fight",
@@ -490,6 +488,7 @@
                          "value":"I've heard Cats and Crowd use to fight a lot here\nIt was call Dumpster Battle !"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":75.3310601855522,
                  "x":555.863928316549,
@@ -507,7 +506,6 @@
          "name":"NPC",
          "objects":[
                 {
-                 "class":"NPC",
                  "height":0,
                  "id":7,
                  "name":"Joe",
@@ -519,13 +517,13 @@
                          "value":"right"
                         }],
                  "rotation":0,
+                 "type":"NPC",
                  "visible":true,
                  "width":0,
                  "x":206,
                  "y":354
                 }, 
                 {
-                 "class":"NPC",
                  "height":0,
                  "id":10,
                  "name":"Raoul",
@@ -537,13 +535,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"NPC",
                  "visible":true,
                  "width":0,
                  "x":417,
                  "y":441
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":15,
                  "name":"Charle",
@@ -555,13 +553,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":177,
                  "y":41
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":16,
                  "name":"Thrug 1",
@@ -573,13 +571,13 @@
                          "value":"left"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":208,
                  "y":75
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":17,
                  "name":"Thrug 0",
@@ -591,13 +589,13 @@
                          "value":"right"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":143,
                  "y":72
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":21,
                  "name":"Thrug",
@@ -619,13 +617,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":533.666666666667,
                  "y":43.6666666666663
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":22,
                  "name":"Thrug",
@@ -647,6 +645,7 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":492,
@@ -659,10 +658,10 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":27,
+ "nextobjectid":30,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.9.2",
+ "tiledversion":"1.10.1",
  "tileheight":32,
  "tilesets":[
         {
@@ -695,6 +694,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.9",
+ "version":"1.10",
  "width":20
 }
