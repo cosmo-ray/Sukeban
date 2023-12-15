@@ -14,8 +14,8 @@
 	    "strength": 4
 	},
 	"equipement": {
-	    "torso": "white longsleeve m",
-	    "legs": "teal pants m",
+	    "torso": ["rand", "white longsleeve m", "brown longsleeve m"],
+	    "legs": ["rand", "teal pants m", "black pants m", "gray pantaloons m"],
 	    "feet": "brown_shoes m"
 	}
     },

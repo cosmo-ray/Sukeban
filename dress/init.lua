@@ -30,6 +30,24 @@ function setObjects(path)
    dressup.objects = objects
 end
 
+local function getPart(npc, whichpart)
+   local e_part = npc[whichpart]
+   print(e_part, whichpart)
+   if yeType(e_part) == YARRAY then
+      yePrint(e_part)
+      if yeGetString(e_part[0]) == "rand" then
+	 if yIsNil(npc[whichpart .. "rnd"]) then
+	    npc[whichpart .. "rnd"] = 1 + (yuiRand() % (yeLen(e_part) - 1))
+	 end
+	 e_part = e_part[yeGetInt(npc[whichpart .. "rnd"])]
+      else
+	 e_part = e_part[0]
+      end
+   end
+   print(e_part, whichpart, npc[whichpart .. "rnd"])
+   return e_part
+end
+
 function dressUp(caracter)
    if yIsNil(objects) then
       explosion("OBJECT MUST BE SET FIRST !!!!")
@@ -53,9 +71,11 @@ function dressUp(caracter)
    caracter.clothes = {}
    clothes = caracter.clothes
    if e.feet then
-      local cur_o = objs[yeGetString(e.feet)]
+      local e_feet = getPart(e, "feet")
+      local cur_o = objs[yeGetString(e_feet)]
+
       if (yIsNil(cur_o)) then
-	 print("can't find ", yeGetString(e.feet))
+	 print("can't find ", yeGetString(e_feet))
       end
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
@@ -69,9 +89,11 @@ function dressUp(caracter)
    end
 
    if e.legs then
-      local cur_o = objs[yeGetString(e.legs)]
+      local e_legs = getPart(e, "legs")
+      local cur_o = objs[yeGetString(e_legs)]
+
       if (yIsNil(cur_o)) then
-	 print("can't find ", yeGetString(e.legs))
+	 print("can't find ", yeGetString(e_legs))
       end
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
@@ -85,9 +107,9 @@ function dressUp(caracter)
    end
 
    if e.torso then
-      print("in torso")
-      print("objs[yeGetString(e.torso)]: ", objs[yeGetString(e.torso)])
-      local cur_o = objs[yeGetString(e.torso)]
+      local e_torso = getPart(e, "torso")
+
+      local cur_o = objs[yeGetString(e_torso)]
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)
       end
@@ -100,9 +122,11 @@ function dressUp(caracter)
    end
 
    if e.head then
-      local cur_o = objs[yeGetString(e.head)]
+      local e_head = getPart(e, "head")
+
+      local cur_o = objs[yeGetString(e_head)]
       if (yIsNil(cur_o)) then
-	 print("can't find ", yeGetString(e.head))
+	 print("can't find ", yeGetString(e_head))
       end
       if (cur_o.path) then
 	 yeCreateString(cur_o.path:to_string(), clothes)

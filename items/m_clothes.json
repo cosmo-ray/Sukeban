@@ -14,6 +14,16 @@
 	"where": "legs",
 	"path": "legs/pants/male/teal_pants_male.png"
     },
+    "black pants m": {
+	"type": "equipement",
+	"where": "legs",
+	"path": "legs/pants/male/male_pants_black.png"
+    },
+    "gray pantaloons m": {
+	"type": "equipement",
+	"where": "legs",
+	"path": "legs/pantaloons/male/gray.png"
+    },
     "brown_shoes m" : {
 	"type": "equipement",
 	"path": "feet/shoes/male/brown_shoes_male.png",
