@@ -279,9 +279,9 @@ function CombatEnd(wid, _main, winner_id)
    local winner = Entity.wrapp(yJrpgGetWinner(wid, winner_id))
    local looser = Entity.wrapp(yJrpgGetLooser(wid, winner_id))
 
-   ySoundStop(main.soundcallgirl)
-   ySoundStop(main.soundfrenetic)
-   ySoundStop(main.soundgoodf)
+   ySoundPause(main.soundcallgirl)
+   ySoundPause(main.soundfrenetic)
+   ySoundPause(main.soundgoodf)
    wid.main = nil
    if yLovePtrToNumber(winner_id) == 3 then
       -- you lose
