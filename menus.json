@@ -116,7 +116,8 @@ Good luck and good drinks!
 	"text" : "todo
 sprites from www.opengameart.org
 music from www.rengoku-teihen.com
-Ther's an imgs/credit.txt that try to resence all art author
+There's an imgs/credit.txt that try to resence all art author
+music are in music/credit.txt
 If I've forgot an artwork, thank to create an issue, Pull Request
 or notice me :)
 to copy past website, use a terminal and do:
@@ -238,7 +239,6 @@ We love you anyway",
 		  "#########                THE END                #########",
 		  "#########################################################"],
 	"next" : "phq:menus.Credit"
-	
     },
     "game" : {
         "<type>" : "phq",

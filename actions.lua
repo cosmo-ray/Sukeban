@@ -280,6 +280,8 @@ function CombatEnd(wid, _main, winner_id)
    local looser = Entity.wrapp(yJrpgGetLooser(wid, winner_id))
 
    ySoundStop(main.soundcallgirl)
+   ySoundStop(main.soundfrenetic)
+   ySoundStop(main.soundgoodf)
    wid.main = nil
    if yLovePtrToNumber(winner_id) == 3 then
       -- you lose
@@ -329,7 +331,18 @@ function StartFight(wid, eve, enemy_type, script)
    local main = getMainWid(wid)
    local fWid = Entity.new_array()
    local npc
-   --ySoundPlayLoop(main.soundcallgirl:to_int())
+
+   local music_rand = yuiRand() % 3
+
+   print(music_rand, main_widget.soundcallgirl:to_int(),
+	 main_widget.soundfrenetic, main_widget.soundgoodf)
+   if music_rand == 0 then
+      ySoundPlayLoop(main_widget.soundcallgirl:to_int())
+   elseif music_rand == 1 then
+      ySoundPlayLoop(yeGetInt(main_widget.soundfrenetic));
+   else
+      ySoundPlayLoop(yeGetInt(main_widget.soundgoodf));
+   end
 
    fight_script = nil
    if yIsNNil(script) then
