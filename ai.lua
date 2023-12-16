@@ -444,8 +444,16 @@ end
 function calsses_event_dialog_gen(_wid, cur_dialogue)
    local pj = phq.pj
    cur_dialogue = Entity.wrapp(cur_dialogue)
+   yeRemoveChild(cur_dialogue, "answer")
+   if yuiRand() % 5 == 0 then
+      cur_dialogue["text"] = "when going to class, someone try steal you"
+      cur_dialogue["answer"] = Entity.new_array()
+      cur_dialogue["answer"]["text"] = "(fight)"
+      cur_dialogue["answer"]["action"] = {"phq.StartFight", "Thrug"}
+      return
+   end
 
-   if phq_pc.trait.lazy > 3 and yuiRand() % 2 == 0 then
+   if phq_pc.trait.lazy > 3 and yuiRand() % 3 == 0 then
       cur_dialogue["text"] = "You slack off durring class"
       increaseStat(nil, phq.pj.reputation, "glandeur", 1)
       return

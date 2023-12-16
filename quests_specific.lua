@@ -376,6 +376,7 @@ local function game_scene(_wid, _eve, scene_str)
    local scenes = ygGet("phq.game_senes")
    local scene = Entity.wrapp(yeGet(scenes, yeGetString(scene_str)))
 
+   ywSetTurnLengthOverwrite(-1);
    if yIsNil(scene) or yIsNil(scene[game_scene_state]) then
       yeClearArray(game_scene_npcs)
       game_scene_timer = 0
