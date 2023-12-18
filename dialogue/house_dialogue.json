@@ -164,6 +164,14 @@
 			"condition": ["<", "phq.env.chapter", 1]
 		    },
 		    "News about a pack of dogs living in the mountains, who hunt bears",
+		    {
+			"text": "Where does the Christmas Tree come from ? where to buy them ?",
+			"condition": ["=", "phq.env.chapter", 2]
+		    },
+		    {
+			"text": "Documentary about how microwave are made",
+			"condition": ["=", "phq.env.chapter", 3]
+		    },
 		    "TV report about how a volleyball coatch, that use to be a general in the national navy, train his team to win the olympic game 20 years ago",
 		    "television report about how winemaker are switching to organic and natural wine",
 		    {
@@ -177,6 +185,14 @@
 		    {
 			"text": "Documentation, about how a school that was privatize at the other end of the work, end up increasin it's students grades",
 			"condition": ["and", ["<", "phq.env.school_day", 26], [">", "phq.env.school_day", 19]]
+		    },
+		    {
+			"text": "News about violent strike against School Privatization, showing that demonstrator are very violent, and dangerous",
+			"condition": ["and", ["<", "phq.env.school_day", 27], [">", "phq.env.school_day", 20]]
+		    },
+		    {
+			"text": "It seems a cops, kill a demonstrator by mistake, the demonstrator where very violent (so the TV say)",
+			"condition": ["and", ["<", "phq.env.school_day", 27], [">", "phq.env.school_day", 24]]
 		    },
 		    "reportage about the broken career of an old tenis women, who use to have some of the stronger server ever, but end up breaking her wrist beyong repair",
 		    "News about our country making some giant robots real\nthey say it's for military purpose\nwith a big add telling us to join the army now",
