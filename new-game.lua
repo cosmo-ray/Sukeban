@@ -59,6 +59,7 @@ function newGameAction(menu, _eve, _arg)
    phq.quests = {}
    phq.env = File.jsonToEnt("environement.json")
    phq.env.dayrand = yuiRand()
+   phq.env.daytmp = {}
    phq.npcs = File.jsonToEnt("npcs.json")
    phq.pj = {}
    phq.pj.name = "Oscar"

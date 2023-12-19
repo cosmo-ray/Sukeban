@@ -144,7 +144,19 @@
 		},
 		{
 		    "text": "Premiumu Bento",
-		    "action": [ "phq.openStore", "Premium Bento" ]
+		    "condition": ["exist", "phq.env.daytmp.have_bento"],
+		    "action": ["Dialogue:goto", "bento fight"]
+		},
+		{
+		    "text": "Premiumu Bento",
+		    "condition": ["!exist", "phq.env.daytmp.have_bento"],
+		    "actions": [
+			["setInt", "phq.env.daytmp.have_bento", 1],
+			[
+			    "Dialogue.condition_switch", ["chkInfD100", 70],
+			    "bento unevenful queue", "bento evenful queue"
+			]
+		    ]
 		},
 		{
 		    "text": "Hairdresser (15$)",
@@ -161,9 +173,54 @@
 		    "actions": [["phq.setCurStation", 0, 1],
 				["phq.openGlobMenu", 3]]
 		},
-		"leave"
+		{
+		    "text": "leave",
+		    "action": "phq.backToGame"
+		}
 	    ]
+	},
+	"bento unevenful queue" : {
+	    "rand-texts": [
+		"You wait in the queue...",
+		"The queue was uneventful",
+		"A song about how piss off you are of waiting in queue is playing in your head"
+	    ],
+	    "action": [ "phq.openStore", "Premium Bento" ]
+	},
+	"bento evenful queue" : {
+	    "rand-texts": [
+		{
+		    "text": "some anoying peoples talk to you about some old movie no one care",
+		    "actions": [
+			[ "phq.increase", "knowledge", "movies", 1]
+		    ]
+		},
+		{
+		    "text": "some borring guy talk to you about how much he love the last hot stuff in cinema",
+		    "actions": [
+			[ "phq.increase", "knowledge", "movies", 1]
+		    ]
+		},
+		{
+		    "text": "Some ultra cringe 'person ?', juste spend 10mn explaining to you, why the animu voyage du Kino, is kino",
+		    "actions": [
+			[ "phq.increase", "knowledge", "animu", 1]
+		    ]
+		},
+		{
+		    "dialog-change": "bento fight"
+		}
+	    ],
+	    "answer": {
+		"text": "go to the bento shop",
+		"action":  [ "phq.openStore", "Premium Bento" ]
+	    }
+	},
+	"bento fight" : {
+	    "text": "you don't know how, nor when, but you piss off some f***** smug ",
+	    "action": [ "phq.StartFight", "Thrug"]
 	}
+
     }, "school_presentation": {
 	"0": {
 	    "text": "School presentation...",
