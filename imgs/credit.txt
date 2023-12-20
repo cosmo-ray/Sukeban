@@ -1,5 +1,14 @@
 IMAGES HERE:
 
+Backgrounds:
+
+classroom-a-st2-day.png, classroom-hallway.png:
+https://potat0master.itch.io/free-visual-novel-backgrounds-starter-pack-2
+By potat0master
+
+
+Characters:
+
 agustina.png:
 MIT license: https://dejinyucu.itch.io/agustina-visual-novel-sprite
 
@@ -22,7 +31,7 @@ made by: Frances Calceta
 KAZASHI 8.jpg - TRISH 0.jpg:
 CC-By 3.0
 made by: https://opengameart.org/users/ironthunder
-Copyright/Attribution Notice: 
+Copyright/Attribution Notice:
 Special thanks to Markeus Brumfield and Frank Ni
 
 Willo-Default-Default-Default.png , charle.png , ashley-Clothing_Preset_2-Default-Default.png, ashley-Default-Default-0.png, random_brown.png:
@@ -32,15 +41,11 @@ portrait-1-14 by andre tran CC-BY-3
 
 SPRITESSHEET IN TILESET:
 
-Ukulele : 
+Ukulele :
 - Creative Commons Zero (CCO).
 - based on this https://openclipart.org/detail/65887
 - came from Stendhal source: https://github.com/arianne/stendhal/blob/7ee9d25/tiled/tileset/item/instrument/ukulele.png
 
-classroom-a-st2-day.png:
-https://potat0master.itch.io/free-visual-novel-backgrounds-starter-pack-2
-By potat0master
-
-Also see 
-Sukeban/imgs/licences-imgs 
+Also see (because I wasn't able to remeber licence-imgs exist when I create this file...)
+Sukeban/imgs/licences-imgs
 

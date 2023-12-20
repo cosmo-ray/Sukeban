@@ -226,7 +226,8 @@
 	    "text": "School presentation...",
 	    "answers": [
 		"Listen then leave"
-	    ]
+	    ],
+	    "speaker_background": "imgs/classroom-hallway.png"
 	}
     }, "Horsez Pariez": {
 	    "in": {
