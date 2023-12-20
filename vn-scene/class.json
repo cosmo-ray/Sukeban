@@ -8,7 +8,8 @@
 		    "Dialogue.condition_switch", ["chkInfD100", 70],
 		    "event", "nothing"
 		]
-            }
+            },
+	    "speaker_background": "imgs/classroom-a-st2-day.png"
 	},
 	"nothing": {
 	    "text": "Boring Class...",

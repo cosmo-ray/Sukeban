@@ -37,6 +37,10 @@ Ukulele :
 - based on this https://openclipart.org/detail/65887
 - came from Stendhal source: https://github.com/arianne/stendhal/blob/7ee9d25/tiled/tileset/item/instrument/ukulele.png
 
+classroom-a-st2-day.png:
+https://potat0master.itch.io/free-visual-novel-backgrounds-starter-pack-2
+By potat0master
+
 Also see 
 Sukeban/imgs/licences-imgs 
 

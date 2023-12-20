@@ -473,8 +473,10 @@ function calsses_event_dialog_gen(_wid, cur_dialogue)
       end
    end
 
-   local target_i = yuiRand() % whos_nb + 1
-   local target = whos[target_i]
+   repeat
+      local target_i = yuiRand() % whos_nb + 1
+      local target = whos[target_i]
+   until yIsNNil(target)
 
    if yIsNil(target.relation) then
       target.relation = {}
