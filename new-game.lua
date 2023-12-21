@@ -175,6 +175,7 @@ function newGameAction(menu, _eve, _arg)
       phq.pj.knowledge.movies = 5
       phq.pj.stats.smart = 5
       phq.pj.stats.agility = 5 -- got some skills from playing DDR
+      phq.pj.stats.charm = 5
       phq.pj.stats.strength = 5
       learn_combot("unarmed1")
       phq.env.mean_name = "noob"

@@ -273,6 +273,21 @@
                          "name":"Arg0",
                          "type":"string",
                          "value":"Thrug"
+                        }, 
+                        {
+                         "name":"Condition",
+                         "type":"string",
+                         "value":">"
+                        }, 
+                        {
+                         "name":"ConditionArg0",
+                         "type":"string",
+                         "value":"phq.pj.stats.charm"
+                        }, 
+                        {
+                         "name":"ConditionArg1",
+                         "type":"int",
+                         "value":3
                         }],
                  "rotation":0,
                  "type":"",
