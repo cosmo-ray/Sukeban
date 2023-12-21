@@ -394,6 +394,7 @@ function init_phq(mod)
    mod.scene_ai.random_movements = Entity.new_func(randomMovements)
    mod.misc_fnc = {}
    mod.misc_fnc.move_npc = Entity.new_func(move_npc)
+   mod.misc_fnc.give_invok = Entity.new_func(give_invok)
    mod.misc_fnc.unmove_npc = Entity.new_func(unmove_npc)
    mod.misc_fnc.give_neutral_quest = Entity.new_func(give_neutral_quest)
    mod.misc_fnc.class_even = Entity.new_func(calsses_event_dialog_gen)

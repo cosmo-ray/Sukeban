@@ -327,6 +327,20 @@ function npcDefaultInit(npc, enemy_type)
    return npc
 end
 
+function give_invok(_wid_, _eve_, invok_name)
+   local invoks = yeTryCreateArray(phq.pj, "invok")
+   invok_name = yeGetString(invok_name)
+   invoks = Entity.wrapp(invoks)
+
+   print(invok)
+   print("in give invock !!")
+   if yIsNNil(yeGet(invoks, invok_name)) then
+      return
+   end
+   printMessage(main_widget, nil, "Got new invock: " .. invok_name)
+   yePushBack(invoks, npcs[invok_name], invok_name)
+end
+
 function StartFight(wid, eve, enemy_type, script)
    local main = getMainWid(wid)
    local fWid = Entity.new_array()

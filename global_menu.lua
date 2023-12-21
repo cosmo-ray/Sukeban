@@ -168,6 +168,8 @@ function pushSTatusTextScreen(container)
    local knowledge = phq.pj.knowledge
    local stats_str = "----- Stats -----\n"
    local stats = phq.pj.stats
+   local invocks = phq.pj.invok
+   local invocks_str = "" -- "----- Invoks -----\n"
    local trait_str = "----- Trait -----\n"
    local trait = phq.pj.trait
    local cmb_str = "-[Currrent Fighting Skill: {phq.pj.attack}]-\n"
@@ -203,6 +205,18 @@ function pushSTatusTextScreen(container)
 	    trait_k .. ": " .. trait_v .. "\n"
       end
       i = i + 1
+   end
+   if yIsNNil(invocks) then
+      invocks_str = "----- Invoks -----\n"
+      i = 0
+      while i < yeLen(invocks) do
+	 if invocks[i] then
+	    local invocks_k = yeGetKeyAt(invocks, i)
+	    invocks_str = invocks_str .. invocks_k .. ""
+	 end
+	 i = i + 1
+      end
+      invocks_str = invocks_str .. "\n"
    end
 
    local chap_txt = "capter: "
@@ -248,6 +262,7 @@ function pushSTatusTextScreen(container)
       "Status:\n" ..
       "life: {phq.pj.life}\n" ..
       "xp: {phq.pj.xp} \n" ..
+      invocks_str ..
       alcohol_lvl_str() ..
       knowledge_str ..
       stats_str ..

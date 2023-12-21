@@ -5,6 +5,7 @@
     "Thrug": {
 	"sex": "male",
 	"type": "light",
+	"name": "Thrug",
         "max_life": 13,
 	"is_generic": true,
 	"hair": ["plain", "raven"],
