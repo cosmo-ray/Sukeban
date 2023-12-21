@@ -444,7 +444,7 @@ end
 function calsses_event_dialog_gen(_wid, cur_dialogue)
    local pj = phq.pj
    cur_dialogue = Entity.wrapp(cur_dialogue)
-   yeRemoveChild(cur_dialogue, "answer")
+   cur_dialogue["answer"] = "(ok, nice...)"
    if yuiRand() % 5 == 0 then
       cur_dialogue["text"] = "when going to class, someone try steal you"
       cur_dialogue["answer"] = Entity.new_array()
@@ -473,9 +473,11 @@ function calsses_event_dialog_gen(_wid, cur_dialogue)
       end
    end
 
+   local target = nil
+   local target_i = 0
    repeat
-      local target_i = yuiRand() % whos_nb + 1
-      local target = whos[target_i]
+      target_i = yuiRand() % whos_nb + 1
+      target = whos[target_i]
    until yIsNNil(target)
 
    if yIsNil(target.relation) then
