@@ -1,4 +1,48 @@
 {
+    "bar-looking-for-a-frien": {
+	"in": {
+	    "text":  "you're here standing at the bar,\ntalking with peoples,\nsearching for friends, like c3l3s in FF6",
+	    "answers": [
+		{
+		    "text": "(ok ?)",
+		    "condition": ["or",
+				  ["or", ["<", "phq.pj.stats.strength", 3], ["<", "phq.pj.stats.charm", 3]],
+				  ["exist", "phq.pj.invok.Thrug"],
+				 ],
+		    "action": ["Dialogue:goto", "not enough competences"]
+		},
+		{
+		    "text": "(ok ?)",
+		    "condition": ["and",
+				  ["and", [">", "phq.pj.stats.strength", 2], [">", "phq.pj.stats.charm", 2]],
+				  ["!exist", "phq.pj.invok.Thrug"]
+				 ],
+		    "action": ["Dialogue:goto", "Meet thrug"]
+		}
+	    ]
+	},
+	"Meet thrug": {
+	    "text": "you meet some weird fold, like the silver guy, from Odd Job",
+	    "answer": {
+		"text": "yahou",
+		"actions": [
+		    ["phq.misc_fnc.give_invok", "Thrug"],
+		    "phq.backToGame"
+		]
+	    }
+	},
+	"not enough competences": {
+	    "text": "sadly evryone you meet, tend to go away, like for Cec*l in FF4",
+	    "answer": {
+		"text": "oops",
+		"actions": [
+		    [
+			"phq.backToGame"
+		    ]
+		]
+	    }
+	}
+    },
     "bar-work": {
 	"in": {
 	    "text": "Shift Start",

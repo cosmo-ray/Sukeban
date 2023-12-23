@@ -262,7 +262,7 @@
                         {
                          "name":"Action",
                          "type":"string",
-                         "value":"phq.misc_fnc.give_invok"
+                         "value":"phq.vnScene"
                         }, 
                         {
                          "name":"ActionNbArgs",
@@ -272,22 +272,7 @@
                         {
                          "name":"Arg0",
                          "type":"string",
-                         "value":"Thrug"
-                        }, 
-                        {
-                         "name":"Condition",
-                         "type":"string",
-                         "value":">"
-                        }, 
-                        {
-                         "name":"ConditionArg0",
-                         "type":"string",
-                         "value":"phq.pj.stats.charm"
-                        }, 
-                        {
-                         "name":"ConditionArg1",
-                         "type":"int",
-                         "value":3
+                         "value":"bar-looking-for-a-frien"
                         }],
                  "rotation":0,
                  "type":"",
