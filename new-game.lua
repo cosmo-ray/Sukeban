@@ -167,7 +167,7 @@ function newGameAction(menu, _eve, _arg)
       phq.env.mean_name = "trash"
       phq.env.mean_name2 = "slug"
    elseif archetype == NOOB_ARCHETYPE then
-      phq.pj.knowledge.computer = 5
+      phq.pj.knowledge.computer = 3
       phq.pj.knowledge.animu = 5
       phq.pj.knowledge.idoles = 5
       phq.pj.knowledge.video_game = 5

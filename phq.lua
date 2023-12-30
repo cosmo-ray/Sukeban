@@ -342,6 +342,7 @@ function init_phq(mod)
    Widget.new_subtype("phq", create_phq)
    Widget.new_subtype("phq-new-game", "create_new_game")
 
+   mod = yeConvert(mod, YHASH);
    mod = Entity.wrapp(mod)
    mod.actioned = {}
    mod.checkHightScore = Entity.new_func(checkHightScore)
@@ -1227,6 +1228,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
 
    tiled.fileToCanvas(scene.tiled:to_string(), c:cent(),
 		      upCanvas.ent:cent())
+
    if (c.tile_script) then
       run_script = scripts[c.tile_script:to_string()]
    end
