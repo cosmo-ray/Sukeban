@@ -7,7 +7,7 @@
 		    "text": "(ok ?)",
 		    "condition": ["or",
 				  ["or", ["<", "phq.pj.stats.strength", 3], ["<", "phq.pj.stats.charm", 3]],
-				  ["exist", "phq.pj.invok.Thrug"],
+				  ["exist", "phq.pj.invok.Thrug"]
 				 ],
 		    "action": ["Dialogue:goto", "not enough competences"]
 		},
