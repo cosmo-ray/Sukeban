@@ -604,7 +604,7 @@ end
 
 function CheckColision(main, canvasWid, pj)
    local pjPos = ylpcsHandePos(pj)
-   local colRect = Rect.new(ywPosX(pjPos) + 10, ywPosY(pjPos) + 30, 20, 20).ent
+   local colRect = Rect.new(ywPosX(pjPos) + 24, ywPosY(pjPos) + 42, 20, 20).ent
    local exites = main.exits
    local triggers = main.triggers
    local cur_time = phq.env.time:to_string()
@@ -1413,7 +1413,7 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
    else
       local rect = e_exits[entryIdx].rect
       local side = yeGetString(e_exits[entryIdx].side)
-      x = ywRectX(rect)
+      x = ywRectX(rect) - 20
       y = ywRectY(rect)
       if side == "up" or side == "up_left" or
       side == "up_right" then
@@ -1424,10 +1424,10 @@ function load_scene(ent, sceneTxt, entryIdx, pj_pos)
       end
       if side == "left" or side == "up_left" or
       side == "down_left" then
-	 x = x - 45
+	 x = x - 65
       elseif side == "right" or side == "down_right"
       or side == "up_right" then
-	 x = x + ywRectW(rect) + 45
+	 x = x + ywRectW(rect) + 35
       elseif side == "near_down" then
 	 y = y + ywRectH(rect) - 5
       end

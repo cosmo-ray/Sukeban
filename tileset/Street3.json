@@ -353,19 +353,18 @@
          "name":"NPC",
          "objects":[
                 {
-                 "class":"",
                  "height":0,
                  "id":5,
                  "name":"Bob",
                  "point":true,
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":784,
                  "y":900
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":4,
                  "name":"Runner_0",
@@ -387,13 +386,13 @@
                          "value":true
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":1906,
                  "y":1038
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":10,
                  "name":"Leika Lyusaki",
@@ -405,13 +404,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":2218.95973154362,
                  "y":749.440715883669
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":13,
                  "name":"r_t2_0",
@@ -428,13 +427,13 @@
                          "value":true
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":772.075302554908,
                  "y":84.0430300313761
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":14,
                  "name":"r_t2_1",
@@ -451,13 +450,13 @@
                          "value":true
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":828.98341550874,
                  "y":84.8018825638727
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":15,
                  "name":"f0_t2_0",
@@ -474,13 +473,13 @@
                          "value":true
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":782.401726580009,
                  "y":743.302059211116
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":16,
                  "name":"f0_t2_1",
@@ -497,6 +496,7 @@
                          "value":true
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":839.309726580009,
@@ -514,60 +514,60 @@
          "name":"MISC",
          "objects":[
                 {
-                 "class":"",
                  "height":0,
                  "id":5,
                  "name":"r0-0",
                  "point":true,
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":2647.90925266904,
                  "y":1033.14056939502
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":6,
                  "name":"r0-1",
                  "point":true,
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":2676.82384341637,
                  "y":947.508896797153
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":7,
                  "name":"r0-2",
                  "point":true,
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":2570.06227758007,
                  "y":841.859430604982
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":8,
                  "name":"r0-3",
                  "point":true,
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":1871.66370106762,
                  "y":842.97153024911
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":9,
                  "name":"r0-4",
                  "point":true,
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":1804.93772241993,
@@ -585,7 +585,6 @@
          "name":"Entries",
          "objects":[
                 {
-                 "class":"EntryPoint",
                  "height":273,
                  "id":1,
                  "name":"ToStreet2",
@@ -606,13 +605,13 @@
                          "value":"right"
                         }],
                  "rotation":0,
+                 "type":"EntryPoint",
                  "visible":true,
                  "width":13,
                  "x":9,
                  "y":1289
                 }, 
                 {
-                 "class":"",
                  "height":40,
                  "id":2,
                  "name":"toSchool",
@@ -638,13 +637,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":66,
                  "x":928,
                  "y":671
                 }, 
                 {
-                 "class":"",
                  "height":41.7032484635645,
                  "id":3,
                  "name":"school_roof",
@@ -665,14 +664,14 @@
                          "value":"right"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":39.5083406496927,
                  "x":417.032484635645,
                  "y":26.3388937664618
                 }, 
                 {
-                 "class":"",
-                 "height":43.5709650505238,
+                 "height":35.4121399213424,
                  "id":23,
                  "name":"roof_room",
                  "properties":[
@@ -689,9 +688,10 @@
                         {
                          "name":"side",
                          "type":"string",
-                         "value":"down"
+                         "value":"near_down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":31.519421525911,
                  "x":1152.31296931492,
@@ -707,7 +707,7 @@
  "nextobjectid":24,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.9.2",
+ "tiledversion":"1.10.1",
  "tileheight":32,
  "tilesets":[
         {
@@ -744,6 +744,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.9",
+ "version":"1.10",
  "width":90
 }
