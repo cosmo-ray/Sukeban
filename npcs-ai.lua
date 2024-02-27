@@ -72,7 +72,7 @@ local orga_to_scene = {
    ["Mystical Neet Go-under"] = "hiden_house",
    ["Board Game and Roleplay Club"] = "school_boardgame_club",
    ["Students Protection Group"] = "school_roof_room",
-   ["Wheelball Team"] = "team_sport_clubs",
+   ["Wheelball School Team"] = "team_sport_clubs",
    ["Music club"] = "music_club"
 }
 

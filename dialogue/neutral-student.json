@@ -58,7 +58,7 @@
 			    ]
 			],
 			"actions": [
-			    ["phq.printMessage", "Join Animu Club !"],
+			    ["phq.printMessage", "Join wheelball team !"],
 			    [ "recreateString",
 			      "phq.pj.organisations.wheelball_school_team",
 			      "Wheelball School Team"],
