@@ -64,6 +64,7 @@
 	    "female_atraction": 1,
 	    "sensitivity": -2
 	},
+	"organisations": ["Wheelball School Team"],
 	"image": {
 	    "dst-threshold": [100,-300],
 	    "src" : "./imgs/charle.png"
@@ -124,7 +125,7 @@
 	    "female_atraction": 0,
 	    "sensitivity": -4
 	},
-	"organisations": ["Student Club"],
+	"organisations": ["Student Club", "Wheelball School Team"],
 	"equipement": {
 	    "torso": "white_sleeveless",
 	    "legs": "short skirt",
@@ -311,7 +312,7 @@
 	    "strength": 12,
 	    "smart": 4
 	},
-	"organisations": ["Students Protection Group"],
+	"organisations": ["Students Protection Group", "Wheelball School Team"],
 	"trait": {
 	    "violance": 8,
 	    "perv": 4,

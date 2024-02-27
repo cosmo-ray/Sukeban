@@ -35,8 +35,9 @@ school_students_organisation = {
    "Beautification Club",
    "Students Protection Group",
    "Music club",
+   "Wheelball School Team",
    "Mystical Neet Go-under",
-   "Board Game and Roleplay Club"
+   "Board Game and Roleplay Club",
 }
 
 function is_concert_at_wheelball()
