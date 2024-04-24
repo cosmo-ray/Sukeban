@@ -119,7 +119,8 @@
 			    ["Dialogue.condition_switch",
 			     "phq.chk_affection", "talking-incr-affection",
 			     "talking-dislike", "talking-crit-sucess",
-			     "talking-fumble", "give-quest", "sport-talk"]
+			     "talking-fumble", "give-quest", "sport-talk",
+			     "boardgame-talk", "animu-talk"]
 			],
 			"condition":  ["<", "phq_wid.dialogue_npc.have_talk", 1]
 		    }
@@ -159,6 +160,21 @@
 			 "You talk about your favorit whellball team",
 			 "You talk about voleyball",
 			 "Long discution about favorit gear for whellball"
+		 ],
+		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 3],
+		"action": "phq.backToGame"
+	    }, "boardgame-talk" : {
+		 "rand-texts": [
+			 "Discution about whatever you prefer games with D20 or D6",
+			 "You talk about uno ?",
+			 "{phq_wid.dialogue_npc.name} tell you about the time when he used to play Savana Speed"
+		 ],
+		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 3],
+		"action": "phq.backToGame"
+	    }, "animu-talk": {
+		"rand-texts": [
+			 "Gundoum Goundoum Goundoum !",
+			 "Bla bla bla, {phq_wid.dialogue_npc.name} like that waifu"
 		 ],
 		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 3],
 		"action": "phq.backToGame"
