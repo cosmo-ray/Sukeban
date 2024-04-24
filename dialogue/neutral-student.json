@@ -119,7 +119,7 @@
 			    ["Dialogue.condition_switch",
 			     "phq.chk_affection", "talking-incr-affection",
 			     "talking-dislike", "talking-crit-sucess",
-			     "talking-fumble", "give-quest"]
+			     "talking-fumble", "give-quest", "sport-talk"]
 			],
 			"condition":  ["<", "phq_wid.dialogue_npc.have_talk", 1]
 		    }
@@ -152,6 +152,15 @@
 			 "but I this person hate me now",
 			 "current affection:  {phq_wid.dialogue_npc.relation.affection}"],
 		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", -10],
+		"action": "phq.backToGame"
+	    }, "sport-talk" : {
+		 "rand-texts": [
+			 "You talk about diferents sportsware bands",
+			 "You talk about your favorit whellball team",
+			 "You talk about voleyball",
+			 "Long discution about favorit gear for whellball"
+		 ],
+		"pre-action": ["increaseInt", "phq_wid.dialogue_npc.relation.affection", 3],
 		"action": "phq.backToGame"
 	    }
 	}
