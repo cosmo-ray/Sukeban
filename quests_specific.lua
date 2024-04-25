@@ -186,6 +186,15 @@ function chk_affection(wid)
       local ostr = yeGetStringAt(organisations, i)
       for j = 0, yeLen(pj_o) - 1 do
 	 if ostr == yeGetStringAt(pj_o, j) then
+	    if ostr == "Animu Club" and yuiRand() % 100 < 9 then
+	       return 7
+	    elseif ostr == "Wheelball School Team" and yuiRand() % 100 < 9 then
+	       -- sport
+	       return 6
+	    elseif ostr == "Board Game and Roleplay Club" and yuiRand() % 100 < 9 then
+	       -- boardgame
+	       return 5
+	    end
 	    base = base + 5
 	    goto continu_loop
 	 end
