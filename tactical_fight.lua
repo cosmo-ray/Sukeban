@@ -461,8 +461,8 @@ function do_tactical_fight(eve)
 
       main_widget.current = 0
 
-      tdata.cur_ch_square = ywCanvasNewRectangle(main_canvas, 0, 0, 32, 32,
-						 "rgba: 127 127 127 120")
+      tdata.cur_ch_square = ywCanvasNewFilledCircle(main_canvas, 0, 0, 16,
+						    "rgba: 127 127 127 120")
 
       begin_turn_init(tdata)
 
@@ -582,10 +582,10 @@ function do_tactical_fight(eve)
 		     col = COL_FAR_ENEMY
 		  end
 	       end
-	       block_square = ywCanvasNewRectangle(main_canvas,
-						   ywPosX(p) + 4,
-						   ywPosY(p) + ywSizeH(s) - 32,
-						   32, 32, col)
+	       block_square = ywCanvasNewFilledCircle(main_canvas, ywPosX(p) + 32,
+						      ywPosY(p) + ywSizeH(s) - 8,
+						      16, col)
+
 	    end
 	 end
 
@@ -793,8 +793,8 @@ function do_tactical_fight(eve)
 	    attack_strengh
 
 	 cur_char_t[IDX_TMP_DATA] = ywCanvasNewImgByPath(main_widget.upCanvas,
-							 tchar_can_pos_x(atk_target),
-							 tchar_can_pos_y(atk_target),
+							 tchar_can_pos_x(atk_target) + 8,
+							 tchar_can_pos_y(atk_target) + 16,
 							 "imgs/explosion.png")
 	 ywCanvasPercentReduce(cur_char_t[IDX_TMP_DATA], 70)
       elseif cur_char_t[IDX_TIMER] < 10 then
@@ -814,8 +814,9 @@ function do_tactical_fight(eve)
    -- print all stuf
    local cur_ch_pos = yGenericHandlerPos(cur_char[1])
    local cur_ch_size = yGenericHandlerSize(cur_char[1])
-   ywCanvasObjSetPos(tdata.cur_ch_square, ywPosX(cur_ch_pos) + 4,
-		     ywPosY(cur_ch_pos) + ywSizeH(cur_ch_size) - 32)
+   ywCanvasObjSetPos(tdata.cur_ch_square,
+		     ywPosX(cur_ch_pos) + 32,
+		     ywPosY(cur_ch_pos) + ywSizeH(cur_ch_size) - 8)
 
    ywCanvasObjSetPos(mv_info, mx, my)
    local turn_order_str = ""
