@@ -87,10 +87,10 @@
 	"dialogue": [
 	    {
 		"text": "Go Away!",
-		"condition": ["!exist", "phq.events.robert_away"],
+		"condition": ["exist", "phq.events.robert_away"],
 		"answer": {
-			"text": "Okay.",
-			"action": "phq.backToGame"
+		    "text": "Okay.",
+		    "action": "phq.backToGame"
 		}
 	    },
 	    {
@@ -160,14 +160,14 @@
 		    {
 		    	"text": "(start a quest, yayyyyy)",
 		    	"actions": [
-				["recreateInt", "phq.quests.no_rats", 0],
-				"phq.backToGame"]
+			    ["recreateInt", "phq.quests.no_rats", 0],
+			    "phq.backToGame"]
 		    },
 		    {
 			"text": "no, fuck you, learn to not be an asshole\nwhen you talk to someone",
 			"actions": [
-				["recreateInt", "phq.events.robert_away", 1],
-				"phq.backToGame"
+			    ["recreateInt", "phq.events.robert_away", 1],
+			    ["Dialogue.goto", 7]
 			]
 		    }
 		]
@@ -208,6 +208,13 @@
 	    {
 		"text": [ "well, why not, your hire" ],
 		"actions": ["phq.backToGame", ["setInt", "phq.events.can_work", 1]]
+	    },
+	    {
+		"text": [
+		    "that's my bar, I treat client the way I want",
+		    "now bug off, your not wealcom here, go away"
+		],
+		"action": "phq.backToGame"
 	    }
 	]
     },
