@@ -622,7 +622,7 @@ function CheckColision(main, canvasWid, pj)
    end
 
    local cur_scene = main.cur_scene
-   if ywPosX(pjPos) < 0 then
+   if ywPosX(pjPos) + 20 < 0 then
       if CheckColisionTryChangeScene(main, cur_scene, "left") then
 	 return CHANGE_SCENE_COLISION
       else
@@ -634,7 +634,7 @@ function CheckColision(main, canvasWid, pj)
       else
 	 return NORMAL_COLISION
       end
-   elseif ywPosX(pjPos) + lpcs.w_sprite > canvasWid["tiled-wpix"]:to_int() then
+   elseif ywPosX(pjPos) + lpcs.w_sprite - 20 > canvasWid["tiled-wpix"]:to_int() then
       if CheckColisionTryChangeScene(main, cur_scene, "right") then
 	 return CHANGE_SCENE_COLISION
       else

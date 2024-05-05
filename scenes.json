@@ -50,7 +50,7 @@
 	    },
 	    "up" : {
 		"to": "park",
-		"entry": 1
+		"entry": 2
 	    }
 	},
 	"tiled": "./tileset/Street0.json"

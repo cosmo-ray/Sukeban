@@ -242,7 +242,6 @@
          "name":"Entries",
          "objects":[
                 {
-                 "class":"EntryPoint",
                  "height":274.756934423601,
                  "id":1,
                  "name":"Street2 entry",
@@ -263,13 +262,13 @@
                          "value":"left"
                         }],
                  "rotation":0,
+                 "type":"EntryPoint",
                  "visible":true,
                  "width":12.0166746833413,
                  "x":625.983325316659,
                  "y":452
                 }, 
                 {
-                 "class":"",
                  "height":11.5230078563412,
                  "id":19,
                  "name":"street 0",
@@ -290,10 +289,29 @@
                          "value":"up"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":645.887285553952,
                  "x":1,
-                 "y":744.476992143659
+                 "y":745.476992143659
+                }, 
+                {
+                 "height":0,
+                 "id":27,
+                 "name":"from Street",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"side",
+                         "type":"string",
+                         "value":"up"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":231.699654414075,
+                 "y":743.009739239711
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -307,7 +325,6 @@
          "name":"Actionable",
          "objects":[
                 {
-                 "class":"",
                  "height":16.4938737040528,
                  "id":23,
                  "name":"Money",
@@ -328,13 +345,13 @@
                          "value":4
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":12.5667609173735,
                  "x":92.6798617656299,
                  "y":212.064090480679
                 }, 
                 {
-                 "class":"",
                  "height":40.0565504241282,
                  "id":24,
                  "name":"Boat",
@@ -355,13 +372,13 @@
                          "value":"If there's a place you got to get\nI can get you there, I bet\nI'm the Boat\nI'm the Boat, I'm the Boat"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":102.890355010996,
                  "x":190.072258875275,
                  "y":375.431982406535
                 }, 
                 {
-                 "class":"",
                  "height":41.6273955387999,
                  "id":25,
                  "name":"madao_sunglass",
@@ -392,13 +409,13 @@
                          "value":"phq.events.findable_mad_sunglass"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":41.6273955387999,
                  "x":526.233113415017,
                  "y":14.1376060320452
                 }, 
                 {
-                 "class":"",
                  "height":24.3480992774112,
                  "id":26,
                  "name":"lost_4",
@@ -439,6 +456,7 @@
                          "value":4
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":29.0606346214263,
                  "x":159.440779139177,
@@ -462,10 +480,10 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":27,
+ "nextobjectid":29,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.9.2",
+ "tiledversion":"1.10.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -498,6 +516,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.9",
+ "version":"1.10",
  "width":20
 }
