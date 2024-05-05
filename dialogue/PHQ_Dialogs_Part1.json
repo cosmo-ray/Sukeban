@@ -86,6 +86,14 @@
     "Robert": {
 	"dialogue": [
 	    {
+		"text": "Go Away!",
+		"condition": ["!exist", "phq.events.robert_away"],
+		"answer": {
+			"text": "Okay.",
+			"action": "phq.backToGame"
+		}
+	    },
+	    {
 		"text": "Hoy, what can I do you for ?",
 		"answers": [
 		    {
@@ -95,7 +103,7 @@
 			    "I am here seeking for a job"
 			],
 			"condition": ["=", "phq.quests.no_rats", -1],
-			"action": ["Dialogue:goto", 1]
+			"action": ["Dialogue:goto", 2]
 		    },
 		    {
 			"text": [
@@ -106,7 +114,7 @@
 				      ["and", ["not", "phq.events.can_work"],
 					      [">", "phq.env.chapter", 0]],
 				      ["=", "phq.quests.no_rats", 2]],
-			"action": ["Dialogue:goto", 3]
+			"action": ["Dialogue:goto", 4]
 		    },
 		    {
 			"text": "(work)",
@@ -116,7 +124,7 @@
 		    {
 			"text": "Aye, I kill all y'ur rats",
 			"condition": ["=", "phq.quests.no_rats", 1],
-			"action": ["Dialogue:goto", 2]
+			"action": ["Dialogue:goto", 3]
 		    },
                     {
 			"text": "Nothing... hum hej da.",
@@ -148,11 +156,20 @@
 		    "the good one, the bottle with 'ciel' write on it",
 		    "That's a job for you, I'll give you 2 buck"
 		],
-		"answer": {
-		    "text": "(start a quest, yayyyyy)",
-		    "actions": [
-			["recreateInt", "phq.quests.no_rats", 0],
-			"phq.backToGame"]
+		"answers": [
+		    {
+		    	"text": "(start a quest, yayyyyy)",
+		    	"actions": [
+				["recreateInt", "phq.quests.no_rats", 0],
+				"phq.backToGame"]
+		    },
+		    {
+			"text": "no, fuck you, learn to not be an asshole\nwhen you talk to someone",
+			"actions": [
+				["recreateInt", "phq.events.robert_away", 1],
+				"phq.backToGame"
+			]
+		    }
 		}
 	    },
 	    {
@@ -176,7 +193,7 @@
 		    },
 		    {
 			"text": "so ?",
-			"action": ["Dialogue:goto", 5],
+			"action": ["Dialogue:goto", 6],
 			"condition": [">", "phq.pj.stats.charm", 3]
 		    }
 		]
