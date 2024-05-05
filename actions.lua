@@ -835,7 +835,6 @@ function printMessage(_main, _obj, msg)
 	 return
       end
 
-      print(#txt_tmp)
       if #txt_tmp > 1000 then
 	 local i = txt_tmp:find("\n-------------------------------\n", 1, true)
 	 if i and i > 1 then
@@ -857,6 +856,10 @@ function printMessage(_main, _obj, msg)
    else
       main.box_t = TIME_RESET
    end
+   if box_loading_bar then
+      ywCanvasRemoveObj(main_widget.upCanvas, box_loading_bar)
+   end
+   box_loading_bar = loading_bar.create(main.upCanvas, 0, 0)
 end
 
 local TMP_OBJ_SMALL_TALK = 0

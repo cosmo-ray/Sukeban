@@ -19,6 +19,7 @@ tiled = Entity.wrapp(ygGet("tiled"))
 local jrpg_fight = Entity.wrapp(ygGet("jrpg-fight"))
 dialogue_box = Entity.wrapp(ygGet("DialogueBox"))
 dialogue_mod = Entity.wrapp(ygGet("Dialogue"))
+loading_bar = Entity.wrapp(ygGet("loading-bar"))
 lpcs = Entity.wrapp(ygGet("lpcs"))
 sprite_man = Entity.wrapp(ygGet("sprite-man"))
 phq = Entity.wrapp(ygGet("phq"))
@@ -30,7 +31,7 @@ saved_scenes = nil
 dialogues = Entity.new_array()
 o_dialogues = nil
 phq_pc = nil
-
+box_loading_bar = nil
 students = nil
 
 -- make students an array containing all students npcs
@@ -194,6 +195,9 @@ end
 local function reposScreenInfo(ent, x0, y0)
    ywCanvasObjSetPos(ent.night_r, x0, y0)
    dialogue_box.set_pos(ent.box, 40 + x0, 40 + y0)
+   if box_loading_bar then
+      ywCanvasObjSetPos(box_loading_bar, 40 + x0, 28 + y0)
+   end
    for i = 0, yeLen(ent.rain_a) - 1 do
       local r = ent.rain_a[i]
       local x = yuiRand() % window_width
@@ -751,8 +755,11 @@ function phq_action(entity, eve)
 	 dialogue_box.rm(entity.upCanvas, entity.box)
 	 entity.box = nil
 	 entity.box_t = 0
+	 ywCanvasRemoveObj(main_widget.upCanvas, box_loading_bar)
+	 box_loading_bar = nil
       elseif isNewlyLoad == false then
-	    entity.box_t = entity.box_t - ywidGetTurnTimer()
+	 entity.box_t = entity.box_t - ywidGetTurnTimer()
+	 loading_bar.setPercent(box_loading_bar, 100 - (100 * yeGetInt(entity.box_t) / 4000000))
       end
    end
 
