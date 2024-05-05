@@ -834,7 +834,17 @@ function printMessage(_main, _obj, msg)
       if yIsNil(txt_tmp) then
 	 return
       end
-      txt = yeGetString(dialogue_box.get_text(main.box)) ..
+
+      print(#txt_tmp)
+      if #txt_tmp > 1000 then
+	 local i = txt_tmp:find("\n-------------------------------\n", 1, true)
+	 if i and i > 1 then
+	    i = i + #"\n-------------------------------\n"
+	    print("sub", txt_tmp:sub(i))
+	    txt_tmp = txt_tmp:sub(i)
+	 end
+      end
+      txt = txt_tmp ..
 	 "\n-------------------------------\n" .. txt
       dialogue_box.rm(main.upCanvas, main.box)
       main.box = nil
@@ -842,7 +852,7 @@ function printMessage(_main, _obj, msg)
    dialogue_box.new_text(main.upCanvas, 0, 0,
 			 txt, main, "box")
 
-   if main.box_t and main.box < 1500000 then
+   if main.box_t and main.box_t < 1500000 then
       main.box_t = main.box_t + TIME_RESET
    else
       main.box_t = TIME_RESET
