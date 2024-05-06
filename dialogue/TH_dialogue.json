@@ -177,14 +177,94 @@
 	    },
 	    {
 		"text": "of course here's the documents, you need a signature by your parent",
-		"answer": {
-		    "text": "humm, now I go ask my mother and bring them back, see you",
-		    "actions": [
-			[ "setInt", "phq.quests.school_sub", 1],
-			["phq.recive", "subscription papper"],
-			"phq.backToGame"
-		    ]
-		}
+		"answers":
+		[
+		    {
+			"text": [
+			    "You know, my relation with my parents, is kinda complicate",
+			    "can you do the subscription for me please :)"
+			],
+			"condition": ["!exist", "phq.events.greta_insult"],
+			"actions": [
+			    ["setInt", "phq.events.greta_insult", 0],
+			    ["Dialogue:change-text", "No, I can't I'm sorry"]
+			]
+		    },
+		    {
+			"text": "please, that would really help me",
+			"condition": ["and",
+				      ["exist", "phq.events.greta_insult"],
+				      ["<", "phq.events.greta_insult", 3]
+				     ],
+			"actions": [
+			    ["increaseInt", "phq.events.greta_insult", 1],
+			    ["Dialogue:change-text", "No, I can't I'm sorry"]
+			]
+		    },
+		    {
+			"text": "please, that would really help me",
+			"condition": ["and", [">", "phq.events.greta_insult", 2],
+				      ["<", "phq.events.greta_insult", 6]],
+			"actions": [
+			    ["increaseInt", "phq.events.greta_insult", 1],
+			    ["Dialogue:change-text", "No, I can't I'm sorry\ncan you please stop asking ?"]
+			]
+		    },
+		    {
+			"text": "please, that would really help me",
+			"condition": ["and", [">", "phq.events.greta_insult", 5],
+				      ["<", "phq.events.greta_insult", 10]],
+			"actions": [
+			    ["increaseInt", "phq.events.greta_insult", 1],
+			    ["Dialogue:change-text", "No, \ncan you please stop smatching this answer ?"]
+			]
+		    },
+		    {
+			"text": "please, that would really help me",
+			"condition": ["and", [">", "phq.events.greta_insult", 9],
+				      ["<", "phq.events.greta_insult", 14]],
+			"actions": [
+			    ["increaseInt", "phq.events.greta_insult", 1],
+			    ["Dialogue:change-text", "Dude\nwhen's the last time you've smatch 20 time a button in a video game\nand got a diferent result at the end ?\nyes I break the 4 wall again\nand am assuming you're a guy behing your screen"]
+			]
+		    },
+		    {
+			"text": "please, that would really help me",
+			"condition": ["and", [">", "phq.events.greta_insult", 13],
+				      ["<", "phq.events.greta_insult", 17]],
+			"actions": [
+			    ["increaseInt", "phq.events.greta_insult", 1],
+			    ["Dialogue:change-text", "Also, there's not too much the ocasion\nin this game to start a dialogue by dude\nfor an NPC"]
+			]
+		    },
+		    {
+			"text": "please, that would really help me",
+			"condition": ["and", [">", "phq.events.greta_insult", 16],
+				      ["<", "phq.events.greta_insult", 30]],
+			"actions": [
+			    ["increaseInt", "phq.events.greta_insult", 1],
+			    ["Dialogue:change-text", "whatever"]
+			]
+		    },
+		    {
+			"text": "please, that would really help me",
+			"condition": [">", "phq.events.greta_insult", 29],
+			"actions": [
+			    [ "setInt", "phq.quests.school_sub", 12 ],
+			    [ "setInt", "phq.quests.school_1_semestre", 0 ],
+			    ["phq.printMessage", "You've just skipp the whole prologue questline\nNow I hope you see this message, or the game might lost you"],
+			    "phq.backToGame"
+			]
+		    },
+		    {
+			"text": "humm, now I go ask my mother and bring them back, see you",
+			"actions": [
+			    [ "setInt", "phq.quests.school_sub", 1],
+			    ["phq.recive", "subscription papper"],
+			    "phq.backToGame"
+			]
+		    }
+		]
 	    },
 	    {
 		"text": "thanks, can I have the police certification now",
