@@ -184,8 +184,8 @@ We love you anyway",
 		"action" : "menuMainWidNext"
 	    },
             {
-                "text" : "game Info",
-                "next" : "phq:menus.game Info",
+                "text" : "Game Info",
+                "next" : "phq:menus.Game Info",
 		"action" : "menuMainWidNext"
 	    },
 	    {
