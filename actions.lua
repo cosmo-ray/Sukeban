@@ -185,7 +185,7 @@ function getMainWid(wid)
 end
 
 local function backToGameReset(main)
-   local TIME_RESET = 1000000
+   local TIME_RESET = 2000000
 
    main.pj.move.up_down = 0
    main.pj.move.left_right = 0
@@ -819,7 +819,7 @@ end
 
 function printMessage(_main, _obj, msg)
    local txt = yLuaString(msg)
-   local TIME_RESET = 1000000
+   local TIME_RESET = 2000000
 
    main = main_widget
 
@@ -851,7 +851,7 @@ function printMessage(_main, _obj, msg)
    dialogue_box.new_text(main.upCanvas, 0, 0,
 			 txt, main, "box")
 
-   if main.box_t and main.box_t < 1500000 then
+   if main.box_t and (main.box_t < 2000000 or main.box_t < TIME_RESET) then
       main.box_t = main.box_t + TIME_RESET
    else
       main.box_t = TIME_RESET

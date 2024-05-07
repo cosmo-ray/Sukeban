@@ -759,7 +759,7 @@ function phq_action(entity, eve)
 	 box_loading_bar = nil
       elseif isNewlyLoad == false then
 	 entity.box_t = entity.box_t - ywidGetTurnTimer()
-	 loading_bar.setPercent(box_loading_bar, 100 - (100 * yeGetInt(entity.box_t) / 4000000))
+	 loading_bar.setPercent(box_loading_bar, 100 - (100 * yeGetInt(entity.box_t) / 8000000))
       end
    end
 
