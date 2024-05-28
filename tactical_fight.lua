@@ -37,6 +37,9 @@ EX_MODE = 0
 
 local current_character = 0
 
+-- TC_* indexing is for, the canvas main character entity indexing.
+--b IDX_* is for tactical fight only data.
+
 local IDX_MAX_ACTION_POINT = 0
 local IDX_CUR_ACTION_POINT = 1
 local IDX_PIX_MV = 2
@@ -46,10 +49,13 @@ local IDX_TMP_DATA = 8
 local IDX_TIMER = 9
 local IDX_AI_STUFF = 10
 
-local TC_IXD_CHAR = 0
+-- char info
+local TC_IDX_CHAR = 0
+-- handler
 local TC_IDX_HDLR = 1
 local TC_IDX_NAME = 2
 local TC_IDX_TEAM = 3
+-- the array that contain action points, mv, dir and so on.
 local TC_IDX_TDTA = 4
 
 local cur_char = nil
@@ -223,7 +229,7 @@ local function push_character(tdata, dst, char, h, name, team, dir)
 
    local i = yeLen(dst)
    dst[i] = {}
-   dst[i][TC_IXD_CHAR] = char
+   dst[i][TC_IDX_CHAR] = char
    dst[i][TC_IDX_HDLR] = h
    dst[i][TC_IDX_NAME] = name
    dst[i][TC_IDX_TEAM] = team
@@ -274,7 +280,7 @@ end
 
 function have_loose(team)
    for i = 0, yeLen(team) - 1 do
-      if team[i][TC_IXD_CHAR].life > 0 then
+      if team[i][TC_IDX_CHAR].life > 0 then
 	 return false
       end
    end
@@ -768,7 +774,7 @@ function do_tactical_fight(eve)
       if cur_char[TC_IDX_TDTA][IDX_PIX_MV] > 20 then
 
 	 if yeGetString(cur_char[1].char.type) ~= "sprite" then
-	    ylpcsHandlerNextStep(cur_char[1])
+	    ylpcsHandlerNextStep(cur_char[TC_IDX_HDLR])
 	 end
 
 	 yGenericHandlerRefresh(cur_char[1])
@@ -777,30 +783,43 @@ function do_tactical_fight(eve)
 
    elseif TACTICAL_FIGHT_MODE == MODE_CHAR_ATTACK then
       if yIsNil(cur_char_t[IDX_TIMER]) then
-	 local good_char = cur_char[TC_IXD_CHAR]
+	 local good_char = cur_char[TC_IDX_CHAR]
 
 	 local base_mod = (yuiMin(stat(good_char, "strength") - weapon_st(good_char, "maniability") / 2, -9) + 10) * 0.1
 	 local attack_strengh = yuiMin(weapon_st(good_char, "power") * base_mod, 1)
 
 	 print("attack_strengh:", attack_strengh)
 
-	 cur_char_t[IDX_TIMER] = 1
+	 cur_char_t[IDX_TIMER] = Entity.new_float(1.0)
 	 printMessage(main_widget, nil,
 		      yeGetString(atk_target[TC_IDX_NAME]) .. " take " ..
 		      attack_strengh .. " damages")
 
-	 atk_target[TC_IXD_CHAR].life = atk_target[TC_IXD_CHAR].life -
+	 atk_target[TC_IDX_CHAR].life = atk_target[TC_IDX_CHAR].life -
 	    attack_strengh
 
+	 -- TODO
+	 -- I guess I should show punch here, punch y canvas pos: 12-15
+	 -- nb pos: 6
+	 yGenericSetAttackPos(cur_char[TC_IDX_HDLR])
+	 yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
 	 cur_char_t[IDX_TMP_DATA] = ywCanvasNewImgByPath(main_widget.upCanvas,
 							 tchar_can_pos_x(atk_target) + 8,
 							 tchar_can_pos_y(atk_target) + 16,
 							 "imgs/explosion.png")
 	 ywCanvasPercentReduce(cur_char_t[IDX_TMP_DATA], 70)
       elseif cur_char_t[IDX_TIMER] < 10 then
-	 cur_char_t[IDX_TIMER] = cur_char_t[IDX_TIMER] + ywidTurnTimer() / 10000
+	 local old = yeGetFloat(cur_char_t[IDX_TIMER])
+	 if math.floor(old) < math.floor(old + ywidTurnTimer() / 10000) then
+	    yGenericNext(cur_char[TC_IDX_HDLR])
+	    yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
+	 end
+	 cur_char_t[IDX_TIMER] = Entity.new_float(cur_char_t[IDX_TIMER] + ywidTurnTimer() / 10000)
       else
-	 if atk_target[TC_IXD_CHAR].life < 1 then
+	 cur_char[TC_IDX_HDLR].x = 0
+	 yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
+
+	 if atk_target[TC_IDX_CHAR].life < 1 then
 	    print("He's DEAD !")
 	    remove_character(tdata, atk_target, true)
 	    atk_target = nil
