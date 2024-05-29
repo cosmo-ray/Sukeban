@@ -68,7 +68,8 @@ local block_square = nil
 local COL_FAR_ALLY = "rgba: 100 155 100 130"
 local COL_NEAR_ALLY = "rgba: 55 255 50 130"
 local COL_FAR_ENEMY = "rgba: 155 100 100 130"
-local COL_NEAR_ENEMY = "rgba: 255 105 50 130"
+local COL_NEAR_ENEMY = "rgba: 155 105 50 130"
+local COL_ENEMY_CAN_ATK = "rgba: 255 105 50 130"
 
 local pix_floor_left = 0
 
@@ -582,8 +583,16 @@ function do_tactical_fight(eve)
 		     col = COL_FAR_ALLY
 		  end
 	       else
+		  local target_p = Entity.new_copy(p)
+		  local target_s = Entity.new_copy(s)
+		  ywPosAddXY(target_p, 0, 30)
+		  ywPosSubXY(target_s, 0, 20)
 		  if target_distance < reach_distance then
-		     col = COL_NEAR_ENEMY
+		     if ywPosIsInRectPS(mouse_real_pos, target_p, s) then
+			col = COL_ENEMY_CAN_ATK
+		     else
+			col = COL_NEAR_ENEMY
+		     end
 		  else
 		     col = COL_FAR_ENEMY
 		  end
