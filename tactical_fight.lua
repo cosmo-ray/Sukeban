@@ -57,6 +57,7 @@ local TC_IDX_NAME = 2
 local TC_IDX_TEAM = 3
 -- the array that contain action points, mv, dir and so on.
 local TC_IDX_TDTA = 4
+local TC_IDX_CAN_MELE = 5
 
 local cur_char = nil
 
@@ -590,7 +591,9 @@ function do_tactical_fight(eve)
 		  if target_distance < reach_distance then
 		     if ywPosIsInRectPS(mouse_real_pos, target_p, s) then
 			col = COL_ENEMY_CAN_ATK
+			nearest_target[TC_IDX_CAN_MELE] = true
 		     else
+			nearest_target[TC_IDX_CAN_MELE] = false
 			col = COL_NEAR_ENEMY
 		     end
 		  else
@@ -614,7 +617,7 @@ function do_tactical_fight(eve)
 	 if yevMouseDown(eve) then
 	    print("click !")
 	    if block then
-	       if nearest_target then
+	       if nearest_target and yeGetInt(nearest_target[TC_IDX_CAN_MELE]) then
 		  if target_distance >= reach_distance then
 		     printMessage(main_widget, nil,
 				  "target is out of reac (distance: " .. target_distance .. ") !")
@@ -627,7 +630,7 @@ function do_tactical_fight(eve)
 				  nearest_target[TC_IDX_NAME]:to_string())
 		     switch_to_attack_mode(nearest_target, attack_cost)
 		  end
-		  print("attack on", nearest_target[TC_IDX_NAME])
+		  print("attack on", nearest_target[TC_IDX_NAME], nearest_target[TC_IDX_CAN_MELE])
 	       end
 	       print("block")
 	    else
@@ -812,12 +815,21 @@ function do_tactical_fight(eve)
 	 -- nb pos: 6
 	 yGenericSetAttackPos(cur_char[TC_IDX_HDLR])
 	 yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
-	 cur_char_t[IDX_TMP_DATA] = ywCanvasNewImgByPath(main_widget.upCanvas,
-							 tchar_can_pos_x(atk_target) + 8,
-							 tchar_can_pos_y(atk_target) + 16,
-							 "imgs/explosion.png")
-	 ywCanvasPercentReduce(cur_char_t[IDX_TMP_DATA], 70)
-      elseif cur_char_t[IDX_TIMER] < 10 then
+      elseif cur_char_t[IDX_TIMER] < 5 then
+	 local old = yeGetFloat(cur_char_t[IDX_TIMER])
+	 if math.floor(old) < math.floor(old + ywidTurnTimer() / 10000) then
+	    yGenericNext(cur_char[TC_IDX_HDLR])
+	    yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
+	 end
+	 cur_char_t[IDX_TIMER] = Entity.new_float(cur_char_t[IDX_TIMER] + ywidTurnTimer() / 10000)
+      elseif cur_char_t[IDX_TIMER] < 15 then
+	 if yIsNil(cur_char_t[IDX_TMP_DATA]) then
+	    cur_char_t[IDX_TMP_DATA] = ywCanvasNewImgByPath(main_widget.upCanvas,
+							    tchar_can_pos_x(atk_target) + 8,
+							    tchar_can_pos_y(atk_target) + 16,
+							    "imgs/explosion.png")
+	    ywCanvasPercentReduce(cur_char_t[IDX_TMP_DATA], 70)
+	 end
 	 local old = yeGetFloat(cur_char_t[IDX_TIMER])
 	 if math.floor(old) < math.floor(old + ywidTurnTimer() / 10000) then
 	    yGenericNext(cur_char[TC_IDX_HDLR])
@@ -834,6 +846,7 @@ function do_tactical_fight(eve)
 	    atk_target = nil
 	 end
 	 ywCanvasRemoveObj(main_widget.upCanvas, cur_char_t[IDX_TMP_DATA])
+	 cur_char_t[IDX_TMP_DATA] = nil
 	 TACTICAL_FIGHT_MODE = EX_MODE
 	 cur_char_t[IDX_TIMER] = nil
       end
