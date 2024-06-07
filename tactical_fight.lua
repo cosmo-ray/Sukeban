@@ -30,6 +30,8 @@ local BAR_H = 100
 local bar_y = 0
 local bar_x = 0
 
+local ATK_FRM_LENGTH = 40000
+
 local HERO_TEAM = 0
 
 TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
@@ -816,13 +818,17 @@ function do_tactical_fight(eve)
 	 yGenericSetAttackPos(cur_char[TC_IDX_HDLR])
 	 yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
       elseif cur_char_t[IDX_TIMER] < 5 then
+	 -- attack before showing explosion
 	 local old = yeGetFloat(cur_char_t[IDX_TIMER])
-	 if math.floor(old) < math.floor(old + ywidTurnTimer() / 10000) then
+	 if math.floor(old) < math.floor(old + ywidTurnTimer() / ATK_FRM_LENGTH) then
 	    yGenericNext(cur_char[TC_IDX_HDLR])
 	    yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
+	 else
+	    print("no next this turn")
 	 end
-	 cur_char_t[IDX_TIMER] = Entity.new_float(cur_char_t[IDX_TIMER] + ywidTurnTimer() / 10000)
+	 cur_char_t[IDX_TIMER] = Entity.new_float(cur_char_t[IDX_TIMER] + ywidTurnTimer() / ATK_FRM_LENGTH)
       elseif cur_char_t[IDX_TIMER] < 15 then
+	 -- attack show damages part (explosion)
 	 if yIsNil(cur_char_t[IDX_TMP_DATA]) then
 	    cur_char_t[IDX_TMP_DATA] = ywCanvasNewImgByPath(main_widget.upCanvas,
 							    tchar_can_pos_x(atk_target) + 8,
@@ -831,11 +837,11 @@ function do_tactical_fight(eve)
 	    ywCanvasPercentReduce(cur_char_t[IDX_TMP_DATA], 70)
 	 end
 	 local old = yeGetFloat(cur_char_t[IDX_TIMER])
-	 if math.floor(old) < math.floor(old + ywidTurnTimer() / 10000) then
+	 if math.floor(old) < math.floor(old + ywidTurnTimer() / ATK_FRM_LENGTH) then
 	    yGenericNext(cur_char[TC_IDX_HDLR])
 	    yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
 	 end
-	 cur_char_t[IDX_TIMER] = Entity.new_float(cur_char_t[IDX_TIMER] + ywidTurnTimer() / 10000)
+	 cur_char_t[IDX_TIMER] = Entity.new_float(cur_char_t[IDX_TIMER] + ywidTurnTimer() / ATK_FRM_LENGTH)
       else
 	 cur_char[TC_IDX_HDLR].x = 0
 	 yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
