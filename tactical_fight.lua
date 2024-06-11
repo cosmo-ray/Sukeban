@@ -291,6 +291,176 @@ function have_loose(team)
    return true
 end
 
+local function init_fight(tdata)
+   local wid_rect = main_widget["wid-pix"]
+   local wid_w = ywRectW(wid_rect)
+   local wid_h = ywRectH(wid_rect)
+   local main_canvas = main_widget.mainScreen
+
+   main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
+   printMessage(main_widget, nil,
+		"TACTICAL FIGHT MODE START, unimlemented press 'ESC' to quit")
+   TACTICAL_FIGHT_MODE = MODE_PLAYER_TURN
+
+   tdata.bads = {}
+   tdata.goods = {}
+   tdata.all = {}
+   tdata.all_deads = {}
+   tdata.buttons = {}
+   current_character = 0
+
+   local args = tdata.args
+   local tmp_allies = {}
+   local tmp_allies_idx = 1
+   local allies = phq.pj.allies
+
+   for i = 0, yeLen(allies) - 1 do
+      tmp_allies[tmp_allies_idx] = yeGetKeyAt(allies, i)
+      tmp_allies_idx = tmp_allies_idx + 1
+   end
+   for i = 0, yeLen(args) - 1 do
+      local k = yeGetKeyAt(args, i)
+      local a = args[i]
+
+      if k == "backup-npc" then
+	 local npcs = main_widget.npcs
+	 tdata.bak_npcs = npcs
+	 for j = 0, yeLen(npcs) - 1 do
+	    saveNpcCanvasMatadata(npcs[j].canvas, npcs[j].mdt_bak)
+	    yGenericHandlerRmCanva(npcs[j])
+	 end
+	 main_widget.npcs = {}
+      elseif k == "move" then
+	 for j = 0, yeLen(a) - 1 do
+	    local name = ylaCreateYirlFmtString(a[j][0])
+	    print("move: ", a[j], yeGetString(name),
+		  yeGetString(name) == yeGetString(phq.pj.name))
+	    local to_move = nil;
+	    if yeGetString(name) == yeGetString(phq.pj.name) then
+	       yGenericHandlerMoveXY(main_widget.pj,
+				     yeGetInt(a[j][1]),
+				     yeGetInt(a[j][2]))
+	       to_move = main_widget.pj
+	    else
+	       goods = tdata.goods
+	       -- I'm very unsure of thoses lines :(
+	       for j2 = 0, yeLen(goods) - 1 do
+		  if yeGetString(name) == yeGetString(goods[j2][2]) then
+		     to_move = goods[j2][1]
+		     yGenericHandlerMoveXY(goods[j2][1],
+					   yeGetInt(a[j][1]),
+					   yeGetInt(a[j][2]))
+		  end
+	       end
+	    end
+	    if yIsNNil(a[j][3]) then
+	       yGenericSetDir(main_widget.pj, yeGetString(a[j][3]))
+	    end
+	 end
+      elseif k == "add-enemies" then
+	 for j = 0, yeLen(a) - 1 do
+	    npc = a[j]
+
+	    local npcp = Pos.new(yeGetIntAt(npc, 0), yeGetIntAt(npc, 1))
+	    local npcn = yeGetStringAt(npc, 2)
+	    local npcd = lpcsStrToDir(yeGetStringAt(npc, 3))
+	    local npc_desc = npcs[npcn]
+
+	    if npc_desc.is_generic then
+	       npc_desc = Entity.new_copy(npc_desc)
+	    end
+	    local h = push_npc(npcp, npcn, npcd, npc_desc)
+	    push_character(tdata, tdata.bads, npc_desc, h, npcn, 1, npcd)
+	 end
+      elseif k == "add-ally" then
+	 for j = 0, yeLen(a) - 1 do
+	    npc = a[j]
+
+	    local npcn = yeGetStringAt(npc, 0)
+
+	    tmp_allies[tmp_allies_idx] = npcn
+	    tmp_allies_idx = tmp_allies_idx + 1
+	 end
+      end
+   end
+   local pjPos = Pos.wrapp(Entity.new_copy(ylpcsHandePos(main_widget.pj)))
+   local pj_dir = main_widget.pj.y:to_int()
+
+   push_character(tdata, tdata.goods, phq.pj, main_widget.pj,
+		  phq.pj.name, HERO_TEAM, pj_dir)
+   for i = 1, #tmp_allies do
+
+      local npcn = tmp_allies[i]
+      local npc = npcs[npcn]
+      if npc.is_generic then
+	 npc = Entity.new_copy(npc)
+      end
+
+      local pc_dir = main_widget.pj.y:to_int()
+      local px = pjPos:x()
+      local py = pjPos:y()
+
+      if pc_dir == LPCS_UP or pc_dir == LPCS_DOWN then
+	 if (i - 1) % 2 == 0 then
+	    px = px - (i / 2 + 1) * 60 - 20
+	 else
+	    px = px + (i / 2 + 1) * 60
+	 end
+      else
+	 if (i - 1) % 2 == 0 then
+	    py = py - (i / 2 + 1) * 60 - 20
+	 else
+	    py = py + (i / 2 + 1) * 60
+	 end
+      end
+      local npcp = Pos.new(px, py)
+
+      push_character(tdata, tdata.goods, npc,
+		     push_npc(npcp, npcn, pc_dir, npc),
+		     npcn, HERO_TEAM, pj_dir)
+
+   end
+   yeShuffle(tdata.all)
+   repush_idx(tdata.all)
+   local tatcical_can = Canvas.new_entity(tdata, "screen").ent
+
+   ywPushNewWidget(main_widget, tatcical_can)
+
+   local sz = Size.new(wid_w, BAR_H).ent
+   --local sz = ywSizeCreate(100, 100)
+   bar_y = wid_h - BAR_H - 10
+   tdata.ibar_background = ywCanvasNewRectangle(tatcical_can, 0, bar_y,
+						ywSizeW(sz), ywSizeH(sz),
+						"rgba: 0 0 0 200")
+   tdata.ibar_forground = ywCanvasNewRectangle(tatcical_can,
+					       2, bar_y + 2,
+					       ywSizeW(sz) - 4, ywSizeH(sz) - 4,
+					       "rgba: 255 255 255 80")
+
+   tdata.turn_o_str = ywCanvasNewTextByStr(tdata.screen, wid_w - 100, 10, "")
+   push_button(tdata, Rect.new(ywSizeW(sz) - 160, 4, 100, 30).ent,
+	       "end turn", Entity.new_func(end_tun))
+   push_button(tdata, Rect.new(ywSizeW(sz) - 160, 36, 100, 30).ent,
+	       "center", Entity.new_func(center_char))
+   tdata.ap_info = ywCanvasNewTextByStr(tdata.screen, bar_x + 10,
+					bar_y + 10, "")
+   tdata.movement_info = ywCanvasNewTextByStr(tdata.screen, 0,
+					      o, "")
+
+   main_widget.current = 0
+
+   tdata.cur_ch_square = ywCanvasNewFilledCircle(main_canvas, 0, 0, 16,
+						 "rgba: 127 127 127 120")
+
+   begin_turn_init(tdata)
+
+   all_char = tdata.all
+   cur_char_t = cur_char[TC_IDX_TDTA]
+   ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
+   goods = tdata.goods
+
+end
+
 function do_tactical_fight(eve)
    local tdata = main_widget.tactical
    local wid_rect = main_widget["wid-pix"]
@@ -307,181 +477,22 @@ function do_tactical_fight(eve)
    local ap = nil
    local goods = nil
 
-   if TACTICAL_FIGHT_MODE ~= MODE_TACTICAL_FIGHT_INIT then
-      all_char = tdata.all
-      cur_char_t = cur_char[TC_IDX_TDTA]
-      ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
-      goods = tdata.goods
-   end
 
    if block_square then
       ywCanvasRemoveObj(main_canvas, block_square)
       block_square = nil
    end
+
    if TACTICAL_FIGHT_MODE == MODE_TACTICAL_FIGHT_INIT then
-      main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
-      printMessage(main_widget, nil,
-		   "TACTICAL FIGHT MODE START, unimlemented press 'ESC' to quit")
-      TACTICAL_FIGHT_MODE = MODE_PLAYER_TURN
+      init_fight(tdata)
+   end
 
-      tdata.bads = {}
-      tdata.goods = {}
-      tdata.all = {}
-      tdata.all_deads = {}
-      tdata.buttons = {}
-      current_character = 0
+   all_char = tdata.all
+   cur_char_t = cur_char[TC_IDX_TDTA]
+   ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
+   goods = tdata.goods
 
-      local args = tdata.args
-      local tmp_allies = {}
-      local tmp_allies_idx = 1
-      local allies = phq.pj.allies
-
-      for i = 0, yeLen(allies) - 1 do
-	 tmp_allies[tmp_allies_idx] = yeGetKeyAt(allies, i)
-	 tmp_allies_idx = tmp_allies_idx + 1
-      end
-      for i = 0, yeLen(args) - 1 do
-	 local k = yeGetKeyAt(args, i)
-	 local a = args[i]
-
-	 if k == "backup-npc" then
-	    local npcs = main_widget.npcs
-	    tdata.bak_npcs = npcs
-	    for j = 0, yeLen(npcs) - 1 do
-	       saveNpcCanvasMatadata(npcs[j].canvas, npcs[j].mdt_bak)
-	       yGenericHandlerRmCanva(npcs[j])
-	    end
-	    main_widget.npcs = {}
-	 elseif k == "move" then
-	    for j = 0, yeLen(a) - 1 do
-	       local name = ylaCreateYirlFmtString(a[j][0])
-	       print("move: ", a[j], yeGetString(name),
-		     yeGetString(name) == yeGetString(phq.pj.name))
-	       local to_move = nil;
-	       if yeGetString(name) == yeGetString(phq.pj.name) then
-		  yGenericHandlerMoveXY(main_widget.pj,
-					yeGetInt(a[j][1]),
-					yeGetInt(a[j][2]))
-		  to_move = main_widget.pj
-	       else
-		  goods = tdata.goods
-		  -- I'm very unsure of thoses lines :(
-		  for j2 = 0, yeLen(goods) - 1 do
-		     if yeGetString(name) == yeGetString(goods[j2][2]) then
-			to_move = goods[j2][1]
-			yGenericHandlerMoveXY(goods[j2][1],
-					      yeGetInt(a[j][1]),
-					      yeGetInt(a[j][2]))
-		     end
-		  end
-	       end
-	       if yIsNNil(a[j][3]) then
-		  yGenericSetDir(main_widget.pj, yeGetString(a[j][3]))
-	       end
-	    end
-	 elseif k == "add-enemies" then
-	    for j = 0, yeLen(a) - 1 do
-	       npc = a[j]
-
-	       local npcp = Pos.new(yeGetIntAt(npc, 0), yeGetIntAt(npc, 1))
-	       local npcn = yeGetStringAt(npc, 2)
-	       local npcd = lpcsStrToDir(yeGetStringAt(npc, 3))
-	       local npc_desc = npcs[npcn]
-
-	       if npc_desc.is_generic then
-		  npc_desc = Entity.new_copy(npc_desc)
-	       end
-	       local h = push_npc(npcp, npcn, npcd, npc_desc)
-	       push_character(tdata, tdata.bads, npc_desc, h, npcn, 1, npcd)
-	    end
-	 elseif k == "add-ally" then
-	    for j = 0, yeLen(a) - 1 do
-	       npc = a[j]
-
-	       local npcn = yeGetStringAt(npc, 0)
-
-	       tmp_allies[tmp_allies_idx] = npcn
-	       tmp_allies_idx = tmp_allies_idx + 1
-	    end
-	 end
-      end
-      local pjPos = Pos.wrapp(Entity.new_copy(ylpcsHandePos(main_widget.pj)))
-      local pj_dir = main_widget.pj.y:to_int()
-
-      push_character(tdata, tdata.goods, phq.pj, main_widget.pj,
-		     phq.pj.name, HERO_TEAM, pj_dir)
-      for i = 1, #tmp_allies do
-
-	 local npcn = tmp_allies[i]
-	 local npc = npcs[npcn]
-	 if npc.is_generic then
-	    npc = Entity.new_copy(npc)
-	 end
-
-	 local pc_dir = main_widget.pj.y:to_int()
-	 local px = pjPos:x()
-	 local py = pjPos:y()
-
-	 if pc_dir == LPCS_UP or pc_dir == LPCS_DOWN then
-	    if (i - 1) % 2 == 0 then
-	       px = px - (i / 2 + 1) * 60 - 20
-	    else
-	       px = px + (i / 2 + 1) * 60
-	    end
-	 else
-	    if (i - 1) % 2 == 0 then
-	       py = py - (i / 2 + 1) * 60 - 20
-	    else
-	       py = py + (i / 2 + 1) * 60
-	    end
-	 end
-	 local npcp = Pos.new(px, py)
-
-	 push_character(tdata, tdata.goods, npc,
-			push_npc(npcp, npcn, pc_dir, npc),
-			npcn, HERO_TEAM, pj_dir)
-
-      end
-      yeShuffle(tdata.all)
-      repush_idx(tdata.all)
-      local tatcical_can = Canvas.new_entity(tdata, "screen").ent
-
-      ywPushNewWidget(main_widget, tatcical_can)
-
-      local sz = Size.new(wid_w, BAR_H).ent
-      --local sz = ywSizeCreate(100, 100)
-      bar_y = wid_h - BAR_H - 10
-      tdata.ibar_background = ywCanvasNewRectangle(tatcical_can, 0, bar_y,
-						  ywSizeW(sz), ywSizeH(sz),
-						  "rgba: 0 0 0 200")
-      tdata.ibar_forground = ywCanvasNewRectangle(tatcical_can,
-						 2, bar_y + 2,
-						 ywSizeW(sz) - 4, ywSizeH(sz) - 4,
-						 "rgba: 255 255 255 80")
-
-      tdata.turn_o_str = ywCanvasNewTextByStr(tdata.screen, wid_w - 100, 10, "")
-      push_button(tdata, Rect.new(ywSizeW(sz) - 160, 4, 100, 30).ent,
-		  "end turn", Entity.new_func(end_tun))
-      push_button(tdata, Rect.new(ywSizeW(sz) - 160, 36, 100, 30).ent,
-		  "center", Entity.new_func(center_char))
-      tdata.ap_info = ywCanvasNewTextByStr(tdata.screen, bar_x + 10,
-					   bar_y + 10, "")
-      tdata.movement_info = ywCanvasNewTextByStr(tdata.screen, 0,
-					   o, "")
-
-      main_widget.current = 0
-
-      tdata.cur_ch_square = ywCanvasNewFilledCircle(main_canvas, 0, 0, 16,
-						    "rgba: 127 127 127 120")
-
-      begin_turn_init(tdata)
-
-      all_char = tdata.all
-      cur_char_t = cur_char[TC_IDX_TDTA]
-      ap = yeGetFloat(cur_char_t[IDX_CUR_ACTION_POINT])
-      goods = tdata.goods
-
-   elseif TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then
+   if TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then
       if yevIsKeyDown(eve, Y_ESC_KEY) then
 	 return end_fight()
       end
@@ -821,6 +832,9 @@ function do_tactical_fight(eve)
 	 -- attack before showing explosion
 	 local old = yeGetFloat(cur_char_t[IDX_TIMER])
 	 if math.floor(old) < math.floor(old + ywidTurnTimer() / ATK_FRM_LENGTH) then
+	    print("----- turn cmp -----")
+	    print(math.floor(old), math.floor(old + ywidTurnTimer() / ATK_FRM_LENGTH),
+		  ywidTurnTimer())
 	    yGenericNext(cur_char[TC_IDX_HDLR])
 	    yGenericHandlerRefresh(cur_char[TC_IDX_HDLR])
 	 else
