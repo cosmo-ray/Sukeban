@@ -76,6 +76,11 @@ local COL_ENEMY_CAN_ATK = "rgba: 255 105 50 130"
 
 local pix_floor_left = 0
 
+local REACH_DISTANCE = 80
+
+-- get weapon stats here
+local ATTACK_COST = 1
+
 local function stat(c, st)
    local g_st = c.stats
    if yIsNil(g_st) then
@@ -291,6 +296,174 @@ function have_loose(team)
    return true
 end
 
+local function handle_input(eve, tdata, ap)
+   local wid_rect = main_widget["wid-pix"]
+   local wid_w = ywRectW(wid_rect)
+   local wid_h = ywRectH(wid_rect)
+   local main_canvas = main_widget.mainScreen
+   local ccam = main_canvas.cam
+
+   if yevIsKeyDown(eve, Y_ESC_KEY) then
+      return end_fight()
+   end
+   local mx = yeveMouseX()
+   local my = yeveMouseY()
+   local bar_rect = Rect.new(bar_x, bar_y, wid_w, BAR_H).ent
+   local turn_timer = ywidTurnTimer() / 10000
+
+   mouse_mv = turn_timer * PIX_MV_PER_MS + pix_mouse_floor_left
+   pix_mouse_floor_left = mouse_mv - math.floor(mouse_mv)
+
+   if mx > wid_w - 5 then
+      yeAddAt(main_widget.cam_offset, 0, mouse_mv)
+   elseif mx < 5 then
+      yeAddAt(main_widget.cam_offset, 0, -mouse_mv)
+   end
+   if my > wid_h - 5 then
+      yeAddAt(main_widget.cam_offset, 1, mouse_mv)
+   elseif my < 5 then
+      yeAddAt(main_widget.cam_offset, 1, -mouse_mv)
+   end
+
+   if (ywRectContain(bar_rect, mx, my, 0) == true) then
+      local buttons = tdata.buttons
+      ywCanvasStringSet(tdata.movement_info, Entity.new_string(""))
+      for i = 0, yeLen(buttons) - 1 do
+	 local b = buttons[i]
+	 local isOver = ywRectContain(b[0], mx, my, 1) == true
+	 if isOver then
+	    highlight_button(tdata, b)
+	    if yevMouseDown(eve) then
+	       if yIsNNil(b[1]) then
+		  b[1](tdata)
+	       end
+	    end
+	 else
+	    unlight_button(tdata, b)
+	 end
+      end
+   else -- on game map
+      local mv_info = tdata.movement_info
+      local mouse_real_pos = Pos.new(mx, my).ent
+      ywPosAdd(mouse_real_pos, ccam)
+      -- ylpcsHandlerPos return top left, we need center
+      local char_pos = tchar_ch_pos(cur_char)
+      local dist_ap_cost = (ywPosDistance(char_pos, mouse_real_pos)  / 100)
+      local mov_cost = "(" .. dist_ap_cost .. ")"
+
+      local block = (dist_ap_cost > ap)
+      local cur_char_canva = cur_char[1].canvas
+      local nearest_target = nil
+      local target_distance = 0
+
+      if block == false then
+	 local intersect_array = ylaCanvasIntersectArray(main_canvas,
+							 char_pos,
+							 mouse_real_pos)
+	 for i = 0, yeLen(intersect_array) - 1 do
+	    local col_o = yeGet(intersect_array, i)
+
+	    if yeType(yeGet(col_o, 9)) ~= YINT or
+	       cur_char_canva == Entity.wrapp(col_o) then
+	       goto loop_next
+	    end
+
+	    col_o = Entity.wrapp(col_o)
+	    if yIsNil(col_o.idx) then
+	       block = true
+	       goto loop_next
+	    end
+	    local col_char = tdata.all[yeGetInt(col_o.idx)]
+
+	    if nearest_target == nil then
+	       local p = tchar_ch_pos(col_char)
+	       nearest_target = col_char
+	       target_distance = ywPosDistance(char_pos, p)
+	    else
+	       local p0 = tchar_ch_pos(nearest_target)
+	       local p1 = tchar_ch_pos(col_char)
+	       local d0 = ywPosDistance(char_pos, p0)
+	       local d1 = ywPosDistance(char_pos, p1)
+
+	       if d0 > d1 then
+		  nearest_target = col_char
+		  target_distance = d1
+	       end
+	    end
+
+	    block = true
+	    :: loop_next ::
+	 end
+
+	 if nearest_target then
+	    local p = yGenericHandlerPos(nearest_target[1])
+	    local s = yGenericHandlerSize(nearest_target[1])
+	    local col
+
+	    if yeGetInt(nearest_target[TC_IDX_TEAM]) == HERO_TEAM then
+	       if target_distance < REACH_DISTANCE then
+		  col = COL_NEAR_ALLY
+	       else
+		  col = COL_FAR_ALLY
+	       end
+	    else
+	       local target_p = Entity.new_copy(p)
+	       local target_s = Entity.new_copy(s)
+	       ywPosAddXY(target_p, 0, 30)
+	       ywPosSubXY(target_s, 0, 20)
+	       if target_distance < REACH_DISTANCE then
+		  if ywPosIsInRectPS(mouse_real_pos, target_p, s) then
+		     col = COL_ENEMY_CAN_ATK
+		     nearest_target[TC_IDX_CAN_MELE] = true
+		  else
+		     nearest_target[TC_IDX_CAN_MELE] = false
+		     col = COL_NEAR_ENEMY
+		  end
+	       else
+		  col = COL_FAR_ENEMY
+	       end
+	    end
+	    block_square = ywCanvasNewFilledCircle(main_canvas, ywPosX(p) + 32,
+						   ywPosY(p) + ywSizeH(s) - 8,
+						   16, col)
+
+	 end
+      end
+
+      ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
+      ywCanvasObjSetPos(mv_info, mx, my)
+      if block then
+	 ywCanvasSetStrColor(mv_info, "rgba: 230 20 20 255")
+      else
+	 ywCanvasSetStrColor(mv_info, "rgba: 255 255 255 255")
+      end
+      if yevMouseDown(eve) then
+	 print("click !")
+	 if block then
+	    if nearest_target and yeGetInt(nearest_target[TC_IDX_CAN_MELE]) then
+	       if target_distance >= REACH_DISTANCE then
+		  printMessage(main_widget, nil,
+			       "target is out of reac (distance: " .. target_distance .. ") !")
+	       elseif nearest_target[TC_IDX_TEAM]:to_int() == HERO_TEAM then
+		  printMessage(main_widget, nil, "can't attack allies")
+	       else
+		  printMessage(main_widget, nil,
+			       cur_char[TC_IDX_NAME]:to_string() ..
+			       " attack: " ..
+			       nearest_target[TC_IDX_NAME]:to_string())
+		  switch_to_attack_mode(nearest_target, ATTACK_COST)
+	       end
+	       print("attack on", nearest_target[TC_IDX_NAME], nearest_target[TC_IDX_CAN_MELE])
+	    end
+	    print("block")
+	 else
+	    switch_to_move_mode(char_to_canvas_pos(mouse_real_pos),
+				dist_ap_cost)
+	 end
+      end
+   end
+end
+
 local function init_fight(tdata)
    local wid_rect = main_widget["wid-pix"]
    local wid_w = ywRectW(wid_rect)
@@ -463,15 +636,9 @@ end
 
 function do_tactical_fight(eve)
    local tdata = main_widget.tactical
-   local wid_rect = main_widget["wid-pix"]
-   local wid_w = ywRectW(wid_rect)
-   local wid_h = ywRectH(wid_rect)
    local main_canvas = main_widget.mainScreen
    local ccam = main_canvas.cam
 
-   -- get weapon stats here
-   local reach_distance = 80
-   local attack_cost = 1
    local all_char = nil
    local cur_char_t = nil
    local ap = nil
@@ -493,166 +660,7 @@ function do_tactical_fight(eve)
    goods = tdata.goods
 
    if TACTICAL_FIGHT_MODE == MODE_PLAYER_TURN then
-      if yevIsKeyDown(eve, Y_ESC_KEY) then
-	 return end_fight()
-      end
-      local mx = yeveMouseX()
-      local my = yeveMouseY()
-      local bar_rect = Rect.new(bar_x, bar_y, wid_w, BAR_H).ent
-      local turn_timer = ywidTurnTimer() / 10000
-
-      mouse_mv = turn_timer * PIX_MV_PER_MS + pix_mouse_floor_left
-      pix_mouse_floor_left = mouse_mv - math.floor(mouse_mv)
-
-      if mx > wid_w - 5 then
-	 yeAddAt(main_widget.cam_offset, 0, mouse_mv)
-      elseif mx < 5 then
-	 yeAddAt(main_widget.cam_offset, 0, -mouse_mv)
-      end
-      if my > wid_h - 5 then
-	 yeAddAt(main_widget.cam_offset, 1, mouse_mv)
-      elseif my < 5 then
-	 yeAddAt(main_widget.cam_offset, 1, -mouse_mv)
-      end
-
-      if (ywRectContain(bar_rect, mx, my, 0) == true) then
-	 local buttons = tdata.buttons
-	 ywCanvasStringSet(tdata.movement_info, Entity.new_string(""))
-	 for i = 0, yeLen(buttons) - 1 do
-	    local b = buttons[i]
-	    local isOver = ywRectContain(b[0], mx, my, 1) == true
-	    if isOver then
-	       highlight_button(tdata, b)
-	       if yevMouseDown(eve) then
-		  if yIsNNil(b[1]) then
-		     b[1](tdata)
-		  end
-	       end
-	    else
-	       unlight_button(tdata, b)
-	    end
-	 end
-      else -- on game map
-	 local mv_info = tdata.movement_info
-	 local mouse_real_pos = Pos.new(mx, my).ent
-	 ywPosAdd(mouse_real_pos, ccam)
-	 -- ylpcsHandlerPos return top left, we need center
-	 local char_pos = tchar_ch_pos(cur_char)
-	 local dist_ap_cost = (ywPosDistance(char_pos, mouse_real_pos)  / 100)
-	 local mov_cost = "(" .. dist_ap_cost .. ")"
-
-	 local block = (dist_ap_cost > ap)
-	 local cur_char_canva = cur_char[1].canvas
-	 local nearest_target = nil
-	 local target_distance = 0
-
-	 if block == false then
-	    local intersect_array = ylaCanvasIntersectArray(main_canvas,
-							    char_pos,
-							    mouse_real_pos)
-	    for i = 0, yeLen(intersect_array) - 1 do
-	       local col_o = yeGet(intersect_array, i)
-
-	       if yeType(yeGet(col_o, 9)) ~= YINT or
-		  cur_char_canva == Entity.wrapp(col_o) then
-		  goto loop_next
-	       end
-
-	       col_o = Entity.wrapp(col_o)
-	       if yIsNil(col_o.idx) then
-		  block = true
-		  goto loop_next
-	       end
-	       local col_char = tdata.all[yeGetInt(col_o.idx)]
-
-	       if nearest_target == nil then
-		  local p = tchar_ch_pos(col_char)
-		  nearest_target = col_char
-		  target_distance = ywPosDistance(char_pos, p)
-	       else
-		  local p0 = tchar_ch_pos(nearest_target)
-		  local p1 = tchar_ch_pos(col_char)
-		  local d0 = ywPosDistance(char_pos, p0)
-		  local d1 = ywPosDistance(char_pos, p1)
-
-		  if d0 > d1 then
-		     nearest_target = col_char
-		     target_distance = d1
-		  end
-	       end
-
-	       block = true
-	       :: loop_next ::
-	    end
-
-	    if nearest_target then
-	       local p = yGenericHandlerPos(nearest_target[1])
-	       local s = yGenericHandlerSize(nearest_target[1])
-	       local col
-
-	       if yeGetInt(nearest_target[TC_IDX_TEAM]) == HERO_TEAM then
-		  if target_distance < reach_distance then
-		     col = COL_NEAR_ALLY
-		  else
-		     col = COL_FAR_ALLY
-		  end
-	       else
-		  local target_p = Entity.new_copy(p)
-		  local target_s = Entity.new_copy(s)
-		  ywPosAddXY(target_p, 0, 30)
-		  ywPosSubXY(target_s, 0, 20)
-		  if target_distance < reach_distance then
-		     if ywPosIsInRectPS(mouse_real_pos, target_p, s) then
-			col = COL_ENEMY_CAN_ATK
-			nearest_target[TC_IDX_CAN_MELE] = true
-		     else
-			nearest_target[TC_IDX_CAN_MELE] = false
-			col = COL_NEAR_ENEMY
-		     end
-		  else
-		     col = COL_FAR_ENEMY
-		  end
-	       end
-	       block_square = ywCanvasNewFilledCircle(main_canvas, ywPosX(p) + 32,
-						      ywPosY(p) + ywSizeH(s) - 8,
-						      16, col)
-
-	    end
-	 end
-
-	 ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
-	 ywCanvasObjSetPos(mv_info, mx, my)
-	 if block then
-	    ywCanvasSetStrColor(mv_info, "rgba: 230 20 20 255")
-	 else
-	    ywCanvasSetStrColor(mv_info, "rgba: 255 255 255 255")
-	 end
-	 if yevMouseDown(eve) then
-	    print("click !")
-	    if block then
-	       if nearest_target and yeGetInt(nearest_target[TC_IDX_CAN_MELE]) then
-		  if target_distance >= reach_distance then
-		     printMessage(main_widget, nil,
-				  "target is out of reac (distance: " .. target_distance .. ") !")
-		  elseif nearest_target[TC_IDX_TEAM]:to_int() == HERO_TEAM then
-		     printMessage(main_widget, nil, "can't attack allies")
-		  else
-		     printMessage(main_widget, nil,
-				  cur_char[TC_IDX_NAME]:to_string() ..
-				  " attack: " ..
-				  nearest_target[TC_IDX_NAME]:to_string())
-		     switch_to_attack_mode(nearest_target, attack_cost)
-		  end
-		  print("attack on", nearest_target[TC_IDX_NAME], nearest_target[TC_IDX_CAN_MELE])
-	       end
-	       print("block")
-	    else
-	       switch_to_move_mode(char_to_canvas_pos(mouse_real_pos),
-				   dist_ap_cost)
-	    end
-	 end
-      end
-
+      handle_input(eve, tdata, ap)
    elseif TACTICAL_FIGHT_MODE == MODE_ENEMY_TURN then
 
       if cur_char_t[IDX_MAX_ACTION_POINT] < 0.12 then
@@ -701,9 +709,9 @@ function do_tactical_fight(eve)
 	    local ydist = ywPosYDistance(cpos, tpos)
 	    targeted_pos = Entity.new_copy(tpos)
 	    ywPosAddXY(targeted_pos,
-		       -(reach_distance * xdist / distance),
-		       -(reach_distance * ydist / distance))
-	    if target_dist > reach_distance then
+		       -(REACH_DISTANCE * xdist / distance),
+		       -(REACH_DISTANCE * ydist / distance))
+	    if target_dist > REACH_DISTANCE then
 	       local r = Rect.new(ywPosX(targeted_pos) - 20,
 				  ywPosY(targeted_pos) - 20, 40, 40)
 	       col_array = ylaCanvasCollisionsArrayWithRectangle(main_canvas,
@@ -737,7 +745,7 @@ function do_tactical_fight(eve)
       if targeted_pos == nil then
 	 print("NO TARGET !")
       else
-	 if target_dist > reach_distance then
+	 if target_dist > REACH_DISTANCE then
 	    local dist_ap_cost = (ywPosDistance(cpos, targeted_pos)  / 100)
 
 	    switch_to_move_mode(char_to_canvas_pos(targeted_pos), dist_ap_cost)
