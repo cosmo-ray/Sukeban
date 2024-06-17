@@ -81,6 +81,11 @@ local REACH_DISTANCE = 80
 -- get weapon stats here
 local ATTACK_COST = 1
 
+local BLOCK_NONE = 0
+local BLOCK_FAR = 1
+local BLOCK_ENEMY = 2
+local BLOCK_ALLY = 3
+
 local function stat(c, st)
    local g_st = c.stats
    if yIsNil(g_st) then
@@ -351,12 +356,14 @@ local function handle_input(eve, tdata, ap)
       local dist_ap_cost = (ywPosDistance(char_pos, mouse_real_pos)  / 100)
       local mov_cost = "(" .. dist_ap_cost .. ")"
 
-      local block = (dist_ap_cost > ap)
+      local block = BLOCK_NONE
       local cur_char_canva = cur_char[1].canvas
       local nearest_target = nil
       local target_distance = 0
 
-      if block == false then
+      if (dist_ap_cost > ap) then
+	 block = BLOCK_FAR
+      else
 	 local intersect_array = ylaCanvasIntersectArray(main_canvas,
 							 char_pos,
 							 mouse_real_pos)
@@ -370,7 +377,7 @@ local function handle_input(eve, tdata, ap)
 
 	    col_o = Entity.wrapp(col_o)
 	    if yIsNil(col_o.idx) then
-	       block = true
+	       block = BLOCK_FAR
 	       goto loop_next
 	    end
 	    local col_char = tdata.all[yeGetInt(col_o.idx)]
@@ -391,7 +398,11 @@ local function handle_input(eve, tdata, ap)
 	       end
 	    end
 
-	    block = true
+	    if yeGetInt(nearest_target[TC_IDX_TEAM]) == HERO_TEAM then
+	       block = BLOCK_ALLY
+	    else
+	       block = BLOCK_ENEMY
+	    end
 	    :: loop_next ::
 	 end
 
@@ -432,8 +443,12 @@ local function handle_input(eve, tdata, ap)
 
       ywCanvasStringSet(mv_info, Entity.new_string(mov_cost))
       ywCanvasObjSetPos(mv_info, mx, my)
-      if block then
+      if block == BLOCK_ENEMY then
 	 ywCanvasSetStrColor(mv_info, "rgba: 230 20 20 255")
+      elseif block == BLOCK_ALLY then
+	 ywCanvasSetStrColor(mv_info, "rgba: 20 120 20 255")
+      elseif block == BLOCK_FAR then
+	 ywCanvasSetStrColor(mv_info, "rgba: 155 155 155 255")
       else
 	 ywCanvasSetStrColor(mv_info, "rgba: 255 255 255 255")
       end
