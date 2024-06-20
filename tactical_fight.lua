@@ -381,6 +381,12 @@ local function handle_input(eve, tdata, ap)
 	       goto loop_next
 	    end
 	    local col_char = tdata.all[yeGetInt(col_o.idx)]
+	    -- remove colision on mouse over uppser body here
+	    local y_diff = ywPosY(mouse_real_pos) - ywPosY(col_o.pos)
+	    if y_diff < 20 then
+	       goto loop_next
+	    end
+	    --print(col_char)
 
 	    if nearest_target == nil then
 	       local p = tchar_ch_pos(col_char)
@@ -454,7 +460,7 @@ local function handle_input(eve, tdata, ap)
       end
       if yevMouseDown(eve) then
 	 print("click !")
-	 if block then
+	 if block ~= 0 then
 	    if nearest_target and yeGetInt(nearest_target[TC_IDX_CAN_MELE]) then
 	       if target_distance >= REACH_DISTANCE then
 		  printMessage(main_widget, nil,
