@@ -360,6 +360,7 @@ local function handle_input(eve, tdata, ap)
       local cur_char_canva = cur_char[1].canvas
       local nearest_target = nil
       local target_distance = 0
+      local mouse_on_target = false
 
       if (dist_ap_cost > ap) then
 	 block = BLOCK_FAR
@@ -381,11 +382,20 @@ local function handle_input(eve, tdata, ap)
 	       goto loop_next
 	    end
 	    local col_char = tdata.all[yeGetInt(col_o.idx)]
+
 	    -- remove colision on mouse over uppser body here
 	    local y_diff = ywPosY(mouse_real_pos) - ywPosY(col_o.pos)
+
+
+	    mouse_on_target = false
 	    if y_diff < 20 then
 	       goto loop_next
 	    end
+	    if ywPosX(mouse_real_pos) - ywPosX(col_o.pos) < 50 and
+	       y_diff < 60 then
+	       mouse_on_target = true
+	    end
+
 	    --print(col_char)
 
 	    if nearest_target == nil then
@@ -459,10 +469,13 @@ local function handle_input(eve, tdata, ap)
 	 ywCanvasSetStrColor(mv_info, "rgba: 255 255 255 255")
       end
       if yevMouseDown(eve) then
-	 print("click !")
+	 print("click !", mouse_on_target)
 	 if block ~= 0 then
 	    if nearest_target and yeGetInt(nearest_target[TC_IDX_CAN_MELE]) then
-	       if target_distance >= REACH_DISTANCE then
+	       if mouse_on_target == false then
+		  printMessage(main_widget, nil,
+			       "path block by someone !")
+	       elseif target_distance >= REACH_DISTANCE then
 		  printMessage(main_widget, nil,
 			       "target is out of reac (distance: " .. target_distance .. ") !")
 	       elseif nearest_target[TC_IDX_TEAM]:to_int() == HERO_TEAM then
