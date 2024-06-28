@@ -1014,20 +1014,39 @@ function phq_action(entity, eve)
       --ywCanvasNewRectangle(entity.upCanvas, ywRectX(r.ent), ywRectY(r.ent),
       --ywRectW(r.ent), ywRectH(r.ent), "rgba: 10 10 255 127")
       local e_actionables = entity.actionables
+      local actionable_to_sort = Entity.new_array()
 
       for j = 0, yeLen(e_actionables) - 1 do
 	 if ywRectCollision(r.ent, e_actionables[j].rect) and
-	 checkTiledCondition(e_actionables[j]) then
-	    local actioned = phq.actioned[entity.cur_scene_str:to_string()]
-	    local act_cnt = actioned[e_actionables[j].name:to_string()]
+	    checkTiledCondition(e_actionables[j]) then
+	    yePushBack(actionable_to_sort, e_actionables[j])
+	 end
+      end
 
-	    act_cnt = yeGetInt(act_cnt) + 1
-	    actioned[e_actionables[j].name:to_string()] = act_cnt
-	    -- save here the number of time this object have been actioned
-	    phq_do_action(entity, e_actionables[j])
-	    if yeGetInt(entity.require_ret) == 1 then
-	       return YEVE_ACTION
-	    end
+      function sort_actionable(act0, act1)
+	 local pc_pos = Entity.new_copy(main_widget.pj.canvas.pos)
+
+	 ywPosAddXY(pc_pos, 32, 32)
+
+	 local dist0 = ywPosDistance(Entity.wrapp(act0).rect, pc_pos)
+	 local dist1 = ywPosDistance(Entity.wrapp(act1).rect, pc_pos)
+
+	 return dist0 - dist1
+      end
+
+      -- because actionable_to_sort array should alway be very samll, faster sort is dumb one
+      yeDumbSort(actionable_to_sort, Entity.new_func(sort_actionable), 0)
+
+      for j = 0, yeLen(actionable_to_sort) - 1 do
+	 local actioned = phq.actioned[entity.cur_scene_str:to_string()]
+	 local act_cnt = actioned[actionable_to_sort[j].name:to_string()]
+
+	 act_cnt = yeGetInt(act_cnt) + 1
+	 actioned[actionable_to_sort[j].name:to_string()] = act_cnt
+	 -- save here the number of time this object have been actioned
+	 phq_do_action(entity, actionable_to_sort[j])
+	 if yeGetInt(entity.require_ret) == 1 then
+	    return YEVE_ACTION
 	 end
       end
 

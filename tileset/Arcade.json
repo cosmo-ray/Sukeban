@@ -198,7 +198,7 @@
                  "y":137
                 }, 
                 {
-                 "height":64,
+                 "height":56.1461685301336,
                  "id":12,
                  "name":"falling_guy",
                  "properties":[
@@ -215,9 +215,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":29,
+                 "width":30.7452958821925,
                  "x":256,
-                 "y":129
+                 "y":136.853831469866
                 }],
          "opacity":1,
          "type":"objectgroup",
