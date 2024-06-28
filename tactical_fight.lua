@@ -34,6 +34,8 @@ local ATK_FRM_LENGTH = 40000
 
 local HERO_TEAM = 0
 
+local FIRST_NPC_CANVAS_IDX = 0
+
 TACTICAL_FIGHT_MODE = MODE_NO_TACTICAL_FIGHT
 EX_MODE = 0
 
@@ -498,11 +500,29 @@ local function handle_input(eve, tdata, ap)
    end
 end
 
+local function obj_sort(obj0, obj1)
+   local pos0 = ywCanvasObjPos(obj0)
+   local pos1 = ywCanvasObjPos(obj1)
+
+   if yIsNil(pos1) then
+      if yIsNil(pos0) then
+	 return 0
+      end
+      return 1
+   end
+   if yIsNil(pos0) then
+      return -1
+   end
+   return ywPosY(pos0) - ywPosY(pos1)
+end
+
 local function init_fight(tdata)
    local wid_rect = main_widget["wid-pix"]
    local wid_w = ywRectW(wid_rect)
    local wid_h = ywRectH(wid_rect)
    local main_canvas = main_widget.mainScreen
+
+   FIRST_NPC_CANVAS_IDX = yeLen(main_canvas.objs) - 200
 
    main_widget.cam_offset = Pos.new(0, BAR_H / 2).ent
    printMessage(main_widget, nil,
@@ -963,5 +983,6 @@ function do_tactical_fight(eve)
       yNextLose(main_widget)
    end
 
+   yeDumbSort(main_canvas.objs, Entity.new_func(obj_sort), FIRST_NPC_CANVAS_IDX)
    return YEVE_ACTION
 end
