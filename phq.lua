@@ -1034,39 +1034,79 @@ function phq_action(entity, eve)
 	 return dist0 - dist1
       end
 
-      -- because actionable_to_sort array should alway be very samll, faster sort is dumb one
+      -- because actionable_to_sort array should alway be very small, faster sort is dumb one
       yeDumbSort(actionable_to_sort, Entity.new_func(sort_actionable), 0)
 
-      for j = 0, yeLen(actionable_to_sort) - 1 do
-	 local actioned = phq.actioned[entity.cur_scene_str:to_string()]
-	 local act_cnt = actioned[actionable_to_sort[j].name:to_string()]
-
-	 act_cnt = yeGetInt(act_cnt) + 1
-	 actioned[actionable_to_sort[j].name:to_string()] = act_cnt
-	 -- save here the number of time this object have been actioned
-	 phq_do_action(entity, actionable_to_sort[j])
-	 if yeGetInt(entity.require_ret) == 1 then
-	    return YEVE_ACTION
-	 end
+      local nearest_action = nil
+      if yeLen(actionable_to_sort) > 0 then
+	 nearest_action = actionable_to_sort[0].rect
       end
 
       local col = ylaCanvasCollisionsArrayWithRectangle(main_widget_screen,
 							r:cent())
       col = Entity.wrapp(col)
-      --print("action !", Pos.wrapp(pjPos.ent):tostring(), Pos.wrapp(r.ent):tostring(), yeLen(col))
-      i = 0
-      while i < yeLen(col) do
+      local nearest_col = nil
+      for i = 0, yeLen(col) - 1 do
 	 local c = col[i]
 	 if yeGetInt(c.is_npc) > 0 then
-	    local dialogue = col[i].dialogue
-	    if startDialogue(entity, c, dialogue) == YEVE_ACTION then
-	       return YEVE_ACTION
-	    elseif c.small_talk then
-	       smallTalk(entity, c)
+	    nearest_col = c.pos
+	 end
+      end
+      local pc_pos = Entity.new_copy(main_widget.pj.canvas.pos)
+
+      ywPosAddXY(pc_pos, 32, 32)
+      local dist_col = ywPosDistance(pc_pos, nearest_col)
+      -- because action is a rect, I would need here to get the nearest pos in the rect to PC pos
+      -- col would need readjusting to
+      local dist_action = ywPosDistance(pc_pos, nearest_action)
+
+      local function do_actions(actionable_to_sort, actioned)
+	 for j = 0, yeLen(actionable_to_sort) - 1 do
+	    local actioned = phq.actioned[main_widget.cur_scene_str:to_string()]
+	    local act_cnt = actioned[actionable_to_sort[j].name:to_string()]
+
+	    act_cnt = yeGetInt(act_cnt) + 1
+	    actioned[actionable_to_sort[j].name:to_string()] = act_cnt
+	    -- save here the number of time this object have been actioned
+	    phq_do_action(main_widget, actionable_to_sort[j])
+	    if yeGetInt(main_widget.require_ret) == 1 then
+	       return 1
 	    end
 	 end
-	 i = i + 1
+	 return 0
       end
+
+      local function do_talk(col)
+	 for i = 0, yeLen(col) - 1 do
+	    local c = col[i]
+	    if yeGetInt(c.is_npc) > 0 then
+	       local dialogue = col[i].dialogue
+	       if startDialogue(entity, c, dialogue) == YEVE_ACTION then
+		  return 1
+	       elseif c.small_talk then
+		  smallTalk(entity, c)
+	       end
+	    end
+	 end
+	 return 0
+      end
+
+      if dist_action < dist_col then
+	 if do_actions(actionable_to_sort, actioned) == 1 then
+	    return YEVE_ACTION
+	 end
+	 if do_talk(col) == 1 then
+	    return YEVE_ACTION
+	 end
+      else
+	 if do_talk(col) == 1 then
+	    return YEVE_ACTION
+	 end
+	 if do_actions(actionable_to_sort, actioned) == 1 then
+	    return YEVE_ACTION
+	 end
+      end
+
    end
 
    if is_upkey_up or is_downkey_up then
