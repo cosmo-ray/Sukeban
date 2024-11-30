@@ -38,6 +38,12 @@
          "id":2,
          "name":"Wall",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"Collision",
+                 "type":"int",
+                 "value":1
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":14,
@@ -50,7 +56,6 @@
          "name":"NPC",
          "objects":[
                 {
-                 "class":"",
                  "height":0,
                  "id":2,
                  "name":"Elise Barelmaker",
@@ -62,13 +67,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
-                 "x":270.766969780472,
-                 "y":128.387985670984
+                 "x":263.777104679472,
+                 "y":122.751583909608
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":3,
                  "name":"Saki Miya",
@@ -80,13 +85,13 @@
                          "value":"down"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":148.404755795056,
                  "y":123.599349927294
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":5,
                  "name":"p0",
@@ -103,13 +108,13 @@
                          "value":true
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":45.5993783462641,
                  "y":49.5800821276298
                 }, 
                 {
-                 "class":"",
                  "height":0,
                  "id":6,
                  "name":"p1",
@@ -126,6 +131,7 @@
                          "value":true
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":0,
                  "x":88.3036275948837,
@@ -143,7 +149,6 @@
          "name":"Entries",
          "objects":[
                 {
-                 "class":"",
                  "height":46.4112,
                  "id":1,
                  "name":"back",
@@ -164,6 +169,7 @@
                          "value":"up"
                         }],
                  "rotation":0,
+                 "type":"",
                  "visible":true,
                  "width":28.4524,
                  "x":197.081411254304,
@@ -190,6 +196,12 @@
          "id":4,
          "name":"deco",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"Collision",
+                 "type":"int",
+                 "value":1
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":14,
@@ -200,7 +212,7 @@
  "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.9.2",
+ "tiledversion":"1.10.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -213,6 +225,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.9",
+ "version":"1.10",
  "width":14
 }
