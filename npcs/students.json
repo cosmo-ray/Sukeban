@@ -304,7 +304,7 @@
 	"student_year": 3,
 	"class": 2,
         "max_life": 100,
-	"hair": ["unkempt", "raven"],
+	"hair": ["bangslong2", "raven"],
 	"ai": "elise",
 	"stats": {
 	    "charm": 4,
@@ -322,8 +322,8 @@
 
 	},
 	"equipement": {
-	    "torso": "white_pirate",
-	    "legs": "teal pants female",
+	    "torso": "Black Leather blouse",
+	    "legs": "legion skirt",
 	    "feet": "maroon longboot"
 	}
     },
@@ -333,7 +333,7 @@
 	"student_year": 3,
 	"class": 1,
         "max_life": 120,
-	"hair": ["unkempt", "raven"],
+	"hair": ["xlongknot", "brown"],
 	"ai": "sakai",
 	"image": {
 	    "dst-threshold": [200,-300],
