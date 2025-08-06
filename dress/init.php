@@ -92,8 +92,7 @@ function menu_setup($wid, $mn, $mn_type) {
     $mn_pos = yeGetIntAt($wid, 'mn_pos');
     $dress_type = yeGetStringAt($wid, "dress_type");
     if ($si) {
-        yeIncrRef($si);
-        yePush($si, $mn, '_csi_');
+        yePush($mn, $si, '_csi_');
         echo '$si bef refcount: ', yeRefCount($si), "\n";
     }
 
@@ -159,35 +158,31 @@ function menu_setup($wid, $mn, $mn_type) {
         ywMenuPushEntry($mn, 'back', ygGet('dressup.back_menu'));
     }
     yeRemoveChildByStr($mn, '_csi_');
-    yeDestroy($si); // dec ref
 }
 
 function reset_character($cwid, $mod, $cw) {
     $char = yeGet($cwid, 'character');
-    print("reset c in !!!" . yeEntitiesUsed() . " \n");
     $_c_ = yeGet($cwid, '_c_');
     if ($_c_) {
-        lpcsHandlerNullify($_c_);
+        ylpcsHandlerNullify($_c_);
         yeRemoveChildByEntity($cwid, $_c_);
         yeRemoveChildByStr($char, 'clothes');
-        print("reset c __c__ !!!" . yeEntitiesUsed() . " \n");
     }
-    lpcsHandlerNullify();
+    //yDoDressUp($char);
     yesCall(yeGet($mod, "dressUp"), $char);
     $ch = ylpcsCreateHandler($char, $cw, $cwid, '_c_');
     ylpcsHandlerSetPosXY($ch, 10, 10);
     ylpcsHandlerSetOrigXY($ch, 0, 2);
     ylpcsHandlerRefresh($ch);
     ywCanvasMultiplySize(yeGet($ch, "canvas"), 5);
-    print("reset c out !!!" . yeEntitiesUsed() . " \n");
 }
 
 function action($wid, $eves) {
     print("dress action !!!". yeEntitiesUsed() . "\n");
     $menu = ywCntGetEntry($wid, 0);
-    yeRemoveChildByStr($menu, '_ch_');
+    yeRemoveChildByStr($menu, "_ch_");
     yePushBack($menu, yeGet($wid, 'character'), "_ch_");
-    yePushBack($menu, $wid, "_main_");
+    yeReplaceBack($menu, $wid, "_main_");
     $cur_mn = yeGetIntAt($wid, "cur_mn");
     menu_setup($wid, $menu, $cur_mn);
     $ret = $YEVE_ACTION;
