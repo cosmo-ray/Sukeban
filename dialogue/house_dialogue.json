@@ -118,15 +118,15 @@
 		"switch-texts": [
 		    "phq.env.dayrand",
 		    "(some teleshooping)\n-Yes Jack, with the new autocooking 2009, you will be able to cook patatoes in only 25mn !\nWoww !\n\nCall 011 8 999 881 990 199 725 3",
-		    "(infomercial)Wow.\nthose candies are so good, they don't even stick to the Tooth, are made at 4% of real natural aroma, and sell in a 1KG packet\ncall 011 8 999 881 990 199 725 3",
-		    "(???)Yes, you need programing for your next job, start learning programing for 1EBG\nDon't let tommorow be full of sorrow, Call 011 8 999 881 990 199 725 3",
-		    "(plushi seller)wow, what a plushie plushie news, for only 15 bucks, you can have either 3 cute plushi plusie, or one big plushi !!!, Call 011 8 999 881 990 199 725 3",
+		    "(infomercial)Wow.\nthose candies are so good, they don't even stick to the Tooth,\nare made at 4% of real natural aroma,\nand sell in a 1KG packet\ncall 011 8 999 881 990 199 725 3",
+		    "(???)Yes, you need programing for your next job, start learning programing for 1EBG\nDon't let tommorow be full of sorrow,\nCall 011 8 999 881 990 199 725 3",
+		    "(plushi seller)wow, what a plushie plushie news, for only 15 bucks,\nyou can have either 3 cute plushi plusie, or one big plushi !!!,\nCall 011 8 999 881 990 199 725 3",
 		    "(EXTREM SELLER) TRY THE NEW EXREMLY MINERAL WATTER (explosion)\nWITH AN EXTREM TASTE(explosion)\nFROM THE EXTREMLY HIGHT MONTAIN(explosion)\nFROM THE EXTREM NORTH(explosion)\ncall 011 8 999 881 990 199 725 3\n",
-		    "(person selling stuff on TV)Wow, this new energy drink is now 1000% made of natural aroma, Natnergy, rassbery, Blueberry, and even Colabery flavours !!!! Call 011 8 999 881 990 199 725 3",
-		    "(Some guy dress up as medecin)the the anty-depressor footix 300, can even made you forgot you lose th world cup !, Call 011 8 999 881 990 199 725 3",
-		    "(some seller)Yes, you can now play 'Wood Stuff' the infiltration game on your personal computer, and with the code 'GUY IN A BOX', you have 4% sale\ncall 011 8 999 881 990 199 725 3",
-		    "(advertisement)Wizard Dry 4 just release, in this sequel of the famous Wazard Dry 1,2 and 3, you will discover the joy to play the overlord, invock monsters and fight adventurers to free yourself from your prison",
-		    "(TV shopping)\n-So dexter, do it happen a lot to have your pocket too full\n-Yes Nanine, I always have at last 4 wallet in my pockets, they are so big, it's a real annoyance\n-Don't worry with the new Fanny pack bag: banana mk2 you will be able to carry them\nno questions ask !\n\nCall 011 8 999 881 990 199 725 3"
+		    "(person selling stuff on TV)Wow,\nthis new energy drink is now 1000% made of natural aroma,\nNatnergy, rassbery, Blueberry, and even Colabery flavours !!!!\nCall 011 8 999 881 990 199 725 3",
+		    "(Some guy dress up as medecin)the the anty-depressor footix 300,\ncan even made you forgot you lose th world cup !,\nCall 011 8 999 881 990 199 725 3",
+		    "(some seller)Yes, you can now play 'Wood Stuff'\nthe infiltration game on your personal computer,\nand with the code 'GUY IN A BOX', you have 4% sale\ncall 011 8 999 881 990 199 725 3",
+		    "(advertisement)Wizard Dry 4 just release, in this sequel of the famous Wazard Dry 1,2 and 3,\nyou will discover the joy to play the overlord,\ninvock monsters and fight adventurers to free yourself from your prison",
+		    "(TV shopping)\n-So dexter, do it happen a lot to have your pocket too full\n-Yes Nanine, I always have at last 4 wallet in my pockets,\nthey are so big, it's a real annoyance\n-Don't worry with the new Fanny pack bag: banana mk2 you will be able to carry them\nno questions ask !\n\nCall 011 8 999 881 990 199 725 3"
 		],
 		"answer": {
 		    "text": "leave",
@@ -155,7 +155,7 @@
 		    "It seems a Toys Factory, was bombed by terrorist, and blow just away",
 		    "News about this new thing call internet chat\nwhere peoples recive indecent propositions",
 		    {
-			"text": "For the first time this year, and ever, the flower park will be illuminated with winter decoration\ncome with your family, your lover, your lover boyfriend\n and see the park as you've never saw it before",
+			"text": "For the first time this year, and ever,\nthe flower park will be illuminated with winter decoration\ncome with your family, your lover, your lover boyfriend\n and see the park as you've never saw it before",
 			"condition": ["=", "phq.env.chapter", 2]
 		    },
 		    "News about a new cool band call 'les Cowboy Baguette'",
@@ -172,10 +172,10 @@
 			"text": "Documentary about how microwave are made",
 			"condition": ["=", "phq.env.chapter", 3]
 		    },
-		    "TV report about how a volleyball coatch, that use to be a general in the national navy, train his team to win the olympic game 20 years ago",
+		    "TV report about how a volleyball coatch, that use to be a general in the national navy,\ntrain his team to win the olympic game 20 years ago",
 		    "television report about how winemaker are switching to organic and natural wine",
 		    {
-			"text": "government want to introduce a new legislation, that will privatize most universities, syndicates threatens to go on strikes",
+			"text": "government want to introduce a new legislation,\nthat will privatize most universities,\nsyndicates threatens to go on strikes",
 			"condition": ["and", ["<", "phq.env.school_day", 26], [">", "phq.env.school_day", 19]]
 		    },
 		    {
@@ -183,18 +183,18 @@
 			"condition": ["and", ["<", "phq.env.school_day", 26], [">", "phq.env.school_day", 19]]
 		    },
 		    {
-			"text": "Documentation, about how a school that was privatize at the other end of the work, end up increasin it's students grades",
+			"text": "Documentation, about how a school that was privatize at the other end of the work,\nend up increasin it's students grades",
 			"condition": ["and", ["<", "phq.env.school_day", 26], [">", "phq.env.school_day", 19]]
 		    },
 		    {
-			"text": "News about violent strike against School Privatization, showing that demonstrator are very violent, and dangerous",
+			"text": "News about violent strike against School Privatization,\nshowing that demonstrator are very violent, and dangerous",
 			"condition": ["and", ["<", "phq.env.school_day", 27], [">", "phq.env.school_day", 20]]
 		    },
 		    {
-			"text": "It seems a cops, kill a demonstrator by mistake, the demonstrator where very violent (so the TV say)",
+			"text": "It seems a cops, kill a demonstrator by mistake,\nthe demonstrator where very violent (so the TV say)",
 			"condition": ["and", ["<", "phq.env.school_day", 27], [">", "phq.env.school_day", 24]]
 		    },
-		    "reportage about the broken career of an old tenis women, who use to have some of the stronger server ever, but end up breaking her wrist beyong repair",
+		    "reportage about the broken career of an old tenis women,\nwho use to have some of the stronger server ever,\nbut end up breaking her wrist beyong repair",
 		    "News about our country making some giant robots real\nthey say it's for military purpose\nwith a big add telling us to join the army now",
 		    "A new Sparkling Water brand should be commercialize soon",
 		    {
@@ -204,12 +204,12 @@
 		    },
 		    "A crazy guy think in the futur, human will have maigc-like tech\nbut some alien will invade earth\nwhich will change the worl in an hight fantasy world where no one remember todays tech\nand think magic rule they world",
 		    "It seems fisherman are talking about changing Tuna quota in some sea",
-		    "Documentary about an old criminal orgsanisation from last century called 'the Yak Hussars'",
+		    "Documentary about an old criminal orgsanisation from last century called\n'the Yak Hussars'",
 		    "A new game call crime lord girl boss has been release on the game console 'vapor deck'\nOur expert fear this kind of products will increase juvenile delinquency",
-		    "A small 'debate' between a scientist trying to explain that meat consuption is bad for global warming, and a journalist turning all his arguments in ridicule",
+		    "A small 'debate' between a scientist trying to explain\nthat meat consuption is bad for global warming,\nand a journalist turning all his arguments in ridicule",
 		    {
 			"condition": ["<", "phq.pj.stats.strength", 1],
-			"text": "Some whellball match happend somewhwere in the world, some random team win, wow...."
+			"text": "Some whellball match happend somewhwere in the world,\nsome random team win, wow...."
 		    },
 		    "A Golf was ransack but a group of Ecologist activist\nwho put Boars in the golf\nthe Boars cause terror amongh the players, and staff.\nlucklly they where no Fire !",
 		    "News about a super cool cats fan club"
@@ -244,13 +244,13 @@
 		    "Blown by the wind, I look at the stars, then the journey continues(I've hear this animu is very kino)",
 		    "anata ga sora wo yuku nara watashi wa tsubasa ni naritai (what if the magazone was exile ?)",
 		    "(When it comes to a crisis. still keep on running. You believe in power. it's mental power.)\nTututu tututu Tututututu, TU TU TU TU TU TU TU TUUUU\n(some bigger pocket circuit)",
-		    "Deja vu! I've just been in this place avant (plus haut dans la rue) And I know c'est la que je doit aller !!(tofu and cars)",
+		    "Deja vu! I've just been in this place avant (plus haut dans la rue)\nAnd I know c'est la que je doit aller !!(tofu and cars)",
 		    "Ferme tes yeux, et rappel toi, l'image de ta mére\nton lieux de naisence, la belle planet bleuu, paisiblement endormie\nMeuu Talleee\nanother start will dieee\nRouge rouge, brulantee(some peoples watch this anime 999 times)",
 		    "KUROIIIIIIIIIIIIIIIIIIIII\ndans cette ville ou le soleil ne brille pas, des personnes sans voix, bossent paisiblement !(is Paris that unsafe ?)",
 		    "Kimi no te de kirisaite tooi hi no kioku woooo...(An half metal guy is on my screen doing magic)",
-		    "kyou mo sasurai namida mo kareru, Blue Gale namida haratte, Blue Gale kirameku chikara (Western Mecha)",
-		    "Honge tara tara honge tara pon, Honge tara tara Honge Tara PIN ! mero mero Samurai bizard era...(Demon Hunter Stuff)",
-		    "Les mechant j'les demolie, Where treasure glitters I'm there to claim it!, shouri wa atashi no tameni aru !\n(anime about a girl been scare of her sister, and doing chore for her)",
+		    "kyou mo sasurai namida mo kareru, Blue Gale namida haratte,\nBlue Gale kirameku chikara (Western Mecha)",
+		    "Honge tara tara honge tara pon, Honge tara tara Honge Tara PIN !\nmero mero Samurai bizard era...(Demon Hunter Stuff)",
+		    "Les mechant j'les demolie, Where treasure glitters I'm there to claim it!,\nshouri wa atashi no tameni aru !\n(anime about a girl been scare of her sister,\nand doing chore for her)",
 		    "Nasaku muyou ! Asteroid Belt no Outlaw mo furue dasu...(The Mecha sherif of the galaxy ?)"
 			 ],
 		"answers": [
