@@ -13,6 +13,12 @@
 			   YW_PATH_WENT_UP | YW_PATH_WENT_DOWN)
 #define YW_PATH_LAST YW_PATH_WENT_DOWN
 
+/*
+ * this is a very naive algo, that kind of naive too, and broken
+ * it create an aray of point that should be use as pos to where a character should be set
+ * TLDR: don't use this
+ */
+
 static int pathfindingChooseDirection(Entity *canvas,
 				      Entity *curDirInfo, Entity *to,
 				      Entity *newDirInfo)

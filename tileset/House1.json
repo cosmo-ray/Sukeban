@@ -671,8 +671,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":182,
-                 "y":467
+                 "x":180.622792073881,
+                 "y":439.455841477629
                 }, 
                 {
                  "height":0,
@@ -683,8 +683,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":79,
-                 "y":475
+                 "x":74.8683762216444,
+                 "y":440.569801847037
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -762,7 +762,7 @@
          "value":1
         }],
  "renderorder":"right-down",
- "tiledversion":"1.10.1",
+ "tiledversion":"1.11.2",
  "tileheight":32,
  "tilesets":[
         {

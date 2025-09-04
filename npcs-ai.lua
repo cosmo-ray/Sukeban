@@ -1,5 +1,5 @@
 --
---Copyright (C) 2022 Matthias Gatto
+--Copyright (C) 2022-2025 Matthias Gatto
 --
 --This program is free software: you can redistribute it and/or modify
 --it under the terms of the GNU Lesser General Public License as published by
@@ -273,7 +273,7 @@ function runner_0_mk_tbl(_npc, point_prefix, nb_pos, start_p)
       ywPosAddXY(pos, 0, -50);
    end
    ywCanvasDoPathfinding(main_widget.mainScreen, runner_lpos, pos,
-			 Pos.new(PIX_PER_FRAME * 1.2, PIX_PER_FRAME * 1.2).ent,
+			 Pos.new(PIX_PER_FRAME * 1.8, PIX_PER_FRAME * 1.8).ent,
 			 runner0_tbl)
 
    runner0_pos = runner0_pos + 1
